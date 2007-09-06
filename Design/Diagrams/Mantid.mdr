@@ -1,0 +1,45 @@
+MagicDrawUML "12.1"
+(RTManager
+	(RTManagerOptions
+		CODE_GENERATION_REVERSE_OPTION 2
+		DELETED_ELEMENT_GENERATION_OPTION 0
+		USE_CLASSPATH_FOR_JAVA_REVERSE TRUE
+		LAUNCH_WIZARD FALSE
+		MERGE_AFTER_REVERSE FALSE
+		CREATE_ATTRIBUTES TRUE
+		DEFAULT_WORKING_DIRECTORY "<install.root>"
+		DEFAULT_LANGUAGE "C++"
+		(CppLanguageOptions
+			mGenEmptyDoc FALSE
+			mBracketInNewLine TRUE
+			mAddSpaces TRUE
+			mUseJavaDoc FALSE
+			mDefaultHeader "@(#) $FILE_NAME"
+			mGenerateDocumentation TRUE
+			(DocumentationProperties
+				DefaultDocumentationProcessor "STANDARD_PROCESSOR"
+				mCommentStyle 0
+				(Processors
+				)
+			)
+			mDocumentationOption FALSE
+			mGenerateMethodBodyInClass FALSE
+			mUseIncludePath FALSE
+			mUseMacros TRUE
+			mIncludePath ""
+			mRemoveUsage FALSE
+			mGenerateFieldInitializationInClass FALSE
+		)
+		DEFAULT_WORKING_DIRECTORY "<install.root>"
+		TEMP_DIRECTORY "Active Directory"
+		mResultToDiagram 1
+		defaultWorkingPackage "eee_1045467100313_135436_1"
+		defaultPathForReferences( list
+			"eee_1045467100313_135436_1"
+		)
+	)
+	(RTProjectGroupObject
+		mID "_12_1_c27024d_1189006320623_567819_9301"
+		mName "Code engineering sets"
+	)
+)
