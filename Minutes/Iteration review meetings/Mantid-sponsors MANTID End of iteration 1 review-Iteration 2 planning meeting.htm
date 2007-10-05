@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>MANTID End of iteration 1 review/Iteration 2 planning meeting</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
+<BODY><B>From:</B> mantid-sponsors-bounces@mantidproject.org on behalf of 
+Draper, N (Nick) [N.Draper@rl.ac.uk]<BR><B>Sent:</B> 05 October 2007 
+16:51<BR><B>To:</B> Mantid Developers<BR><B>Cc:</B> 
+mantid-sponsors@mantidproject.org<BR><B>Subject:</B> [Mantid-sponsors] MANTID 
+End of iteration 1 review/Iteration 2planning meeting<BR><BR><B>Attachments:</B> 
+ATT3807644.txt<BR><!-- Converted from text/rtf format -->
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Present: Nick, Matt, Dickon, Stuart, Russell, Anders</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Apologies: 
+Laurent</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>, Freddie</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Aim of Iteration 1</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face="Courier New" 
+size=2>To build the essential parts of the Mantid framework in order to be able 
+to reproduce the same test that was performed on GAUDI and LOQ during the Pilot 
+investigations.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Progress during Iteration 1</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face="Courier New" 
+size=2>The first iteration of a project is always hard and difficult to predict, 
+as the building of the software is often delayed by other essential tasks such 
+as setting up the development and build environment and issues with third party 
+libraries.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face="Courier New" size=2>In our case the 
+timing of the first iteration coincided with many of the team taking holidays or 
+attending other work commitments away from ISIS.&nbsp; As a result the majority 
+of the work in this iteration has been done by Russell Taylor with help from 
+Dickon, Matt and Laurent.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face="Courier New" size=2>However after saying 
+all of that it looks like we have achieved the aim of the iteration although we 
+have had to make a few compromises, specifically:</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Symbol size=2>·<FONT 
+face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb> <FONT face="Courier New" size=2>The Logging 
+framework chosen proved less mature than expected, and will have to be moved to 
+iteration 2.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Symbol size=2>·<FONT 
+face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT> <FONT 
+face="Courier New" size=2>Work on the build environment started later than we 
+would have hoped due to holidays.&nbsp; It is working now, but more work is 
+needed to integrate unit tests.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Symbol size=2>·<FONT 
+face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT> <FONT 
+face="Courier New" size=2>A few classes need unit tests expanding e.g. 
+LoadRaw</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Symbol size=2>·<FONT 
+face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT> <FONT 
+face="Courier New" size=2>The framework Manager API in Mantid only provides the 
+minimum functions to complete the aim and needs completing.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Presentations</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Walkthrough of the Code – Russell</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>The Build Server – 
+Matt</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Aim of Iteration 2</FONT></B></SPAN><SPAN lang=en-gb><B></B></SPAN><SPAN 
+lang=en-gb><B></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>To 
+provide support within the framework of sufficient instrument geometry knowledge 
+to allow algorithms to adjust for L1 and L2 distances.</FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb>&nbsp;<FONT face=Arial size=2> This will be 
+tested by the</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb> <FONT 
+face=Arial size=2>implementation</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb><FONT face=Arial size=2> of a c</FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>onvert to wavelength 
+algorithm</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Tasks required for Iteration 2</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>See 
+the list in Trac.</FONT></SPAN><SPAN lang=en-gb> </SPAN><A 
+href="http://trac.mantidproject.org/mantid/query?status=new&amp;status=assigned&amp;status=reopened&amp;milestone=Iteration+2&amp;order=priority"><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb><U><FONT face=Arial color=#0000ff 
+size=2>http://trac.mantidproject.org/mantid/query?status=new&amp;status=assigned&amp;status=reopened&amp;milestone=Iteration+2&amp;order=priority</FONT></U></SPAN><SPAN 
+lang=en-gb></SPAN></A><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Team Availability for Iteration 2</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Laurent has booked out days for the period for Mantid (about 
+50%)</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Dickon busy week 
+1</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2> 
+of the iteration</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN><A name=""><SPAN 
+lang=en-gb>Regards,</SPAN></A></P>
+<P dir=ltr><SPAN lang=en-gb>Nick Draper</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>Mantid Project Manager</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>Tel: +44 (0)1235 445360</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>R3, UG.5</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN></P></BODY></HTML>
