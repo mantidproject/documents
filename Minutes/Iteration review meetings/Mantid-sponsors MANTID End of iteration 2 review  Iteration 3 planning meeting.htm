@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>MANTID End of iteration 2 review / Iteration 3 planning meeting</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
+<BODY><B>From:</B> mantid-sponsors-bounces@mantidproject.org on behalf of 
+Draper, N (Nick) [N.Draper@rl.ac.uk]<BR><B>Sent:</B> 05 November 2007 
+14:46<BR><B>To:</B> Akeroyd, FA (Freddie); Ansell, S (Stuart); Champion, JDM 
+(Dickon); Chapon, LC (Laurent); Clarke, MJ (Matt); Markvardsen, AJ (Anders); 
+Radaelli, PG (Paolo); Taylor, R (Russell)<BR><B>Cc:</B> 
+mantid-sponsors@mantidproject.org<BR><B>Subject:</B> [Mantid-sponsors] MANTID 
+End of iteration 2 review / Iteration 3planning 
+meeting<BR><BR><B>Attachments:</B> ATT3531152.txt<BR><!-- Converted from text/rtf format -->
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Present</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT 
+face=Arial size=2>: Nick, Stuart, Freddie, Anders, Matt, Laurent, 
+Dickon</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Apologies</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT 
+face=Arial size=2>: </FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Aim of Iteration 2</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>To 
+provide support within the framework of sufficient instrument geometry knowledge 
+to allow algorithms to adjust for L1 and L2 distances.&nbsp; This will be tested 
+by the implementation of a convert to wavelength algorithm.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Also</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT 
+face=Arial size=2>- Python interface</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT 
+face=Arial size=2>- Dynamic loading of dlls and factory 
+registration</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Progress during Iteration 2</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Geometry - Almost complete, just needs merging into source 
+control</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Tof2WaveLength - Complete 
+but currently using a stub for the geometry</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Python interface - working 
+for Framework manager, base algorithm, and base workspace, but some work needs 
+to be done to compile in windows.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Dynamic dll loading and 
+registration - Stalled on a communication error (PMs fault).&nbsp; However the 
+two aspects were shown to work independently and we just need to bring them 
+together.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Presentations</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B><FONT face=Arial size=2>Algorithm registration 
+into the dynamic factories</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb><FONT face=Arial size=2> – Russell</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Currently the static linker optimises out vital parts of the dynamic 
+registration code.&nbsp; This currently restricts us to using shared libraries, 
+however that was how we planned on deploying the code an</FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>y</FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>way.</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Boost Python Interface</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb><FONT face=Arial size=2> – Matt</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Geom</FONT></B></SPAN><SPAN lang=en-gb><B></B></SPAN><SPAN 
+lang=en-gb><B><FONT face=Arial size=2>e</FONT></B></SPAN><SPAN 
+lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>try</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT 
+face=Arial size=2> - Laurent</FONT></SPAN></P><BR>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Aim of Iteration 3</FONT></B></SPAN><SPAN lang=en-gb></SPAN><SPAN 
+lang=en-gb><FONT face=Arial size=2> (Deadline 30/11/2007)</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>To 
+implement</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb> <FONT 
+face=Arial size=2>properties for algorithms / samples etc and enhance workspaces 
+to be able to allow simple workspace operations (+,-,*,/).</FONT></SPAN><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Tasks required for Iteration 3</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Consolidation - completion of IT2 tasks, comments, Tests, cross platform 
+building</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Further 
+Geometry</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Properties for algorithms, 
+samples, etc</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>LoadLog algorithm for 
+loading log files</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Iterators for 
+workspaces</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Workspace 
+history</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>simple workspace operations 
+(+,-,*,/,</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>?</FONT></SPAN><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>^)</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>LoadRaw in 
+C++.</FONT></SPAN></P><BR>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Team Availability for Iteration 3</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial 
+size=2>Russell is having a baby so will be out for 1 week during late November 
+or December.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>Dickon off for 2 wks 
+7-20th.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Team</FONT></B></SPAN><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B> 
+<FONT face=Arial size=2>Discussions</FONT></B></SPAN><SPAN 
+lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial size=2> and 
+Decisions</FONT></B></SPAN><SPAN lang=en-gb><B></B></SPAN><SPAN 
+lang=en-gb><B></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>Namespaces</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>We 
+agreed that each section (also shared library) should have its own 
+namespace.</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><FONT face=Arial size=2>eg. Mantid::Kernel, 
+Mantid::Geometry, Mantid::Algorithm</FONT></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial 
+size=2>D</FONT></B></SPAN><SPAN lang=en-gb><B></B></SPAN><SPAN 
+lang=en-gb><B><FONT face=Arial size=2>O</FONT></B></SPAN><SPAN 
+lang=en-gb><B></B></SPAN><SPAN lang=en-gb><B><FONT face=Arial size=2>xygen 
+Comments</FONT></B></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb><FONT face=Arial size=2>We 
+discussed how to standardise our comments and agreed on the examples documented 
+here</FONT></SPAN><SPAN lang=en-gb> </SPAN><A 
+href="http://www.mantidproject.org/Coding_Standards"><SPAN 
+lang=en-gb></SPAN><SPAN lang=en-gb><U><FONT face=Arial color=#0000ff 
+size=2>http://www.mantidproject.org/Coding_Standards</FONT></U></SPAN><SPAN 
+lang=en-gb></SPAN></A><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN><SPAN lang=en-gb></SPAN><A name=""><SPAN 
+lang=en-gb>Regards,</SPAN></A></P>
+<P dir=ltr><SPAN lang=en-gb>Nick Draper</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>Mantid Project Manager</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>Tel: +44 (0)1235 445360</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb>R3, UG.5</SPAN></P>
+<P dir=ltr><SPAN lang=en-gb></SPAN></P></BODY></HTML>
