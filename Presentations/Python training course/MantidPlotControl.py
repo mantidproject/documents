@@ -4,7 +4,6 @@
 #------------------------------------------------------
 # Perform some algorithms to so that we have some sensible data to plot and look at
 rootdir = "C:/MantidInstall/data/"
-rootdir = "C:/Mantid/trunk/Test/Data/"
 # Load bank 1 from GEM
 LoadRaw(rootdir+ "GEM40979.raw", "GEM-bank2", spectrummin="431", spectrummax="750")
 
