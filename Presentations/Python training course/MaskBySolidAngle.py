@@ -2,8 +2,11 @@
 #  Python Training Exercise 4 Solution.
 #  Masking detectors by solid angle
 #------------------------------------------------------
+from mantidsimple import *
+
 inputData = "GEM40979"
 path = "C:\\MantidInstall\\data"
+path = "C:\\Mantid\\trunk\\Test\\Data\\"
 # Load the first bank of a GEM set
 LoadRaw(Filename = path + inputData + ".raw", OutputWorkspace = inputData,spectrummin="101",spectrummax="430")
 
@@ -30,8 +33,9 @@ for index in range(0, nhist):
 	counts = integrated.readY(index)[0]
 	try:
 		detector = integrated.getDetector(index)
-		if detector.isMonitor():
+		if detector.isMonitor() == True:
 			normalized_values.append(0.0)
+			notfound.append(index)
 			continue
 		solid_angle = detector.solidAngle(sample_pos)
 		counts_per_sa = counts/solid_angle
@@ -52,14 +56,15 @@ if not len(normalized_values) == nhist:
 # Divide the sum by the number of values to get the average
 average = sum_total/counter
 
-print notfound
-
 # Deviation in percent
 deviation = 100.0
 mask_string = ''
 for index in range(0, nhist):
 	y = normalized_values[index]
-	test = y / average
+	# Avoid divide by zero 
+	if y < 1e-08:
+		continue
+	test = abs(y - average) / y
 	if test * 100.0 > deviation and not index in notfound:
 		mask_string+=  str(integrated.getDetector(index).getID())+ ","
 
