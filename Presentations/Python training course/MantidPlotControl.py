@@ -3,15 +3,15 @@
 #  Controlling the MantidPlot items
 #------------------------------------------------------
 # Perform some algorithms to so that we have some sensible data to plot and look at
-rootdir = "C:/MantidInstall/data/"
+rootdir = "C:/Mantid/Test/data/"
 # Load bank 1 from GEM
 LoadRaw(rootdir+ "GEM40979.raw", "GEM-bank2", spectrummin="431", spectrummax="750")
 
 # Convert to dSpacing
-ConvertUnits("GEM-bank1","GEM-bank2", "dSpacing")
+ConvertUnits("GEM-bank2","GEM-bank2", "dSpacing")
 
 # Smooth the data
-SmoothData("GEM-bank1", "GEM-bank2", NPoints="20")
+SmoothData("GEM-bank2", "GEM-bank2", NPoints="20")
 
 # Plot two spectra and merge
 g1 = plotSpectrum("GEM-bank2",0)
