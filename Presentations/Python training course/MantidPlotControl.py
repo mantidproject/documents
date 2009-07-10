@@ -5,7 +5,7 @@
 # Perform some algorithms to so that we have some sensible data to plot and look at
 rootdir = "C:/Mantid/Test/data/"
 # Load bank 1 from GEM
-LoadRaw(rootdir+ "GEM40979.raw", "GEM-bank2", spectrummin="431", spectrummax="750")
+LoadRaw(rootdir+ "GEM40979.raw", "GEM-bank2", SpectrumMin="431", SpectrumMax="750")
 
 # Convert to dSpacing
 ConvertUnits("GEM-bank2","GEM-bank2", "dSpacing")

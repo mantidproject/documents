@@ -7,7 +7,7 @@ from mantidsimple import *
 inputData = "GEM40979"
 path = "C:\\MantidInstall\\data"
 # Load the first bank of a GEM set
-LoadRaw(Filename = path + inputData + ".raw", OutputWorkspace = inputData,spectrummin="101",spectrummax="430")
+LoadRaw(Filename = path + inputData + ".raw", OutputWorkspace = inputData, SpectrumMin="101",SpectrumMax="430")
 
 # Integrate the workspace and overwrite the raw data workspace
 # The output will be a workspace with 1 value per spectra
