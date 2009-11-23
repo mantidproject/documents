@@ -4,7 +4,7 @@
 #------------------------------------------------------
 
 # Load the monitor spectrum, asking the  user for file
-loadalg = LoadRawDialog(OutputWorkspace="Monitor",SpectrumMin="2", SpectrumMax="2",message="Enter the raw file you want to process")
+loadalg = LoadRawDialog(OutputWorkspace="Monitor",SpectrumMin="2", SpectrumMax="2",Message="Enter the raw file you want to process")
 
 # Retrieve the file that was loaded
 file = loadalg.getPropertyValue("Filename")
@@ -15,14 +15,14 @@ LoadRaw(Filename=file,OutputWorkspace="Small_Angle",SpectrumMin="130", SpectrumM
 RemoveBins(InputWorkspace="Monitor",OutputWorkspace="Monitor",XMin="19900",XMax="20500",Interpolation="Linear")
 
 # Correct monitor for a flat background
-FlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",SpectrumIndexList="0",StartX="31000",EndX="39000")
+FlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList="0",StartX="31000",EndX="39000")
 
 # Convert monitor to wavelength
 ConvertUnits(InputWorkspace="Monitor",OutputWorkspace="Monitor",Target="Wavelength")
 
 # Rebin with a suggested set of parameters
-rebinalg = RebinDialog(InputWorkspace="Monitor",OutputWorkspace="Monitor",Params="?2.2,-0.035,10",message="Enter the binning you want to use, in wavelength")
-rebinparam = rebinalg.getPropertyValue("params")
+rebinalg = RebinDialog(InputWorkspace="Monitor",OutputWorkspace="Monitor",Params="2.2,-0.035,10",Message="Enter the binning you want to use, in wavelength",Enable="Params")
+rebinparam = rebinalg.getPropertyValue("Params")
 
 # Convert data to wavelength
 ConvertUnits(InputWorkspace="Small_Angle",OutputWorkspace="Small_Angle",Target="Wavelength")

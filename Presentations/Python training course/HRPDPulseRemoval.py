@@ -24,7 +24,7 @@ plotSpectrum(inputData,0)
 for i in range(0,5):
   min = 19990 + (i*20000)
   max = 20040 + (i*20000)
-  MaskBins(InputWorkspace=inputData,OutputWorkspace=inputData,XMin=str(min),XMax=str(max))
+  MaskBins(InputWorkspace=inputData,OutputWorkspace=inputData,XMin=min,XMax=max)
 
 # Align the detectors (on the data with the pulse removed incoporates unit conversion to d-Spacing)
 AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withoutpulse",CalibrationFile=path + cal_file)
