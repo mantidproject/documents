@@ -5,7 +5,7 @@
 from mantidsimple import *
 
 inputData = "GEM40979"
-path = "C:\\MantidInstall\\data"
+path = "C:\\Mantid\\Test\\data\\"
 # Load the first bank of a GEM set
 LoadRaw(Filename = path + inputData + ".raw", OutputWorkspace = inputData, SpectrumMin="101",SpectrumMax="430")
 

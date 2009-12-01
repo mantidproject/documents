@@ -9,7 +9,7 @@
 # The input data set
 inputData = "HRP39182"
 # The path to the data (this may have to be change based upon your setup
-path = "C:/MantidInstall/Data/"
+path = "C:/Mantid/Test/Data/"
 # Load the file
 LoadRaw(Filename=path+inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
 
