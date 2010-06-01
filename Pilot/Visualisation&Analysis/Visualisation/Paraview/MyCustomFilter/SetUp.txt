@@ -1,0 +1,57 @@
+AUTHOR: Owen Arnold
+
+DESCRIPTION: Minimal proof of concept for providing custom/bespoke VTK filter plugins for Paraview.
+
+PLATFORM DETAILS:
+
+Windows: 64-bit Windows 7, build using VS 2005 C++ (no sevice packs).
+
+Linux: Unconfirmed, but no issues expected
+
+Mac: Unconfirmed
+
+KNOWN ISSUES: None
+
+SETUP DETAILS:
+
+1) Download the Paraview source code
+2) Create a new folder called 'MyCustomFilter' under the Paraview/Plugins directory
+3) Copy the following to the newly created directory:
+    vktMyCustomFilter.h
+	vktMyCustomFilter.cpp
+	MyCustomFilter.xml
+	CMakeList.txt
+4) In the CMake.txt file in the parent directory (Paraview/Plugins) add the line
+
+paraview_build_optional_plugin(MyCustomFilter "My Custom Filter" MyCustomFilter ON) 
+
+under the existing line
+
+paraview_build_optional_plugin(PointSprite "Point Sprites" PointSprite ON) 
+
+5) Build using CMake, ensure that BUILD_SHARED_LIBRARIES option is selected. 
+6) Open the top level Paraview solution file and build everything (the build can take a long time first time round).
+7) Verify that MyCustomFilter.dll has been build to the output build directory.
+8) Run Paraview (paraview.exe)
+    i) Go to 'Source' on the menu and select 'Sphere'
+	ii) Set theta resolution to 400 and psi resolution to 400
+	iii) select 'Apply' from the filter properties window to draw the sphere
+	iiii) Go to Tools menu, select 'Manage Plugins' then locate and load MyCustomFilter.dll from the file system
+	iv) Go to 'Filters' -> 'Alphabetic' and select 'CustomFilter'.
+	v) Select 'Apply' from the filter properties window.
+	vi) Select the Sphere Source from the pipeline and change the theata resolution to 600 and click 'Apply'
+	vii) Verify that the text "Working Very Hard" appears in the progress message window on the bottom right of the paraview screen
+	
+
+EXPECTED OUTPUT: 
+
+Should write "Working Very Hard" in progress message box on bottom right of Paraview GUI when
+any processing is occuring.
+
+REFERENCES:
+
+Paraview Wiki http://www.itk.org/Wiki/Plugin_HowTo
+
+HELP:
+
+Contact Owen Arnold owen.arnold@stfc.ac.uk
