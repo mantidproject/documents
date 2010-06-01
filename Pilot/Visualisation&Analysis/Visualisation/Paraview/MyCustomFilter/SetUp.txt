@@ -4,7 +4,7 @@ DESCRIPTION: Minimal proof of concept for providing custom/bespoke VTK filter pl
 
 PLATFORM DETAILS:
 
-Windows: 64-bit Windows 7, build using VS 2005 C++ (no sevice packs).
+Windows: 64-bit Windows 7. Build using VS 2005 C++ (no sevice packs). Make using CMake 2.8.1
 
 Linux: Unconfirmed, but no issues expected
 
@@ -14,7 +14,7 @@ KNOWN ISSUES: None
 
 SETUP DETAILS:
 
-1) Download the Paraview source code
+1) Download the Paraview source code for Paraview 3.8 from http://www.paraview.org/paraview/resources/software.html
 2) Create a new folder called 'MyCustomFilter' under the Paraview/Plugins directory
 3) Copy the following to the newly created directory:
     vktMyCustomFilter.h
