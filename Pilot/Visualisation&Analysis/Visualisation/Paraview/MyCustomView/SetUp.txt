@@ -1,0 +1,46 @@
+AUTHOR: Owen Arnold
+
+DESCRIPTION: Minimal proof of concept for providing custom/bespoke view for ParaView
+
+PLATFORM DETAILS:
+
+Windows: 64-bit Windows 7. Build using VS 2005 C++ (no sevice packs). Make using CMake 2.8.1
+
+Linux: Unconfirmed, but no issues expected
+
+Mac: Unconfirmed
+
+KNOWN ISSUES: None
+
+SETUP DETAILS:
+
+1) Download the Paraview source code for Paraview 3.8 from http://www.paraview.org/paraview/resources/software.html
+2) Create a new folder called 'MyCustomView' under the Paraview/Examples/CustomApplications directory
+3) Copy the following to the newly created directory:
+    MyCustomWindow.h
+	MyCustomWindow.cxx
+	Consumer.cxx
+	CMakeList.txt
+4) In the CMake.txt file in the parent directory (Paraview/Examples/CustomApplications) modify the following to include MyCustomView
+
+  SUBDIRS(
+    ...
+	MyCustomView
+    )
+
+
+5) Build using CMake, ensure that BUILD_SHARED_LIBRARIES option is selected. 
+6) Open the top level Paraview solution file and build everything (the build can take a long time first time round).
+7) Run MyCustomView.exe
+
+EXPECTED OUTPUT: 
+
+Should have generated a custom view containing the paraview main display window.
+
+REFERENCES:
+
+Paraview Wiki http://www.itk.org/Wiki/Writing_Custom_Applications
+
+HELP:
+
+Contact Owen Arnold owen.arnold@stfc.ac.uk
