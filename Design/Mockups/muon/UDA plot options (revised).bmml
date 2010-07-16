@@ -1,0 +1,147 @@
+<mockup version="1.0" skin="sketch" measuredW="749" measuredH="829" mockupW="724" mockupH="799">
+  <controls>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="680" y="72" w="-1" h="-1" measuredW="32" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::ComboBox" x="130" y="316" w="84" h="-1" measuredW="64" measuredH="72" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>None%0AFixed%0AAdaptive</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::TabBar" x="15" y="20" w="724" h="799" measuredW="449" measuredH="100" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>4</selectedIndex>
+        <text>Home%2C%20Analysis%2C%20Inspect%2C%20Group%20Options%2C%20Plot%20Options</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Button" x="670" y="771" w="-1" h="-1" measuredW="50" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Exit</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="48" y="257" w="315" h="25" measuredW="311" measuredH="25" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20collected%20with%20histogram%20bins%20of%20%3Cwidth%3E%20ns</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::StickyNote" x="393" y="416" w="326" h="189" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>10</size>
+        <text>Both%20fixed%20and%20adaptive%20binning%20will%20need%20input%20-%20probably%20through%20a%20popup%20as%20suggest.%20%0AThe%20result%20of%20the%20binning%20should%20be%20reflected%20in%20the%20second%20line.%0A%20%0AUDA%20appears%20to%20use%20binning%20only%20for%20plotting%2C%20with%20fitting%20being%20carried%20out%20on%20the%20full%20dataset.%20I%27m%20happy%20with%20this%2C%20but%20suppose%20speed%20may%20be%20an%20issue%20for%20some%20fitting.</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::FieldSet" x="30" y="57" w="691" h="153" measuredW="200" measuredH="170" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Default%20Plot%20Style</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="48" y="82" w="-1" h="-1" measuredW="71" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Time%20axis%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextInput" x="451" y="84" w="-1" h="-1" measuredW="22" measuredH="29" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <color>16777215</color>
+        <state>disabled</state>
+        <text>0</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="350" y="86" w="-1" h="-1" measuredW="93" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <state>disabled</state>
+        <text>Start%20at%20%28ns%29%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="500" y="86" w="-1" h="-1" measuredW="93" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Finish%20at%20%28ns%29%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::TextInput" x="599" y="84" w="-1" h="-1" measuredW="29" measuredH="29" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="48" y="121" w="-1" h="-1" measuredW="109" measuredH="25" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Asymmetry%20axis%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::CheckBox" x="214" y="122" w="-1" h="-1" measuredW="85" measuredH="22" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Autoscale</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Label" x="340" y="120" w="-1" h="-1" measuredW="60" measuredH="25" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Minimum%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::TextInput" x="407" y="118" w="-1" h="-1" measuredW="51" measuredH="29" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>-0.05</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="469" y="120" w="203" h="25" measuredW="65" measuredH="25" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Maximum%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::TextInput" x="537" y="118" w="-1" h="-1" measuredW="44" measuredH="29" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>0.25</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::FieldSet" x="32" y="230" w="691" h="198" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20Binning</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::CheckBox" x="48" y="167" w="-1" h="-1" measuredW="126" measuredH="22" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Show%20error%20bars</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::CheckBox" x="214" y="167" w="126" h="22" measuredW="117" measuredH="22" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Connect%20points</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::CheckBox" x="187" y="87" w="141" h="22" measuredW="141" measuredH="22" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Start%20at%20time%20zero</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Label" x="48" y="316" w="-1" h="-1" measuredW="78" measuredH="25" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Rebin%20data%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::CheckBox" x="48" y="397" w="-1" h="-1" measuredW="209" measuredH="22" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Make%20default%20on%20loading%20data</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Paragraph" x="48" y="282" w="644" h="33" measuredW="200" measuredH="140" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Current%20data%20binning%3A%20Fixed%20-%20%3Cwidth%3E%20ns.</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Button" x="680" y="245" w="-1" h="-1" measuredW="32" measuredH="28" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3F</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
