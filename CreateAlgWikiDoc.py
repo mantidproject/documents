@@ -1,7 +1,21 @@
+"""
+    Generate a text file with a template for documenting an algorithm.
+    
+    - Place the script in a place where MantidFramework can be found (usually Mantid/release)
+    - Call it with the name of the algorithm you want to document:
+    
+            python CreateAlgWikiDoc.py LoadSpice2D
+    
+    - The output will be in a file with the name of the algorithm, LoadSpice2D_doc.txt
+        for the current example.
+    - Copy and paste the content of that file on the wiki and complete the information.
+"""
 import sys, StringIO, re
 import urllib2
 import socket
-
+from MantidFramework import *
+mtd.initialise(False)
+from mantidsimple import *
 
 def captureMantidHelp(name=""):
 	"""Capture the output from mtdHelp and return as a string"""
@@ -167,5 +181,11 @@ def convertTowikiTableString(value):
 		valueStr = "&nbsp;"
 	return valueStr
 
-print createAlgPage("MaskDetectorsIf")
-
+if __name__ == '__main__':
+	if len(sys.argv)>1:
+		exec("text = createAlgPage(%s)" % sys.argv[1])
+		f = open("%s_doc.txt" % sys.argv[1], 'w')
+		f.write(text)
+		f.close()
+	else:
+		print "Usage: CreateAlgWikiDoc [Algorithm name]"
