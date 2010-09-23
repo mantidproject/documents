@@ -1,0 +1,121 @@
+<mockup version="1.0" skin="sketch" measuredW="649" measuredH="470" mockupW="623" mockupH="450">
+  <controls>
+    <control controlID="29" controlTypeID="__group__" x="16" y="10" w="623" h="450" measuredW="623" measuredH="450" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="25" w="623" h="322" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="29"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="1" y="0" w="622" h="-1" measuredW="170" measuredH="29" zOrder="1" locked="false" isInGroup="29">
+          <controlProperties>
+            <text>Manage%20User%20Directories</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="__group__" x="9" y="31" w="579" h="182" measuredW="579" measuredH="182" zOrder="2" locked="false" isInGroup="29">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="579" h="182" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Data%20Search%20Directories</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="__group__" x="15" y="48" w="406" h="98" measuredW="411" measuredH="98" zOrder="1" locked="false" isInGroup="2">
+              <groupChildrenDescriptors>
+                <control controlID="0" controlTypeID="com.balsamiq.mockups::List" x="0" y="0" w="406" h="98" measuredW="100" measuredH="126" zOrder="0" locked="false" isInGroup="1">
+                  <controlProperties>
+                    <text>C%3A%5CMantid%5CData%5C%0AC%3A%5COpenGenie%5CData%5C%0A%5C%5Cndw123%5Carchive%5Cisis%5Cosiris%5C</text>
+                  </controlProperties>
+                </control>
+                <control controlID="1" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="395" y="2" w="-1" h="96" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="1"/>
+              </groupChildrenDescriptors>
+            </control>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::CheckBox" x="15" y="145" w="-1" h="-1" measuredW="154" measuredH="22" zOrder="2" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Also%20Search%20Archive</text>
+              </controlProperties>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="436" y="22" w="135" h="28" measuredW="113" measuredH="28" zOrder="3" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Add%20Directory</text>
+              </controlProperties>
+            </control>
+            <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="437" y="50" w="-1" h="-1" measuredW="131" measuredH="28" zOrder="4" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Remove%20Directory</text>
+              </controlProperties>
+            </control>
+            <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="436" y="90" w="135" h="28" measuredW="78" measuredH="28" zOrder="5" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Move%20Up</text>
+              </controlProperties>
+            </control>
+            <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="436" y="118" w="135" h="28" measuredW="93" measuredH="28" zOrder="6" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Move%20Down</text>
+              </controlProperties>
+            </control>
+            <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="15" y="21" w="326" h="-1" measuredW="120" measuredH="29" zOrder="7" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>%5C%5CNewDirectory%5C</text>
+              </controlProperties>
+            </control>
+            <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="341" y="22" w="88" h="28" measuredW="68" measuredH="28" zOrder="8" locked="false" isInGroup="2">
+              <controlProperties>
+                <text>Browse</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="3" controlTypeID="__group__" x="15" y="220" w="-1" h="-1" measuredW="573" measuredH="69" zOrder="3" locked="false" isInGroup="29">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="573" h="69" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="3">
+              <controlProperties>
+                <text>Default%20Save%20Directory</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="102" y="25" w="386" h="-1" measuredW="155" measuredH="29" zOrder="1" locked="false" isInGroup="3">
+              <controlProperties>
+                <text>C%3A%5CMantidInstall%5CData</text>
+              </controlProperties>
+            </control>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="497" y="26" w="63" h="28" measuredW="68" measuredH="28" zOrder="2" locked="false" isInGroup="3">
+              <controlProperties>
+                <text>Browse</text>
+              </controlProperties>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="14" y="26" w="73" h="25" measuredW="63" measuredH="25" zOrder="3" locked="false" isInGroup="3">
+              <controlProperties>
+                <text>Directory</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="4" controlTypeID="__group__" x="17" y="301" w="571" h="149" measuredW="571" measuredH="149" zOrder="4" locked="false" isInGroup="29">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Button" x="169" y="3" w="-1" h="-1" measuredW="190" measuredH="28" zOrder="0" locked="false" isInGroup="4">
+              <controlProperties>
+                <text>Manage%20Other%20Directories</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="440" y="3" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="1" locked="false" isInGroup="4">
+              <controlProperties>
+                <text>Cancel</text>
+              </controlProperties>
+            </control>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="505" y="2" w="66" h="28" measuredW="43" measuredH="28" zOrder="2" locked="false" isInGroup="4">
+              <controlProperties>
+                <text>OK</text>
+              </controlProperties>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="-1" h="-1" measuredW="32" measuredH="28" zOrder="3" locked="false" isInGroup="4">
+              <controlProperties>
+                <text>%5B%3F%5D</text>
+              </controlProperties>
+            </control>
+            <control controlID="5" controlTypeID="com.balsamiq.mockups::StickyNote" x="218" y="29" w="185" h="120" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="4">
+              <controlProperties>
+                <text>This%20would%20bring%20up%20the%20right%20page%20on%20the%20properties%20dialog</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
