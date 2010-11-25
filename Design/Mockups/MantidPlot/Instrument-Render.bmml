@@ -1,0 +1,143 @@
+<mockup version="1.0" skin="sketch" measuredW="838" measuredH="660" mockupW="762" mockupH="650">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="66" y="0" w="762" h="540" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>Instrument%20View</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="421" measuredH="388" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>../../../../../MantidInstall/data/image.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="770" y="484" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3E%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::PointyButton" x="115" y="484" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <text>%3C%3C</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::HorizontalScrollBar" x="226" y="490" w="464" h="-1" measuredW="100" measuredH="16" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <value>28</value>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="152" y="483" w="74" h="-1" measuredW="46" measuredH="29" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1500</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::TextInput" x="696" y="483" w="74" h="-1" measuredW="45" measuredH="29" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2000</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="66" y="515" w="-1" h="-1" measuredW="315" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Click%20and%20drag%20to%20zoom%20in%20%2C%20right%20click%20to%20zoom%20out</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="82" y="189" w="-1" h="-1" measuredW="140" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Display%20Seetings%20%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Button" x="82" y="161" w="-1" h="-1" measuredW="108" measuredH="28" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Export%20Image</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="82" y="254" w="-1" h="-1" measuredW="66" measuredH="180" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>../../../../../MantidInstall/data/colourMap.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::TextInput" x="82" y="434" w="74" h="-1" measuredW="22" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>0</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::TextInput" x="82" y="225" w="74" h="-1" measuredW="37" measuredH="29" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>200</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::ComboBox" x="163" y="435" w="-1" h="-1" measuredW="69" measuredH="25" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Log10</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::TabBar" x="66" y="29" w="226" h="447" measuredW="295" measuredH="100" zOrder="1" locked="true" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <selectedIndex>0</selectedIndex>
+        <text>Render%2C%20Pick%2C%20Instrument%20tree</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::ComboBox" x="123" y="64" w="123" h="-1" measuredW="49" measuredH="72" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>3D%0A2D%20Cylindrical%20%3E%0A2D%20Spherical</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="81" y="64" w="-1" h="-1" measuredW="34" measuredH="25" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Label" x="81" y="136" w="-1" h="-1" measuredW="75" measuredH="25" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reset%20View</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::ComboBox" x="163" y="135" w="-1" h="-1" measuredW="49" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Z-</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Menu" x="212" y="189" w="195" h="-1" measuredW="150" measuredH="170" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Colour%20Map%0ABackground%20Colour%0A----%0AAdd%20Layer...%0ARemove%20Layer...%0A----%0Ax%20Display%20Axes%0Ax%20Display%20Entire%20instrument</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Label" x="77" y="485" w="-1" h="-1" measuredW="33" measuredH="25" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>TOF</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::StickyNote" x="190" y="551" w="244" h="99" measuredW="109" measuredH="123" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Click%20and%20drag%20to%20change%20scale%0ADouble%20click%20to%20change%20colour%20map</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Arrow" x="138" y="374" w="191" h="191" measuredW="150" measuredH="100" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Arrow" x="226" y="104" w="208" h="48" measuredW="150" measuredH="100" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::StickyNote" x="407" y="64" w="149" h="72" measuredW="109" measuredH="123" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Only%20visible%20for%203D</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::StickyNote" x="407" y="315" w="285" h="140" measuredW="109" measuredH="123" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Layers%20are%20information%20associated%20with%20a%20workspace%20for%20example%3A%0A%20*%20peak%20crystal%20coords%0A%20*%20Predicted%20crystal%20peaks</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::StickyNote" x="673" y="512" w="155" h="123" measuredW="109" measuredH="123" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Each%20click%20moves%20the%20range%20up%20one%20increment</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
