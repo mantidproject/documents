@@ -5,10 +5,8 @@
         <text>Instrument%20View</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="421" measuredH="388" zOrder="2" locked="false" isInGroup="-1">
-      <controlProperties>
-        <src>../../../../../MantidInstall/data/image.png</src>
-      </controlProperties>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="77" measuredH="79" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties/>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="770" y="484" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
@@ -51,10 +49,8 @@
         <text>Export%20Image</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="82" y="254" w="-1" h="-1" measuredW="66" measuredH="180" zOrder="11" locked="false" isInGroup="-1">
-      <controlProperties>
-        <src>../../../../../MantidInstall/data/colourMap.png</src>
-      </controlProperties>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="82" y="254" w="56" h="180" measuredW="77" measuredH="79" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties/>
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::TextInput" x="82" y="434" w="74" h="-1" measuredW="22" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
