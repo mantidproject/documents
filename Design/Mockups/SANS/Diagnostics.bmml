@@ -90,7 +90,7 @@
     </control>
     <control controlID="37" controlTypeID="com.balsamiq.mockups::StickyNote" x="736" y="340" w="261" h="170" measuredW="109" measuredH="123" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>The%20names%20of%20the%20detectors%20would%20be%20read%20from%20the%20instrument%20definition.%20The%20second%20box%20woul%20only%20appear%20if%20the%20instrument%20had%20a%20second%20detector</text>
+        <text>The%20names%20of%20the%20detectors%20would%20be%20read%20from%20the%20instrument%20definition.%20The%20second%20box%20would%20only%20appear%20if%20the%20instrument%20had%20a%20second%20detector</text>
       </controlProperties>
     </control>
     <control controlID="38" controlTypeID="com.balsamiq.mockups::Button" x="92" y="261" w="-1" h="-1" measuredW="146" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
