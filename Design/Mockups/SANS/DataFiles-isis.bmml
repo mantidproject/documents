@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1039" measuredH="489" mockupW="1008" mockupH="469">
+<mockup version="1.0" skin="sketch" measuredW="1039" measuredH="489" mockupW="1023" mockupH="469">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="171" y="10" w="858" h="398" measuredW="450" measuredH="400" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
@@ -31,12 +31,12 @@
         <text>Browse</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="266" y="171" w="108" h="-1" measuredW="53" measuredH="29" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="266" y="171" w="125" h="-1" measuredW="53" measuredH="29" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>12345</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="266" y="215" w="190" h="-1" measuredW="53" measuredH="29" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="266" y="215" w="125" h="-1" measuredW="53" measuredH="29" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <text>12346</text>
       </controlProperties>
@@ -86,12 +86,12 @@
         <text>Browse</text>
       </controlProperties>
     </control>
-    <control controlID="26" controlTypeID="com.balsamiq.mockups::TextInput" x="421" y="170" w="35" h="-1" measuredW="79" measuredH="29" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::TextInput" x="388" y="172" w="35" h="-1" measuredW="79" measuredH="29" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="374" y="172" w="-1" h="-1" measuredW="44" measuredH="25" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="392" y="144" w="51" h="25" measuredW="44" measuredH="25" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Period</text>
       </controlProperties>
@@ -106,12 +106,12 @@
         <text>Transmission</text>
       </controlProperties>
     </control>
-    <control controlID="54" controlTypeID="com.balsamiq.mockups::TextInput" x="560" y="161" w="158" h="-1" measuredW="53" measuredH="29" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::TextInput" x="560" y="161" w="113" h="-1" measuredW="53" measuredH="29" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>12347</text>
       </controlProperties>
     </control>
-    <control controlID="55" controlTypeID="com.balsamiq.mockups::TextInput" x="560" y="205" w="158" h="-1" measuredW="53" measuredH="29" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::TextInput" x="560" y="205" w="113" h="-1" measuredW="53" measuredH="29" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>12348</text>
       </controlProperties>
@@ -177,12 +177,12 @@
         <text>Only%20appear%20if%20required%0Aby%20the%20selected%20instrument</text>
       </controlProperties>
     </control>
-    <control controlID="73" controlTypeID="com.balsamiq.mockups::StickyNote" x="440" y="319" w="147" h="135" measuredW="109" measuredH="123" zOrder="39" locked="false" isInGroup="-1">
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::StickyNote" x="511" y="266" w="147" h="135" measuredW="109" measuredH="123" zOrder="39" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Batch%20Mode%20replaces%20individual%0Aedit%20boxes%20with%20a%20grid</text>
       </controlProperties>
     </control>
-    <control controlID="75" controlTypeID="com.balsamiq.mockups::Arrow" x="406" y="144" w="111" h="196" measuredW="150" measuredH="100" zOrder="40" locked="false" isInGroup="-1">
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::Arrow" x="374" y="116" w="162" h="154" measuredW="150" measuredH="100" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <direction>top</direction>
         <leftArrow>false</leftArrow>
@@ -240,6 +240,61 @@
     <control controlID="87" controlTypeID="com.balsamiq.mockups::Button" x="718" y="352" w="129" h="28" measuredW="98" measuredH="28" zOrder="47" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Save%20Result</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Label" x="423" y="172" w="-1" h="-1" measuredW="25" measuredH="25" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>/%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::CheckBox" x="460" y="108" w="-1" h="-1" measuredW="158" measuredH="22" zOrder="49" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Multi-period%20Analysis</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::CallOut" x="618" y="100" w="-1" h="-1" measuredW="38" measuredH="39" zOrder="50" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::CallOut" x="6" y="32" w="165" h="287" measuredW="1371" measuredH="45" zOrder="51" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1%20The%20Multi-period%20checkbox%20controls%20the%20presence%20or%20absence%20of%20all%20the%20period%20selection%20boxes%20on%20all%20of%20the%20run%20number%20boxes%20in%20single%20run%20mode.%20%20It%20also%20controls%20the%20presence%20of%20period%20columns%20in%20batch%20mode.</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="387" y="214" w="35" h="-1" measuredW="79" measuredH="29" zOrder="52" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Label" x="422" y="214" w="-1" h="-1" measuredW="25" measuredH="25" zOrder="53" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>/%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::TextInput" x="669" y="162" w="35" h="-1" measuredW="79" measuredH="29" zOrder="54" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::Label" x="704" y="162" w="-1" h="-1" measuredW="25" measuredH="25" zOrder="55" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>/%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Label" x="673" y="143" w="51" h="25" measuredW="44" measuredH="25" zOrder="56" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Period</text>
+      </controlProperties>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::TextInput" x="669" y="206" w="35" h="-1" measuredW="79" measuredH="29" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::Label" x="704" y="206" w="-1" h="-1" measuredW="25" measuredH="25" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>/%202</text>
       </controlProperties>
     </control>
   </controls>

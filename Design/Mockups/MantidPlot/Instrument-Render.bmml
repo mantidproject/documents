@@ -5,8 +5,10 @@
         <text>Instrument%20View</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="77" measuredH="79" zOrder="2" locked="false" isInGroup="-1">
-      <controlProperties/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="425" measuredH="427" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./LOQ.png</src>
+      </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="770" y="484" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
@@ -49,8 +51,10 @@
         <text>Export%20Image</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="82" y="254" w="56" h="180" measuredW="77" measuredH="79" zOrder="11" locked="false" isInGroup="-1">
-      <controlProperties/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="82" y="254" w="56" h="180" measuredW="70" measuredH="144" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./ColourBar.png</src>
+      </controlProperties>
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::TextInput" x="82" y="434" w="74" h="-1" measuredW="22" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
@@ -94,9 +98,10 @@
         <text>Z-</text>
       </controlProperties>
     </control>
-    <control controlID="24" controlTypeID="com.balsamiq.mockups::Menu" x="212" y="189" w="195" h="-1" measuredW="150" measuredH="170" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Menu" x="212" y="189" w="195" h="-1" measuredW="150" measuredH="195" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Colour%20Map%0ABackground%20Colour%0A----%0AAdd%20Layer...%0ARemove%20Layer...%0A----%0Ax%20Display%20Axes%0Ax%20Display%20Entire%20instrument</text>
+        <selectedIndex>0</selectedIndex>
+        <text>Colour%20Map%0ABackground%20Colour%0A----%0AAdd%20Layer...%0ARemove%20Layer...%0A----%0Ax%20Display%20Axes%0Ax%20Display%20Entire%20instrument%0AWireframe</text>
       </controlProperties>
     </control>
     <control controlID="25" controlTypeID="com.balsamiq.mockups::Label" x="77" y="485" w="-1" h="-1" measuredW="33" measuredH="25" zOrder="20" locked="false" isInGroup="-1">
@@ -130,9 +135,9 @@
         <text>Layers%20are%20information%20associated%20with%20a%20workspace%20for%20example%3A%0A%20*%20peak%20crystal%20coords%0A%20*%20Predicted%20crystal%20peaks</text>
       </controlProperties>
     </control>
-    <control controlID="33" controlTypeID="com.balsamiq.mockups::StickyNote" x="673" y="512" w="155" h="123" measuredW="109" measuredH="123" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::StickyNote" x="541" y="512" w="287" h="114" measuredW="109" measuredH="123" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Each%20click%20moves%20the%20range%20up%20one%20increment</text>
+        <text>Numbers%20denote%20the%20integration%20region.%0AEach%20click%20moves%20the%20range%20up%20one%20increment</text>
       </controlProperties>
     </control>
   </controls>

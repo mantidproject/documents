@@ -5,9 +5,9 @@
         <text>Instrument%20View</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="421" measuredH="388" zOrder="2" locked="true" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="292" y="35" w="530" h="441" measuredW="425" measuredH="427" zOrder="2" locked="true" isInGroup="-1">
       <controlProperties>
-        <src>../../../../../MantidInstall/data/image.png</src>
+        <src>./LOQ.png</src>
       </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="770" y="484" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
