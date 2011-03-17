@@ -35,12 +35,11 @@
 
 \section{$UB$ matrix formalism}
 
-The purpose of using the $UB$ matrix formalism is to have a speedy way
-to relate scattering geometry in the laboratory frame to the
-reciprocal lattice of the sample. If we use a right handed coordinate
-system for the lab frame, and we write the physical properties of the
-sample in a similar coordinate system tied to the crystal, than the
-transformation between the two is a simple rotation.
+The purpose of using the $UB$ matrix formalism is to map the
+scattering geometry in the laboratory frame to the
+reciprocal lattice of the sample. Assuming a right handed coordinate
+system for the lab frame, and a similar coordinate system tied to the crystal,
+the transformation between the two is a simple rotation, $U$.
 
 The physics is described in reciprocal space by $\textbf{Q} = \left(\begin{array}{c}
                                                             h \\
@@ -89,8 +88,9 @@ R(0) = I =
 \end{equation}
 
 In the general case, when all angles of the goniometer are 0, the axes of the orthogonal crystal reciprocal lattice are not aligned
-with the axes of the cartesian laboratory frame. This can be described by a rotation matrix $U$. Then, our fundamental relations for
-transforming between laboratory frame and reciprocal lattice are:
+with the axes of the cartesian laboratory frame. The transformation between these two
+ can be described by a rotation matrix $U$. Then, our fundamental relations for
+transforming between $\textbf{Q}_l$ (in laboratory frame)  and  $\textbf{Q}$ (reciprocal lattice) are:
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
   \textbf{Q}_l &=& 2 \pi R \cdot U \cdot B \left(\begin{array}{c}
@@ -118,7 +118,7 @@ By looking at equation \ref{QUB}, \ref{consQ}, and \ref{consE}, we identify thre
 
 - $\alpha, \beta, \gamma$ real lattice angles
 
-- $a^*, b^*, c^*$ reciprocal lattice lengths (in \AA$^{-1}$). We are going to use crystallographic notations (no 2$\pi$.)
+- $a^*, b^*, c^*$ reciprocal lattice lengths (in \AA$^{-1}$). We are going to use crystallographic notations (no 2$\pi$ in the definition of reciprocal lattice vectors)
 
 - for any vector $\textbf{v}$, $v$=$|\textbf{v}|$, $\widehat{v}$=$\textbf{v}$/$v$
 
@@ -190,11 +190,11 @@ so
 \end{equation}
 From equation \ref{c2} we then get
 \begin{equation}
-    c_k = c V_{abg}/\sin(\gamma)
+    c_k = c V_{\alpha\beta\gamma}/\sin(\gamma)
 \end{equation}
 with
 \begin{equation}
-    V_{abg} = \sqrt{1-\cos^2(\alpha)-\cos^2(\beta)-\cos^2(\gamma)+2 \cos(\alpha) \cos(\beta) \cos(\gamma)}
+    V_{\alpha\beta\gamma} = \sqrt{1-\cos^2(\alpha)-\cos^2(\beta)-\cos^2(\gamma)+2 \cos(\alpha) \cos(\beta) \cos(\gamma)}
 \end{equation}
 With these, we can now calculate the reciprocal lattice vectors:
 \begin{eqnarray}
@@ -204,7 +204,7 @@ With these, we can now calculate the reciprocal lattice vectors:
 \end{eqnarray}
 It is easy to show that
 \begin{equation}
-    \textbf{a}(\textbf{b} \times \textbf{c}) = a b c V_{abg}
+    \textbf{a}(\textbf{b} \times \textbf{c}) = a b c V_{\alpha\beta\gamma}
 \end{equation}
 For further calculations in our problem, it is not necessary to explicitly write $\textbf{a}^*, \textbf{b}^*, \textbf{c}^*$, only their respective dot products. We will use the following identity:
 \begin{equation}
@@ -229,19 +229,19 @@ to derive the following:
 So we obtain:
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
-  \textbf{a}^*\textbf{a}^* &=& \frac{1}{V_{abg} ^2} \frac{1-\cos^2(\alpha)}{a^2}\\
-  \textbf{a}^*\textbf{b}^* &=& \frac{1}{V_{abg} ^2} \frac{\cos(\alpha) \cos(\beta)-\cos(\gamma)}{a b} \\
-  \textbf{a}^*\textbf{c}^* &=& \frac{1}{V_{abg} ^2} \frac{\cos(\gamma) \cos(\alpha)-\cos(\beta)}{a c}\\
-  \textbf{b}^*\textbf{b}^* &=& \frac{1}{V_{abg} ^2} \frac{1-\cos^2(\beta)}{b^2}\\
-  \textbf{b}^*\textbf{c}^* &=& \frac{1}{V_{abg} ^2} \frac{\cos(\beta) \cos(\gamma)-\cos(\alpha)}{b c}\\
-  \textbf{c}^*\textbf{c}^* &=& \frac{1}{V_{abg} ^2} \frac{1-\cos^2(\gamma)}{c^2}
+  \textbf{a}^*\textbf{a}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{1-\cos^2(\alpha)}{a^2}\\
+  \textbf{a}^*\textbf{b}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{\cos(\alpha) \cos(\beta)-\cos(\gamma)}{a b} \\
+  \textbf{a}^*\textbf{c}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{\cos(\gamma) \cos(\alpha)-\cos(\beta)}{a c}\\
+  \textbf{b}^*\textbf{b}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{1-\cos^2(\beta)}{b^2}\\
+  \textbf{b}^*\textbf{c}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{\cos(\beta) \cos(\gamma)-\cos(\alpha)}{b c}\\
+  \textbf{c}^*\textbf{c}^* &=& \frac{1}{V_{\alpha\beta\gamma} ^2} \frac{1-\cos^2(\gamma)}{c^2}
 \end{eqnarray}
 The reciprocal lattice parameters are then given by
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
-  a^* &=& \frac{1}{V_{abg} } \frac{\sin(\alpha)}{a}\label{as}\\
-  b^* &=& \frac{1}{V_{abg} } \frac{\sin(\beta)}{b}\label{bs}\\
-  c^* &=& \frac{1}{V_{abg} } \frac{\sin(\gamma)}{c}\label{cs}\\
+  a^* &=& \frac{1}{V_{\alpha\beta\gamma} } \frac{\sin(\alpha)}{a}\label{as}\\
+  b^* &=& \frac{1}{V_{\alpha\beta\gamma} } \frac{\sin(\beta)}{b}\label{bs}\\
+  c^* &=& \frac{1}{V_{\alpha\beta\gamma} } \frac{\sin(\gamma)}{c}\label{cs}\\
   \cos(\alpha^*) &=& \frac{\cos(\beta) \cos(\gamma)-\cos(\alpha)}{\sin(\beta)\sin(\gamma)}\label{alphas}\\
   \cos(\beta^*) &=& \frac{\cos(\gamma) \cos(\alpha)-\cos(\beta)}{\sin(\gamma)\sin(\alpha)}\label{betas}\\
   \cos(\gamma^*) &=& \frac{\cos(\alpha) \cos(\beta)-\cos(\gamma)}{\sin(\alpha)\sin(\beta)}\label{gammas}
@@ -264,7 +264,7 @@ For an orthogonal
 set of basis vectors, one choice would be to project
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
-    \textbf{Q}/(2\pi) &=&  h \textbf{a}^* + k \textbf{b}^*+ l \textbf{c}^*
+    \textbf{Q}_c/(2\pi) &=&  h \textbf{a}^* + k \textbf{b}^*+ l \textbf{c}^*
 \end{eqnarray}
 on the following directions: (1) along $\textbf{a}^*$, (2) in the ($\textbf{a}^*,\textbf{b}^*$)
 plane, perpendicular to direction (1), and (3) in the direction perpendicular to (1) and (2). We will call
@@ -276,11 +276,11 @@ Using the same procedure as in the previous section, we obtain:
   \textbf{a}^* &=& a^*\widehat{i^*}\label{asvect}\\
   \textbf{b}^* &=& b^* \cos(\gamma^*) \widehat{i^*} + b^* \sin(\gamma^*) \widehat{j^*}\label{bsvect}\\
   \textbf{c}^* &=& c^* \cos(\beta^*) \widehat{i^*} + c^* \frac{\cos(\alpha^*)-\cos(\beta^*)\cos(\gamma^*)}{\sin(\gamma^*)}\widehat{j^*}+
-  c^* \frac{V_{abg}^*}{\sin(\gamma^*)}\widehat{k^*}\label{csvect}
+  c^* \frac{V_{\alpha\beta\gamma}^*}{\sin(\gamma^*)}\widehat{k^*}\label{csvect}
 \end{eqnarray}
 \noindent with
 \begin{equation}
-    V_{abg}^* = \sqrt{1-\cos^2(\alpha^*)-\cos^2(\beta^*)-\cos^2(\gamma^*)+2 \cos(\alpha^*) \cos(\beta^*) \cos(\gamma^*)}
+    V_{\alpha\beta\gamma}^* = \sqrt{1-\cos^2(\alpha^*)-\cos^2(\beta^*)-\cos^2(\gamma^*)+2 \cos(\alpha^*) \cos(\beta^*) \cos(\gamma^*)}
 \end{equation}
 
 From equations \ref{as}-\ref{gammas}, and noting that the real lattice is the reciprocal of the reciprocal lattice, we can rewrite equation \ref{csvect} as
@@ -395,7 +395,7 @@ which yields
                                                           \end{array}\right)
 \end{equation}
 
-It is worth mentioning that for the rotations described by equation \ref{genrot}
+It is worth mentioning that any rotations described by equation \ref{genrot} satisfies
 \begin{equation}\label{rotinv}
     R^{-1}(\Omega) = R(-\Omega) = R^{T}(\Omega)
 \end{equation}
@@ -424,7 +424,7 @@ We choose $\textbf{u}_{lab}$ to have length $u_{lab}$ at angle $\psi$ in the hor
                    \right)
 \end{eqnarray}
 Changing the values of $u_{lab}$ and $v_{lab}$ will just change the magnitudes of \textbf{u} and \textbf{v} vectors,
-so for convenience we use 1. With these values plugged
+so for convenience we use $u_{lab}$ = $v_{lab}$ = 1. With these values plugged
 into equation \ref{getHKL}, we one obtains the components of \textbf{u} and \textbf{v}. To obtain numbers on the order of unity,
 we can normalize $h, k, l$ components of these vectors, by dividing to the largest value. For example:
 \begin{equation}
@@ -449,6 +449,7 @@ we can normalize $h, k, l$ components of these vectors, by dividing to the large
                      \end{array}
                    \right)
 \end{equation}
+Note that $u_{lab}$, $v_{lab}$ might not have length 1 after this transformation.
 
 \subsubsection{Project onto different axes}
 In the previous formulas we projected $\textbf{Q}_l$ onto an orthogonal basis in order to obtain the $h, k, l$ components.
@@ -607,7 +608,7 @@ and the second one with $R^{-1}(\Omega_2)$, we obtain:
   \frac{1}{2 \pi} R^{-1}(\Omega_2)\textbf{Q}_2 &=&   U B \textbf{v}_2
 \end{eqnarray}
 
-$U$ is just a rotation matrix, that is suppose to rotate $B \textbf{v}_1$ and $ B \textbf{v}_2$ onto
+$U$ is just a rotation matrix, that nominally rotates $B \textbf{v}_1$ and $ B \textbf{v}_2$ onto
 $R^{-1}(\Omega_1)\textbf{Q}_1/(2\pi)$ and $R^{-1}(\Omega_1)\textbf{Q}_1/(2\pi)$. However, in the real case,
 there are always some errors in determining angles, energies, or the lattice parameters are slightly different than
 what the experimenter uses as input. This means that the angle between $B \textbf{v}_1$ and $ B \textbf{v}_2$ is
@@ -654,6 +655,10 @@ of the calculated secondary peak position but its exact location is taken to be 
 the known lattice parameters.'' (M. Lumsden - Angle Calculations for Neutron Scattering Instruments)
 It is therefore recommended that the specification of which vector is the primary reflection is flexible,
 and allow for swapping of the two.
+
+\textbf{NOTE:} Special care should be taken when using this procedure with monoclinic
+or triclinic lattices. For example, suppose we align on (1,0,0) and (0,1,0). In case of a wrong indexing,
+because they have the same length, (0,-1,0) might be confused with (0,1,0), resulting in the wrong $U$ matrix.
 
 As a corollary we outline a simplification of converting information from MSlice program to obtain the $U$ matrix.
 The input contains lattice parameters $a, b, c, \alpha, \beta, \gamma$, which allow the calculation
@@ -722,7 +727,7 @@ and equations \ref{mt1} and \ref{mt2}. This allow calculation of $B$ matrix and 
 
 \subsubsection{Evaluating $U$ and $B$ using multiple reflections}
 
-The above procedure can be generalized to multiple non-coplanar indexed reflections, by using a
+The above procedure can be generalized to $N$ non-coplanar indexed reflections, by using a
 standard least squares procedure. We define
 \begin{equation}
     \textbf{q}_{\nu i} = \frac{1}{2 \pi} R^{-1}(\Omega_i)\textbf{Q}_i
@@ -845,7 +850,7 @@ $F_2$ and $F_3$. We can write all together as
      \right)
 \end{equation}
 
-Noting that the second matrix is $UB^T$, we obtain
+Noting that the second matrix is $(UB)^T$, we obtain
 \begin{equation}
    UB=
     \left(
@@ -926,18 +931,24 @@ For the rotation matrix using the other conventions see
 If we have the elements of the rotation matrix, from the equation \ref{Rwmn} we can determine angles $\omega,\mu, \nu$.
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
-  \sin(\mu) &=& R_{21} \\
+  \sin(\mu) &=& R_{21} \label{smu}\\
   \cos(\mu) &=& \sqrt{R^2_{11}+R^2_{31}} \\
   \sin(\nu) &=& -\frac{R_{23}}{\sqrt{R^2_{11}+R^2_{31}}} \\
   \cos(\nu) &=& \frac{R_{22}}{\sqrt{R^2_{11}+R^2_{31}}} \\
   \sin(\omega) &=& -\frac{R_{31}}{\sqrt{R^2_{11}+R^2_{31}}} \\
-  \cos(\omega) &=& \frac{R_{11}}{\sqrt{R^2_{11}+R^2_{31}}}
+  \cos(\omega) &=& \frac{R_{11}}{\sqrt{R^2_{11}+R^2_{31}}}\label{com}
 \end{eqnarray}
 
 For the other conventions, the above equations are similar, just different subscripts for $R$ elements, and maybe sine and
 cosine functions are interchanged.
 Note that by choosing the positive value for $\cos(\mu)$, we chose to have $\mu$ between $\pm90^\circ$. This is a
-reasonable request for the type of goniometers used on spectrometers at HFIR and SNS. We are going to present
+reasonable request for the type of goniometers used on spectrometers at HFIR and SNS.
+
+Note that the equations \ref{smu}-\ref{com} have a problem when $\sqrt{R^2_{11}+R^2_{31}}=0$. A more complete
+procedure to determine Euler angles is presented in the Appendix.
+
+
+In the next few subsections we are going to present
 a few cases on how to calculate angles.
 
 
@@ -970,13 +981,13 @@ We can write this in a matrix form as
 \end{equation}
 which immediately yields
 \begin{equation}
-    R=T^{-1}\left(
+    R=\left(
       \begin{array}{ccc}
         0 & 1 & 0 \\
         0 & 0 & 1 \\
         1 & 0 & 0 \\
       \end{array}
-    \right)
+    \right)T^{-1}
 \end{equation}
 
 If we want to measure $(h, k, l, E)$, in a detector at angle $\theta$, and $\phi=0$ or $\phi=\pi$, the first thing is
@@ -1038,13 +1049,13 @@ $\left(
  \right)$
 so
 \begin{equation}\label{RTforhklE}
-    R=T^{-1} \left(
+    R= \left(
                \begin{array}{ccc}
                  -k_f/Q \sin(\theta) & k_i/Q-k_f/Q \cos(\theta) & 0 \\
                  0 & 0 & 1 \\
                   k_i/Q-k_f/Q \cos(\theta) & k_f/Q \sin(\theta) & 0 \\
                \end{array}
-             \right)
+             \right)T^{-1}
 \end{equation}
 
 \textbf{Note 1.} It is possible to choose $\textbf{v}_1$ and $\textbf{v}_2$ to define a plane
@@ -1147,21 +1158,21 @@ equations \ref{consE}, \ref{sindelta}, and \ref{coschi}.
 % \nonumber to remove numbering (before each equation)
   k_i &=& \sqrt{k_f^2 + 2 m E/\hbar^2} \\
   k_i^2 + k_f^2 - Q_0^2 &=& 2 k_i k_f \cos(\chi) \sqrt{1-\sin^2(\delta)} \\
-  2 k_f^2 + 2 m E/\hbar^2 - Q_0^2 &=& 2 k_f \sqrt{k_f^2 + 2 m E/\hbar^2} \sqrt{1-Q_{0y}^2/k_f^2} \cos(\chi) \\ 
+  2 k_f^2 + 2 m E/\hbar^2 - Q_0^2 &=& 2 k_f \sqrt{k_f^2 + 2 m E/\hbar^2} \sqrt{1-Q_{0y}^2/k_f^2} \cos(\chi) \\
   2 k_f^2 + 2 m E/\hbar^2 - Q_0^2 &=& 2 \sqrt{k_f^2 + 2 m E/\hbar^2} \sqrt{k_f^2-Q_{0y}^2} \cos(\chi) \label{eqkf}
 \end{eqnarray}
 
 By looking at equation \ref{eqkf}, we observe that we can square it and obtain a quadratic
 equation in $k_f^2$. However, we must be aware of which one is the physical solution. Since both
-square roots are positive, we must choose the solution for which the sign of $2 k_f^2 + 2 m E/\hbar^2 - Q_0^2$ is the same as the sign of $\cos(\chi)$. With the correct solution for $k_f^2$, we can turn back to 
-equation \ref{consE} to find $E_i$, and for the $\delta$ and $\omega$ angles, the procedure is identical as in the previous case. 
+square roots are positive, we must choose the solution for which the sign of $2 k_f^2 + 2 m E/\hbar^2 - Q_0^2$ is the same as the sign of $\cos(\chi)$. With the correct solution for $k_f^2$, we can turn back to
+equation \ref{consE} to find $E_i$, and for the $\delta$ and $\omega$ angles, the procedure is identical as in the previous case.
 
 For the last case, when we want $\textbf{Q}$ to point as close as possible to $\textbf{k}_i$, we can use
 equation \ref{omega}, and plug in $Q_{x0}=0$.
 
 \section{Acknowledgements and references}
 I would like to thank M. Lumsden, J. Zikovsky, D. Mikkelson, R. Mikkelson, and G. Granroth for their useful input,
-and Y. Jiao, B. Winn, M. Reuter for their questions.
+and Y. Jiao, B. Winn, M. Reuter for their questions and suggestions.
 
 This document is based on the following references:
 
@@ -1179,4 +1190,101 @@ This document is based on the following references:
 5. Steller, I., Bolotovsky, R. \& Rossmann, M.G. (1997), "An Algorithm for Automatic Indexing of Oscillation Images using Fourier Analysis", J.Appl. Cryst., 30, 1036-1040.
 
 6. \href{http://en.wikipedia.org/wiki/Euler_angles}{http://en.wikipedia.org/wiki/Euler\_angles}
-\end{document} 
+
+\
+\appendix*
+\section{Method for calculating Euler angles from a rotation matrix}
+
+In this section I will present a modified method to calculate Euler angles from the rotation matrix. It has the advantage that it can deal with
+matrix elements that are 0, and I will show a simple implementation for any choice of three axes. In equation \ref{Rwmn}, we first determine the inner most angle.
+For this convention,
+\begin{equation}
+    \nu=\textrm{atan2}(-R_{23},R_{22})
+\end{equation}
+
+If $\cos(\mu)$=0, then $R_{23} = R_{22} = 0$, and $\nu = 0$.
+Note that we can obtain a valid solution if we use $\nu=\textrm{atan2}(-R_{23},R_{22})+\pi$, by changing the sign of $\cos(\mu)$.
+
+Once we determine $\nu$, we write
+\begin{eqnarray}
+% \nonumber to remove numbering (before each equation)
+ \nonumber R(\omega, \mu, \nu) R_x(\nu)^{-1} &=& R_y(\omega) R_z(\mu) \\
+    &=& \left(
+          \begin{array}{ccc}
+            \cos(\omega)\cos(\mu) & -\cos(\omega)\sin(\mu) & \sin(\omega) \\
+            \sin(\mu) & \cos(\mu) & 0 \\
+            -\sin(\omega)\cos(\mu) & \sin(\omega)\sin(\mu) & \cos(\omega) \\
+          \end{array}
+        \right)\label{twoRot}\\
+ \nonumber&=&    \left(
+                                                              \begin{array}{ccc}
+                                                                R'_{11} & R'_{12} & R'_{13} \\
+                                                                R'_{21} & R'_{22} & R'_{23} \\
+                                                                R'_{31} & R'_{32} & R'_{33} \\
+                                                              \end{array}
+                                                            \right)
+\end{eqnarray}
+
+From equations \ref{twoRot}, we immediately find
+\begin{eqnarray}
+% \nonumber to remove numbering (before each equation)
+  \mu &=& \textrm{atan2}(R'_{13},R'_{33}) \\
+  \nu &=& \textrm{atan2}(R'_{21},R'_{22})
+\end{eqnarray}
+
+For $R = R_1(\Omega_1) \cdot R_2(\Omega_2) \cdot R_3(\Omega_3)$, we can write a general formula to determine
+$\Omega_1, \Omega_2, \Omega3$ rotation angles, that considers what convention we use. We
+map X$\rightarrow$0,Y$\rightarrow$1, Z$\rightarrow$2. We define parity 1 for combinations XY, YZ, ZX, and -1 for combinations YX, XZ, ZY.
+We introduce a coefficient TB, that is 0 if the first and last axis are the same, and 1 when all rotation axes are different. The values
+of all these numbers are shown in table \ref{conventions}.
+
+A compact way to write these values is shown below:
+\begin{eqnarray}
+% \nonumber to remove numbering (before each equation)
+  \textrm{TB} &=&   \textrm{1 if (first + second + last == 3) else 0}\\
+  \textrm{par12} &=& \textrm{1 if ((last - second) \%3 == 1) else -1} \\
+  \textrm{par01} &=&  \textrm{1 if ((second - first) \%3 == 1) else -1}
+\end{eqnarray}
+where $a \%3$ means $a$ modulo 3.
+From here:
+\begin{eqnarray}
+    \textrm{s3}&=&(1-\textrm{TB}-\textrm{TB}\ \textrm{par12}) R[(\textrm{last}+\textrm{TB}\ \textrm{par12})\%3,(\textrm{last}-\textrm{par12})\%3]\\
+    \textrm{c3}&=&(\textrm{TB}-(1-\textrm{TB})\ \textrm{par12})R[(\textrm{last}+\textrm{TB}\ \textrm{par12})\%3,(\textrm{last}+\textrm{par12})\%3]\\
+    \Omega_3&=&\textrm{atan2}(\textrm{s3},\textrm{c3})\\
+    \textrm{R'}&=&\textrm{R} \cdot \textrm{R}_3(-\Omega_3)\\
+    \textrm{s1}&=&\textrm{par01}  R'[(\textrm{first}-\textrm{par01})\%3,(\textrm{first}+\textrm{par01})\%3]\\
+    \textrm{c1}&=&R'[\textrm{second},\textrm{second}]\\
+    \textrm{s2}&=&\textrm{par01} R'[\textrm{first}, 3 - \textrm{first} - \textrm{second}]\\
+    \textrm{c2}&=&R'[\textrm{first}, \textrm{first}]\\
+    \Omega_2&=&\textrm{atan2(s2, c2)}\\
+    \Omega_1&=&\textrm{atan2(s1, c1)}
+\end{eqnarray}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ccccccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Convention & First axis & Second axis & Last axis & Parity 0-1 & Parity 1-2 & TB convention  \\
+  & (first) & (second) & (last) & (par01) & (par12) & (TB)\\\hline
+  XYX & 0 & 1 & 0 & 1 & -1 & 0 \\
+  XZX & 0 & 2 & 0 & -1 & 1 & 0 \\
+  YXY & 1 & 0 & 1 & -1 & 1 & 0 \\
+  YZY & 1 & 2 & 1 & 1 & -1 & 0 \\
+  ZXZ & 2 & 0 & 2 & 1 & -1 & 0 \\
+  ZYZ & 2 & 1 & 2 & -1 & 1 & 0 \\
+  XYZ & 0 & 1 & 2 & 1 & 1 & 1 \\
+  XZY & 0 & 2 & 1 & -1 & -1 & 1 \\
+  YXZ & 1 & 0 & 2 & -1 & -1 & 1 \\
+  YZX & 1 & 2 & 0 & 1 & 1 & 1 \\
+  ZXY & 2 & 0 & 1 & 1 & 1 & 1 \\
+  ZYX & 2 & 1 & 0 & -1 & -1 & 1 \\
+  \hline
+\end{tabular}
+\caption{\label{conventions}Symbols that describe different Euler conventions}
+\end{center}
+\vspace{-0.6cm}
+\end{table}
+
+
+
+\end{document}
