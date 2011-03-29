@@ -63,7 +63,7 @@
         <backgroundAlpha>0.5</backgroundAlpha>
       </controlProperties>
     </control>
-    <control controlID="56" controlTypeID="__group__" x="66" y="148" w="-1" h="-1" measuredW="226" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="56" controlTypeID="__group__" x="66" y="154" w="-1" h="-1" measuredW="226" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="226" h="27" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="56"/>
         <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="4" w="-1" h="-1" measuredW="85" measuredH="25" zOrder="1" locked="false" isInGroup="56">
@@ -101,10 +101,10 @@
         <icon>StopIcon%7Cmedium</icon>
       </controlProperties>
     </control>
-    <control controlID="76" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="153" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Icon" x="73" y="121" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
-        <icon>DotIcon%7Cmedium</icon>
+        <icon>FolderIcon%7Cmedium</icon>
       </controlProperties>
     </control>
     <control controlID="77" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="185" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="18" locked="false" isInGroup="-1">
@@ -231,7 +231,7 @@
         <text>Would%20work%20like%20square%20window%2C%20but%20automatically%20find%20the%20edges%20of%20the%20bank</text>
       </controlProperties>
     </control>
-    <control controlID="105" controlTypeID="com.balsamiq.mockups::DataGrid" x="66" y="174" w="219" h="227" measuredW="148" measuredH="156" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="105" controlTypeID="com.balsamiq.mockups::DataGrid" x="66" y="185" w="219" h="216" measuredW="148" measuredH="156" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
         <hasHeader>false</hasHeader>
         <hLines>false</hLines>
@@ -239,7 +239,7 @@
         <text>%5B+%5DCircle%201%2C%2054%20Pixels%0A%20%20Centre%2C%20xyz%0A%20%20%20value%2C%203%5C%2C4%5C%2C5.01%0A%20%20Radius%2C%20nPixel%0A%20%20%20value%2C%203</text>
       </controlProperties>
     </control>
-    <control controlID="107" controlTypeID="com.balsamiq.mockups::CallOut" x="121" y="325" w="232" h="61" measuredW="408" measuredH="40" zOrder="35" locked="false" isInGroup="-1">
+    <control controlID="107" controlTypeID="com.balsamiq.mockups::CallOut" x="121" y="340" w="232" h="61" measuredW="408" measuredH="40" zOrder="35" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Interactive%20adjustment%20of%20Mask%20values%2C%20like%20the%20Fitting%20tool</text>
       </controlProperties>
@@ -249,9 +249,43 @@
         <text>Visual%20masks%20can%20be%20moved%20/%20sized%20with%20the%20pointer</text>
       </controlProperties>
     </control>
-    <control controlID="109" controlTypeID="com.balsamiq.mockups::StickyNote" x="846" y="325" w="290" h="116" measuredW="109" measuredH="123" zOrder="37" locked="false" isInGroup="-1">
+    <control controlID="109" controlTypeID="com.balsamiq.mockups::StickyNote" x="846" y="420" w="290" h="116" measuredW="109" measuredH="123" zOrder="37" locked="false" isInGroup="-1">
       <controlProperties>
         <text>The%20contents%20of%20the%20Mask%20tab%20should%20be%20a%20complete%20widget%20so%20we%20can%20implement%20masking%20seperately%20in%20other%20UIs</text>
+      </controlProperties>
+    </control>
+    <control controlID="110" controlTypeID="com.balsamiq.mockups::Icon" x="105" y="121" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <icon>GearIcon%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="111" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="325" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <icon>FolderIcon%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="369" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <icon>GearIcon%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="113" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="152" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <icon>DotIcon%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="114" controlTypeID="com.balsamiq.mockups::Label" x="876" y="327" w="239" h="28" measuredW="231" measuredH="25" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20existing%20mask%20workspace%20/%20File</text>
+      </controlProperties>
+    </control>
+    <control controlID="115" controlTypeID="com.balsamiq.mockups::Label" x="876" y="371" w="239" h="28" measuredW="161" measuredH="25" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Run%20Diagnostic%20Algorithm</text>
       </controlProperties>
     </control>
   </controls>
