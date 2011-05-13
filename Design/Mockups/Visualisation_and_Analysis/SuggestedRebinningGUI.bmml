@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="950" measuredH="607" mockupW="865" mockupH="607">
+<mockup version="1.0" skin="sketch" measuredW="1515" measuredH="607" mockupW="1430" mockupH="607">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="85" y="0" w="350" h="597" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -125,9 +125,9 @@
         <text>min</text>
       </controlProperties>
     </control>
-    <control controlID="27" controlTypeID="com.balsamiq.mockups::Label" x="368" y="170" w="-1" h="-1" measuredW="32" measuredH="25" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Label" x="368" y="170" w="-1" h="-1" measuredW="35" measuredH="25" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>step</text>
+        <text>Step</text>
       </controlProperties>
     </control>
     <control controlID="28" controlTypeID="com.balsamiq.mockups::Label" x="298" y="170" w="-1" h="-1" measuredW="29" measuredH="25" zOrder="26" locked="false" isInGroup="-1">
@@ -385,9 +385,51 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="122" controlTypeID="com.balsamiq.mockups::StickyNote" x="692" y="416" w="258" h="123" measuredW="109" measuredH="123" zOrder="59" locked="false" isInGroup="-1">
+    <control controlID="122" controlTypeID="com.balsamiq.mockups::StickyNote" x="692" y="416" w="374" h="181" measuredW="109" measuredH="123" zOrder="59" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>need%20an%20posibility%20to%20identify%20minimal%20rebinning%20step%20for%20integrated%20dimensions</text>
+        <text>need%20an%20posibility%20to%20identify%20minimal%20rebinning%20step%20for%20integrated%20dimensions%0Apossible%20by%20switching%20between%20integrated%20checkbox%20or%20rebinning%20data%20field</text>
+      </controlProperties>
+    </control>
+    <control controlID="123" controlTypeID="com.balsamiq.mockups::Arrow" x="1066" y="401" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="60" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>-1</curvature>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="125" controlTypeID="com.balsamiq.mockups::CheckBoxGroup" x="1231" y="376" w="-1" h="-1" measuredW="94" measuredH="25" zOrder="61" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%5Bx%5D%20integrated</text>
+      </controlProperties>
+    </control>
+    <control controlID="126" controlTypeID="com.balsamiq.mockups::TextInput" x="1231" y="417" w="53" h="-1" measuredW="36" measuredH="29" zOrder="62" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>0.1</text>
+      </controlProperties>
+    </control>
+    <control controlID="127" controlTypeID="com.balsamiq.mockups::Label" x="1228" y="340" w="41" h="28" measuredW="41" measuredH="25" zOrder="63" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Step%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="128" controlTypeID="com.balsamiq.mockups::Label" x="1374" y="512" w="141" h="25" measuredW="107" measuredH="25" zOrder="64" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%28non-integrated%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="129" controlTypeID="com.balsamiq.mockups::Arrow" x="1290" y="432" w="128" h="78" measuredW="150" measuredH="100" zOrder="65" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>1</curvature>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="130" controlTypeID="com.balsamiq.mockups::Arrow" x="408" y="391" w="285" h="91" measuredW="150" measuredH="100" zOrder="66" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
       </controlProperties>
     </control>
   </controls>
