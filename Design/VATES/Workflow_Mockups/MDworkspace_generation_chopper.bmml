@@ -1,0 +1,32 @@
+<mockup version="1.0" skin="sketch" measuredW="1084" measuredH="441" mockupW="942" mockupH="369">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::MenuBar" x="142" y="72" w="942" h="27" measuredW="217" measuredH="29" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2C%20Help</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::DataGrid" x="142" y="99" w="389" h="342" measuredW="400" measuredH="118" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Spe%20file%2C%20Instrument%2C%20Ei%2C%20Psi%2C%20Select%0AMER00100%2C%20Merlin%2C%2020%2C%200%2C%20%5B%5D%0AMER00101%2C%20Merlin%2C%2020%2C%201%2C%20%5B%5D%0AANOther123%2C%20Unknown%2C%20Unknown%2C%20Unknown%2C%20%5Bx%5D</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TabBar" x="531" y="103" w="553" h="338" measuredW="421" measuredH="100" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>%2CMDworkspace_generation_spectrometer%26bm%3BMDworkspace_generation_spectrometer.bmml%26bm%3BMDworkspace_generation_spectrometer.bmml%26bm%3BMDworkspace_generation_spectrometer.bmml%2CMDworkspace_generation_sample%26bm%3BMDworkspace_generation_sample.bmml%26bm%3BMDworkspace_generation_sample.bmml%26bm%3BMDworkspace_generation_sample.bmml%2CMDworkspace_generation_run%26bm%3BMDworkspace_generation_run.bmml%26bm%3BMDworkspace_generation_run.bmml%26bm%3BMDworkspace_generation_run.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22514%2C31%2C647%2C60%22%20href%3D%22MDworkspace_generation_spectrometer.bmml%22%20alt%3D%22MDworkspace_generation_spectrometer%22%20id%3D%222_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22647%2C31%2C702%2C60%22%20href%3D%22MDworkspace_generation_sample.bmml%22%20alt%3D%22MDworkspace_generation_sample%22%20id%3D%222_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22702%2C31%2C736%2C60%22%20href%3D%22MDworkspace_generation_run.bmml%22%20alt%3D%22MDworkspace_generation_run%22%20id%3D%222_2%22/%3E%0A</map>
+        <text>Chopper%20config%2C%20Spectometer%20config%2C%20Sample%2C%20Run</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::List" x="544" y="134" w="138" h="155" measuredW="100" measuredH="147" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Chopper%20package%0AFrequency%0APslit%0ADslat%0ARho%0ARadius%0AJitter</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::List" x="683" y="136" w="116" h="153" measuredW="100" measuredH="147" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Merlin%20sloppy%0A600%0A2.28%0A2.83%0A1300%0A49%0A0</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
