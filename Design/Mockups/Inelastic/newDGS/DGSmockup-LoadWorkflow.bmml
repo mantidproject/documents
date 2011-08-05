@@ -1,0 +1,43 @@
+<mockup version="1.0" skin="sketch" measuredW="746" measuredH="541" mockupW="450" mockupH="400">
+  <controls>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::TitleWindow" x="296" y="141" w="-1" h="-1" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>6</bottomheight>
+        <close>true</close>
+        <text>Load%20Workflow</text>
+        <topheight>26</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Tree" x="302" y="172" w="158" h="225" measuredW="300" measuredH="225" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>f%20/SNS%0AF%20/user%0A%20v%20me%0A%20%20%3E%20shared</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::TextArea" x="497" y="174" w="200" h="223" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>workflow1.xml%0Aworkflow2.xml%0Apowderworkflow.xml</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::RadioButtonGroup" x="364" y="418" w="-1" h="-1" measuredW="195" measuredH="84" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%28o%29%20Everyting%0A%28%20%29%20Data%0A%28%20%29%20Algorithms%0A%28%20%29%20Algorithms%20with%20parameters</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="311" y="418" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Button" x="620" y="413" w="77" h="28" measuredW="56" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Load</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Button" x="620" y="463" w="77" h="28" measuredW="66" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cancel</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

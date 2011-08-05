@@ -1,0 +1,120 @@
+<mockup version="1.0" skin="sketch" measuredW="1388" measuredH="624" mockupW="1260" mockupH="580">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="128" y="44" w="1260" h="580" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <close>true</close>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Direct%20geometry%20reduction</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="129" y="67" w="1257" h="534" measuredW="556" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>3</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <text>Workflow%2C%20Datafiles%2C%20Algorithms%2C%20Inputs%2C%20Save%2C%20Summary%2C%20Diagnostics</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::ComboBox" x="246" y="109" w="-1" h="-1" measuredW="60" measuredH="23" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>SNS</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::ComboBox" x="421" y="109" w="-1" h="-1" measuredW="70" measuredH="23" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>ARCS</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="172" y="110" w="-1" h="-1" measuredW="51" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Facility</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="335" y="110" w="-1" h="-1" measuredW="70" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Instrument</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="172" y="146" w="926" h="410" measuredW="200" measuredH="241" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>0</selectedIndex>
+        <text>GetEi%0ARebin%20in%20Energy%20*%0AWhite%20Beam%20Vanadium%0AHe3TubeEfficiency%20*%0ANormalize%20by%20Current%20*%0ALoad%20Mask%20File%20*%0AGoniometer%20*</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::TextInput" x="538" y="161" w="69" h="-1" measuredW="36" measuredH="26" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>100</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="335" y="164" w="-1" h="-1" measuredW="188" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Incident%20Energy%20Guess%20%28meV%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::StickyNote" x="290" y="266" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tabs%20with%20*%20need%20additional%20input</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::CheckBox" x="656" y="163" w="-1" h="-1" measuredW="126" measuredH="22" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fixe%20Ei%20to%20guess</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::StickyNote" x="491" y="225" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20T0%20for%20CNCS</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::StickyNote" x="137" y="396" w="256" h="123" measuredW="109" measuredH="123" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Note%20that%20Goniometer%20tab%20appeared%2C%20even%20if%20there%20is%20no%20algorithm%2C%20but%20needed%20for%20NXSPE%20single%20crystal</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::StickyNote" x="680" y="219" w="289" h="123" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Note%20that%20Algorithms%20that%20need%20no%20additional%20input%20are%20not%20shown%20on%20this%20tab%2C%20even%20if%20they%20are%20selected%20%28Ki/Kf%20correction%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="169" w="197" h="28" measuredW="176" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Manage%20User%20Directories</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="211" w="197" h="28" measuredW="115" measuredH="28" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20workflow</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="291" w="197" h="28" measuredW="200" measuredH="28" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Generate%20Script%20to%20clipboard</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="379" w="192" h="28" measuredW="65" measuredH="28" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Help%20%3A%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="334" w="192" h="28" measuredW="74" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Execute</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="248" w="197" h="28" measuredW="116" measuredH="28" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20workflow</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::StickyNote" x="590" y="401" w="355" h="123" measuredW="109" measuredH="123" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Should%20be%20able%20to%20put%20a%20first%20file%20preview%20for%20specific%20algorithms%20%28i.e.%20%20time%20independent%20background%20should%20be%20able%20to%20preview%20on%20request%20sum%20over%20all%20space%29</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

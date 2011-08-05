@@ -1,0 +1,106 @@
+<mockup version="1.0" skin="sketch" measuredW="1388" measuredH="624" mockupW="1347" mockupH="580">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="128" y="44" w="1260" h="580" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <close>true</close>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Direct%20geometry%20reduction</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="131" y="67" w="1257" h="534" measuredW="556" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>5</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <text>Workflow%2C%20Datafiles%2C%20Algorithms%2C%20Inputs%2C%20Save%2C%20Summary%2C%20Diagnostics</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextArea" x="158" y="141" w="506" h="98" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Datafiles%3A%09Data%3A%09%09Run%201%2C%20Run2%2C%20Run3%0A%09%09%09Data%3A%09%09Run%204%0A%09%09%09Data%3A%09%09Run%205%2C%20Run%206%0A%09%09%09Vanadium%3A%09WB%20Run%201%2C%20WB%20Run2%0A%09%09%09MonoVan%3A%09MV%20Run1%2C%20MVRun2</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::TextArea" x="158" y="348" w="506" h="90" measuredW="200" measuredH="140" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Inputs%3A%09Efixed%3D100meV%20%28to%20be%20calculated%29%0A%09%09Energy%20rebin%20parameters%3A%20-20%2C1%2C100%0A%09%09WB%20vanadium%20integration%20range%3A%202000%2C9000%0A%09%09He3%20Tube%20parameters%3A%20Scale%3A%20Default%2C%20Temperature%3A%20Default%2C%20Pressure%3A%20Default</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextArea" x="158" y="239" w="506" h="109" measuredW="200" measuredH="140" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Algorithms%3A%09Calculate%20Ei%0A%09%09%09He3Tube%20efficiency%0A%09%09%09Correct%20Ki/Kf%0A%09%09%09Normalize%20by%20current%0A%09%09%09Normalize%20by%20WB%20vanadium%20%0A%09%09%09Add%20mask%20from%20file</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextArea" x="158" y="438" w="506" h="148" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%3A%09File%20format%28s%29%20NXSPE%2C%20NXS%0A%09%09File%20names%3A%20Combinedruns1-3.nxspe%2C%20Run4.nxspe%2C%20Combinedruns5-6.nxspe%0A%09%09File%20names%3A%20Combinedruns1-3.nxs%2C%20Run4.nxs%2C%20Combinedruns5-6.nxs%0AStore%20orientation%3A%0A%09%09Motor%20CCR%20Axis%20%280%2C1%2C0%29%0A%09%09equation%3A%20value+23.4</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::ComboBox" x="246" y="109" w="-1" h="-1" measuredW="60" measuredH="23" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>SNS</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::ComboBox" x="421" y="109" w="-1" h="-1" measuredW="70" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>ARCS</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="172" y="110" w="-1" h="-1" measuredW="51" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Facility</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="335" y="110" w="-1" h="-1" measuredW="70" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Instrument</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::HorizontalScrollBar" x="160" y="418" w="486" h="-1" measuredW="100" measuredH="16" zOrder="10" locked="false" isInGroup="-1"/>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="169" w="197" h="28" measuredW="176" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Manage%20User%20Directories</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="211" w="197" h="28" measuredW="115" measuredH="28" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20workflow</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="291" w="197" h="28" measuredW="200" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Generate%20Script%20to%20clipboard</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="379" w="192" h="28" measuredW="65" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Help%20%3A%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="334" w="192" h="28" measuredW="74" measuredH="28" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Execute</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Button" x="1168" y="248" w="197" h="28" measuredW="116" measuredH="28" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20workflow</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::VCurly" x="41" y="147" w="109" h="421" measuredW="180" measuredH="140" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <direction>right</direction>
+        <text>This%20is%20just%20a%20summary</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
