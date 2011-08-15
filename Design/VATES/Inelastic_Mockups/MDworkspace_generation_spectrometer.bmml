@@ -1,23 +1,33 @@
-<mockup version="1.0" skin="sketch" measuredW="1217" measuredH="510" mockupW="450" mockupH="400">
+<mockup version="1.0" skin="sketch" measuredW="1090" measuredH="483" mockupW="704" mockupH="404">
   <controls>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::List" x="807" y="173" w="365" h="170" measuredW="100" measuredH="147" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::List" x="400" y="114" w="410" h="145" measuredW="100" measuredH="126" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>x0%0Ax1%0A%20%0ATheta%20moderator%0As1%0As2%0As3</text>
+        <text>DISTANCES%0Ax0%20%28moderator%20-%20chopper%20distance%20%5Bm%5D%29%20%3A%2012%0Ax1%20%28chopper%20-%20sample%20distance%20%5Bm%5D%29%20%3A%201.8%0Axa%20%28collimation%20-%20chopper%20distance%20%5Bm%5D%29%20%3A%2011.8%0Awa%20%28collimation%20width%20%5Bmm%5D%29%20%3A%2050%0Aha%20%28collimation%20height%20%5Bmm%5D%29%20%3A%2050</text>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::TitleWindow" x="757" y="100" w="-1" h="-1" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TitleWindow" x="386" y="83" w="-1" h="-1" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Edit%20Spectrometer</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="1024" y="427" w="-1" h="-1" measuredW="42" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="401" y="417" w="-1" h="-1" measuredW="42" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Ok</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="1078" y="427" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="455" y="417" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Cancel</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::List" x="400" y="259" w="410" h="123" measuredW="100" measuredH="126" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>MODERATOR%20%28IKEDA-CARPENTER%20MODEL%29%0ATheta%20%28angle%20of%20moderator%20face%20to%20incident%20beam%20%5Bdeg%5D%29%20%3A%2026%0Atau_f%20%5Bmicrosec%5D%20%3A%207%0Atau_s%20%5Bmicrosec%5D%20%3A%200.56%0AR%20%3A%200.3</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::StickyNote" x="839" y="79" w="251" h="180" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20moderator%20description%20here%20is%20the%20Ikeda-Carpenter%20model.%20Tobyfit%20has%20the%20option%20to%20choose%20other%20models%2C%20but%20these%20are%20seldom%20used</text>
       </controlProperties>
     </control>
   </controls>

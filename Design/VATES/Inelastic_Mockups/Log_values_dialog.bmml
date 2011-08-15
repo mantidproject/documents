@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1081" measuredH="442" mockupW="670" mockupH="357">
+<mockup version="1.0" skin="sketch" measuredW="1081" measuredH="442" mockupW="917" mockupH="357">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="411" y="85" w="670" h="357" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -73,6 +73,11 @@
     <control controlID="22" controlTypeID="com.balsamiq.mockups::Button" x="851" y="301" w="-1" h="-1" measuredW="70" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::StickyNote" x="164" y="133" w="231" h="226" measuredW="109" measuredH="123" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>If%20there%20are%20n%20files%20selected%2C%20then%20one%20should%20be%20able%20to%20specify%20either%201%20or%20n%20log%20values.%20This%20would%20speed%20up%2C%20for%20example%2C%20the%20case%20where%2090%20files%20respresenting%2090%20crystal%20orientations%20have%20been%20selected.</text>
       </controlProperties>
     </control>
   </controls>
