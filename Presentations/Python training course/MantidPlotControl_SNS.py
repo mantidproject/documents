@@ -1,9 +1,15 @@
+import os
 # -----------------------------------------------------
 #  Python Training Exercise 3 Solution.
 #  Controlling the MantidPlot items
 #------------------------------------------------------
 # Perform some algorithms to so that we have some sensible data to plot and look at
+
+# Windows Directory
 rootdir = "C:/MantidInstall/data/"
+# Unix 
+rootdir = os.path.expandvars("${HOME}/data/")
+
 # Load processed data from CNCS
 LoadNexusProcessed(rootdir+ "Training_Exercise3a_SNS.nxs", "CNCS")
 
