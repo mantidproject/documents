@@ -1,6 +1,10 @@
 # -----------------------------------------------------
 #  Python Training Exercise 1 Solution.
 #  Removing the HRPD prompt pulse
+#  Changes:
+# 		- Uses new parameter names. All parameters now have a consistent naming style. 
+#		- Numbers, lists can be used directly without conversion to strings
+#       - Uses the Load algorithm and newer way of merging plots
 #------------------------------------------------------
 
 # The input data set
@@ -8,7 +12,7 @@ inputData = "HRP39182"
 # The path to the data (this may have to be change based upon your setup
 path = "C:/MantidInstall/Data/"
 # Load the file
-LoadRaw(Filename=path+inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
+Load(Filename=path+inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
 
 # First do the analysis without prompt pulse removal so that we can compare the difference
 # Align the detectors (incoporates unit conversion to d-Spacing)
@@ -32,4 +36,4 @@ AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withoutpulse",C
 DiffractionFocussing(InputWorkspace="aligned-withoutpulse",OutputWorkspace="focussed-withoutpulse",GroupingFileName=path + cal_file)
 
 # Now plot a focussed spectrum with and without prompt peak removal so that you can see the difference
-mergePlots(plotSpectrum("focussed-withoutpulse",0),plotSpectrum("focussed-withpulse",0))
+plotSpectrum(["focussed-withoutpulse","focussed-withpulse"],0)
