@@ -16,7 +16,7 @@
         <text>Home%2C%20Group%20Options%2C%20Plot%20Options%2C%20Data%20Analysis</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="48" y="235" w="315" h="25" measuredW="311" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="48" y="235" w="315" h="25" measuredW="311" measuredH="25" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Data%20collected%20with%20histogram%20bins%20of%20%3Cwidth%3E%20ns</text>
       </controlProperties>
@@ -101,29 +101,34 @@
         <text>Show%20error%20bars</text>
       </controlProperties>
     </control>
-    <control controlID="58" controlTypeID="com.balsamiq.mockups::CheckBox" x="214" y="167" w="126" h="22" measuredW="117" measuredH="22" zOrder="17" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Connect%20points</text>
-      </controlProperties>
-    </control>
-    <control controlID="60" controlTypeID="com.balsamiq.mockups::Label" x="48" y="294" w="-1" h="-1" measuredW="78" measuredH="25" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Label" x="48" y="294" w="-1" h="-1" measuredW="78" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Rebin%20data%3A</text>
       </controlProperties>
     </control>
-    <control controlID="64" controlTypeID="com.balsamiq.mockups::ComboBox" x="123" y="80" w="198" h="-1" measuredW="192" measuredH="54" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::ComboBox" x="123" y="80" w="198" h="-1" measuredW="192" measuredH="54" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Start%20at%20First%20Good%20Data%0AStart%20at%20Time%20Zero</text>
       </controlProperties>
     </control>
-    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="223" y="294" w="-1" h="-1" measuredW="41" measuredH="25" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="223" y="294" w="-1" h="-1" measuredW="41" measuredH="25" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Step%3A</text>
       </controlProperties>
     </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::TextInput" x="270" y="291" w="-1" h="-1" measuredW="30" measuredH="29" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::TextInput" x="270" y="291" w="-1" h="-1" measuredW="30" measuredH="29" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text>10</text>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Label" x="201" y="165" w="-1" h="-1" measuredW="73" measuredH="25" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Plot%20Style%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::ComboBox" x="278" y="166" w="106" h="-1" measuredW="57" measuredH="72" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Line%0AScatter%0ALine+symbol</text>
       </controlProperties>
     </control>
   </controls>
