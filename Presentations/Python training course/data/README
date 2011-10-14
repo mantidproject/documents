@@ -1,0 +1,9 @@
+This directory previously (in subversion days) contained the following (large) files:
+
+EQSANS_6071_event_corrected.nxs  
+Training_Exercise3b_SNS.nxs
+Training_Exercise3a_SNS.nxs
+
+They can (as of this writing) be obtained from: 
+http://svn.mantidproject.org/mantid/trunk/Documents/Presentations/Python%20training%20course/data/
+
