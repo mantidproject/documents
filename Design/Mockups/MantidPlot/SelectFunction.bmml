@@ -1,0 +1,26 @@
+<mockup version="1.0" skin="sketch" measuredW="370" measuredH="383" mockupW="330" mockupH="360">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="40" y="23" w="330" h="360" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <text>Select%20Function</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Tree" x="55" y="56" w="300" h="282" measuredW="300" measuredH="263" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3E%20Background%0A%3E%20Composite%0Av%20General%20Peak%0A%20_Gaussian%0A%20_Lorenzian%0A%3E%20Moderator%20Peakshape%0Av%20Muon%0A%20_Gaussian%0A%20_Exp%20Decay</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="233" y="346" w="-1" h="-1" measuredW="42" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ok</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="290" y="346" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cancel</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
