@@ -1,0 +1,30 @@
+GET DATA [RANGE_TYPE] [START] [STOP] [FILTER]
+
+Where [START]/[STOP] are quantities such as time, charge, etc... as specified by [RANGE_TYPE].
+Calling just GET DATA results in returning everything since start of current run
+
+RANGE_TYPE values:
+	TOF (in micro-sec)
+	CHARGE (integrated charge from the beginning of run, units?)
+	CURRENT (no START/STOP necessary, and only works with the META filter. Returns the current non-neutronic data values)
+
+FILTER values:
+              META  (returns all non-neutronic data)
+              [LOG] (returns logs specified by LOG name)
+              [PLUGIN] (returns data sent through plugin provided by Mantid Team)
+	      [STATE] returns all data for given state
+
+GET [INFO]
+
+Where INFO can be any of the following information:
+	Instrument name
+	Data size
+	Number of pixels
+	Counting time
+	Total count
+	Current Run control (is the instrument collecting, paused, etc...)
+	Current State (polarization etc...)
+	Number of states
+	List of available LOG
+	List of available PLUGINS
+	etc...
