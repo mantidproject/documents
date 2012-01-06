@@ -1,0 +1,31 @@
+Automated and meta-data driven reduction
+
+In a nutshell: Build end-to-end skeleton to seamlessly process runs coming out of translation service, capture their meta-data in ICAT4, kick-off instrument specific reduction code, and attach reduced data files for the runs in ICAT4. 
+
+Prototype work:
+Set up infrastructure for automated reduction
+* Create ICAT4 production database schemas on snsdb1.sns.ornl.gov
+* Deploy ICAT4 and download applications to the glassfish server on icat.sns.gov
+* Set up read only data mounting on icat.sns.gov (e.g. /SNS/EQSANS) 
+* Install nxingest C++ application and mapping files on analysis machines. The nxingest code extracts meta-data from a Nexus file to create an xml file, which can be ingested into ICAT4. The mapping defines the structure and content of the output file.
+* Implement instrument specific reduction code and install it on analysis machines
+* Write a python script to generate metadata xml file for the reduced data and install it on analysis machines
+* Build an ICAT4 java client to call ICAT4 server to ingest raw and reduced meta-data
+* Create a shell script and install it on analysis machines to catalog and reduce runs coming out of translation service automatically
+
+
+
+Finalize automated reduction specific to EQSANS
+Finalize automated reduction specific to POWGEN
+
+Mantid Integration
+* Use the GSOAP toolkit to generate C++ source codes to glue the Mantid application to the SOAP/XML web service stack
+* Enable Mantid users to search, browse, and download raw and reduced data (analysis data?) through ICAT4 once they are authenticated
+* Enable Mantid user to locate datafiles for a given instrument and run number through ICAT4 without authentication
+* Enable Mantid application to launch reduction jobs on analysis.sns.gov through ICAT4. That would be used to ask the system to perform the automated reduction another time on files for which meta-data has been added.
+
+
+
+
+
+
