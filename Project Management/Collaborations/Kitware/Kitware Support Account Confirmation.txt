@@ -1,0 +1,34 @@
+From:	lisa.avila@kitware.com
+Sent:	14 April 2011 05:02
+To:	Draper, Nick (-,RAL,ISIS)
+Subject:	[Kitware Support] Account Confirmation
+
+Dear Nick Draper,
+
+You have been registered on the Kitware Support site. Your username and a 
+temporary password are provided below. Once you log in, please use the Edit 
+Profile link in the upper right corner of the page to change your password. 
+Your new password will NOT be emailed to you.
+
+Username: nick.draper@stfc.ac.uk
+Password: draperuk
+
+You can use our web interface to enter new tickets or check out the status of 
+your existing tickets.
+
+https://www.kitware.com/helpdesk//index.php
+
+Alternatively, you can simply send email to support@kitware.com with a support 
+request and a new ticket will be created for you.
+
+If you ever have any questions or need assistance, please do not hesitate to 
+e-mail us.
+
+
+Sincerely,
+
+
+https://www.kitware.com/helpdesk/
+https://www.kitware.com/helpdesk/
+
+
