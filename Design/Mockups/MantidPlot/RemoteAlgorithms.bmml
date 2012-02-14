@@ -58,15 +58,15 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="79" controlTypeID="__group__" x="896" y="1" w="686" h="577" measuredW="686" measuredH="577" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="88" controlTypeID="__group__" x="896" y="1" w="686" h="577" measuredW="686" measuredH="577" zOrder="1" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
-        <control controlID="0" controlTypeID="com.balsamiq.mockups::VCurly" x="0" y="225" w="228" h="140" measuredW="180" measuredH="140" zOrder="0" locked="false" isInGroup="79">
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::VCurly" x="0" y="225" w="228" h="140" measuredW="180" measuredH="140" zOrder="0" locked="false" isInGroup="88">
           <controlProperties>
             <direction>right</direction>
             <text>All%20the%20algorithms%20-%20and%20the%20details%20about%20how%20to%20run%20them%20-%20are%20downloaded%20from%20a%20configuration%20file%20stored%20on%20the%20cluster.%20%20That%20way%2C%20when%20someone%20installs%20a%20new%20algorithm%2C%20everyone%20can%20take%20advantage%20of%20it%20without%20having%20update%20MantidPlot%20itself.</text>
           </controlProperties>
         </control>
-        <control controlID="1" controlTypeID="__group__" x="236" y="158" w="450" h="274" measuredW="450" measuredH="274" zOrder="1" locked="false" isInGroup="79">
+        <control controlID="1" controlTypeID="__group__" x="236" y="158" w="450" h="274" measuredW="450" measuredH="274" zOrder="1" locked="false" isInGroup="88">
           <groupChildrenDescriptors>
             <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="0" y="0" w="450" h="274" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="1">
               <controlProperties>
@@ -107,19 +107,19 @@
             </control>
           </groupChildrenDescriptors>
         </control>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Arrow" x="259" y="109" w="150" h="82" measuredW="150" measuredH="100" zOrder="2" locked="false" isInGroup="79">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Arrow" x="259" y="109" w="150" h="82" measuredW="150" measuredH="100" zOrder="2" locked="false" isInGroup="88">
           <controlProperties>
             <leftArrow>false</leftArrow>
             <text/>
           </controlProperties>
         </control>
-        <control controlID="3" controlTypeID="com.balsamiq.mockups::Arrow" x="416" y="26" w="202" h="164" measuredW="150" measuredH="100" zOrder="3" locked="false" isInGroup="79">
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Arrow" x="416" y="26" w="202" h="164" measuredW="150" measuredH="100" zOrder="3" locked="false" isInGroup="88">
           <controlProperties>
             <leftArrow>false</leftArrow>
             <text/>
           </controlProperties>
         </control>
-        <control controlID="4" controlTypeID="com.balsamiq.mockups::Arrow" x="251" y="394" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="4" locked="false" isInGroup="79">
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::Arrow" x="251" y="394" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="4" locked="false" isInGroup="88">
           <controlProperties>
             <curvature>-1</curvature>
             <direction>bottom</direction>
@@ -127,17 +127,17 @@
             <text/>
           </controlProperties>
         </control>
-        <control controlID="5" controlTypeID="com.balsamiq.mockups::StickyNote" x="362" y="0" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="79">
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::StickyNote" x="362" y="0" w="161" h="134" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="88">
           <controlProperties>
             <text>Pops%20up%20a%20dialog%20box%20where%20the%20user%20can%20enter%20the%20name%20of%20the%20cluster%20and%20the%20URL%20for%20the%20cluster%27s%20config%20file.</text>
           </controlProperties>
         </control>
-        <control controlID="6" controlTypeID="com.balsamiq.mockups::StickyNote" x="160" y="35" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="6" locked="false" isInGroup="79">
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::StickyNote" x="160" y="35" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="6" locked="false" isInGroup="88">
           <controlProperties>
             <text>Select%20a%20previously%20defined%20cluster</text>
           </controlProperties>
         </control>
-        <control controlID="7" controlTypeID="com.balsamiq.mockups::StickyNote" x="198" y="454" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="79">
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::StickyNote" x="198" y="454" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="88">
           <controlProperties>
             <text>Not%20sure%20if%20we%27ll%20need%20this%20button.%20%20The%20only%20setting%20that%20I%20can%20think%20of%20at%20the%20moment%20%28that%20we%27d%20want%20to%20let%20the%20user%20tinker%20with%29%20is%20the%20number%20of%20processors.</text>
           </controlProperties>
