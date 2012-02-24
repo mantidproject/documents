@@ -1,0 +1,54 @@
+<mockup version="1.0" skin="sketch" measuredW="1289" measuredH="654" mockupW="999" mockupH="574">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="290" y="80" w="999" h="574" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Toby%20Fit%20-%20Integration%20Methods%20%283%20of%204%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::PointyButton" x="776" y="136" w="211" h="-1" measuredW="199" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>simulation_and_fitting%26bm%3Bsimulation_and_fitting.bmml%26bm%3Bsimulation_and_fitting.bmml%26bm%3Bsimulation_and_fitting.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22486%2C56%2C697%2C83%22%20href%3D%22simulation_and_fitting.bmml%22%20alt%3D%22simulation_and_fitting%22%20id%3D%227%22/%3E</map>
+        <text>Next%20Step%20-%20Simulation%20%26%20Fitting</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::MenuBar" x="290" y="101" w="999" h="27" measuredW="109" measuredH="29" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2C%20Help</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::PointyButton" x="550" y="135" w="220" h="-1" measuredW="142" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <href>data%26bm%3Bdata.bmml%26bm%3Bdata.bmml%26bm%3Bdata.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22260%2C55%2C480%2C82%22%20href%3D%22data.bmml%22%20alt%3D%22data%22%20id%3D%2237%22/%3E</map>
+        <text>Previous%20Step%20-%20Data</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::ComboBox" x="500" y="188" w="-1" h="-1" measuredW="180" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>MC%20%28Monte%20Carlo%20Method%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="320" y="188" w="-1" h="-1" measuredW="121" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Integration%20Method%3A%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::FieldSet" x="304" y="218" w="969" h="298" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Integration%20Specific%20Parameters</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::DataGrid" x="333" y="280" w="915" h="203" measuredW="163" measuredH="205" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Parameter%2C%20Value%0Amc_lineshape%2C%20true%0Amc_appeture%2C%20true%0Amc_chopper%2C%20true%0Amc_chopperjitter%2C%20true%0Amc_sample%2C%20true%0A...</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="333" y="245" w="-1" h="-1" measuredW="102" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20Defaults</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

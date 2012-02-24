@@ -1,0 +1,141 @@
+<mockup version="1.0" skin="sketch" measuredW="1289" measuredH="789" mockupW="999" mockupH="709">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="290" y="80" w="999" h="709" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Toby%20Fit%20-%20Simulation%20%26%20Fitting%20%284%20of%204%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::PointyButton" x="305" y="143" w="220" h="-1" measuredW="229" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <href>data%26bm%3Bdata.bmml%26bm%3Bdata.bmml%26bm%3Bdata.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2215%2C63%2C235%2C90%22%20href%3D%22data.bmml%22%20alt%3D%22data%22%20id%3D%227%22/%3E</map>
+        <text>Previous%20Step%20-%20Integration%20Methods</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::MenuBar" x="290" y="101" w="999" h="27" measuredW="154" measuredH="29" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2C%20Help%2C%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::FieldSet" x="327" y="185" w="941" h="548" measuredW="200" measuredH="170" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Jobs</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="293" w="157" h="20" measuredW="100" measuredH="20" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Button" x="413" y="224" w="106" h="27" measuredW="72" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Simulate</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Button" x="540" y="225" w="96" h="27" measuredW="38" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fit</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::DataGrid" x="330" y="266" w="926" h="241" measuredW="533" measuredH="235" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Job%2C%20Status%2C%20Iteration%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A1%2C%20Running%20%2C...101%2C%0A2%2C%20Complete%2C%201000%2C%0A3%2C%20Complete%2C%201000%2C%0A4%2C%20Complete%2C%201000%2C%0A5%2C%20Complete%2C%201000%2C%0A6%2C%20Cancelled%2C%201000%2C%0A7%2C%20Complete%2C%201001%2C</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="713" y="528" w="-1" h="-1" measuredW="114" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20Initial%20TFT</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="835" y="527" w="-1" h="-1" measuredW="111" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load%20Final%20TFT</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="328" w="157" h="18" measuredW="100" measuredH="20" zOrder="10" locked="false" isInGroup="-1"/>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="361" w="157" h="18" measuredW="100" measuredH="20" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="388" w="157" h="18" measuredW="100" measuredH="20" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="421" w="157" h="18" measuredW="100" measuredH="20" zOrder="13" locked="false" isInGroup="-1"/>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="447" w="157" h="18" measuredW="100" measuredH="20" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::ProgressBar" x="1001" y="480" w="157" h="18" measuredW="100" measuredH="20" zOrder="15" locked="false" isInGroup="-1"/>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Button" x="835" y="289" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="728" y="289" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Button" x="728" y="319" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Button" x="835" y="319" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="728" y="352" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Button" x="835" y="352" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Button" x="728" y="384" w="99" h="25" measuredW="99" measuredH="27" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Button" x="835" y="384" w="159" h="25" measuredW="159" measuredH="27" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Button" x="728" y="412" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Button" x="835" y="412" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Button" x="728" y="445" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Button" x="835" y="445" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Button" x="728" y="476" w="-1" h="-1" measuredW="99" measuredH="27" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Remove%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Button" x="835" y="476" w="-1" h="-1" measuredW="159" measuredH="27" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text>Force%20Progress%20Update</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
