@@ -1,0 +1,62 @@
+<mockup version="1.0" skin="sketch" measuredW="1665" measuredH="789" mockupW="1375" mockupH="709">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="290" y="80" w="999" h="709" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Toby%20Fit%20-%20Simulation%20%26%20Fitting%20%284%20of%204%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::MenuBar" x="290" y="101" w="999" h="27" measuredW="155" measuredH="29" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2C%20Help%2C%20Job</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::FieldSet" x="445" y="191" w="823" h="416" measuredW="200" measuredH="170" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fit%20Results</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="1104" y="164" w="-1" h="-1" measuredW="100" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20Results</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="297" y="153" w="984" h="604" measuredW="200" measuredH="199" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>models%26bm%3Bmodels.bmml%26bm%3Bmodels.bmml%26bm%3Bmodels.bmml%2Cdata%26bm%3Bdata.bmml%26bm%3Bdata.bmml%26bm%3Bdata.bmml%2Cintegration_method%26bm%3Bintegration_method.bmml%26bm%3Bintegration_method.bmml%26bm%3Bintegration_method.bmml%2C%2Cresults%26bm%3Bresults.bmml%26bm%3Bresults.bmml%26bm%3Bresults.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%227%2C93%2C134%2C122%22%20href%3D%22models.bmml%22%20alt%3D%22models%22%20id%3D%2266_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%227%2C122%2C134%2C151%22%20href%3D%22data.bmml%22%20alt%3D%22data%22%20id%3D%2266_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%227%2C151%2C134%2C180%22%20href%3D%22integration_method.bmml%22%20alt%3D%22integration_method%22%20id%3D%2266_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%227%2C209%2C134%2C238%22%20href%3D%22results.bmml%22%20alt%3D%22results%22%20id%3D%2266_3%22/%3E%0A</map>
+        <selectedIndex>3</selectedIndex>
+        <text>Models%0AData%0AIntegration%20Methods%0ASimulation%20%26%20Fitting%0AResults</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::DataGrid" x="469" y="223" w="720" h="203" measuredW="590" measuredH="205" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Parameter%2C%20Fit%20it%2C%20Value%2C%20Error%2C%20Lower%2C%20Upper%2C%20Bind%20To%20Paramter%2C%20Bind%20With%20Ratio%0AModel%20Parameter%20A%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20B%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20C%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20D%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20E%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20F%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%200.99</text>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::DataGrid" x="469" y="461" w="720" h="112" measuredW="598" measuredH="115" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Parameter%2C%20Fit%20it%2C%20Value%2C%20Error%2C%20Lower%2C%20Upper%2C%20Bind%20To%20Parameter%2C%20Bind%20With%20Ratio%0AModel%20Parameter%20A%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20B%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C%0AModel%20Parameter%20C%2C%20%5Bx%5D%2C%20100%2C%200%2C%2050%2C%20150%2C%20%20No%20Binding%2C</text>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::FieldSet" x="454" y="207" w="804" h="234" measuredW="200" measuredH="170" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Foreground%20Model</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::FieldSet" x="454" y="441" w="804" h="155" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Background%20Model</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Tree" x="445" y="607" w="823" h="135" measuredW="300" measuredH="225" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%5B+%5DJob%201%0A%20%5B+%5DWorkspace_x_1a.nxs%0A%20%5B+%5DWorkspace_x_2a.nxs%0A%20%5B+%5DWorkspace_x_3a.nxs%0A%5B+%5DJob%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Tree" x="1365" y="379" w="-1" h="-1" measuredW="300" measuredH="309" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>f%20Use%20f%20for%20closed%20folders%0AF%20Use%20F%20for%20open%20folders%0A%5B+%5D%20You%20may%20also%20use%20this%0A%5B-%5D%20and%20this%0A%5Bx%5D%20or%20this%0A%5B%20%5D%20and%20this%0A%3E%20or%20even%20this%0Av%20and%20this%0A-%20Use%20-%20for%20a%20file%20icon%0A_%20or%20_%20to%20leave%20a%20space%20for%20your%20own%20icon%0AF%20use%20spaces%20or%20dots%20for%20hierarchy%0A%20v%20just%20like%0A..-%20this</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
