@@ -1,0 +1,87 @@
+<mockup version="1.0" skin="sketch" measuredW="1330" measuredH="566" mockupW="1256" mockupH="544">
+  <controls>
+    <control controlID="132" controlTypeID="__group__" x="760" y="22" w="570" h="443" measuredW="570" measuredH="443" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="0" y="0" w="570" h="443" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="132">
+          <controlProperties>
+            <text>Show%20All%20Jobs</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::DataGrid" x="16" y="31" w="538" h="321" measuredW="284" measuredH="235" zOrder="1" locked="false" isInGroup="132">
+          <controlProperties>
+            <selectedIndex>0</selectedIndex>
+            <text>Job%20ID%2C%20Owner%2C%20Name%2C%20Status%20%0A12345%2C%20xmr%2C%20Topaz%20Reduce%2C%20Complete%0A12346%2C%20t3c%2C%20Nomad%20Reduce%2C%20Running%0A12346%2C%20t3c%2C%20Nomad%20Reduce%2C%20Queued%0A12348%2C%20xmr%2C%20Topaz%20Reduce%2C%20Aborted%20%0A12349%2C%20xmr%2C%20Topaz%20Reduce%2C%20Running%20%0A12350%2C%20xmr%2C%20Topaz%20Reduce%2C%20Queued%0A12351%2C%20xyz%2C%20Nomad%20Reduce%2C%20Queued%0A%7B0%2C%2030%2C%2070%2C%200%7D</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::CheckBox" x="60" y="367" w="-1" h="-1" measuredW="148" measuredH="22" zOrder="2" locked="false" isInGroup="132">
+          <controlProperties>
+            <text>Refresh%20automatically</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="484" y="371" w="-1" h="-1" measuredW="70" measuredH="27" zOrder="3" locked="false" isInGroup="132">
+          <controlProperties>
+            <text>Refresh</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="133" controlTypeID="com.balsamiq.mockups::StickyNote" x="959" y="430" w="206" h="123" measuredW="109" measuredH="123" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Shows%20jobs%20for%20all%20users%20on%20the%20system.%20%20Note%20no%20option%20to%20download%20output.</text>
+      </controlProperties>
+    </control>
+    <control controlID="134" controlTypeID="com.balsamiq.mockups::StickyNote" x="203" y="430" w="211" h="136" measuredW="109" measuredH="123" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Shows%20just%20the%20current%20user%27s%20jobs.%20%20Also%20allows%20user%20to%20download%20the%20output%20file%20%28which%20will%20open%20it%20as%20a%20new%20workspace%20in%20MantidPlot%29.</text>
+      </controlProperties>
+    </control>
+    <control controlID="143" controlTypeID="__group__" x="74" y="23" w="570" h="443" measuredW="570" measuredH="443" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="0" y="0" w="570" h="443" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="143">
+          <controlProperties>
+            <text>Show%20Jobs</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::DataGrid" x="16" y="31" w="538" h="321" measuredW="244" measuredH="145" zOrder="1" locked="false" isInGroup="143">
+          <controlProperties>
+            <selectedIndex>3</selectedIndex>
+            <text>Job%20ID%2C%20Name%2C%20Status%2C%20%0A12345%2C%20Topaz%20Reduce%2C%20Complete%2C%20%0A12348%2C%20Topaz%20Reduce%2C%20Aborted%2C%20%0A12349%2C%20Topaz%20Reduce%2C%20Running%2C%20%0A12350%2C%20Topaz%20Reduce%2C%20Queued%2C%20%0A%7B0%2C%2070%2C%200%2C30%7D</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::CheckBox" x="60" y="367" w="-1" h="-1" measuredW="148" measuredH="22" zOrder="2" locked="false" isInGroup="143">
+          <controlProperties>
+            <text>Refresh%20automatically</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="484" y="371" w="-1" h="-1" measuredW="70" measuredH="27" zOrder="3" locked="false" isInGroup="143">
+          <controlProperties>
+            <text>Refresh</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="429" y="56" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="4" locked="false" isInGroup="143">
+          <controlProperties>
+            <text>Download%20Output</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="429" y="83" w="119" h="27" measuredW="119" measuredH="27" zOrder="5" locked="false" isInGroup="143">
+          <controlProperties>
+            <state>disabled</state>
+            <text>Download%20Output</text>
+          </controlProperties>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="429" y="110" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="6" locked="false" isInGroup="143">
+          <controlProperties>
+            <state>disabled</state>
+            <text>Download%20Output</text>
+          </controlProperties>
+        </control>
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="429" y="143" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="7" locked="false" isInGroup="143">
+          <controlProperties>
+            <state>disabled</state>
+            <text>Download%20Output</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
