@@ -1,0 +1,64 @@
+// Major container workflow algorithm saves repeating a lot of things when absolute
+// normalization is used
+DgsCoreReduction()
+{
+  // Is same type of raw data normalization used for all incoming data?
+  # If sample WB
+  DgsPreProcessData()
+  {
+    // Want to make these handle preprocessed data if possible
+    Load()
+    NormalizeByCurrent() or NormalizeByMonitor()
+  }
+  
+  # Sample // Combine this and above workflow calls?
+  DgsPreProcessData()
+  {
+    // Want to make these handle preprocessed data if possible
+    Load()
+    NormalizeByCurrent() or NormalizeByMonitor()
+  }
+
+  DgsDetermineMask()
+  {
+    # Hard masking
+    MaskDetectors(WB)
+    MaskDetectors(Sample)
+    // Make Diag WorkflowAlgorithm?
+    Diag(WB)
+    Diag(Sample) # include PSD Bleed
+    Or(Std_WB_Mask, Std_Sample_Mask, MV_WB_Mask, MV_Sample_Mask)
+  }
+
+  DgsProcessWhiteBeam()
+  {
+    ConvertUnits(meV)
+    DgsReMap()
+    {
+      MaskDetectors()
+      GroupDetectors()
+    }
+    Integrate()
+  }
+
+  DgsConvertToEnergyTransfer()
+  {
+    ApplyEiAndConvert()
+    {
+      GetEi()
+      ChangeBinOffsets()
+      ConvertUnits(meV)
+      Rebin()?
+    }
+    CorrectSample()
+    {
+      DetectorEfficiency() // He3Tube or ISIS way
+      KiOverKf()
+      DgsReMap()
+      Divide(WB_Integral)
+      SolidAngleCorrention()
+    }
+    Rebin()?
+  }
+  Save()???
+}

@@ -1,0 +1,34 @@
+// This is a strawman proposal for a combined DGS reduction script. Everything 
+// that has Dgs in the name (except DgsReduce) is proposed to be a workflow algorithm
+// The ? are where there are things I'm not sure about
+DgsReduce::DataProcessorAlgorithm() 
+{
+  DgsCoreReduction()
+  DgsAbsoluteReduction()
+  {
+    DgsCoreReduction()
+    Integrate()
+  }
+  DgsAbsoluteCorrection()
+  {
+    ???
+    Divide(MV_Integral)
+    ???
+  }
+
+  DgsConvertToPowder()
+  {
+    SofQW3() // ConvertToMDEvents()?
+    Save()
+  }
+
+  DgsConverToSingleCrystal()
+  {
+    CorrectGoniometer()
+    SetGoniometer()
+    SetUB()
+    ConvertToMDEvents()
+    Plus()???
+    Save()
+  }
+}
