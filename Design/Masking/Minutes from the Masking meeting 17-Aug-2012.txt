@@ -1,0 +1,90 @@
+To:	Mantid Developers
+Subject:	Minutes from the Masking meeting 17-Aug-2012
+
+These are the minutes from the Masking meeting
+
+Date: 17-Aud-2012
+Present: Nick Draper, Martyn Gigg, Owen Arnold, Stuart Campbell, Russell Taylor, Andre Savici, 
+Wenduo Zhuo
+
+Current situation:
+Masking at present has the following issues
+*	Mask workspaces contain an entry per detector, and are applied using  specific methods on 
+the workspace
+*	Has shown problems with grouping but has been point fixed to work with current workflows
+*	isMasked does not report correctly for MaskedWS
+*	The operation of Mask workspaces is not consistent with “normal” workspaces.
+*	Overall poorly understood by the development team due to the number of significant changes 
+without an overall design.
+
+On branch:
+*	Applies masking per detector basis
+*	Should be better with groups, but unresolved problem with system tests
+*	isMasked does not report correctly for MaskedWS
+*	It remains true that no one on the development team has a solid understanding of the 
+implementation of Masking and mask workspaces
+
+
+We looked at the use cases we have for masking
+Masking requirements:
+1.	 A “historic” masking file format that refer just to spectrum  numbers that need to be able to 
+be applied to workspaces (direct inelastic)
+2.	Masking files which we have created with SaveMask that people have and need to be able to 
+apply to workspaces
+3.	Extract the mask from a workspace to another workspace (effectively a clone, but going to 
+Boolean data).
+4.	Algorithms need to operate on Masked data without special programming, unless grouping (in 
+which case they should care about masking anyway). 
+This is currently done using the value flag of 0.
+5.	You should be able to easily differentiate between 0 counts and masked (Desirable)
+6.	You should be able to combine masks using addition and subtraction
+7.	Masks should fundamentally operate at the detector level, this way they can always handle all 
+grouping situations
+8.	When applying masking it should be at the detector level, as long as both source and target 
+workspace have instruments.  Otherwise they can apply at a workspace indexes level with 
+copious log messages explaining this.
+9.	Grouping detectors should work the same way as the DetectorGroup object currently does – 
+A grouped detector is only masked when all of its constituent detectors are also masked.
+Unresolved issue:
+1.	Being able to revert masked data back to the original values.  This comes with significant cost, 
+the only sensible implementation idea was to leave the original value in the data and have all 
+visualisation situations specifically check masking for all data before plotting.  This would incur 
+significant performance penalties.  It would also make handling masked values when accessing 
+from Python much more challenging. 
+The level of real need for this is worth testing, as you always have the possibility to rerun the 
+analysis from an earlier stage, and no approach would be able to preserve reversibility through 
+any grouping or focussing algorithms. 
+ACTION Nick to take to Scientific Steering committee.
+
+So looking at these we came up with the following suggestions:
+1.	Mask Workspaces should operate just like normal workspaces, they should not have any 
+unique functions, in fact event having a derived class is probably a mistake as it would 
+encourage the addition of functionality.
+2.	There were some areas where Mask workspaces made workflows faster, by eliminating the 
+need to iterate the sp-det lookups to apply masking.  Improvements and intelligent caching (in 
+the WS param map object as a new cache) should be implemented for all matrix workspaces.
+3.	Bitwise mask add and subtract operation should be added, these should be separate from the 
+add and subtract algorithms.
+4.	We should test the implications of using quiet NaNs as the masked value rather than 0.
+5.	The historic file format for inelastic data are a special case and should just be supported by 
+MaskDetectors for application.
+6.	Masks should be applied at the detector level, as long as both source and target workspace 
+have instruments.  Otherwise they can apply at a workspace indexes level with copious log 
+messages explaining this.
+
+Overall we considered that in a core area like Masking it is vital to have an approved and accepted 
+design, and to implement in introduce changes with great care.  Therefore once the unresolved issue 
+is resolved the next stage would be to write a detailed design document for further review before 
+implementation.  Implementation must occur on a branch, and only be introduced one it is a working 
+improvement on the current code.
+
+This has also been stored in Mantid/Documents/Design/Masking/minutes_17-aug-2012.htm
+
+Regards,
+Nick Draper
+
+Mantid Project Manager
+Tel: +44 (0)1235 567212
+Skype: nicholas_draper
+RAL, R78, 1.02
+
