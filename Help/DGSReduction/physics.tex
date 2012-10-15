@@ -1,0 +1,10 @@
+When performing a neutron scattering experiment one records data as either events (time of flight, wall clock time, and pixel ID tuples) or histograms (time of flight, pixel ID, number of counts tuples). Both of them have advantages and disadvantages, but neither is a format that is easy to understand from a physics point of view. What users like to see is either the {\it differential cross section} or the {\it dynamic structure factor}. The process to get to this format is called reduction. 
+There are four major steps required to obtain these quantities.
+\subsection{Detector cross-calibration using incoherent scattering}
+It is customary to check the efficiency variation of the various neutron detectors using incoherent scattering, usually a vanadium sample. For better statistics, when possible, some instruments can perform a measurement using a white (or quasi-white) beam.
+\subsection{Sample data reduction} 
+Once data is loaded ...
+\subsection{Absolute units normalization}
+Data analysed according to the previous section is proportional to the differential cross section or the dynamic structure factor. In order to get absolute units, one needs to compare to a known standard.
+\subsection{Detector diagnostics}
+Detectors with artificially high or low counting rates can introduce artefacts in the final data.
