@@ -6,15 +6,13 @@ DgsReduce::DataProcessorAlgorithm()
   DgsCoreReduction()
   DgsAbsoluteReduction()
   {
-    DgsCoreReduction()
+    DgsCoreReduction() // no DgsDiagnose
+    Reproc or Sum
     Integrate()
+    // Return single value WS
   }
-  DgsAbsoluteCorrection()
-  {
-    ???
-    Divide(MV_Integral)
-    ???
-  }
+ 
+  Divide(MV_Integral)
 
   DgsConvertToPowder()
   {
