@@ -1,1 +1,14 @@
 This section will cover how the physics requirements detailed in Section \ref{sec:Physics} are implemented via algorithms in the \textit{Mantid} code base.
+
+The top-level workflow algorithm is called DgsReduction and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core Mantid algorithms. The DgsReduction workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given. Core Mantid algorithms are shown in italics.
+\begin{itemize}
+\item DgsReduction
+\begin{itemize}
+\item DgsDiagnose
+\item DgsProcessDetectorVanadium
+\item DgsConvertToEnergyTransfer
+\item DgsAbsoluteUnitsReduction
+\item \textit{MaskDetectors}
+\item \textit{Divide}
+\end{itemize}
+\end{itemize}
