@@ -15,20 +15,86 @@ The top-level workflow algorithm is called DgsReduction and is responsible for t
 
 \begin{itemize}
 \item DgsDiagnose
+\begin{itemize}
+\item DgsProcessDetectorVanadium
+\item DgsProcessDetectorVanadium
+\item DgsPreprocessData
+\item \textit{Integration}
+\item \textit{Integration}
+\item \textit{ConvertUnits}
+\item \textit{Divide}
+\item \textit{DetectorDiagnostic}
+\end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsProcessDetectorVanadium
+\begin{itemize}
+\item DgsPreprocessData
+\item \textit{ConvertUnits}
+\item \textit{Rebin}
+\item \textit{MaskDetectors}
+\end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsPreprocessData
+\begin{itemize}
+\item \textit{NormaliseByCurrent} or \textit{NormaliseToMonitor}
+\end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsConvertToEnergyTransfer
+\begin{itemize}
+\item \textit{GetEi}
+\item \textit{ChangeBinOffset}
+\item \textit{MoveInstrumentComponent}\footnote{ISIS only}
+\item \textit{LoadDetectorInfo}\footnotemark[\value{footnote}]
+\item \textit{ConvertToDistribution}
+\item \textit{Rebin}\footnote{SNS only, due to event workspaces}
+\item \textit{ConvertUnits}\footnotemark[\value{footnote}]
+\item \textit{Rebin}\footnotemark[\value{footnote}]
+\item \textit{ConvertUnits}\footnotemark[\value{footnote}]
+\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}]
+\item \textit{FlatBackground}
+\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}]
+\item \textit{Minus}\footnotemark[\value{footnote}]
+\item \textit{ConvertFromDistribution}
+\item DgsPreprocessData
+\item \textit{ConvertUnits}
+\item \textit{Rebin}
+\item \textit{ConvertUnits}\footnote{SNS only}
+\item \textit{He3TubeEfficiency}\footnotemark[\value{footnote}] or \textit{DetectorEfficiencyCor}\footnote{ISIS}
+\item \textit{ConvertUnits}\footnote{SNS only}
+\item \textit{CorrectKiKf}
+\item \textit{Rebin}
+\item \textit{ConvertToDistribution}
+\item \textit{Divide}
+\item \textit{DgsRemap}
+\item \textit{SolidAngle}\footnote{Only used if grouping requested, but detvan not used}
+\item \textit{Divide}\footnotemark[\value{footnote}]
+\item \textit{Multiply}\footnote{ISIS only}
+\end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsAbsoluteUnitsReduction
+\begin{itemize}
+\item DgsProcessDetectorVanadium
+\item DgsConvertToEnergyTransfer
+\item \textit{Divide}
+\item \textit{Rebin}
+\item \textit{ConvertToMatrixWorkspace}
+\item \textit{DetectorDiagnostic}
+\item \textit{MaskDetectors}
+\item \textit{ConvertFromDistribution}
+\item \textit{WeightedMeanOfWorkspace}
+\item \textit{Divide}
+\item \textit{Multiply}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item DgsRemap
 \end{itemize}
