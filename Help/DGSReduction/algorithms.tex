@@ -1,44 +1,60 @@
 This section will cover how the physics requirements detailed in Section \ref{sec:Physics} are implemented via algorithms in the \textit{Mantid} code base.
 
-The top-level workflow algorithm is called DgsReduction and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core Mantid algorithms. The DgsReduction workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given. Core Mantid algorithms are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. 
+The top-level workflow algorithm is called DgsReduction and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core Mantid algorithms. The DgsReduction workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given. Core Mantid algorithms are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. Before getting into the breakdown, below is a listing of symbols used to identify the types of data that are being operated on by the algorithms.
+
+\begin{description}
+\item[DS] This is the data sample
+\item[SDV] This is the detector vanadium associated with DS
+\item[ISDV] This is the integrated (processed) sample detector vanadium
+\item[DV2] This is a second detector vanadium used for diagnostics
+\item[AU] This is the sample for absolute units correction
+\item[ADV] This is the detector vanadium associated with AU. Could be same as SDV.
+\item[IAU] This is the final integrated absolute units data
+\item[s] A generic sample, either DS or AU
+\item[dv] A generic detector vanadium, either SDV or ADV
+\item[iw] An integrated dataset, either ISDV or IAU
+\item[tib] A calculated time-independent background
+\item[d] A generic dataset, possibly any of the capitalized entries
+\end{description}
+
 \begin{itemize}
 \item DgsReduction
 \begin{itemize}
-\item DgsDiagnose
-\item DgsProcessDetectorVanadium
-\item DgsConvertToEnergyTransfer
-\item DgsAbsoluteUnitsReduction
-\item \textit{MaskDetectors}
-\item \textit{Divide}
+\item DgsDiagnose (SDV, DV2, DS)
+\item DgsProcessDetectorVanadium (SDV)
+\item DgsConvertToEnergyTransfer (DS, ISDV)
+\item DgsAbsoluteUnitsReduction (AU, ADV)
+\item \textit{MaskDetectors} (DS $\leftarrow$ IAU)
+\item \textit{Divide} (DS, IAU)
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsDiagnose
 \begin{itemize}
-\item DgsProcessDetectorVanadium
-\item DgsProcessDetectorVanadium
-\item DgsPreprocessData
-\item \textit{Integration}
-\item \textit{Integration}
-\item \textit{ConvertUnits}
-\item \textit{Divide}
-\item \textit{DetectorDiagnostic}
+\item DgsProcessDetectorVanadium (dv)
+\item DgsProcessDetectorVanadium (DV2)
+\item DgsPreprocessData (s)
+\item \textit{Integration} (s $\rightarrow$ total counts)
+\item \textit{Integration} (s $\rightarrow$ background)
+\item \textit{ConvertUnits} (background)
+\item \textit{Divide} (background, dv, DV2)
+\item \textit{DetectorDiagnostic} (dv, DV2, total counts, background, s)
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-\item DgsProcessDetectorVanadium
+\item DgsProcessDetectorVanadium (dv)
 \begin{itemize}
 \item DgsPreprocessData
 \item \textit{ConvertUnits}
-\item \textit{Rebin}
+\item \textit{Rebin} 
 \item \textit{MaskDetectors}
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-\item DgsPreprocessData
+\item DgsPreprocessData (d)
 \begin{itemize}
 \item \textit{NormaliseByCurrent} or \textit{NormaliseToMonitor}
 \end{itemize}
@@ -48,53 +64,57 @@ The top-level workflow algorithm is called DgsReduction and is responsible for t
 \item DgsConvertToEnergyTransfer
 \begin{itemize}
 \item \textit{GetEi}
-\item \textit{ChangeBinOffset}
-\item \textit{MoveInstrumentComponent}\footnote{ISIS only}
-\item \textit{LoadDetectorInfo}\footnotemark[\value{footnote}]
-\item \textit{ConvertToDistribution}
-\item \textit{Rebin}\footnote{SNS only, due to event workspaces}
-\item \textit{ConvertUnits}\footnotemark[\value{footnote}]
-\item \textit{Rebin}\footnotemark[\value{footnote}]
-\item \textit{ConvertUnits}\footnotemark[\value{footnote}]
-\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}]
-\item \textit{FlatBackground}
-\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}]
-\item \textit{Minus}\footnotemark[\value{footnote}]
-\item \textit{ConvertFromDistribution}
-\item DgsPreprocessData
-\item \textit{ConvertUnits}
-\item \textit{Rebin}
-\item \textit{ConvertUnits}\footnote{SNS only}
-\item \textit{He3TubeEfficiency}\footnotemark[\value{footnote}] or \textit{DetectorEfficiencyCor}\footnote{ISIS}
-\item \textit{ConvertUnits}\footnote{SNS only}
-\item \textit{CorrectKiKf}
-\item \textit{Rebin}
-\item \textit{ConvertToDistribution}
-\item \textit{Divide}
-\item \textit{DgsRemap}
-\item \textit{SolidAngle}\footnote{Only used if grouping requested, but detvan not used}
-\item \textit{Divide}\footnotemark[\value{footnote}]
-\item \textit{Multiply}\footnote{ISIS only}
+\item \textit{ChangeBinOffset} (s)
+\item \textit{MoveInstrumentComponent}\footnote{ISIS only} (s)
+\item \textit{LoadDetectorInfo}\footnotemark[\value{footnote}] (s)
+\item \textit{ConvertToDistribution} (s)
+\item \textit{Rebin}\footnote{SNS only, due to event workspaces} (s)
+\item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
+\item \textit{Rebin}\footnotemark[\value{footnote}] (s)
+\item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
+\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}] (s)
+\item \textit{FlatBackground} (s)
+\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}] (s)
+\item \textit{Minus}\footnotemark[\value{footnote}] (s, tib)
+\item \textit{ConvertFromDistribution} (s)
+\item DgsPreprocessData (s)
+\item \textit{ConvertUnits} (s)
+\item \textit{Rebin} (s)
+\item \textit{ConvertUnits}\footnote{SNS only} (s)
+\item \textit{He3TubeEfficiency}\footnotemark[\value{footnote}] or \textit{DetectorEfficiencyCor}\footnote{ISIS} (s)
+\item \textit{ConvertUnits}\footnote{SNS only} (s)
+\item \textit{CorrectKiKf} (s)
+\item \textit{Rebin} (s)
+\item \textit{ConvertToDistribution} (s)
+\item \textit{Divide} (s, idv)
+\item \textit{DgsRemap} (s)
+\item \textit{SolidAngle}\footnote{Only used if grouping requested, but detvan not used} (s)
+\item \textit{Divide}\footnotemark[\value{footnote}] (s, solid angle)
+\item \textit{Multiply}\footnote{ISIS only} (s, scale factor)
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
 \item DgsAbsoluteUnitsReduction
 \begin{itemize}
-\item DgsProcessDetectorVanadium
-\item DgsConvertToEnergyTransfer
-\item \textit{Divide}
-\item \textit{Rebin}
-\item \textit{ConvertToMatrixWorkspace}
-\item \textit{DetectorDiagnostic}
-\item \textit{MaskDetectors}
-\item \textit{ConvertFromDistribution}
-\item \textit{WeightedMeanOfWorkspace}
-\item \textit{Divide}
-\item \textit{Multiply}
+\item DgsProcessDetectorVanadium (ADV)
+\item DgsConvertToEnergyTransfer (AU, IADV)
+\item \textit{Divide} (AU, $\frac{V_{mass}}{V_{rmm}}$)
+\item \textit{Rebin} (AU)
+\item \textit{ConvertToMatrixWorkspace} (AU)
+\item \textit{DetectorDiagnostic} (AU)
+\item \textit{MaskDetectors} (AU)
+\item \textit{ConvertFromDistribution} (AU)
+\item \textit{WeightedMeanOfWorkspace} (AU $\rightarrow$ IAU)
+\item \textit{Divide} (IAU, $\sigma(E)$)
+\item \textit{Multiply} (IAU, $\frac{Sample_{mass}}{Sample_{rmm}}$)
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-\item DgsRemap
+\item DgsRemap\footnote{Algorithms can be run in reverse order} (d)
+\begin{itemize}
+\item \textit{MaskDetectors}
+\item \textit{GroupDetectors}
+\end{itemize}
 \end{itemize}
