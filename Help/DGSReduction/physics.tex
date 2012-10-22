@@ -1,16 +1,18 @@
-When performing a neutron scattering experiment one records data as either events (time of flight, wall clock time, and pixel ID tuples) or histograms (time of flight, pixel ID, number of counts tuples). Both of them have advantages and disadvantages, but neither is a format that is easy to understand from a physics point of view. What users like to see is either the {\it differential cross section} or the {\it dynamic structure factor}. The process to get to this format is called reduction. 
+When performing a neutron scattering experiment, one records data as either events (time of flight, wall clock time, and pixel ID tuples) or histograms (time of flight, pixel ID, number of counts tuples). Both of them have advantages and disadvantages, but neither is a format that is easy to understand from a physics point of view. What users like to see is either the {\it differential cross section} or the {\it dynamic structure factor}. The process to get to this format is called reduction\footnote{This is in complexity, not size.}. 
 
 For direct geometry spectrometers, the sample is placed in a monochromatic beam, with an incident energy $E_i$, and a flux (neutrons per time, per unit area) $\Phi(E_i)$. 
-The experiments measure the partial current$\delta J_f(k_f)$, the number of neutrons scattered per time in a solid angle $d\Omega$, having a final energy in an interval $dE$ around the final energy $E_f$. The differential cross section is defined as the scattered current density normalized by the solid angle, the flux, and energy interval.
-\begin{equation}\label{crosssection}
-\frac{d^2\sigma(\textbf{Q},E)}{dE d\Omega}=\frac{\delta J_f(k_f)}{\Phi(E_i) dE d\Omega}
+The experiments measure the partial current $\delta J_f(\bf{k}_f)$, the number of neutrons scattered per time in a solid angle $d\Omega$, having a final energy in an interval $dE$ around the final energy $E_f$. The differential cross section is defined as the scattered current density normalized by the solid angle, the flux, and energy interval.
+\begin{equation}\label{eq:crosssection}
+\frac{d^2\sigma(\textbf{Q},E)}{dE d\Omega}=\frac{\delta J_f(\bf{k}_f)}{\Phi(E_i) dE d\Omega}
 \end{equation} 
 
-The cross section contains information about the sample physics, but is dependent on the experiment physics as well. The dynamic structure factor, $S(\textbf{Q},E)$, is a quantity that is sample dependent only. The relationship between the dynamic structure factor and the scattering cross section is given by
-\begin{equation}\label{structurefactor}
+The momentum transfer vector for the sample, $\bf Q$, is defined as $\bf{k}_i - \bf{k}_f$, while the energy transfer for the sample is $E = E_i - E_f$. Note that the energy and momentum transfer for the sample have a negative sign compared to the same quantities for the neutron.
+
+The cross section contains information about the sample physics, but is dependent on the experiment physics as well. The dynamic structure factor, $S(\textbf{Q},E)$, is a quantity that is sample dependent only. The relationship between the dynamic structure factor and the differential cross section is given by
+\begin{equation}\label{eq:structurefactor}
 \frac{d^2\sigma(\textbf{Q},E)}{dE d\Omega}=N\frac{k_f}{k_i}\frac{\sigma}{4\pi} S(\textbf{Q},E)
 \end{equation}
-where $N$ is the number of unit cells or molecules, $k_i, k_f$ are the incident and final neutron wave vectors, and $\sigma$ is the average scattering cross section of the unit cell/molecule that has the dynamical structure factor $S(\textbf{Q},E)$. Please note that the quantity that is additive is the differential cross section, meaning that if we have nuclear scattering, with average cross section $\sigma_N$, and magnetic cross section, with average cross section $\sigma_M$, we can write 
+where $N$ is the number of unit cells or molecules, $k_i$ and $k_f$ are the incident and final neutron wave vectors, and $\sigma$ is the average scattering cross section of the unit cell/molecule that has the dynamical structure factor $S(\textbf{Q},E)$. Please note that the quantity that is additive is the differential cross section, meaning that if we have nuclear scattering, with average cross section $\sigma_N$, and magnetic cross section, with average cross section $\sigma_M$, we can write 
   
 \begin{eqnarray*}
 \frac{d^2\sigma(\textbf{Q},E)}{dE d\Omega}&=&\frac{d^2\sigma _N(\textbf{Q},E)}{dE d\Omega}+\frac{d^2\sigma _M(\textbf{Q},E)}{dE d\Omega}\\
@@ -18,53 +20,54 @@ where $N$ is the number of unit cells or molecules, $k_i, k_f$ are the incident 
 &=&N\frac{k_f}{k_i}\frac{\sigma _N S_N(\textbf{Q},E)+\sigma _M S_M(\textbf{Q},E) } {4\pi}
 \end{eqnarray*}
 
-There are four major steps required to obtain the scattering cross section or the dynamic structure factor.
+There are four major steps required to obtain the differential cross section or the dynamic structure factor.
 
 \subsection{Detector cross-calibration using incoherent scattering}
 It is customary to check the efficiency variation of the various neutron detectors using incoherent scattering, usually a vanadium sample. For better statistics, when possible, some instruments can perform a measurement using a white (or quasi-white) beam.
 
-An incoherent scatterer, like vanadium, scatters uniformly in all detectors. The number of neutron counts should therefore be proportional to the solid angle of the detectors and to their intrinsic efficiency. 
+An incoherent scatterer, like vanadium, scatters uniformly in all directions. The number of neutron counts should therefore be proportional to the solid angle of the detectors and to their intrinsic efficiency. 
 
-In practice, we restrict the number of events to a certain range in the energy domain (or wavelength, or time of flight). This allows elimination of artefacts, such as prompt pulse neutrons (very high energy neutrons, not stepped by the choppers).
+In practice, we restrict the number of events to a certain range in the energy domain (or wavelength, or time of flight). This allows elimination of artefacts, such as prompt pulse neutrons (very high energy neutrons, not stopped by the choppers).
 
-Dividing sample data by the cross-calibration data takes care of the division by solid angle in equation \ref{crosssection}. 
+Dividing sample data by the cross-calibration data takes care of the division by solid angle in formula~\ref{eq:crosssection}. 
 
 
 \subsection{Sample data reduction} 
-Data loaded from the files is in time-of-flight units. The output we are interested in has units of energy transfer. In order to be able to convert between the two, one needs to know the incident energy. This can be found by measuring the neutron flux passing through two monitors. The differences in the peak times, and the positions of the monitors, give the velocity of the neutrons. This is done using the GetEi algorithm. It also allows to calculate an offset time, $t_0$. If time=0 is when the proton beam hits the target, this offset time is the time required to moderate the neutrons. Therefore the first step in data processing is an adjustment for this offset. This can be done in two equivalent ways. One can subtract the  $t_0$ from the time-of-flight coordinates for the neutron events, and keep the source of neutrons at the face of the moderator. The second way is to subtract the peak time in the first moderator, and move the origin of the neutrons at the first moderator.
+Data loaded from the files is in time-of-flight units. The output we are interested in has units of energy transfer. In order to be able to convert between the two, one needs to know the incident energy. This can be found by measuring the neutron flux passing through two monitors. The differences in the peak times, and the positions of the monitors, give the velocity of the neutrons. This is done using the \textit{GetEi} algorithm. This procedure also allows one to calculate an offset time, $t_0$. If time=0 is when the proton beam hits the target, this offset time is the time required to moderate the neutrons. Therefore the first step in data processing is an adjustment for this offset. This can be done in two equivalent ways. One can subtract the  $t_0$ from the time-of-flight coordinates for the neutron events, and keep the source of neutrons at the face of the moderator. The second way is to subtract the peak time in the first monitor, and move the origin of the neutrons from the moderator to the first monitor position.
 
-The cross section expression in formula \ref{crosssection} contains a normalization of the neutron counts by the incident flux. While we don't have an absolute number for $\Phi(E_i)$, we can use something proportional to it, which is either the proton charge,  or the integrated intensity in a monitor.
+The cross section expression in formula~\ref{eq:crosssection} contains a normalisation of the neutron counts by the incident flux. While we don't have an absolute number for $\Phi(E_i)$, we can use something proportional to it, which is either the proton charge,  or the integrated intensity in a monitor.
 
-During experiments, one finds a neutron background that is time independent. It is possible to subtract such background by finding a time-of-flight range that contains only this background, fit it to a constant, expand it to the whole time-of-flight range, and subtract it. A very important observation for this case is that the algorithms to subtract the time-independent background require the output data to be in histogram mode, so all information about individual neutron events is lost. For more informations, see FlatBackground algorithm.
+During experiments, one finds a neutron background that is time independent. It is possible to subtract such background by finding a time-of-flight range that contains only this background, fit it to a constant, expand it to the whole time-of-flight range, and subtract it. A very important observation for this case is that the algorithms to subtract the time-independent background require the output data to be in histogram mode, so all information about individual neutron events is lost. For more informations, see \textit{FlatBackground} algorithm.
 
-While the overall efficiency of the neutron detectors is measured during cross-calibration, there is a variation that depends on the neutron energy - slower neutrons are easier to detect. There are two algorithms that correct for this effect. Data collected at SNS uses the He3TubeEfficiency algorithm, while data at ISIS uses  DetectorEfficiencyCor algorithm.
+While the overall efficiency of the neutron detectors is measured during cross-calibration, there is a variation that depends on the neutron energy - slower neutrons are easier to detect. There are two algorithms that correct for this effect. Data collected at SNS uses the \textit{He3TubeEfficiency} algorithm, while data at ISIS uses \textit{DetectorEfficiencyCor} algorithm.
 
-If we want our data to be proportional to the dynamic structure factor instead of the scattering cross section, we can multiply the neutron intensity by $k_i/k_f$ (see formula \ref{structurefactor}). 
+If we want our data to be proportional to the dynamic structure factor instead of the differential cross section, we can multiply the neutron intensity by $k_i/k_f$ (see formula~\ref{eq:structurefactor}). 
 
-At this point, we can ensure that the sample data is put on a regular energy transfer grid, using the Rebin algorithm.
+At this point, we can ensure that the sample data is put on a regular energy transfer grid, using the \textit{Rebin} algorithm.
 
-once the previous step is performed, it is possible now to divide by the $dE$ term in formula \ref{crosssection}. This is done by using the ConvertToDistribution algorithm. Note that the output of this algorithm is not an event workspace any more. If events are still useful, make sure you are not using the distribution flag. 
+Once the previous step is performed, it is possible now to divide by the $dE$ term in formula~\ref{eq:crosssection}. This is done by using the \textit{ConvertToDistribution} algorithm. Note that the output of this algorithm is not an event workspace any more. If events are still useful, make sure you are not using the distribution flag. 
 
-In order to take out the solid angle dependence, we mentioned that we can divide by the cross-normalization incoherent data. Diagnostic tests have to be run on this data, to make sure we don't divide by 0. This means that some pixels will be masked. A more detailed description is found in section \ref{detdiag}. 
+In order to take out the solid angle dependence, we mentioned that we can divide by the cross-normalisation incoherent data. Diagnostic tests have to be run on this data, to make sure we don't divide by 0. This means that some pixels will be masked. A more detailed description is found in Section~\ref{sec:Physics-detdiag}. 
 
 After masking, the last step is an optional grouping of the data, in order to decrease data size.
 
  
-\subsection{Absolute units normalization}
-Data analysed according to the previous section is proportional to the differential cross section or the dynamic structure factor. In order to get absolute units, one needs to compare the results to a known standard. This can be done using several methods, for example calculating the scattering cross section of an acoustic phonon. While this is the more accurate, it is not easy to implement it in a general fashion. DGSReduction in Mantid implements an absolute normalization using monochromatic Vanadium. The cross section of Vanadium is well known. One measures it in the same conditions as the sample, and uses the same reduction parameters. One can then calculate the scattering per unit formula for the sample by just knowing the relative molecular mass of the sample and vanadium, and the mass of the two. When calculating the ratio of the total scattering intensities from sample and absolute normalization vanadium, the reduction considers a weighted average. One can limit the use of intensities with very high or very low statistical weight. 
+\subsection{Absolute units normalisation}
+Data analysed according to the previous section is proportional to the differential cross section or the dynamic structure factor. In order to get absolute units, one needs to compare the results to a known standard. This can be done using several methods, for example calculating the scattering cross section of an acoustic phonon. While this is the more accurate method, it is not easy to implement it in a general fashion. \textit{DGSReduction} in \textit{Mantid} implements an absolute normalisation using monochromatic Vanadium. The cross section of Vanadium is well known. One measures it in the same conditions as the sample, and uses the same reduction parameters. One can then calculate the scattering per unit formula for the sample by just knowing the relative molecular mass of the sample and vanadium, and the mass of the two. When calculating the ratio of the total scattering intensities from sample and absolute normalisation vanadium, the reduction considers a weighted average. One can limit the use of intensities with very high or very low statistical weight. 
 
 
-\subsection{Detector diagnostics}\label{detdiag}
-Detectors with artificially high or low counting rates can introduce artefacts in the final data. Zero counts in the cross-normalization run would yield division by zero errors. Therefore it is necessary to perform several diagnostic tests.
+\subsection{Detector diagnostics}\label{sec:Physics-detdiag}
+Detectors with artificially high or low counting rates can introduce artefacts in the final data. Zero counts in the cross-normalisation data would yield division by zero errors. Therefore it is necessary to perform several diagnostic tests.
 
 \begin{enumerate}
 \item Once the vanadium data is integrated in the desired range, the first step is applying a hard mask. For example, some prefer to mask the top and bottom eight pixels in a tube with 128 pixels. This takes care of some edge effects.
 \item The second step is finding detectors with a count rate too high, or too low.
 \item Next, one looks at the median value of the vanadium counts. High or low outliers can be thrown out, then the median is recalculated. The user then sets a limit (as fraction of median count rate) of pixels to keep. There is also a significance test, the number of error bars away from the median so that pixels are kept. 
 \item If there is a second vanadium run, one can mask pixels for which the variation in intensity is much larger than the overall change.
-\item In some cases, tests are run on the data as well. One can choose a background range, and mask pixels with too low or too high count rates, in a similar fashion to the vanadium diagnostic tests.
-\item For position sensitive detectors, one can use the sample data to check if any tube is saturated. Pixels with a raw count rate higher than a certain value are masked. This part is handled by the CreatePSDBleedMask sub-algorithm 
+\item In some cases, tests are run on the sample data as well. One can choose a background range, and mask pixels with too low or too high count rates, in a similar fashion to the vanadium diagnostic tests.
+\item One can also integrate the entire sample data range to get the total counts for each detector pixel and mask pixels with too low or too high counts.
+\item For position sensitive detectors, one can use the sample data to check if any tube is saturated. If there is a pixel with a raw count rate higher than a certain value, the entire tube is masked. This part is handled by the \textit{CreatePSDBleedMask} sub-algorithm 
 \end{enumerate}
 
-All these tests are performed using the DiagnoseDetectors algorithm
+All these tests are performed using the \textit{DetectorDiagnostic} algorithm
 
