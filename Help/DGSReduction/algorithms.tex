@@ -1,18 +1,19 @@
-This section will cover how the physics requirements detailed in Section \ref{sec:Physics} are implemented via algorithms in the \mantid{} code base.
+This section will cover how the physics requirements detailed in Section~\ref{sec:Physics} are implemented via algorithms in the \mantid{} code base.
 
-The top-level workflow algorithm is called \textit{DgsReduction} and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core \mantid{} algorithms. The \textit{DgsReduction} workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given and all corrections are requested. Core \mantid{} algorithms in the listings below are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. Before getting into the breakdown, below is a listing of symbols used to identify the types of data that are being operated on by the algorithms.
+The top-level workflow algorithm is called \textit{DgsReduction}, and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core \mantid{} algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core \mantid{} algorithms. The \textit{DgsReduction} workflow algorithm is special compared to the other workflow algorithms because it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given and all corrections are requested. Core \mantid{} algorithms in the listings below are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. Before getting into the breakdown, below is a listing of symbols used to identify the types of data that are being operated on by the algorithms.
 
 \begin{description}
 \item[SD] This is the sample data
 \item[SDV] This is the cross-calibration detector vanadium associated with SD
 \item[ISDV] This is the integrated (processed) sample detector vanadium
-\item[DV2] This is a second detector vanadium used for diagnostics
+\item[SDV2] This is a second detector vanadium used for diagnostics
 \item[AU] This is the sample for absolute units correction
 \item[ADV] This is the detector vanadium associated with AU. Could be same as SDV.
+\item[IADV] This is the integrated (processed) detector vanadium associated with AU
 \item[IAU] This is the final integrated absolute units data
 \item[s] A generic sample, either SD or AU
-\item[dv] A generic detector vanadium, either SDV or ADV
-\item[iw] An integrated dataset, either ISDV or IAU
+\item[dv] A generic detector vanadium, either SDV, SDV2 or ADV
+\item[idv] An integrated dataset, either ISDV or IAU
 \item[tib] A calculated time-independent background
 \item[d] A generic dataset, possibly any of the capitalized entries
 \end{description}
@@ -20,8 +21,8 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \begin{itemize}
 \item DgsReduction
 \begin{itemize}
-\item DgsDiagnose (SDV, DV2, SD)
-\item DgsProcessDetectorVanadium (SDV)
+\item DgsDiagnose (SDV, SDV2, SD)
+\item DgsProcessDetectorVanadium (SDV $\rightarrow$ ISDV)
 \item DgsConvertToEnergyTransfer (SD, ISDV)
 \item DgsAbsoluteUnitsReduction (AU, ADV)
 \item \textit{MaskDetectors} (SD $\leftarrow$ IAU)
@@ -33,13 +34,13 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item DgsDiagnose
 \begin{itemize}
 \item DgsProcessDetectorVanadium (dv)
-\item DgsProcessDetectorVanadium (DV2)
+\item DgsProcessDetectorVanadium (SDV2)
 \item DgsPreprocessData (s)
 \item \textit{Integration} (s $\rightarrow$ total counts)
 \item \textit{Integration} (s $\rightarrow$ background)
 \item \textit{ConvertUnits} (background)
-\item \textit{Divide} (background, dv, DV2)
-\item \textit{DetectorDiagnostic} (dv, DV2, total counts, background, s)
+\item \textit{Divide} (background, dv, SDV2)
+\item \textit{DetectorDiagnostic} (dv, SDV2, total counts, background, s)
 \end{itemize}
 \end{itemize}
 
@@ -67,14 +68,13 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item \textit{ChangeBinOffset} (s)
 \item \textit{MoveInstrumentComponent}\footnote{\isis{} only} (s)
 \item \textit{LoadDetectorInfo}\footnotemark[\value{footnote}] (s)
-\item \textit{ConvertToDistribution} (s)
-\item \textit{Rebin}\footnote{\sns{} only, due to event workspaces} (s)
+\item \textit{Rebin}\footnote{\sns{} only, due to event workspaces} (s $\rightarrow$ bg)
 \item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
 \item \textit{Rebin}\footnotemark[\value{footnote}] (s)
 \item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
 \item \textit{ConvertToDistribution}\footnotemark[\value{footnote}] (s)
-\item \textit{FlatBackground} (s)
-\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}] (s)
+\item \textit{FlatBackground} (bg or s $\rightarrow$ tib)
+\item \textit{ConvertToDistribution}\footnotemark[\value{footnote}] (tib)
 \item \textit{Minus}\footnotemark[\value{footnote}] (s, tib)
 \item \textit{ConvertFromDistribution} (s)
 \item DgsPreprocessData (s)
@@ -87,9 +87,7 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item \textit{Rebin} (s)
 \item \textit{ConvertToDistribution} (s)
 \item \textit{Divide} (s, idv)
-\item \textit{DgsRemap} (s)
-\item \textit{SolidAngle}\footnote{Only used if grouping requested, but detvan not used} (s)
-\item \textit{Divide}\footnotemark[\value{footnote}] (s, solid angle)
+\item DgsRemap (s)
 \item \textit{Multiply}\footnote{\isis{} only} (s, scale factor)
 \end{itemize}
 \end{itemize}
@@ -97,7 +95,7 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \begin{itemize}
 \item DgsAbsoluteUnitsReduction
 \begin{itemize}
-\item DgsProcessDetectorVanadium (ADV)
+\item DgsProcessDetectorVanadium (ADV $\rightarrow$ IADV)
 \item DgsConvertToEnergyTransfer (AU, IADV)
 \item \textit{Divide} (AU, $\frac{V_{mass}}{V_{rmm}}$)
 \item \textit{Rebin} (AU)
@@ -106,7 +104,7 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item \textit{MaskDetectors} (AU)
 \item \textit{ConvertFromDistribution} (AU)
 \item \textit{WeightedMeanOfWorkspace} (AU $\rightarrow$ IAU)
-\item \textit{Divide} (IAU, $\sigma(E)$)
+\item \textit{Divide} (IAU, $\sigma(E_i)$)
 \item \textit{Multiply} (IAU, $\frac{Sample_{mass}}{Sample_{rmm}}$)
 \end{itemize}
 \end{itemize}
@@ -115,6 +113,6 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item DgsRemap\footnote{Algorithms can be run in reverse order} (d)
 \begin{itemize}
 \item \textit{MaskDetectors}
-\item \textit{GroupDetectors}
+\item \textit{GroupDetectors} (\textbf{NOTE:} This assumes all pixels have same solid angle!)
 \end{itemize}
 \end{itemize}

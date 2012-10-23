@@ -6,7 +6,7 @@ config['default.facility'] = "SNS"
 ws_name = "my_ws"
 output = DgsReduction(
             SampleInputFile="CNCS_7860_event.nxs",
-            OutputWorkspaceName=ws_name
+            OutputWorkspace=ws_name
             )
 \end{verbatim}
 The simplest script that can be assembled for \isis{} is:
@@ -15,7 +15,7 @@ config['default.facility'] = "ISIS"
 ws_name = "my_ws"
 output = DgsReduction(
             SampleInputFile="MER06398.raw",
-            OutputWorkspaceName=ws_name,
+            OutputWorkspace=ws_name,
             IncidentEnergyGuess=18.0
             )
 \end{verbatim}
@@ -33,12 +33,12 @@ You may run into the case where you have a dataset that needs some correction ap
 config['default.facility'] = "SNS"
 config['datasearch.searcharchive'] = 'On'
 dataset = "SEQ30541"
-output = LoadEventNexus(dataset, OutputWorkspaceName=dataset, 
+output = LoadEventNexus(dataset, OutputWorkspace=dataset, 
             LoadMonitors=True)
 monitor = output[1]
 valC3 = output[0].getRun()['Phase3'].getStatistics().median
 output = FilterByLogValue(output[0], 
-            OutputWorkspaceName=dataset+"_filt", 
+            OutputWorkspace=dataset+"_filt", 
             LogName='Phase3', MinimumValue=valC3-0.15, 
             MaximumValue=valC3+0.15)
 ws_name = "my_ws"
