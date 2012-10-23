@@ -39,7 +39,7 @@ The cross section expression in formula~\ref{eq:crosssection} contains a normali
 
 During experiments, one finds a neutron background that is time independent. It is possible to subtract such background by finding a time-of-flight range that contains only this background, fit it to a constant, expand it to the whole time-of-flight range, and subtract it. A very important observation for this case is that the algorithms to subtract the time-independent background require the output data to be in histogram mode, so all information about individual neutron events is lost. For more informations, see \textit{FlatBackground} algorithm.
 
-While the overall efficiency of the neutron detectors is measured during cross-calibration, there is a variation that depends on the neutron energy - slower neutrons are easier to detect. There are two algorithms that correct for this effect. Data collected at SNS uses the \textit{He3TubeEfficiency} algorithm, while data at ISIS uses \textit{DetectorEfficiencyCor} algorithm.
+While the overall efficiency of the neutron detectors is measured during cross-calibration, there is a variation that depends on the neutron energy - slower neutrons are easier to detect. There are two algorithms that correct for this effect. Data collected at \sns{} uses the \textit{He3TubeEfficiency} algorithm, while data at \isis{} uses \textit{DetectorEfficiencyCor} algorithm.
 
 If we want our data to be proportional to the dynamic structure factor instead of the differential cross section, we can multiply the neutron intensity by $k_i/k_f$ (see formula~\ref{eq:structurefactor}). 
 

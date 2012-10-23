@@ -1,6 +1,6 @@
-This section will cover how the physics requirements detailed in Section \ref{sec:Physics} are implemented via algorithms in the \textit{Mantid} code base.
+This section will cover how the physics requirements detailed in Section \ref{sec:Physics} are implemented via algorithms in the \mantid{} code base.
 
-The top-level workflow algorithm is called \textit{DgsReduction} and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core \textit{Mantid} algorithms. The \textit{DgsReduction} workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given and all corrections are requested. Core \textit{Mantid} algorithms in the listings below are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. Before getting into the breakdown, below is a listing of symbols used to identify the types of data that are being operated on by the algorithms.
+The top-level workflow algorithm is called \textit{DgsReduction} and is responsible for the main orchestration of the data reduction process. This algorithm relies on six other workflow algorithms for execution. All the workflow algorithms in turn rely on core Mantid algorithms for the actual calculations. A workflow algorithm is only responsible for orchestrating the setup and execution of core \mantid{} algorithms. The \textit{DgsReduction} workflow algorithm is special compared to the other workflow algorithms it uses in the fact that it handles the use of either files or workspaces for the various inputs. All other workflow algorithms only handle workspaces for inputs. The following shows the order of execution of the workflow algorithms if all input datasets are given and all corrections are requested. Core \mantid{} algorithms in the listings below are shown in italics. Each workflow algorithm will be broken down to show the core algorithms that it runs. Before getting into the breakdown, below is a listing of symbols used to identify the types of data that are being operated on by the algorithms.
 
 \begin{description}
 \item[SD] This is the sample data
@@ -65,10 +65,10 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \begin{itemize}
 \item \textit{GetEi}
 \item \textit{ChangeBinOffset} (s)
-\item \textit{MoveInstrumentComponent}\footnote{ISIS only} (s)
+\item \textit{MoveInstrumentComponent}\footnote{\isis{} only} (s)
 \item \textit{LoadDetectorInfo}\footnotemark[\value{footnote}] (s)
 \item \textit{ConvertToDistribution} (s)
-\item \textit{Rebin}\footnote{SNS only, due to event workspaces} (s)
+\item \textit{Rebin}\footnote{\sns{} only, due to event workspaces} (s)
 \item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
 \item \textit{Rebin}\footnotemark[\value{footnote}] (s)
 \item \textit{ConvertUnits}\footnotemark[\value{footnote}] (s)
@@ -80,9 +80,9 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item DgsPreprocessData (s)
 \item \textit{ConvertUnits} (s)
 \item \textit{Rebin} (s)
-\item \textit{ConvertUnits}\footnote{SNS only} (s)
-\item \textit{He3TubeEfficiency}\footnotemark[\value{footnote}] or \textit{DetectorEfficiencyCor}\footnote{ISIS} (s)
-\item \textit{ConvertUnits}\footnote{SNS only} (s)
+\item \textit{ConvertUnits}\footnote{\sns{} only} (s)
+\item \textit{He3TubeEfficiency}\footnotemark[\value{footnote}] or \textit{DetectorEfficiencyCor}\footnote{\isis{}} (s)
+\item \textit{ConvertUnits}\footnote{\sns{} only} (s)
 \item \textit{CorrectKiKf} (s)
 \item \textit{Rebin} (s)
 \item \textit{ConvertToDistribution} (s)
@@ -90,7 +90,7 @@ The top-level workflow algorithm is called \textit{DgsReduction} and is responsi
 \item \textit{DgsRemap} (s)
 \item \textit{SolidAngle}\footnote{Only used if grouping requested, but detvan not used} (s)
 \item \textit{Divide}\footnotemark[\value{footnote}] (s, solid angle)
-\item \textit{Multiply}\footnote{ISIS only} (s, scale factor)
+\item \textit{Multiply}\footnote{\isis{} only} (s, scale factor)
 \end{itemize}
 \end{itemize}
 

@@ -1,6 +1,6 @@
-The GUI described in Section~\ref{sec:UI} provides a way to export a script from the gathered information. However, one can put a script together by hand. \textit{Mantid} uses Python as its scripting interface. The scripts described in this section will be constructed using the version 2 Python API and oriented towards running them via \textit{MantidPlot}. Documentation on using the version 2 API can be found at \textit{http://www.mantidproject.org/Python\_In\_Mantid}.
+The GUI described in Section~\ref{sec:UI} provides a way to export a script from the gathered information. However, one can put a script together by hand. \mantid{} uses Python as its scripting interface. The scripts described in this section will be constructed using the version 2 Python API and oriented towards running them via \textit{MantidPlot}. Documentation on using the version 2 API can be found at \textit{http://www.mantidproject.org/Python\_In\_Mantid}.
 
-The simplest script that can be assembled for SNS:
+The simplest script that can be assembled for \sns{}:
 \begin{verbatim}
 config['default.facility'] = "SNS"
 ws_name = "my_ws"
@@ -9,7 +9,7 @@ output = DgsReduction(
             OutputWorkspaceName=ws_name
             )
 \end{verbatim}
-The simplest script that can be assembled for ISIS is:
+The simplest script that can be assembled for \isis{} is:
 \begin{verbatim}
 config['default.facility'] = "ISIS"
 ws_name = "my_ws"
@@ -19,7 +19,7 @@ output = DgsReduction(
             IncidentEnergyGuess=18.0
             )
 \end{verbatim}
-Both scripts assume that the provided file is in the default search path for \textit{Mantid} since full paths are not provided. The first line in both scripts is necessary to ensure correct functioning of the facility based switches in the reduction code and will override whatever has been set in the \textit{Mantid} user preferences. From here, more options can be passed to the script to perform more reduction steps. The parameters are documented here: \textit{http://www.mantidproject.org/DgsReduction}.
+Both scripts assume that the provided file is in the default search path for \mantid{} since full paths are not provided. The first line in both scripts is necessary to ensure correct functioning of the facility based switches in the reduction code and will override whatever has been set in the \mantid{} user preferences. From here, more options can be passed to the script to perform more reduction steps. The parameters are documented here: \textit{http://www.mantidproject.org/DgsReduction}.
 
 It is possible to just pass run numbers or an instrument name / run number combination to the script. In order for automatic file finding to take place, a couple of modifications need to be made to the script. 
 \begin{verbatim}
@@ -28,7 +28,7 @@ config['default.instrument'] = "MERLIN"
 \end{verbatim}
 This allows you to pass just run numbers to the \textit{SampleInputFile} parameter as well as other \textit{*InputFile} parameters. Alternatively, you can omit the second line and hand something like \textit{CNCS7860} to the \textit{SampleInputFile} parameter.
 
-You may run into the case where you have a dataset that needs some correction applied to it before handing it off for reduction. This system allows for this eventuality. In this case, you pass the appropriate workspace to the \textit{SampleInputWorkspace} parameter. For SNS, this case will require that the monitors be loaded and passed to the \textit{SampleInputMonitorWorkspace} parameter. For ISIS, this will depend on how/if \textit{LoadRaw} is invoked. The following is an example taken from the \textit{SEQUOIA} instrument at the SNS. 
+You may run into the case where you have a dataset that needs some correction applied to it before handing it off for reduction. This system allows for this eventuality. In this case, you pass the appropriate workspace to the \textit{SampleInputWorkspace} parameter. For \sns{}, this case will require that the monitors be loaded and passed to the \textit{SampleInputMonitorWorkspace} parameter. For \isis{}, this will depend on how/if \textit{LoadRaw} is invoked. The following is an example taken from the \textit{SEQUOIA} instrument at the \sns{}. 
 \begin{verbatim}
 config['default.facility'] = "SNS"
 config['datasearch.searcharchive'] = 'On'
