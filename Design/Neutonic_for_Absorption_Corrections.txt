@@ -1,0 +1,16 @@
+
+How to get neutronics information into absorption corections
+
+In a nutshell: Build new materials object in run object to hold parameters needed for absorption corrections
+
+Work:
+* Make Materials object similar to Goniometer which holds needed parameters:  AttenuationXSection, ScatteringXSection, and SampleNumberDensity and also parameters to scale with wavelength for using tables
+* New SetMaterials algorithm to set these parameters from user input or using the chemical formula input in NeutronAtom.  This algorithm will also set the name of the material
+* Use this Materials object in all absorption correction algorithms but leave present input of parameters as option:
+	AbsorptionCorrection         CylinderAbsorption     MonteCarloAbsorption 
+	AnyShapeAbsorption           FlatPlateAbsorption    MultipleScatteringCylinderAbsorption 
+	CuboidGaugeVolumeAbsorption  HRPDSlabCanAbsorption  SphericalAbsorption 
+        AnvredCorrections
+* Rewrite NeutronAtom to use lookup table or read file whichever is more efficient (try both)
+* New algorithm for absorption corrections for cylindrical samples using tables
+* New algorithms for absorption corrections for cans and powder in cans using both MonteCarlo and tables (will expand later)
