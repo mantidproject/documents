@@ -1,0 +1,11 @@
+==Client side==
+HTML5
+Javascript
+Dygraphs for 1D graphs
+Twitter Bootstrap css
+
+==Server Side==
+Python (Django?)
+Mantid
+iCat
+DB to keep track of user jobs?

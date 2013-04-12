@@ -1,0 +1,4 @@
+This directory contains documents related to development methodology.
+
+  - GitRevert.xml - Diagram that describes how to revert a commit in git. Load into http://diagram.ly to edit
+  - GitWorkflow.xml - Describes our git workflow. Load into http://diagram.ly to edit
