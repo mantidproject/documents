@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{10} 
+\setcounter{tocdepth}{10}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\newcommand{\mantid}{\ensuremath{\mathtt{MANTID}}}
+
+\begin{document}
+\title{Visualizing MDWorkspaces for the General Case}
+\author{Michael A. Reuter \& Andrei T. Savici}
+\date{Version 1.0 \\ \ \\ \today}
+\maketitle
+
+\section{Introduction}
+
+This brief paper is designed to describe the methodology for transforming MD datasets into VTK datasets. It will cover the general case which should be sufficient to handle both orthogonal and non-orthogonal reciprocal lattice structures.
+
+\section{Transformation Methodology}
+
+The transformation methodology will require the use of two matrices that must be available from the associated MDWorkspace. Those matrices are the $B$ matrix and the transformation matrix $T$. The transformation matrix is derived from the projection vectors associated with the ConvertToMD algorithm in \mantid. The $T$ matrix is constructed in the following manner:
+\begin{equation}
+T = ((U), (V), (W))
+\end{equation}
+
+From these two matrices, a skew ($S$) matrix will be created by the following procedure. First, a new matrix is created by multiplying the previous two matrices in the following manner:
+\begin{equation}
+B' = B \times T
+\end{equation}
+Next, the matrix $G^*$ is calculated by
+\begin{equation}
+G^* = B'^{T} \times B'
+\end{equation}
+
+A new $B$ matrix is recalculated by the \mantid$\ $UnitCell class using the previously calculated $G^*$ matrix. This is the skew ($S$) matrix. Next, a column normalization is apply to the skew matrix by creating a scale matrix. The diagonal elements of the scale matrix are calculated in the following manner.
+\begin{equation}
+N_{i,i} = \sqrt{\sum_j S_{j,i}^2}
+\end{equation}
+The skew matrix is then adjusted by the scale matrix as follows:
+\begin{equation}
+S = S \times N
+\end{equation}
+
+If there are more dimensions to the dataset, the skew matrix is expanded adding an extra row and column of zeros and a one at the new diagonal element. An affine matrix may be involved if a coordinate transformation was used during data generation. The affine matrix is then used to perform a similarity transform on the (possibly expanded) skew matrix in the following way.
+\begin{equation}
+S = A^{I} \times (S \times A)
+\end{equation}
+
+Once completed, the skew matrix is returned to a 3x3 matrix by removing the extra rows and columns beyond the third dimension. This is necessary since the viewed VTK data structure is inherently 3D. 
+
+The $S$ matrix can then be used to adjust the coordinates of the voxels (or points) generated from the associated MDWorkspace. The skew vectors that will be passed to ParaView to "fix" the cube axes for any dataset are determined by the following equations:
+\begin{equation}
+\vec{s}_1 = S \times \left(\begin{array}{c}1\\0\\0\end{array}\right)
+\end{equation}
+\begin{equation}
+\vec{s}_2 = S \times \left(\begin{array}{c}0\\1\\0\end{array}\right)
+\end{equation}
+\begin{equation}
+\vec{s}_3 = S \times \left(\begin{array}{c}0\\0\\1\end{array}\right)
+\end{equation}
+
+The skew vectors ($\vec{s}_i$) are then normalized (divided) by the reciprocal lattice contants $a^*$, $b^*$ and $c^*$ respectively if no coordinate transformation (reorientation) was performed. If a transformation was performed, a normalization array is created like: 
+\begin{equation}
+n = (a^*, b^*, c^*, 1, ...)
+\end{equation}
+and the the affine transformation is applied in the following manner
+\begin{equation}
+n = A \times n
+\end{equation}
+and the normalization factors are applied to the skew vectors by matching the index from the normalization array to the skew vector. Finally, each skew vector is normalized in the standard way. These vectors are then set on the VTK dataset so that ParaView will render them as non-orthogonal axes.
+
+\end{document}
