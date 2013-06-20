@@ -24,7 +24,7 @@ This brief paper is designed to describe the methodology for transforming MD dat
 
 The transformation methodology will require the use of two matrices that must be available from the associated MDWorkspace. Those matrices are the $B$ matrix and the transformation matrix $T$. The transformation matrix is derived from the projection vectors associated with the ConvertToMD algorithm in \mantid. The $T$ matrix is constructed in the following manner:
 \begin{equation}
-T = ((U), (V), (W))
+T = \left(\begin{array}{c}(U)\\(V)\\(W)\end{array}\right)
 \end{equation}
 
 From these two matrices, a skew ($S$) matrix will be created by the following procedure. First, a new matrix is created by multiplying the previous two matrices in the following manner:
@@ -38,14 +38,14 @@ G^* = B'^{T} \times B'
 
 A new $B$ matrix is recalculated by the \mantid$\ $UnitCell class using the previously calculated $G^*$ matrix. This is the skew ($S$) matrix. Next, a column normalization is apply to the skew matrix by creating a scale matrix. The diagonal elements of the scale matrix are calculated in the following manner.
 \begin{equation}
-N_{i,i} = \sqrt{\sum_j S_{j,i}^2}
+N_{i,i} = \frac{1}{\sqrt{\sum_j S_{j,i}^2}}
 \end{equation}
 The skew matrix is then adjusted by the scale matrix as follows:
 \begin{equation}
 S = S \times N
 \end{equation}
 
-If there are more dimensions to the dataset, the skew matrix is expanded adding an extra row and column of zeros and a one at the new diagonal element. An affine matrix may be involved if a coordinate transformation was used during data generation. The affine matrix is then used to perform a similarity transform on the (possibly expanded) skew matrix in the following way.
+If there are more dimensions to the dataset, the skew matrix is expanded adding an extra row and column of zeros and a one at the new diagonal element. An affine matrix ($A$) may be involved if a coordinate transformation was used during data generation. The affine matrix is then used to perform a similarity transform on the (possibly expanded) skew matrix in the following way.
 \begin{equation}
 S = A^{I} \times (S \times A)
 \end{equation}
