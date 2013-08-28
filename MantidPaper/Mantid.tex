@@ -2,6 +2,7 @@
 \usepackage{amssymb, graphicx}
 
 \newcommand{\vsi}{\textit{VSI}}
+
 \begin{document}
 
 \begin{frontmatter}
@@ -28,19 +29,18 @@
 % \author[label1,label2]{}
 % \address[label1]{}
 % \address[label2]{}
-
-\author[ornl]{A.~T.~Savici}
+\author[ornl]{A.~T.~Savici \footnote{For general Mantid correspondence use \texttt{mantid-help@mantidproject.org}}}
 \ead{saviciat@ornl.gov}
-\author[tessella]{O.~Arnold}
+\author[tessellaUK]{O.~Arnold}
 \author[ornl]{J.~C.~Bilheux}
 \author[ornl]{J.~M.~Borreguero}
 \author[isis]{A.~Buts}
 \author[ornl]{S.~I.~Campbell}
 \author[ill]{L.~Chapon}
 \author[ornl]{M.~Doucet}
-\author[tessella]{N.~Draper}
+\author[tessellaUK]{N.~Draper}
 \author[isis]{R.~Fowler}
-\author[tessella]{M.~Gigg}
+\author[tessellaUK]{M.~Gigg}
 \author[ornl]{V.~E.~Lynch}
 \author[isis]{A.~Markvardsen}
 \author[uws,ornl]{D.~J.~Mikkelson}
@@ -55,17 +55,19 @@
 \author[ornl]{M.~A.~Reuter}
 \author[isis]{J.~Taylor}
 \author[tessellaUS]{R.~Taylor}
-\author[tessella]{R.~Tolchenov}
+\author[tessellaUK]{R.~Tolchenov}
 \author[isis]{R.~Whitley}
 \author[ornl]{W.~Zhou}
 \author[ornl]{J.~Zikovsky}
 
-\address[ornl]{Neutron Data Analysis and Visualization, Oak Ridge National Laboratory, Oak Ridge, TN, USA}
-\address[tessella]{Tessella Ltd., Abingdon, Oxfordshire, UK}
+\address[ornl]{Neutron Data Analysis and Visualization, Oak Ridge National Laboratory, Oak~Ridge,~TN,~USA}
+\address[tessellaUK]{Tessella Ltd., Abingdon, Oxfordshire, UK}
 \address[isis]{ISIS Facility, Rutherford Appleton Laboratory, Chilton, Didcot, Oxfordshire, UK}
 \address[ill]{Institut Laue-Langevin, Grenoble, France}
 \address[uws]{University of Wisconsin-Stout, Menomonie, WI, USA}
-\address[tessella]{Tessella Inc., Newton, MA, USA}
+\address[tessellaUS]{Tessella Inc., Newton, MA, USA}
+
+
 
 \begin{abstract}
 The Mantid  package is the main tool for neutron scattering data analysis and visualization at SNS and ISIS. A general overview of the project, components, and usage examples are presented. 
@@ -85,7 +87,7 @@ Data analysis \sep Data visualization \sep Computer interfaces
 \section{Motivation}
 \label{motivation}
 With the advent of new, higher fluxes, neutron sources and new instruments, at ISIS and the Spallation Neutron Source (SNS), 
-neutron scattering is becoming a widespread tool for new users, without previous experience with this experimental technique. Improvements in computational techniques and higher neutron fluxes allow larger data sets to be acquired faster, so new techniques appeared in recent years (pair distribution function \cite{Egami}, multi angle rotation in time-of-flight spectroscopy, stroboscopic measurements \cite{Nojiri}, in-situ residual stress measurements \cite{Wang}). 
+neutron scattering is becoming a widespread tool for new users, without previous experience with this experimental technique. Improvements in computational techniques, instrumentation, and higher neutron fluxes allow larger data sets to be acquired faster, so new techniques appeared in recent years (pair distribution function \cite{Egami}, multi angle rotation in time-of-flight spectroscopy, stroboscopic measurements \cite{Nojiri}, in-situ residual stress measurements \cite{Wang}). 
 
 One of the main difficulty that researches face on the path between experiment and publication
 is the lack of a simple, yet powerful tool to perform analysis of their data,
@@ -110,32 +112,31 @@ The Manipulation and Analysis Toolkit for Instrument Data (MANTID) project, was 
 \label{infrastructure}
 To ensure high performance for data analysis, but also allow flexibility in how the data is processed, most of the project it is written in C++, with Python bindings.
  
-In order to achieve the stated goals, a large team of more than twenty scientists and software engineers in Europe and United States are collaborating on this project. For an effective collaboration, we use several software development tools and practices designed to support distributed development teams. New feature requests or defect reports are entered onto \textit{trac}, our issue tracking system \cite{trac}, which is used to track the implementation of the work, and trace the changes in the source code.
+In order to achieve the stated goals, a large team of more than twenty scientists and software engineers in Europe and United States are collaborating on this project. For an effective collaboration, we use several software development tools and practices designed to support distributed development teams. New feature requests or defect reports are entered onto \textit{Trac}, our issue tracking system \cite{trac}, which is used to track the implementation of the work, and trace the changes in the source code.
  
-The Mantid code and documentation repositories are hosted on github\cite{github}. To allow multiple developers to work in similar areas without interference, developers work on separate branches for each ticket. Each feature branch is merged onto a 'develop' branch whenever new code is ready.
-It is only after a ticket has been completely addressed and tested that the code changes on the feature branch are merged onto the 'master' branch from which release builds are made.
+The Mantid code and documentation repositories are hosted on GitHub\cite{github}. To allow multiple developers to work in similar areas without interference, developers work on separate branches for each ticket. Each feature branch is merged onto a `develop' branch whenever new code is ready.
+It is only after a ticket has been completely addressed and tested that the code changes on the feature branch are merged onto the `master' branch from which release builds are made.
 
-In order to ensure quality, the Mantid project uses a continuous integration environment built around the Jenkins continuous integration server\cite{jenkins}. Whenever new code is committed to the 'develop' branch, builds for each supported operating system are started, and are tested against a suite of over 6000 automated unit tests. A build is successful only if all of these unit tests pass. A nightly build of the 'master' branch is done once a day. For successful nightly builds, a series of over 150 integration 'system tests' are also run. Successful builds that pass all system tests are immediately available for download, and in some cases automatically deployed to the analysis computers. Stable releases of Mantid software occur every three months, and undergo additional rigorous manual testing by the development team. Stable releases are accompanied by detailed relese notes and user training. 
+In order to ensure quality, the Mantid project uses a continuous integration environment built around the Jenkins continuous integration server\cite{jenkins}. Whenever new code is committed to the `develop' branch, builds for each supported operating system are started, and are tested against a suite of over 6000 automated unit tests. A build is successful only if all of these unit tests pass. A nightly build of the `master' branch is done once a day. For successful nightly builds, a series of over 150 integration `system tests' are also run. Successful builds that pass all system tests are immediately available for download, and in some cases automatically deployed to the analysis computers. Stable releases of Mantid software occur every three months, and undergo additional rigorous manual testing by the development team. Stable releases are accompanied by detailed relese notes and user training. 
 
 
 
 \section{Mantid Components}
 One of the main design consideration for this project was the separation of data and algorithms. Data containers (called workspaces) and algorithms, which manipulate workspaces, compose the central element of the Mantid Framework (Figure \ref{fig:Framework}). 
-
-Workspaces can be loaded from various file formats, from live data streams, or created by different algorithms. They can be manipulated by algorithms, and saved to disk. By default Mantid uses the NeXus format for saving intermediate and processed data, but various other output formats are also supported.
-
-The interaction with the Mantid Frameworks occurs through the API. While initially a Matlab API was envisioned, currently the main interactions occur through either the Python API, or through MantidPlot graphical interface. 
-\label{components}
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{MantidFramework.png}}
 \caption{Mantid Framework design}
 \label{fig:Framework}
 \end{figure}
+Workspaces can be loaded from various file formats, from live data streams, or created by different algorithms. They can be manipulated by algorithms, and saved to disk. By default Mantid uses the NeXus format for saving intermediate and processed data, but various other output formats are also supported.
+
+The interaction with the Mantid Frameworks occurs through the application programming interface (API). While initially a Matlab API was envisioned, currently the main interactions occur through either the Python API, or through MantidPlot graphical interface. 
+
 
 \subsection{Workspaces}
 Workspaces are the data containers in Mantid. In addition to the data, workspaces can hold other types of information, such as instrument geometry, lattice parameters and orientation, or sample environment logs. Each workspace also holds its history, a list of algorithms that were used to create that workspace. That way each workspace can prove it's provenance, and also regenerate the commands used to make it. Depending on the organization of the data, there are various types and subtypes of workspaces.
 
-Workspace2Ds contain data for multiple spectra, in the X, Signal, Error format, where X is a coordinate such as time of flight or energy transfer. The data acquisition system at several facilities now allow separate recording each  detected neutron, and labelling it with time-of-flight, and wall-clock-time stamps. For each spectrum, the EventWorkspace contains a list of events. EventWorkspaces can also provide a histogram representation as well,which is calculated on request. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
+Workspace2Ds contain data for multiple spectra, in the X, Signal, Error format, where X is a coordinate such as time of flight or energy transfer. The data acquisition system at several facilities now allow separate recording of each  detected neutron, and labelling it with time-of-flight, and wall-clock-time stamps. For each spectrum, the EventWorkspace contains a list of events. EventWorkspaces can also provide a histogram representation as well,which is calculated on request. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
 There are various uses for event workspaces. One can filter out unwanted events, such as events recorded during temperature spikes. The other big use for events is allowing novel techniques, such as asynchronous parameter scans (continuous angle scans, temperature scans), and pump probe experiments (pulse magnets, high frequency deformations of materials, and so on).
 
 For data formats that contain different field types, Mantid provides various TableWorkspaces. A table workspace is organized in columns. Each column has a name and a type - the type of the data in that column. Examples of table workspaces are the outputs from the Fit algorithm, and PeaksWorkspaces, a representation of information about Bragg peaks, that is used in crystallography experiments.
@@ -156,7 +157,7 @@ The most flexible way to interact with the Mantid framework is through the pytho
 Most reduction procedures for a particular instrument follow the same pattern, with minor parameter changes to account for experimental conditions. If there is enough metadata in the input files to get the required parameters, the Python interface allows the reduction process to occur automatically, as soon as the raw data file is saved. This is the case for several instruments at SNS. 
 
 \subsection{MantidPlot}
-For the mainstream user, the main interaction with Mantid occurs through the MantidPlot interface (Figure \ref{fig:MantidPlot}). It is a graphical user interface based on QtiPlot\cite{qtiplot}. It allows 1D, and 2D plots of the data, and access to VATES interface for MDWorkspaces. From the MantidPlot window, accessing the Python interface can be achieved through either the script window (run entire scripts at once) or the script interpreter (execute interactively single commands).
+For the mainstream user, the main interaction with Mantid occurs through the MantidPlot interface (Figure \ref{fig:MantidPlot}). It is a graphical user interface based on QtiPlot\cite{qtiplot}. It allows 1D, and 2D plots of the data, and access to VATES interface for MDWorkspaces (see section \ref{VATES}). From the MantidPlot window, accessing the Python interface can be achieved through either the script window (run entire scripts at once) or the script interpreter (execute interactively single commands).
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{MantidPlot.png}}
@@ -181,27 +182,41 @@ For several scientific techniques, custom interfaces are available from the Mant
 \caption{Custom interface for direct geometry reduction on HYSPEC instrument}
 \label{fig:Hyspec}
 \end{figure}
-Reduction scripts for several scientific techniques can be complicated, and depending on a large number of parameters. One can use either scripts of workflow algorithms to manipulate the raw data. The complexity of scripts can be intimidating for new users, while auto-generated dialog boxes for workflow algorithms can be unintuitive as well. Where needed, the development team has created custom user interfaces, to make complex analysis workflows much easier to use.
+Reduction scripts for several scientific techniques can be complicated, and depending on a large number of parameters. One can use either scripts of workflow algorithms to manipulate the raw data. The complexity of scripts can be intimidating for new users, while auto-generated dialog boxes for workflow algorithms can be unintuitive as well. Where needed, the development team, and sometimes individual instrument scientist, have created custom user interfaces, to make complex analysis workflows much easier to use.
 
 The custom user interfaces, available from MantidPlot, group together inputs from related reduction parameters, and spread independent steps onto different tabs. Figure \ref{fig:Hyspec}, shows an example, the DGS Reduction interface for the HYSPEC instrument at SNS. When it is executed on computers with certain privileges, advanced option can appear or disappear, like live data analysis, or sending reduction jobs to particular computing clusters.
 Other interfaces exist for data reduction and analysis for various techniques, including $\mu SR$\cite{musr}, small angle neutron scattering, indirect spectroscopy, single crystal diffraction, and reflectometry.
 
 \subsection{VATES}
+\label{VATES}
+
+
+The Visualization and Analysis Toolkit Extensions (VATES) was originally run as a subproject, but now it is fully integrated into the standard Mantid deployment. It provides a large suite of algorithms to create and manipulate the MDWorkspaces mentioned in a previous section.
+\begin{figure}[hb]
+\centerline{\includegraphics[width=0.75\textwidth]{Peaks_view.png}}
+\caption{SliceViewer showing a single crystal peak and related information.}
+\label{fig:SliceView}
+\end{figure}
+
+A major deliverable of this project has been the ability to represent multidimensional data \cite{Mslice, DAVE, Horace}. For visualizing 3 or more dimension datasets, Mantid provides several options. One such tool, the SliceViewer (Figure \ref{fig:SliceView}), provides an interactive 2D projection through MDWorkspaces of any dimensionality greater than two. Advanced features provide interactive line integration or overplotting integrated or non-integrated single crystal peak locations and regions. The SliceViewer also works with MatrixWorkspace data. 
+
 \begin{figure}[ht]
 \centerline{\includegraphics[width=0.75\textwidth]{VSI-v2-SplatterPlot.png}}
 \caption{VSI in splatter plot mode with single crystal data from TOPAZ difractometer.}
 \label{fig:VSI_sample}
 \end{figure}
-For visualizing 3 and 4 dimension datasets, Mantid provides the VATES Simple Interface (\textit{VSI}), that offers a stock set of data views and access to a subset of Mantid algorithms. It is based on application widgets and rendering libraries from the ParaView\cite{paraview} visualization program. The \textit{VSI}$\*$ takes advantage of the ParaView plugin architecture to provide functionality from within Mantid and from within ParaView standalone. The data in Mantid to be visualized passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}$\*$. Those same data structures can be saved to file and visualized in the ParaView program. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
 
-\begin{figure}[!hb]
+The VATES Simple Interface (\textit{VSI}), offers a stock set of data views and access to a subset of Mantid algorithms. It is based on application widgets and rendering libraries from the ParaView\cite{paraview} visualization program. The \textit{VSI}$\*$ takes advantage of the ParaView plugin architecture to provide functionality from within Mantid and from within ParaView standalone. The data in Mantid to be visualized passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}$\*$. Those same data structures can be saved to file and visualized in the ParaView program. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
+
+\begin{figure}[!ht]
 \centerline{\includegraphics[width=0.6\textwidth]{NonOrthogonalProjection_W.png}}
 \caption{Volume rendering of Gd excitations, in ParaView. Data was measured on SEQUOIA spectrometer at SNS.}
 \label{fig:ParaView_sample}
 \end{figure}
 
-The \textit{VSI}$\*$ has a view called MultiSlice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in SliceViewer. The SplatterPlot (Figure \ref{fig:VSI_sample}) view is oriented towards visualizing peaks in single crystal diffraction data. In that view, there is a pick mode which can interact with Mantid to retrieve information about a selected peak. The ThreeSlice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the data in Figure 2. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
+The \textit{VSI}$\*$ has a view called MultiSlice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in SliceViewer. The SplatterPlot (Figure \ref{fig:VSI_sample}) view is oriented towards visualizing peaks in single crystal diffraction data. In that view, there is a pick mode which can interact with Mantid to retrieve information about a selected peak. The ThreeSlice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the data in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
 
+Ongoing work on the VATES interface aims to provide full scriptable control over all the visualization tools described, as well as increased support for multidimensional processing in technique specific areas. 
 
 \section{Facility integration}
 A very important step in Mantid development and deployment is facility integration. Both at SNS and ISIS, the development team is working on the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk.
@@ -235,12 +250,14 @@ The development team would like to thank various instrument scientists for their
 \bibitem{OpenGenie} S.I. Campbell {\it et al.}, arXiv:cond-mat/0210442
 \bibitem{LAMP} D. Richard, M. Ferrand and G.J. Kearley, J. Neutron Research 4, 33-39, 1996
 \bibitem{ISAW} T. G. Worlton {\it et. al.}, Neutron News 15(3),14-15 (2004)  
-\bibitem{trac} trac
-\bibitem{github} github
-\bibitem{jenkins} jenkins
+\bibitem{trac} http://trac.edgewall.org/
+\bibitem{github} https://github.com/
+\bibitem{jenkins} http://jenkins-ci.org/
 \bibitem{webpage} http://www.mantidproject.org
 \bibitem{qtiplot} http://soft.proindependent.com/qtiplot.html
 \bibitem{musr} S. Cottrell {\it et. al.}, Physics Procedia 30, 20-25 (2012)
+\bibitem{Mslice} R. Coldea, MSlice  http://mslice.isis.rl.ac.uk
+\bibitem{Horace} T. G. Perring {\it et. al.}, http://horace.isis.rl.ac.uk
 \bibitem{paraview} A. Henderson, ParaView Guide, A Parallel Visualization Application, Kitware Inc.(2007)
 \bibitem{vtk} W. Schroeder {\it et. al.}, The Visualization Toolkit, Kitware Inc.(2006)
 \bibitem{kitware} http://www.kitware.com
