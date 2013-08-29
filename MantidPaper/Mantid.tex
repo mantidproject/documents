@@ -96,7 +96,7 @@ Traditionally, each instrument (or similar instruments at a given facility) had 
 The main disadvantages of this approach are replication of similar functionality between codes at different instruments/facilities, lack of documentation, sometimes inadequate performance and too great a reliance on individual scientists to develop and maintain the software. Attempts were made to unify and re-utilize the code at different facilities, \cite{DAVE, OpenGenie, LAMP, ISAW} with various degrees of success. 
 
 
-The Manipulation and Analysis Toolkit for Instrument Data (MANTID) project, was started in 2007 at ISIS, and joined by SNS and HFIR in 2010, with the goal of implementing a new framework for data analysis and visualization for neutron scattering and $\mu SR$ experiments. The main requirements for the project are:
+The Manipulation and Analysis Toolkit for Instrument Data (MANTID) project \cite{TaylorMantid}, was started in 2007 at ISIS, and joined by SNS and HFIR in 2010, with the goal of implementing a new framework for data analysis and visualization for neutron scattering and $\mu SR$ experiments. The main requirements for the project are:
 \begin{itemize}
 \item To provide a technique independent framework to manipulate and visualize scientific data 
 \item To actively support multiple platforms (Linux, Windows, MacOS)
@@ -135,7 +135,7 @@ The interaction with the Mantid Frameworks occurs through the application progra
 \subsection{Workspaces}
 Workspaces are the data containers in Mantid. In addition to the data, workspaces can hold other types of information, such as instrument geometry, lattice parameters and orientation, or sample environment logs. Each workspace also holds its history, a list of algorithms that were used to create that workspace. That way each workspace can prove it's provenance, and also regenerate the commands used to make it. Depending on the organization of the data, there are various types and subtypes of workspaces.
 
-Workspace2Ds contain data for multiple spectra, in the X, Signal, Error format, where X is a coordinate such as time of flight or energy transfer. The data acquisition system at several facilities now allow separate recording of each  detected neutron, and labelling it with time-of-flight, and wall-clock-time stamps. For each spectrum, the EventWorkspace contains a list of events. EventWorkspaces can also provide a histogram representation as well,which is calculated on request. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
+Workspace2Ds contain data for multiple spectra, in the X, Signal, Error format, where X is a coordinate such as time of flight or energy transfer. The data acquisition system at several facilities now allow separate recording of each  detected neutron, and labelling it with time-of-flight, and wall-clock-time stamps. For each spectrum, the EventWorkspace contains a list of events \cite{EventPaper}. EventWorkspaces can also provide a histogram representation as well,which is calculated on request. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
 There are various uses for event workspaces. One can filter out unwanted events, such as events recorded during temperature spikes. The other big use for events is allowing novel techniques, such as asynchronous parameter scans (continuous angle scans, temperature scans), and pump probe experiments (pulse magnets, high frequency deformations of materials, and so on).
 
 For data formats that contain different field types, Mantid provides various TableWorkspaces. A table workspace is organized in columns. Each column has a name and a type - the type of the data in that column. Examples of table workspaces are the outputs from the Fit algorithm, and PeaksWorkspaces, a representation of information about Bragg peaks, that is used in crystallography experiments.
@@ -256,6 +256,8 @@ The development team would like to thank various instrument scientists for their
 \bibitem{paraview} A. Henderson, ParaView Guide, A Parallel Visualization Application, Kitware Inc.(2007)
 \bibitem{vtk} W. Schroeder {\it et. al.}, The Visualization Toolkit, Kitware Inc.(2006)
 \bibitem{kitware} http://www.kitware.com
+\bibitem{EventPaper} J. Zikovsky {\it et. al.}, Event-Based Processing of Neutron Scattering Data, in progress.
+\bibitem{TaylorMantid} J. Taylor {\it et. al.}, Bulletin of the American Physical Society 57 (2012)
 
 \end{thebibliography}
 
