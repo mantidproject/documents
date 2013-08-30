@@ -1,4 +1,4 @@
-## Exercise 4
+## Exercise 5
 #   1.  Build a list containing the 5 filenames of the text files that are going to be used.
 #       (Hint: Can be done by hand or using the os.listdir() function in the os module)
 #   2. Add a bogus file name that doesn't exist to the list (so that we have to do some error handling)
