@@ -24,4 +24,12 @@ layer.setCurveTitle(0, "bank2, spectrum " + str(431))
 layer.setCurveTitle(1, "bank2, spectrum " + str(432))
 layer.setCurveTitle(2, "bank2 spectrum "+ str(433))
 
-plotSpectrum(ws,[0])
+# Plot index 5
+g2 = plotSpectrum(ws,[5])
+
+# Merge the plots
+g3=mergePlots(g1, g2)
+
+mergedLayer= g3.activeLayer()
+mergedLayer.setAxisTitle(Layer.Bottom, "x-axis")
+mergedLayer.setAxisTitle(Layer.Left, "y-axis")
