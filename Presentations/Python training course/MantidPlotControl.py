@@ -3,18 +3,16 @@
 #  Controlling the MantidPlot items
 #------------------------------------------------------
 # Perform some algorithms to so that we have some sensible data to plot and look at
-rootdir = "C:/MantidInstall/data/"
-# Load bank 1 from GEM
-LoadRaw(rootdir+ "GEM40979.raw", "GEM-bank2", SpectrumMin="431", SpectrumMax="750")
+ws=Load(Filename="GEM40979.raw", SpectrumMin=431, SpectrumMax=750)
 
 # Convert to dSpacing
-ConvertUnits("GEM-bank2","GEM-bank2", "dSpacing")
+ws=ConvertUnits(InputWorkspace=ws, Target= "dSpacing")
 
 # Smooth the data
-SmoothData("GEM-bank2", "GEM-bank2", NPoints="20")
+ws=SmoothData(InputWorkspace=ws, NPoints=20)
 
 # Plot three spectra
-g1 = plotSpectrum("GEM-bank2",[0,1,2])
+g1 = plotSpectrum(ws, [0,1,2])
 
 # Set the scales on the x- and y-axes
 layer = g1.activeLayer()
@@ -26,4 +24,4 @@ layer.setCurveTitle(0, "bank2, spectrum " + str(431))
 layer.setCurveTitle(1, "bank2, spectrum " + str(432))
 layer.setCurveTitle(2, "bank2 spectrum "+ str(433))
 
-plotSpectrum(mtd.getMatrixWorkspace('GEM-bank2'),[0])
+plotSpectrum(ws,[0])
