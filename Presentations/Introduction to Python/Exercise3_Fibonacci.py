@@ -6,7 +6,7 @@
 
 # Function to calculate the first n fibonacci numbers
 # and return them as a list
-def buildFibSeq(nfibs):
+def fib(nfibs):
     if nfibs == 0:
         return []
     elif nfibs == 1:
@@ -22,11 +22,11 @@ def buildFibSeq(nfibs):
 
     return fibs
 
-#### buildFibSeq ends here ####
+#### fib ends here ####
 
 # Print out successive ratio remembering that the first number is a zero
 nfibs = 20
-fib_nums = buildFibSeq(nfibs)
+fib_nums = fib(nfibs)
 for i in range(1,nfibs):
     try:
         numerator = fib_nums[i]
