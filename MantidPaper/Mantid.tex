@@ -34,11 +34,13 @@
 \author[isis]{A.~Buts}
 \author[ornl]{S.~I.~Campbell}
 \author[ill]{L.~Chapon}
+\author[isis]{S. Cottrell}
 \author[ornl]{M.~Doucet}
 \author[tessellaUK]{N.~Draper}
 \author[isis]{R.~Fowler}
 \author[tessellaUK]{M.~Gigg}
 \author[ornl] {M. Hagen}
+\author[isis]{A. Hillier}
 \author[ornl]{V.~E.~Lynch}
 \author[isis]{P.~Manuel}
 \author[isis]{A.~Markvardsen}
@@ -51,6 +53,7 @@
 \author[isis]{G.~Passos}
 \author[isis]{T.~G.~Perring}
 \author[ornl]{P.~F.~Peterson}
+\author[isis]{F. Pratt}
 \author[ornl] {T. Profen}
 \author[oxford]{P.~Radielli}
 \author[ornl]{S.~Ren}
@@ -151,10 +154,19 @@ Large data volumes, $n$dimensional data and event mode format add several layers
 
 %Where the momentum transfer is defined as \textbf{Q}= $k_{i}-k_{f}$. 
 
-\section{$mu$SR}
+\section{Muon Spin Relaxation/Rotation/Resonance ($\mu$SR) }
+
+Muons provide a local probe to investigate the properties of a wide range of materials. 
+MuSR has wide applicability and provides useful dynamic information for a broad range of science  from soft matter to quantum magnetism,  which is often complementary  to that from neutron scattering. 
+The technique is similar to that of NMR, in which the polarisation of the target nuclei, in this case the muon, is tracked as a function of time. 
+In the case of muons, spin polarised muons are implanted into the material under investigation and these muons decay into  positrons which are emitted preferentially along the final spin direction of the muon. 
+By time stamping the detected positrons the muon polarisation is inferred. As muons are produced by the decay product of pions, which in turn are produced by high energy protons (~800MeV at ISIS), experiments are conducted at proton accelerators and are often situated next to spallation neutron sources, e.g. ISIS, PSI and J-PARC. 
+This means that the users of neutron instruments often use muons as well and having a familiar software framework for analysis is clearly beneficial.
+The Mantid framework fulfils this requirement, comprising  a wide range of methods with which to analysis the muon depolarisation spectrum:  integrated asymmetry, FFT, maximum entropy and time domain analysis among others. 
+Moreover, simulations of muon data using DFT or electronic calculations can yield further insights into the material under investigation. 
+The ability to link these simulations with the data analysis with a simple interface yields a very powerful tool for the analysis of muon experiments. Again, the Mantid framework offers this functionality to the instrument user.
 
 
-\textbf{This section is being written by A. Hillier}
 
 \section{DevelopmentPractices}
 One of the key  aspects of MANTID is the manner in which it is developed. Compared to other similar projects MANTID  has a large number of core developers $>$20. The development team make use many modern software development practices. 
@@ -423,7 +435,7 @@ The IV has a number of useful features:
 \item Users can group mask or select shapes or ranges of detectors and save the output as a separate workspace. 
 \item Groups of detectors can be flagged to be ignored by subsequent algorithms (masking)
 \item Users can quickly look at individual spectra in what ever x axis unit is currently selected
-\item brag peaks can be selected and saved a table workspaces
+\item Bragg peaks can be selected and saved a table workspaces
 \item For instruments that use position sensitive detectors the counts in each pixel can be plotted as a function of position along the tube.
 \end{itemize}
 
