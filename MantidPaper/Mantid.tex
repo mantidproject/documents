@@ -132,8 +132,8 @@ The Manipulation and Analysis Toolkit for Instrument Data (MANTID) project \cite
 The main objectives for the project are:
 \begin{itemize}
 \item To provide a technique independent, neutron specific framework  to reduce, visualise and perform scientific analysis of data
-\item The framework is developed by a core group of developers using professional software development practices
-\item Core framework aspects are developed using change control project management practices 
+\item To ensure quality by following professional software development practices
+%\item Core framework aspects are developed using change control project management practices 
 \item To actively support multiple platforms (Linux, Windows, MacOS)
 \item The software and documentation will be freely distributable, and open source
 \item The framework must be easily extensible by instrument scientists and users
@@ -191,9 +191,9 @@ Workspaces and algorithms are aware of the geometry of each individual instrumen
 \caption{Mantid Framework design}
 \label{fig:Framework}
 \end{figure}
-Workspaces can be loaded from various file formats, from live data streams, or created by different algorithms. They can be manipulated by algorithms, and saved to disk. By default Mantid uses the NeXus format for saving intermediate and processed data, but various other output formats are also supported.
+Workspaces can be loaded from various file formats, from live data streams, or created by different algorithms. The workspaces and the data within can be manipulated by the many algorithms in Mantid, and saved to disk in a variety of formats. By default Mantid uses the NeXus format for saving intermediate and processed data, but various other output formats are also supported.
 
-The interaction with the Mantid Frameworks occurs through the application programming interface (API). While initially a Matlab API was envisioned, currently the main interactions occur through either the Python API, or through MantidPlot graphical interface. 
+The interaction with the Mantid Frameworks occurs through the application programming interface (API). While initially a Matlab API was envisioned, and proof of concept establihed, currently the main interactions occur through either the Python API, or through MantidPlot graphical interface. 
 
 The key features of the framework are:
 
@@ -209,7 +209,7 @@ The key features of the framework are:
 \end{itemize}
 
 \subsection{Instrument Geometry}
-A full description of the instrument is used within the MANTID framework. The instrument definition file is an xml styled description of of all pertinent instrument components see Table\ref{IDF}. The IDF component description can be expanded upon to increase the information level accessible to the MANTID framework. 
+A full description of the instrument is used within the MANTID framework. The instrument definition file (IDF) is an xml styled description of of all pertinent instrument components see Table\ref{IDF}. The IDF component description can be expanded upon to increase the information level accessible to the MANTID framework. 
 Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flighpaths and detector angles ($\theta and \phi$). A full description allows complex visualisation of the instrument and its detectors, along with the possibility to perform monetcaro simulations of the incident flux and resolution using the neutron ray tracing package McStas \cite{mcstas}
 The IDF can be updated from values in log files to account for moving instrument components. The solid geometry engine within the MANTID framework can be used to described complex sample shapes to allow absorption correction to be made.
 
@@ -232,8 +232,8 @@ Source type&dimension &type /temperature
 \label{IDF}
 \end{table}%
 
-\subsection{Classes}
-\textbf{is this required too}
+%\subsection{Classes}
+%\textbf{is this required too}
 
 \subsection{Data Types}
 The MANTID framework is capable of reading a variety of data types. The most commonly used are data files written in the nexus standard. However the framework can read legacy files from ISIS as well as generic x,y,e ascii data. Generic and histogram data and read info the workspace2D type of data container. instrument data are populated alongside the IDF description of the instrument. Event mode nexus files are read into event workspaces and can be filtered on $TOF$ at load. 
@@ -248,11 +248,11 @@ Workspaces are the data containers in Mantid. In addition to the data, workspace
 \footnotesize
 \begin{tabular}{l | c | c|  c | c}
 Workpsacetype & dataFormat &mode &metaData&uses\\ \hline
-Workspace2D	& X,Signal, Error & Histogram / point& \pbox{20cm}{sample logs, Spectrum Number \\detectorID}&raw data\\
+Workspace2D	& X,Signal, Error & Histogram / point& \pbox{20cm}{sample logs, Spectrum Number, \\detectorID}&raw data\\
 \\
-EventWorkpsace&eventlist	&adaptive mesh rebin  &\pbox{20cm}{ correlated sample log \\spectrum number detector ID}&raw event data	\\
+EventWorkpsace&eventlist	&on the fly rebin  &\pbox{20cm}{ correlated sample log, \\spectrum number, detector ID}&raw event data	\\
 \\	
-\pbox{20cm}{Multidimensional\\ workspace} &\pbox{20cm}{ $n$ eventlist\\$n$ histogram}& adaptive mesh rebin& $n$dim axis units& processed volume data sets\\
+\pbox{20cm}{Multidimensional\\ workspace} &\pbox{20cm}{ $n$ eventlist\\$n$ histogram}& adaptive mesh rebin& $n$dim, axis, units, sample logs& processed volume data sets\\
 \\
 Tableworkspace&column - row format& | &|& fitting results\\
 \end{tabular}
@@ -265,10 +265,10 @@ Workspace2Ds contain data for multiple spectra, in the X, Signal, Error format, 
 
 The data acquisition system at several facilities now allow separate recording of each  detected neutron, and labelling it with time-of-flight, and wall-clock-time stamps. For each spectrum, the EventWorkspace contains a list of events \cite{EventPaper}. 
 
-EventWorkspaces can also provide a histogram representation as well,which is calculated on request. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
+EventWorkspaces can also provide a histogram representation as well,which is calculated on the fly when requested. This allows event workspaces to support the MatrixWorkspace interface, also being supported by Workspace2Ds. The result is that algorithms and plotting work on the two types of workspaces interchangeably, without the need to know the details of how their data is stored. 
 There are various uses for event workspaces. One can filter out unwanted events, such as events recorded during temperature spikes. The other big use for events is allowing novel techniques, such as asynchronous parameter scans (continuous angle scans, temperature scans), and pump probe experiments (pulse magnets, high frequency deformations of materials, and so on).
 
-For data formats that contain different field types, Mantid provides various TableWorkspaces. A table workspace is organised in columns. Each column has a name and a type - the type of the data in that column. Examples of table workspaces are the outputs from the Fit algorithm, and PeaksWorkspaces, a representation of information about Bragg peaks, that is used in crystallography experiments.
+For data formats that contain different field types, Mantid provides various TableWorkspaces. A table workspace is organised in columns. Each column has a name and a type - the type of the data in that column. Examples of table workspaces are the model parameters from model fitting, and PeaksWorkspaces, a representation of information about Bragg peaks, that is used in crystallography experiments.
  
 The last major workspace type is the multi-dimensional workspace, or MDWorkspace. While for matrix workspace there are two dimensions describing a data point (spectrum number and X coordinate), for MDWorkspaces we have between 1 and 9 dimensions. Higher number of dimensions are required to accommodate labelling of data with extended parameter dependencies, $i.e.$ sample environment variables. 
 MDEventWorkspaces are adaptivley rebbined onto a mesh that is dependent on the number density of events Fig\ref{mdevent}.
@@ -283,7 +283,7 @@ For MDEventWorkspaces, each MDEvent contains coordinates, a weight and an error.
 MDHistoWorkspaces consist of signal and error arrays on a regular grid.  
 
 \subsection{Algorithms}
-Mantid algorithms are procedures to manipulate workspaces. They can be predefined, or written by users, in either C++ or Python. The algorithm layer is a key aspect of the MATID framework. The organisation and development of algorithms is key to maintaining the ethos of the project; that is all algorithms should operate on all data for all instruments. This ethos therefore presents a number of challenges for development. The framework can access multiple data types, including event mode data. As a result of this the algorithm layer must be able to cope with multiple data type input and at the same time maximise performance for individual data types. The case of event mode data in interesting as it presents an efficient way of processing sparse data. It is therefore more efficient to keep the data as events through a chain of operations. This requirement has resulted in development of a number of event specific data handling operations. The end result is that for many reduction chains the data is event type until the final rebin for presentation. The key advantage of this for the end user is flexibility.
+Mantid algorithms are procedures to manipulate workspaces. They can be predefined, or written by users, in either C++ or Python. The algorithm layer is a key aspect of the MANTID framework. The organisation and development of algorithms is key to maintaining the ethos of the project; that is all algorithms should operate on all data for all instruments. This ethos therefore presents a number of challenges for development. The framework can access multiple data types, including event mode data. As a result of this the algorithm layer must be able to cope with multiple data type input and at the same time maximise performance for individual data types. The case of event mode data in interesting as it presents an efficient way of processing sparse data. It is often more efficient to keep the data as events through a chain of operations. This requirement has resulted in development of a number of event specific data handling operations. The end result is that for many reduction chains the data is event type until the final rebin for presentation. The key advantage of this for the end user is flexibility.
 
 Core algorithms can be grouped together to form bespoke data reduction and analysis for individual instruments and science areas. These large algorithms can then be presented to the user at the python scripting layer, command line interface or as a custom reduction user interface. 
 
@@ -297,11 +297,10 @@ At the present, there are over 500 algorithms covering data handling (loading/sa
 
 
 \subsection{Python API and scripting}
-The python API for the MANTID framework provides an exceptionally powerful interface to the core C++ framework. All classes within the framework are open to python control. The python API can be used to simply interact with algorithms and workspaces or as a method to quickly expand the framework with new functionality. 
+The python API for the MANTID framework provides an exceptionally powerful interface to the core C++ framework. All classes within the framework are open to python control, with the algorithms be added to the API at run time, allowing new plug in algorithms to be available without further configuration. The python API can be used to simply interact with algorithms and workspaces or as a method to quickly expand the framework with new functionality. 
 
-The API has been written to give a intuitive command line interface feel.
+The API has been written to give a intuitive command line interface feel, allowing simple powerful syntax with a minimal understanding of the Python language.  More advanced usage is possible within python scripts allowing popular packages such as numpy nas scipy to be mixed with Mantid Algorithms to process data.  Furthermore Python can also be used to extend the capabilities of the Mantid framework adding further algorithms or fit functions without needing to recompile or even restart the program.
 
-\textbf{something more is required here}
 
 %%The most flexible way to interact with the Mantid framework is through the python interface. By including the appropriate Mantid libraries, users can write their own reduction/analysis scripts, to execute their own custom reduction workflow. All algorithms implemented in C++ are automatically exposed to python. In addition, several methods related to workspaces, and other helper objects are available as well. A tutorial of using the Python API can be found in the Documentation section on the Mantid webpage\cite{webpage}.  
 
@@ -319,14 +318,14 @@ The API has been written to give a intuitive command line interface feel.
 \subsection{MantidPlot}
 The main interaction with Mantid occurs through the MantidPlot interface (Figure \ref{fig:MantidPlot}). It is a graphical user interface based on QtiPlot\cite{qtiplot}. It allows 1D, and 2D plots of the data, and access to the VATES interface for MDWorkspaces (see section \ref{VATES}). From the MantidPlot window, accessing the Python interface can be achieved through the script window (used to run entire scripts at once)  the script interpreter or python shell.
 
-A list of all algorithms is also present by default, organized both alphabetically, and by category. Clicking on an algorithm will open an automatically generated dialog box, with entries for each of the input parameters. A quick validation occurs when information is filled, and if any input is invalid it is flagged with a error message for the user. For each algorithm dialog box, a button allows for invoking the built-in help. A results log window is also available, where users can see the results of running different algorithms. For several scientific techniques, custom interfaces are available from the MantidPlot menu.
+A searchable list of all algorithms is also present by default, organized in categories. Clicking on an algorithm will open an automatically generated dialog box, with entries for each of the input parameters. A quick validation occurs when information is filled, and if any input is invalid it is flagged with a error message for the user. For each algorithm dialog box, a button allows for invoking the built-in help. A results log window is also available, where users can see the results of running different algorithms. For several scientific techniques, custom interfaces are available from the MantidPlot menu.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{MantidPlot.png}}
 \caption{MantidPlot interface, showing 1D, and 2D plots. Lists of workspaces and algorithms are available on the right side}
 \label{fig:MantidPlot}
 \end{figure}
-A list of available workspace is present by default. Clicking on the workspaces show information about workspace type and content. A context sensitive menu allows simple plotting, instrument view, inspection of the sample environment logs, or a listing of the history of the workspace. 
+The Workspaces toolbox show a list of all the workspaces currently available, which may be hosted in the computer memory or on disk. Clicking on the workspaces show information about workspace type and content. A context sensitive menu allows simple plotting, instrument view, inspection of the sample environment logs, or a listing of the history of the workspace. 
 
 
 \subsection{Data reduction and bespoke interfaces}
@@ -339,7 +338,7 @@ A list of available workspace is present by default. Clicking on the workspaces 
 Data reduction and basic analysis for individual instruments or science areas is generally a sequential chain of operations starting from data loading and resulting in a dataset that has physically intractable units. As such reduction scripts for several scientific techniques can be complicated, and depending on a large number of parameters. More often than not development of new features in this area must take into account legacy usage requirements and be well validated against existing "known" good results. In all cases development of data reduction chains are tightly controlled and validated. 
 
 One of the objectives of MANTID is to provide the facility user with a simple and efficient interface to allow them to analyse their data.  To achieve this for multiple science areas and instruments a number of custom interfaces have been implemented to process data from specific experiments. 
-These are presented to the user through a GUI layer and often a "super algorithm" 
+These are presented to the user through a GUI layer and often a "workflow algorithm" 
 A number of bespoke GUIs have been implemented to deal with utility functions useful for neutron science.
 Science areas and instruments specifically supported by the MANTID framework can be seen in Table\ref{coverage}
 
@@ -362,7 +361,7 @@ $\mu SR$&MUSR HIFI EMU\\
 \label{coverage}
 \end{table}%
 
-In some cases a single 'super algorithm' is beneficial, one such case is for live event process. The application can access the live data steams of event mode instruments at SNS and ISIS and can directly read histogram data from the detector electronics of ISIS instruments. Fig \ref{live events} shows the generic workflow to process and view data as it is collected.
+In some cases a single "workflow algorithm" is beneficial, one such case is for live event process. The application can access the live data steams of event mode instruments at SNS and ISIS and can directly read histogram data from the detector electronics of ISIS instruments. Fig \ref{live events} shows the generic workflow to process and view data as it is collected.
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{liveevents.pdf}}
 \caption{Flow diagram representing data flow when using live data processing within MANTID}
@@ -402,7 +401,7 @@ Panel A displays the required model and fit controls panel B displays the data, 
 \end{figure}
 
 
-There are a number of scientific techniques that always  fit complex function to reduced datasets in order to extract meaningful physical parameters. For the case of MUSR and QENS the MANTID framework fitting module is sufficient. For SANS the data can be output to external model fitting packages for further analysis. MANTID curly can link directly to $SASView$ for further analysis of experimental data.
+There are a number of scientific techniques that always  fit complex function to reduced datasets in order to extract meaningful physical parameters. For the case of MUSR and QENS the MANTID framework fitting module is sufficient. For SANS the data can be output to external model fitting packages for further analysis. MANTID currently can link directly to $SASView$ for further analysis of experimental data.
 
 In the area of inelastic neutron scattering fitting a single resolution broadened model of  $S(q,\omega)$ to a $n$ dimensional  $S(q,\omega)$ data set is a standard data analysis procedure. In the past programs like $Toby$Fit \cite{tobyfit} have been used to perform this type of analysis. The MANTID framework can replicate $Toby$Fit functionality for inelastic neutron scattering data.
 
@@ -417,8 +416,8 @@ For visualising the instrument data in real space the InstrumentView can be used
 
  
 Often experiment perform crystal rotations to generate even grater maps of reciprocal space and for the case of inelastic neutron scattering that resolves both reciprocal space and energy transfer the data volume that is produced is in greater than 3 dimensions. 
-Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in MANTID is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{Slice viewer} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($vsiulisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualisation tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
-The application has been developed in this way to ensure that the scientific workflow is intuitive and efficiency.
+Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in MANTID is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{Slice viewer} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($visulisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualisation tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
+The application has been developed in this way to ensure that the scientific workflow is intuitive and efficienct.
 
 
 
@@ -435,7 +434,7 @@ The IV has a number of useful features:
 \item Users can group mask or select shapes or ranges of detectors and save the output as a separate workspace. 
 \item Groups of detectors can be flagged to be ignored by subsequent algorithms (masking)
 \item Users can quickly look at individual spectra in what ever x axis unit is currently selected
-\item Bragg peaks can be selected and saved a table workspaces
+\item Bragg peaks can be selected and saved as peak workspaces
 \item For instruments that use position sensitive detectors the counts in each pixel can be plotted as a function of position along the tube.
 \end{itemize}
 
@@ -486,16 +485,17 @@ Ongoing work on the VATES interface aims to provide full scriptable control over
 
 
 \section{Community involvement and expandability}
-The MANTID framework provides facility users with a very powerful data analysis tool. The python API gives the user the ability to expand functionality for many different applications. User generated python applications can be submitted to the MANTID script repository. The script depository can be assessed from with MantidPlot allowing upload and download of user generated content. The application can be used to analyse most types of experimental data if required.
-The MantidPlot application can be used to submit bug reports, requests for assistance and viewing of the online and offline help files.
+The MANTID framework provides facility users with a very powerful data analysis tool. The python API gives the user the ability to expand functionality for many different applications. User generated python applications can be submitted to the MANTID script repository. The script repository  allows users to contribute and share scripts with the rest of the Mantid community and MantidPlot allows upload and downloading as well as marking scripts to automatically updated with new versions from the  repository. The flexible nature of the framework can be used to analyse most types of experimental data, and is often used in new and interesting ways by the community that were not originally envisaged by the development team.
+With the many algorithms suported by Mantid extensive documentation is required,  This is provided at several levels, from helpful validation,"intellisense" stlye help within the scripting environment, offline help provided with the installation and online help including examples and tutorials.
+Finally the MantidPlot application allows users to used to submit bug reports, requests for assistance direct to the development team for support or just to make a suggestion for future development.
 
 \section{Facility integration}
-A very important step in Mantid development and deployment is facility integration. Both at SNS and ISIS, the development team is working on the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk. To assist in this Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}.
+A very important step in Mantid development and deployment is facility integration with systems for locating files within the facilities data archive and acessing the metadata catalog for experiments.  To assist in this Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}, and each facilities data archive through a plug in interface. 
 
-The ICAT cataloguing software provides a well defined API to interface with data at large research facilities. It is in use at both ISIS and SNS, and provides a mechanism to link all aspects of the research chain, from proposal through publication. Mantid uses the provided interface for to locate raw or processed files in data archives at each of the facilities.
+The ICAT cataloguing software provides a well defined API to interface with data at large research facilities. It is in use at both ISIS and SNS, and provides a mechanism to link all aspects of the research chain, from proposal through publication. Each facility uses a different approach to storing teir archived data files, Mantid allows a small archive search adapter to be written to a provided interface to locate raw or processed files in data archives at each of the facilities.
+One important use of the ICAT interface and Mantid is the autoreduction process in use on certain instruments. As soon as files are created and catalogued, a reduction script is automatically invoked. This script uses metadata in the file and/or the ICAT catalogue to reduce the raw file to a format that contains the data that users are interested in. 
 
-One important use of the ICAT interface and Mantid is the autoreduction process. As soon as files are created and catalogued, an reduction script is automatically invoked. This script uses metadata in the file and/or the ICAT catalogue to reduce the raw file to a format that contains the data that users are interested in. {\bf NOT TRUE - THIS IS DONE BY THE WORKFLOW MANAGER}
-
+In addition at SNS and ISIS, the development team has develped the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk.   This approach captures either events as they stream off the data acquisition or point in time histograms, and allows for near real time processing of the results into scientifically usefull results. This level of near real time data analysis allows for much better planning and use of valuable experiment time.  
 
 
 \section{Conclusion}
