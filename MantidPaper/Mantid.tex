@@ -147,7 +147,7 @@ Neutron scattering is an established technique for determining the structure and
 In a neutron experiment one must relate measured counts $I\theta,t)$ to a the physically meaningful $S(q,\omega)$.
 At a modern TOF neutron source it is common for instruments to have $10^5ncm^{-1}s^{-1}$ and 60k detectors generating large GB size data files. In many experiments It is possible for several files to be combined together to create a large $n$dimensional dataset or volume with a size of .1 to 1 TB
 Recently pulsed sources have started to collect data in what is called event mode collection. This method simply lists to a file every detected neutron with a time of collection (and other metadata), from the event list one may filter based on time or metadata to create data subsets. This method has several advantages, it is effective for storing sparse data, it allows novel time resolved experiments to be performed. 
-Large data volumes, $n$dimensional data and event mode format add several layers of complexity to the data reduction chain, for the instruments to be fully exploited high performance software is a necessity. 
+Large data volumes, $n$ dimensional data and event mode format add several layers of complexity to the data reduction chain, for the instruments to be fully exploited high performance software is a necessity. 
 
 
 
@@ -279,7 +279,7 @@ MDEventWorkspaces are adaptivley rebbined onto a mesh that is dependent on the n
 \label{mdevent}
 \end{figure}
 
-For MDEventWorkspaces, each MDEvent contains coordinates, a weight and an error. It might contain also information about which detector and which run it come from. All MDEvents are contained in MDBoxes. Above a certain threshold, the MDBox becomes an MDGridBox, by splitting into several equal size MDBoxes. This allows for an efficient searching and binning, and allows plotting on an adaptive mesh. 
+For MDEventWorkspaces, each MDEvent contains coordinates, a weight and an error. It might contain also information about which detector and which run it comes from. All MDEvents are contained in MDBoxes. Above a certain threshold, the MDBox becomes an MDGridBox, by splitting into several equal size MDBoxes. This allows for an efficient searching and binning, and allows plotting on an adaptive mesh. 
 MDHistoWorkspaces consist of signal and error arrays on a regular grid.  
 
 \subsection{Algorithms}
@@ -382,14 +382,12 @@ The framework has inbuilt methods to process single crystal diffraction data, al
 \textbf{should we add more in this section about other types of reduction key features etc}
 
 \subsection {Fitting}
-Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application. 
-The MANTID framework has implemented a powerful fitting engine for fitting peak functions and simple user derived functions to line data i.e. data that is in 1D x,y,e format. 
+Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application.
+ The MANTID framework has implemented a powerful fitting engine for fitting multidimensional datasets.
+ Fitting peak functions and simple user derived functions to line data i.e. data that is in 1D x,y,e format can be also performed using simple user friendly interface. This user interface has been developed to allow complex function to be created from simple mathematical building blocks using GUU. Any function or dataset can also be fitted within the scripting python interface.
 
-The user interface has been deliberately developed to allow complex function to be created from simple mathematical building blocks in a GUI framework. 
-Any function or dataset can be fitted within the scripting python interface.
+Once the user has generated a model the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter. Output from the fit procedure is displayed as a Table Workspace dataset which can then be further manipulated and analysed to estimate statistical characteristics of fitting.
 
-Once the user has generated a model the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter.
-Output from the fit procedure is displayed as a tableWorkspace data set which can then be further manipulated.
 
 Figure \ref{fitting} shows the GUI used for fitting mathematical functions to 1D data.
 
@@ -400,11 +398,14 @@ Panel A displays the required model and fit controls panel B displays the data, 
 \label{fitting}
 \end{figure}
 
-
 There are a number of scientific techniques that always  fit complex function to reduced datasets in order to extract meaningful physical parameters. For the case of MUSR and QENS the MANTID framework fitting module is sufficient. For SANS the data can be output to external model fitting packages for further analysis. MANTID currently can link directly to $SASView$ for further analysis of experimental data.
 
-In the area of inelastic neutron scattering fitting a single resolution broadened model of  $S(q,\omega)$ to a $n$ dimensional  $S(q,\omega)$ data set is a standard data analysis procedure. In the past programs like $Toby$Fit \cite{tobyfit} have been used to perform this type of analysis. The MANTID framework can replicate $Toby$Fit functionality for inelastic neutron scattering data.
 
+\subsection {Simulation and Analysis}
+
+Fitting over multidimensional datasets is used in more complex situations e.g. in the analysis of the results of the inelastic scattering experiments. Fitting a single resolution broadened model of scattering $S(q,\omega)$ to a $n$ dimensional $S(q,\omega)$ dataset is a standard data analysis procedure in in this area used to account for substantial changes in the results of the experiment due to the instrument resolution effects.
+ Mantid contains a set of procedures for calculating an instrument resolution function and convoluting this resolution with chosen scattering model to obtain simulated resolution broadened scattering model. It then can use the multidimensional fitting framework to compare simulated model scattering with experimental scattering and fit the parameters of the scattering model to the results of the experiments. These capabilities are similar to the capabilities available in the past program like $Toby$fit \cite{Tobyfit}.At the moment $Toby$fit's Monte-carlo-based instrument resolution model is implemented in the Mantid and the framework allows to define and deploy other instrument resolution models. MANTID also already contains range of $Toby$fit's scattering models used in the analysis of the inelastic neutron scattering data.
+ 
 
 
 \section{Visualisation}
@@ -416,14 +417,14 @@ For visualising the instrument data in real space the InstrumentView can be used
 
  
 Often experiment perform crystal rotations to generate even grater maps of reciprocal space and for the case of inelastic neutron scattering that resolves both reciprocal space and energy transfer the data volume that is produced is in greater than 3 dimensions. 
-Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in MANTID is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{Slice viewer} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($visulisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualisation tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
-The application has been developed in this way to ensure that the scientific workflow is intuitive and efficienct.
+Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in MANTID is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{Slice viewer} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($visualisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualisation tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
+The application has been developed in this way to ensure that the scientific workflow is intuitive and efficient.
 
 
 
 
 \subsection{Instrument View}
-The instrument view (IV) is a 3D representation of the whole instrument component  positions are calculated from the IDF. Individual IDF components, i.e. choppers, guides etc can be toggled on or off. 
+The instrument view (IV) is a 3D representation of the whole instrument component  positions are calculated from the IDF. Individual IDF components, i.e. choppers, guides etc. can be toggled on or off. 
 Detectors are shaded with a colour representative of the goal integrated counts. 
 The  IV allows for quick access to information about detectors and spectra, and provide a simple graphical interface for masking and grouping.
 The IV has a number of useful features:
@@ -486,16 +487,16 @@ Ongoing work on the VATES interface aims to provide full scriptable control over
 
 \section{Community involvement and expandability}
 The MANTID framework provides facility users with a very powerful data analysis tool. The python API gives the user the ability to expand functionality for many different applications. User generated python applications can be submitted to the MANTID script repository. The script repository  allows users to contribute and share scripts with the rest of the Mantid community and MantidPlot allows upload and downloading as well as marking scripts to automatically updated with new versions from the  repository. The flexible nature of the framework can be used to analyse most types of experimental data, and is often used in new and interesting ways by the community that were not originally envisaged by the development team.
-With the many algorithms suported by Mantid extensive documentation is required,  This is provided at several levels, from helpful validation,"intellisense" stlye help within the scripting environment, offline help provided with the installation and online help including examples and tutorials.
-Finally the MantidPlot application allows users to used to submit bug reports, requests for assistance direct to the development team for support or just to make a suggestion for future development.
+With the many algorithms supported by Mantid extensive documentation is required,  This is provided at several levels, from helpful validation,"intellisense" style help within the scripting environment, offline help provided with the installation and online help including examples and tutorials.
+Finally the MantidPlot application allows users to submit bug reports, requests for assistance or just a suggestions for future development directly to the development team.
 
 \section{Facility integration}
-A very important step in Mantid development and deployment is facility integration with systems for locating files within the facilities data archive and acessing the metadata catalog for experiments.  To assist in this Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}, and each facilities data archive through a plug in interface. 
+A very important step in Mantid development and deployment is facility integration with systems for locating files within the facilities data archive and accessing the metadata catalog for experiments.  To assist in this Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}, and each facilities data archive through a plug in interface. 
 
-The ICAT cataloguing software provides a well defined API to interface with data at large research facilities. It is in use at both ISIS and SNS, and provides a mechanism to link all aspects of the research chain, from proposal through publication. Each facility uses a different approach to storing teir archived data files, Mantid allows a small archive search adapter to be written to a provided interface to locate raw or processed files in data archives at each of the facilities.
+The ICAT cataloguing software provides a well defined API to interface with data at large research facilities. It is in use at both ISIS and SNS, and provides a mechanism to link all aspects of the research chain, from proposal through publication. Each facility uses a different approach to storing their archived data files, Mantid allows a small archive search adapter to be written to a provided interface to locate raw or processed files in data archives at each of the facilities.
 One important use of the ICAT interface and Mantid is the autoreduction process in use on certain instruments. As soon as files are created and catalogued, a reduction script is automatically invoked. This script uses metadata in the file and/or the ICAT catalogue to reduce the raw file to a format that contains the data that users are interested in. 
 
-In addition at SNS and ISIS, the development team has develped the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk.   This approach captures either events as they stream off the data acquisition or point in time histograms, and allows for near real time processing of the results into scientifically usefull results. This level of near real time data analysis allows for much better planning and use of valuable experiment time.  
+In addition at SNS and ISIS, the development team has developed the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk.   This approach captures either events as they stream off the data acquisition or point in time histograms, and allows for near real time processing of the results into scientifically useful results. This level of near real time data analysis allows for much better planning and use of valuable experiment time.  
 
 
 \section{Conclusion}
@@ -537,7 +538,7 @@ The development team would like to thank all instrument scientists and ISIS and 
 \bibitem{kitware} http://www.kitware.com
 \bibitem{EventPaper} J. Zikovsky {\it et. al.}, Event-Based Processing of Neutron Scattering Data, in progress.
 \bibitem{TaylorMantid} J. Taylor {\it et. al.}, Bulletin of the American Physical Society 57 (2012)
-
+\bibitem{Tobyfit} http://tobyfit.isis.rl.ac.uk/Main_Page
 \end{thebibliography}
 
 \end{document}
