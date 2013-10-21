@@ -1,0 +1,72 @@
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="924" measuredH="569" mockupW="913" mockupH="559">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="11" y="10" w="913" h="559" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>37</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>false</maximizeRestore>
+        <minimize>true</minimize>
+        <text>ALC%20Analysis%20-%20Step%203/4%20-%20Peak%20fitting</text>
+        <topheight>26</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="838" y="537" w="79" h="27" measuredW="45" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Run</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="344" y="46" w="573" h="482" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>15658734</color>
+        <text>Fitted%20data</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Image" x="349" y="67" w="562" h="451" measuredW="521" measuredH="357" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <src>../Mantid/Files/ALC/plot_result.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::FieldSet" x="22" y="46" w="316" h="482" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>15658734</color>
+        <text>Peaks</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::DataGrid" x="33" y="94" w="295" h="425" measuredW="192" measuredH="162" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hasHeader>false</hasHeader>
+        <hLines>false</hLines>
+        <rowHeight>16</rowHeight>
+        <selectedIndex>5</selectedIndex>
+        <text>%u25BC%20Peak%201%2C%0A%20%20%20Type%2C%20Gaussian%0A%20%20%20%20Height%2C%200.029388%0A%20%20%20%20PeakCenter%2C%201.554638%0A%20%20%20%20Sigma%2C%200.538339%0A%u25BC%20Peak%202%2C%0A%20%20%20%20Type%2C%20Lorentzian%0A%20%20%20%20Amplitude%2C%200.029388%0A%20%20%20%20PeakCenter%2C%201.554638%0A%20%20%20%20HWHM%2C%200.538339</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+        <vLines>true</vLines>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="33" y="63" w="-1" h="-1" measuredW="44" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="85" y="63" w="-1" h="-1" measuredW="69" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Remove</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="111" y="538" w="79" h="27" measuredW="62" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Next%20%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Button" x="22" y="538" w="79" h="27" measuredW="61" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>%3C%20Prev</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
