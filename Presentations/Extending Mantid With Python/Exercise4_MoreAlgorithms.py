@@ -46,20 +46,20 @@ class ConvertToEnergy(PythonAlgorithm):
         from mantid.simpleapi import Load, ConvertUnits, Rebin, DeleteWorkspace
         
         # Load file to workspace
-        __tmpws = Load(Filename=self.getPropertyValue("Filename"))
+        _tmpws = Load(Filename=self.getPropertyValue("Filename"))
         
         # Convert to units to DeltaE
         ei = self.getProperty("Ei").value
-        __tmpws = ConvertUnits(InputWorkspace=__tmpws,Target="DeltaE",EMode="Direct",EFixed=ei)
+        _tmpws = ConvertUnits(InputWorkspace=_tmpws,Target="DeltaE",EMode="Direct",EFixed=ei)
         
         # Rebin to requested units
         bins = self.getProperty("BinParams").value
-        __tmpws = Rebin(InputWorkspace=__tmpws,Params=bins)
+        _tmpws = Rebin(InputWorkspace=_tmpws,Params=bins)
         
         # Create the new output workspace
-        summed = WorkspaceFactory.create(__tmpws,NVectors=1)
+        _summed = WorkspaceFactory.create(_tmpws,NVectors=1)
         # Set the X values for the new workspace
-        summed.setX(0, __tmpws.readX(0))
+        _summed.setX(0, _tmpws.readX(0))
 
         # Sum the rows to a single row. Two methods demonstrated:
 
@@ -67,19 +67,22 @@ class ConvertToEnergy(PythonAlgorithm):
         # Uses less memory as it avoids a copy of the data
 
         # readY returns read only array. dataY returns an array we can modify on the new workspace
-        sumy = summed.dataY(0)
-        for i in range(__tmpws.getNumberHistograms()):
-            sumy += __tmpws.readY(i)
+        sumy = _summed.dataY(0)
+        for i in range(_tmpws.getNumberHistograms()):
+            sumy += _tmpws.readY(i)
 
         #----- 2: Extract to numpy and sum ----
         # Uses more memory as extract copies to data (uncomment to see working)
         #yin = __tmpsws.extractY()
         #npsum = numpy.sum(yin,axis=0) # Axis 0 = summing down the columns
         # and put the data to the workspace
-        #summed.setY(0, npsum)
+        #_summed.setY(0, npsum)
 
-        DeleteWorkspace(__tmpws)
-        self.setProperty("OutputWorkspace", summed)
+        # Store reference outside of algorithm
+        self.setProperty("OutputWorkspace", _summed)
+
+        DeleteWorkspace(_tmpws)
+
 
 # Register algorithm with Mantid
 AlgorithmFactory.subscribe(ConvertToEnergy)
