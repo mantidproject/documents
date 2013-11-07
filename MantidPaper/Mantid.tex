@@ -1,7 +1,9 @@
 \documentclass[1p]{elsarticle}
 \usepackage{amssymb, graphicx}
 \usepackage{pbox}
-
+\usepackage{natbib}
+%\usepackage{url}
+\usepackage{hyperref}
 \begin{document}
 
 \begin{frontmatter}
@@ -58,7 +60,9 @@
 \author[oxford]{P.~G.~Radielli}
 \author[ornl]{S.~Ren}
 \author[ornl]{M.~A.~Reuter}
-\author[ornl]{A.~T.~Savici}
+\author[ornl]{A.~T.~Savici\corref{cor1}\footnote{For general Mantid correspondence use \texttt{mantid-help@mantidproject.org}}}
+
+-\ead{saviciat@ornl.gov}
 \author[isis]{J.~W.~Taylor}
 \author[tessellaUS,ornl]{R.~J.~Taylor}
 \author[tessellaUK]{R.~Tolchenov}
@@ -197,7 +201,7 @@ The key features of the framework are:
 
 \subsection{Instrument Geometry}
 A full description of the instrument is used within the Mantid framework. The instrument definition file (IDF) is an xml styled description of of all pertinent instrument components see Table \ref{IDF}. The IDF component description can be expanded upon to increase the information level accessible to the Mantid framework. 
-Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flighpaths and detector angles ($\theta$ and $\phi$). A full description allows complex visualization of the instrument and its detectors, along with the possibility to perform Monte Carlo simulations of the incident flux and resolution using the neutron ray tracing package McStas \cite{mcstas}
+Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flighpaths and detector angles ($\theta$ and $\phi$). A full description allows complex visualization of the instrument and its detectors, along with the possibility to perform Monte Carlo simulations of the incident flux and resolution using the neutron ray tracing package McStas \cite{mcstas,mcstas2}
 The IDF can be updated from values in log files to account for moving instrument components. The solid geometry engine within the Mantid framework can be used to described complex sample shapes to allow absorption correction to be made.
 
 \begin{table}[htdp]
@@ -451,7 +455,7 @@ Advanced features provide interactive line integration or overplotting integrate
 
 
 \subsection{VATES}\label{VATES}
-A major objective of this project has been the ability to represent multidimensional data \cite{Mslice, DAVE, Horace}. Originally the Visualization and Analysis Toolkit Extensions (VATES) project was an add-on to Mantid that is now fully integrated into the project. For visualising 3 or more dimension datasets, Mantid provides several options. 
+A major objective of this project has been the ability to represent multidimensional data \cite{DAVE, Mslice, Horace}. Originally the Visualization and Analysis Toolkit Extensions (VATES) project was an add-on to Mantid that is now fully integrated into the project. For visualising 3 or more dimension datasets, Mantid provides several options. 
 
 
 \begin{figure}[!ht]
@@ -506,36 +510,8 @@ The development team would like to thank all instrument scientists and ISIS and 
 % \section{}
 % \label{}
 
-\begin{thebibliography}{00}
-\bibitem{gpl} https://www.gnu.org/licenses/gpl.html
-%\bibitem{Egami} Takeshi Egami and Simon J.L. Billinge, Editor(s), Pergamon Materials Series, Pergamon, 2003, Volume 7
-%\bibitem{Nojiri} H. Nojiri {\it et al.}, Phys. Rev. Lett. 106, 237202 (2011)
-%\bibitem{Wang} X.L. Wang {\it et al.}, Scientific Reports 2, 747 (2012)
-\bibitem{DAVE}  R.T. Azuah {\it et al.}, J. Res. Natl. Inst. Stan. Technol. 114, 341 (2009).
-\bibitem{OpenGenie} S.I. Campbell {\it et al.}, arXiv:cond-mat/0210442
-\bibitem{LAMP} D. Richard, M. Ferrand and G.J. Kearley, J. Neutron Research 4, 33-39, 1996
-\bibitem{mantiddoi}http://dx.doi.org/10.5286/software/mantid 
-\bibitem{ICAT} http://www.icatproject.org/
-\bibitem{ISAW} T. G. Worlton {\it et. al.}, Neutron News 15(3),14-15 (2004)  
-\bibitem{trac} http://trac.edgewall.org/
-\bibitem{git} http://git-scm.com/
-\bibitem{github} https://github.com/
-\bibitem{jenkins} http://jenkins-ci.org/
-\bibitem{mcstas} K. Lefmann and K. Nielsen, Neutron News 10, 20, (1999); P. Willendrup, E. Farhi and K. Lefmann, Physica B, 350 (2004) 735.
-
-\bibitem{webpage} http://www.mantidproject.org
-\bibitem{qtiplot} http://soft.proindependent.com/qtiplot.html
-\bibitem{musr} S. Cottrell {\it et. al.}, Physics Procedia 30, 20-25 (2012)
-\bibitem{Mslice} R. Coldea, MSlice  http://mslice.isis.rl.ac.uk
-\bibitem{Horace} T. G. Perring {\it et. al.}, http://horace.isis.rl.ac.uk
-\bibitem{tobyfit} T. G. Perring {\it et. al.}, http://http://tobyfit.isis.rl.ac.uk
-\bibitem{paraview} A. Henderson, ParaView Guide, A Parallel Visualization Application, Kitware Inc.(2007)
-\bibitem{vtk} W. Schroeder {\it et. al.}, The Visualization Toolkit, Kitware Inc.(2006)
-\bibitem{kitware} http://www.kitware.com
-\bibitem{EventPaper} J. Zikovsky {\it et. al.}, Event-Based Processing of Neutron Scattering Data, in progress.
-\bibitem{TaylorMantid} J. Taylor {\it et. al.}, Bulletin of the American Physical Society 57 (2012)
-\end{thebibliography}
-
+\bibliography{Mantid}{}
+\bibliographystyle{elsarticle-num}
 \end{document}
 
 
