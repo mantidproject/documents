@@ -2,27 +2,13 @@
 \usepackage{amssymb, graphicx}
 \usepackage{pbox}
 \usepackage{natbib}
-%\usepackage{url}
-\usepackage{hyperref}
+\usepackage{url}
+%\usepackage{hyperref}
 \begin{document}
 
 \begin{frontmatter}
 
-% Title, authors and addresses
 
-% use the thanksref command within \title, \author or \address for footnotes;
-% use the corauthref command within \author for corresponding author footnotes;
-% use the ead command for the email address,
-% and the form \ead[url] for the home page:
-% \title{Title\thanksref{label1}}
-% \thanks[label1]{}
-% \author{Name\corauthref{cor1}\thanksref{label2}}
-% \ead{email address}
-% \ead[url]{home page}
-% \thanks[label2]{}
-% \corauth[cor1]{}
-% \address{Address\thanksref{label3}}
-% \thanks[label3]{}
 
 \title{Mantid - Data Analysis and Visualization Package for Neutron Scattering and $\mu SR$ Experiments}
 
@@ -60,9 +46,9 @@
 \author[oxford]{P.~G.~Radielli}
 \author[ornl]{S.~Ren}
 \author[ornl]{M.~A.~Reuter}
-\author[ornl]{A.~T.~Savici\corref{cor1}\footnote{For general Mantid correspondence use \texttt{mantid-help@mantidproject.org}}}
-
--\ead{saviciat@ornl.gov}
+\author[ornl]{A.~T.~Savici}
+%\corref{cor1}\footnote{For general Mantid correspondence use %\texttt{mantid-help@mantidproject.org}}}
+%\ead{saviciat@ornl.gov}
 \author[isis]{J.~W.~Taylor}
 \author[tessellaUS,ornl]{R.~J.~Taylor}
 \author[tessellaUK]{R.~Tolchenov}
@@ -172,56 +158,58 @@ Once a day, a series of over 150 integration 'system tests' are run with the mos
 
 \section{Mantid Design}
 
-To ensure high performance for data analysis, but also allow flexibility in how the data is processed, the project it is written in C++, with Python bindings.
 
-One of the main design consideration for this project was the separation of data and algorithms. The ethos of the development is that algorithms should (where possible) operate on all data types without $aprirori$ knowledge of the data or the experiment that generated it. In principle this ideology makes the framework cleaner and easier for the scientist to use. It it important to note that the framework is developed for the user community of the facilities, in many instances external visiting scientists are not experts in neutron scattering or the associated data analysis that is required. Any software application written at facilities and funded by governments must take this into account at the design stage.
+
+One of the main design consideration for this project was the separation of data and algorithms. The ethos of the development is that algorithms should (where possible) operate on all data types without \textit{a\ priori} knowledge of the data or the experiment that generated it. In principle, this ideology makes the framework cleaner and easier to use. In many instances, scientists are not experts in neutron scattering, $\mu$SR, or the associated data analysis that is required. Successful software application written for scientists must take this into account at the design stage.
+
 Data containers (called workspaces) and algorithms, which manipulate workspaces, compose the central element of the Mantid Framework (Figure \ref{fig:Framework}). 
-Workspaces and algorithms are aware of the geometry of each individual instrument. Instrument geometries are xml files containing the real space position of all instrument components.
+Workspaces and algorithms are aware of the geometry of each individual instrument. 
+%Instrument geometries are XML files containing the real space position of all instrument components.
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{MantidFramework.png}}
 \caption{Mantid Framework design}
 \label{fig:Framework}
 \end{figure}
-Workspaces can be loaded from various file formats, from live data streams, or created by different algorithms. The workspaces and the data within can be manipulated by the many algorithms in Mantid, and saved to disk in a variety of formats. By default Mantid uses the NeXus format for saving intermediate and processed data, but various other output formats are also supported.
+Workspaces can be loaded from various file formats, live data streams, or created by different algorithms. The workspaces can be manipulated by the many algorithms in Mantid, and saved in a variety of formats. By default, Mantid uses the NeXus format\cite{NeXus} for saving intermediate and processed data, but various other output formats are also supported.
 
-The interaction with the Mantid Frameworks occurs through the application programming interface (API). While initially a Matlab API was envisioned, and proof of concept established, currently the main interactions occur through either the Python API, or through MantidPlot graphical interface. 
+To ensure high performance for data analysis, but also allow flexibility in how the data is processed, the project is written in C++ with Python bindings. For parallel processing, Mantid uses OpenMP\cite{openmp}, Posix threads and MPI\cite{mpi}. The interaction with the Mantid Framework occurs through the application programming interface (API). Currently the main interactions occur through either Python or through the graphical interface. 
 
-The key features of the framework are:
-
-\begin{itemize}
-\item Powerful data container workspaces handling multiple data types, experiment logs and experiment metadata
-\item Abstracted algorithms
-\item Inbuilt instrument geometry and solid geometry handling 
-\item Handling of multiple data types including event mode data
-\item Python bindings for all aspects of the core framework 
-\item Platform independent code
-\item Multiple platform builds along with platform specific installers for Mantid, Python, Ipython, SciPy and NumPy
-\item The framework is openMP aware and designed to maximise performance on multicore machines
-\end{itemize}
+%The key features of the framework are:
+%\begin{itemize}
+%\item Powerful data container workspaces handling multiple data types, experiment logs and experiment metadata
+%\item Abstracted algorithms
+%\item Inbuilt instrument geometry and solid geometry handling 
+%\item Handling of multiple data types including event mode data
+%\item Python bindings for all aspects of the core framework 
+%\item Platform independent code
+%\item Multiple platform builds along with platform specific installers for Mantid, Python, IPython, SciPy and NumPy
+%\item The framework is OpenMP aware and designed to maximise performance on multicore machines
+%\end{itemize}
 
 \subsection{Instrument Geometry}
-A full description of the instrument is used within the Mantid framework. The instrument definition file (IDF) is an xml styled description of of all pertinent instrument components see Table \ref{IDF}. The IDF component description can be expanded upon to increase the information level accessible to the Mantid framework. 
-Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flighpaths and detector angles ($\theta$ and $\phi$). A full description allows complex visualization of the instrument and its detectors, along with the possibility to perform Monte Carlo simulations of the incident flux and resolution using the neutron ray tracing package McStas \cite{mcstas,mcstas2}
-The IDF can be updated from values in log files to account for moving instrument components. The solid geometry engine within the Mantid framework can be used to described complex sample shapes to allow absorption correction to be made.
+A full description of the instrument is used within the Mantid framework. One way to specify the geometry is the instrument definition file (IDF). The IDF is a XML description of all pertinent instrument components.% (Table \ref{IDF}). 
+The IDF component description can be expanded upon to increase the information level accessible to the Mantid framework. 
+Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flight paths and detector angles. A full description, based on constructive solid geometry, allows complex visualization of the instrument and its detectors, along with the possibility to perform Monte Carlo simulations.
+To account for moving instrument components, the instrument geometry is updated using log values. %The solid geometry engine within the Mantid framework can be used to described complex sample shapes to allow absorption correction to be made.
 
-\begin{table}[htdp]
-
-\footnotesize
-\begin{tabular}{l | c | c }
-Component type & Position information &Supplemental information \\ \hline
-Beam Monitor& flightpath position& Monitor type Gas / scint\\
-Detector&X,Y,Z r,$\theta$,$\phi$& detector type gas/scint gas pressure wall thickness\\
-Neutron guide&dimensions /length &m factor\\
-Beam Chopper&slit dimensions&speed\\
-Beam defining slits&dimension\\
-Source type&dimension &type /temperature
-
-
-\end{tabular}
-
-\caption{Component types currently stored in the instrument definition in Mantid together with possible position information and metadata}
-\label{IDF}
-\end{table}%
+%\begin{table}[htdp]
+%
+%\footnotesize
+%\begin{tabular}{l | c | c }
+%Component type & Position information &Supplemental information \\ \hline
+%Beam Monitor& flightpath position& Monitor type Gas / scint\\
+%Detector&X,Y,Z r,$\theta$,$\phi$& detector type gas/scint gas pressure wall thickness\\
+%Neutron guide&dimensions /length &m factor\\
+%Beam Chopper&slit dimensions&speed\\
+%Beam defining slits&dimension\\
+%Source type&dimension &type /temperature
+%
+%
+%\end{tabular}
+%
+%\caption{Component types currently stored in the instrument definition in Mantid together with possible position information and metadata}
+%\label{IDF}
+%\end{table}%
 
 %\subsection{Classes}
 %\textbf{is this required too}
@@ -237,8 +225,8 @@ Workspaces are the data containers in Mantid. In addition to the data, workspace
 \begin{table}[htdp]
 
 \footnotesize
-\begin{tabular}{ p{0.16\textwidth} |  p{0.15\textwidth} |  p{0.2\textwidth}|   p{0.2\textwidth} |  p{0.14\textwidth}}
-Workpsacetype & dataFormat &mode &metaData&uses\\ \hline
+\begin{tabular}{ p{0.16\textwidth} |  p{0.12\textwidth} |  p{0.2\textwidth}|   p{0.2\textwidth} |  p{0.12\textwidth}}
+Workspace type & Data format & Mode &Metadata&Uses\\ \hline
 &&&&\\
 
 Workspace2D	& X,Signal, Error & Histogram / point& sample logs, Spectrum Number, detectorID&raw data\\
@@ -246,12 +234,12 @@ Workspace2D	& X,Signal, Error & Histogram / point& sample logs, Spectrum Number,
 
 EventWorkpsace&eventlist	&on the fly rebin   correlated sample log, spectrum number, detector ID&raw event data	\\
 &&&&\\
-Multidimensional workspace & $n$ eventlist, $n$ histogram& adaptive mesh rebin& $n$dim, axis, units, sample logs& processed volume data sets\\
+MDWorkspace & $n$ eventlist, $n$ histogram& adaptive mesh rebin& $n$dim, axis, units, sample logs& processed volume data sets\\
 &&&&\\
-Tableworkspace&column - row format& | &|& fitting results\\
+TableWorkspace&column - row format& | &|& fitting results\\
 \end{tabular}
 
-\caption{Workspace types in Mantid together with type of data stored, meta data and current uses in the framework for each type of workspace}
+\caption{Workspace types in Mantid together with type of data stored, metadata and current uses in the framework for each type of workspace}
 \label{workspaceTable}
 \end{table}%
 
