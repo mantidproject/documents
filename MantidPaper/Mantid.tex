@@ -378,7 +378,7 @@ The framework has inbuilt methods to process single crystal diffraction data, al
 \subsection {Fitting}
 Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application.
  The Mantid framework has implemented a powerful fitting engine for fitting multidimensional datasets.
- Fitting peak functions and simple user derived functions to line data i.e. data that is in 1D x,y,e format can be also performed using simple user friendly interface. This user interface has been developed to allow complex function to be created from simple mathematical building blocks using GUU. Any function or dataset can also be fitted within the scripting python interface.
+ Fitting peak functions and simple user derived functions to line data i.e. data that is in 1D x,y,e format can be also performed using simple user friendly interface. This user interface has been developed to allow complex function to be created from simple mathematical building blocks using GUI. Any function or dataset can also be fitted within the scripting python interface.
 
 Once the user has generated a model the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter. Output from the fit procedure is displayed as a Table Workspace dataset which can then be further manipulated and analysed to estimate statistical characteristics of fitting.
 
@@ -397,12 +397,12 @@ There are a number of scientific techniques that always  fit complex function to
 
 \subsection {Simulation and Analysis}
 
-Fitting over multidimensional datasets is used in more complex situations e.g. in the analysis of the results of the inelastic scattering experiments. Fitting a single resolution broadened model of scattering $S(q,\omega)$ to a $n$ dimensional $S(q,\omega)$ dataset is a standard data analysis procedure in in this area used to account for substantial changes in the results of the experiment due to the instrument resolution effects.
+Fitting over multidimensional datasets is used in more complex situations e.g. in the analysis of the results of the inelastic scattering experiments. Fitting a single resolution broadened model of scattering $S(q,\omega)$ to a $n$ dimensional $S(q,\omega)$ dataset is a standard data analysis procedure in this area used to account for substantial changes in the results of the experiment due to the instrument resolution effects.
  Mantid contains a set of procedures for calculating an instrument resolution function and convoluting this resolution with chosen scattering model to obtain simulated resolution broadened scattering model. It then can use the multidimensional fitting framework to compare simulated model scattering with experimental scattering and fit the parameters of the scattering model to the results of the experiments. These capabilities are similar to the capabilities available in the past program like $Toby$fit \cite{tobyfit}.At the moment $Toby$fit's Monte-carlo-based instrument resolution model is implemented in the Mantid and the framework allows to define and deploy other instrument resolution models. Mantid also already contains range of $Toby$fit's scattering models used in the analysis of the inelastic neutron scattering data.
  
 
 
-\section{visualization}
+\section{Visualization}
 
 Modern multi detector instruments generate large data sets which cannot be easily visualised on a 1D graph or a 2D projection. 
 Large position sensitive detector backs allow diffractometers and spectrometers to survey large areas of reciprocal space in a single experiment. 
