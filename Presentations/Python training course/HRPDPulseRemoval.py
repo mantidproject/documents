@@ -16,7 +16,7 @@ Load(Filename=path+inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
 
 # First do the analysis without prompt pulse removal so that we can compare the difference
 # Align the detectors (incoporates unit conversion to d-Spacing)
-cal_file = "hrpd_new_072_01.cal"
+cal_file = "hrpd_new_072_01_corr.cal"
 AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withpulse",CalibrationFile=path + cal_file)
 # Focus the data
 DiffractionFocussing(InputWorkspace="aligned-withpulse",OutputWorkspace="focussed-withpulse",GroupingFileName=path+cal_file)
