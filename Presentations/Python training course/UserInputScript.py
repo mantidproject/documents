@@ -20,7 +20,7 @@ LoadRaw(Filename=file,OutputWorkspace="Small_Angle",SpectrumMin=130, SpectrumMax
 RemoveBins(InputWorkspace="Monitor",OutputWorkspace="Monitor",XMin=19900,XMax=20500,Interpolation='Linear')
 
 # Correct monitor for a flat background
-FlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList=0,StartX=31000,EndX=39000)
+CalculateFlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList=0,StartX=31000,EndX=39000)
 
 # Convert monitor to wavelength
 ConvertUnits(InputWorkspace="Monitor",OutputWorkspace="Monitor",Target="Wavelength")
