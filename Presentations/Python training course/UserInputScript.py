@@ -1,29 +1,35 @@
+# --------------------------------------------------------------------------------------------------------------------------------------
+#  Python Training Exercise 2 Solution with syntax style
+# A generalized script
+#-----------------------------------------------------------------------------------------------------------------------------------------
 
-# The input data set
-inputData = "HRP39182"
-# Load the file
-Load(Filename=inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
+# Load the monitor spectrum, asking the  user for file
+loadalg = LoadRawDialog(OutputWorkspace="Monitor",SpectrumMin=2,SpectrumMax=2,Message="Enter the raw file you want to process", Disable="SpectrumList")
 
-# First do the analysis without prompt pulse removal so that we can compare the difference
-# Align the detectors (incoporates unit conversion to d-Spacing)
-cal_file = "hrpd_new_072_01_corr.cal"
-AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withpulse",CalibrationFile=cal_file)
-# Focus the data
-DiffractionFocussing(InputWorkspace="aligned-withpulse",OutputWorkspace="focussed-withpulse",GroupingFileName=cal_file)
+# Retrieve the file that was loaded
+file = loadalg.getPropertyValue("Filename")
+# Load the main data bank (same file)
+LoadRaw(Filename=file,OutputWorkspace="Small_Angle",SpectrumMin=130, SpectrumMax=16130)
 
-# Plot a spectrum. As each pulse is removed below, the graph will update
-plotSpectrum(inputData,0)
+# Remove the prompt pulse from the monitor
+RemoveBins(InputWorkspace="Monitor",OutputWorkspace="Monitor",XMin=19900,XMax=20500,Interpolation='Linear')
 
-# Remove the prompt pulse, which occurs at at 20,000 microsecond intervals. The bin width comes from a quick look at the data
-for i in range(0,5):
-  min = 19990 + (i*20000)
-  max = 20040 + (i*20000)
-  MaskBins(InputWorkspace=inputData,OutputWorkspace=inputData,XMin=min,XMax=max)
+# Correct monitor for a flat background
+CalculateFlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList=0,StartX=31000,EndX=39000)
 
-# Align the detectors (on the data with the pulse removed incoporates unit conversion to d-Spacing)
-AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withoutpulse",CalibrationFile=cal_file)
-# Focus the data
-DiffractionFocussing(InputWorkspace="aligned-withoutpulse",OutputWorkspace="focussed-withoutpulse",GroupingFileName=cal_file)
+# Convert monitor to wavelength
+ConvertUnits(InputWorkspace="Monitor",OutputWorkspace="Monitor",Target="Wavelength")
 
-# Now plot a focussed spectrum with and without prompt peak removal so that you can see the difference
-plotSpectrum(["focussed-withoutpulse","focussed-withpulse"],0)
+# Rebin with a suggested set of parameters
+# The list of parameters [2.2,-0.035,10] can also be given as a '2.2,-0.035,10'
+rebinalg = RebinDialog(InputWorkspace="Monitor",OutputWorkspace="Monitor",Params=[2.2,-0.035,10],Message="Enter the binning you want to use, in wavelength", Enable="Params")
+rebinparam = rebinalg.getPropertyValue("params")
+
+# Convert data to wavelength
+ConvertUnits(InputWorkspace="Small_Angle",OutputWorkspace="Small_Angle",Target="Wavelength")
+
+# Rebin the small angle workspace with the same parameters as the previous Rebin
+Rebin(InputWorkspace="Small_Angle",OutputWorkspace="Small_Angle",Params=rebinparam)
+
+# Finally, correct for incident beam monitor
+Divide(LHSWorkspace="Small_Angle", RHSWorkspace="Monitor",OutputWorkspace="Corrected data")
