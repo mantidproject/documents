@@ -1,0 +1,7 @@
+run = Load('Training_Exercise3a_SNS.nxs')
+graph1 = plotSpectrum(source=run, indices=0)
+graph2 = plotSpectrum(source=run, indices=1)
+mergePlots(graph1, graph2)
+layer = graph1.activeLayer()
+layer.setAxisScale(Layer.Bottom, -1.5, 1.8)
+layer.logYlinX()
