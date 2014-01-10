@@ -366,126 +366,104 @@ $\mu SR$&MUSR HIFI EMU\\
 %\textbf{should we add more in this section about other types of reduction key features etc}
 
 \subsection {Fitting}
-Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application.
- The Mantid framework has implemented a powerful fitting engine for fitting multidimensional datasets.
- Fitting peak functions and simple user derived functions to line data i.e. data that is in 1D x,y,e format can be also performed using simple user friendly interface. This user interface has been developed to allow complex function to be created from simple mathematical building blocks using GUI. Any function or dataset can also be fitted within the scripting Python interface.
+Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application. 
+The Mantid framework has implemented a powerful engine for fitting multidimensional datasets. This is not intended to replace domain specific fitting software (e.g. GSAS, SASView). 
+ Fitting peak functions and simple user derived functions to line data, i.e. data that is in 1D x,y,e format, can also be performed using a simple user interface (Figure \ref{fitting}). All of the fitting can be done within the Python scripting  interface.
 
-Once the user has generated a model the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter. Output from the fit procedure is displayed as a Table Workspace dataset which can then be further manipulated and analysed to estimate statistical characteristics of fitting.
-
-
-Figure \ref{fitting} shows the GUI used for fitting mathematical functions to 1D data.
+Once the user has generated a model, the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter. Fitting results are displayed as TableWorkspaces which can then be further manipulated and analysed.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{fitting.pdf}}
 \caption{The simple fitting GUI interface in the MantidPlot application. Peak selection is performed using mouse selection on the displayed data.
-Panel A displays the required model and fit controls panel B displays the data, fitted model and difference the vertical dotted lines indicate extents in x for the model.  }
+Panel A displays the required model and fit controls. Panel B displays the data, fitted model and difference the vertical dotted lines indicate extents in x for the model.  }
 \label{fitting}
 \end{figure}
 
-There are a number of scientific techniques that always  fit complex function to reduced datasets in order to extract meaningful physical parameters. For the case of MUSR and QENS the Mantid framework fitting module is sufficient. For SANS the data can be output to external model fitting packages for further analysis. Mantid currently can link directly to $SASView$ for further analysis of experimental data.
 
 
 \subsection {Simulation and Analysis}
 
-Fitting over multidimensional datasets is used in more complex situations e.g. in the analysis of the results of the inelastic scattering experiments. Fitting a single resolution broadened model of scattering $S(q,\omega)$ to a $n$ dimensional $S(q,\omega)$ dataset is a standard data analysis procedure in this area used to account for substantial changes in the results of the experiment due to the instrument resolution effects.
- Mantid contains a set of procedures for calculating an instrument resolution function and convoluting this resolution with chosen scattering model to obtain simulated resolution broadened scattering model. It then can use the multidimensional fitting framework to compare simulated model scattering with experimental scattering and fit the parameters of the scattering model to the results of the experiments. These capabilities are similar to the capabilities available in the past program like $Toby$fit \cite{tobyfit}.At the moment $Toby$fit's Monte-carlo-based instrument resolution model is implemented in the Mantid and the framework allows to define and deploy other instrument resolution models. Mantid also already contains range of $Toby$fit's scattering models used in the analysis of the inelastic neutron scattering data.
+Fitting over multidimensional datasets is used in more complex situations, e.g. in the analysis of the results of the inelastic scattering experiments. Fitting a single resolution broadened model of scattering $S(q,\omega)$ to a $n$ dimensional $S(q,\omega)$ dataset is a standard data analysis procedure in this area used to account for substantial changes in the results of the experiment due to the instrument resolution effects.
  
-
+Mantid contains a set of procedures for calculating an instrument resolution function and convoluting this resolution with chosen scattering model to obtain simulated resolution broadened scattering model. It then can use the multidimensional fitting framework to compare simulated model scattering with experimental scattering and fit the parameters of the scattering model to the results of the experiments. These capabilities are similar to the capabilities available in legacy programs (e.g. TobyFit \cite{tobyfit}, DAVE \cite{DAVE}). A Monte Carlo based instrument resolution model is implemented in Mantid. The framework allows to define and deploy other instrument resolution models. Mantid also contains a range of scattering models used in the analysis of the inelastic neutron scattering data.
+ 
 
 \section{Visualization}
 
-Modern multi detector instruments generate large data sets which cannot be easily visualised on a 1D graph or a 2D projection. 
-Large position sensitive detector backs allow diffractometers and spectrometers to survey large areas of reciprocal space in a single experiment. 
-A large multi detector instrument typically has 60-100k pixels visualising experimental data in real space of the entire instrument is often useful. For single crystal samples such instruments become large Laue geometry cameras. For SANS experiments area detectors of 1x1m are commonplace and place another requirement on visualization. 
-For visualising the instrument data in real space the InstrumentView can be used (figure \ref{fig:InstrumentView}), and is described later. 
-
- 
-Often experiment perform crystal rotations to generate even grater maps of reciprocal space and for the case of inelastic neutron scattering that resolves both reciprocal space and energy transfer the data volume that is produced is in greater than 3 dimensions. 
-
-Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in Mantid is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{fig:SliceView} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($visulisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualization tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
-
-The application has been developed in this way to ensure that the scientific workflow is intuitive and efficient.
-
-
+Modern instruments survey broad regions of reciprocal space, and therefore generate large data sets which cannot be easily visualised in 1D or 2D projections. 
+Mantid provides a variety of tools for visualising higher dimensional data. 
 
 
 \subsection{Instrument View}
-The instrument view (IV) is a 3D representation of the whole instrument component  positions are calculated from the IDF. Individual IDF components, i.e. choppers, guides, etc. can be toggled on or off. 
-Detectors are shaded with a colour representative of the goal integrated counts. 
-The  IV allows for quick access to information about detectors and spectra, and provide a simple graphical interface for masking and grouping.
-The IV has a number of useful features:
-\begin{itemize}
+%Visualising experimental data in real space of the entire instrument is often useful. 
+The Instrument View (Figure \ref{fig:InstrumentView}) is a 3D representation of the whole instrument, with component  positions  calculated from the IDF. Non-detector components (e.g. choppers, guides) can be toggled on or off. 
+The colour of the detectors is representative of the total integrated counts. In addition to the 3D rendering, various 2D projections (e.g. spherical along $x$, cylindrical along $y$) of the detectors are available.
+The  Instrument View allows for quick access to information about detectors, and provides a simple graphical interface for masking, grouping, and viewing spectra.
 
-
-\item A 2D projection of the detectors can be selected.
-\item Users can group mask or select shapes or ranges of detectors and save the output as a separate workspace. 
-\item Groups of detectors can be flagged to be ignored by subsequent algorithms (masking)
-\item Users can quickly look at individual spectra in what ever x axis unit is currently selected
-\item Bragg peaks can be selected and saved as peak workspaces
-\item For instruments that use position sensitive detectors the counts in each pixel can be plotted as a function of position along the tube.
-\end{itemize}
 
 \begin{figure}[!htb]
 \centerline{\includegraphics[width=0.75\textwidth]{instrumentview.pdf}}
-\caption{The instrument view GUI in MantidPlot showing a 3D representation of the MARI spectrometer. Various components are annotated.  }
+\caption{The Instrument View showing a 3D representation of the MARI spectrometer. Various components are annotated.  }
 \label{fig:InstrumentView}
 \end{figure}
 
-\subsection{Slice viewer}
+\subsection{Slice Viewer}
 
-One tool for visualising multi-dimensional (MD) data is the SliceViewer (Figure \ref{fig:SliceView}). The SliceViewer provides an interactive 2D projection of multiple data types, both common 2D data and MDWorkspaces
-Advanced features provide interactive line integration or overplotting integrated or non-integrated single crystal peak locations and regions. 
+One tool for visualising multidimensional (MD) data is the Slice Viewer (Figure \ref{fig:SliceView}). The Slice Viewer provides an interactive 2D projection of multiple data types.
+Advanced features provide interactive line integration and overplotting PeaksWorkspaces. A list of overplotted peaks is available in this view. 
 
 
 \begin{figure}[!htb]
 \centerline{\includegraphics[width=0.75\textwidth]{Peaks_view.png}}
-\caption{SliceViewer showing a single crystal peak and related information.}
+\caption{Slice Viewer showing a single crystal peak and related information.}
 \label{fig:SliceView}
 \end{figure}
 
 
-\subsection{VATES}\label{VATES}
-A major objective of this project has been the ability to represent multidimensional data \cite{DAVE, Mslice, Horace}. Originally the Visualization and Analysis Toolkit Extensions (VATES) project was an add-on to Mantid that is now fully integrated into the project. For visualising 3 or more dimension datasets, Mantid provides several options. 
+\subsection{VATES Simple Interface}\label{VATES}
+%Volumes of data are inherently large in memory and require special techniques to visualise  efficiently. Volume data in Mantid is encapsulated in the MDevent workspace type which uses dynamic box rebining to maximise efficiency and minimise memory allocation. MDevent workspaces can be viewed using the sliceViewer\ref{fig:SliceView} described later or the entire volume can be rendered and manipulated using $paraView$ (PV). A simple instance of PV has been developed ($visulisation toolkit VATES$)  specifically for neutron specific methods and can be instantiated directly from within MantidPlot, from the MDEventworkspace context menu.  The MDevent datatype and associated visualization tools is not confined to processed data in reciprocal space and can be used to visualise 3D volume data from neutron topography experiments. 
+
+%The application has been developed in this way to ensure that the scientific workflow is intuitive and efficient.
+A major objective of Mantid has been the ability to represent multidimensional data \cite{DAVE, Mslice, Horace}. Originally the Visualization and Analysis Toolkit Extensions (VATES) project was an add-on to Mantid that is now fully integrated into the project. 
+The VATES Simple Interface (\textit{VSI}), offers a limited set of data views and access to a subset of Mantid algorithms. It is based on application widgets and rendering libraries from the ParaView\cite{paraview} visualization program. The \textit{VSI}$\*$ takes advantage of the ParaView plugin architecture to provide functionality from within Mantid and from ParaView outside of Mantid. 
+
+The data to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}$\*$. Those same data structures can be saved to a file and visualised in the ParaView application. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
 
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.6\textwidth]{NonOrthogonalProjection_W.png}}
-\caption{Volume rendering of Gd excitations, in ParaView. Data was measured on SEQUOIA spectrometer at SNS.}
+\caption{Volume rendering of Gd excitations. Data was measured on the SEQUOIA spectrometer at the SNS.}
 \label{fig:ParaView_sample}
 \end{figure}
 
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=0.75\textwidth]{VSI-v2-SplatterPlot.png}}
-\caption{VSI in splatter plot mode with single crystal data from TOPAZ difractometer.}
+\caption{VSI in Splatter Plot mode with single crystal data from the TOPAZ difractometer at the SNS.}
 \label{fig:VSI_sample}
 \end{figure}
 
-The VATES Simple Interface (\textit{VSI}), offers a stock set of data views and access to a subset of Mantid algorithms. It is based on application widgets and rendering libraries from the ParaView\cite{paraview} visualization program. The \textit{VSI}$\*$ takes advantage of the ParaView plugin architecture to provide functionality from within Mantid and from within ParaView standalone. The data in Mantid to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}$\*$. Those same data structures can be saved to file and visualised in the ParaView program. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
+The \textit{VSI} has a view called Multi Slice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in Slice Viewer for further exploration. The Splatter Plot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In this view the user can interact with the data to retrieve information about a selected peak. The Three Slice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the data in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
 
 
-
-The \textit{VSI} has a view called MultiSlice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in SliceViewer. The SplatterPlot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In that view the user can interact with the data to retrieve information about a selected peak. The ThreeSlice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the data in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
-
-Ongoing work on the VATES interface aims to provide full scriptable control over all the visualization tools described, as well as increased support for multidimensional processing in technique specific areas. 
-
-
-\section{Community involvement and expandability}
+\section{Community Involvement and Expandability}
 The Mantid framework provides facility users with a very powerful data analysis tool. The Python API gives the user the ability to expand functionality for many different applications. User generated Python applications can be submitted to the Mantid script repository. The script repository  allows users to contribute and share scripts with the rest of the Mantid community and MantidPlot allows upload and downloading as well as marking scripts to automatically updated with new versions from the  repository. The flexible nature of the framework can be used to analyse most types of experimental data, and is often used in new and interesting ways by the community that were not originally envisaged by the development team.
-With the many algorithms supported by Mantid extensive documentation is required,  This is provided at several levels, from helpful validation,"intellisense" style help within the scripting environment, offline help provided with the installation and online help including examples and tutorials.
+With the many algorithms supported by Mantid extensive documentation is required,  This is provided at several levels, from helpful validation, intelligent code completion within the scripting environment, offline help provided with the installation and online help including examples and tutorials.
 Finally the MantidPlot application allows users to submit bug reports, requests for assistance or just a suggestions for future development directly to the development team.
 
-\section{Facility integration}
-A very important step in Mantid development and deployment is facility integration with systems for locating files within the facilities data archive and accessing the metadata catalog for experiments.  To assist in this Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}, and each facilities data archive through a plug in interface. 
+\section{Facility Integration}
+A very important step in Mantid development and deployment is facility integration.
 
-The ICAT cataloguing software provides a well defined API to interface with data at large research facilities. It is in use at both ISIS and SNS, and provides a mechanism to link all aspects of the research chain, from proposal through publication. Each facility uses a different approach to storing their archived data files, Mantid allows a small archive search adapter to be written to a provided interface to locate raw or processed files in data archives at each of the facilities.
-One important use of the ICAT interface and Mantid is the autoreduction process in use on certain instruments. As soon as files are created and catalogued, a reduction script is automatically invoked. This script uses metadata in the file and/or the ICAT catalogue to reduce the raw file to a format that contains the data that users are interested in. 
+To assist in this, Mantid interfaces with Information CATalog (ICAT) \cite{ICAT}. 
+It is in use at both ISIS and SNS. Each facility uses a different approach to storing their archived data files. Mantid allows a small archive search adapter to be written to a provided interface to locate raw or processed files in data archives at each of the facilities.
 
-In addition at SNS and ISIS, the development team has developed the interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in real time, before a file is even written to the disk.   This approach captures either events as they stream off the data acquisition or point in time histograms, and allows for near real time processing of the results into scientifically useful results. This level of near real time data analysis allows for much better planning and use of valuable experiment time.  
+One important use of the ICAT interface is the autoreduction process on certain instruments. As soon as files are created and catalogued, a reduction script is automatically invoked. This script uses metadata in the file and/or the ICAT catalogue to reduce the raw data to a form that users are interested in. 
+
+In addition at SNS and ISIS, the development team has implemented an interface between Mantid and the data acquisition systems, in order to allow users to look and analyse their data in near real time. This approach allows for processing of the live data into scientifically useful results. This level of near real time data analysis allows for much more efficient use of valuable experiment time.  
 
 
 \section{Conclusion}
-The Mantid project offers an extensible framework for data manipulation, analysis and visualization, geared toward neutron scattering and $\mu SR$ experiments. It is the main reduction software in use at SNS and ISIS, and partially in use or considered at several other scientific facilities. Up to date information, and usage tutorials can be found on the Mantid web page\cite{webpage}. 
+The Mantid project offers an extensible framework for data manipulation, analysis and visualization, geared toward neutron scattering and $\mu SR$ experiments. It is the main reduction software in use at SNS and ISIS, and partially in use or considered at several other scientific facilities. Up to date information and usage tutorials can be found on the Mantid web page\cite{webpage}. 
 
 \section{Acknowledgements}
 The development team would like to thank all instrument scientists and ISIS and SNS for their feedback and help. Work at ORNL was sponsored by the Scientific User Facilities Division, Office of Basic Energy Sciences, US Department of Energy. Work at the ISIS facility was funded by the Science and Technology Facilities Council (STFC) UK. Development for ILL instruments was funded by NMI3 (WP6)
