@@ -17,18 +17,19 @@
 \author[ornl]{J.~M.~Borreguero}
 \author[isis]{A.~Buts}
 \author[ornl]{S.~I.~Campbell}
-\author[ill]{L.~Chapon}
-\author[isis]{S.~J.~Cottrell}
+%\author[ill]{L.~Chapon}
+%\author[isis]{S.~J.~Cottrell}
 \author[ornl]{M.~Doucet}
 \author[tessellaUK]{N.~Draper}
-\author[isis]{R.~Fowler}
+%\author[isis]{R.~Fowler}
+\author[ill]{R.~Ferraz Leal}
 \author[tessellaUK]{M.~A.~Gigg}
-\author[ornl] {M.~E.~Hagen}
-\author[isis]{A.~Hillier}
+%\author[ornl] {M.~E.~Hagen}
+%\author[isis]{A.~Hillier}
 \author[ornl]{V.~E.~Lynch}
-\author[isis]{P.~Manuel}
+%\author[isis]{P.~Manuel}
 \author[isis]{A.~Markvardsen}
-\author[isis]{R.~L.~McGreevy}
+%\author[isis]{R.~L.~McGreevy}
 \author[uws,ornl]{D.~J.~Mikkelson}
 \author[uws,ornl]{R.~L.~Mikkelson}
 \author[nccsornl]{R.~Miller}
@@ -37,18 +38,19 @@
 \author[isis]{G.~Passos}
 \author[isis]{T.~G.~Perring}
 \author[ornl]{P.~F.~Peterson}
-\author[isis]{F.~Pratt}
-\author[ornl] {Th.~Profen}
-\author[oxford]{P.~G.~Radielli}
+%\author[isis]{F.~Pratt}
+%\author[ornl] {Th.~Profen}
+%\author[oxford]{P.~G.~Radielli}
 \author[ornl]{S.~Ren}
 \author[ornl]{M.~A.~Reuter}
 \author[ornl]{A.~T.~Savici}
-%\corref{cor1}\footnote{For general Mantid correspondence use %\texttt{mantid-help@mantidproject.org}}}
-%\ead{saviciat@ornl.gov}
+\corref{cor1}
+\let\thefootnote\relax\footnotetext{For general Mantid correspondence use \texttt{mantid-help@mantidproject.org}}
+\ead{saviciat@ornl.gov}
 \author[isis]{J.~W.~Taylor}
 \author[tessellaUS,ornl]{R.~J.~Taylor}
 \author[tessellaUK]{R.~Tolchenov}
-\author[isis]{R.~Whitley}
+%\author[isis]{R.~Whitley}
 \author[ornl]{W.~Zhou}
 \author[ornl]{J.~Zikovsky}
 
@@ -59,7 +61,7 @@
 \address[ill]{Institut Laue-Langevin, Grenoble, France}
 \address[uws]{University of Wisconsin-Stout, Menomonie, WI, USA}
 \address[nccsornl]{Computing and Computational Science Directorate, Oak Ridge National Laboratory, Oak~Ridge,~TN,~USA}
-\address[oxford]{Department of Physics, University of Oxford, New Parks Road Oxford, UK}
+%\address[oxford]{Department of Physics, University of Oxford, New Parks Road Oxford, UK}
 \address[tessellaUS]{Tessella Inc., Newton, MA, USA}
 
 
@@ -102,11 +104,9 @@ The main objectives for the project are:
 \begin{itemize}
 \item To provide a technique independent, neutron and muon specific framework  to reduce, visualise and perform scientific analysis of data
 \item To ensure quality by following professional software development practices
-%\item Core framework aspects are developed using change control project management practices 
 \item To actively support multiple platforms (Linux, OS X, Windows)
 \item The software, source and documentation will be freely distributable
 \item The framework must be easily extensible by instrument scientists and users
-%\item The framework must provide both low level functionality for advanced uses, and high level, and high level, simple and intuitive interfaces for standard measurements 
 \item Provision of comprehensive, well maintained documentation
 \end{itemize}
 
@@ -137,14 +137,12 @@ The ability to link these simulations with the data analysis with a simple inter
 
 \section{Development Practices}
 One of the key  aspects of Mantid is the manner in which it is developed. 
-In order to achieve the stated goals, a large team of scientists and scientific software engineers in Europe and United States are collaborating on this project. For an effective collaboration, we use several software development tools and practices designed to support distributed development teams. New feature requests or defect reports are entered into an issue tracking system. %Mantid  uses  \textit{Trac} \cite{trac} for this purpose.
- 
+In order to achieve the stated goals, a large team of scientists and scientific software engineers in Europe and United States are collaborating on this project. For an effective collaboration, we use several software development tools and practices designed to support distributed development teams. New feature requests or defect reports are entered into an issue tracking system. 
+
 Another tool vital for organising work is the use of a version control system. Mantid uses git \cite{git} repositories for the source code, configuration files, and much of the documentation. To allow multiple developers to work in similar areas without interference, developers work on separate branches for each feature. To verify that there are no cross-platform compatibility issues, each feature branch is merged onto a `develop' branch whenever new code is ready. It is only after a feature branch has been completely addressed and tested that the code changes are merged onto the `master' branch from which release builds and new features are based.
 
-In order to ensure quality, the Mantid project uses continuous integration.
-% built around the Jenkins continuous integration server\cite{jenkins}. 
-Whenever new code is committed to the `develop' branch, builds for each supported operating system are started, and are tested against a suite of over 6000 automated unit tests. A build is marked successful only if all of these unit tests pass. 
-%Every night, a nightly build of the 'master' branch is done once a day. 
+In order to ensure quality, the Mantid project uses continuous integration. 
+Whenever new code is committed to the `develop' branch, builds for each supported operating system are started, and are tested against a suite of over 6000 automated unit tests. A build is marked successful only if all of these unit tests pass.  
 Once a day, a series of over 150 integration `system tests' are run with the most recent locally installed version. Builds that pass all system tests are immediately available for download and, in some cases, automatically deployed to computers. Formal releases of Mantid occur approximately every three months, and undergo additional manual testing. These releases are accompanied by detailed release notes and training. 
 
 
@@ -153,9 +151,8 @@ One of the main design consideration for this project was the separation of data
 
 Data containers (called workspaces) and algorithms, which manipulate workspaces, compose the central element of the Mantid framework (Figure \ref{fig:Framework}). 
 Workspaces and algorithms are aware of the geometry of each individual instrument. 
-%Instrument geometries are XML files containing the real space position of all instrument components.
 \begin{figure}[!ht]
-\centerline{\includegraphics[width=0.75\textwidth]{MantidFramework.png}}
+\centerline{\includegraphics[width=0.75\textwidth]{MantidFramework.pdf}}
 \caption{Mantid framework design}
 \label{fig:Framework}
 \end{figure}
@@ -165,7 +162,7 @@ To ensure high performance for data analysis, but also allow flexibility in how 
 
 
 \subsection{Instrument Geometry}
-A full description of the instrument is used within the Mantid framework. One way to specify the geometry is the instrument definition file (IDF). The IDF is a XML description of all pertinent instrument components.% (Table \ref{IDF}). 
+A full description of the instrument is used within the Mantid framework. One way to specify the geometry is the instrument definition file (IDF). The IDF is a XML description of all pertinent instrument components.
 The IDF component description can be expanded upon, to increase the information level accessible to the Mantid framework. 
 Previous applications for neutron scattering data analysis have generally only described instruments by their primary and secondary flight paths and detector angles. A full description, based on constructive solid geometry, allows complex visualization of the instrument and its detectors, along with the possibility to perform Monte Carlo simulations.
 To account for moving instrument components, the instrument geometry is updated using log values. 
@@ -186,7 +183,7 @@ There are various uses for EventWorkspaces. One can filter out unwanted events, 
 Another workspace type is the multi-dimensional workspace, or MDWorkspace. While for MatrixWorkspace there are two dimensions describing a data point (spectrum number and independent variable), for MDWorkspaces we have between 1 and 9 dimensions. Higher number of dimensions are required to accommodate labelling of data with extended parameter dependencies (e.g. sample environment variables). 
 
 \begin{figure}[!ht]
-\centerline{\includegraphics[width=0.75\textwidth]{mdevents.pdf}}
+\centerline{\includegraphics[width=0.75\textwidth]{MDEvents.pdf}}
 \caption{Schematic representation of the principle of adaptive rebinning used in the MDEventWorkspace type.}
 \label{mdevent}
 \end{figure}
@@ -202,7 +199,7 @@ For data formats that contain different field types, Mantid provides TableWorksp
 The algorithm layer is a key aspect of the Mantid framework.
 Mantid algorithms are procedures to manipulate workspaces. They can be predefined, or written by users, in either C++ or Python.  The organization and development of algorithms is key to maintaining the ethos of the project. This presents a number of challenges for development as the framework can access multiple data types, from a variety of instruments. At the present, there are over 500 algorithms covering data handling (loading/saving workspaces from/to files), arithmetic operations (plus, minus, multiply, divide), unit conversions, and many technique specific algorithms (powder diffraction, single crystal diffraction, SANS, reflectometry, direct and indirect spectrometry, and $\mu SR$).  
 \begin{figure}[!b]
-\centerline{\includegraphics[width=0.75\textwidth]{liveevents.pdf}}
+\centerline{\includegraphics[width=0.75\textwidth]{LiveEvents.pdf}}
 \caption{Flow diagram representing data flow when using live data processing within Mantid}
 \label{live events}
 \end{figure}
@@ -223,7 +220,7 @@ The API has been written to give an intuitive Python feel, allowing a simple pow
 \section{User Interface}
 \subsection{MantidPlot}
 \begin{figure}[!b]
-\centerline{\includegraphics[width=0.75\textwidth]{MantidPlot.png}}
+\centerline{\includegraphics[width=0.75\textwidth]{MantidPlot.pdf}}
 \caption{MantidPlot interface, showing 1D, and 2D plots. Lists of workspaces and algorithms are available on the right side}
 \label{fig:MantidPlot}
 \end{figure}
@@ -235,11 +232,6 @@ The workspaces toolbox shows a list of all the workspaces currently available. E
 
 
 \subsection{Custom Interfaces}
-%\begin{figure}[!ht]
-%\centerline{\includegraphics[width=0.75\textwidth]{Hyspec.png}}
-%\caption{Custom interface for direct geometry reduction on HYSPEC instrument}
-%\label{fig:Hyspec}
-%\end{figure}
 
 Data reduction and basic analysis for individual instruments or science areas is generally a sequential chain of operations starting from data loading and resulting in a dataset that has meaningful units. As such, reduction for several scientific techniques can be complicated. More often than not, development of new features in this area must take into account legacy usage requirements and be well validated against existing "known" good results. In all cases, development of data reduction chains are tightly controlled and validated. 
 
@@ -251,7 +243,7 @@ Science areas and instruments specifically supported by the Mantid framework can
 \begin{table}[!htdp]
 
 \footnotesize
-\begin{tabular}{p{0.4\textwidth} |  p{0.4\textwidth} }
+\begin{tabular}{p{0.4\textwidth} |  p{0.5\textwidth} }
 Science area &Instruments \\ \hline
 Powder neutron diffraction&GEM HRPD WISH POLARIS POWGEN NOMAD VULCAN\\
 Single crystal neutron diffraction&WISH SXD TOPAZ MANDI\\
@@ -263,7 +255,7 @@ $\mu SR$&MUSR HIFI EMU\\
 \end{tabular}
 \caption{Current science areas and instruments supported by the Mantid framework}
 \label{coverage}
-\end{table}%
+\end{table}
 
 
 
@@ -271,7 +263,7 @@ $\mu SR$&MUSR HIFI EMU\\
 \subsection {Fitting}
 
 \begin{figure}[!ht]
-\centerline{\includegraphics[width=0.75\textwidth]{fitting.pdf}}
+\centerline{\includegraphics[width=0.75\textwidth]{Fitting.pdf}}
 \caption{The simple fitting GUI interface in the MantidPlot application. Peak selection is performed using mouse selection on the displayed data.
 Panel (a) displays the required model and fit controls. Panel (b) displays the data, fitted model and difference the vertical dotted lines indicate extents in x for the model.  }
 \label{fitting}
@@ -300,14 +292,13 @@ Mantid provides a variety of tools for visualising higher dimensional data.
 
 
 \subsection{Instrument View}
-%Visualising experimental data in real space of the entire instrument is often useful. 
 The Instrument View (Figure \ref{fig:InstrumentView}) is a 3D representation of the whole instrument, with component  positions  calculated from the IDF. Non-detector components (e.g. choppers, guides) can be toggled on or off. 
 The colour of the detectors is representative of the total integrated counts. In addition to the 3D rendering, various 2D projections (e.g. spherical along $x$, cylindrical along $y$) of the detectors are available.
 The  Instrument View allows for quick access to information about detectors, and provides a simple graphical interface for masking, grouping, and viewing spectra.
 
 
 \begin{figure}[!htb]
-\centerline{\includegraphics[width=0.75\textwidth]{instrumentview.pdf}}
+\centerline{\includegraphics[width=0.75\textwidth]{InstrumentView.pdf}}
 \caption{The Instrument View showing a 3D representation of the MARI spectrometer. Various components are annotated.  }
 \label{fig:InstrumentView}
 \end{figure}
@@ -319,7 +310,7 @@ Advanced features provide interactive line integration and overplotting PeaksWor
 
 
 \begin{figure}[!htb]
-\centerline{\includegraphics[width=0.75\textwidth]{Peaks_view.png}}
+\centerline{\includegraphics[width=0.75\textwidth]{SliceViewer.pdf}}
 \caption{Slice Viewer showing a single crystal peak and related information.}
 \label{fig:SliceView}
 \end{figure}
@@ -333,21 +324,21 @@ The VATES Simple Interface (\textit{VSI}), offers a limited set of data views an
 The data to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}. Those same data structures can be saved to a file and visualised in the ParaView application. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
 
 \begin{figure}[ht]
-\centerline{\includegraphics[width=0.75\textwidth]{VSI-v2-SplatterPlot.png}}
+\centerline{\includegraphics[width=0.75\textwidth]{VSISplatterPlot.pdf}}
 \caption{VSI in Splatter Plot mode with single crystal data from the TOPAZ difractometer at the SNS.}
 \label{fig:VSI_sample}
 \end{figure}
 
 \begin{figure}[!ht]
-\centerline{\includegraphics[width=0.6\textwidth]{NonOrthogonalProjection_W.png}}
-\caption{Volume rendering of Gd excitations. Data was measured on the SEQUOIA spectrometer at the SNS.}
+\centerline{\includegraphics[width=0.75\textwidth]{NonOrthogonal.pdf}}
+\caption{Diffraction pattern from a triclinic lattice, showing non-orthogonal axes. Data was measured on the CNCS spectrometer at the SNS.}
 \label{fig:ParaView_sample}
 \end{figure}
 
 
 
 
-The \textit{VSI} has a view called Multi Slice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in Slice Viewer for further exploration. The Splatter Plot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In this view the user can interact with the data to retrieve information about a selected peak. The Three Slice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the data in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
+The \textit{VSI} has a view called Multi Slice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in Slice Viewer for further exploration. The Splatter Plot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In this view the user can interact with the data to retrieve information about a selected peak. The Three Slice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the diffraction pattern for triclinic materials\cite{triclinic} in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
 
 
 \section{Community Involvement and Expandability}
@@ -367,10 +358,10 @@ In addition at SNS and ISIS, the development team has implemented an interface b
 
 
 \section{Conclusion}
-The Mantid project offers an extensible framework for data manipulation, analysis and visualization, geared toward neutron scattering and $\mu SR$ experiments. It is the main reduction software in use at SNS and ISIS, and partially in use or considered at several other scientific facilities. Up to date information and usage tutorials can be found on the Mantid web page\cite{webpage}. 
+The Mantid project offers an extensible framework for data manipulation, analysis and visualization, geared toward neutron scattering and $\mu SR$ experiments. It is the main reduction software in use at SNS and ISIS, and partially in use or considered for widespread adoption at several other neutron facilities. Up to date information and usage tutorials can be found on the Mantid web page\cite{webpage}. 
 
 \section{Acknowledgements}
-The development team would like to thank all instrument scientists and ISIS and SNS for their feedback and help. Work at ORNL was sponsored by the Scientific User Facilities Division, Office of Basic Energy Sciences, US Department of Energy. Work at the ISIS facility was funded by the Science and Technology Facilities Council (STFC) UK. Development for ILL instruments was funded by NMI3 (WP6).
+The development team would like to thank all instrument scientists and students and ISIS and SNS for their feedback and contributions, L. Chapon, P. Radaelli, and R. McGreevy for initiating the project at ISIS, and R. McGreevy and I. Anderson for forging the collaboration between ORNL and STFC. We acknowledge J. Taylor and A. Hillier for contributions to this manuscript. Work at ORNL was sponsored by the Scientific User Facilities Division, Office of Basic Energy Sciences, US Department of Energy. Work at the ISIS facility was funded by the Science and Technology Facilities Council (STFC) UK. Development for ILL instruments was funded by NMI3 (WP6).
 
 \begin{center}
 \line(1,0){250}
