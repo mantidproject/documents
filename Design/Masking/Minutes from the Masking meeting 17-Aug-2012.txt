@@ -45,6 +45,10 @@ workspace have instruments.  Otherwise they can apply at a workspace indexes lev
 copious log messages explaining this.
 9.	Grouping detectors should work the same way as the DetectorGroup object currently does – 
 A grouped detector is only masked when all of its constituent detectors are also masked.
+
+[from Pascal]
+load old cal files, which are different to mask files, and apply them to workspaces and also see them in the instrument view.
+
 Unresolved issue:
 1.	Being able to revert masked data back to the original values.  This comes with significant cost, 
 the only sensible implementation idea was to leave the original value in the data and have all 
