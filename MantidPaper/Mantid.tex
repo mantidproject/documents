@@ -178,17 +178,29 @@ MatrixWorkspaces contain data for multiple spectra, as independent variable (e.g
 
 The data acquisition system at several facilities now allow recording of each  detected neutron, labelling it with time-of-flight and wall-clock-time. In Mantid, this is stored as EventWorkspaces \cite{EventPaper}. 
 EventWorkspaces also provide a histogram representation as well, which is calculated on the fly. This allows EventWorkspaces to be viewed as MatrixWorkspaces by the rest of the framework. The result is that algorithms and plotting work without the need to know the details of how data is stored. 
-There are various uses for EventWorkspaces. One can filter out unwanted events, such as events recorded during temperature spikes. The other big use for events is allowing novel techniques, such as asynchronous parameter scans (continuous angle scans, temperature scans), and pump probe experiments (pulse magnets, high frequency deformations of materials, and so on).
+There are various uses for EventWorkspaces. One can filter out unwanted events, such as events recorded during temperature spikes. The other big use for events is allowing novel techniques, such as asynchronous parameter scans (continuous angle scans in Figure \ref{fig:ContinuousRotation}, temperature scans in Figure \ref{fig:TempRamp}), and pump probe experiments (pulse magnets, high frequency deformations of materials, and so on).
+
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=0.75\textwidth]{ContinuousRotation.pdf}}
+\caption{Continuous angle rotation example. Event data taken on HYSPEC spectrometer at SNS is filtered by angle, then converted to HKL momentum transfer components.}
+\label{fig:ContinuousRotation}
+\end{figure}
  
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=0.75\textwidth]{TemperatureRamp.pdf}}
+\caption{Example of event workspace usage for temperature ramp. Data taken on TOPAZ single crystal diffractometer shows a phase transition symmetry splitting on one of the Bragg peaks.}
+\label{fig:TempRamp}
+\end{figure}
+  
 Another workspace type is the multi-dimensional workspace, or MDWorkspace. While for MatrixWorkspace there are two dimensions describing a data point (spectrum number and independent variable), for MDWorkspaces we have between 1 and 9 dimensions. Higher number of dimensions are required to accommodate labelling of data with extended parameter dependencies (e.g. sample environment variables). 
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{MDEvents.pdf}}
 \caption{Schematic representation of the principle of adaptive rebinning used in the MDEventWorkspace type.}
-\label{mdevent}
+\label{fig:MDEvent}
 \end{figure}
 
-For MDEventWorkspaces, each MDEvent contains coordinates, a weight and an uncertainty. It might also contain information about which detector and which run it comes from. All MDEvents are contained in MDBoxes. Above a certain threshold, the MDBox becomes an MDGridBox, by splitting into several equal size MDBoxes. This allows for an efficient searching and binning, and allows plotting on an adaptive mesh (see Fig. \ref{mdevent}).
+For MDEventWorkspaces, each MDEvent contains coordinates, a weight and an uncertainty. It might also contain information about which detector and which run it comes from. All MDEvents are contained in MDBoxes. Above a certain threshold, the MDBox becomes an MDGridBox, by splitting into several equal size MDBoxes. This allows for an efficient searching and binning, and allows plotting on an adaptive mesh (see Fig. \ref{fig:MDEvent}).
 MDHistoWorkspaces consist of signal and error arrays on a regular grid.  
 
 
@@ -198,17 +210,12 @@ For data formats that contain different field types, Mantid provides TableWorksp
 \subsection{Algorithms}
 The algorithm layer is a key aspect of the Mantid framework.
 Mantid algorithms are procedures to manipulate workspaces. They can be predefined, or written by users, in either C++ or Python.  The organization and development of algorithms is key to maintaining the ethos of the project. This presents a number of challenges for development as the framework can access multiple data types, from a variety of instruments. At the present, there are over 500 algorithms covering data handling (loading/saving workspaces from/to files), arithmetic operations (plus, minus, multiply, divide), unit conversions, and many technique specific algorithms (powder diffraction, single crystal diffraction, SANS, reflectometry, direct and indirect spectrometry, and $\mu SR$).  
-\begin{figure}[!b]
-\centerline{\includegraphics[width=0.75\textwidth]{LiveEvents.pdf}}
-\caption{Flow diagram representing data flow when using live data processing within Mantid}
-\label{live events}
-\end{figure}
 
 The case of event mode data is interesting as it presents an efficient way of processing sparse data. It is often more efficient to keep the data as events through a chain of operations. This requirement has resulted in the development of a number of specialized event data handling operations. The end result is that for many reduction chains the data is events type until the final presentation. 
 
 Core algorithms can be grouped together to form data reduction and analysis for individual instruments and science areas. These large algorithms can then be presented to the user at the Python scripting layer, command line interface or as a custom reduction user interface. 
 
-In some cases a single `workflow algorithm' is beneficial, such as for live event process. The application can access the live data steams of event mode instruments at SNS and ISIS and can directly read histogram data from the detector electronics of ISIS instruments. Fig \ref{live events} shows the generic workflow to process and view data as it is collected.
+In some cases a single `workflow algorithm' is beneficial, such as for live event process. The application can access the live data steams of event mode instruments at SNS and ISIS and can directly read histogram data from the detector electronics of ISIS instruments.
 
 \subsection{Python API and Scripting}
 The Python API provides an exceptionally powerful interface to Mantid. Many classes within the framework are open to Python control. The algorithms are added to the API at runtime, allowing new plugin algorithms to be available without further configuration. The Python API can be used to simply interact with existing functionality. Furthermore, Python can also be used to extend the capabilities of the Mantid framework by adding further algorithms or fit functions without needing to recompile or even restart the program.
@@ -236,7 +243,7 @@ The workspaces toolbox shows a list of all the workspaces currently available. E
 Data reduction and basic analysis for individual instruments or science areas is generally a sequential chain of operations starting from data loading and resulting in a dataset that has meaningful units. As such, reduction for several scientific techniques can be complicated. More often than not, development of new features in this area must take into account legacy usage requirements and be well validated against existing "known" good results. In all cases, development of data reduction chains are tightly controlled and validated. 
 
 One of Mantid's objectives is to provide scientists with a simple and efficient interface to allow them to analyse their data.  To achieve this for multiple science areas and instruments, a number of custom interfaces have been implemented. 
-Science areas and instruments specifically supported by the Mantid framework can be seen in Table \ref{coverage}.
+Science areas and instruments specifically supported by the Mantid framework can be seen in Table \ref{table:Coverage}.
 
 
 
@@ -254,7 +261,7 @@ Neutron reflectometery&CRISP SURF POLREF INTER OFFSPEC REF\_L\\
 $\mu SR$&MUSR HIFI EMU\\
 \end{tabular}
 \caption{Current science areas and instruments supported by the Mantid framework}
-\label{coverage}
+\label{table:Coverage}
 \end{table}
 
 
@@ -266,11 +273,11 @@ $\mu SR$&MUSR HIFI EMU\\
 \centerline{\includegraphics[width=0.75\textwidth]{Fitting.pdf}}
 \caption{The simple fitting GUI interface in the MantidPlot application. Peak selection is performed using mouse selection on the displayed data.
 Panel (a) displays the required model and fit controls. Panel (b) displays the data, fitted model and difference the vertical dotted lines indicate extents in x for the model.  }
-\label{fitting}
+\label{fig:Fitting}
 \end{figure}
 Fitting mathematical functions and models to experimental data is a key requirement of any scientific computing application. 
 The Mantid framework has implemented a powerful engine for fitting multidimensional datasets. This is not intended to replace domain specific fitting software (e.g. GSAS, SASView). 
- Fitting peak functions and simple user derived functions to line data, i.e. data that is in 1D x,y,e format, can also be performed using a simple user interface (Figure \ref{fitting}). All of the fitting can be done within the Python scripting  interface.
+ Fitting peak functions and simple user derived functions to line data, i.e. data that is in 1D x,y,e format, can also be performed using a simple user interface (Figure \ref{fig:Fitting}). All of the fitting can be done within the Python scripting  interface.
 
 Once the user has generated a model, the subsequent fitting can be batch processed across many different datasets, with the option of plotting fit results against a log parameter. Fitting results are displayed as TableWorkspaces which can then be further manipulated and analysed.
 
@@ -324,6 +331,12 @@ The VATES Simple Interface (\textit{VSI}), offers a limited set of data views an
 The data to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}. Those same data structures can be saved to a file and visualised in the ParaView application. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView. The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
 
 \begin{figure}[ht]
+\centerline{\includegraphics[width=0.75\textwidth]{VSISlices.pdf}}
+\caption{VSI in Multi Slice mode with single crystal data on YFeO$_3$ from the SEQUOIA spectrometer at the SNS.}
+\label{fig:VSI_slice}
+\end{figure}
+
+\begin{figure}[!ht]
 \centerline{\includegraphics[width=0.75\textwidth]{VSISplatterPlot.pdf}}
 \caption{VSI in Splatter Plot mode with single crystal data from the TOPAZ difractometer at the SNS.}
 \label{fig:VSI_sample}
@@ -338,7 +351,7 @@ The data to be visualised passes through an API layer which translates the inter
 
 
 
-The \textit{VSI} has a view called Multi Slice which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in Slice Viewer for further exploration. The Splatter Plot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In this view the user can interact with the data to retrieve information about a selected peak. The Three Slice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the diffraction pattern for triclinic materials\cite{triclinic} in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
+The \textit{VSI} has a view called Multi Slice (Figure \ref{fig:VSI_slice})which allows placing multiple orthogonal slices on the data. Those slices can then alternately be viewed in Slice Viewer for further exploration. The Splatter Plot (Figure \ref{fig:VSI_sample}) view is oriented towards visualising peaks in single crystal diffraction data. In this view the user can interact with the data to retrieve information about a selected peak. The Three Slice view shows three orthogonal planes through the data with the capability exploring via moving a crosshair in one of the planes with a coordinate readout in each plane to show the location. The \textit{VSI}$\*$ has the ability to show the data with non-orthogonal axes such as the diffraction pattern for triclinic materials\cite{triclinic} in Figure \ref{fig:ParaView_sample}. This capability was implemented by Kitware\cite{kitware} via the SNS in support of the Mantid project.
 
 
 \section{Community Involvement and Expandability}
