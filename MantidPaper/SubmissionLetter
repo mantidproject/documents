@@ -1,0 +1,23 @@
+Dear Editor,
+
+Hereby we submit for publication in Nuclear Instruments and Methods in Physics Research Section A
+the manuscript "Mantid - Data Analysis and Visualization Package for Neutron Scattering and $\mu SR$ Experiments".
+
+With the advent of new, higher fluxes, neutron sources and new instruments, at ISIS and the Spallation Neutron Source (SNS), neutron scattering is becoming a widespread tool for new users, without previous experience with this experimental technique. Improvements in computational techniques and higher neutron fluxes allow larger data sets to be acquired faster, so new techniques appeared in recent years (pair distribution function, multi angle rotation in time-of-flight spectroscopy, stroboscopic measurements, in-situ residual stress measurements). 
+In this paper we present the Mantid software package, the main reduction/visualization tool for neutron scattering and muon spin relaxation experiments at SNS and ISIS. We show how development methods improved software quality, and we present details about the structure and features of this software.
+
+There are several people in the neutron community involved in software development that can serve as referees for this manuscript, such as:
+
+Dr. Raymond Osborn, rosborn@anl.gov from Argonne National Laboratory
+Prof. Brent Fultz, btf@caltech.edu, from California Institute of Technology
+Prof. Simon Billinge, sb2896@columbia.edu, from Columbia University
+Dr. Nick Hauser, Nick.Hauser@ansto.gov.au, from Australian Nuclear Science and Technology Organisation
+Dr. Yasuhiro Inamura, inamura.yasuhiro@jaea.go.jp, from Japan Atomic Energy Agency
+
+We feel that this work is well suited for publication in NIM A, and we greatly appreciate your consideration for publication.
+
+Sincerely yours,
+Andrei Savici
+
+
+
