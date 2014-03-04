@@ -333,7 +333,13 @@ Advanced features provide interactive line integration and overplotting PeaksWor
 A major objective of Mantid has been the ability to represent multidimensional data \cite{DAVE, Mslice, Horace}. Originally the Visualization and Analysis Toolkit Extensions (VATES) project was an add-on to Mantid that is now fully integrated into the project. 
 The VATES Simple Interface (\textit{VSI}), offers a limited set of data views and access to a subset of Mantid algorithms. It is based on application widgets and rendering libraries from the ParaView\cite{paraview} visualization program. The \textit{VSI}$\*$ takes advantage of the ParaView plugin architecture to provide functionality from within Mantid and from ParaView outside of Mantid. 
 
-The data to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}. Those same data structures can be saved to a file and visualised in the ParaView application. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView (Figure \ref{fig:PV} and Supplementary material. Data is from reference\cite{YFeO3}). The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
+The data to be visualised passes through an API layer which translates the internal Mantid data structure to a VTK\cite{vtk} data structure, that can be rendered in the \textit{VSI}. Those same data structures can be saved to a file and visualised in the ParaView application. Indeed, it is possible to drive some aspects of multidimensional analysis directly from ParaView (Figure \ref{fig:PV} and Supplementary material (online only)\footnote{supplementary movies show inelastic neutron scattering in $YFeO_3$
+\begin{itemize}
+\item YFeO3\_slice.mp4: H, L, E volume at K=0, with a constant K=0, E slice at various energies
+\item YFeO3\_varE.mp4: H, K, L volume at various energy transfer
+\item YFeO3\_varK.mp4: H, L, E volume at various Ks
+\end{itemize}
+}. Data is from reference \cite{YFeO3}). The API layer provides the desired decoupling of the data structures and provides good flexibility to handle the various needs of the Mantid data structures and algorithms. 
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=0.75\textwidth]{ParaviewYFeO3.pdf}}
