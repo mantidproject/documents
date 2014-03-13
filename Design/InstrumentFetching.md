@@ -14,7 +14,7 @@ Since this linux systems will require having multiple locations for instrument f
 
 Storing Updated Instruments
 ---------------------------
-The cache area for instrument files should be in a directory where the user has write access. On linux and mac systems this will be `${HOME}/.mantid/instrument`.
+The cache area for instrument files should be in a directory where the user has write access. On linux and mac systems this will be `${HOME}/.mantid/instrument`. On windows this is `%Local AppData%mantidproject\.mantid\instrument`.
 
 Updating Instruments
 --------------------
