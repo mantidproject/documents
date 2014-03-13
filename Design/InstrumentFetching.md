@@ -4,14 +4,17 @@ instrument geometries. This document describes how that will happen.
 This design makes some assumptions:
  1. The term "instrument geometry" is intended to mean both the geometry and any associated parameter files.
  2. Users will always want to have the full list of instruments as found in master.
+ 3. Only print a warning if the files on github cannot be fetched rather than failing to startup.
  3. The data fetched will be read only.
  4. Checksums (i.e. sha) are valid for verifying that files are unique rather than resorting to detailed difference checking.
 
 Changes to Instrument Loading
 -----------------------------
+Since this linux systems will require having multiple locations for instrument files (rather than just the install area), the real change is to have a collection of locations for instrument files to reside. The path will be, in order, cache area then install area. 
 
 Storing Updated Instruments
 ---------------------------
+The cache area for instrument files should be in a directory where the user has write access. On linux and mac systems this will be `${HOME}/.mantid/instrument`.
 
 Updating Instruments
 --------------------
