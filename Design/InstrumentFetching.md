@@ -10,7 +10,7 @@ This design makes some assumptions:
 
 Changes to Instrument Loading
 -----------------------------
-Since this linux systems will require having multiple locations for instrument files (rather than just the install area), the real change is to have a collection of locations for instrument files to reside. The path will be, in order, cache area then install area. 
+Since linux systems will require having multiple locations for instrument files (rather than just the install area), the real change is to have a collection of locations for instrument files to reside. The path will be, in order, cache area then install area. 
 
 Storing Updated Instruments
 ---------------------------
@@ -18,7 +18,7 @@ The cache area for instrument files should be in a directory where the user has 
 
 Updating Instruments
 --------------------
-Since all of the instruments currently reside in a [single directory](https://github.com/mantidproject/mantid/tree/master/Code/Mantid/instrument) we can use a single github api call to get the list of the directory, then multiple subsequent calls to download the updated/changed instrument geometrie. This process should happen in a separate thread from the main gui when mantid starts up. This should provide adequate updates and minimize the impact on usability both on startup and when users will need the new files.
+Since all of the instruments currently reside in a [single directory](https://github.com/mantidproject/mantid/tree/master/Code/Mantid/instrument) we can use a single github api call to get the list of the directory, then multiple subsequent calls to download the updated/changed instrument geometries. This process should happen in a separate thread from the main gui when mantid starts up. This should provide adequate updates and minimize the impact on usability both on startup and when users will need the new files.
  1. Go through the files in the cache. If a file is identical to one in the install area, delete the copy in the cache area.
  2. Verify that there is network connection by [getting a list of repositories](https://developer.github.com/v3/repos/#list-organization-repositories) owned by the mantidproject "organization." An alternative is to see if one can see the main github page.
  3. [Get a list](https://developer.github.com/v3/repos/contents/#get-contents) of the instrument geometries in master.
