@@ -1,39 +1,40 @@
-<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="936" measuredH="1170" mockupW="913" mockupH="1155">
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="1389" measuredH="1156" mockupW="1322" mockupH="1135">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="23" y="15" w="913" h="559" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="312" y="21" w="913" h="559" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <bottomheight>37</bottomheight>
         <close>true</close>
         <dragger>false</dragger>
         <maximizeRestore>false</maximizeRestore>
         <minimize>true</minimize>
-        <text>ALC%20Analysis%20-%20Step%202/4%20-%20Baseline%20modelling</text>
+        <text>ALC%20Analysis</text>
         <topheight>26</topheight>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="850" y="542" w="79" h="27" measuredW="45" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="544" y="512" w="79" h="27" measuredW="36" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Run</text>
+        <text>Fit</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="229" w="300" h="304" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="323" y="61" w="300" h="442" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <color>15658734</color>
-        <text>Data%20sections</text>
+        <text>Baseline%20parameters</text>
       </controlProperties>
     </control>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="45" y="278" w="283" h="246" measuredW="137" measuredH="98" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="334" y="80" w="283" h="416" measuredW="169" measuredH="210" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <hasHeader>false</hasHeader>
         <hLines>false</hLines>
         <rowHeight>16</rowHeight>
-        <selectedIndex>0</selectedIndex>
-        <text>%u25BC%20Section%201%2C%0A%20%20%20%20Start%20X%2C%205.67%0A%20%20%20%20End%20X%2C%207.89%0A%u25BC%20Section%202%2C%0A%20%20%20%20Start%20X%2C%209.54%0A%20%20%20%20End%20X%2C%2012.6</text>
+        <selectedIndex>7</selectedIndex>
+        <text>Function%0A%20%20%20%20Type%2C%20Polynomial%0A%20%20%20%20Order%2C%202%0A%20%20%20%20A0%2C%200.54%0A%20%20%20%20A1%2C%203.2%0A%20%20%20%20A2%2C%200.003%0AData%20to%20fit%0A%20%20Section%201%2C%0A%20%20%20%20Start%20X%2C%205.67%0A%20%20%20%20End%20X%2C%207.89%0A%20%20Section%202%2C%0A%20%20%20%20Start%20X%2C%209.54%0A%20%20%20%20End%20X%2C%2012.6</text>
+        <value>0</value>
         <verticalScrollbar>true</verticalScrollbar>
         <vLines>true</vLines>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::TabBar" x="346" y="55" w="583" h="478" measuredW="273" measuredH="100" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TabBar" x="650" y="61" w="568" h="478" measuredW="273" measuredH="100" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <color>15658734</color>
         <selectedIndex>0</selectedIndex>
@@ -42,85 +43,58 @@
         <text>Baseline%20model%2C%20Corrected%20data</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Image" x="361" y="90" w="559" h="433" measuredW="521" measuredH="351" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Image" x="659" y="96" w="550" h="433" measuredW="521" measuredH="351" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
-        <src>../Mantid/Files/ALC/plot_baseline.png</src>
+        <src>./plot-examples/plot_baseline.png</src>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="51" w="300" h="170" measuredW="200" measuredH="170" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="1114" y="549" w="104" h="27" measuredW="102" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
-        <color>15658734</color>
-        <text>Fitting%20function</text>
+        <text>Peak%20fitting%20%3E</text>
       </controlProperties>
     </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::DataGrid" x="45" y="68" w="283" h="146" measuredW="139" measuredH="82" zOrder="7" locked="false" isInGroup="-1">
-      <controlProperties>
-        <hasHeader>false</hasHeader>
-        <hLines>false</hLines>
-        <rowHeight>16</rowHeight>
-        <selectedIndex>-1</selectedIndex>
-        <text>Type%2C%20Polynomial%0AOrder%2C%202%0AA0%2C%200.54%0AA1%2C%203.2%0AA2%2C%200.003</text>
-        <verticalScrollbar>true</verticalScrollbar>
-        <vLines>true</vLines>
-      </controlProperties>
-    </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="123" y="543" w="79" h="27" measuredW="62" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Next%20%3E</text>
-      </controlProperties>
-    </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::Button" x="34" y="543" w="79" h="27" measuredW="61" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Button" x="323" y="549" w="114" h="27" measuredW="109" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <state>up</state>
-        <text>%3C%20Prev</text>
+        <text>%3C%20Data%20loading</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="45" y="245" w="-1" h="-1" measuredW="44" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::HSplitter" x="631" y="46" w="-1" h="498" measuredW="12" measuredH="100" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Button" x="323" y="513" w="-1" h="-1" measuredW="29" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Add</text>
+        <text>%3F</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="97" y="245" w="-1" h="-1" measuredW="69" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Label" x="680" y="552" w="-1" h="-1" measuredW="177" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Remove</text>
+        <text>Step%202/3%20-%20Baseline%20modelling</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::TitleWindow" x="23" y="611" w="913" h="559" measuredW="450" measuredH="400" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::TitleWindow" x="312" y="597" w="913" h="559" measuredW="450" measuredH="400" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <bottomheight>37</bottomheight>
         <close>true</close>
         <dragger>false</dragger>
         <maximizeRestore>false</maximizeRestore>
         <minimize>true</minimize>
-        <text>ALC%20Analysis%20-%20Step%202/4%20-%20Baseline%20modelling</text>
+        <text>ALC%20Analysis</text>
         <topheight>26</topheight>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Button" x="850" y="1138" w="79" h="27" measuredW="45" measuredH="24" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Button" x="544" y="1088" w="79" h="27" measuredW="36" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Run</text>
+        <text>Fit</text>
       </controlProperties>
     </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="825" w="300" h="304" measuredW="200" measuredH="170" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::FieldSet" x="323" y="637" w="300" h="442" measuredW="200" measuredH="170" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
         <color>15658734</color>
-        <text>Data%20sections</text>
+        <text>Baseline%20parameters</text>
       </controlProperties>
     </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::DataGrid" x="45" y="874" w="283" h="246" measuredW="137" measuredH="98" zOrder="15" locked="false" isInGroup="-1">
-      <controlProperties>
-        <hasHeader>false</hasHeader>
-        <hLines>false</hLines>
-        <rowHeight>16</rowHeight>
-        <selectedIndex>3</selectedIndex>
-        <text>%u25BC%20Section%201%2C%0A%20%20%20%20Start%20X%2C%205.67%0A%20%20%20%20End%20X%2C%207.89%0A%u25BC%20Section%202%2C%0A%20%20%20%20Start%20X%2C%209.54%0A%20%20%20%20End%20X%2C%2012.6</text>
-        <verticalScrollbar>true</verticalScrollbar>
-        <vLines>true</vLines>
-      </controlProperties>
-    </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::TabBar" x="346" y="651" w="583" h="478" measuredW="273" measuredH="100" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::TabBar" x="650" y="637" w="568" h="478" measuredW="273" measuredH="100" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <color>15658734</color>
         <selectedIndex>1</selectedIndex>
@@ -129,48 +103,74 @@
         <text>Baseline%20model%2C%20Corrected%20data</text>
       </controlProperties>
     </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="647" w="300" h="170" measuredW="200" measuredH="170" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Image" x="659" y="672" w="550" h="433" measuredW="519" measuredH="361" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
-        <color>15658734</color>
-        <text>Fitting%20function</text>
+        <borderStyle>square</borderStyle>
+        <src>./plot-examples/plot_corrected.png</src>
+        <text/>
       </controlProperties>
     </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::DataGrid" x="45" y="664" w="283" h="146" measuredW="139" measuredH="82" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Button" x="1114" y="1125" w="104" h="27" measuredW="102" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Peak%20fitting%20%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Button" x="323" y="1125" w="114" h="27" measuredW="109" measuredH="24" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>%3C%20Data%20loading</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::HSplitter" x="631" y="622" w="-1" h="498" measuredW="12" measuredH="100" zOrder="18" locked="false" isInGroup="-1"/>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Button" x="323" y="1089" w="-1" h="-1" measuredW="29" measuredH="24" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="680" y="1128" w="-1" h="-1" measuredW="177" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Step%202/3%20-%20Baseline%20modelling</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::StickyNote" x="75" y="603" w="167" h="112" measuredW="109" measuredH="123" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fitting%20will%20update%20both%20graphs%2C%20so%20you%20can%20see%20both%20the%20baseline%20model%20and%20the%20data%20with%20baseline%20subtracted.</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::StickyNote" x="67" y="310" w="189" h="170" measuredW="109" measuredH="123" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Similar%20to%20the%20Muon%20fit%20browser%2C%20with%20unnecessary%20functionality%20removed.%0A%20%0ASections%20can%20be%20added/removed%20by%20right-clicking.</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Arrow" x="155" y="203" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <rightArrow>true</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::DataGrid" x="333" y="653" w="283" h="416" measuredW="169" measuredH="210" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <hasHeader>false</hasHeader>
         <hLines>false</hLines>
         <rowHeight>16</rowHeight>
         <selectedIndex>-1</selectedIndex>
-        <text>Type%2C%20Polynomial%0AOrder%2C%202%0AA0%2C%200.54%0AA1%2C%203.2%0AA2%2C%200.003</text>
+        <text>Function%0A%20%20%20%20Type%2C%20Polynomial%0A%20%20%20%20Order%2C%202%0A%20%20%20%20A0%2C%200.54%0A%20%20%20%20A1%2C%203.2%0A%20%20%20%20A2%2C%200.003%0AData%20to%20fit%0A%20%20Section%201%2C%0A%20%20%20%20Start%20X%2C%205.67%0A%20%20%20%20End%20X%2C%207.89%0A%20%20Section%202%2C%0A%20%20%20%20Start%20X%2C%209.54%0A%20%20%20%20End%20X%2C%2012.6</text>
+        <value>0</value>
         <verticalScrollbar>true</verticalScrollbar>
         <vLines>true</vLines>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="123" y="1139" w="79" h="27" measuredW="62" measuredH="24" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::StickyNote" x="1280" y="512" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Next%20%3E</text>
+        <text>A%20tool%20for%20specifying%20a%20range%20for%20the%20selected%20section.</text>
       </controlProperties>
     </control>
-    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="34" y="1139" w="79" h="27" measuredW="61" measuredH="24" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Arrow" x="899" y="451" w="381" h="98" measuredW="150" measuredH="100" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
-        <state>up</state>
-        <text>%3C%20Prev</text>
-      </controlProperties>
-    </control>
-    <control controlID="21" controlTypeID="com.balsamiq.mockups::Button" x="45" y="841" w="-1" h="-1" measuredW="44" measuredH="24" zOrder="21" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Add</text>
-      </controlProperties>
-    </control>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::Button" x="97" y="841" w="-1" h="-1" measuredW="69" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Remove</text>
-      </controlProperties>
-    </control>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::Image" x="355" y="687" w="565" h="433" measuredW="519" measuredH="361" zOrder="23" locked="false" isInGroup="-1">
-      <controlProperties>
-        <borderStyle>square</borderStyle>
-        <src>../Mantid/Files/ALC/plot_corrected.png</src>
+        <direction>top</direction>
+        <rightArrow>false</rightArrow>
         <text/>
       </controlProperties>
     </control>
