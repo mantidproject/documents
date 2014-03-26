@@ -16,6 +16,9 @@ Minutes
  
  5) Pull Requests - Owen will look at the open pull request from PSI
  
+ 6) There was some discussion on whether there should be an ISIS staff member on this committee.  The consens was that if ISIS wanted one then there should be, Martyn/Owen currently didn't know if ISIS wanted one or who it would be.
+ NOTE: We found out after the meeting that Anders was nomitated by ISIS.
+ 
 Agenda for Next Meeting
 -----------------------
 
