@@ -26,5 +26,5 @@ Summary
 
 The approximate time taken by developers over the year to backport packages is 2 man months.  This does not include the additional time that we should take to monitor these backported packages for security updates and then rebuild to apply the fixes. It is estimated that this would be roughly 1 man week per (main) package per year.
 
-Apart from developers, the other group of people who spend time supporting RHEL6 are the sysadmin staff.  Estimating the time they spend on RHEL as opposed to another linux distro is unclear, but at the SNS the sysadmin staff report that they have at least 2-3 updates per year from RHEL that cause significant issues in the smooth operation of the system.
+Apart from developers, the other group of people who spend time supporting RHEL6 are the sysadmin staff.  Estimating the time they spend on RHEL as opposed to another linux distro is unclear, but at the SNS the sysadmin staff report that they have at least 2-3 updates per year from RHEL that cause significant issues in the smooth operation of the system. At ISIS the sysadmin staff estimated that they spent roughly 1 man week dealing with Mantid/RHEL6-related issues.
 
