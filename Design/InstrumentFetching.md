@@ -30,8 +30,9 @@ Since all of the instruments currently reside in a [single directory](https://gi
     2. If the file in master has a sha that is different from the local version (installed or cache), add to the list to download
     3. If the file in master has the same sha as the local version in install area or cache area, do nothing
  5. Go through the list to download and get the files, if a local file exists it should be renamed to .old (and any previous .old overwritten).
+ 6. Loading of an instrument that will be/is being updated should be blocked until the update is complete. This is particularly important for non-interactive jobs where the user cannot be alerted by log messages. This will probably require a mutex/critical section in LoadInstrument, ideally just if an affected instrument is being loaded rather than just any invocation of the algorithm.
 
-This whole process of updating instrument files should have lots of logging to help diagnose issues when they arrise.
+This whole process of updating instrument files should have lots of logging to help diagnose issues when they arise.
 However the level of logging at NOTICE level or above should be limited to:
  * 1 instrument added (KOALA), 3 intruments updated (WISH, NOMAD, GEM)
  * No internet connection - cannot update instrument definitions
