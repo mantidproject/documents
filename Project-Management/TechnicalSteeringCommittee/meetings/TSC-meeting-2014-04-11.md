@@ -18,3 +18,9 @@ Stuart will start a document to outline the various options.  Things to consider
 * Just have an additional kit for mantid-last
 * What do we do for the dependencies. - should we use SCLs for all dependencies.
 
+
+Edit Workflow History Document Review
+* Concern about NeXus performance for both API layer and tree structure of history.
+* Michael's mockup for GUI layout for saving rolled/unrolled history
+* Example script should not use SofQW, but a dummy name or a real workflow alg (e.g. DgsReduction)
+
