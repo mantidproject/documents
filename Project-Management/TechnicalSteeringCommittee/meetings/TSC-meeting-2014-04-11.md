@@ -10,3 +10,11 @@ Agenda
 
 Minutes
 =======
+
+* Request from PMB to have version N and N-1 installed on linux machines (the distros that are being used at the facilities).
+
+Stuart will start a document to outline the various options.  Things to consider are:
+* Including version in package name and then switch using alternatives/modules.
+* Just have an additional kit for mantid-last
+* What do we do for the dependencies. - should we use SCLs for all dependencies.
+
