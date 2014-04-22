@@ -24,9 +24,21 @@ Martyn gave a quick overview of the sphinxext he wrote and sphinx's doctest exte
  * For the case of a user starting Mantid and then loading an instrument data file that has a newer IDF that hasn't been downloaded yet.  Ideally we would want to block loads for that instrument (and not the others).
  * To avoid having to check all the time, check at startup then add a method to run the check for updates on demand.
 
+4.Various Tools
+ * Waffle.io - Sits on top of github issues and provides a nicer view.
+ * gitter.im - a possible replacement for the skype chat
+
+5.Mailing lists
+ * A quick look at Mailchimp, seems mainly aimed at marketing.  Looked like it could work (maybe would need to use Mandrill as well).  Martyn will setup a mailing list for the TSC.
+
+6. AOB
+ * When do we want to move the MediaWiki ?  If we are sticking with MediaWiki then it may as well be sooner.  
+ * Developer documentation - discuss next time (potential options: github site, github wiki, mediawiki, ...)
+
+
 Agenda for Next Meeting
 
-Date : 
+Date : In about a month
 
 1.
 2. 
