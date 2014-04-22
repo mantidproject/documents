@@ -31,7 +31,7 @@ Martyn gave a quick overview of the sphinxext he wrote and sphinx's doctest exte
 5.Mailing lists
  * A quick look at Mailchimp, seems mainly aimed at marketing.  Looked like it could work (maybe would need to use Mandrill as well).  Martyn will setup a mailing list for the TSC.
 
-6. AOB
+6.AOB
  * When do we want to move the MediaWiki ?  If we are sticking with MediaWiki then it may as well be sooner.  
  * Developer documentation - discuss next time (potential options: github site, github wiki, mediawiki, ...)
 
@@ -40,5 +40,6 @@ Agenda for Next Meeting
 
 Date : In about a month
 
-1.
-2. 
+1. Developer documentation
+2. ...
+2. AOB
