@@ -41,7 +41,7 @@ The high-level summary of the design is that we will hold the data for the monit
 - It is possible to have either event or histogram monitor workspaces irrespective of the parent type. (This design would not allow a mixture of monitor types. An alternate design could have a collection of single-spectra monitor workspaces.)
 - There is likely to be a getMonitorWorkspace() method as well. It will probably need to return a MatrixWorkspace_sptr (i.e. non-const).
 - An ExtractMonitorWorkspace algorithm would pull out the monitor workspace, put it in the ADS with the "_monitor_" suffix (or a custom name if given) and set the internal monitor workspace pointer to null. This would be the normal way to access the workspace from Python. (Or should it leave it in the parent workspace as well???)
-- Creating a workspace from its parent would not carry forward any monitor workspace. Thus running an algorithm on an input workspace holding an internal monitor workspace would lead to an output workspace that doesn't hold monitors, unless that algorithm modifies the workspace in place. This saves worrying about 
+- Creating a workspace from its parent would not carry forward any monitor workspace. Thus running an algorithm on an input workspace holding an internal monitor workspace would lead to an output workspace that doesn't hold monitors, unless that algorithm modifies the workspace in place.
 - The Plus algorithm is likely to be an exception to this rule - it should sum monitor workspaces as well (if they exist on both operands). This will aid live data processing when there is only post-processing.
 - ConvertUnits could be another exception. Though saying so feels like the start of a slippery slope...
 
