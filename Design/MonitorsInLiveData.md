@@ -1,10 +1,10 @@
-Design for a new way of handling monitor data in Mantid
-=======================================================
+A new way of handling monitor data
+==================================
 
 Motivation
 ----------
 
-The background to this document is that a requirement exists that monitor data be available in Mantid's live data toolset. In particular, the SNS live listener (link) needs to be able to pass back the full event-based monitor data since there are certain analyses and tools that require this information.
+The background to this document is that a requirement exists that monitor data be available in Mantid's live data toolset. In particular, the [SNS live listener](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/LiveData/src/SNSLiveEventDataListener.cpp) needs to be able to pass back the full event-based monitor data since there are certain analyses and tools that require this information.
 
 Current system for handling monitors
 ------------------------------------
