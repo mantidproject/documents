@@ -30,17 +30,53 @@ A high-level summary of the design is that we will:
 6. The installation instructions for each Operating System of Mantid will be removed from the wiki and placed into this repo.
 7. If a user is using an unsupported OS (Windows XP, Windows 32-bit, or < OSX 10.8) the `Latest release` will be changed (via JavaScript) to inform the user of this, and the most recent supported version of Mantid will be displayed for their OS.
 
-### Nightly update
+Workflow
+------
 
-On the main Mantid downloads page a section will exist that provides users with the means of downloading the latest nightly build. A job will run that will update the URLS of each download link. This will be achieved by:
+### Nightly release
 
-1. Jenkins nightly build job is run that outputs the names of each nightly build to a file (`nightlyNames.txt`).
-2. A new job will be run for the downloads repo that will re-build and update the downloads page to include the new nightly URLS (by making use of `nightlyNames.txt`).
+1. A jenkins job is run nightly that outputs the names of each nightly build to a file (`nightly.txt`) and then pushes this file to the downloads repo.
+2. A new job is run for the downloads repo that will re-build it and update the downloads page to include the new nightly URLS (obtained from `nightly.txt`) once the repo is changed.
 
 ### Release update
 
-At each release a `txt` file in the downloads repo will need to be updated to include the latest release information. This ensures that:
+1. Developer `clones` the download repo _or_ updates their local copy.
+2. Developer runs `create-manifest.py` with the release version number. This generates a new file in the `releases` folder with the corrosponding version, e.g.
 
-1. The _latest release_ on the main downloads page points to the correct sourceforge URL, and outputs the correct version (using the first item in the file).
-2. The _archives_ page contains links to the correct sourceforge repos going back to as far as we have.
+    python tools/create-manifest.py 3.2
 
+3. Developer runs `python tools/build-site.py` to generate the static site. This script uses the files in the `releases` folder to popular the _latest release_ information, and the _archives_ page.
+4. Once the developer verifies the contents of the static site is correct (e.g. all download links work correctly) they add the release file generate above (`git add releases/*`)
+5. They then commit the change made and push it to origin. Once modified a jenkins job is ran that re-builds the site on the Mantid server.
+
+Folder structure
+------
+
+The proposed folder structure of the repo is:
+
+	.
+	├── README.md
+	│
+	├── releases
+	│   ├── nightly.txt
+	│   ├── 3.1.1.txt
+	│   ├── ... other releases ...
+	│   └── 1.0.txt
+	│
+	├── static
+	│   ├── css
+	│   │   └── main.css
+	│   ├── img
+	│   │   └── icon.css
+	│   └── js
+	│       └── main.css
+	│
+	├── templates
+	│   ├── base.html
+	│   ├── archives.html
+	│   ├── instructions.html
+	│   └── downloads.html
+	│
+	└── tools
+		├── build-site.py
+		└── create-manifest.py
