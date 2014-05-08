@@ -1,0 +1,285 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1571" measuredH="780" mockupW="1380" mockupH="691">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="389" y="89" w="851" h="691" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>15658734</color>
+        <text>Mantidproject%20downloads%0Ahttp%3A//download.mantidproject.org/previous-releases%233.1.1</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="557" y="296" w="508" h="119" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Link" x="612" y="374" w="-1" h="-1" measuredW="52" measuredH="20" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Red%20Hat</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Link" x="698" y="374" w="-1" h="-1" measuredW="30" measuredH="20" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>OSX</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Link" x="773" y="373" w="-1" h="-1" measuredW="46" measuredH="20" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Ubuntu</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Image" x="673" y="371" w="-1" h="-1" measuredW="17" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/apple.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Image" x="583" y="371" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/Apps-redhat-icon.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Image" x="741" y="369" w="25" h="26" measuredW="32" measuredH="32" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/ubuntu.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Title" x="557" y="207" w="731" h="-1" measuredW="506" measuredH="63" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <bold>true</bold>
+        <size>60</size>
+        <text>Previous%20releases</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Title" x="583" y="311" w="467" h="-1" measuredW="463" measuredH="43" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <bold>true</bold>
+        <color>3700253</color>
+        <size>40</size>
+        <text>Release%203.1.1%20%2828/02/14%29</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Link" x="859" y="372" w="-1" h="-1" measuredW="100" measuredH="20" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Windows%2064-bit</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Image" x="832" y="369" w="-1" h="-1" measuredW="24" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/windows.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Link" x="993" y="372" w="-1" h="-1" measuredW="45" measuredH="20" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Source</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Image" x="967" y="366" w="26" h="28" measuredW="36" measuredH="36" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/icon-github.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Arrow" x="1050" y="327" w="116" h="10" measuredW="150" measuredH="100" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Paragraph" x="1181" y="319" w="390" h="42" measuredW="200" measuredH="80" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Each%20title%20will%20have%20an%20ID%20%28release-N%29%20so%20that%20it%27s%20easy%20to%20link%20back%20to%20that%20specific%20release%20on%20the%20page.</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Arrow" x="1005" y="468" w="116" h="10" measuredW="150" measuredH="100" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Paragraph" x="1131" y="463" w="307" h="28" measuredW="200" measuredH="80" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Releases%20will%20go%20as%20far%20back%20as%20we%20have.</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Arrow" x="452" y="327" w="116" h="10" measuredW="150" measuredH="100" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Paragraph" x="191" y="319" w="261" h="26" measuredW="200" measuredH="80" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Page%20will%20link%20back%20to%20release%20notes</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Canvas" x="557" y="441" w="508" h="119" measuredW="100" measuredH="70" zOrder="19" locked="false" isInGroup="-1"/>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Link" x="612" y="519" w="-1" h="-1" measuredW="52" measuredH="20" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Red%20Hat</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Link" x="698" y="519" w="-1" h="-1" measuredW="30" measuredH="20" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>OSX</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Link" x="773" y="518" w="-1" h="-1" measuredW="46" measuredH="20" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Ubuntu</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Image" x="673" y="516" w="-1" h="-1" measuredW="17" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/apple.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Image" x="583" y="516" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/Apps-redhat-icon.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Image" x="741" y="514" w="25" h="26" measuredW="32" measuredH="32" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/ubuntu.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Title" x="583" y="456" w="467" h="-1" measuredW="405" measuredH="43" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <bold>true</bold>
+        <color>3700253</color>
+        <size>40</size>
+        <text>Release%20...%20%28%3F%3F/%3F%3F/%3F%3F%29</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Link" x="859" y="517" w="-1" h="-1" measuredW="100" measuredH="20" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Windows%2064-bit</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Image" x="832" y="514" w="-1" h="-1" measuredW="24" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/windows.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Link" x="993" y="517" w="-1" h="-1" measuredW="45" measuredH="20" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Source</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Image" x="967" y="511" w="26" h="28" measuredW="36" measuredH="36" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/icon-github.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Canvas" x="557" y="596" w="508" h="119" measuredW="100" measuredH="70" zOrder="31" locked="false" isInGroup="-1"/>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Link" x="612" y="674" w="-1" h="-1" measuredW="52" measuredH="20" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Red%20Hat</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Link" x="698" y="674" w="-1" h="-1" measuredW="30" measuredH="20" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>OSX</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Link" x="773" y="673" w="-1" h="-1" measuredW="46" measuredH="20" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Ubuntu</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Image" x="673" y="671" w="-1" h="-1" measuredW="17" measuredH="21" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/apple.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Image" x="583" y="671" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/Apps-redhat-icon.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::Image" x="741" y="669" w="25" h="26" measuredW="32" measuredH="32" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/ubuntu.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Title" x="583" y="611" w="467" h="-1" measuredW="427" measuredH="43" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <bold>true</bold>
+        <color>3700253</color>
+        <size>40</size>
+        <text>Release%201.0%20%28%3F%3F/%3F%3F/%3F%3F%29</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::Link" x="859" y="672" w="-1" h="-1" measuredW="100" measuredH="20" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Windows%2064-bit</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Image" x="832" y="669" w="-1" h="-1" measuredW="24" measuredH="21" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/windows.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Link" x="993" y="672" w="-1" h="-1" measuredW="45" measuredH="20" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>false</italic>
+        <size>14</size>
+        <text>Source</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::Image" x="967" y="666" w="26" h="28" measuredW="36" measuredH="36" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/icon-github.png</src>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
