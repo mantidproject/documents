@@ -43,10 +43,10 @@ Workflow
 1. Developer `clones` the download repo _or_ updates their local copy.
 2. Developer runs `create-manifest.py` with the release version number. This generates a new file in the `releases` folder with the corrosponding version, e.g.
 
-    python tools/create-manifest.py 3.2
+    python tools/create-manifest.py 3.2-2014-07-11
 
 3. Developer runs `python tools/build-site.py` to generate the static site. This script uses the files in the `releases` folder to popular the _latest release_ information, and the _archives_ page.
-4. Once the developer verifies the contents of the static site is correct (e.g. all download links work correctly) they add the release file generate above (`git add releases/*`)
+4. Once the developer verifies the contents of the static site is correct (e.g. all download links work correctly) they add the release file generated above (`git add releases/*`)
 5. They then commit the change made and push it to origin. Once modified a jenkins job is ran that re-builds the site on the Mantid server.
 
 Folder structure
@@ -59,17 +59,17 @@ The proposed folder structure of the repo is:
 	│
 	├── releases
 	│   ├── nightly.txt
-	│   ├── 3.1.1.txt
+	│   ├── 3.1.1-2014-02-28.txt
 	│   ├── ... other releases ...
-	│   └── 1.0.txt
+	│   └── 2.4-2013-02-04.txt
 	│
 	├── static
 	│   ├── css
 	│   │   └── main.css
 	│   ├── img
-	│   │   └── icon.css
+	│   │   └── icon.ico
 	│   └── js
-	│       └── main.css
+	│       └── main.js
 	│
 	├── templates
 	│   ├── base.html
