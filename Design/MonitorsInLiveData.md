@@ -49,5 +49,16 @@ The high-level summary of the design is that we will hold the data for the monit
 - Over time this way of doing things could be extended, for example algorithms such as NormaliseToMonitor could be amended.
 
 
+Feedback
+--------
+### From Nick
+- I'm concerned that a move away from having monitors available as _monitors would adversely affect many users scripts.  I accept that ExtractMonitorWorkspace would ameliorate this down to a single line change needed, but it would still need script changes.  See below for a suggestion.
+- I'm not happy about the special rules around which algorithm affects monitor workspaces and which doesn't.  It's confusing.
+- A suggested middle ground:
+  - Have them monitor workspace link within a workspace as you suggested, together with the methods to access it.
+  - Store both the normal workspace AND any attached monitor workspace in the ADS using the _monitors convention when the parent is stored.  This way it is backwardly compatible with the way things are currently done, but you still have unstored workspaces able to keep links to it's monitors.
+  - Have the owning workspace subscribe to updates from the ADS so it can react to deletion and updates of the monitor workspace (e.g. someone rebins the montior workspace leading to a change in memory location, or the user intentionally deletes the monitor workspace as it is large and not needed anymore).
+  - You could even consider enhancing the GetMonitorWorkspace Methods to search the ADS for a xxx_monitors workspace if the shared pointer is empty (assuming the current ws is stord in the ADS as xxx).
+- I think this approach maintains the current way of working with "seperated" monitor workspaces, while giving the flexibility you ned with live data for a workspace to own and maintain the lifetime of it's monitors.
 
 
