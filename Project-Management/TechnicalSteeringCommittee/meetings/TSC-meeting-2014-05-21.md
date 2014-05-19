@@ -7,3 +7,5 @@ Agenda
    2. Partially supported platforms
    3. Tab names
 2. Developer documentation
+6. [Getting DOIs for releases from github](https://guides.github.com/activities/citable-code/)
+7. 
