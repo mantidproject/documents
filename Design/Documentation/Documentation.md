@@ -81,6 +81,37 @@ and the directives would do the following:
 * `categories`:
     - records any categories that this algorithm is a part of so that category pages can be generated
 
+### Directory Structure
+The sphinx configuration and accompanying files will need to be placed in the main source tree. The top-level directory `Code/Mantid` contains a `docs` directory so it is suggested that the files are placed in subdirectories under here using the following structure:
+
+    Code/Mantid/docs/
+                  ...
+                  source/
+                  sphinxext/
+                  ...
+              
+The `source` will contain, but not be limited to the following files:
+
+    source/
+      _templates/
+      conf.py
+      ...
+
+where the `_templates` directory contains the Sphinx layouts for the various page types. There will also be `.rst` files for the static pages listing contents etc.
+
+The `sphinxext` directory will contain additional plugins that are required to generate documentation as described in this document. In particular it will contain the above set of directives for the algorithm documentation. The expected directory structure will be:
+
+    sphinxext/
+      mantiddoc/
+        directives/
+          algorithm.py
+          aliases.py
+          categories.py
+          properties.py
+          summary.py
+          usage.py
+      __init__.py
+        
 Migration
 ---------
 There are several steps required to move from our current state to the new setup:
