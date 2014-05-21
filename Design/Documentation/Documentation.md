@@ -67,7 +67,7 @@ algorithm is *Rebin*, the documentation file would look like:
 and the directives would do the following:
 
 * `algorithm`
-    - create a link that can be referenced with the Sphinx `:ref:` command by inserting `.. _%(name)s`
+    - create a named reference that can be referenced with the Sphinx `:ref:` command by inserting `.. _Rebin:` at the top of the file
     - create a title for the page
     - insert a screenshot link
 * `summary`:
