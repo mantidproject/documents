@@ -4,6 +4,9 @@ Agenda
 1. [Monitors in Live Data](https://github.com/mantidproject/documents/blob/master/Design/MonitorsInLiveData.md)
 2. Build servers
    1. Requirments for OS to be in matrix build
+      1. Only officially supported OS as declared by PMB
+      2. At minimum two servers at each site (ISIS and ORNL)
+      3. Work out initial bugs in partially supported area
    2. Partially supported platforms
    3. Tab names
    4. Other static checks: CPD, pylint
