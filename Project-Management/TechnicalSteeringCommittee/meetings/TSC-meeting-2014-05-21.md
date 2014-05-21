@@ -11,6 +11,9 @@ Agenda
    3. Tab names
    4. Other static checks: CPD, pylint, pyflakes, pep8
    5. [SonarQube](http://www.sonarqube.org/)
+6. Tasks that Russell does that the TSC should take over
+   * Look after nightly builds
+   * Look after performance tests (master, develop, and RHEL6 rolling system test)
 2. Developer documentation
 6. [Getting DOIs for releases from github](https://guides.github.com/activities/citable-code/)
 7. Embedded IDF in NeXus files
