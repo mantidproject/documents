@@ -6,6 +6,7 @@ Agenda
    1. Requirments for OS to be in matrix build
    2. Partially supported platforms
    3. Tab names
+   4. Other static checks: CPD, pylint
 2. Developer documentation
 6. [Getting DOIs for releases from github](https://guides.github.com/activities/citable-code/)
 7. 
