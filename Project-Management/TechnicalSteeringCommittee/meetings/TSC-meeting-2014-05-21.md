@@ -9,7 +9,7 @@ Agenda
       3. Work out initial bugs in partially supported area
    2. Partially supported platforms
    3. Tab names
-   4. Other static checks: CPD, pylint
+   4. Other static checks: CPD, pylint, pyflakes, pep8
    5. [SonarQube](http://www.sonarqube.org/)
 2. Developer documentation
 6. [Getting DOIs for releases from github](https://guides.github.com/activities/citable-code/)
