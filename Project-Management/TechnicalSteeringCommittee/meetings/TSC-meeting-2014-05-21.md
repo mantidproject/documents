@@ -9,8 +9,9 @@ Agenda
       3. Work out initial bugs in partially supported area
    2. Partially supported platforms
    3. Tab names
-   4. Other static checks: CPD, pylint, pyflakes, pep8
-   5. [SonarQube](http://www.sonarqube.org/)
+   4. Other static checks: CPD, [pylint](http://www.pylint.org/), [pyflakes](https://pypi.python.org/pypi/pyflakes),
+      [pep8](https://pypi.python.org/pypi/pep8)
+   5. [SonarQube](http://www.sonarqube.org/) with [Sonar cxx](https://github.com/wenns/sonar-cxx)
 6. Tasks that Russell does that the TSC should take over
    * Look after nightly builds
    * Look after performance tests (master, develop, and RHEL6 rolling system test)
