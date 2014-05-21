@@ -10,4 +10,4 @@ Agenda
    5. [SonarQube](http://www.sonarqube.org/)
 2. Developer documentation
 6. [Getting DOIs for releases from github](https://guides.github.com/activities/citable-code/)
-7. 
+7. Embedded IDF in NeXus files
