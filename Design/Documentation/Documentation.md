@@ -72,14 +72,19 @@ and the directives would do the following:
     - insert a screenshot link
 * `summary`:
     - insert summary text by creating an algorithm object and grabbing the text from it
+    - create a header for this section
 * `alias`:
     - if there is an alias then the additional name is inserted here otherwise the section is left out
+    - create a header for this section
 * `usage`:
     - this may not stay as a directive if we decide to stop auto-generating usages. If we keep them then it will insert a syntax-highlighted code example
+    - create a header for this section
 * `properties`:
     - insert the table of properties for the algorithm
+    - create a header for this section
 * `categories`:
     - records any categories that this algorithm is a part of so that category pages can be generated
+    - create a header for this section
 
 ### Directory Structure
 The sphinx configuration and accompanying files will need to be placed in the main source tree. The top-level directory `Code/Mantid` contains a `docs` directory so it is suggested that the files are placed in subdirectories under here using the following structure:
