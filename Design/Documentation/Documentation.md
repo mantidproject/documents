@@ -111,6 +111,13 @@ The `sphinxext` directory will contain additional plugins that are required to g
           summary.py
           usage.py
       __init__.py
+
+### Screenshots
+
+There is currently a script, `Code/Mantid/scripts/WikiMaker/ScriptAlgDialogs.py`, that generates the screenshots from a build of mantid. A job on the old Jenkins then runs this script and pushes the images to the wiki server.
+
+For the new setup the above script will be moved to the docs directory and wired in as a part of the generation of the documentation as a whole.
+
         
 Migration
 ---------
@@ -128,7 +135,3 @@ There are several steps required to move from our current state to the new setup
     * remove Out of date pages
     * remove orphaned pages & images
 
-Todo
-----
-* Add section on overall directory structure
-* Add section about how to deal with screenshots
