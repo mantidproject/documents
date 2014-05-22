@@ -72,8 +72,8 @@ and the directives would do the following:
     - insert a screenshot link
 * `summary`:
     - insert summary text by creating an algorithm object and grabbing the text from it
-* `aliases`:
-    - if there are any aliases then the additional names are inserted here otherwise the section is left out
+* `alias`:
+    - if there is an alias then the additional name is inserted here otherwise the section is left out
 * `usage`:
     - this may not stay as a directive if we decide to stop auto-generating usages. If we keep them then it will insert a syntax-highlighted code example
 * `properties`:
