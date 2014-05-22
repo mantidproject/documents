@@ -12,6 +12,7 @@ to help promote writing better documentation.
 This document will only address user documentation and not developer documentation. This includes:
 
 * Algorithm pages
+* Fit Function pages
 * Concept pages, e.g. workspace types, run object
 * Python reference
 * MantidPlot manual
