@@ -49,7 +49,7 @@ before the main descriptive text that will be automatically generated.
 
 ### Custom Directives
 Here we outline the extra directives that will be required to generate the algorithm documentation. Assuming the 
-algorithm is *Rebin*, the documentation file would look like:
+algorithm is *Rebin*, the file will be called `Rebin-v1.rst`, where the version `1` is the version. The file itself would look like:
 
     .. algorithm::
 
@@ -68,7 +68,8 @@ algorithm is *Rebin*, the documentation file would look like:
 and the directives would do the following:
 
 * `algorithm`
-    - create a named reference that can be referenced with the Sphinx `:ref:` command by inserting `.. _algorithm|Rebin:` at the top of the file
+    - extract name/version from filename
+    - create a named reference that can be referenced with the Sphinx `:ref:` command by inserting `.. _algorithm|Rebin:` at the top of the file if this is the latest version of the algorithm
     - create a title for the page
     - insert a screenshot link
     - If the algorithm is deprecated then insert the deprecation warning
