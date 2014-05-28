@@ -71,6 +71,7 @@ and the directives would do the following:
     - create a named reference that can be referenced with the Sphinx `:ref:` command by inserting `.. _algorithm|Rebin:` at the top of the file
     - create a title for the page
     - insert a screenshot link
+    - If the algorithm is deprecated then insert the deprecation warning
 * `summary`:
     - insert summary text by creating an algorithm object and grabbing the text from it
     - create a header for this section
