@@ -51,6 +51,9 @@ The high-level summary of the design is that we will hold the data for the monit
 
 Feedback
 --------
+
+The feedback below relates to the design as it was described in 6ead06a9c7f467158da7af1b00a8de3e87b2d340.
+
 ### From Nick
 - I'm concerned that a move away from having monitors available as _monitors would adversely affect many users scripts.  I accept that ExtractMonitorWorkspace would ameliorate this down to a single line change needed, but it would still need script changes.  See below for a suggestion.
 - I'm not happy about the special rules around which algorithm affects monitor workspaces and which doesn't.  It's confusing.
@@ -73,5 +76,3 @@ Otherwise we'll have some algorithms that are aware of the monitors, others that
 Andrei – I think you are right. The idea to have it in Plus was as a convenience for its use with live data. It can just be handled inside LoadLiveData instead. You’re suggested python syntax looks nice, but I’d have to check whether that will work with the way the LHS functions to work out a name (subsequent note: no it won't).
 
 Nick – The “no breaking impact on existing users” clause applies beyond just live data, even though I didn’t explicitly say that. I’d no intention of taking away the “_monitors” workspace where it’s currently put in the ADS (see second to last bullet). The idea is that this solution is amenable to extension in the future if desired. I’m not too keen on doing things that reinforce the existing ADS-based way as I don’t think that’s a great way of doing things (doesn’t work well for child algorithms, for example).
-
-
