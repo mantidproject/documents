@@ -32,6 +32,8 @@ Design
 
 The high-level summary of the design is that we will hold the data for the monitors in their own workspace that is itself held by the 'main' workspace. Setters and getters will provided.
 
+There are two main guiding principles behind this design (in addition to it solving the main problem at hand of getting monitors into the live data workflow): (1) it will not break any existing user scripts/workflows, and (2) it is open for extension at a later stage, if so desired.
+
 ### In detail
 
 - MatrixWorkspace gains an "m_monitorWorkspace" member. 
@@ -40,14 +42,10 @@ The high-level summary of the design is that we will hold the data for the monit
 - Loading routines (including live listeners) can create a workspace containing spectra pertaining to monitors (and linked in the usual way to the detector objects within the instrument) and set it via a setMonitorWorkspace() method.
 - It is possible to have either event or histogram monitor workspaces irrespective of the parent type. (This design would not allow a mixture of monitor types. An alternate design could have a collection of single-spectra monitor workspaces.)
 - There is likely to be a getMonitorWorkspace() method as well. It will probably need to return a MatrixWorkspace_sptr (i.e. non-const).
-- An ExtractMonitorWorkspace algorithm would pull out the monitor workspace, put it in the ADS with the "_monitor_" suffix (or a custom name if given) and set the internal monitor workspace pointer to null. This would be the normal way to access the workspace from Python. (Or should it leave it in the parent workspace as well???)
-- Creating a workspace from its parent would not carry forward any monitor workspace. Thus running an algorithm on an input workspace holding an internal monitor workspace would lead to an output workspace that doesn't hold monitors, unless that algorithm modifies the workspace in place.
-- The Plus algorithm is likely to be an exception to this rule - it should sum monitor workspaces as well (if they exist on both operands). This will aid live data processing when there is only post-processing.
-- ConvertUnits could be another exception. Though saying so feels like the start of a slippery slope...
-
-- I would not move existing monitor methodologies over to this automatically (e.g. LoadEventNexus/LoadNexusMonitors would still produce a separate ADS entry, though it could use the monitor workspace member internally as a first step).
-- Over time this way of doing things could be extended, for example algorithms such as NormaliseToMonitor could be amended.
-
+- An ExtractMonitorWorkspace algorithm would pull out the monitor workspace, put it in the ADS with a provided name and set the internal monitor workspace pointer to null. This would be the normal way to access the workspace.
+- Creating a workspace from its parent (via the WorkspaceFactory) would not carry forward any monitor workspace. Thus running an algorithm on an input workspace holding an internal monitor workspace would lead to an output workspace that doesn't hold monitors, unless that algorithm modifies the workspace in place. Such in-place modification of the holding workspace would not modify the monitor workspace.
+- Algorithms should not act on an internal monitor workspace. If a user wants to interact with this workspace they should extract it and act upon it 'manually'. There is a good case for monitor-specific algorithms such as NormaliseToMonitor to look for the internal monitor workspace, but this will not be done at this stage.
+- Certain loaders (in particular LoadEventNexus) will be modified to hold the monitor workspace in the internal pointer *in addition* to adding a separate ADS entry as at present. 
 
 Feedback
 --------
