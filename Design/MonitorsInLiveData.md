@@ -50,7 +50,7 @@ There are two main guiding principles behind this design (in addition to it solv
 Feedback
 --------
 
-The feedback below relates to the design as it was described at [this point] (https://github.com/mantidproject/documents/commit/6ead06a9c7f467158da7af1b00a8de3e87b2d340).
+The feedback below relates to the design as it was described at [this point] (https://github.com/mantidproject/documents/blob/6ead06a9c7f467158da7af1b00a8de3e87b2d340/Design/MonitorsInLiveData.md).
 
 ### From Nick
 - I'm concerned that a move away from having monitors available as _monitors would adversely affect many users scripts.  I accept that ExtractMonitorWorkspace would ameliorate this down to a single line change needed, but it would still need script changes.  See below for a suggestion.
