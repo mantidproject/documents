@@ -61,4 +61,17 @@ Feedback
   - You could even consider enhancing the GetMonitorWorkspace Methods to search the ADS for a xxx_monitors workspace if the shared pointer is empty (assuming the current ws is stord in the ADS as xxx).
 - I think this approach maintains the current way of working with "seperated" monitor workspaces, while giving the flexibility you ned with live data for a workspace to own and maintain the lifetime of it's monitors.
 
+### From Andrei
+Nice solution. I just have a small suggestion. Don't allow any algorithm to modify the monitor workspace, not even Plus. If one needs to add monitors, it should be done explicitly:
+
+    w=w1+w2
+    w.monitorWorkspace=w1.monitorWorkspace+w2.monitorWorkspace
+
+Otherwise we'll have some algorithms that are aware of the monitors, others that are not, which will lead to confusions. For example, should multiplying with a single valued workspace act on the monitor as well? What if the workspace that I am multiplying with is a regular matrix workspace? How about Rebin? Or Plus on some processed workspaces?
+
+### Response from Russell
+Andrei – I think you are right. The idea to have it in Plus was as a convenience for its use with live data. It can just be handled inside LoadLiveData instead. You’re suggested python syntax looks nice, but I’d have to check whether that will work with the way the LHS functions to work out a name (subsequent note: no it won't).
+
+Nick – The “no breaking impact on existing users” clause applies beyond just live data, even though I didn’t explicitly say that. I’d no intention of taking away the “_monitors” workspace where it’s currently put in the ADS (see second to last bullet). The idea is that this solution is amenable to extension in the future if desired. I’m not too keen on doing things that reinforce the existing ADS-based way as I don’t think that’s a great way of doing things (doesn’t work well for child algorithms, for example).
+
 
