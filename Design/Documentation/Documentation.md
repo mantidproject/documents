@@ -63,7 +63,7 @@ algorithm is *Rebin*, the file will be called `Rebin-v1.rst`, where the version 
 
     [DESCRIPTIVE TEXT EXTRACTED FROM CPP FILE]
 
-    .. algm_categories::
+    .. categories::
 
 and the directives would do the following:
 
