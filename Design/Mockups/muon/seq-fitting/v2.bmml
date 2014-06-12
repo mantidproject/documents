@@ -1,0 +1,75 @@
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="555" measuredH="256" mockupW="503" mockupH="238">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="52" y="77" w="503" h="179" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Muon%20Analysis%20-%20Sequential%20Fitting</text>
+        <topheight>27</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="126" y="123" w="414" h="-1" measuredW="84" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>disabled</state>
+        <text>MUSR00001</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="67" y="125" w="59" h="-1" measuredW="55" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>First%20run%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::CheckBox" x="67" y="195" w="-1" h="-1" measuredW="214" measuredH="22" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabledSelected</state>
+        <text>Use%20parameters%20from%20previoius%20fit</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="495" y="226" w="-1" h="-1" measuredW="45" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Run</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="426" y="226" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>Stop</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="67" y="159" w="59" h="-1" measuredW="55" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Last%20run%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="126" y="157" w="414" h="-1" measuredW="85" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>disabled</state>
+        <text>MUSR99999</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::ProgressBar" x="67" y="228" w="344" h="20" measuredW="100" measuredH="20" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <indeterminate>false</indeterminate>
+        <scrollBarValue>16</scrollBarValue>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="204" y="228" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>21%25%20%28MUSR00054%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Title" x="221" y="18" w="-1" h="-1" measuredW="165" measuredH="43" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variant%202</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

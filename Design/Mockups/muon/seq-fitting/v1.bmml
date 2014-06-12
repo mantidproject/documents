@@ -1,0 +1,76 @@
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="650" measuredH="600" mockupW="503" mockupH="517">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="147" y="147" w="503" h="453" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Muon%20Analysis%20-%20Sequential%20Fitting</text>
+        <topheight>27</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="221" y="193" w="414" h="-1" measuredW="84" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>up</state>
+        <text>MUSR00001</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="162" y="195" w="59" h="-1" measuredW="55" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>First%20run%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::CheckBox" x="162" y="265" w="-1" h="-1" measuredW="214" measuredH="22" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Use%20parameters%20from%20previoius%20fit</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="590" y="264" w="-1" h="-1" measuredW="45" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Run</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="520" y="264" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Stop</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::DataGrid" x="161" y="319" w="474" h="266" measuredW="370" measuredH="138" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <text>Run%2C%20Fitted%20parameters%2C%20Fit%20quality%0AMUSR00001%2C%20f1.A%20%3D%200.1%3B%20f1.B%20%3D%205%3B%20f2.A%20%3D%200.2%2C%200.001%20%0AMUSR00002%2C%20f1.A%20%3D%200.09%3B%20f1.B%20%3D%202%3B%20f2.A%20%3D%200.5%2C%200.026%20%0AMUSR00003%2C%20f1.A%20%3D%200.5%3B%20f1.B%20%3D%203%3B%20f2.A%20%3D%200.9%2C%200.4%20%0A...%2C...%2C...</text>
+        <value>58</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Label" x="162" y="298" w="-1" h="-1" measuredW="59" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Diagnosis</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="162" y="229" w="59" h="-1" measuredW="55" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Last%20run%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::TextInput" x="221" y="227" w="414" h="-1" measuredW="85" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>up</state>
+        <text>MUSR99999</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Title" x="321" y="83" w="-1" h="-1" measuredW="155" measuredH="43" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variant%201</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
