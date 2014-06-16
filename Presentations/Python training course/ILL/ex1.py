@@ -1,6 +1,5 @@
 # Only edit this bit!
 
-dataFolder = '/home/tofhr/lambda/MANTID/IN6/3rd_exp'
 dataFileNames = ['164198','164199','164200']
 mergedWorkspaceName = 'data_merged'
 
@@ -14,7 +13,7 @@ transmission  =  0.95  # Sample transmission
 # Load Samples
 
 for file in dataFileNames:
-    fullPath = os.path.join(dataFolder,file+'.nxs')
+    fullPath = file+'.nxs'
     Load(Filename=fullPath,OutputWorkspace=file)
 
 # Merge runs
