@@ -1,0 +1,34 @@
+Dear Editor,
+
+We would like to thank the referee for the comments on our manuscript. We tried to address the concerns raised during the review process. 
+
+Here are the replies to each of the points:
+
+1. Abstract. We shortened the abstract, to clearly state what the paper is about. The objectives of Mantid are discussed in a section of the paper, but were removed from the abstract. We also removed the "large team" expression, as suggested by the referee. Since the team size is varying, a number can be estimated from the author list.
+
+2. As per referee's suggestions we completely reorganized the introduction. It now contains only the motivation for the project. The history, design philosophy, and ethos of the project were put in a separate section.
+
+3. The referee pointed out that it is not clear which objectives have not been achieved and whether work is in progress or not. We added a short progress report in the conclusion section.
+
+4. We added the definition of the reduction process in the introduction, as suggested by the referee.
+
+5. The original graphics was weighted towards SNS instruments due to the affiliation of the main people involved in the writing of the manuscript. As suggested, where possible, we replaced some SNS data with data from other facilities, to better reflect the multi-facility contributions. Figures 8 and 10 present data from ISIS, and figure 6 presents data from ILL.
+  
+6. In the conclusion section, the referee inquires about the amount of coverage of the unit tests. We were unsuccessful in finding this number using standard tools, therefore it is not included in the paper. Work is being done to address this issue, and to increase code coverage.
+
+7. The referee suggests that it would be informative to have a description of the relationship between different types of workspaces. We could not find an appropriate level for this discussion in the paper (either user level or developer level), so we decided to provide references to the user and developer documentation online for this issue.
+
+8. In the instrument geometry section, we added a couple of sentences about the methods and tools to create/validate instrument geometry
+
+9. The referee suggest that we add in the section on data sources a mention that a file reader is developed for is instrument. That is not correct. Most of the instruments at SNS use a single file format. The same is happening at ISIS. However, legacy files (such as ISIS raw files) and various ASCII formats are supported. We rewrote the section to better convey this message.
+
+10. As suggested, we included the definition of the spectrum in the workspace section
+
+11. As requested, we expanded the conclusion section to better reflect how some sections of the paper contribute to the objectives stated in the introduction.
+
+12. We fixed some of the typos and grammatical errors.
+
+We would like to thank you again for you consideration of the manuscript for publication in NIMA.
+
+Sincerely,
+Andrei Savici
