@@ -9,6 +9,8 @@ Agenda
 5. Community-based RedHat/Ubuntu package distribution - ppa, copr, src.rpm
 6. Maintenance task of speeding up the slowest tests - flagging slow running tests.
 
+Minutes
+=======
 1. Mostly works for Windows - needs some tidying up in the install/uninstall scripts.  You can currently install, then copy to keep a version.  At the moment the env vars only point to the last installed version. ACTION: Martyn to create a ticket describing what needs to be done.  Mac/Linux both have issues because there is only a single user properties file.  This will be a issue if we have any absolute paths in the config.  Linux has a number of different options. If the users would only want to get the last release then we can generate an additional mantid kit with a different label, as we currently do with nightly/unstable.  ACTION: Pete will have a look at generating the jenkins build jobs.
 2. Create a separate 'developer.github.io' repository to house the developer wiki etc.  Point the developer link on the www.mantidproject.org site point to developer.mantidproject.org - maybe have a github pages landing page that looks like the current Category:Development mediawiki page.
 3. ACTION: Stuart will look at the 'missing' RPMs for RHEL7.
