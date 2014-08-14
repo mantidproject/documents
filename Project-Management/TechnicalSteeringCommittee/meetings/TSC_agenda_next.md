@@ -6,3 +6,4 @@ Agenda
 3. John Hill's request for [CCfits](http://heasarc.gsfc.nasa.gov/fitsio/CCfits/) to be shipped with Mantid
 4. Discuss future of tcmalloc - Martyn
 5. Assign any outstanding pull requests
+5. ParaView roadmap for mantid - Michael
