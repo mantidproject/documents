@@ -15,10 +15,8 @@ Users working with 50 workspaces comprising a MPGW are finding that the workspac
 
 This is primarily an ISIS problem, but it does seriously affect Reflectometry and SANS techniques.
 
-Solution Overview (not detailed design)
+Solution Objectives
 ------------
-
-Major Objectives:
 
 * Provide a good way to identify a MPGW so that algorithms can treat them differently, but allow the MPGW to be processed as a normal GW as a fall-back.
 * Provide a lower memory overhead version of a GW, for example having a shared x-axis, instrument and run, but having independent y and e arrays for each member.
