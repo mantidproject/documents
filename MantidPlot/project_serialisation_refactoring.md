@@ -1,67 +1,199 @@
-#Problem
-The current tab separated values parsing implementation is ugly, fragile, and awkward to maintain.
+#Project Serialisation Refactoring
 
-```cpp
-for (line++; line!=flist.end(); ++line)
-{
-  QStringList fields = (*line).split("\t");
-  if (fields[0] == "geometry") {
-    restoreWindowGeometry(app, w, *line);
-  } else if (fields[0] == "ColWidth") {
-    w->setColumnsWidth(fields[1].toInt());
-  } else if (fields[0] == "Formula") {
-    w->setFormula(fields[1]);
-  } else if (fields[0] == "<formula>") {
-    QString formula;
-    for (line++; line!=flist.end() && *line != "</formula>"; ++line)
-      formula += *line + "\n";
-    formula.truncate(formula.length()-1);
-    w->setFormula(formula);
-  } else if (fields[0] == "TextFormat") {
-    if (fields[1] == "f")
-      w->setTextFormat('f', fields[2].toInt());
-    else
-      w->setTextFormat('e', fields[2].toInt());
-  } else if (fields[0] == "WindowLabel") { // d_file_version > 71
-    w->setWindowLabel(fields[1]);
-    w->setCaptionPolicy((MdiSubWindow::CaptionPolicy)fields[2].toInt());
-  } else if (fields[0] == "Coordinates") { // d_file_version > 81
-    w->setCoordinates(fields[1].toDouble(), fields[2].toDouble(), fields[3].toDouble(), fields[4].toDouble());
-  } else if (fields[0] == "ViewType") { // d_file_version > 90
-    w->setViewType((Matrix::ViewType)fields[1].toInt());
-  } else if (fields[0] == "HeaderViewType") { // d_file_version > 90
-    w->setHeaderViewType((Matrix::HeaderViewType)fields[1].toInt());
-  } else if (fields[0] == "ColorPolicy"){// d_file_version > 90
-    w->setColorMapType((Matrix::ColorMapType)fields[1].toInt());
-  } else if (fields[0] == "<ColorMap>"){// d_file_version > 90
-    QStringList lst;
-    while ( *line != "</ColorMap>" ){
-      ++line;
-      lst << *line;
-    }
-    lst.pop_back();
-    w->setColorMap(lst);
-  } else // <data> or values
-    break;
-}
+##Current Implementation
+
+###Loading Projects
+Loading a project is started with a call to `ApplicationWindow::openProject`. This function opens
+the given filename, and begins parsing the file.
+
+`openProject` parses the file in three stages. In the first stage, it reads several lines from the
+top of the project file, such as the file version, scripting language used, and number of
+windows.
+
+In the second stage it iterates over all of the remaining lines in the file, checking each line in
+a large `else if` block. It specifically looks for lines that opens sections, such as `<matrix>` in
+which case it will fast-forward until the accompanying `</matrix>` line appears, and call another
+method, such as `ApplicationWindow::openMatrix` with the contents. The method it calls will
+typically instantiate a matrix window and parse the lines it was given. `<folder>` and `</folder>`
+lines are treated specially. `<folder>` lines result in a new folder being created as a child of
+the current folder, and the new folder becoming the current folder.  `</folder>` lines set the
+current folder to the parent of the current folder.
+
+The third stage is very similar to the second, in that it iterates over the entire project file
+again, but this time it only parses plots and graphs, unlike the second stage which only handles
+windows, workspaces and matrices.
+
+A call graph would look something like this:
+```
+ApplicationWindow::openProject(...)
+  ApplicationWindow::openMatrix(...)
+    Matrix::Matrix(...)
+    //Call various setters on Matrix.
+  ApplicationWindow::openMatrix(...)
+    Matrix::Matrix(...)
+    //...
+  ApplicationWindow::openNote(...)
+    Note::Note(...)
+    //...
+  ApplicationWindow::openMultiLayer(...)
+    MultiLayer::MultiLayer(...)
+    //<graph> and <spectrogram> are actually inside <multiLayer>
+    //so openGraph and openSpectrogram are called by openMultiLayer.
+    ApplicationWindow::openGraph(...)
+    //...
+    ApplicationWindow::openSpectrogram(...)
+    //...
 ```
 
-#Proposed Solution
+###Saving Projects
+Project saving is started by calling `ApplicationWindow::saveProject`, which does a little bit of
+housekeeping before calling `ApplicationWindow::saveFolder`, which handles the actual saving.
 
-Simplify reading and writing loading/saving code by writing a helper class to
-handle all the parsing of tab-separated-values and sections.
+`saveFolder` works by creating an empty string to represent the contents of the project file.
+First, any open workspaces or workspace groups are serialised by calling `MantidUI::saveToString`
+and appending the result to the project file string. Then if the scripting window is open, it's
+serialised by calling `ScriptingWindow::saveToString` and appending the result to the project file
+string.
 
-##Loading
+Next `saveFolder` iterates through each folder in the hierarchy, creating the appropriate
+`<folder>` and `</folder>` sections, and iterating over every `MdiSubWindow` in that folder and
+calling `saveToString` on it, finally appending all this to the project file string.
 
-This actually implements the same deserialisation logic as in the problem example,
-except with better error handling opportunities.
+Next the project file string has some global information prepended to it, such as the version,
+the scripting language and how many windows were serialised.
+
+And finally, the project file string is written out to disk.
+
+##Proposal
+There are some problems with the current approach: `ApplicationWindow` is simply doing too much.
+Different windows should be responsible for serialising themselves, rather than having
+`ApplicationWindow` doing almost everything by itself.
+
+To this end, as much of the serialisation and deserialisation logic should be moved from
+`ApplicationWindow` to the relevant classes as possible. To this end, a new interface,
+`IProjectSerialisable` is created, defining two methods, one for serialisation, and one for
+deserialisation.
+
+Instead of iterating over each line of the project file manually, `openProject` should use a helper
+class to parse the project file and extract the data. The same helper class could also be used for
+serialisation, ensuring consistency.
+
+The design of the helper class, `TSVSerialiser` is described in detail later on in this document.
+
+###Loading Projects
+
+Loading would only consist of two main steps: parsing the project file's header (version, and other
+special case lines), and then loading the body.
+
+Using the new helper class, instead of parsing line by line, loading the project file would be
+broken down into its individual sections. `openProject` would simply kick off the recursive
+function, `ApplicationWindow::openProjectFolder` with the contents of the project's main folder.
+
+`openProjectFolder` then parses the lines it is given, instantiating the new folder as a child of
+the current folder, and setting the current folder to be the new folder.
+
+The bulk of `openProjectFolder` consists of checking if a certain type of window has been saved in
+that folder, and if it has, instantiating it and then calling the deserialisation method defined by
+`IProjectSerialisable`. This way, each window is responsible for deserialising itself, and
+`ApplicationWindow` does as little of the work as possible. The idea is for `openProjectFolder` to
+behave like a static factory.
+
+However, due to a lot of legacy edge cases, existing windows are not that easy to deserialise. In
+such cases, an intermediate function may be required to handle that window, taking care of
+instantiating it, doing some preliminary parsing, and then calling the deserialisation method
+defined by `IProjectSerialisable`. With additional refactoring work, such cases should all be able
+to be removed.
+
+Next, `openProjectFolder` parses and calls each folder it contains itself in turn, forming a
+recursive call chain, matching the structure of how the folders are structured within the project.
+
+Finally, `openProjectFolder` sets the current folder to its parent before returning, to traverse
+the folder hierarchy correctly.
+
+Long term, the call graph would end up looking something like this:
+```
+ApplicationWindow::openProject(...)
+  ApplicationWindow::openProjectFolder(...)
+    //a <matrix> section
+    Matrix::Matrix(...)
+    Matrix::loadFromProject(...)
+
+    //a <note> section>
+    Note::Note(...)
+    Note::loadFromProject(...)
+
+    //a <multiLayer section>
+    MultiLayer::MultiLayer(...)
+    MultiLayer::loadFromProject(...)
+
+    //a subfolder
+    ApplicationWindow::openProjectFolder(...)
+      //a <matrix> section
+      Matrix::Matrix(...)
+      Matrix::loadFromProject(...)
+
+      //a subsubfolder
+      ApplicationWindow::openProjectFolder(...)
+        //...
+
+    //a subfolder
+      //a <note> section
+      Note::Note(...)
+      Note::loadFromProject(...)
+```
+
+###Saving Projects
+
+Project saving will be started, as before, by calling `ApplicationWindow::saveProject`. It will do
+any housekeeping it needs to before calling a new function, `ApplicationWindow::saveProjectFolder`.
+`saveProjectFolder`, like its counterpart, `openProjectFolder` is recursive. It iterates over all
+of its `MdiSubWindow`s, finding those that implement `IProjectSerialisable` and calls the
+deserialisation function defined by `IProjectSerialisable`. Once it has serialised all of its
+windows, it calls `ApplicationWindow::saveProjectFolder` on its child folders, including their
+result in its own.
+
+In this way, `ApplicationWindow::saveProject` will build up a string representing the project. It
+then only needs to prepend the correct header to the string and write it out to file.
+
+The call graph would look something like this:
+```
+ApplicationWindow::saveProject(...)
+  ApplicationWindow::saveProjectFolder(...)
+    Matrix::saveToProject(...)
+    Note::saveToProject(...)
+    MultiLayer::saveProject(...)
+    ApplicationWindow::saveProjectFolder(...)
+      Note::saveToProject(...)
+      Matrix::saveToProject(...)
+```
+
+###Adding new windows to project files
+
+Adding a new window to a project file ought to be relatively straightforward for a developer.
+
+The overall process is as follows:
+
+1. Have your window inherit from the `IProjectSerialisable` interface.
+2. Implement `loadFromProject` and `saveToProject`.
+3. Add an entry to `ApplicationWindow::openProjectFolder` to handle your window.
+
+It is unnecessary to add an entry to `ApplicationWindow::openProjectFolder` because of how it
+functions. It can find your window instance itself, and if implemented, will call your
+implementation of `saveToProject`, including the result in the project file for you.
+
+###Serialisation Helper Class
+
+To unify the logic for reading/writing the tab separated values and xml-like sections used in
+project files I have created a serialisation helper class called `TSVSerialiser`.
+
+####Loading Example
 
 ```cpp
 TSVSerialiser tsv(lines);
 
 //The most basic use
 if(tsv.selectLine("ColWidth"))
-  w->setColumnsWidth(tsv.asInt(0));
+  setColumnsWidth(tsv.asInt(0));
 
 //Sometimes, you just want to pass the line through to something else.
 if(tsv.hasLine("geometry"))
@@ -70,12 +202,12 @@ if(tsv.hasLine("geometry"))
 //We can also handle missing lines gracefully.
 if(tsv.selectLine("Formula"))
 {
-  w->setFormula(tsv.asString(0));
+  setFormula(tsv.asString(0));
 }
 else
 {
   //No 'Formula' line found.
-  //We can throw an error, warn the user, or pick a value ourself.
+  //We can throw an error, warn the user, or pick a value ourselves.
 }
 
 //This approach has the advantage of clearly showing the order of the
@@ -87,14 +219,14 @@ if(tsv.selectLine("TextFormat"))
 
   tsv >> format >> param;
 
-  w->setTextFormat(format, param);
+  setTextFormat(format, param);
 }
 
-//This is the same thing (plus the type cast), but arguably less readable.
+//Same thing, another way
 if(tsv.selectLine("WindowLabel"))
 {
-  w->setWindowLabel(tsv.asString(0));
-  w->setCaptionPolicy( (MdiSubWindow::CaptionPolicy) tsv.asInt(1) )
+  setWindowLabel(tsv.asString(0));
+  setCaptionPolicy( (MdiSubWindow::CaptionPolicy) tsv.asInt(1) )
 }
 
 //With many parameters, using the overloaded '>>' operator becomes much
@@ -103,19 +235,19 @@ if(tsv.selectLine("Coordinates"))
 {
   double top_x, top_y, bottom_x, bottom_y;
   tsv >> top_x >> top_y >> bottom_x >> bottom_y;
-  w->setCoordinates(top_x, top_y, bottom_x, bottom_y);
+  setCoordinates(top_x, top_y, bottom_x, bottom_y);
 }
 
 if(tsv.selectLine("ViewType"))
-  w->setViewType( (Matrix::ViewType) tsv.asInt(0) );
+  setViewType( (Matrix::ViewType) tsv.asInt(0) );
 
 if(tsv.selectLine("HeaderViewType"))
-  w->setHeaderViewType( (Matrix::HeaderViewType) tsv.asInt(0) );
+  setHeaderViewType( (Matrix::HeaderViewType) tsv.asInt(0) );
 
 if(tsv.selectLine("ColorPolicy"))
-  w->setColorMapType( (Matrix::ColorMapType) tsv.asInt(0) );
+  setColorMapType( (Matrix::ColorMapType) tsv.asInt(0) );
 
-//We can easily handle multiple sections with the same name.
+//We can handle multiple sections with the same name like this.
 //The string is the complete contents of the <section></section>
 //We count occurrences of <section> and </section> so nested <sections>
 //are handled correctly. i.e. Are left untouched, as the body of this
@@ -124,82 +256,42 @@ std::vector<std::string> formulae = tsv.sections("formula");
 for(auto it = formulae.begin(); it != formulae.end(); ++it)
 {
   //Do something with each formula. In this case, we just overwrite the last one.
-  w->setFormula( QString( *it ) );
+  setFormula( QString( *it ) );
 
   //In most real-world cases, we'll just be passing it through to
   //another system to interpret for itself.
 }
 ```
 
-##Saving
-
-Saving is far easier than loading, so I won't go into too much detail.
+####Saving Example
 
 ```cpp
 TSVSerialiser tsv;
 
 tsv.writeLine("prop1") << val1 << val2 << val3;
-//prop1<tab>val1<tab>val2<tab>val3\n
-tsv.writeLine("prop2") << val1 << val2;
-//prop2<tab>val1<tab>val2\n
+//prop1<tab>val1<tab>val2<tab>val3
 
-//... generate contents of a section, be it through another TSVSerialiser
-// or a subsection
+tsv.writeLine("prop2") << val1 << val2;
+//prop2<tab>val1<tab>val2
+
 tsv.writeSection("sectionName", sectionBody);
+//<sectionName>
+//sectionBody
+//</sectionName>
+
+tsv.writeInlineSection("sectionName", sectionBody);
 //<sectionName>sectionBody</sectionName>
 ```
 
-##Edge Cases
-With the project file format there are some awkward edge cases to the
-general format of TSV lines and sections.
+####Class Definition
 
-###The first three lines of the file do not conform.
-
-These lines do not behave like regular lines or sections in the mantid
-project file, and would break parsing.
-
-```
-MantidPlot 0.9.5 project file
-<scripting-lang>	Python
-<windows>	4
-```
-
-This can be sidestepped just by treating the first three lines as a
-special case, handling them manually and then using TSVSerialiser
-on the rest of the file.
-
-###Lines are not guaranteed to have unique names.
-
-For this edge case there are several options, but I've found this seems
-to have the best readability:
-```cpp
-//We're handling the inside of a <graph> section,
-//which has multiple 'scale' lines to handle.
-for(int i = 0; tsv.selectLine("scale", i); ++i)
-{
-  //We're now in a for_each loop over the 'scale' lines.
-  //Grab all the values from this line (with descriptive variable names)
-  double p1, p2, p3, p4, p5;
-  tsv >> p1 >> p2 >> p3 >> p4 >> p5;
-  //and now do something with them
-}
-
-```
-
-##Class Definition
-
-This is the design of the class, as it stands so far.
-It's written as pseudocode essentially, and has not been
-commented to Mantid's usual coding standards.
+This is a pseudo-code definition of the TSVSerialiser class.
 
 ```cpp
 class TSVSerialiser
 {
 public:
 
-  //----------------------------------------------------
-  //Set up and tear down
-  //----------------------------------------------------
   TSVSerialiser();
 
   //Constructs and calls the read method.
@@ -269,38 +361,12 @@ public:
   TSVSerialiser& operator<<(int& val);
 
   //Create a new section called name, and fill it with body.
+  //Inserts newlines before and after the body for you.
   void writeSection(std::string name, std::string body);
 
-private:
-
-  //Details omitted...
-
-  //Maps section names to a vector of the contents of sections with that name.
-  std::map<std::string,std::vector<std::string> > m_sections;
-
-  //Maps line names to a vector of the lines with that name.
-  std::map<std::string,std::vector<std::string> > m_lines;
+  //Create a new section called name, and fill it with body
+  //Does not insert newlines before and after the body for you.
+  void writeInlineSection(std::string name, std::string body);
 };
 
 ```
-
-##Transitioning
-
-Owing to the TSVSerialiser's handling of sections, the simplest way to refactor the
-loading and saving across would be to start from the outside in. Take the outermost layer
-of loading/saving code and rewrite it to use TSVSerialiser. The underlying routines to
-handle specific sections should see no difference, and would continue functioning as
-normal. They could then also be rewritten one by one, allowing a (hopefully) smooth
-transition between the legacy code and the new code.
-
-##Potential Improvements
-
-- The handling of the edge case of multiple lines with the same name isn't particularly
-  idiomatic C++. A iterator based solution may be preferable.
-
-- Providing two sets of derserialisation methods (>> as well as asType) could cause
-  fragmented styles of deserialisation. It may be better to decide on one set to keep
-  and discard the other set.
-
-- It still "feels" a little inconsistent somehow. I'm unsure of how this could be
-  improved though at this point.
