@@ -94,3 +94,5 @@ Suggested behaviour of what will happen during Load is:
 1. check if XXX\_IDF\_Corrections.xml exist, if yes, then check if date of file is between any of the valid-from/valid-to dates. If the answer is no, continue with step 3, otherwise continue with step 2
 2.  Load IDF specified with "filename". Stop here, i.e. don't continue with step 3
 3.  Load embedded IDF
+
+One option for implementing this is to update the LoadIDFFromNexus algorithm, and update the LoadEventNexus and LoadISISNexus documentation to link to the LoadIDFFromNexus documentation. 
