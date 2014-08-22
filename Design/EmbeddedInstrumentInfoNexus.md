@@ -12,16 +12,15 @@ There is essential two use cases which are related.
 
 The preferred option for 1. is to cure the problem at source, i.e. where this can be done amend the raw nexus files in the archieve to correct for the wrong information. 
 
-For use case 2 above a mechanism needs to be in place to amend/replace/update embedded information in raw nexus file, as is already the case for a collection of ISIS LET runs. 
+For use case 2 above a mechanism needs to be in place to amend/replace/update embedded information in raw nexus file, as is already required for a collection of ISIS LET runs. 
 
 For information: When IDF not embedded - we already have a solution 
 ----------
 
 For instruments where we don’t embed IDFs and associated param files we already have a long term solution. This consists of having all IDFs and param files in one directory named ‘instrument’ and where
 
-1. Multiple IDFs for an instrument may exist which are valid based on a valid-from XML attribute.
-
-2. The default parameter file that is loaded with any IDF is done according to the rule: “If you want one parameter file for your IDF file, name your IDF file XXX\_Definition\_Yyy.xml and the parameter file XXX\_Parameters\_Yyy.xml , where Yyy is any combination a characters you find appropriate”, see  http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File.
+1. Multiple IDFs for an instrument may exist, which are valid for different time intervals based on the valid-from XML attribute.
+2. The parameter file that is automatically loaded with any IDF is done according to the rule: “If you want one parameter file for your IDF file, name your IDF file XXX\_Definition\_Yyy.xml and the parameter file XXX\_Parameters\_Yyy.xml , where Yyy is any combination a characters you find appropriate”, see  http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File.
 
 IDFs and parameter files for any given instrument can be corrected over time, and made available either as part of future Mantid releases or as part of the soon to be implemented instrument-repository. 
 
@@ -43,17 +42,17 @@ Focussing on instrument parameters, the current approach will for example fail i
 Proposed long term solutions   
 ----------
 
-The aim here is to come up with a long term way to correct embedded instrument information in raw Nexus files.
+The aim here is to come up with a long term solution to correct embedded instrument information in raw Nexus files.
 
 Suggestions are listed below. Anyone else, do not hesitate to add any other suggestions.
 
 ### Suggestion 1: allow exist parameter files to be date sensitive
 
-I believe this would not work for two reasons. Firstly, some users have multiple parameter files in the instrument folder which may be valid for the same runs, and where the use these dependent on the analysis they conduct or otherwise. Secondly, we already have a transparent mechanism for selected default parameter files to load with different IDFs for the same instrument, e.g. if you have an IDF XXX\_Definition\_something.xml it will by default look for XXX\_Parameters\_something.xml. I can't see how this can work in a transparent way if we in addition allow parameter files to become date sensitive (but maybe I am wrong here?).... Note also, within the same cycle, an instrument scientist may chose to have some runs with and without embedded IDF+param file information, this is e.g. the case on LET where they have been experimenting with embedded IDF information into raw nexus files. 
+I believe this would not work for two reasons. Firstly, some users have multiple parameter files in the instrument folder which may be valid for the same runs, and where the user use these dependent on the analysis they conduct or otherwise. Secondly, we already have a transparent mechanism for automatically load parameter files with different IDFs for the same instrument, e.g. if you have an IDF XXX\_Definition\_something.xml it will by default look for XXX\_Parameters\_something.xml. I can't see how this can work in a user-understandable way if we in addition allow parameter files to become date sensitive (but maybe I am wrong here?).... Note also, within the same cycle, an instrument scientist may chose to have some runs with and without embedded IDF+param file information, this is e.g. the case on LET where they have been experimenting with embedded IDF information into raw nexus files. 
 
 ### Suggestion 2: adding subdirectory to instrument folder 
 
-Create a subdirectory to the ‘instrument’ folder, for example call it, ‘embedded-instrument-corrections’. If this folder contains nothing then is means no correction with be applied to any raw nexus file containing embedded information. If, for example, for instrument XXX, a user would like to update instrument parameter information then the user adds a file XXX\_Parameter\_Corrections.xml (don't hesitate to suggest an alternative name). The content of XXX\_Parameter\_Corrections.xml is:
+Create a subdirectory to the ‘instrument’ folder, for example call it, ‘embedded-instrument-corrections’. If this folder contains nothing then this means no correction with be applied to any raw nexus file containing embedded information. If, for example, for instrument XXX, a user would like to update instrument parameter information then the user adds a file XXX\_Parameter\_Corrections.xml (don't hesitate to suggest an alternative name). The content of XXX\_Parameter\_Corrections.xml is:
 
     <embedded-parameter-corrections name=”XXX”>
        <correction  valid-from=””  valid-to=”” file=”filename” append=’false’/>
@@ -74,7 +73,7 @@ An alternative to the above is (which is faster where embedded parameter file is
 
 1. Embedded IDF is loaded 
 2. check if XXX\_Parameter\_Corrections.xml exist, if yes, then check if date of raw nexus file is between any of the valid-from/valid-to dates. If the answer is no, continue with step 4, otherwise continue with step 3
-3.  If append is 'true' load embedded parameter file (if exist) and then run LoadParametersFile with "filename". If append is 'false' run ClearParametersFile and then run LoadParametersFile with "filename"
+3.  If append is 'true' load embedded parameter file (if exist) and then run LoadParametersFile with "filename". If append is 'false' run ClearParametersFile and then run LoadParametersFile with "filename". Stop here, i.e. don't continue with step 4
 4.  Load embedded parameter file if exist
 
 Along the same lines we could provide a mechanism for correcting the instrument itself. Hence, a user may add XXX\_IDF\_Corrections.xml:
