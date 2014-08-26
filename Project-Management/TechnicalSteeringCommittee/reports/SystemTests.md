@@ -1,7 +1,7 @@
 Summary
 =======
 
-* Job    : [master_systemtests #160](http://builds.mantidproject.org/job/master_systemtests/)
+* Job    : [master_systemtests](http://builds.mantidproject.org/job/master_systemtests/) [#160](http://builds.mantidproject.org/job/master_systemtests/160/)
 * Labels : osx-10.8, rhel6, ubuntu-12.04, win7
 * Failed : 0
 * Skipped: 91 (31 unique)
