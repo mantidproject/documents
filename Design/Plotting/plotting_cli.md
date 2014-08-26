@@ -1,8 +1,10 @@
 ```python
-##	Introduction
+Introduction
+============
 Purpose of this Document: This document describes the detailed design of the new CLI for python control of plotting in the MantidPlot application.
  
-##	Objectives:
+Objectives:
+==============
 The Scientific Steering meeting of 2014 highlighted some major issues around the current plotting in MantidPlot. Some of these issues relate to the command line interface (CLI). A full listing of the points can be found here: http://www.mantidproject.org/SSC_2014_Mantid_General. The objective will be to provide a better CLI following the advice and comments provided by instrument scientists. 
 
 ###	Detailed Objectives
