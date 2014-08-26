@@ -8,3 +8,4 @@ Agenda
 5. [Maintenence tasks for next cycle](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md) - Pete
 5. Ubuntu 14.04 in matrix build
 5. Assign any outstanding pull requests
+6. Look over [skipped system tests report](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/SystemTests.md) - Pete
