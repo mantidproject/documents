@@ -30,16 +30,24 @@ Plotting Functionality to Replicate
 
 The new plotting CLI must deliver analogues for the following functionality:
 
-| Plot command  |
-| :-----------: |
-| plotSpectrum  | 
-| plotBins      | 
-| plot          | 
-| plot          | 
-| plot          | 
-| plot          | 
-| plot          | 
-| plot          | 
+| Plot Command        |
+| :-----------------: |
+| plotSpectrum        | 
+| plotBins            | 
+| plot                | 
+| plot2D              | 
+| plot3D              | 
+| plotSlice           | 
+| plotMD              | 
+| instrumentWindow    | 
+| mergePlots          |
+| waterFallPlot       | 
+| convertToWaterfall  | 
+| stemPlot            | 
+| imageView*          | 
+| VSI*                | 
+
+* Are actually not yet exposed to python yet.
 
 Solution Overview
 ===============================
