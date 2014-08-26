@@ -25,6 +25,22 @@ Detailed Objectives
 *	Consider python control for future interface exposure such as VSI and tile view. Although the immediate concerns will not involve any additional exposure of UIs.
 *	*	Want the ability to switch plotting style/implementation. Ensure that no changes are made that would impede us from support more than one plotting interface. For example Horace style plotting.
 
+Plotting Functionality to Replicate
+===================================
+
+The new plotting CLI must deliver analogues for the following functionality:
+
+| Plot command  |
+| :-----------: |
+| plotSpectrum  | 
+| plotBins      | 
+| plot          | 
+| plot          | 
+| plot          | 
+| plot          | 
+| plot          | 
+| plot          | 
+
 Solution Overview
 ===============================
 * We will base the new style CLI on MatPlotLib. 
