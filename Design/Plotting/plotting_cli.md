@@ -14,25 +14,23 @@ Detailed Objectives
 
 *	Want simpler control over the plot options
 *	Want a limited number of plot options. For the default new CLI configuration.
-*	Want the ability to switch plotting style/implementation. Ensure that no changes are made that would impede us from support more than one plotting interface. For example Horace style plotting.
-*	We should maintain backwards compatibility with current qtiplot as many interfaces will break if not.
+*	Want a 'familiar' feeling CLI for plotting. For example MatPlot, or MatPlotLib
+*	Want a cohesive command set. Individual tools should not have their own unique style and rule set.
+*	We should maintain backwards compatibility with current qtiplot as many interfaces will break if not. At least during the inital roll-out
 *	Additional top-level plot command that will inspect the data and plot it in the most sensible form.
 *	Plot should take an optional tool input, to select which plotting tool to use.
-*	Overwrite plot{...} variants to return a user-friendly plot object
 *	plot{...} variants to have a common set of controls, such as for setting log scale, and controlling individual graphs
 *	Overwrite plot{...} variants to return a user-friendly plot object
 *	Add plotInstrument option
-*	Consider python control for future interface exposure such as VSI and tile view.
+*	Consider python control for future interface exposure such as VSI and tile view. Although the immediate concerns will not involve any additional exposure of UIs.
+*	*	Want the ability to switch plotting style/implementation. Ensure that no changes are made that would impede us from support more than one plotting interface. For example Horace style plotting.
 
-High-level Proposed Solution(s)
+Solution Overview
 ===============================
+* We will base the new style CLI on MatPlotLib. 
+* Support both a MatPlot style functional methodology, as well as an OO methodology. MatPlotLib already has a very good model for doing this.
 
-*	Additional top-level plot command that will inspect the data and plot it in the most sensible form.
-*	Wrap and extend existing qtiplot python functionality in all cases. Existing behaviour must be preserved until it can be phased out.
-*	Use forwarding methods expose the activeLayer functionality to the returned plot handle (MultiLayerPlot  proxy)
-*	Possible to have a new 'Facade' type to expose all options. This could be a new type (returned by the plot methods), which encompasses MultiLayerPlot, Graph and Legend, as well as, ErrorBarSettings etc. It would avoid the need for users to drill-down and fetch the relevant objects to access aspects of the control.
-
-Current Example Usage
+Typical Current Example Usage
 ===============================
 
 plot_handle = plotSpectrum(source=[{Workspaces}], indices=[{Indexes}]) 
@@ -45,27 +43,28 @@ Prototype example usage
 Plot
 ----
 
+Plot will choose the most appropriate registered plotting tool to perform the job, unless the *tool* argument is provided. **kwargs hide the large number of options that would have to be registered for all the plotting tools.
+
 ```python
-Plot(source={Workspace}, tool={ToolName}, **kwargs)
+plot(source=[{Workspace}], tool={ToolName}, **kwargs)
 ```
-Return: Easiest thing to do would be to return whatever it is that the individual tool returns. More complex, but possibly more useful thing to do would be to return some kind of abstraction which would give access to common utilities on all tools.
+Return: return type will determine of the exact tool chosen. For example plot_spectrum and plot_bin (see below) would return a tuple of Line2D objects.
 
 Plot Spectrum
 -------------
 
 ```python
-plot_handle = plotSpectrum(source=[{Workspaces}], indices=[{Indexes}]) 
-plot_handle.logLogAxes()
+
+line_2ds = plot_spectrum(source=[{Workspaces}], indices=[{Indexes}]) 
+
 ```
-Return: current MultiLayer type object (with Graph forwarding methods) or Façade.
-Expose common options such as log axis and line colours as function arguments
-plotSpectrum([{Workspaces}], [{Indexes}], Axes='LogLogAxes')
+Return: Matplotlib.pyplot plot commands return a tuple of objects to represent every line plotted. Our plotting tools should do the same.
 
 
 Plot Instrument
 ---------------
 
 ```python
-instrument_view = plotInstrument({Workspace})
+instrument_view = plot_tnstrument({Workspace})
 render_tab = instrument_view.getInstrumentTab()
 ```
