@@ -65,6 +65,13 @@ Plot Instrument
 ---------------
 
 ```python
-instrument_view = plot_tnstrument({Workspace})
+instrument_view = plot_instrument({Workspace}, **kwargs)
 render_tab = instrument_view.getInstrumentTab()
 ```
+
+Plot Slice
+----------
+```python
+slice_viewer = plot_slice([{Workspace}], **kwargs)
+```
+
