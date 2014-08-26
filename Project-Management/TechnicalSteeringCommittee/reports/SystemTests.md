@@ -1,11 +1,11 @@
 Summary
 =======
 
-Job    : http://builds.mantidproject.org/job/master_systemtests/
-Labels : osx-10.8, rhel6, ubuntu-12.04, win7
-Failed : 0
-Skipped: 91 (31 unique)
-Total  : 976 (= 244 * 4)
+* Job    : http://builds.mantidproject.org/job/master_systemtests/
+* Labels : osx-10.8, rhel6, ubuntu-12.04, win7
+* Failed : 0
+* Skipped: 91 (31 unique)
+* Total  : 976 (= 244 * 4)
 
 Details
 =======
