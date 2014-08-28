@@ -95,3 +95,9 @@ Suggested behaviour of what will happen during Load is:
 3.  Load embedded IDF
 
 One option for implementing this is to update the LoadIDFFromNexus algorithm, and update the LoadEventNexus and LoadISISNexus documentation to link to the LoadIDFFromNexus documentation. 
+
+Comments from TSC meeting   
+----------
+Suggestion 2 agreed. It was added that the xml format for quick selection of what to correct, e.g. XXX\_Parameter\_Corrections.xml , may be extended to more quickly determine which IDF to load for the case where IDF not embedded in Nexus file. At the moment we use the SAX passer to go into each IDF for an instrument. 
+
+Other comments: add schema for quick lookup format XXX\_Parameter\_Corrections.xml, systemtest could test any XXX\_Parameter\_Corrections.xml against any such schema. Documentation with advantage can be updated including the existing document for when IDF is not embedded which is currently limitted to http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File
