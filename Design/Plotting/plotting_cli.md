@@ -23,7 +23,7 @@ Detailed Objectives
 *	Overwrite plot{...} variants to return a user-friendly plot object
 *	Add plotInstrument option
 *	Consider python control for future interface exposure such as VSI and tile view. Although the immediate concerns will not involve any additional exposure of UIs.
-*	*	Want the ability to switch plotting style/implementation. Ensure that no changes are made that would impede us from support more than one plotting interface. For example Horace style plotting.
+*	Want the ability to switch plotting style/implementation. Ensure that no changes are made that would impede us from support more than one plotting interface. For example Horace style plotting.
 
 Plotting Functionality to Replicate
 ===================================
@@ -47,7 +47,7 @@ The new plotting CLI must deliver analogues for the following functionality:
 | imageView*          | 
 | VSI*                | 
 
-* Are actually not yet exposed to python yet.
+*Are actually not yet exposed to python yet.
 
 Solution Overview
 ===============================
@@ -57,9 +57,11 @@ Solution Overview
 Typical Current Example Usage
 ===============================
 
+```python
 plot_handle = plotSpectrum(source=[{Workspaces}], indices=[{Indexes}]) 
 graph = plot_handle.activeLayer()
 graph.logLogAxes()
+```
 
 Prototype example usage
 ===============================
