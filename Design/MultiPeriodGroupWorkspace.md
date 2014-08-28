@@ -16,7 +16,7 @@ Users working with 50 workspaces comprising a MPGW are finding that the workspac
 This is primarily an ISIS problem, but it does seriously affect Reflectometry and SANS techniques.
 
 Solution Objectives
-------------
+--------------------
 
 * Provide a good way to identify a MPGW so that algorithms can treat them differently, but allow the MPGW to be processed as a normal GW as a fall-back.
 * Provide a lower memory overhead version of a GW, for example having a shared x-axis, instrument and run, but having independent y and e arrays for each member.
@@ -24,6 +24,17 @@ Solution Objectives
 
 
 Candidate Solutions Ideas
---------------
+--------------------------
 * Keep existing structures, but look at fixing and optimising smart-pointer usage (cowp ideally) so that MPGWs have the same log objects. Probably the quickest route, but does not constitute a full solution. Will not tackle IO problem and each sub workspace still has a redundant x-axis.
+* Address the loading/saving issue. This may be best done by introducing new load/save rountines if a good speedup can be made by restructuring.
 * Recognise a new type of workspace in Mantid of MPGW (subtype GW) and keep end-user behaviour as close as possible to GW. Have a shared x-axis, run object and instrument. Have selected algorithms able to identify such workspaces and provide accelerated processing if desired.
+* 
+
+Decision based on TSC meeting 27th August 2014
+-----------------------------------------------
+
+* Make decisions based on profiling results
+* Do not look at introducing a new workspace type at this stage
+* Use profile guided optimisation. If loading is a problem, then load/save could be extended or adapted.
+* Look at smart pointer usage to reduce log overhead. Pete also mentioned a x-axis factory.
+
