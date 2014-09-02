@@ -9,7 +9,11 @@
    3. [clang](http://builds.mantidproject.org/view/Develop%20Builds/job/develop_osx-10.9-clang/)
    4. CutAndPaste detector
    5. gcov (or equivalent)
+   6. header analysis (e.g. unused includes)
 4. Back-port changes from QTIPlot to MantidPlot
-2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362) and rework cmake as a whole
+2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362), rework cmake as a whole, re-examine the package structure
+3. Proper rpm and deb packages (see previous item)
 2. Move to Qt 5
 3. Move to Python 3
+1. Move to ParaView 4.2
+2. Filling in argument list in python bindings (e.g. "self")
