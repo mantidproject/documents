@@ -1,7 +1,5 @@
 1. Remove unused tools
-   1. gmock-1.6.0/gmock-1.7.0 - is one unnecessary?
-   2. scons?
-   3. mwclient?
+   3. mwclient
 2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage)
 3. Making packages properly external
    1. ANN
