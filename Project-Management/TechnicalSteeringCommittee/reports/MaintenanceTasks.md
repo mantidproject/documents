@@ -11,3 +11,5 @@
    5. gcov (or equivalent)
 4. Back-port changes from QTIPlot to MantidPlot
 2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362) and rework cmake as a whole
+2. Move to Qt 5
+3. Move to Python 3
