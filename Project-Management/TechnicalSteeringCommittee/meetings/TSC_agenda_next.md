@@ -10,6 +10,7 @@ Discussion
 ==========
 
 Recommend that we look into a number of potential replacements for MantidPlot
+
 1. Refactor/Rework of MantidPlot
 2. Python type workbench (e.g. Spyder, Canopy, Anaconda, etc...)
 3. Eclipse RCP based (e.g. DAWN, ICE, etc...)
