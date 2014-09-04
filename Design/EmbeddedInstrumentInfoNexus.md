@@ -2,71 +2,102 @@ Design for the long term handling of embedding Nexus IDFs
 ==================================
 Design for the long term handling of embedding Instrument Definition Files (IDFs) and instrument Parameter files (param files) in raw Nexus files.
 
-
-When IDF not embedded 
+Use cases
 ----------
 
-For instruments where we don’t embed IDFs and associated param files we have a long term solution. This simply consists of having all IDFs and param files in one directory named ‘instrument’ and where
+There is essential two use cases which are related. 
 
-1. Multiple IDFs for an instrument may exist which are valid based on a valid-from XML attribute.
+1. Where wrong information about the instrument and/or instrument parameters gets embedded and this is discovered some time after the raw nexus files have been created and archieved. 
+2. Where due to continued improvement of Mantid a user would like to update/modify information embedded in raw Nexus files - for the benefit of Mantid analysis.
 
-2. and a unique parameter can be associated with any IDF file using the rule: “If you want one parameter file for your IDF file, name your IDF file XXX\_Definition\_Yyy.xml and the parameter file XXX\_Parameters\_Yyy.xml , where Yyy is any combination a characters you find appropriate”, see  http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File.
+The preferred option for 1. is to cure the problem at source, i.e. where this can be done amend the raw nexus files in the archieve to correct for the wrong information. 
 
-This setup means that IDFs and parameter files can be corrected over time, meaning that any future Mantid release containing such corrections will be able to provide a gradual better experience (as more corrected have been included) for the analysis of new and historical data. 
+For use case 2 above a mechanism needs to be in place to amend/replace/update embedded information in raw nexus file, as is already required for a collection of ISIS LET runs. 
 
-A fact of life is that there will be incorrect IDFs and parameter files for a given Mantid release, this has for example be the frequent cause of path releases.
-
-The discussion here is to come up with a design that provides a mechanism for doing this when IDF and param information is embedded in Nexus files. 
-
-The current situation when IDF embedded  
+For information: When IDF not embedded - we already have a solution 
 ----------
 
-Leaving out a few details, the current behaviour when IDF and/or param file information is embedded in ISIS/SNS raw Nexus file is: 
+For instruments where we don’t embed IDFs and associated param files we already have a long term solution. This consists of having all IDFs and param files in one directory named ‘instrument’ and where
+
+1. Multiple IDFs for an instrument may exist, which are valid for different time intervals based on the valid-from XML attribute.
+2. The parameter file that is automatically loaded with any IDF is done according to the rule: “If you want one parameter file for your IDF file, name your IDF file XXX\_Definition\_Yyy.xml and the parameter file XXX\_Parameters\_Yyy.xml , where Yyy is any combination a characters you find appropriate”, see  http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File.
+
+IDFs and parameter files for any given instrument can be corrected over time, and made available either as part of future Mantid releases or as part of the soon to be implemented instrument-repository. 
+
+
+The current situation: when IDF and/or param file is embedded  
+----------
+
+Leaving out a few details, the current behaviour when IDF and/or param file information is embedded in a ISIS/SNS raw Nexus file is: 
 
 1. The embedded IDF is loaded and applied 
-2. The embedded parameter file (currently as string copy of a workspace parameter map) is loaded and applied
-3. If the instrument name is XXX, then the loader will look for the external file XXX\_Parameters.xml and if exist load it 
+2. The embedded parameter file, if exist, is loaded and applied
+3. In case no parameter file is embedded, the loader will look for the external file XXX\_Parameters.xml 
 
-This solution cannot handle the case where parameter corrections are needed for an instrument for more than one time period and where corrections are needed for the IDF. 
+Focussing on instrument parameters, the current approach will for example fail in the following scenario:
 
-Also, for the case where the embedded information in the IDF and parameter file is correct the loader should (must) by default not look for an external file. Is there a good reason for keeping the hard-coded lookup of XXX\_Parameters.xml? Unless, something argues otherwise, my preference would be to drop step 3 above. I.e. as soon as we have embedded instrument information in the Nexus file then the loader will not attempt to look for an external file, and, if a known external param file is required then it is applied (with LoadParameterFile) after Load is executed. A temporary backward compatibility step could be to keep step 3 for the case where an IDF is embedded but not a parameter file, although as of writing this I am not a massive fan of this suggestion.
+1. For a given instrument, a user have set of raw Nexus files created between two dates and would like to update these with parameters A, and for another set of Nenux files created between two dates the user would like to update these with parameters B
+
 
 Proposed long term solutions   
 ----------
 
-The aim here is to come up with a long term way to correct incorrect embedded instrument information in Nexus files.
+The aim here is to come up with a long term solution to correct embedded instrument information in raw Nexus files.
 
-A suggestion is listed below. Anyone else, do not hesitate to add other suggestions.
+Suggestions are listed below. Anyone else, do not hesitate to add any other suggestions.
 
+### Suggestion 1: allow exist parameter files to be date sensitive
 
-### Suggestion 1: adding subdirectory to instrument folder 
+I believe this would not work for two reasons. Firstly, some users have multiple parameter files in the instrument folder which may be valid for the same runs, and where the user use these dependent on the analysis they conduct or otherwise. Secondly, we already have a transparent mechanism for automatically load parameter files with different IDFs for the same instrument, e.g. if you have an IDF XXX\_Definition\_something.xml it will by default look for XXX\_Parameters\_something.xml. I can't see how this can work in a user-understandable way if we in addition allow parameter files to become date sensitive (but maybe I am wrong here?).... Note also, within the same cycle, an instrument scientist may chose to have some runs with and without embedded IDF+param file information, this is e.g. the case on LET where they have been experimenting with embedded IDF information into raw nexus files. 
 
-Create a subdirectory to the ‘instrument’ folder, for example call it, ‘embedded-instrument-corrections’. For each instrument, say a specific instrument is called XXX, have optionally two files "XXX\_IDF\_Correction.xml" and "XXX\_Param\_Correction.xml". The content of XXX\_IDF\_Correction.xml is something along the lines of:
+### Suggestion 2: adding subdirectory to instrument folder 
 
-    <embedded-IDF-correction name=”POLREF”>
-       <correction  from-date=””  end-date=”” 
-                          with-file=”name of file”/>
+Create a subdirectory to the ‘instrument’ folder, for example call it, ‘embedded-instrument-corrections’. If this folder contains nothing then this means no correction with be applied to any raw nexus file containing embedded information. If, for example, for instrument XXX, a user would like to update instrument parameter information then the user adds a file XXX\_Parameter\_Corrections.xml (don't hesitate to suggest an alternative name). The content of XXX\_Parameter\_Corrections.xml is:
+
+    <embedded-parameter-corrections name=”XXX”>
+       <correction  valid-from=””  valid-to=”” file=”filename” append=’false’/>
     .
     .   
     .
-       <correction  from-date=””  end-date=”” 
-                          with-file=”name of file”/>
-    </ embedded-iIDF-correction>
+       <correction  valid-from=””  valid-to=”” file=”filename” append=’true’/>
+    </ embedded-parameter-corrections>
 
-It simply contains a list of <correction> entries with start and end dates and the what-file (IDF) to use instead of a corrupt embedded IDF file.
+Suggested behaviour of what will happen during Load is:
 
-The content of XXX_Param_Correction.xml is exactly the same format except for an added attribute ‘append’:
+1. Embedded IDF is loaded and if exist embedded parameter files is loaded 
+2. check if XXX\_Parameter\_Corrections.xml exist, if yes, then check if date of raw Nexus file is between any of the valid-from/valid-to dates. If answer is no, stop here, otherwise continue with step 3
+3. The default for append is 'true'. If append='false' run ClearParametersFile
+4. Run LoadParametersFile with "filename". 
 
-    <embedded-Param-correction name=”POLREF”>
-       <correction  from-date=””  end-date=”” 
-                          with-file=”name of file” append=’false’/>
+An alternative to the above is (which is faster where embedded parameter file is large and append='false', otherwise the same speed, but slightly more complex code):
+
+1. Embedded IDF is loaded 
+2. check if XXX\_Parameter\_Corrections.xml exist, if yes, then check if date of raw nexus file is between any of the valid-from/valid-to dates. If the answer is no, continue with step 4, otherwise continue with step 3
+3.  If append is 'true' load embedded parameter file (if exist) and then run LoadParametersFile with "filename". If append is 'false' run ClearParametersFile and then run LoadParametersFile with "filename". Stop here, i.e. don't continue with step 4
+4.  Load embedded parameter file if exist
+
+Along the same lines we could provide a mechanism for correcting the instrument itself. Hence, a user may add XXX\_IDF\_Corrections.xml:
+
+    <embedded-IDF-corrections name="XXX”>
+       <correction  valid-from=””  valid-to=”” file=”filename”/>
     .
     .   
     .
-       <correction  from-date=””  end-date=”” 
-                          with-file=”name of file” append=’true’/>
-    </ embedded-Param-correction>
+       <correction  valid-from=””  valid-to=”” file=”filename”/>
+    </ embedded-IDF-corrections>
 
-If ‘append’=’false’ (suggested default) then the what-file is used instead of the embedded parameter map. If ‘append’=’true’ then the embedded parameter is applied, and the what-file is applied afterwards. Where this latter option might be useful is where the embedded parameter map is 99% OK, and potentially very large, but only a few parameter values needs correcting.
+Here it is suggested that there is no append attribute. 
 
-The reason for suggestion to have two files: XXX\_IDF\_Correction.xml and XXX\_Param\_Correction.xml is that I imagine that, by far, most of the errors will be for embedded parameter values and not for IDF, and therefore the split will make it faster to look up that this is the case. 
+Suggested behaviour of what will happen during Load is:
+
+1. check if XXX\_IDF\_Corrections.xml exist, if yes, then check if date of file is between any of the valid-from/valid-to dates. If the answer is no, continue with step 3, otherwise continue with step 2
+2.  Load IDF specified with "filename". Stop here, i.e. don't continue with step 3
+3.  Load embedded IDF
+
+One option for implementing this is to update the LoadIDFFromNexus algorithm, and update the LoadEventNexus and LoadISISNexus documentation to link to the LoadIDFFromNexus documentation. 
+
+Comments from TSC meeting   
+----------
+Suggestion 2 agreed. It was added that the xml format for quick selection of what to correct, e.g. XXX\_Parameter\_Corrections.xml , may be extended to more quickly determine which IDF to load for the case where IDF not embedded in Nexus file. At the moment we use the SAX passer to go into each IDF for an instrument. 
+
+Other comments: add schema for quick lookup format XXX\_Parameter\_Corrections.xml, systemtest could test any XXX\_Parameter\_Corrections.xml against any such schema. Documentation with advantage can be updated including the existing document for when IDF is not embedded which is currently limitted to http://www.mantidproject.org/InstrumentParameterFile#Naming_and_Using_a_Parameter_File
