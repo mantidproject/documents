@@ -67,7 +67,8 @@ class ConvertToEnergy(PythonAlgorithm):
         # Uses less memory as it avoids a copy of the data
 
         # readY returns read only array. dataY returns an array we can modify on the new workspace
-        sumy = _summed.dataY(0)
+        # note _summed at this point has all its y-values = 0
+        sumy = _summed.dataY(0) # initialise sumy with zeros
         for i in range(_tmpws.getNumberHistograms()):
             sumy += _tmpws.readY(i)
 
