@@ -1,3 +1,6 @@
+*The following tests were run on an Ubuntu 12.04 amd64 machine using eglibc-2.15.
+Further tests on a Ubuntu 14.04 machine with eglibc-2.19 shows a much smaller gap between standard malloc & tcmalloc, indicating a general improvement in the standard memory allocation strategy.*
+
 Timing Code
 -----------
 ```python
