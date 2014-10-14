@@ -6,3 +6,4 @@ Agenda
 * Dependency for fitting proposed by Michael Wedel at PSI - [Adept](http://www.met.reading.ac.uk/clouds/adept/). He has already written a SPEC file & debian control file in a fork: https://github.com/MichaelWedel/adept-fork
 * [Pull request workflow](https://github.com/mantidproject/documents/blob/master/Design/PullRequests.md)
 * CMake and Paraview training sessions
+* Guidelines for algorithm/python algorithm dependencies: -  [Example](http://trac.mantidproject.org/mantid/ticket/10341)
