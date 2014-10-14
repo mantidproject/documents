@@ -6,7 +6,6 @@ Agenda
 * Dependency for fitting proposed by Michael Wedel at PSI - [Adept](http://www.met.reading.ac.uk/clouds/adept/). He has already written a SPEC file & debian control file in a fork: https://github.com/MichaelWedel/adept-fork
 * [Pull request workflow](https://github.com/mantidproject/documents/blob/master/Design/PullRequests.md)
 * CMake and Paraview training sessions
-* Guidelines for algorithm/python algorithm dependencies: - [Example](http://trac.mantidproject.org/mantid/ticket/10341)
 
 Minutes
 =======
@@ -21,3 +20,4 @@ Minutes
   * Pete will edit the doc as a result of today's discussion
   * Michael will work on a new jenkins job to do deep testing of pending pull requests
   * A couple other people will be aksed to try out testing with pull requests
+* Quick discussion of who should attend the paraview meetings was had
