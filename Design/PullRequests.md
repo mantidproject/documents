@@ -35,10 +35,5 @@ We recommend that the new method is run in tandem with the exising one for the t
 Issues with Pull Requests
 -------------------------
 1. If a pull request requires changes in system tests, the link to that pull request needs to be done by hand. This is no different than current workflow in Trac.
-2. The builds do not have good testing against system tests and may create issues in master after the pull request is merged. There does not appear be a solution to this other than developers paying attention to nightly clean builds being broken.
-
-Comments on System Tests
-------------------------
-Having problems in the systemtests only show up for the first time when the code is already in master is a concertn. If have a lot of PRs verified in one day then it may be quite hard to pick out what broke the tests, although admittedly that's not too much different from trying to pick it out from everything on develop at the moment.
-
-One option is to have a rolling build (like the rolling develop) that would build all open pull requests merged with master and run the system tests. We wouldn't be able to annotate specific issues but it could at least provide faster feedback.
+2. Until the entire development team is using pull requests, some compromises will need to be made to keep the hybrid system running. Specifically: branches for pull requests will be merged into develop so it does not get out of sync with master.
+2. The builds do not have good testing against system tests and may create issues in master after the pull request is merged. There does not appear be a solution to this other than developers paying attention to nightly clean builds being broken. There will be a build that takes all open pull requests and merges them onto master and does the full deep testing (usage docs, system tests, etc). This is currently under active development. A way to think of this is as a rolling develop, similar to paraview's `next` branch.
