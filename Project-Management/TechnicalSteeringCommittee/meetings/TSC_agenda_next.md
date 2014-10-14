@@ -12,3 +12,4 @@ Minutes
 =======
 * Pete will create a repository in [nexus' github](https://github.com/nexusformat/) to benchmark
 * The TSC recommends shiping matplotlib with mantid. It will be required by the rpm/deb installers.
+* Updating the C++ coding standards should be a [maintenance task](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md).
