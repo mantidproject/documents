@@ -7,3 +7,7 @@ Agenda
 * [Pull request workflow](https://github.com/mantidproject/documents/blob/master/Design/PullRequests.md)
 * CMake and Paraview training sessions
 * Guidelines for algorithm/python algorithm dependencies: -  [Example](http://trac.mantidproject.org/mantid/ticket/10341)
+
+Minutes
+=======
+* Pete will create a repository in [nexus' github](https://github.com/nexusformat/) to benchmark
