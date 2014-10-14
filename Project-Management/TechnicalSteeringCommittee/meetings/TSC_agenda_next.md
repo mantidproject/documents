@@ -11,4 +11,4 @@ Agenda
 Minutes
 =======
 * Pete will create a repository in [nexus' github](https://github.com/nexusformat/) to benchmark
-* 
+* The TSC recommends shiping matplotlib with mantid. It will be required by the rpm/deb installers.
