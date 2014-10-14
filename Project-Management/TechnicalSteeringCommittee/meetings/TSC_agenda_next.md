@@ -14,3 +14,5 @@ Minutes
 * The TSC recommends shiping matplotlib with mantid. It will be required by the rpm/deb installers. Martyn will add it to OSX.
 * Updating the C++ coding standards should be a [maintenance task](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md).
 * OSX 10.9 with clang builds and unit tests run. People should start quieting warnings.
+* Owen will find out if adept gives actual performance improvements before moving forward on using it.
+* Martyn will add adept to launchpad. Pete will add it to copr.
