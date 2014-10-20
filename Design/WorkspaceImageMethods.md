@@ -50,6 +50,6 @@ M. Gigg:
 N. Draper:
 
 1. Done
-1. 
+1. Happy to be swayed on this one, I was just keen to keep things fast, as long as we don't get into partial bins on this I'm happy.
 1. This was just completeness on this for the C data, but I agree it will probably not be used.
 1. This is an interesting point, that concenred me a bit as well, but a plot of a spectrum of one data point is not helpfull, and neither is a plot of a colour map with one x data point.  I do agree is is worth logging a message at Notice level that it is plotting something different instead.  The main reason I'm interested in this is to be able to plot something reasonble for image data when the user selects an colour map plot.
