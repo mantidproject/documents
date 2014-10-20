@@ -24,8 +24,8 @@ The susequent option is to add some image based helper methods to Workspace2D (a
 ### In detail
 
 1. Add the following methods to MatrixWorkspace
-  * `MantidImage_sptr GetImageX (size_t start =-1, size_t stop =-1, size_t width = -1,size_t IndexStart =-1, size_t IndexEnd = -1)`
-  * `void SetImageX (MantidImage_sptr)`
+  * `MantidImage_sptr getImageX (size_t start =-1, size_t stop =-1, size_t width = -1,size_t IndexStart =-1, size_t IndexEnd = -1)`
+  * `void setImageX (MantidImage_sptr)`
   * and similar Y and E methods
 1. SetImage will simply set all of the values of that dimension to the intesity values in the image ass efficiently as possible
 1. GetImage will extract all the dimension values and present them in a 2D representation as efficiently as possible.
@@ -40,7 +40,16 @@ Following on from this there are some sensible changes we could make to plotting
 Feedback
 --------
 M. Gigg:
-  - The methods should follow the standard camelCase naming style and be called `getImageY`, `setImageY` etc.
-  - Would it not be better when using this that the integrated X range, currently given as `IndexStart` & `IndexEnd`, be given by the actual values rather than their indices? I would assume that most of the time a user of the method would have the real `X` values and not their indices.
-  - I can understand the methods for `Y` & `E` data but does having one for X make sense? Surely all of the values would be the same so it seems a little bit wasteful?
-  - I am also not sure about the changes to plotting. Could it not be confusing if someone asked for plot of the spectrum and then got a bin plot? They could be fooled into thinking their data is not what they thought?
+
+1. The methods should follow the standard camelCase naming style and be called `getImageY`, `setImageY` etc. 
+1. Would it not be better when using this that the integrated X range, currently given as `IndexStart` & `IndexEnd`, be given by the actual values rather than their indices? I would assume that most of the time a user of the method would have the real `X` values and not their indices.
+1. I can understand the methods for `Y` & `E` data but does having one for X make sense? Surely all of the values would be the same so it seems a little bit wasteful?
+1. I am also not sure about the changes to plotting. Could it not be confusing if someone asked for plot of the spectrum and then got a bin plot? They could be fooled into thinking their data is not what they thought?
+
+
+N. Draper:
+
+1. Done
+1. 
+1. This was just completeness on this for the C data, but I agree it will probably not be used.
+1. This is an interesting point, that concenred me a bit as well, but a plot of a spectrum of one data point is not helpfull, and neither is a plot of a colour map with one x data point.  I do agree is is worth logging a message at Notice level that it is plotting something different instead.  The main reason I'm interested in this is to be able to plot something reasonble for image data when the user selects an colour map plot.
