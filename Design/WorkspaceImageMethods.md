@@ -39,4 +39,8 @@ Following on from this there are some sensible changes we could make to plotting
 
 Feedback
 --------
-
+M. Gigg:
+  - The methods should follow the standard camelCase naming style and be called `getImageY`, `setImageY` etc.
+  - Would it not be better when using this that the integrated X range, currently given as `IndexStart` & `IndexEnd`, be given by the actual values rather than their indices? I would assume that most of the time a user of the method would have the real `X` values and not their indices.
+  - I can understand the methods for `Y` & `E` data but does having one for X make sense? Surely all of the values would be the same so it seems a little bit wasteful?
+  - I am also not sure about the changes to plotting. Could it not be confusing if someone asked for plot of the spectrum and then got a bin plot? They could be fooled into thinking their data is not what they thought?
