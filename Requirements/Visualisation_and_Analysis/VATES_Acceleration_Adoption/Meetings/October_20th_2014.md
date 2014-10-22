@@ -11,6 +11,7 @@ Creating MD Workspaces
 * Inelastic diffraction groups have a strong preference for scripting.
 * SC elastic diffraction request for a way of performing creating MD workspaces in a 'point and click' (GUI) style.
 * Speed of creation/merge.
+* Symmetrisation
 
 Alignment tools
 ---------
@@ -20,7 +21,7 @@ Peaks Workspaces
 -----------------
 * Need to better support multiple UB matrixes.
 * Need a way to tag a peak with a UB identifier.
-* Better peak edition features. Addition, subtraction. 
+* Better peak edititing features. Addition, subtraction. 
 * All tools that work on PeaksWorkspaces should be synched.
 * Need to support different conventions, currently only inelastic convention ki-kf.
 * PeaksWorkspaces should 'remember' MDWorkspaces. Possibly two way interaction.
@@ -40,16 +41,17 @@ Slice Viewer
 
 VSI (VATES Simple Interface)
 -------------------------------------
-* Needs better default view 
+* Needs better default view (colour map, box splitting)
 * Initial plot should be relevant
 * Annotations need to be better. 
 * Needs auto-rebin feature like SliceViewer
 * Needs zoom to detail feature.
 * VSI needs ability to plot when data is reduced from dimensionality 4 -> 3 -> 2 -> 1.
+* View needs to be rearraged to increase space given to main display (reduce sidebar, top bar)
 
 Simulation and Fitting
 ----------------------
-This has been agreed to be outside the scope of what we are currently working on. 
+This has been agreed to be outside the scope of what we are currently working on, but will be the focue of the next development effort after this project has finished.
 
 Actions
 =======
