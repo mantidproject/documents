@@ -38,6 +38,7 @@ Slice Viewer
 * Needs to work in step size mode and bin number mode.
 * Buttons need to be combined where possible and better defined.
 * More options for exporting data. 
+* Link peaks lists to workspaces better (& link in plots)
 
 VSI (VATES Simple Interface)
 -------------------------------------
