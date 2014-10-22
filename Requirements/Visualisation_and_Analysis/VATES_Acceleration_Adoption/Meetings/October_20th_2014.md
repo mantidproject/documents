@@ -11,7 +11,11 @@ Creating MD Workspaces
 * Inelastic diffraction groups have a strong preference for scripting.
 * SC elastic diffraction request for a way of performing creating MD workspaces in a 'point and click' (GUI) style.
 * Speed of creation/merge.
+* Speed of loading saved MD files
 * Symmetrisation
+* Horace stlye syntaxt for extracting cuts etc
+* Harmonised plotting syntax for all plots
+* Validation of cuts / plots from large SQW datasets
 
 Alignment tools
 ---------
