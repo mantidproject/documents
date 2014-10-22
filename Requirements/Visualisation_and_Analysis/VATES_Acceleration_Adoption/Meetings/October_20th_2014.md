@@ -16,6 +16,7 @@ Creating MD Workspaces
 * Horace stlye syntaxt for extracting cuts etc
 * Harmonised plotting syntax for all plots
 * Validation of cuts / plots from large SQW datasets
+* Correct event normalisation across multiple files
 
 Alignment tools
 ---------
@@ -53,6 +54,10 @@ VSI (VATES Simple Interface)
 * Needs zoom to detail feature.
 * VSI needs ability to plot when data is reduced from dimensionality 4 -> 3 -> 2 -> 1.
 * View needs to be rearraged to increase space given to main display (reduce sidebar, top bar)
+
+Others
+-------
+* Develop training meterials for inelsatic and SX diffraction
 
 Simulation and Fitting
 ----------------------
