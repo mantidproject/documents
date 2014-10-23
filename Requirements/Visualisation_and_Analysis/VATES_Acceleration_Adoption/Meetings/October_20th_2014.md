@@ -17,6 +17,7 @@ Creating MD Workspaces
 * Harmonised plotting syntax for all plots
 * Validation of cuts / plots from large SQW datasets
 * Correct event normalisation across multiple files
+* Improve the MD syntax for defining non-orthogonal axes - New
 
 Alignment tools
 ---------
@@ -54,10 +55,16 @@ VSI (VATES Simple Interface)
 * Needs zoom to detail feature.
 * VSI needs ability to plot when data is reduced from dimensionality 4 -> 3 -> 2 -> 1.
 * View needs to be rearraged to increase space given to main display (reduce sidebar, top bar)
+* Edit peak lists (add, remove, Resize integration region) - New
+* Update view in response to peak list (& possibly workspace) changes - New
+* Allow slice axes to be fixed to Q, or crstal axes if required - New
 
 Others
 -------
 * Develop training meterials for inelsatic and SX diffraction
+* Peak integration areas viewable from the instrument view (detector area and tof once you click on a pixel). - New
+* Planning tools. A good start, which would not take long to implement, would be to be able to create an empty peaksworkspace, attach a lattice to it and generatepeaks on an empty instrument (so q range are known) or a masked one (eg with a pressure cell or magnet obstructing the view). - New
+* Easy accessible masking options for peaks, areas, volumes, which are connected or not, and masks that can be displayed in the various viewers and saved and reused - New  - Question would these be defined in detector or Q space?
 
 Simulation and Fitting
 ----------------------
