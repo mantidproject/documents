@@ -19,7 +19,7 @@ Design
 
 The first vew of the design was to create an image workspace that stored the intensity values as a vector of vectors of doubles.  This unfortunately fails when you consider supporting the `mantidvec& dataY(size_t index)` method.  As we return a reference we are somewhat stuck as to what storage type we support.  We could cache the value and update later for any changes, but when is later?, and this is getting too inefficient and slow.  So this approach has been discontinued.
 
-The susequent option is to add some image based helper methods to Workspace2D (and porbably MatrixWorkspace and therefore EventWorkspace as well) to better support importing and exporting data as an image.
+The subsequent option is to add some image based helper methods to Workspace2D (and porbably MatrixWorkspace and therefore EventWorkspace as well) to better support importing and exporting data as an image.
 
 ### In detail
 
@@ -27,7 +27,7 @@ The susequent option is to add some image based helper methods to Workspace2D (a
   * `MantidImage_sptr getImageX (size_t start =-1, size_t stop =-1, size_t width = -1,size_t IndexStart =-1, size_t IndexEnd = -1)`
   * `void setImageX (MantidImage_sptr)`
   * and similar Y and E methods
-1. SetImage will simply set all of the values of that dimension to the intesity values in the image ass efficiently as possible
+1. SetImage will simply set all of the values of that dimension to the intesity values in the image as efficiently as possible
 1. GetImage will extract all the dimension values and present them in a 2D representation as efficiently as possible.
 1. MantidImage_sptr will be a shared pointer to a vector of vectors of doubles, and will be defined in a typedef.
 
