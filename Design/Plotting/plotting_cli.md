@@ -52,7 +52,8 @@ The new plotting CLI must deliver analogues for the following functionality:
 Solution Overview
 ===============================
 * We will base the new style CLI on MatPlotLib. 
-* Support both a MatPlot style functional methodology, as well as an OO methodology. MatPlotLib already has a very good model for doing this.
+* Support both a MatPlotLib style functional methodology, as well as an OO methodology. MatPlotLib already has a very good model for doing this.
+* We will have to deviate from the MatPlotLib style plotting when it comes to plotting of workspaces, which natively contain both x and y data to show, and are a fundamentally differnet data structure than MatPlotLib understands. Under such cases, we will do our best to preserve the options syntax so that it still fits with MatPlotLib.
 
 Typical Current Example Usage
 ===============================

@@ -17,3 +17,4 @@
 3. Move to Python 3
 1. Move to ParaView 4.2
 2. Filling in argument list in python bindings (e.g. "self")
+1. Updating the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and enforcing it
