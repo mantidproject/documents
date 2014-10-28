@@ -19,5 +19,5 @@ Minutes
   * Change the `PARALLEL_*` macros and then all of the code (Steven organizes)
   * We should have additional build of the performace tests that run in serial (Steven)
   * newer gcc on RHEL6 (Stuart)
-  * Leftover tasks: clang on linux, consolidating mutex usage to one version, converting ThreadPool to abstract a library
+  * Leftover tasks: clang on linux, consolidating mutex usage to one version, converting `ThreadPool` to abstract a library
 * Linode server automatically install security update (Martyn)
