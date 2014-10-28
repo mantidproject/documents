@@ -11,7 +11,7 @@ Minutes
 * Martyn will create documentation to say not to call python algorithms from c++ algorithm unit tests
 * Compiler checks for features should be a maintenance task, and it should be advertised to the developers
 * Anders will write up guidelines for modifying existing fitting functions to pass by the TSC. There should be a similar document for algorithms
-* Performance benchmark results:
+* Performance benchmark results ([presentation](https://github.com/mantidproject/documents/blob/master/Presentations/Parallel%20Macros.pptx) and [parallel_for example](https://github.com/quantumsteve/parallel_for)):
   * Need to try a osx10.9/clang build on a osx10.8 system (Steven)
   * Still need to move to paraview 4.2 before osx10.9/clang is the supported version (Stuart)
   * Change the `PARALLEL_*` macros and then all of the code (Steven organizes)
