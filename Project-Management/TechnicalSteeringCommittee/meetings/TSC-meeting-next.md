@@ -6,3 +6,4 @@ Agenda
 * Formatting and coding standards ([current definition](http://www.mantidproject.org/Coding_Standards), [c++ comparison](https://gist.github.com/peterfpeterson/f095f0153cab9b6a6459), pep8, [git-clang-format](https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/git-clang-format))
 * Brief chat about http://trac.mantidproject.org/mantid/ticket/10501. (Owen)
 * Mantid server, obtain a TSC, technology choice. (Owen)
+* Adding Fedora to the matrix builds (Pete)
