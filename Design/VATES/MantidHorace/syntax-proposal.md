@@ -43,42 +43,42 @@ The following commands will form part of the python CLI, and live in a python mo
 
 ## cutMD
 
-#### Brief
-
 This is know as **cut_sqw** in Horace, but has been named cutMD since this fits better with Mantid, where *sqw* is not the genrally used term for n-dimensional datasets.
 
-Where possible this function will attempt to handle a range of inputs provided including a range of file types (*.sqw, *.nexus) as well as the in-memory objects described as 
-*data_source* in Horace's cut_sqw.
-
-#### Detail
+### Arguments and Function Signature
 
 ***cut = cutMD (data_source, proj, p1_bin, p2_bin, p3_bin,
 p4_bin, '-nopix', filename)***
 
-* data_source could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection.
-* This will be a wrapper around BinMD/SliceMD. The **-nopix** option would be used to specify the output type MDHistoWorkspace, or MDEventWorkspace [[1]], [[3]]
-* The proj object will be a slightly modified Mantid TableWorkspace. The python bindings will allow Horace syntax like proj.u= “1,1,1” [[3]]
-* We can generate a proj object from an algorithm, something like **proj=GenerateSQWProj(arguments)**. If no arguments given, we will use sensible defaults. [[1]], [[3]]
-* I propose we add proj.w, the third projection axis, since we can do non-orthogonal axes. If not given proj.w is calculated as the cross product of proj.u and proj.v [[3]] 
-* We suggest having the **-nopix** option on by default [[3]]
+* The returned object will be an IMDWorkspace. This will be either a MDEventWorkspace or an MDHistoWorkspace depending upon the -nopix option
+* data_source could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection
+* The proj object will be a slightly modified Mantid TableWorkspace. More detail below. [[3]]
 * filename is optional. If provided then the results will be saved to
 this location. [[3]]
 * p1\_bin etc., will be provided exactly the same as the existing Horace [[2]]
 syntax. These can either be a single value step, or an integration
-range. The function will accept these either as a python tuple or list.
+range. The function will accept these either as a python tuple or list
+* We suggest having the **-nopix** option on by default [[3]]
 
-
-##### Step 1. Generate the projections
+#### Step 1. Generate the Projections
 
 We need a new algorithm to generate projections **GenerateSQWProj** [[1]], [[3]]
 
-###### Detail
-
 * Output should be a Mantid TableWorkspace
-* Users should not need to know about this algorithm if running **cutMD** directly
+* We can generate a **Projection** from an algorithm, something like **proj=GenerateSQWProj(arguments)**. If no arguments given, we will use sensible defaults. [[1]], [[3]]
+* A data type for a **Projection** could be added to Mantid and exposed to python, but we would not yet consider adding this as a type of property
+* Any **Projection** type should be convertible to and from an ITableWorkspace
+* The python bindings will allow Horace syntax like proj.u= “1,1,1” [[3]]
+* A further addition will be to add proj.w, the third projection axis, since we can do non-orthogonal axes. If not given proj.w is calculated as the cross product of proj.u and proj.v [[3]] 
+
+#### Step 2. Performing the cut
+
+* **cutMD** could either be implemented as an algorithm or as a script
+* This will be a wrapper around BinMD/SliceMD. The **-nopix** option would be used to specify the output type MDHistoWorkspace, or MDEventWorkspace [[1]], [[3]]
+* Projections must be full formed either as a Projection type or Projection TableWorkspace (see above), this will avoid an explosion of arguments for cutMD
+* Inputs should either be full-formed to represent the reciprocal lattice
+* We could later add options to complete the transform to HKL if the UB and goniometer information is present
+* Andrei will provide transformations to go from reciprocal lattice units to inverse Angstroms. These will be dictated by the projection
 
 
-##### Step 2. Performing the cut
-
-**cutMD** could either be implemented as an algorithm or as a script. 
 
