@@ -31,54 +31,92 @@ Contributors in no particular order. These are people who have provided groundwo
 | Owen Arnold     | ISIS |
 | Toby Perring     | ISIS |
 | Russell Ewings     | ISIS |
-| Garret Granroth     | ISIS |
 
 # Terminology
 
-Mantid has it's own analogues to Horace objects. Mantid MDHistoWorkspaces are equivalent to Horace DND objects. Mantid MDEventWorkspaces are equivalent to Horace SQW objects. One major difference highlighted [[1]] is that and SQW object is a DND object, where as MDHistoWorkspaces and MDEventWorkspaces are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance, we refer to them in a generic way as MDWorkspaces.
+Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are equivalent to Horace *DND* objects. Mantid *MDEventWorkspaces* are equivalent to Horace *SQW* objects. One major difference highlighted [[1]] is that a *SQW* object is a *DND* object, where as *MDHistoWorkspaces* and *MDEventWorkspaces* are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance, we refer to them in a generic way as *MDWorkspaces*.
 
 # Syntax
 
-The following commands will form part of the python CLI, and live in a python module **mantid.horace**
+The following commands will form part of the python CLI (command line interface), and live in a python module **mantid.horace**
 
 ## cutMD
 
-This is know as **cut_sqw** in Horace, but has been named cutMD since this fits better with Mantid, where *sqw* is not the genrally used term for n-dimensional datasets.
+This is know as **cut_sqw** in Horace [[2]], but has been named **cutMD** since this fits better with Mantid, where *sqw* is not the generally used term for n-dimensional datasets.
 
 ### Arguments and Function Signature
 
 ***cut = cutMD (data_source, proj, p1_bin, p2_bin, p3_bin,
-p4_bin, '-nopix', filename)***
+p4_bin, nopix, out_filename)***
 
-* The returned object will be an IMDWorkspace. This will be either a MDEventWorkspace or an MDHistoWorkspace depending upon the -nopix option
-* data_source could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection
-* The proj object will be a slightly modified Mantid TableWorkspace. More detail below. [[3]]
-* filename is optional. If provided then the results will be saved to
+* The returned object *cut* will be a Mantid *IMDWorkspace*. This will be either a *MDEventWorkspace* or an *MDHistoWorkspace* depending upon the *nopix* option
+* *data_source* could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection
+* The *proj* object will be a slightly modified Mantid TableWorkspace. More detail below. [[3]]
+* *out_filename* is optional. If provided then the results will be saved to
 this location. [[3]]
-* p1\_bin etc., will be provided exactly the same as the existing Horace [[2]]
+* *p1_bin* etc., will be provided exactly the same as the existing Horace [[2]]
 syntax. These can either be a single value step, or an integration
 range. The function will accept these either as a python tuple or list
-* We suggest having the **-nopix** option on by default [[3]]
+* We suggest having the *nopix* option on by default [[3]]
 
-#### Step 1. Generate the Projections
+#### Internal Step 1. Generate the Projections
 
 We need a new algorithm to generate projections **GenerateSQWProj** [[1]], [[3]]
 
 * Output should be a Mantid TableWorkspace
-* We can generate a **Projection** from an algorithm, something like **proj=GenerateSQWProj(arguments)**. If no arguments given, we will use sensible defaults. [[1]], [[3]]
-* A data type for a **Projection** could be added to Mantid and exposed to python, but we would not yet consider adding this as a type of property
-* Any **Projection** type should be convertible to and from an ITableWorkspace
+* We can generate a *Projection* from an algorithm, something like **proj=GenerateSQWProj(arguments)**. If no arguments given, we will use sensible defaults. [[1]], [[3]]
+* A data type for a *Projection* could be added to Mantid and exposed to python, but we would not yet consider adding this as a type of property
+* Any *Projection* type should be convertible to and from an ITableWorkspace
 * The python bindings will allow Horace syntax like proj.u= “1,1,1” [[3]]
-* A further addition will be to add proj.w, the third projection axis, since we can do non-orthogonal axes. If not given proj.w is calculated as the cross product of proj.u and proj.v [[3]] 
+* A further addition will be to add proj.w, the third projection axis, since we can do non-orthogonal axes. If not given *proj.w* is calculated as the cross product of *proj.u* and *proj.v* [[3]] 
 
-#### Step 2. Performing the cut
+#### Internal Step 2. Performing the cut
 
-* **cutMD** could either be implemented as an algorithm or as a script
-* This will be a wrapper around BinMD/SliceMD. The **-nopix** option would be used to specify the output type MDHistoWorkspace, or MDEventWorkspace [[1]], [[3]]
+* **cutMD** could either be implemented as an algorithm or as a script. probably best as a script initially.
+* This will be a wrapper around Mantid **BinMD/SliceMD** algorithms. The *nopix* option would be used to specify the output type *MDHistoWorkspace*, or* MDEventWorkspace* [[1]], [[3]]
 * Projections must be full formed either as a Projection type or Projection TableWorkspace (see above), this will avoid an explosion of arguments for cutMD
 * Inputs should either be full-formed to represent the reciprocal lattice
 * We could later add options to complete the transform to HKL if the UB and goniometer information is present
 * Andrei will provide transformations to go from reciprocal lattice units to inverse Angstroms. These will be dictated by the projection
+
+## genMD
+
+This is known as **gen_sqw** in Horace [[2]], but has been named **genMD** since this fits better with Mantid , where *sqw* is not standard term for n-dimensional datasets.
+
+As highlighted by Toby/Alex, it is important to have a file-backed mode for this operation [[1]]
+
+### Arguments and Function signature
+
+***out_ws = genMD ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
+omega, dpsi, gl, gs, out_filename)***
+
+* *out_ws* is the combined MDWorkspace, for file-based workspaces
+* *out_filename* is optional. If provided then the results will be saved to
+this location, and the processing will be conducted on disk rather than in-memory
+* *data_source* could be a number of things. *data_source* can either be a file or a workspace. *ws_name* is optional [[1]]
+* *sqw_file* is only required in the case that the processing should happen on-disk [[1]]
+* *alatt*, *angdeg*, *u*, *v* are used to set the UB matrix. One can set the UB 
+matrix before. If not empty, it will override and set the UB again [[3]]
+* *omega*, *dpsi*, *gl*, *gs* are angles for goniometer settings. This should be
+in principle set on the input workspaces beforehand. If omega is set, it
+should override the individual goniometer settings for each individual
+workspace. Dpsi, gl, and gs are additional goniometer rotations. [[3]]
+
+**If omega is not set, do we use
+dpsi, gl, and gs?**
+
+#### Internal Steps
+
+* **genMD** could either be implemented as an algorithm or as a script. Probably best as a script initially
+* For each set of inputs, Mantid algorithms **SetUB** and **SetGoniometer** may be called if inputs are provided in the script. Same holds for setting *efix*
+* Internally, this Mantid algorithm will use **ConvertToMD** to perform the operations on individual sets of inputs
+* Results can be merged using either **MergeMD** or **MergeMDFiles** [[1]]
+* Individual workspaces will not be deleted and will be named as specified by the *ws_name* [[1]]
+
+
+
+
+
 
 
 
