@@ -4,7 +4,7 @@
 The scope of this work has been summarised already [[1]] :
 > Keeping Horace interface would allow smooth transfer experience for all current Horace users and easy comparison of new and old well verified results, so it is suggested to keep Horace interface with only minor reasonable modifications. 
 
-**This design document is to keep an incremental, running design on new phases of a mantid-horace syntax. It is NOT intended to detail (at time of writing) the complete set of mantid-horace, although that is the eventual aim.**
+**This design document is to keep an incremental, running design on new phases of a mantid-horace syntax. It is NOT intended to detail (at time of writing) the complete set of mantid-horace commands, although that is the eventual aim.**
 
 This document is intended to finally pull together contributions from several authors into a workable design document. Where possible the source of the syntax
 will be referenced. The primary sources for this document have been:
