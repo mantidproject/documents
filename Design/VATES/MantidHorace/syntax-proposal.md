@@ -48,8 +48,8 @@ This is know as **cut_sqw** in Horace [[2]], but has been named **CutMD** since 
 
 ### Arguments and Function Signature
 
-***cut = CutMD (data_source, proj, p1_bin, p2_bin, p3_bin,
-p4_bin, nopix, out_filename)***
+***cut = CutMD (data_source, proj, (p1_bin, p2_bin, p3_bin,
+p4_bin), nopix, out_filename)***
 
 * The returned object *cut* will be a Mantid *IMDWorkspace*. This will be either a *MDEventWorkspace* or an *MDHistoWorkspace* depending upon the *nopix* option
 * *data_source* could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection
