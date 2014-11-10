@@ -39,7 +39,7 @@ Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are 
 
 # Syntax
 
-The following commands will form part of the python CLI (command line interface), and live in a python module **mantid.horace**
+The following commands will form part of the python CLI (command line interface). The majority of the work is targeted for Mantid python algorithms, but there will need to be modifications made to support the Horace style projections to other areas of Mantid.
 
 ## CutMD
 
@@ -78,7 +78,8 @@ We need a new algorithm to generate projections **GenerateSQWProj** [[1]], [[3]]
 * Projections must be full formed either as a Projection type or Projection TableWorkspace (see above), this will avoid an explosion of arguments for **CutMD**
 * Inputs should either be full-formed to represent the reciprocal lattice
 * We could later add options to complete the transform to HKL if the UB and goniometer information is present
-* Andrei will provide transformations to go from reciprocal lattice units to inverse Angstroms. These will be dictated by the projection
+* Andrei will provide transformations to go from reciprocal lattice units to inverse Angstroms. These will be dictated by the projection.
+* If projections are not axis aligned, we must prevent the SCD normalisation routines from processing them (at time of writing)
 
 #### Examples
 These examples have been generated from examples given for Horace [[1]]
