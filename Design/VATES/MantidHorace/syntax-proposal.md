@@ -31,6 +31,7 @@ Contributors in no particular order. These are people who have provided groundwo
 | Owen Arnold     | ISIS |
 | Toby Perring     | ISIS |
 | Russell Ewings     | ISIS |
+| Nick Draper | ISIS |
 
 # Terminology
 
