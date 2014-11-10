@@ -21,7 +21,7 @@ will be referenced. The primary sources for this document have been:
 
 # Contributors
 
-Contributors in no particular order. These are people who have provided groundwork for the proposed syntax.
+These are people who have provided groundwork for the proposed syntax.
 
 | Contributor        | Facility           |
 | ------------- |:-------------:|
@@ -35,7 +35,7 @@ Contributors in no particular order. These are people who have provided groundwo
 
 # Terminology
 
-Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are equivalent to Horace *DND* objects. Mantid *MDEventWorkspaces* are equivalent to Horace *SQW* objects. One major difference highlighted [[1]] is that a *SQW* object is a *DND* object, where as *MDHistoWorkspaces* and *MDEventWorkspaces* are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance, we refer to them in a generic way as *MDWorkspaces*.
+Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are equivalent to Horace *DND* objects. Mantid *MDEventWorkspaces* are equivalent to Horace *SQW* objects. One major difference highlighted [[1]] is that a *SQW* object is a *DND* object, where as *MDHistoWorkspaces* and *MDEventWorkspaces* are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance; we refer to them in a generic way as *MDWorkspaces*.
 
 # Syntax
 
@@ -60,7 +60,7 @@ this location. [[3]]
 syntax. These can either be a single value step, or an integration
 range. The function will accept these either as a python tuple or list
 * We suggest having the *nopix* option on by default [[3]]
-* cutMD() should be a public member function of and MDEventWorkspace so that the dimensionality can be automatically determined in addtion to the functional implementation above.
+* cutMD() should be a public member function of and MDEventWorkspace so that the dimensionality can be automatically determined in addition to the functional implementation above.
 
 #### Internal Step 1. Generate the Projections
 
