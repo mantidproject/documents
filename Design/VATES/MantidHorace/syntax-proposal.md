@@ -56,10 +56,11 @@ p4_bin, nopix, out_filename)***
 * The *proj* object will be a slightly modified Mantid TableWorkspace. More detail below. [[3]]
 * *out_filename* is optional. If provided then the results will be saved to
 this location. [[3]]
-* *p1_bin* etc., will be provided exactly the same as the existing Horace [[2]]
+* *p1_bin* will be provided as per the Horace syntax [[2]]. However, to allow for n-dimensions, they will be grouped as a tuple (see example)
 syntax. These can either be a single value step, or an integration
 range. The function will accept these either as a python tuple or list
 * We suggest having the *nopix* option on by default [[3]]
+* cutMD() should be a public member function of and MDEventWorkspace so that the dimensionality can be automatically determined in addtion to the functional implementation above.
 
 #### Internal Step 1. Generate the Projections
 
@@ -93,19 +94,19 @@ proj3.u=[1,1,1]; proj3.v=[-1,1,0]; proj3.uoffset=[0,0,0,0]; proj3.type='rrr'
 proj_table = proj.toWorkspace()
 
 
-my_vol = cut_md(my_ws, proj_table, [0,0.1,8], [2,0.05,6], [-2,-1], [0,10,1000], nopix=True, out_filename='cut.nxs')# Makes a Q,Q,E volume plot
+my_vol = cut_md(my_ws, proj_table, ([0,0.1,8], [2,0.05,6], [-2,-1], [0,10,1000]), nopix=True, out_filename='cut.nxs')# Makes a Q,Q,E volume plot
 
 ```
 
-## GenMD
+## CreateSQW
 
-This is known as **gen_sqw** in Horace [[2]], but has been named **GenMD** since this fits better with Mantid , where *sqw* is not standard term for n-dimensional datasets. **GenMD** will be implemented as a python algorithm. It will have an alias **gen_md** to fit with the existing lower case Horace scripting.
+This is known as **gen_sqw** in Horace [[2]], but has been named **CreateSQW** since this fits better with Mantid. **CreateSQW** will be implemented as a python algorithm. It will have an alias **create_sqw** to fit with the existing lower case Horace scripting.
 
 As highlighted by Toby/Alex, it is important to have a file-backed mode for this operation [[1]]
 
 ### Arguments and Function signature
 
-***out_ws = GenMD ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
+***out_ws = CreateSQW ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
 omega, dpsi, gl, gs, out_filename)***
 
 * *out_ws* is the combined MDWorkspace, for file-based workspaces
@@ -149,7 +150,7 @@ u=[1,0,0]; v=[0,1,0] # specify scattering plane, where u is the crystal directio
 
 omega=0; dpsi=0; gl=0; gs=0 # goniometer offsets for the sample (usually all zero)
 
-ws = gen_md (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
+ws = CreateSQW (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
 
 ```
 
