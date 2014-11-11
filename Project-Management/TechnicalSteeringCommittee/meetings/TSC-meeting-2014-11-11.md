@@ -33,4 +33,9 @@ Minutes
   * Use existing small fedora 20 vmware resources for rhel7.
 * It was decided that we are going to standardise on clang-format.
 * The Pull Request trial will be expanded to all the developers at ORNL.
+* Brief discussion about a Mantid 'cloud' version
+  * The first thing we need to think of is are we wanting a thin or thick client.
+  * What type of interface (GUI vs Python Scripting)
+  * What level of visualisation capabilities do they want ?
+
 
