@@ -10,9 +10,9 @@ An example is to have a `POST` request to a url with the following document.
 ```json
 {
   "uid": "1d621f60d4ba72f9efb0a1172bbc3328",
+  "dateTime":"2014-10-29T09:50Z",
   "getOSName": "???",
   "getOSArchitecture": "???",
-  "getComputerName": "???",
   "getOSVersion": "???",
   "ParaView": "true",
   "mantidVersion": "3.2.1",
