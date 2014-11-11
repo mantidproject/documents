@@ -9,3 +9,7 @@ Agenda
 * Brief chat about http://trac.mantidproject.org/mantid/ticket/10501. (Owen)
 * Mantid server, obtain a TSC, technology choice. (Owen)
 * Adding Fedora to the matrix builds & RHEL6/Fedora resourcing (Pete/Stuart)
+
+Minutes
+=======
+* Michael presented his document on automatic differentiation using the Adept package.
