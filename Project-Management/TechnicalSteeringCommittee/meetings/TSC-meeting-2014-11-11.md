@@ -12,4 +12,10 @@ Agenda
 
 Minutes
 =======
-* Michael presented his document on automatic differentiation using the Adept package.
+* Michael presented his document on automatic differentiation using the Adept package.  The next step is to get the Adept package included within the dependencies for the build servers.  
+  * We need to add the linux packages (Stuart/Martyn) to the relevant repos 
+  * Create homebrew formula for OS X (Steve/Stuart).  
+  * Windows and Mac Intel needs to be added to 3rd party (Owen).
+  * Create a build job on jenkins to build the binaries so we document how to build it (Owen).
+  * The mantid-developer package dependencies need to be updated (Pete)
+* 
