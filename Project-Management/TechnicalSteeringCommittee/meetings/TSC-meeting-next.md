@@ -1,5 +1,6 @@
 Agenda
 ======
+* Micheal Wiedel on automatic differentiation https://github.com/mantidproject/documents/blob/master/Design/IntegratingAdept.md
 * Design for [determining usage statistics](https://github.com/mantidproject/documents/blob/master/Design/MeasureUsageStatistics.md)
 * Linode maintenance - Jenkins backup (Martyn)
 * Make suggestion of topics the TSC presents at developer meeting and agenda items for TSC meeting days scheduled during: http://www.mantidproject.org/Category:January_2015_Visit 
