@@ -32,4 +32,5 @@ Minutes
   * Move ornl-rhel7 hardware to fedora 20.
   * Use existing small fedora 20 vmware resources for rhel7.
 * It was decided that we are going to standardise on clang-format.
+* The Pull Request trial will be expanded to all the developers at ORNL.
 
