@@ -9,3 +9,41 @@ The usage statistics will be sent by an algorithm that creates a separate thread
 Latest Version
 --------------
 It would be useful to have a web service that provided the latest versions and download URLs (usable in wget). This would be a programatic version of information currently available [on sourceforge](http://sourceforge.net/projects/mantid/files/3.2/).
+
+An example is to have a `POST` request to a url with the following returned.
+```json
+{
+  "collection": [
+    {
+      "version": "3.2.1",
+      "links": [
+        {
+          "os": "win64",
+          "url": "http://sourceforge.net/projects/mantid/files/3.2/mantid-3.2.1-win64.exe/download"
+        },
+        {
+          "os": "osx",
+          "url": "http://sourceforge.net/projects/mantid/files/3.2/mantid-3.2.1-MountainLion.dmg/download"
+        },
+        {
+          "os": "rhel6",
+          "url": "http://sourceforge.net/projects/mantid/files/3.2/mantid-3.2.0-1.el6.x86_64.rpm/download"
+        },
+        {
+          "os": "ubuntu10.04",
+          "url": "http://sourceforge.net/projects/mantid/files/3.2/mantid_3.2.1-1_amd64.deb/download"
+        }
+      ]
+    },
+    {
+      "version": "3.2.0",
+      "links": [
+        {
+          "os": "win64",
+          "url": "http://sourceforge.net/projects/mantid/files/3.2/mantid-3.2.0-win64.exe/download"
+        }
+      ]
+    }
+  ]
+}
+```
