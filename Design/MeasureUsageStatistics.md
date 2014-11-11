@@ -6,11 +6,25 @@ Usage Statistics
 ----------------
 The usage statistics will be sent by an algorithm that creates a separate thread to get system information and send information through the network. The algorithm will have additional properties to supply additional information (e.g. GUIs used). In order to have useful statistics there will be a unique key. The unique key will be a hash made from the user name and the mac address (or ip address) of the system. The other information that will be sent are operating system (name, version, byte size), startup date/time, and version of mantid. This information should allow for a better statistics of what operating systems are used than the [sourceforge downloads](http://sourceforge.net/projects/mantid/files/3.2/stats/timeline).
 
+An example is to have a `POST` request to a url with the following document.
+```json
+{
+  "uid": "1d621f60d4ba72f9efb0a1172bbc3328",
+  "getOSName": "???",
+  "getOSArchitecture": "???",
+  "getComputerName": "???",
+  "getOSVersion": "???",
+  "ParaView": "true",
+  "mantidVersion": "3.2.1",
+  "mantidSha": "8223fbc53f5f8d8be259d675171439a648f93183"
+}
+```
+
 Latest Version
 --------------
 It would be useful to have a web service that provided the latest versions and download URLs (usable in wget). This would be a programatic version of information currently available [on sourceforge](http://sourceforge.net/projects/mantid/files/3.2/).
 
-An example is to have a `POST` request to a url with the following returned.
+An example is to have a `GET` request to a url with the following returned.
 ```json
 {
   "collection": [
