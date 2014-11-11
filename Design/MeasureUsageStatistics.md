@@ -1,6 +1,6 @@
 Overview
 --------
-There is an open question as to what operating systems users have when running mantid. This design is intended to address that question. There are two services described below. The first is one for logging unique startups of mantid with information on what operating system and version of mantid. This utility will leave room for being extended for additional usage information (e.g. GUIs used) and allow for opting out of sending statistics. The second service will provide information on the recent versions of mantid (version number and download url). Both services should be implemented using [RESTful desgn principles](https://restful-api-design.readthedocs.org/en/latest/).
+There is an open question as to what operating systems users have when running mantid. This design is intended to address that question. There are two services described below. The first is one for logging unique startups of mantid with information on what operating system and version of mantid. This utility will leave room for being extended for additional usage information (e.g. GUIs used) and allow for opting out of sending statistics. The second service will provide information on the recent versions of mantid (version number and download url). Both services should be implemented using [RESTful design principles](https://restful-api-design.readthedocs.org/en/latest/).
 
 Usage Statistics
 ----------------
