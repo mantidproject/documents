@@ -59,7 +59,7 @@ this location. [[3]]
 * *p1_bin* will be provided as per the Horace syntax [[2]]. However, to allow for n-dimensions, they will be grouped as a tuple (see example)
 syntax. These can either be a single value step, or an integration
 range. The function will accept these either as a python tuple or list
-* We suggest having the *nopix* option on by default [[3]]
+* To keep consistency with Horace, *nopix* option OFF by default [[3]]
 * cutMD() should be a public member function of and MDEventWorkspace so that the dimensionality can be automatically determined in addition to the functional implementation above.
 
 #### Internal Step 1. Generate the Projections
