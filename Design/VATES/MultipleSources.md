@@ -27,7 +27,7 @@ For the second example: selecting the MD-Histo workspace causes the view to reve
 
 ######Determining the "best" view
 There are two ways to determine the most adequate initial view for a given workspace. 
-First, the user has the option of defining a preferred view in the `Mantid.user.properties` file. He can populate the field `vates.intialview` with either `STANDARD`, `MULTISLICE`, `THREESLICE` or `SPLATTERPLOT`; e.g.: `vates.initalview = THREESLICE`.
+First, the user has the option of defining a preferred view in the `Mantid.user.properties` file. He can populate the field `vates.initialview` with either `STANDARD`, `MULTISLICE`, `THREESLICE` or `SPLATTERPLOT`; e.g.: `vates.initalview = THREESLICE`.
 
 If this view is not compatible with the type of workspace, then the standard view is selected.
 
