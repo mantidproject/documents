@@ -1,4 +1,4 @@
-# Handling of Multiple Workspaces in Vates
+# Handling of Multiple Workspaces in the VSI
 
 ### Motivation
 The current handling of multiple workspaces can cause several unhandled exceptions.
