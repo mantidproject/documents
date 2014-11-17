@@ -7,7 +7,7 @@ The current handling of multiple workspaces can cause several unhandled exceptio
 
 ##### Several sources with different sets of views
 When a workspace is added to the VSI, it creates a new view. 
-In addition, several view buttons are enabled or disabled. The view which was added last, determiens the state of  the view buttons. This can lead to a situation where views become available to workspace data which are normally disabled for this type of data.
+In addition, several view buttons are enabled or disabled. The view which was added last, determines the state of  the view buttons. This can lead to a situation where views become available to workspace data which are normally disabled for this type of data.
 
 The following examples might help to illustrate several issues which can occur.
 
@@ -32,7 +32,7 @@ When the visisbility of a source is changed, ParaView intercepts this via the pr
 This approach requires us to replace the pipelineBrowserWidget with a child class that provides a `customHandleIndexclicked(const QModelIndex &index_)` slot that is connected to the `clicked` signal of the pipelineBrowserWidget. The additional logic checks if the visibilty of the source is compatible with the current view and acts accordingly.
 
 
-#### Approach 2: Automatic disabling the visibilty of sources  
+#### Approach 2: Automatically disabling the visibilty of sources  
 Instead of only making those views available which are common to all visible sources, we can provide all possible views for the set of visible sources. When we switch to a view which is not compatible with a particular visible source, we make this source invisible. When we switch back to the original view, the source is made visible again. If the user decides to enable the visibilty of a source which is not compatible with the current view, we revert to the view which is "best" for the marjority of the visible sources or the standard view.
 
 Similarly as above, we need to replace the pipelineBrowserWidget with a child class that provides a `customHandleIndexClicked(const QModelIndex &index_)` slot.  In addition we need to add logic to the listener of the `clicked` signal of the buttons. This logic will alter the visibilty of the sources which are not compatible with the new view.
