@@ -1,4 +1,4 @@
-# Handling of Multiple Workspaces in Vates
+# Handling of Multiple Workspaces in the VSI
 
 ### Motivation
 The current handling of multiple workspaces can cause several unhandled exceptions.
@@ -40,7 +40,7 @@ Similarly as above, we need to replace the pipelineBrowserWidget with a child cl
 
 ######Determining the "best" view
 There are two ways to determine the most adequate initial view for a given workspace. 
-First, the user has the option of defining a preferred view in the `Mantid.user.properties` file. He can populate the field `vates.intialview` with either `STANDARD`, `MULTISLICE`, `THREESLICE` or `SPLATTERPLOT`; e.g.: `vates.initalview = THREESLICE`.
+First, the user has the option of defining a preferred view in the `Mantid.user.properties` file. He can populate the field `vsi.initialview` with either `STANDARD`, `MULTISLICE`, `THREESLICE` or `SPLATTERPLOT`; e.g.: `vsi.initalview = THREESLICE`.
 
 If this view is not compatible with the type of workspace, then the standard view is selected.
 
@@ -52,6 +52,5 @@ In case, there isn't any user-specific setting for the preferred view, we determ
 4. Others --> `STANDARD`
 
 We determine the view which is associated with our selection and make sure that it is compatible with the workspace type. If this is not the case the standard view is selected.
-
 
 ###Feedback
