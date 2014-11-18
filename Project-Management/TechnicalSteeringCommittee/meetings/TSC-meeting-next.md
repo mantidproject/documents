@@ -8,3 +8,4 @@ Agenda
 * Brief chat about http://trac.mantidproject.org/mantid/ticket/10501. (Owen)
 * F20 testing update (Ross/Pete)
 * Statistics server update [link](http://django-mantid.rhcloud.com/) (Pete)
+* Visual Studio 2003 Community (Stuart)
