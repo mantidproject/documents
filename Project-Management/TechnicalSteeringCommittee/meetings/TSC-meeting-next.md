@@ -8,7 +8,7 @@ Agenda
 * F20 testing update (Ross/Pete)
 * Statistics server update [link](http://django-mantid.rhcloud.com/) (Pete)
 * HDF5 vs NeXus API performance (Owen/Pete)
-* Visual Studio 2003 Community (Stuart)
+* Visual Studio 2013 Community (Stuart)
 
 * Make suggestion of topics the TSC presents at developer meeting and agenda items for TSC meeting days scheduled during: http://www.mantidproject.org/Category:January_2015_Visit 
 * Are you are aware if there exist good documenation for: describe well which documentation needs to updated before fixing a ticket and tested when testing a ticket. If not should this be a maintenance task?
