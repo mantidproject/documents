@@ -10,7 +10,7 @@ Agenda
 * HDF5 vs NeXus API performance (Owen/Pete)
 * Visual Studio 2013 Community (Stuart)
 
-* Make suggestion of topics the TSC presents at developer meeting and agenda items for TSC meeting days scheduled during: http://www.mantidproject.org/Category:January_2015_Visit 
+* Make suggestion of topics the TSC presents at developer meeting and agenda items for TSC meeting days scheduled during: http://www.mantidproject.org/Category:January_2015_Visit (Pete)
 * Are you are aware if there exist good documenation for: describe well which documentation needs to updated before fixing a ticket and tested when testing a ticket. If not should this be a maintenance task?
 
 Minutes
@@ -23,4 +23,5 @@ Minutes
  * ACTION: Stuart to repackage Paraview 3.98 as a Software Collection for Fedora 20.
  * Pete has a draft of the JSON format.  He is planning to use OpenShift and Mathieu has offered to provide some UI and plotting for django.  The code is [here](https://github.com/mantidproject/webapp/).
  * Owen has a repo under his account [link](https://github.com/OwenArnold/hdf5_vs_nexus/).  The perfomance results are in this repo from running on Owen's and Pete's machines.  The results seem counter intuitive so far.  The tests need to be fleshed out more.  Other people who know the HDF5/NAPI should have a look at the code.
- * 
+ * Everyone agreed it was a good idea to move to VS 2013.  For people who want to develop non-OSS software (i.e. ISIS people) they would need 2013 Standard/Pro.  The would reduce the cost drastically for ORNL.  ACTION: Stuart will test building with VS2013 against the existing 3rd Party.  We will look at moving to VS2013 during the maintenance period after the release.
+ 
