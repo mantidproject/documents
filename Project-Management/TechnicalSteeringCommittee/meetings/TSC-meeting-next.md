@@ -15,4 +15,4 @@ Minutes
 =======
  * We should login regularly and run updates regularly (i.e. apt-get dist-upgrade).  Also we need to update the jenkins configuration.  ACTION: Martyn will have a look to see if there is any sensitive information in the config dump.
  * Everyone agreed to add the ESS domain to allowed slack users (@esss.se)
- * 
+ * Problem with Poco version on Ubuntu that prevents https downloading.  The version on debian is very out of date, and this problem has been fixed in newer versions (even on RHEL!).
