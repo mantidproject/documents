@@ -21,5 +21,5 @@ Minutes
  * We decided to start to use JSONCPP for parsing JSON rather than upgrading Boost.  ACTION: Martyn will build for Windows and Mac Intel.  ACTION: Stuart will try and rebuild for RHEL6 on COPR.  A formula exists for homebrew.
  * Discussion of [link](http://trac.mantidproject.org/mantid/ticket/10501):  Everyone thought this was a good idea to move forward with.
  * ACTION: Stuart to repackage Paraview 3.98 as a Software Collection for Fedora 20.
- * Pete has a draft of the JSON format.  He is planning to use OpenShift and Mathieu has offered to provide some UI and plotting for django.  The code is [link](https://github.com/mantidproject/webapp/).
+ * Pete has a draft of the JSON format.  He is planning to use OpenShift and Mathieu has offered to provide some UI and plotting for django.  The code is [here](https://github.com/mantidproject/webapp/).
  * Owen has a repo under his account [link](https://github.com/OwenArnold/hdf5_vs_nexus/).  The perfomance results are in this repo from running on Owen's and Pete's machines.
