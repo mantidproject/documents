@@ -7,4 +7,4 @@ Agenda
 * Are you are aware if there exist good documenation for: describe well which documentation needs to updated before fixing a ticket and tested when testing a ticket. If not should this be a maintenance task?
 * Brief chat about http://trac.mantidproject.org/mantid/ticket/10501. (Owen)
 * F20 testing update (Ross/Pete)
-* Statistics server update
+* Statistics server update [link](http://django-mantid.rhcloud.com/)
