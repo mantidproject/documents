@@ -22,4 +22,5 @@ Minutes
  * Discussion of [link](http://trac.mantidproject.org/mantid/ticket/10501):  Everyone thought this was a good idea to move forward with.
  * ACTION: Stuart to repackage Paraview 3.98 as a Software Collection for Fedora 20.
  * Pete has a draft of the JSON format.  He is planning to use OpenShift and Mathieu has offered to provide some UI and plotting for django.  The code is [here](https://github.com/mantidproject/webapp/).
- * Owen has a repo under his account [link](https://github.com/OwenArnold/hdf5_vs_nexus/).  The perfomance results are in this repo from running on Owen's and Pete's machines.
+ * Owen has a repo under his account [link](https://github.com/OwenArnold/hdf5_vs_nexus/).  The perfomance results are in this repo from running on Owen's and Pete's machines.  The results seem counter intuitive so far.  The tests need to be fleshed out more.  Other people who know the HDF5/NAPI should have a look at the code.
+ * 
