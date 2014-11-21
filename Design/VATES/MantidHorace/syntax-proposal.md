@@ -4,7 +4,7 @@
 The scope of this work has been summarised already [[1]] :
 > Keeping Horace interface would allow smooth transfer experience for all current Horace users and easy comparison of new and old well verified results, so it is suggested to keep Horace interface with only minor reasonable modifications. 
 
-**This design document is to keep an incremental, running design on new phases of a mantid-horace syntax. It is NOT intended to detail (at time of writing) the complete set of mantid-horace, although that is the eventual aim.**
+**This design document is to keep an incremental, running design on new phases of a mantid-horace syntax. It is NOT intended to detail (at time of writing) the complete set of mantid-horace commands, although that is the eventual aim.**
 
 This document is intended to finally pull together contributions from several authors into a workable design document. Where possible the source of the syntax
 will be referenced. The primary sources for this document have been:
@@ -21,7 +21,7 @@ will be referenced. The primary sources for this document have been:
 
 # Contributors
 
-Contributors in no particular order. These are people who have provided groundwork for the proposed syntax.
+These are people who have provided groundwork for the proposed syntax.
 
 | Contributor        | Facility           |
 | ------------- |:-------------:|
@@ -35,7 +35,7 @@ Contributors in no particular order. These are people who have provided groundwo
 
 # Terminology
 
-Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are equivalent to Horace *DND* objects. Mantid *MDEventWorkspaces* are equivalent to Horace *SQW* objects. One major difference highlighted [[1]] is that a *SQW* object is a *DND* object, where as *MDHistoWorkspaces* and *MDEventWorkspaces* are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance, we refer to them in a generic way as *MDWorkspaces*.
+Mantid has it's own analogues to Horace objects. Mantid *MDHistoWorkspaces* are equivalent to Horace *DND* objects. Mantid *MDEventWorkspaces* are equivalent to Horace *SQW* objects. One major difference highlighted [[1]] is that a *SQW* object is a *DND* object, where as *MDHistoWorkspaces* and *MDEventWorkspaces* are fundamentally different types. The do share some properties, and where the type of the Mantid n-d workspace is of no importance; we refer to them in a generic way as *MDWorkspaces*.
 
 # Syntax
 
@@ -48,18 +48,19 @@ This is know as **cut_sqw** in Horace [[2]], but has been named **CutMD** since 
 
 ### Arguments and Function Signature
 
-***cut = CutMD (data_source, proj, p1_bin, p2_bin, p3_bin,
-p4_bin, nopix, out_filename)***
+***cut = CutMD (data_source, proj, (p1_bin, p2_bin, p3_bin,
+p4_bin), nopix, out_filename)***
 
 * The returned object *cut* will be a Mantid *IMDWorkspace*. This will be either a *MDEventWorkspace* or an *MDHistoWorkspace* depending upon the *nopix* option
 * *data_source* could be either an MDEventWorkspace, or iterable collection of workspaces, or, file, or iterative collection of files of type *.sqw, or *.nxs. Consideration could be given to allowing a mix of such input types in the same collection
 * The *proj* object will be a slightly modified Mantid TableWorkspace. More detail below. [[3]]
 * *out_filename* is optional. If provided then the results will be saved to
 this location. [[3]]
-* *p1_bin* etc., will be provided exactly the same as the existing Horace [[2]]
+* *p1_bin* will be provided as per the Horace syntax [[2]]. However, to allow for n-dimensions, they will be grouped as a tuple (see example)
 syntax. These can either be a single value step, or an integration
 range. The function will accept these either as a python tuple or list
-* We suggest having the *nopix* option on by default [[3]]
+* To keep consistency with Horace, *nopix* option OFF by default [[3]]
+* cutMD() should be a public member function of and MDEventWorkspace so that the dimensionality can be automatically determined in addition to the functional implementation above.
 
 #### Internal Step 1. Generate the Projections
 
@@ -87,25 +88,23 @@ These examples have been generated from examples given for Horace [[1]]
 ```python
 
 proj.u=[1,1,0]; proj.v=[-1,1,0]; proj.uoffset=[0,0,0,0]; proj.type='rrr'
-proj2.u=[1,0,0]; proj2.v=[0,1,0]; proj2.uoffset=[0,0,0,0]; proj2.type='rrr'
-proj3.u=[1,1,1]; proj3.v=[-1,1,0]; proj3.uoffset=[0,0,0,0]; proj3.type='rrr'
 
 proj_table = proj.toWorkspace()
 
 
-my_vol = cut_md(my_ws, proj_table, [0,0.1,8], [2,0.05,6], [-2,-1], [0,10,1000], nopix=True, out_filename='cut.nxs')# Makes a Q,Q,E volume plot
+my_vol = cut_md(my_ws, proj_table, ([0,0.1,8], [2,0.05,6], [-2,-1], [0,10,1000]), nopix=True, out_filename='cut.nxs')# Makes a Q,Q,E volume plot
 
 ```
 
-## GenMD
+## CreateSQW
 
-This is known as **gen_sqw** in Horace [[2]], but has been named **GenMD** since this fits better with Mantid , where *sqw* is not standard term for n-dimensional datasets. **GenMD** will be implemented as a python algorithm. It will have an alias **gen_md** to fit with the existing lower case Horace scripting.
+This is known as **gen_sqw** in Horace [[2]], but has been named **CreateSQW** since this fits better with Mantid. **CreateSQW** will be implemented as a python algorithm. It will have an alias **create_sqw** to fit with the existing lower case Horace scripting.
 
 As highlighted by Toby/Alex, it is important to have a file-backed mode for this operation [[1]]
 
 ### Arguments and Function signature
 
-***out_ws = GenMD ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
+***out_ws = CreateSQW ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
 omega, dpsi, gl, gs, out_filename)***
 
 * *out_ws* is the combined MDWorkspace, for file-based workspaces
@@ -149,7 +148,7 @@ u=[1,0,0]; v=[0,1,0] # specify scattering plane, where u is the crystal directio
 
 omega=0; dpsi=0; gl=0; gs=0 # goniometer offsets for the sample (usually all zero)
 
-ws = gen_md (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
+ws = CreateSQW (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
 
 ```
 
