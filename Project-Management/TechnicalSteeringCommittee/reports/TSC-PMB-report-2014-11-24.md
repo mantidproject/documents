@@ -4,7 +4,7 @@ Mantid Technical Steering Committee Report to PMB
 * Standardizing the coding formats (clang-format)
 * MantidPlot 'replacement'
  * Recommend that we look into a number of potential replacements for MantidPlot
-   * Refactor/Rework of MantidPlot
+   * Refactor/Rework of MantidPlot.
    * Python type workbench (e.g. Spyder, Canopy, Anaconda, etc...)
    * Eclipse RCP based (e.g. DAWN, ICE, etc...)
 * Mantid 'Cloud'
