@@ -28,5 +28,5 @@ Minutes
   * [ ] Review of workspace types
   * [ ] Overview of MD, SliceViewer, VSI, event filtering, etc.
   * [ ] Workflow Algorithms
-* We will get together while Owen and Martyn are here to talk through system tests and how they interact with pull requests.
 * [ ] Nick to come up with a timeline for migration of remaining document to rst and present at Dev Meeting.
+* We will get together while Owen and Martyn are here to talk through system tests and how they interact with pull requests.
