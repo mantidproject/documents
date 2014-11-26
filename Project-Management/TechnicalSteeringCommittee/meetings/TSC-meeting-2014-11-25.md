@@ -9,6 +9,8 @@ Agenda
 Minutes
 =======
 
+Present: Stuart, Pete, Ross, Martyn, Anders
+
 * Desire for presentation on MantidPlot replacement and MantidCloud topics for SSC.  
 * Need useful use cases on the current problems with IDF
  * [ ] Stuart to email and ask people to contribute use cases. 
