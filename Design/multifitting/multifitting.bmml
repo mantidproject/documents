@@ -1,0 +1,201 @@
+<mockup version="1.0" skin="sketch" measuredW="792" measuredH="637" mockupW="693" mockupH="610">
+  <controls>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Canvas" x="99" y="27" w="693" h="491" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::VRule" x="346" y="27" w="-1" h="481" measuredW="5" measuredH="100" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::HRule" x="346" y="237" w="440" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="108" y="34" w="-1" h="-1" measuredW="66" measuredH="29" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>16</size>
+        <text>MultiFit</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::ComboBox" x="396" y="250" w="106" h="-1" measuredW="63" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WS1</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Tree" x="99" y="95" w="252" h="421" measuredW="300" measuredH="225" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3E%20Functions%0A%20%3E%20Gaussian</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="136" y="166" w="-1" h="-1" measuredW="197" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>global%20%20%20%20%20%20Property%20%20%20%20%20%20Value</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="211" y="202" w="120" h="25" measuredW="111" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>H%20%20%20%20%20%20%20%20%20%200.001</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::CheckBox" x="144" y="202" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="211" y="230" w="28" h="25" measuredW="19" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>W</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::CheckBox" x="144" y="230" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Button" x="268" y="225" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Varied</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Label" x="136" y="301" w="-1" h="-1" measuredW="197" measuredH="25" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>global%20%20%20%20%20%20Property%20%20%20%20%20%20Value</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Image" x="389" y="287" w="338" h="221" measuredW="362" measuredH="237" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./Capture.PNG</src>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="211" y="328" w="120" h="25" measuredW="112" measuredH="25" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A1%20%20%20%20%20%20%20%20%200.002</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::CheckBox" x="144" y="328" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Label" x="211" y="356" w="28" h="25" measuredW="23" measuredH="25" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A2</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::CheckBox" x="144" y="356" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Button" x="268" y="351" w="-1" h="-1" measuredW="65" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Varied</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="356" y="34" w="-1" h="-1" measuredW="143" measuredH="29" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>16</size>
+        <text>Data%20to%20be%20fitted</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Canvas" x="356" y="68" w="303" h="154" measuredW="100" measuredH="70" zOrder="20" locked="false" isInGroup="-1"/>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Button" x="682" y="77" w="-1" h="-1" measuredW="78" measuredH="28" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20WS</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Button" x="682" y="105" w="-1" h="-1" measuredW="68" measuredH="28" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Remove</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Button" x="682" y="131" w="-1" h="-1" measuredW="77" measuredH="28" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Other%20%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::CheckBox" x="364" y="98" w="25" h="20" measuredW="25" measuredH="22" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::VRule" x="391" y="72" w="-1" h="146" measuredW="5" measuredH="100" zOrder="25" locked="false" isInGroup="-1"/>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Label" x="411" y="72" w="-1" h="-1" measuredW="231" measuredH="25" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WS%20name%20%20%20%20%20%20%20Sp%20Number%20%20other%20%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="411" y="97" w="181" h="25" measuredW="151" measuredH="25" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WS1%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="411" y="119" w="181" h="25" measuredW="151" measuredH="25" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WS2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Label" x="411" y="141" w="181" h="25" measuredW="151" measuredH="25" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WS3%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::CheckBox" x="364" y="122" w="25" h="20" measuredW="25" measuredH="22" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::CheckBox" x="364" y="144" w="25" h="20" measuredW="25" measuredH="22" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Arrow" x="253" y="389" w="33" h="28" measuredW="150" measuredH="100" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Image" x="132" y="266" w="-1" h="-1" measuredW="141" measuredH="33" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./LinearBackground.PNG</src>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::PointyButton" x="502" y="248" w="-1" h="-1" measuredW="29" measuredH="28" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::PointyButton" x="367" y="249" w="-1" h="-1" measuredW="29" measuredH="28" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <text>%3C</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="__group__" x="136" y="426" w="201" h="211" measuredW="201" measuredH="211" zOrder="34" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="201" h="211" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="61"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="14" y="20" w="98" h="29" measuredW="98" measuredH="29" zOrder="1" locked="false" isInGroup="61">
+          <controlProperties>
+            <size>16</size>
+            <text>Gaussian%3A%20H</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="21" y="60" w="148" h="25" measuredW="148" measuredH="25" zOrder="2" locked="false" isInGroup="61">
+          <controlProperties>
+            <text>WS%20name%20%20%20%20%20%20%20%20%20Value</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="38" y="91" w="128" h="25" measuredW="128" measuredH="25" zOrder="3" locked="false" isInGroup="61">
+          <controlProperties>
+            <text>WS1%20%20%20%20%20%20%20%20%20%20%200.03</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="38" y="121" w="128" h="25" measuredW="128" measuredH="25" zOrder="4" locked="false" isInGroup="61">
+          <controlProperties>
+            <text>WS1%20%20%20%20%20%20%20%20%20%20%200.04</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>

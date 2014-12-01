@@ -1,11 +1,6 @@
 # --------------------------------------------------------------------------------------------------------------------------------------
 #  Python Training Exercise 2 Solution with syntax style
 # A generalized script
-#  Changes:
-# 		- Uses new parameter names. All parameters now have a consistent naming style. 
-#		- Numbers, lists can be used directly without conversion to strings
-#              - Dialog functions have new arguments, enable and disable which can be
-#                use to explicity enable or disable a control when the dialog is raised
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
 # Load the monitor spectrum, asking the  user for file
@@ -20,7 +15,7 @@ LoadRaw(Filename=file,OutputWorkspace="Small_Angle",SpectrumMin=130, SpectrumMax
 RemoveBins(InputWorkspace="Monitor",OutputWorkspace="Monitor",XMin=19900,XMax=20500,Interpolation='Linear')
 
 # Correct monitor for a flat background
-FlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList=0,StartX=31000,EndX=39000)
+CalculateFlatBackground(InputWorkspace="Monitor",OutputWorkspace="Monitor",WorkspaceIndexList=0,StartX=31000,EndX=39000)
 
 # Convert monitor to wavelength
 ConvertUnits(InputWorkspace="Monitor",OutputWorkspace="Monitor",Target="Wavelength")

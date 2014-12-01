@@ -1,0 +1,82 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="693" measuredH="501" mockupW="645" mockupH="484">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="53" y="17" w="528" h="484" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>MantidSlice</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Tree" x="68" y="73" w="173" h="119" measuredW="300" measuredH="225" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%5Bx%5D%20%3E%20or%20this%0A%5B%20%5D%20v%20just%20like%0A..%5B%20%5D%20this</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::List" x="222" y="73" w="158" h="119" measuredW="100" measuredH="126" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Event%09%09123MB%0AGroup%09%092GB%0AEvent%09%0995MB</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::MenuBar" x="68" y="48" w="312" h="29" measuredW="300" measuredH="29" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%5B%20%5D%20Name%2C%20%2C%2C%2C%2C%20Type%09%09Size</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ComboBox" x="387" y="50" w="-1" h="-1" measuredW="60" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Load</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::ComboBox" x="387" y="80" w="-1" h="-1" measuredW="56" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sort</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="456" y="49" w="-1" h="-1" measuredW="61" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Delete</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Button" x="456" y="79" w="-1" h="-1" measuredW="58" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Group</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::StickyNote" x="53" y="267" w="640" h="204" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <text>1.%20Common%20widget%20for%20workspace%20display%20with%20Mantidplot%20%28with%20different%20formatting%20options%29%20extracted%20and%20enhanced%20from%20current%20workspacelist%20widget%0A2.%20Selection%20box%20in%20title%20bar%20to%20handle%20select%20/%20unselect%20all%0A3.%20As%20in%20Mantidplot%20all%20workspaces%20have%20a%20right%20click%20save%20option%0ALoad%20drop%20down%20button%20%28like%20on%20Mantidplot%20with%20options%20beneath%20for%20File%2C%20Workspace%20%26%20possibly%20live%20data%29%0ADelete%20-%20Deletes%20selected%20workspaces%0ASort%20-%20sort%20options%20as%20in%20mantidplot%20%28most%20recent/name%29%0AGroup%20-%20groups%20selected%20workspaces%20/%20changes%20to%20ungroup%20when%20selected%20ws%20is%20a%20group%0ACombine%20-%20Launches%20another%20dialog%20to%20combine%20ws%20using%20algebra%0AProcess%20-%20Processes%20the%20selected%20workspaces%20and%20creates%20graphs</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="387" y="153" w="161" h="33" measuredW="71" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Process</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="387" y="116" w="161" h="33" measuredW="74" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Combine</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::CallOut" x="48" y="46" w="-1" h="-1" measuredW="35" measuredH="39" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::CallOut" x="191" y="50" w="-1" h="-1" measuredW="36" measuredH="39" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::CallOut" x="156" y="130" w="-1" h="-1" measuredW="39" measuredH="39" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>3</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Label" x="68" y="231" w="-1" h="-1" measuredW="103" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>rest%20of%20mslice%20gui</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::VSplitter" x="53" y="201" w="528" h="-1" measuredW="100" measuredH="11" zOrder="15" locked="false" isInGroup="-1"/>
+  </controls>
+</mockup>

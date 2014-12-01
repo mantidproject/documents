@@ -1,0 +1,17 @@
+1. Start Mantidplot
+2. Bring up the Mantidplot DGSReduction dialog
+3. Click the ?
+4. Take a usage example, copy paste an run
+5. Go to the Help->algorithmDecriptions
+6. Introduce the home web page
+6.1 Training courses
+6.2 News
+6.3 Citing Mantid
+6.4 Download
+6.5 Contact us
+6.6 Documentation
+
+7. Show the way to find the algorithms from the website
+8. Search for DeleteTableRows
+8.1. Example of python to create a table workspace
+8.2. Copy - Paste and execute

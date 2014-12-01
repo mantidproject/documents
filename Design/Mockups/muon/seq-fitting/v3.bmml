@@ -1,0 +1,95 @@
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="538" measuredH="542" mockupW="503" mockupH="517">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="35" y="89" w="503" h="453" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Muon%20Analysis%20-%20Sequential%20Fitting</text>
+        <topheight>27</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="109" y="135" w="414" h="-1" measuredW="112" measuredH="24" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>up</state>
+        <text>MUSR00001%20-%2099</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="50" y="137" w="59" h="-1" measuredW="33" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <text>Runs%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="478" y="246" w="-1" h="-1" measuredW="45" measuredH="24" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Run</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="420" y="246" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Stop</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::DataGrid" x="49" y="302" w="474" h="225" measuredW="424" measuredH="138" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <text>Run%2C%20Fit%20quality%2C%20%20f1.A%2C%20f1.B%2C%20f2.A%0AMUSR00001%2C%200.1%2C%205%20%280.003%29%2C%200.2%20%280.005%29%2C%200.001%20%280.001%29%0AMUSR00002%2C%200.09%2C%202%20%280.56%29%2C%200.5%20%280.0067%29%2C%200.026%20%280.679%29%0AMUSR00003%2C%200.5%2C%203%20%280.345%29%2C%200.9%20%280.123%29%2C%200.4%20%280.0%29%20%0A...%2C...%2C...%2C...%2C...</text>
+        <value>58</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="50" y="281" w="-1" h="-1" measuredW="59" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Diagnosis</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="50" y="173" w="59" h="-1" measuredW="35" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <text>Label%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="109" y="171" w="414" h="-1" measuredW="54" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <state>up</state>
+        <text>SeqFit1</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Title" x="209" y="25" w="-1" h="-1" measuredW="164" measuredH="43" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variant%203</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::RadioButton" x="50" y="207" w="-1" h="-1" measuredW="212" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <state>selected</state>
+        <text>Use%20parameters%20from%20previous%20fit</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::RadioButton" x="292" y="207" w="-1" h="-1" measuredW="218" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <text>Use%20initial%20parameters%20for%20every%20fit</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::ProgressBar" x="50" y="248" w="355" h="20" measuredW="100" measuredH="20" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <indeterminate>false</indeterminate>
+        <scrollBarValue>16</scrollBarValue>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="169" y="248" w="-1" h="-1" measuredW="117" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>21%25%20%28MUSR00004%29</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

@@ -1,0 +1,7 @@
+run = Load('Training_Exercise3b_SNS.nxs')
+instrument_view = getInstrumentView(run.name())
+render = instrument_view.getTab(InstrumentWindow.RENDER)
+render.changeColorMap('/Applications/MantidPlot.app/colormaps/BlackBodyRadiation.MAP')
+render.setMinValue(0)
+render.setMaxValue(2000) 
+instrument_view.show()

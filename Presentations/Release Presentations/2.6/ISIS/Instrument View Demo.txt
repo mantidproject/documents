@@ -1,0 +1,14 @@
+1. Load SANS2D000000808 (system tests data)
+2. Show instrument
+3. Instrument Tree tab select rear detector
+4. Centre view with right mouse drag, and zoom with scroll wheel
+5. Goto Mask/Group tab
+6. Select a ring tool and draw a ring around the beam centre
+7. Explain that the shapes refer to whatever tab you have selected (pick, mask or group)
+8. change between them and show how the border colour of the shape changes to indicate this.
+9. Move to the Pick tab
+10. Explain that the miniplot show the sum of all of the pixels in all of the shapes.
+11. Make the ring bigger and show that the miniplot updates.
+12. Draw another shape and show the change in the miniplot.
+13. Move back to the Mask tab
+14. Click Apply.  You have now selected you mask while looking at the data and then applied it.

@@ -1,25 +1,19 @@
 # -----------------------------------------------------
 #  Python Training Exercise 1 Solution.
 #  Removing the HRPD prompt pulse
-#  Changes:
-# 		- Uses new parameter names. All parameters now have a consistent naming style. 
-#		- Numbers, lists can be used directly without conversion to strings
-#       - Uses the Load algorithm and newer way of merging plots
 #------------------------------------------------------
 
 # The input data set
 inputData = "HRP39182"
-# The path to the data (this may have to be change based upon your setup
-path = "C:/MantidInstall/Data/"
 # Load the file
-Load(Filename=path+inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
+Load(Filename=inputData+".RAW",OutputWorkspace=inputData,Cache="If Slow")
 
 # First do the analysis without prompt pulse removal so that we can compare the difference
 # Align the detectors (incoporates unit conversion to d-Spacing)
-cal_file = "hrpd_new_072_01.cal"
-AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withpulse",CalibrationFile=path + cal_file)
+cal_file = "hrpd_new_072_01_corr.cal"
+AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withpulse",CalibrationFile=cal_file)
 # Focus the data
-DiffractionFocussing(InputWorkspace="aligned-withpulse",OutputWorkspace="focussed-withpulse",GroupingFileName=path+cal_file)
+DiffractionFocussing(InputWorkspace="aligned-withpulse",OutputWorkspace="focussed-withpulse",GroupingFileName=cal_file)
 
 # Plot a spectrum. As each pulse is removed below, the graph will update
 plotSpectrum(inputData,0)
@@ -31,9 +25,9 @@ for i in range(0,5):
   MaskBins(InputWorkspace=inputData,OutputWorkspace=inputData,XMin=min,XMax=max)
 
 # Align the detectors (on the data with the pulse removed incoporates unit conversion to d-Spacing)
-AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withoutpulse",CalibrationFile=path + cal_file)
+AlignDetectors(InputWorkspace=inputData,OutputWorkspace="aligned-withoutpulse",CalibrationFile=cal_file)
 # Focus the data
-DiffractionFocussing(InputWorkspace="aligned-withoutpulse",OutputWorkspace="focussed-withoutpulse",GroupingFileName=path + cal_file)
+DiffractionFocussing(InputWorkspace="aligned-withoutpulse",OutputWorkspace="focussed-withoutpulse",GroupingFileName=cal_file)
 
 # Now plot a focussed spectrum with and without prompt peak removal so that you can see the difference
 plotSpectrum(["focussed-withoutpulse","focussed-withpulse"],0)
