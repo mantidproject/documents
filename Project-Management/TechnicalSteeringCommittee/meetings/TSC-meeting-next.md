@@ -8,15 +8,19 @@ Agenda
 ..* Algorithm runtime dependency
 ..* Core packages
 6. dot files for DataProcessingAlgorithms
-7. HDF5/Nexus fix
+7. HDF5/Nexus performance tests should be completed? What to do next?
 8. Kill off unused headers
+9. Encourage people to use Markdown type formats over microsoft formats in documentation?
 
 Actions/Agreed
 ========
 * Dump cpack for linux. Pete will start looking at the RPMs
 * Martyn will look into control files
 * Maintenance task to use https://code.google.com/p/include-what-you-use/ via clang
-* Move to using public and private features of the Shared libraries in CMAKE 3.0 
+* We are going to move to a slightly newer version of CMAKE to take advantage of key features. Move will be to CMAKE 2.8.12
+* Start moving to External Data. 
+..* Move the system test scripts over to the main Mantid repository
+..* Then look at adding the external data
+* Move to using public and private features of the Shared libraries in newer CMAKE
 * Build improvements should be benchmarked. 40 mins for RHEL6 currently
-* 
 
