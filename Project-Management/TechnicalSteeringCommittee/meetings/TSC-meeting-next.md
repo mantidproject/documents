@@ -1,5 +1,5 @@
-Agenda
-======
+# Agenda
+
 1. Are you are aware if there exist good documenation for: describe well which documentation needs to updated before fixing a ticket and tested when testing a ticket. If not should this be a maintenance task?
 2. What to do about System tests
 3. Moving to cmake external data
@@ -13,8 +13,8 @@ Agenda
 9. Encourage people to use Markdown type formats over microsoft formats in documentation?
 10. We need a mechanism in the pull request workflow of stopping pull requests being merged unless system tests haver run and passed.
 
-Actions/Agreed
-========
+# Actions/Agreed
+
 * Dump cpack for linux. Pete will start looking at the RPMs
 * Martyn will look into control files
 * Maintenance task to use https://code.google.com/p/include-what-you-use/ via clang
@@ -27,8 +27,11 @@ Actions/Agreed
 * Move to using public and private features of the Shared libraries in newer CMAKE see above.
 * Build improvements should be benchmarked. 40 mins for RHEL6 currently
 
-Proposed Strategy for Pull Requests handling System Tests is as follows:
-------------------------------------------------------------------------
+## Proposed Strategy for Pull Requests handling System Tests is as follows: 
+
+
+## Idea 1: Don't allow merge of pull requests until system tests pass
+s
 * We take the existing route thus far with pull requests
 * When the branch is marked as passing incremental a new job queries the open pull requests, and find those marked as passing incrmental builds.
 * A new branch is created from master. branches from above are merged in to the same branch.
@@ -36,6 +39,14 @@ Proposed Strategy for Pull Requests handling System Tests is as follows:
 * The when system tests complete (if successfull) they mark the ticket with ''system tests complete and passing''
 * If sytem tests fail, then comment should indicate as such.
 * If a branch is causing the system tests to fail then we can add a comment saying ''breaks system tests''
-* A don't merge label, should be added. This could be done instead of using the comments. This could be done by a bot.
+* A don't merge label, should be added. This should be be done in addition of using the comments. This could be done by a bot.
 * Another label that says 'In Progress', since we don't necessarily want to merge a feature in even if the system tests etc pass.
+
+Idea 2: Do allow merging, but immediately start up an isolated system test run on that branch
+------------------------------------------------------------------------
+* Would help a lot with figuring out what has broken system tests
+* Would help reduce complexity of implementation
+* We would get more broken stuff in master
+
+
 
