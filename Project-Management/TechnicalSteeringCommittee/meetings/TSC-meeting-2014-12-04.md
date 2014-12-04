@@ -17,6 +17,8 @@
 
 # Actions/Agreed
 
+* Test timeouts in ctest (Martyn)
+* Move build scripts to use cmake and run via cmake --build (Stuart)
 * Check LET with HDF5 vs Nexus (Pete/Owen)
 * We need a v2 of Loaders for EventNexus that use HDF5 under the hood (Pete)
 * New method on DataProcessingAlgorithm to return the dot information to create a workflow diagram (Pete/Owen)
