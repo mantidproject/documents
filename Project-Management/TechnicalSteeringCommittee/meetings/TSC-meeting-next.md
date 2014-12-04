@@ -10,14 +10,14 @@
 6. dot files for DataProcessingAlgorithms
 7. HDF5/Nexus performance tests should be completed? What to do next?
 8. Kill off unused headers
-9. Encourage people to use Markdown type formats over microsoft formats in documentation?
-10. We need a mechanism in the pull request workflow of stopping pull requests being merged unless system tests haver run and passed.
-11. Using Paraview as new MantidPlot?
-12. Shipping only Paraview components with MantidPlot?
-13. Should we use the VSI as a top-down application?
+9. Using Paraview as new MantidPlot?
+10. Shipping only Paraview components with MantidPlot?
+11. Should we use the VSI as a top-down application?
 
 # Actions/Agreed
 
+* Check LET with HDF5 vs Nexus (Pete/Owen)
+* We need a v2 of Loaders for EventNexus that use HDF5 under the hood (Pete)
 * New method on DataProcessingAlgorithm to return the dot information to create a workflow diagram (Pete/Owen)
 * Owen will talk to Kitware about branded apps.
 * Dump cpack for linux. Pete will start looking at the RPMs
