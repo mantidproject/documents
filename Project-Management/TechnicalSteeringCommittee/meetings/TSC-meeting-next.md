@@ -8,8 +8,13 @@ Agenda
 ..* Algorithm runtime dependency
 ..* Core packages
 6. dot files for DataProcessingAlgorithms
+7. HDF5/Nexus fix
+8. Kill off unused headers
 
 Actions
 ========
-* Dump cpack for linux. Pete will start looking at the RPMs.
+* Dump cpack for linux. Pete will start looking at the RPMs
+* Martyn will look into control files
+* Maintenance task to use https://code.google.com/p/include-what-you-use/ via clang
+* Move to using public and private features of the Shared libraries in CMAKE 3.0 
 
