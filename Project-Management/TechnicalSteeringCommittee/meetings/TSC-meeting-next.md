@@ -11,6 +11,7 @@ Agenda
 7. HDF5/Nexus performance tests should be completed? What to do next?
 8. Kill off unused headers
 9. Encourage people to use Markdown type formats over microsoft formats in documentation?
+10. We need a mechanism in the pull request workflow of stopping pull requests being merged unless system tests haver run and passed.
 
 Actions/Agreed
 ========
@@ -22,6 +23,7 @@ Actions/Agreed
   1. Move the system test scripts over to the main Mantid repository (Martyn)
   2. Then look at adding the external data
   3. CTest for system tests
-* Move to using public and private features of the Shared libraries in newer CMAKE
+  4. Parameterized downstream builds so that pull requests will run system tests
+* Move to using public and private features of the Shared libraries in newer CMAKE see above.
 * Build improvements should be benchmarked. 40 mins for RHEL6 currently
 
