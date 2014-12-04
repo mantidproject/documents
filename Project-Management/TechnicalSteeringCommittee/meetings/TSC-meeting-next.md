@@ -27,3 +27,15 @@ Actions/Agreed
 * Move to using public and private features of the Shared libraries in newer CMAKE see above.
 * Build improvements should be benchmarked. 40 mins for RHEL6 currently
 
+Proposed Strategy for Pull Requests handling System Tests is as follows:
+------------------------------------------------------------------------
+* We take the existing route thus far with pull requests
+* When the branch is marked as passing incremental a new job queries the open pull requests, and find those marked as passing incrmental builds.
+* A new branch is created from master. branches from above are merged in to the same branch.
+* The open pull requests are marked with a comment saying ''system tests started''
+* The when system tests complete (if successfull) they mark the ticket with ''system tests complete and passing''
+* If sytem tests fail, then comment should indicate as such.
+* If a branch is causing the system tests to fail then we can add a comment saying ''breaks system tests''
+* A don't merge label, should be added. This could be done instead of using the comments. This could be done by a bot.
+* Another label that says 'In Progress', since we don't necessarily want to merge a feature in even if the system tests etc pass.
+
