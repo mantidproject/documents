@@ -12,9 +12,14 @@
 8. Kill off unused headers
 9. Encourage people to use Markdown type formats over microsoft formats in documentation?
 10. We need a mechanism in the pull request workflow of stopping pull requests being merged unless system tests haver run and passed.
+11. Using Paraview as new MantidPlot?
+12. Shipping only Paraview components with MantidPlot?
+13. Should we use the VSI as a top-down application?
 
 # Actions/Agreed
 
+* New method on DataProcessingAlgorithm to return the dot information to create a workflow diagram (Pete/Owen)
+* Owen will talk to Kitware about branded apps.
 * Dump cpack for linux. Pete will start looking at the RPMs
 * Martyn will look into control files
 * Maintenance task to use https://code.google.com/p/include-what-you-use/ via clang
