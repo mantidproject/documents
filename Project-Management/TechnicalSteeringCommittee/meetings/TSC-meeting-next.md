@@ -31,7 +31,7 @@
 
 
 ## Idea 1: Don't allow merge of pull requests until system tests pass
-s
+
 * We take the existing route thus far with pull requests
 * When the branch is marked as passing incremental a new job queries the open pull requests, and find those marked as passing incrmental builds.
 * A new branch is created from master. branches from above are merged in to the same branch.
