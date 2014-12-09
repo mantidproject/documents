@@ -6,7 +6,6 @@ Agenda
 * Jenkins pull request builder plugin
 * Bluejeans for developer meeting
 * Graphics within Mantid
-* Agree on final strategy for pull requests
 
 Minutes
 -------
@@ -17,3 +16,5 @@ Present: Stuart, Tobias, Peter, Ross, Martyn, Anders
 * It looks like the performance tests for LET indicate that files with larger number of items slow down much more using the NAPI.  LoadNexusLogs will be the first to be modified to test the improvements in using the HDF API.
 * Concerns about the stability of the pull request plugin - especially with checking out.  Maybe we should look into alternatives or fixing the current one.
 * GitHub presents a very nice user interface for handling the reverting of pull requests.  
+* We should broadcast the developer meeting using BlueJeans.
+* Stuart will look at find some consistent icons.  Martyn will create a ticket for the First USe Screen issues.  Ross will create a ticket for the blank splash screen issue.  
