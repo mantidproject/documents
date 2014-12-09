@@ -28,10 +28,10 @@
 * Maintenance task to use https://code.google.com/p/include-what-you-use/ via clang
 * We are going to move to a slightly newer version of CMAKE to take advantage of key features. Move will be to CMAKE 2.8.12
 * Start moving to External Data. Get this working in the following order. 
-  1. Move the system test scripts over to the main Mantid repository (Martyn)
   2. Then look at adding the external data
-  3. CTest for system tests
+  1. Move the system test scripts over to the main Mantid repository (Martyn)
   4. Parameterized downstream builds so that pull requests will run system tests
+  3. CTest for system tests
 * Move to using public and private features of the Shared libraries in newer CMAKE see above.
 * Build improvements should be benchmarked. 40 mins for RHEL6 currently
 
