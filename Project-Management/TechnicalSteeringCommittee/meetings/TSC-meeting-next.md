@@ -6,3 +6,4 @@ Agenda
 * Jenkins pull request builder plugin
 * Agree on final strategy for pull requests
 * Bluejeans for developer meeting
+* Graphics within Mantid
