@@ -15,7 +15,7 @@ Present: Stuart, Pete, Ross, Martyn, Anders
 * Need useful use cases on the current problems with IDF
  * [ ] Stuart to email and ask people to contribute use cases. 
 * It was agreed for Tobias Richter to join the Technical Steering Committee.
-* Updated the [wiki](http://www.mantidproject.org/Category:Workshop2015) - Pete will coordinate the agenda.
+* [ ] Updated the [wiki](http://www.mantidproject.org/Category:Workshop2015) - Pete will coordinate the agenda.
   * [ ] Pete/Anders to update pages on coding standard and static analysis.
   * [ ] Owen to present a page on mock and best-practices
   * [ ] Build servers page needs updating
