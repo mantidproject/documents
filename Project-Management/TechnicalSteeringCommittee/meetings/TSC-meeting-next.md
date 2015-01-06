@@ -11,5 +11,5 @@ Agenda
 
 Minutes
 -------
-* We will leave the final decision for pull requests until we meet in person later this month. Stuart will be install the openshift pull request plugin (https://github.com/openshift/test-pull-requests) on Jenkins and disable the current pull request plugin.
+* We will leave the final decision for pull requests until we meet in person later this month. Stuart will be install the openshift pull request plugin (https://github.com/openshift/test-pull-requests) on Jenkins and disable the current pull request plugin.  Martyn is currently working on external data at the moment.
 * 
