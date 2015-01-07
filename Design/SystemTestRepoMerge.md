@@ -37,10 +37,6 @@ where `%(algo)` is replaced by the hashing algorithm and `%(hash)` by the hash c
 
 In the source tree the test data file is replaced with a text file containing the hash code its file name is the data file name with `.%(algo)` appended to it, e.g. CNCS\_7860\_event.nxs is replaced by CNCS\_7860\_event.nxs.md5. CMake defines a set of build rules to fetch the real data from the remote locations as required. The data is stored in object stores defined by the variable `ExternalData_OBJECT_STORES` with the same layout as the server. Symbolic links (copies on Windows) are created in the directory defined by `ExternalData_BINARY_ROOT` and named after the real file that then points to the real data in the object store.
 
-#### Remote Servers
-
-[TODO] We need to decide where to put the data. It seems logical to have a central copy, say on Linode and then have local mirrors at each facility for faster access. Developers would *pull* from the local one but *push* to the central one.
-
 ### Workflow for Adding a File
 
 In order for the build servers torun correctly, care will need to be taken when adding a new file as it will have to be present in the central store **before** pushing the commits that reference it to the git remote. It is proposed that a git alias is created called `add-test-data` that will call a script `git-add-test-data` with paths to file(s) as argument(s). For each file, `filename.ext`, the script will
@@ -48,10 +44,16 @@ In order for the build servers torun correctly, care will need to be taken when 
 * compute the MD5 hash using `cmake -E md5sum`;
 * rename the real file to `EXTERNALDATA_filename.ext.%(hash)`, where `%(hash)` is the MD5 hash;
 * store the MD5 hash in a text file named `filename.ext.md5`;
-* upload `EXTERNALDATA_filename.ext.%(hash)` to the central store as `http://fileserver.org/MD5/%(hash)`; **Question: Is this a good idea?**
 * run `git add filename.ext.md5`;
+* tell user to upload file to server (see below) or should we do it automatically?.
 
-The alias can be setup with the command `git config --global alias.add-test-data "!bash Code/Tools/Git/git-add-test-data"`. It is suggested that a new `SetupForDevelopment.sh` script is created, analogous to the (VTK script)[http://public.kitware.com/gitweb?p=VTK.git;a=blob;f=Utilities/SetupForDevelopment.sh], that sets up the git aliases for a developer.
+The alias can be setup with the command `git config --global alias.add-test-data "!bash Code/Tools/Git/git-add-test-data"`. It is suggested that a new `SetupForDevelopment.sh` script is created, analogous to the [VTK script](http://public.kitware.com/gitweb?p=VTK.git;a=blob;f=Utilities/SetupForDevelopment.sh), that sets up the git aliases for a developer.
+
+#### Remote Servers
+
+[TODO] We need to decide where to put the data. It seems logical to have a central copy, say on Linode and then have local mirrors at each facility for faster access. Developers would *pull* from the local one but *push* to the central one.
+
+**Question: Should we consider installing [Midas](http://www.midasplatform.org/) from Kitware? - It comes with a desktop client that looks a lot like an ftp client but the server portion handles file indexing and serving etc or do we just let apache serve them as static files and install an ftp server?**
 
 ### System Test History
 
@@ -90,3 +92,6 @@ It is proposed that rather than a simple dump of the `systemtests` into `mantid`
 	|          +-- ...
 
 The `StressTests` directory is not used and will be dropped.
+
+**Question: Do we want to structure the Data directory? There will be a lot of cross over with unit test data/system test data ...**
+
