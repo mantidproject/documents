@@ -29,7 +29,9 @@ In addition, it is proposed that existing data within the main code repository b
 
 CMake\'s ExternalData module uses a hash of the file contents to unambigously reference a data file. This also allows it to effectively version the data files. The real data is expected to be stored in a remote location and referenced by its hash. CMake uses a list url templates, defined by `ExternalData_URL_TEMPLATES` such as
 
-```http://fileserver.org/%(algo)/%(hash)```
+```
+http://fileserver.org/%(algo)/%(hash)
+```
 
 where `%(algo)` is replaced by the hashing algorithm and `%(hash)` by the hash code itself, to access the data. We will use the MD5 algorithm so `%(algo)` will always resolve to `MD5`.
 
