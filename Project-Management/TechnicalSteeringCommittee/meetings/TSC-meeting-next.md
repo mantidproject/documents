@@ -6,6 +6,7 @@ Agenda
   * Geometry redo
   * Pull requests (workflow including build servers and system tests)
   * Branch naming - drop `feature/`, `bugfix/` etc prefixes? (Martyn)
+  * Dependency issues https://github.com/mantidproject/documents/blob/master/Design/DependenciesAndRestructure.md (Owen)
 * Go over agenda for [dev meeting](http://www.mantidproject.org/Category:Workshop2015) (Pete...again)
 * Github/Jenkins Slack channels (Martyn, Stuart)
 
