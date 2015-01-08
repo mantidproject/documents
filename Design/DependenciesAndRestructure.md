@@ -21,3 +21,10 @@ Running cmake with the --graphvis option demonstrates how many dependencies our 
 **As of cmake 2.8.11 we have new options when we run target_link_libraries, PUBLIC, PRIVATE and INTERFACE. We should use PRIVATE as much as possible, since PUBLIC is currently being assumed.**
 
 **We should also make attempts to control library visibility for all plugins. No plugins should export symbols. Later versions of cmake have the flag CMAKE_CXX_VISIBILITY_PRESET  to control this.**
+
+### Code reorganisation
+
+Other than some suggested code movements around the plugins, it may be desireable to reorganise other aspects of the code/code-base.
+
+* Introduce a top-level CMakeLists.txt file in the project root directory
+* MantidPlot: Extract Instrument View, refactor ApplicationWindow
