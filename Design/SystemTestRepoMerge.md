@@ -93,4 +93,4 @@ It is proposed that rather than a simple dump of the `systemtests` into `mantid`
 
 The `StressTests` directory is not used and will be dropped.
 
-**Question: Do we want to structure the Data directory? There will be a lot of cross over with unit test data/system test data ...**
+**Question: Do we want to structure the Data directory? There will be a lot of cross over with unit test data/system test data. It may also be simpler to keep a UsageTests directory so that it can be easily zipped up for download by users.**
