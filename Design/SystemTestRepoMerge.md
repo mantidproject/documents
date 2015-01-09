@@ -45,7 +45,7 @@ In order for the build servers torun correctly, care will need to be taken when 
 * rename the real file to `EXTERNALDATA_filename.ext.%(hash)`, where `%(hash)` is the MD5 hash;
 * store the MD5 hash in a text file named `filename.ext.md5`;
 * run `git add filename.ext.md5`;
-* tell user to upload file to server (see below) or should we do it automatically?.
+* tell user to upload file to server with the appropriate name (see below).
 
 The alias can be setup with the command `git config --global alias.add-test-data "!bash Code/Tools/Git/git-add-test-data"`. It is suggested that a new `SetupForDevelopment.sh` script is created, analogous to the [VTK script](http://public.kitware.com/gitweb?p=VTK.git;a=blob;f=Utilities/SetupForDevelopment.sh), that sets up the git aliases for a developer.
 
@@ -72,24 +72,24 @@ It is proposed that rather than a simple dump of the `systemtests` into `mantid`
     |      +-- file1.nxs.md5
     |      +-- file2.nxs.md5
     |  +-- PerformanceTests
-	|      +-- ...
+    |      +-- ...
     |  +-- SystemTests
-	|      +-- scripts
-	|          +-- performance
-	|              +-- analysis.py
-	|              +-- ...
+    |      +-- scripts
+    |          +-- performance
+    |              +-- analysis.py
+    |              +-- ...
     |          +-- stresstestframework
-	|              +-- algorithm_decorator.py
-	|              +-- emailreporter.py
-	|              +-- ...
-	|          +-- InstallerTesting.py
-	|          +-- runSystemTests.py
-	|          +-- ...
-	|      +-- tests
-	|          +-- reference
+    |              +-- algorithm_decorator.py
+    |              +-- emailreporter.py
+    |              +-- ...
+    |          +-- InstallerTesting.py
+    |          +-- runSystemTests.py
+    |          +-- ...
+    |      +-- tests
+    |          +-- reference
     |              +-- reffile1.nxs.md5
-	|          +-- ARCSReductionTest.py
-	|          +-- ...
+    |          +-- ARCSReductionTest.py
+    |          +-- ...
 
 The `StressTests` directory is not used and will be dropped.
 
