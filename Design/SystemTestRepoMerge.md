@@ -69,8 +69,12 @@ It is proposed that rather than a simple dump of the `systemtests` into `mantid`
     +--Code
     +--Test
     |  +-- Data
-    |      +-- file1.nxs.md5
-    |      +-- file2.nxs.md5
+    |      +-- DocTest
+    |          +-- file1.nxs.md5
+    |      +-- SystemTest
+    |          +-- file2.nxs.md5
+    |      +-- UnitTest
+    |          +-- file3.nxs.md5
     |  +-- PerformanceTests
     |      +-- ...
     |  +-- SystemTests
