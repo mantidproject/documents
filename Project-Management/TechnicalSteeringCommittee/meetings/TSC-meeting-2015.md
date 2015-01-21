@@ -8,3 +8,4 @@ Agenda
 3. Branch naming - drop feature/, bugfix/ etc prefixes? (Martyn)
 4. [Dependency issues](https://github.com/mantidproject/documents/blob/master/Design/DependenciesAndRestructure.md) (Owen)
 5. Switching from apache to nginx on linode to reduce system load
+6. Switch to Ninja for build scripts on Linux/Mac
