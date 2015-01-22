@@ -9,3 +9,4 @@ Agenda
 4. [Dependency issues](https://github.com/mantidproject/documents/blob/master/Design/DependenciesAndRestructure.md) (Owen)
 5. Switching from apache to nginx on linode to reduce system load
 6. Switch to Ninja for build scripts on Linux/Mac
+7. Moving development information to gh-pages/github wiki
