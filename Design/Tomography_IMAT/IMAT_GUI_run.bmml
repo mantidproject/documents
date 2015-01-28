@@ -1,0 +1,70 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1093" measuredH="739" mockupW="1080" mockupH="720">
+  <controls>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Image" x="14" y="74" w="540" h="540" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>../viewer.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Image" x="553" y="81" w="534" h="527" measuredW="77" measuredH="79" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="879" y="627" w="154" h="29" measuredW="152" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Start/Stop%20Monitoring</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="879" y="663" w="154" h="27" measuredW="113" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reconstruct%20All</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="879" y="698" w="154" h="27" measuredW="110" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <menuIcon>false</menuIcon>
+        <state>disabled</state>
+        <text>Download%20Final</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="__group__" x="13" y="19" w="1080" h="720" measuredW="1080" measuredH="720" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="2" controlTypeID="__group__" x="0" y="0" w="1080" h="720" measuredW="1080" measuredH="720" zOrder="0" locked="false" isInGroup="22">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="0" y="0" w="1080" h="720" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="2">
+              <controlProperties>
+                <bottomheight>0</bottomheight>
+                <dragger>true</dragger>
+                <text>IMAT%20-%20Reconstruction</text>
+                <verticalScrollbar>false</verticalScrollbar>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="0" y="29" w="1080" h="690" measuredW="249" measuredH="100" zOrder="1" locked="false" isInGroup="2">
+              <controlProperties>
+                <selectedIndex>1</selectedIndex>
+                <text>Setup%2C%20Run%2C%20Edit%20Parameters</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::List" x="13" y="613" w="804" h="126" measuredW="100" measuredH="126" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12%3A07%3A%20Detected%20FITS%20file%3B%20uploading...%0A12%3A07%3A%20Uploaded.%0A12%3A08%3A%20Detected%20FITS%20file%2C%20uploading...%0A12%3A08%3A%20Uploaded.%0A12%3A08%3A%20Submitting%20partial%20reconstruction.</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::StickyNote" x="729" y="297" w="183" h="93" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reconstructed%20Image</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Label" x="277" y="80" w="-1" h="-1" measuredW="56" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%200003</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
