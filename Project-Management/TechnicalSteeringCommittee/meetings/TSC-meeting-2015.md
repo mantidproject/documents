@@ -11,3 +11,8 @@ Agenda
 6. Switch to Ninja for build scripts on Linux/Mac
 7. Moving development information to gh-pages/github wiki
 8. Dropping support for OSX 10.8. Paraview/clang/intel/etc is pushing us to make this decision (Stuart/Pete on behalf of Steve)
+
+Minutes
+=======
+1. Geometry discussion - see [notes](../reports/IDFv2-notes.md)
+2. 
