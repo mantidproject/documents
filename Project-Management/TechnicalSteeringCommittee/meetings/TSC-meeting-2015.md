@@ -15,4 +15,8 @@ Agenda
 Minutes
 =======
 1. Geometry discussion - see [notes](../reports/IDFv2-notes.md)
-2. 
+2. External Data - Martyn gave overview of progress on external data. Main mantid repository was nearly converted but the question still remained about where the data should go remotely. As a temporary solution is was decided to use Linode while a longer term solution was found. Issues to look in to:
+  * Build scripts need to configure locations for data during build;
+  * Location of remote data;
+  * Links for SNS dropbox that get mounted locally;
+  * Fold in system tests + data into main repository. New target to download system data.
