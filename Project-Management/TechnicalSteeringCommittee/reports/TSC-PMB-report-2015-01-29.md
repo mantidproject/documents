@@ -9,6 +9,7 @@ Mantid Technical Steering Committee Report to PMB
 * Plan to streamline cmake configuration and bundle paraview libraries.
 * Moving towards integrating Paraview 4.3  (drop support for 10.8)
 * trac deprecation
+* Anders in new TSC Chairman
 
 
 
