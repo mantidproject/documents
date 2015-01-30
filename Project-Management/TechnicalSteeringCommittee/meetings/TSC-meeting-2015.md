@@ -31,3 +31,4 @@ Minutes
   * Martyn to coordinate
   * Update documentation for developers about build environment
 7. Need to plan moving the tutorials to rst/Sphinx
+8. PMB agreed that 10.8 OS X support could be dropped for the next release
