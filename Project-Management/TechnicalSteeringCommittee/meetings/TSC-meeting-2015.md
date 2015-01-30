@@ -27,3 +27,7 @@ Minutes
 3. Discuss and decide how to best role out pull request - [see notes](TSC-meeting-2015-Pull-Request-Plan.md)
 4. Branch prefixes to be dropped - Martyn to check trac hooks/git aliases before annoucement
 5. No benefit in moving to nginx from Longview reports
+6. Agreed to move linux/mac buildscripts to use Ninja
+  * Martyn to coordinate
+  * Update documentation for developers about build environment
+7. 
