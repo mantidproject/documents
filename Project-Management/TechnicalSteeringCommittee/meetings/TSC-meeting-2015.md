@@ -30,4 +30,4 @@ Minutes
 6. Agreed to move linux/mac buildscripts to use Ninja
   * Martyn to coordinate
   * Update documentation for developers about build environment
-7. 
+7. Need to plan moving the tutorials to rst/Sphinx
