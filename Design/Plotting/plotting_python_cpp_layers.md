@@ -35,7 +35,7 @@ values of the lines shown in a plot.
 Diagram of layers
 =================
 
-![future/pyplot: diagram of layers](diagram_plotting_layers_pyplot.png)
+![future/pyplot: diagram of layers](diagram_plotting_layers_pyplot.svg)
 
 The figure shows the different layers used (or dependencies of
 future/pyplot. The proxies python module provides thread safety and
@@ -123,7 +123,8 @@ Code/Mantid/MantidPlot/src/qti.sip.
 As a consequence, in this module you have a mixture of:
 
 - Use of general functions of the traditional mantidplot
-- Use of additional methods from qti (manipulation of plot lines and properties)
+- Use of additional methods from qti (manipulation of plot lines and
+  properties)
 - Use of Qwt functionality
 
 Tips
