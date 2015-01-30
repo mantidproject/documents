@@ -11,6 +11,9 @@ Agenda
 6. Switch to Ninja for build scripts on Linux/Mac
 7. Moving development information to gh-pages/github wiki
 8. Dropping support for OSX 10.8. Paraview/clang/intel/etc is pushing us to make this decision (Stuart/Pete on behalf of Steve)
+9. Names against all items on agenda for Dev meeting. 
+10. C++ coding standard feedback
+11. Time line for pull request and moving to github issues
 
 Minutes
 =======
