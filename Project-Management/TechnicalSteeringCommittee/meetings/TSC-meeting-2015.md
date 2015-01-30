@@ -14,6 +14,7 @@ Agenda
 9. Names against all items on agenda for Dev meeting. 
 10. C++ coding standard feedback
 11. Time line for pull request and moving to github issues
+12. Timeline for transition to VS 2013
 
 Minutes
 =======
