@@ -35,7 +35,7 @@ values of the lines shown in a plot.
 Diagram of layers
 =================
 
-![future/pyplot: diagram of layers](diagram_plotting_layers_pyplot.svg)
+![future/pyplot: diagram of layers](diagram_plotting_layers_pyplot.png)
 
 The figure shows the different layers used (or dependencies of
 future/pyplot. The proxies python module provides thread safety and
