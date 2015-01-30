@@ -35,7 +35,14 @@ values of the lines shown in a plot.
 Diagram of layers
 =================
 
-*** TODO: make svg fig and add here ***
+![future/pyplot: diagram of layers](diagram_plotting_layers_pyplot.png)
+
+The figure shows the different layers used (or dependencies of
+future/pyplot. The proxies python module provides thread safety and
+management of QObject graphical objects. At the moment future/pyplot
+relies on the traditional plotSpectrum, plotBin, etc. functions of the
+traditional mantidplot module, but it also uses qti and Qwt
+functionality exposed through SIP bindings.
 
 Most relevant classes and methods from qti
 ==========================================
