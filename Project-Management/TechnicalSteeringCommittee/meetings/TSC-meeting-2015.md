@@ -44,3 +44,9 @@ Minutes
   * At the start of v3.5
     * Move to GH issues
     * Developers move to VS 2013 (Owen to compile dependencies)
+12. Discussion of dependencies issue
+  * If the mantid loaders made easier to compile then Paraview would likely support Mantid output formats
+  * Benefit of having more but smaller number of library vs the opporsite was discussed
+  * Different organisation to Mantid code, e.g. solve issue with long path lenghts, was discussed. It was agreed that code reorganisation should be taken forward. A suggested time for role out v3.6. Easies to create a branch to play around (Pete)
+  * Code compile time issue. Different ways of creating binaries. This was agreed. Owen is happy to give this a start
+  * class DLLExport on windows. This was agreed. Task to investigate if this is easy or not. Martyn start to investigate
