@@ -23,4 +23,4 @@ Minutes
   * Location of remote data;
   * Links for SNS dropbox that get mounted locally;
   * Fold in system tests + data into main repository. New target to download system data.
-3. Discuss and decide how to best role out pull request - see [notes] (Owen please add link here)
+3. Discuss and decide how to best role out pull request - see notes (Owen please add link here)
