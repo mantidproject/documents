@@ -32,3 +32,15 @@ Minutes
   * Update documentation for developers about build environment
 7. Need to plan moving the tutorials to rst/Sphinx
 8. PMB agreed that 10.8 OS X support could be dropped for the next release
+9. Developer workshop agenda was agreed upon
+10. Coding standards were updated
+11. Timelines:
+  * Start of v3.4
+    * Move to apple clang on OS X (check with Steven)
+  * During v3.4
+    * Developers will move to pull requests after the workshop
+    * Build servers will move to pull requests by the end of March and `develop` is dropped
+    * ExternalData and merge of system tests will be implemented by the end March
+  * At the start of v3.5
+    * Move to GH issues
+    * Developers move to VS 2013 (Owen to compile dependencies)
