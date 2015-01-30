@@ -25,3 +25,5 @@ Minutes
   * Links for SNS dropbox that get mounted locally;
   * Fold in system tests + data into main repository. New target to download system data.
 3. Discuss and decide how to best role out pull request - see notes (Owen please add link here)
+4. Branch prefixes to be dropped - Martyn to check trac hooks/git aliases before annoucement
+5. No benefit in moving to nginx from Longview reports
