@@ -20,4 +20,7 @@ Pull Requests
 1. Open pull request and Click *assign yourself*
 1. Test the changes on your local machine
 1. If the issue passes:
-  * Follow instructions at the bottom (including deleting the branch after the merge)
+  * Follow instructions at the bottom (including deleting the branch after the merge using the button on the page)
+1. If the issue fails:
+  * start a conversation on the pull request with the developer
+  * add the **NeedsAttention** label
