@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="46.185cm" height="19.653cm" viewBox="-2.563 0.842 43.623 20.495"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<ellipse cx="27.473" cy="3.623" rx="15.939" ry="1.355" fill="#FFFFFF" stroke="none"  /><ellipse cx="27.473" cy="3.623" rx="15.939" ry="1.355" fill="none" stroke="#000000"  stroke-width="0.050" /><line x1="9.888" y1="0.887" x2="10.050" y2="20.450" stroke="#000000" stroke-width="0.090" stroke-dasharray="1.00,0.45,0.10,0.45"/>
+<ellipse cx="21.300" cy="15.750" rx="7.700" ry="1.250" fill="#FFFFFF" stroke="none"  /><ellipse cx="21.300" cy="15.750" rx="7.700" ry="1.250" fill="none" stroke="#000000"  stroke-width="0.050" /><text x="21.300" y="15.973"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+qti (C++)</text>
+<text x="3.030" y="4.625"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Names: renaming with &quot;PyName&quot;</text>
+<text x="7.300" y="19.250"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+QwtSymbol</text>
+<line x1="7.425" y1="18.187" x2="7.401" y2="7.526" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="7.400,7.151 7.651,7.650 7.401,7.526 7.151,7.651 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="7.400,7.151 7.651,7.650 7.401,7.526 7.151,7.651 "/>
+<text x="7.132" y="6.625"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+plotSymbol</text>
+<text x="2.686" y="15.825"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Graph</text>
+<line x1="2.575" y1="14.587" x2="2.575" y2="7.476" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="2.575,7.101 2.825,7.601 2.575,7.476 2.325,7.601 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="2.575,7.101 2.825,7.601 2.575,7.476 2.325,7.601 "/>
+<text x="2.308" y="6.575"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Layer</text>
+<text x="-0.978" y="15.825"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Multilayer</text>
+<line x1="-1.100" y1="14.600" x2="-1.089" y2="7.526" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="-1.089,7.151 -0.840,7.651 -1.089,7.526 -1.340,7.650 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="-1.089,7.151 -0.840,7.651 -1.089,7.526 -1.340,7.650 "/>
+<text x="-1.356" y="6.625"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Graph</text>
+<text x="27.473" y="3.845"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+pymantidplot.future.pyplot</text>
+<ellipse cx="15.225" cy="19.005" rx="3.650" ry="1.250" fill="#FFFFFF" stroke="none"  /><ellipse cx="15.225" cy="19.005" rx="3.650" ry="1.250" fill="none" stroke="#000000"  stroke-width="0.050" /><text x="15.225" y="19.228"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Qwt (C++)</text>
+<ellipse cx="20.525" cy="11.205" rx="9.902" ry="1.355" fill="#FFFFFF" stroke="none"  /><ellipse cx="20.525" cy="11.205" rx="9.902" ry="1.355" fill="none" stroke="#000000"  stroke-width="0.050" /><text x="20.525" y="11.028"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+SIP bindings</text>
+<text x="20.525" y="11.828"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+(MantidPlot/src/qti.sip)</text>
+<line x1="42.784" y1="9.687" x2="-2.162" y2="9.837" stroke="#000000" stroke-width="0.090" stroke-dasharray="1.00,0.45,0.10,0.45"/>
+<line x1="42.773" y1="13.087" x2="-2.262" y2="12.937" stroke="#000000" stroke-width="0.090" stroke-dasharray="1.00,0.45,0.10,0.45"/>
+<line x1="12.644" y1="18.121" x2="12.638" y2="12.576" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="12.638,12.201 12.888,12.700 12.638,12.576 12.388,12.701 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="12.638,12.201 12.888,12.700 12.638,12.576 12.388,12.701 "/>
+<line x1="21.300" y1="14.500" x2="21.291" y2="13.076" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="21.288,12.701 21.542,13.199 21.291,13.076 21.042,13.202 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="21.288,12.701 21.542,13.199 21.291,13.076 21.042,13.202 "/>
+<ellipse cx="18.823" cy="7.273" rx="8.050" ry="1.355" fill="#FFFFFF" stroke="none"  /><ellipse cx="18.823" cy="7.273" rx="8.050" ry="1.355" fill="none" stroke="#000000"  stroke-width="0.050" /><text x="18.823" y="7.095"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Proxies</text>
+<text x="18.823" y="7.895"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+(MantidPlot/pymantidplot/proxies.py)</text>
+<line x1="18.823" y1="5.918" x2="22.126" y2="5.041" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="22.488,4.945 22.069,5.315 22.126,5.041 21.941,4.832 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="22.488,4.945 22.069,5.315 22.126,5.041 21.941,4.832 "/>
+<line x1="20.525" y1="9.850" x2="19.209" y2="8.905" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="18.904,8.686 19.456,8.775 19.209,8.905 19.165,9.181 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="18.904,8.686 19.456,8.775 19.209,8.905 19.165,9.181 "/>
+<line x1="27.527" y1="10.247" x2="27.478" y2="5.453" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="27.474,5.078 27.729,5.576 27.478,5.453 27.229,5.581 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="27.474,5.078 27.729,5.576 27.478,5.453 27.229,5.581 "/>
+<ellipse cx="35.898" cy="7.218" rx="7.700" ry="1.250" fill="#FFFFFF" stroke="none"  /><ellipse cx="35.898" cy="7.218" rx="7.700" ry="1.250" fill="none" stroke="#000000"  stroke-width="0.050" /><text x="35.898" y="7.040"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+traditional mantidplot py module</text>
+<text x="35.898" y="7.840"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+(MantidPlot/pymantidplot/)</text>
+<line x1="35.898" y1="5.968" x2="32.611" y2="5.053" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="32.250,4.952 32.798,4.845 32.611,5.053 32.664,5.327 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="32.250,4.952 32.798,4.845 32.611,5.053 32.664,5.327 "/>
+<line x1="30.427" y1="11.205" x2="35.472" y2="8.680" stroke="#000000" stroke-width="0.090" />
+<polygon fill="#000000" stroke="none" stroke-width="0.090" points="35.808,8.513 35.472,8.960 35.472,8.680 35.249,8.513 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.090"  points="35.808,8.513 35.472,8.960 35.472,8.680 35.249,8.513 "/>
+</svg>
