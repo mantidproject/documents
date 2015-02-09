@@ -63,11 +63,12 @@ It is possible to save the commit history for the `systemtests` repository when 
 
 The layout of the `mantid` repository is not currently optimal, however this will not be addressed here.
 
-It is proposed that rather than a simple dump of the `systemtests` into `mantid`, the layout be cleaned up. The proposal for the layout of the system tests and data within the `mantid` repository is as follows:
+It is proposed that rather than a simple dump of the `systemtests` into `mantid`, the layout be cleaned up. The proposal for the layout of the system tests and data within the `mantid` repository is as follows underneath the `Code/Mantid` directory
 
     .
-    +--Code
-    +--Test
+    +--Framework
+    +--Images
+    +--Testing
     |  +-- Data
     |      +-- DocTest
     |          +-- file1.nxs.md5
@@ -96,5 +97,3 @@ It is proposed that rather than a simple dump of the `systemtests` into `mantid`
     |          +-- ...
 
 The `StressTests` directory is not used and will be dropped.
-
-**Question: Do we want to structure the Data directory? There will be a lot of cross over with unit test data/system test data. It may also be simpler to keep a UsageTests directory so that it can be easily zipped up for download by users.**
