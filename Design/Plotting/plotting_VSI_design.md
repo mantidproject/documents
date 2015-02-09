@@ -4,7 +4,7 @@ Introduction
 
 Purpose: This document describes the detailed design of a command line
 interface (CLI) for python control of plotting in the VATES simple
-interface (VSI).
+Interface (VSI).
 
 Objectives
 ===========
@@ -13,44 +13,33 @@ A former design document
 (https://github.com/mantidproject/documents/blob/master/Design/Plotting/plotting_cli.md)
 identified the objectives for a new and expanded Python CLI.  The VSI
 was listed as one of the items in the functionality that should be
-provided. At present the VSI is not exposed to Python. The overall
+provided. At present the VSI is not exposed to Python at all. Having scritablility features will vastly improve the user experience of this tool, as well as the entire MD toolset. The overall
 objective here is to provide a Python CLI to control plotting and/or
 visualization in the VSI.
 
 Detailed Objectives
 ===================
 
-For a start, the following functionality should be provided:
+The following functionality should be provided:
 
-* Control which workspaces are to be shown.
-
-* Add additional workspaces (peaks workspaces) perhaps through a
+1. Control which workspaces are to be shown.
+1. Add additional workspaces (peaks workspaces) perhaps through a
   setPeaksWorkspaces feature, like the current SliceViewer python
   export has.
-
-* Control which view-mode is used for the display
-
-* Control background colour
-
-* Control colour scale range, as well as what 'scalar-array' to show,
+1. Control which view-mode is used for the display
+1. Orientation. Perhaps using 2 of the reciprocal lattice vectors.
+1. Zoom to region. Zoom to peak will be handled separately.si
+1. Control axis mapping. What dimensions in the workspace are going to
+  be mapped to which axes? I.e if I have 4 dimensions, Qx,Qy,Qz,dE I
+  might want Qx along x and dE along y, Qy along T and Qz along z. The SliceViewer already implements this kind of behaviour.
+1. Rotation around the aforementioned orientations.
+1. Control background colour
+1. Control colour scale range, as well as what 'scalar-array' to show,
   but assume that the default for the scalar array is called
   'signal'. Allow log scaling
-
-* Take a screenshot. Plot slice allows this and it would be useful to
+1. Take a screenshot. Plot slice allows this and it would be useful to
   us.
-
-* Switch dimension axis on
-
-The points listed above would be enough for a first implementation
-stage. Other points to consider later on would be:
-
-* Zoom to region. Describe a point to zoom to, perhaps with a zoom factor too.
-
-* Control axis mapping. What dimensions in the workspace are going to
-  be mapped to which axes? I.e if I have 4 dimensions, Qx,Qy,Qz,dE I
-  might want Qx along x and dE along y, Qy along T and Qz along z.
-
-* Rotation. Not sure how best to express this.
+1. Switch dimension axis on
 
 
 Solution Overview
@@ -60,11 +49,11 @@ TODO: check and develop these points.
 
 * We should follow a matplotlib-like style as far as possible, as it
   was done for the basic plotting interface (currently provided by the
-  mantidplot.future.pyplot module). This includes naming conventions,
+  **mantidplot.future.pyplot** module). This includes naming conventions,
   keyword arguments, and as many elements as we can borrow from
   matplotlib (for example handling of colour bars).
 
-* As in mantidplot.future.pyplot it should be possible to identify
+* As in **mantidplot.future.pyplot** it should be possible to identify
   workspaces by their names and their Python object.
 
 * The new package will provide an object-oriented (OO) and a
@@ -87,18 +76,17 @@ TODO: classes and functional blocks. Maybe also give a brief about the
 main features of the ParaView Python module that this design builds
 on.
 
-Classes that are introduced here:
+Hig level classes to be introduced (not a full list):
 
-- Pipeline, representing a VSI/ParaView pipeline.
-- Figure, representing a VSI/Paraview window.
-- View, representing a VSI/ParaView/VTK view, as obtained for example
+- **Pipeline**, representing a VSI/ParaView pipeline.
+- **Figure**, representing a VSI/Paraview window.
+- **View**, representing a VSI/ParaView/VTK view, as obtained for example
   from `paraview.simple.GetRenderView()` or
   `paraview.servermanager.RenderView()`, which will be wrapped into a
   class with limited interface for the moment.
-- Colorbar
+- **Colorbar**
 
-At the moment, only one VSI window can be open at a time. This may
-change in the future.
+At the moment, only one VSI window can be open at a time. This will change in the near future.
 
 General points considered in the design:
 
@@ -133,7 +121,7 @@ pipelines = plot(ws_source)
 The command returns a list of Pipeline objects. Here it is assumed
 that `ws_source` is a workspace or a workspace list, where every
 workspace can be identified by its name or by the Python object as
-retrieved from the ADS (with for example `mtd['name']`). It is also
+retrieved from the Mantid Analysis Data Service (with for example `mtd['name']`). It is also
 assumed that we have an implicit `view` object of `View` class that
 represents the render view included in the VSI/ParaView window.
 
