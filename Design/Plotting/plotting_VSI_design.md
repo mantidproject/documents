@@ -168,7 +168,7 @@ view = pipelines[0].get_view()
 fig = view.get_figure()
  # the following methods should be callable on the figure and the view
 view.set_view_mode('standard')
-view.setp(bgcolor='gray')
+view.set_bgcolor('gray')
 view.view_down((0, 1, 0), 1.5)
 view.center_at((0.2, 0.3, 0.5))
 view.savefig('example_vis.png'
@@ -184,11 +184,11 @@ Example Usage of More Specific Functionality
 Control workspace to be shown
 -----------------------------
 
-Workspaces are added into parallel pipelines with the plot command,
-which returns the current list of pipelines.  Whether they are shown
-together with the previously shown ones or not is controlled via the
-`hold` argument, as in x-y plots in future.pyplot and following a
-matlab/matplotlib convention.
+Workspaces are added into parallel VSI/ParaView pipelines with the
+plot command, which returns the current list of pipelines.  Whether
+they are shown together with the previously shown ones or not is
+controlled via the `hold` argument, as in x-y plots in future.pyplot
+and following a matlab/matplotlib convention.
 
 The first version of future.pyplot introduced two plotting tools:
 'plot_spectrum' and 'plot_bin', and the general command `plot` uses
@@ -331,12 +331,12 @@ set_projection_frame()
   point is a coordinates triplet.
 
 - Rotate an angle: use the command `rotate(angle)` where angle is a
-  triplet, `angle=(a, b, c)`, and the a component correspond to the
+  triplet, `angle=(a, b, c)`, and the `a` component correspond to the
   axis that has been set in the last `view_down` command. Additional
   commands could be provided to rotate around every axis: `rotate0`,
   `rotate1`, `rotate2`.
 
 - Control the axis mapping in plot commands. This could be achieved
-  via a 'xyzdim' keyword argument which would take a triplet value:
-  what to put along x, what to put along xy, and what to put on the
+  via a `xyzdim` keyword argument which would take a triplet value:
+  what to put along x, what to put along x-y, and what to put on the
   perpendicular to x-y.
