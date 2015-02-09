@@ -13,7 +13,7 @@ A former design document
 (https://github.com/mantidproject/documents/blob/master/Design/Plotting/plotting_cli.md)
 identified the objectives for a new and expanded Python CLI.  The VSI
 was listed as one of the items in the functionality that should be
-provided. At present the VSI is not exposed to Python at all. Having scritablility features will vastly improve the user experience of this tool, as well as the entire MD toolset. The overall
+provided. At present the VSI is not exposed to Python at all. Having scriptablility features will vastly improve the user experience of this tool, as well as the entire MD toolset. The overall
 objective here is to provide a Python CLI to control plotting and/or
 visualization in the VSI.
 
