@@ -159,7 +159,7 @@ view.set_view_mode('standard')
 view.set_bgcolor('gray')
 view.view_down((0, 1, 0), 1.5)
 view.center_at((0.2, 0.3, 0.5))
-view.savefig('example_vis.png'
+view.savefig('example_vis.png')
 
 mdws2 = Load('MDworkspace.nxs', OutputWorkspace='SEQ_MDEW')
 pipes2 = plot(mdws2, hold='on')
