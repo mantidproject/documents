@@ -91,7 +91,7 @@ Here are some of the requirements:
  c. Here is a snippet of what I would like to do to change 
  from theta to d-spacing:
  
- .. code:
+ .. code::
  
     import numpy as np
     data,norm=Load("HB2A_run_number.dat")
@@ -111,7 +111,7 @@ Here are some of the requirements:
  It should be forbidden to write in place a workspace if one
  changes dimensionality.
  
- .. code:
+ .. code::
     
     data,norm=Load("TipleAxisData_1234.dat")
     newWS=CreateMDEventWorkspace(data,dimensions=1)
