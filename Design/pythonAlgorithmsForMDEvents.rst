@@ -11,28 +11,28 @@ workspace2D or event workspaces) to store the raw data will cause
 confusion and complications down the line. Here are some examples:
 
  - Suppose that data is stored in a matrix workspace, one event or 
- one bin corresponding to each scan point, with the X coordinate 
- given by the scan index. It is possible to add two workspaces together
- using Plus algorithm for two scans with the same length. If two points
- corresponding to the same X coordinate have been measured at different 
- conditions (say different detector orientation), the sum might not have
- a physical meaning
+   one bin corresponding to each scan point, with the X coordinate 
+   given by the scan index. It is possible to add two workspaces together
+   using Plus algorithm for two scans with the same length. If two points
+   corresponding to the same X coordinate have been measured at different 
+   conditions (say different detector orientation), the sum might not have
+   a physical meaning
  
  - Assume a multi detector diffractometer, where the detectors can move
- during the scan (HB2A at HFIR). At some point in the processing,
- data will be stored in a matrix workspace with all detectors in one 
- spectra, and the X coordinate being the theta angle of the particular
- detector. It is likely that the best option would be to store it as 
- events, as to be able to add contributions from detectors at same or close
- scattering angles. The correlation between each event and the scan 
- configuration is then lost (which event originate in which detector).
+   during the scan (HB2A at HFIR). At some point in the processing,
+   data will be stored in a matrix workspace with all detectors in one 
+   spectra, and the X coordinate being the theta angle of the particular
+   detector. It is likely that the best option would be to store it as 
+   events, as to be able to add contributions from detectors at same or close
+   scattering angles. The correlation between each event and the scan 
+   configuration is then lost (which event originated in which detector).
  
  - For triple axis one would need to store more than one coordinate.
- It is possible to store each scan point as an event, with a corresponding
- "wallclock time", and all coordinates to be stored in the run object as time 
- series properties. The regular algorithms, such as Plus would be confusing,
- since the coordinate that we are interested is not the X axis, but a 
- log value.
+   It is possible to store each scan point as an event, with a corresponding
+   "wallclock time", and all coordinates to be stored in the run object as time 
+   series properties. The regular algorithms, such as Plus would be confusing,
+   since the coordinate that we are interested is not the X axis, but a 
+   log value.
  
 2. Advantages of storing as MD events
 +++++++++++++++++++++++++++++++++++++
@@ -46,7 +46,7 @@ MDevents as a function of one of the coordinates (plot a scan as a
 function of theta for diffraction, where all the detectors are shown). It is,
 in principle possible to write an algorithm to sort through these MDevents, 
 and group by detector number. One can then generate an instrument view.
-PlusMD should just append data points and experimentInfos frommultiple 
+PlusMD should just append data points and experimentInfos from multiple 
 scans. Changing the step size of a plot, with overlapping contributions from
 different detectors is done using BinMD 
 
@@ -78,18 +78,18 @@ to develop/prototype algorithms and reduction/analysis procedures.
 Here are some of the requirements:
 
  a. It should expose MDEvents from a workspace directly, as a python list.
- One needs to somehow check if we can safely do this in memory (people
- should not attempt to run a for loop over all the events in a 24 hour 
- white beam measurement on TOPAZ)
+    One needs to somehow check if we can safely do this in memory (people
+    should not attempt to run a for loop over all the events in a 24 hour 
+    white beam measurement on TOPAZ)
  
  b. Related to the previous point, dealing with the box structure should 
- be optional for the potential programmer. The new python MD algorithm
- class should have a method to quicly loop over the events and to 
- recalculate the box structure. Advanced users should have the option of 
- overloading this function, such as to improve speed
+    be optional for the potential programmer. The new python MD algorithm
+    class should have a method to quicly loop over the events and to 
+    recalculate the box structure. Advanced users should have the option of 
+    overloading this function, such as to improve speed
  
  c. Here is a snippet of what I would like to do to change 
- from theta to d-spacing:
+    from theta to d-spacing:
  
  .. code::
  
@@ -108,7 +108,7 @@ Here are some of the requirements:
 
  Another example would be to calculate |Q| from a triple axis 
  experiment. This will go from 4 dimensions (H, K, L, E) to one.
- It should be forbidden to write in place a workspace if one
+ It should be forbidden to write inplace a workspace if one
  changes dimensionality.
  
  .. code::
