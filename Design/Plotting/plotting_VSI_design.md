@@ -328,3 +328,11 @@ set_projection_frame()
   via a `xyzdim` keyword argument which would take a triplet value:
   what to put along x, what to put along x-y, and what to put on the
   perpendicular to x-y.
+
+
+Comments
+========
+
+### Martyn
+* Generally the style seems quite logical and the names introduced make sense. One thing I do think we need to be careful about when moving forward with this and the new plotting syntax is not to have too many ways of doing the same thing, it could confuse people. When we bring the plotting out of beta it might be best to split the documentation into functional and object-oriented styles so that people can pick one to read.
+* I think we could also do with some remarks about where the python exports etc will go within the code. We need to decide whether they are a separate library or can live within the current dll/so. 
