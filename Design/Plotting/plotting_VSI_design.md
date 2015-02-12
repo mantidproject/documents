@@ -183,9 +183,9 @@ The first version of future.pyplot introduced two plotting tools:
 `plot_spectrum` as default for MatrixWorkspaces.
 
 Here, the `plot` command will be modified so that it defaults to use
-the `vsi` tool for PeaksWorkspaces and MDWorkspaces with 3 or more
-dimensions. The default for MDWorkspaces with two dimensions will be
-`plot_spectrum`
+the `plot_vsi` tool for PeaksWorkspaces and MDWorkspaces with 3 or
+more dimensions. The default for MDWorkspaces with two dimensions will
+be `plot_spectrum`
 
 The following examples are equivalent, assuming that the workspace has
 3 or more dimensions:
@@ -199,7 +199,7 @@ plot_vsi(mdws1)
 ```
 
 ```python
-plot(mdws1, tool='vsi')
+plot(mdws1, tool='plot_vsi')
 ```
 
 Add workspaces
