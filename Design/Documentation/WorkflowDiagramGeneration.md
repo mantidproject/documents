@@ -1,5 +1,7 @@
 #Workflow Diagram Generation
 
+**NOTE: This design has been implemented in a slightly different manner to this document, see [here](https://github.com/mantidproject/mantid/pull/202) for more information.**
+
 ## Motivation
 
 Currently, only a subset of the workflow algorithms in Mantid have flow charts
