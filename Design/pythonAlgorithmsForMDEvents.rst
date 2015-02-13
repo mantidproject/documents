@@ -16,7 +16,7 @@ confusion and complications down the line. Here are some examples:
    using Plus algorithm for two scans with the same length. If two points
    corresponding to the same X coordinate have been measured at different 
    conditions (say different detector orientation), the sum might not have
-   a physical meaning
+   a physical meaning. 
  
  - Assume a multi detector diffractometer, where the detectors can move
    during the scan (HB2A at HFIR). At some point in the processing,
