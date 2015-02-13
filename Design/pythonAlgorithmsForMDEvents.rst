@@ -33,6 +33,7 @@ confusion and complications down the line. Here are some examples:
    series properties. The regular algorithms, such as Plus would be confusing,
    since the coordinate that we are interested is not the X axis, but a 
    log value.
+   
  
 2. Advantages of storing as MD events
 +++++++++++++++++++++++++++++++++++++
@@ -48,7 +49,13 @@ in principle possible to write an algorithm to sort through these MDevents,
 and group by detector number. One can then generate an instrument view.
 PlusMD should just append data points and experimentInfos from multiple 
 scans. Changing the step size of a plot, with overlapping contributions from
-different detectors is done using BinMD 
+different detectors is done using BinMD. 
+
+Neutron experiments at ractor source can be seen as a collection of measurment points.
+Each measurement point contains the counts of all detectors for a certain amount of time
+and the corresponding sample environemnt logs' value.  
+The index of such measuring point can be mapped to the class variable 'run' of an MDEvent.  
+By using 'run', an equivalence of event filtering operation can be applied to MDWorkspace. 
 
 3. Unsolved problems
 ++++++++++++++++++++
