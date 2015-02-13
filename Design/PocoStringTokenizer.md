@@ -16,7 +16,7 @@ unit tests on systems running earlier versions of Poco.
 ## Requirements
 
 We need to find a solution that provides a consistent experience for our users regardless of which 
-version of poco is available on the user's platform.    
+version of poco is available on their operating system.    
 
 ## Implementation possibilities
 
