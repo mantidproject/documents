@@ -127,3 +127,9 @@ Here are some of the requirements:
          V3D(event.getCoordinate(0),event.getCoordinate(1),event.getCoordinate(2))
         newevent.setCoordinate(0,Q.norm())
 
+d. Usually the first step to load reactor-source experiment data is to create an MDWorkspace
+   real space.  The number of MDEvents and their coordinates are determined by the 
+   number of mearurement points and the position of the detectors at each measurement points.
+   Thus it can be convenient to program in python script, if a set of APIs are defined and implemented 
+   to (1) construct an MDWorkskpace by detectors positions and then 
+   (2) modify the detectors' counts by index measurement point and detector ID. 
