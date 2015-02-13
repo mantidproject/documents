@@ -39,11 +39,11 @@ in many places, so this may not be a pretty solution.
 
 Poco::StringTokenizer is very similar to boost::tokenizer. Unlike Poco, boost::tokenizer
 hasn't undergone large changes in ~8 years. Recently, [Poco::RegularExpression was replaced 
-with boost::regex](http://trac.mantidproject.org/mantid/ticket/10603), create precedence
+with boost::regex](http://trac.mantidproject.org/mantid/ticket/10603), creating precedence
 for changing libraries. 
 
 ## Recommendation
 
-If we can rewrite the affected algorithms to use a wrapper, then preprocessor statements 
+If we can rewrite the affected algorithms to use a single wrapper, then preprocessor statements 
 are probably the quickest solution. Otherwise, I suggest migrating the affected algorithms
 to boost::tokenizer. 
