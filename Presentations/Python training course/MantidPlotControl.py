@@ -17,7 +17,7 @@ g1 = plotSpectrum(ws, [0,1,2])
 # Set the scales on the x- and y-axes
 layer = g1.activeLayer()
 layer.setAxisScale(Layer.Bottom, 4, 6)
-layer.setAxisScale(Layer.Left, 0, 2e3)
+layer.setAxisScale(Layer.Left, 0, 5e3)
 
 # Optionally rename the curve titles
 layer.setCurveTitle(0, "bank2, spectrum " + str(431))
