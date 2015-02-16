@@ -19,7 +19,7 @@
 #  - Set the new workspace to the <code>OutputWorkspace</code> property
 #
 # To test the algorithm, execute the file that contains the algorithm to register it with Mantid. It will then show up in the list of algorithms. Use the following inputs:
-#  - Filename: MAR11001.raw
+#  - Filename: MAR11015.raw
 #  - Ei: 12.9729
 #  - BinParams: -11,0.01,11
 #  - OutputWorkspace: DeltaE
