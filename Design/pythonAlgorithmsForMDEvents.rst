@@ -51,7 +51,7 @@ PlusMD should just append data points and experimentInfos from multiple
 scans. Changing the step size of a plot, with overlapping contributions from
 different detectors is done using BinMD. 
 
-Neutron experiments at ractor source can be seen as a collection of measurment points.
+Neutron experiments at reactor source can be seen as a collection of measurment points.
 Each measurement point contains the counts of all detectors for a certain amount of time
 and the corresponding sample environemnt logs' value.  
 The index of such measuring point can be mapped to the class variable 'run' of an MDEvent.  
