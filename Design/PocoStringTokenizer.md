@@ -24,7 +24,7 @@ version of poco is available on their operating system.
 
 In principle, we could require Mantid be build against Poco versions between 1.4.2 
 (our current minimum version) to 1.4.7. Currently the ornl-mavericks and ornl-yosemite 
-retain Poco 1.4.7 depite a newer version being available via homebrew. Similarly we could 
+build servers retain Poco 1.4.7 depite a newer version being available via homebrew. Similarly we could 
 raise the minimum version to 1.6 (1.5 is a development release), but the supported platforms
 are well behind the latest release.
 
