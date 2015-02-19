@@ -79,7 +79,8 @@ on.
 Hig level classes to be introduced (not a full list):
 
 - **Pipeline**, representing a VSI/ParaView pipeline.
-- **Figure**, representing a VSI/Paraview window. We keep this as consistent as possible with Matplot lib. Change of basis for example may be controlled by manipulating the figure, as well as other axes operations that should carry across all views.
+- **Figure**, representing a VSI/Paraview window. We keep this as consistent as possible with Matplot lib. Change of basis for example may be controlled by manipulating the figure, as well as other axes operations that should carry across all views. 
+- **Axis** Allow the range of the axis to be specified as an alternative to zooming. 
 - **View**, representing a VSI/ParaView/VTK view, as obtained for example
   from `paraview.simple.GetRenderView()` or
   `paraview.servermanager.RenderView()`, which will be wrapped into a
