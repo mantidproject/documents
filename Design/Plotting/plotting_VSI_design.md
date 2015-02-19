@@ -20,7 +20,7 @@ visualization in the VSI.
 Detailed Objectives
 ===================
 
-The following functionality should be provided:
+The following CLI functionality should be provided:
 
 1. Control which workspaces are to be shown.
 1. Add additional workspaces (peaks workspaces) perhaps through a
@@ -37,9 +37,9 @@ The following functionality should be provided:
 1. Control colour scale range, as well as what 'scalar-array' to show,
   but assume that the default for the scalar array is called
   'signal'. Allow log scaling
-1. Take a screenshot. Plot slice allows this and it would be useful to
-  us.
 1. Switch dimension axis on
+1. Control aspects of the font. Control visability, fontsize, aspect ratio, ticks, titles, and if possible location to enabling users to output **publicaiton quality plots**.
+1. Take a screenshot in standard formats, jpg, png, etc.
 
 
 Solution Overview
@@ -51,7 +51,7 @@ TODO: check and develop these points.
   was done for the basic plotting interface (currently provided by the
   **mantidplot.future.pyplot** module). This includes naming conventions,
   keyword arguments, and as many elements as we can borrow from
-  matplotlib (for example handling of colour bars).
+  matplotlib (for example handling of colour bars). **Like MatPlotLib we are proposing to support both an Object Oriented (OO) and functtional methodology within the same set of modules**
 
 * As in **mantidplot.future.pyplot** it should be possible to identify
   workspaces by their names and their Python object.
