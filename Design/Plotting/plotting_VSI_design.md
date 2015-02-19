@@ -51,7 +51,7 @@ TODO: check and develop these points.
   was done for the basic plotting interface (currently provided by the
   **mantidplot.future.pyplot** module). This includes naming conventions,
   keyword arguments, and as many elements as we can borrow from
-  matplotlib (for example handling of colour bars). **Like MatPlotLib we are proposing to support both an Object Oriented (OO) and functtional methodology within the same set of modules**
+  matplotlib (for example handling of colour bars). **Like MatPlotLib we are proposing to support both an Object Oriented (OO) and functional methodology within the same set of modules**
 
 * As in **mantidplot.future.pyplot** it should be possible to identify
   workspaces by their names and their Python object.
