@@ -85,7 +85,7 @@ Hig level classes to be introduced (not a full list):
   from `paraview.simple.GetRenderView()` or
   `paraview.servermanager.RenderView()`, which will be wrapped into a
   class with limited interface for the moment.
-- **Colorbar**
+- **Colormap** and **Colorbar**, to control the colour scale
 
 At the moment, only one VSI window can be open at a time. This will change in the near future.
 
