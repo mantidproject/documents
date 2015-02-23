@@ -264,8 +264,54 @@ Here it is also required to control what 'scalar-array' to show, but
 assume that the default for the scalar array is called 'signal'. Allow
 log scaling.
 
-TODO: a `Colorbar` class needs to be introduced at least.
+We first need to introduce the class Colormap. A colour map object for 
+a given colour map name is retrieved like this:
+```python
+name = 'Spectral'
+cmap=get_cmap(name)
+```
+(the function `get_cmap` is defined in the module `pyplot`).
 
+Matplotlib provides a long list of predefined colour maps, including the
+most commonly used (rainbow, grayscale, spectral, etc.) but also many
+others. We have to double check which ones are supported by Paraview.
+There are also mechanisms to define colour maps with arbitrary colours.
+
+Once we have colour map objects, in plot commands it is possible to 
+specify the colour map to use with the keyword `cmap`. For example:
+
+```python
+plot(mdws1, tool='plot_vsi', cmap=get_cmap('Spectral'))
+```
+Matplotlib also provides the `cm` module which includes predefined
+colour maps that you can use as follows:
+
+```python
+from matplotlib import cm
+
+plot(mdws1, tool='plot_vsi', cmap=cm.coolwarm) 
+```
+
+The default colour map can be set using `set_cmap`:
+```python
+set_cmap()
+cmap=plt.get_cmap(name)
+```
+
+The colour bar can be selected like this:
+```python
+bar = fig.colorbar(ax, ticks=[-1, 0, 1], orientation='horizontal')
+```
+where ax is the colour bar axis, and `bar` is an object of class `Colorbar`.
+
+Then the colorbar object can be used to modify the colour bar properties,
+for example:
+```python
+cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])
+```
+If we want to support editing of the colour bar and its axis We need to 
+clarify to what extent the colour bar axis is modifiable in Paraview and
+how to do this.
 
 Take a screenshot
 -----------------
