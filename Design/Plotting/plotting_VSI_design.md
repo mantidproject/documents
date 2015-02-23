@@ -302,7 +302,7 @@ The colour bar can be selected like this:
 ```python
 bar = fig.colorbar(ax, ticks=[-1, 0, 1], orientation='horizontal')
 ```
-where ax is the colour bar axis, and `bar` is an object of class `Colorbar`.
+where `ax` is the colour bar axis, and `bar` is an object of class `Colorbar`.
 
 Then the colorbar object can be used to modify the colour bar properties,
 for example:
