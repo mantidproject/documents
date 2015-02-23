@@ -309,9 +309,9 @@ for example:
 ```python
 cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])
 ```
-If we want to support editing of the colour bar and its axis We need to 
-clarify to what extent the colour bar axis is modifiable in Paraview and
-how to do this.
+If we want to support editing of the properties of the colour bar and its 
+axis, we need to clarify if there is an analog to the concept of 
+'colour bar axis' in Paraview, if it is modifiable, and how to do this.
 
 Take a screenshot
 -----------------
