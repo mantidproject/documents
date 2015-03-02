@@ -47,3 +47,7 @@ for changing libraries.
 If we can rewrite the affected algorithms to use a single wrapper, then preprocessor statements 
 are probably the quickest solution. Otherwise, I suggest migrating the affected algorithms
 to boost::tokenizer. 
+
+## From TSC meetings
+
+At TSC meeting 15th Feb. 2015 it was agreed that this would be a good design opportunity to abstract the tokenizer behaviour behind our own Kernel::Strings. 
