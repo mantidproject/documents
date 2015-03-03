@@ -23,3 +23,8 @@ Present: Anders, Pete, Ross, Stuart, Martyn
 1. Drop on all but `master_clean`
 2. Owen not present
 3. Steve Miller is starting. Pete to check with Steve in 1 month
+4. No guide to be written. Not worth the time
+5. Advertising TSC:
+    * Send minutes to developer list (Anders)
+    * Add link to tsc email on developer page (Anders)
+    * Design documents to go to developer list
