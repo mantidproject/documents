@@ -33,3 +33,4 @@ Present: Anders, Pete, Ross, Stuart, Martyn
     * Update rectangular definitions to use primitives
     * Add array of tubes and others
     * Other file formats not considered here.
+8. Explore other options for unit testing framework
