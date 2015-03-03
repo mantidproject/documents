@@ -13,4 +13,5 @@ Agenda
   * Adding new primatives (e.g. array of tubes)
   * Other "easy" improvements
 * [cxxtest](https://github.com/CxxTest/cxxtest) is not dead ([#11000](http://trac.mantidproject.org/mantid/ticket/11000) and  [FindCxxTest.cmake](https://github.com/Kitware/CMake/blob/v2.8.12/Modules/FindCxxTest.cmake)) (Pete)
-* Any comments to first cut at report for [tracking design documents](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md) 
+* Any comments to first cut at report for [tracking design documents](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md) (Anders)
+* [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) for handling of data from moving instruments (Anders) 
