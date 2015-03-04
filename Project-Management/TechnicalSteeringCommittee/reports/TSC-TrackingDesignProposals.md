@@ -10,8 +10,8 @@ Design documents in progress
 
 | Name  | History/Comments |
 | :------------ |:---------------|
-| pythonAlgorithmsForMDEvents     | Discussed 15th feb 2015, see TSC minutes  |
-| PocoStringTokenizer     | Discussed 15th feb 2015, see TSC minutes |
+| [pythonAlgorithmsForMDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst)     | Discussed 15th feb 2015, see TSC minutes  |
+| [PocoStringTokenizer](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)     | Discussed 15th feb 2015, see TSC minutes |
 
 Approved design documents
 -----------------------------
@@ -20,5 +20,5 @@ Note tracking of design proposal started 15th feb. 2015.
 
 | Name  | Approval date | Implemented (yes/no) |
 | :------------ |:---------------|:-------|
-| EmbeddedInstrumentInfoNexus     | prior to 15th feb 2015  | no |
+| [EmbeddedInstrumentInfoNexus](https://github.com/mantidproject/documents/blob/master/Design/EmbeddedInstrumentInfoNexus.md)     | prior to 15th feb 2015  | no |
 
