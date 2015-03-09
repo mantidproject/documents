@@ -19,7 +19,7 @@ plot(ws, [0, 1, 2, 5])
 
 # Set the scales on the x- and y-axes
 xlim(4, 6)
-ylim(0, 15)
+ylim(0, 5e3)
 
 # Change the title of the x axis
 xlabel("New x axis title")

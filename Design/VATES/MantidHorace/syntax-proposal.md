@@ -96,15 +96,15 @@ my_vol = cut_md(my_ws, proj_table, ([0,0.1,8], [2,0.05,6], [-2,-1], [0,10,1000])
 
 ```
 
-## CreateSQW
+## CreateMD
 
-This is known as **gen_sqw** in Horace [[2]], but has been named **CreateSQW** since this fits better with Mantid. **CreateSQW** will be implemented as a python algorithm. It will have an alias **create_sqw** to fit with the existing lower case Horace scripting.
+This is known as **gen_sqw** in Horace [[2]], but has been named **CreateMD** since this fits better with Mantid. **CreateMD** will be implemented as a python algorithm. It will have an alias **create_sqw** to fit with the existing lower case Horace scripting.
 
 As highlighted by Toby/Alex, it is important to have a file-backed mode for this operation [[1]]
 
 ### Arguments and Function signature
 
-***out_ws = CreateSQW ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
+***out_ws = CreateMD ([data_source, ws_name], efix, emode, alatt, angdeg, u, v, psi,
 omega, dpsi, gl, gs, out_filename)***
 
 * *out_ws* is the combined MDWorkspace, for file-based workspaces
@@ -148,7 +148,7 @@ u=[1,0,0]; v=[0,1,0] # specify scattering plane, where u is the crystal directio
 
 omega=0; dpsi=0; gl=0; gs=0 # goniometer offsets for the sample (usually all zero)
 
-ws = CreateSQW (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
+ws = CreateMD (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
 
 ```
 
