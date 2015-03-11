@@ -87,7 +87,7 @@ These examples have been generated from examples given for Horace [[1]]
 
 ```python
 
-proj.u=[1,1,0]; proj.v=[-1,1,0]; proj.uoffset=[0,0,0,0]; proj.type='rrr'
+proj.u=[1,1,0]; proj.v=[-1,1,0]; proj.uoffset=[0,0,0]; proj.type='rrr'
 
 proj_table = proj.toWorkspace()
 
