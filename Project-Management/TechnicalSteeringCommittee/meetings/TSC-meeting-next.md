@@ -5,3 +5,4 @@ Agenda
 * Owner of design proposal to feed in information from other developers, tsc meeting, etc? (Anders)
   * and email out developer list for feedback before bringing it to tsc?
 * Moving to a newer gcc on RHEL6 (Martyn)
+* Change default logging stream to `std::cout` rather than `std::clog` (which is basically `std:cerr`)
