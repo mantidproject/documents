@@ -155,6 +155,30 @@ ws = CreateMD (input_files, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, 
 
 ```
 
+## SmoothMD
+
+This function takes the same name in Horace[[2]] [Smooth](http://horace.isis.rl.ac.uk/Reshaping_etc#smooth). The Mantid Algorithm should be exactly the same. Like Horace, this operation will only work on DND objects (MDHistoWorkspaces).
+
+#### Examples
+```Python
+
+mdhw = CreateMDHistoWorkspace(SignalInput=range(0,16), ErrorInput=[0]*16, Dimensionality=2, Extents='0,1,0,1', NumberOfBins=[4,4], Names='A,B', Units='U,U',)
+
+# Specify all width elements
+width_vector = [3, 1] # Specify width per axis
+smoothed=SmoothMD(mdhw,[width_vector])
+
+# Single width element
+width_vector = [3] # Same for all axes
+smoothed=SmoothMD(mdhw,[width_vector])
+
+# Overriding the default smooth_function (which is Hat)
+width_vector = [3] # Same for all axes
+smooth_function = 'Gaussian'
+smoothed=SmoothMD(InputWorkspace=mdhw, WidthVector=width_vector, SmoothFunction=smooth_function)
+
+```
+
 
 
 
