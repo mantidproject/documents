@@ -22,3 +22,4 @@ Minutes
  * Martyn and Owen will create any fixes for the windows distribution on the same branch. 
 * Ross is to investigate using [leeroy](https://github.com/litl/leeroy) as a replacement and report progress at the next meeting.
  * We need to stress test this before swapping it in as a replacement for the current system.
+ * We agreed to look into upgrading the gcc on RHEL6 (Stuart)
