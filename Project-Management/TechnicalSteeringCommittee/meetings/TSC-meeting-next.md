@@ -8,3 +8,4 @@ Agenda
   * and email out developer list for feedback before bringing it to tsc?
 * Moving to a newer gcc on RHEL6. Decide on who should do the changes (Martyn)
 * Change default logging stream to `std::cout` rather than `std::clog` (which is basically `std:cerr`) (Martyn)
+* Review of [skipped system tests](http://developer.mantidproject.org/systemtests/)
