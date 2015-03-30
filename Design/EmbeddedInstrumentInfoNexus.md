@@ -73,7 +73,7 @@ An alternative to the above is (which is faster where embedded parameter file is
 
 1. Embedded IDF is loaded 
 2. check if XXX\_Parameter\_Corrections.xml exist, if yes, then check if date of raw nexus file is between any of the valid-from/valid-to dates. If the answer is no, continue with step 4, otherwise continue with step 3
-3.  If append is 'true' load embedded parameter file (if exist) and then run LoadParametersFile with "filename". If append is 'false' run ClearParametersFile and then run LoadParametersFile with "filename". Stop here, i.e. don't continue with step 4
+3.  If append is 'true' load embedded parameter file (if exist) and then run LoadParametersFile with "filename". If append is 'false' run LoadParametersFile with "filename". Stop here, i.e. don't continue with step 4
 4.  Load embedded parameter file if exist
 
 Along the same lines we could provide a mechanism for correcting the instrument itself. Hence, a user may add XXX\_IDF\_Corrections.xml:
