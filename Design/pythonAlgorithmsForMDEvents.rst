@@ -4,6 +4,16 @@ Python algorithms for processing MDEventWorkspaces
 1. Motivation
 +++++++++++++
 
+Labeling neutron scattering events (or groups of neutrons) with
+several parameters (such as Q components, energy trasfer, temperature, etc)
+are the closest thing to physical models that we can provide in Mantid.
+Scientists would likely express most of their problems in terms of such
+multi-dimensional coordinates, rather than time of flight and detector coordinates.
+For quick prototyping and for bespoke algorithms and data analysis scripts,
+we should provide a simple and intuitive Python api for MD events, and MDEventWorkspaces.
+While the rest of the document exemplifies this using reactor based experiments,
+this is a more general and urgent problem.
+
 A majority of the new instruments at reactor sources do not have
 the time-of flight structure of the data that instruments at
 spallation sources have. Trying to use matrix workspaces (either 
