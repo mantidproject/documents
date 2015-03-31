@@ -2,7 +2,7 @@ Agenda
 ======
 
 * Bundle Paraview 4.3 with Mantid (OSX Steve, Martyn/Owen Windows)
-* Investigations using [leeroy](https://github.com/litl/leeroy) (Ross)
+* Investigations using [leeroy](https://github.com/jfrazelle/leeroy) (Ross)
 * Revisit [python api for MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst) (Andrei)
 * [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) for handling of data from moving instruments (Anders) 
 * Moving to a newer gcc on RHEL6. Decide on who should do the changes (Martyn)
