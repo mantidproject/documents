@@ -25,3 +25,4 @@ Present: Pete, Ross, Stuart, Anders, Owen (and briefly Steven)
   * From the scripting enviroment, no knowlege of the MDBox structure should be necessary.
   * Adding C++ method for looping over MDEvents could replace double nested loops (over boxes and then over events in each) in C++
 * In relation to changing the default for logging steam: Andrei mentioned the autoreduction at SNS currently relies on the logging stream being outputted to std::clog (i.e. std:cerr) 
+* Last 4 agenda items moved to the next meeting
