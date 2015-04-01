@@ -12,6 +12,8 @@ Agenda
 Actions
 =======
 
+Present: Pete, Ross, Stuart, Anders, Owen (and briefly Steven)
+
 * Steven is working with Kitware regarding bundling ParaView 4.3 with Mantid. Steven will update Owen/Martyn when he's ready for us to start working on other platforms regarding this (Steven)
 * We need to solve some issues with leeyroy but look to go ahead in making this our default build plugin (Ross)
   *  No restriction on who can kick-off builds, so we may want to review job permissions
@@ -19,5 +21,7 @@ Actions
   *  Need to warn developers that the switch is going ahead
   *  Would be best if we could get merge-builds master->feature_branch working. Currently only the feature branch is built.
 * MDEvent python api does need improving as Andrei highlighted. 
-  * We believe that the best way to do this would be to find a way to get user-defined functions looping over the MDEvent data. How do Numpy do this?
+  * A way to do this would be to find a way to get user-defined functions looping over the MDEvent data. How do Numpy do this? (Owen)
   * From the scripting enviroment, no knowlege of the MDBox structure should be necessary.
+  * Adding C++ method for looping over MDEvents could replace double nested loops (over boxes and then over events in each) in C++
+* In relation to changing the default for logging steam: Andrei mentioned the autoreduction at SNS currently relies on the logging stream being outputted to std::clog (i.e. std:cerr) 
