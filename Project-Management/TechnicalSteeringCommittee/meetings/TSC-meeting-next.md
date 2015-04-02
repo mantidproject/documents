@@ -3,6 +3,9 @@ Agenda
 
 * Bundle Paraview 4.3 with Mantid (OSX Steve, Martyn/Owen Windows)
 * Summarize experience from switching to [leeroy](https://github.com/jfrazelle/leeroy) (Ross)
+* TSC actions from last [PMB minutes](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/Minutes/PMBMinutes29thJan15.docx) 
+ * Create a user example for how to integrate none Mantid code with Mantid
+ * Determine what code in Mantid needs validation by scientific expert
 * Moving to a newer gcc on RHEL6. Decide on who should do the changes (Martyn)
 * Change default logging stream to `std::cout` rather than `std::clog` (which is basically `std:cerr`) (Martyn)
 * Review of [skipped system tests](http://developer.mantidproject.org/systemtests/)
