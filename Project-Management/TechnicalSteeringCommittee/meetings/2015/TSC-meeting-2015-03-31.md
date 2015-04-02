@@ -12,7 +12,7 @@ Agenda
 Minutes
 =======
 
-Present: Pete, Ross, Stuart, Anders, Owen (and briefly Steven)
+Present: Pete, Ross, Stuart, Andrei, Anders, Owen (and briefly Steven)
 
 * Steven is working with Kitware regarding bundling ParaView 4.3 with Mantid. Steven will update Owen/Martyn when he's ready for us to start working on other platforms regarding this (Steven)
 * We need to solve some issues with leeyroy but look to go ahead in making this our default build plugin (Ross)
