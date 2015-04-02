@@ -3,6 +3,10 @@ Agenda
 
 * Bundle Paraview 4.3 with Mantid (OSX Steve, Martyn/Owen Windows)
 * Summarize experience from switching to [leeroy](https://github.com/jfrazelle/leeroy) (Ross)
+* Build server jobs and such:
+ * Currently on every PR: cppcheck, OSX, RHEL6, RHEL7 (with system tests), Ubuntu, Windows (with usage tests)
+ * Should we add pylint or doxygen?
+ * What belongs on the [Critical Jobs](http://builds.mantidproject.org/) tab?
 * TSC actions from last [PMB minutes](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/Minutes/PMBMinutes29thJan15.docx) 
  * Create a user example for how to integrate none Mantid code with Mantid
  * Determine what code in Mantid needs validation by scientific expert
