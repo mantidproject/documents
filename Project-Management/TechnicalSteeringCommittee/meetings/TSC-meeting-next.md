@@ -2,6 +2,7 @@ Agenda
 ======
 
 * Bundle Paraview 4.3 with Mantid (OSX Steve, Martyn/Owen Windows)
+* Build server script updates for bundled ParaView (Owen)
 * Summarize experience from switching to [leeroy](https://github.com/jfrazelle/leeroy) (Ross)
 * Build server jobs and such:
  * Currently on every PR: cppcheck, OSX, RHEL6, RHEL7 (with system tests), Ubuntu, Windows (with usage tests)
