@@ -77,8 +77,8 @@ In terms of rating the issues for Utkarsh:
 
   1. Issues [Colour Editor Panel](#colour-editor-panel) and [Restart](#restart)
   2. Issue [Multiple Instances](#multiple-instances)
-  3. Issue [Cut then Slice](#cut-then-slice)
-  4. Issue [Cut then Slice](#cut-then-slice) 
+  3. Issue [Colour Bar](#colour-bar)
+  4. Issue [Cut Filter](#cut-filter) 
   5. The other issues in no order
 
 
