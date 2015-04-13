@@ -61,7 +61,7 @@ Probable issue with BasisVectors in newer ParaView. API change. [3](#Mantid)
 ### Possible Prioritization:
 
 General thoughts:
-* Issues 6 and 12 probably exist because we cannot select the correct element of the pipeline. Having the pipeline browser back might solve this.
+* Issues (#binmd) and (#scale-then-cut) probably exist because we cannot select the correct element of the pipeline. Having the pipeline browser back might solve this.
 * Issues 2, 5 and 10 seem to be addressed in later versions of PV.
 * Issue 9 is something Anton can try to find out more about.
 * Issues 1 and 8 seem to be related and seem to be a fundamental issue with PV. So this is probably something that Utkarsh will be able to understand quickly.
