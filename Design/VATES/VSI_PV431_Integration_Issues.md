@@ -55,7 +55,7 @@ When loading MDEventWS into the VSI and PeakWS into another instance of the VSI,
 Probable issue with BasisVectors in newer ParaView. API change. [3](#Mantid)
 
 ### Who is working on what?
-[Drag and Drop](#Drag and Drop): Anton
+[Drag and Drop](#drag-and-drop): Anton
 
 
 ### Possible Prioritization:
