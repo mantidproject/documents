@@ -54,6 +54,9 @@ When loading MDEventWS into the VSI and PeakWS into another instance of the VSI,
 #### Non Orthongonal
 Probable issue with BasisVectors in newer ParaView. API change. [3](#Mantid)
 
+#### Rotation Splatterplot
+When loading data into splatterplot, it appears that only translation of the data set is possible no rotation. [1](#ParaView)
+
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
 
@@ -155,4 +158,8 @@ In terms of rating the issues for Utkarsh:
   3.	Load a PeakWorkspace into a separate instance of the VSI, i.e. don’t use the drag and drop feature to load the VSI
   4.	Confirm that the displayed colors of the rendered MDEvent sample have changed. The two VSI instances seem to communicate.
 
-
+* [Rotation Splatterplot](#rotation-splatterplot)
+  1.	Load a MDEvent sample data set into the VSI
+  2.	Switch to the splatter plot view.
+  3.	Perform usual rotation with the mouse
+  4.	Confirm that response is not a rotation, but rather a translation
