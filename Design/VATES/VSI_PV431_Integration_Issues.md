@@ -79,6 +79,7 @@ In terms of rating the issues for Utkarsh:
   2. Issue [Multiple Instances](#multiple-instances)
   3. Issue [Colour Bar](#colour-bar)
   4. Issue [Cut Filter](#cut-filter) 
+  5. Issue [Rotation Splatterplot](#rotation-splatterplot)
   5. The other issues in no order
 
 
