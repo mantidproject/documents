@@ -27,3 +27,4 @@ Minutes
 * For build server job for every PR: Agree to add doxygen (Ross). Can reference level be set on pylint, technical how to do this (Martyn). Could still allow merging even if pylint fail, and how to make this transparent to developers. Email develpers when Doxygen and pylint added
 * Review any outstanding external pull request at future TSC meetings
 * Add wiki page with examples for interfacing with Mantid covering different use cases. Perhaps link on contributer.md to this (anders)  
+* Perhaps label equivalent to CORE for when to validate VALIDATION, or SCIENCETOTEST. VALIDATION just means to add comment end of ticket saying "this has been validated by so and so"  
