@@ -17,3 +17,9 @@ Agenda
 * Continue discussion from last TSC on [python api for MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst) (Andrei)
  * A way to do this would be to find a way to get user-defined functions looping over the MDEvent data. How do Numpy do this? (Owen)
 * [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) for handling of data from moving instruments (Anders) 
+
+Minutes
+=======
+
+* Paraview 4.3 branch bundling has been done, but problem with functionality. 
+* Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement.  
