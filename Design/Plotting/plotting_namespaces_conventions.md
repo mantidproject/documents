@@ -36,3 +36,6 @@ Additional changes
   be worth discussing this again.
 
 * Provide an alias for `tool_spectrum`: `tool_sp`, or `sp` if we drop the `tool_` prefix.
+
+* I'm still in favour of dropping the `tool_` prefix as being required and having it accept both. (Martyn) 
+
