@@ -71,6 +71,7 @@ Found my Andrei "Selected a splatter plot for a histo workspace. Defaulted to st
 
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
+[Non Orthongonal](#non-orthogonal) : Owen
 
 
 ### Possible Prioritization:
