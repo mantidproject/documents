@@ -18,12 +18,12 @@ there would be a line like:
 import pyplot
 ```
 
-* This will cause at least one name class with the traditional
+* This will cause at least one name clash with the traditional
   mantidplot plot() function. This function could be moved into a
-  module `qtiplot` which would be also imported in
+  (new) module `qtiplot` which would be also imported in
   [mantidplotrc.py](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/MantidPlot/mantidplotrc.py).
 
-* As the change from plot() to qtiplot.plot() breaks backwards
+* As the change from `plot()` to `qtiplot.plot()` breaks backwards
   compatibility, the documenation (and also course material, etc.)
   needs to be checked and updated.
 
