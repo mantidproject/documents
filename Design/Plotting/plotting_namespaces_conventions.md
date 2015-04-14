@@ -32,7 +32,7 @@ Additional changes
 
 * As Nick came up with the same idea to drop the `tool_` prefix as was
   already proposed in [trac ticket
-  #11075](http://trac.mantidproject.org/mantid/ticket/11075), it would
+  11075](http://trac.mantidproject.org/mantid/ticket/11075), it would
   be worth discussing this again.
 
 * Provide an alias for `tool_spectrum`: `tool_sp`, or `sp` if we drop the `tool_` prefix.
