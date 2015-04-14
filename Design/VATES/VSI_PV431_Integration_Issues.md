@@ -57,6 +57,10 @@ Probable issue with BasisVectors in newer ParaView. API change. [3](#Mantid)
 #### Rotation Splatterplot
 When loading data into splatterplot, it appears that only translation of the data set is possible no rotation. [1](#ParaView)
 
+#### Non-movable slices
+When loading data into the ThreeSliceView (QuadView), we cannot move the slice planes any longer. Trying to move the slice planes just translates the data set.
+[1](#ParaView)
+
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
 
@@ -80,7 +84,8 @@ In terms of rating the issues for Utkarsh:
   3. Issue [Colour Bar](#colour-bar)
   4. Issue [Cut Filter](#cut-filter) 
   5. Issue [Rotation Splatterplot](#rotation-splatterplot)
-  6. The other issues in no order
+  6. Issue [Non-movable Slices](#non-movable-slices) 
+  7. The other issues in no order
 
 
 ### How to reproduce the issues
@@ -164,3 +169,9 @@ In terms of rating the issues for Utkarsh:
   2.	Switch to the splatter plot view.
   3.	Perform usual rotation with the mouse
   4.	Confirm that response is not a rotation, but rather a translation
+
+* [Non-movable Slices](#non-movable-slices)
+  1.	Load a MDEvent sample data set into the VSI
+  2.	Switch to the three slice view
+  3.	Try to shift the slice plane
+  4.	Confirm that this only results in a translation of the data set
