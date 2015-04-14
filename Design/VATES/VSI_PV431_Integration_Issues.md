@@ -65,6 +65,10 @@ When loading data into the ThreeSliceView (QuadView), we cannot move the slice p
 When making a change in the view settings panel, it seems that this does not have an effect on the VSI
 [1](#ParaView)
 
+#### Default view issue
+
+Found my Andrei "Selected a splatter plot for a histo workspace. Defaulted to standard view." [3](#Mantid)
+
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
 
