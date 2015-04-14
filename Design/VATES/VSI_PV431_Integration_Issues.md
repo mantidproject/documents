@@ -61,6 +61,10 @@ When loading data into splatterplot, it appears that only translation of the dat
 When loading data into the ThreeSliceView (QuadView), we cannot move the slice planes any longer. Trying to move the slice planes just translates the data set.
 [1](#ParaView)
 
+#### View settings
+When making a change in the view settings panel, it seems that this does not have an effect on the VSI
+[1](#ParaView)
+
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
 
@@ -85,7 +89,8 @@ In terms of rating the issues for Utkarsh:
   4. Issue [Cut Filter](#cut-filter) 
   5. Issue [Rotation Splatterplot](#rotation-splatterplot)
   6. Issue [Non-movable Slices](#non-movable-slices) 
-  7. The other issues in no order
+  7. Issue [View settings](#view-settings)
+  8. The other issues in no order
 
 
 ### How to reproduce the issues
@@ -175,3 +180,9 @@ In terms of rating the issues for Utkarsh:
   2.	Switch to the three slice view
   3.	Try to shift the slice plane
   4.	Confirm that this only results in a translation of the data set
+
+* [View settings](#view-settings)
+  1.	Load a MDEvent sample data set into the VSI
+  2.	Open the view settings
+  3.	Change the background color and press apply
+  4.	Confirm that the background color does not change
