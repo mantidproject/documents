@@ -22,4 +22,5 @@ Minutes
 =======
 
 * Paraview 4.3 branch bundling has been done, but problem with functionality. 
-* Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement.  
+* Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement
+* Switching to Leeroy has solved null builds issues etc. Overall good improvement. Ross technical documentation for Leeroy, send link when done
