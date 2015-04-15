@@ -45,6 +45,7 @@ class MDQuantity {
   public:
     UnitLabel getUnitLabel() const = 0; // Concrete implementations will forward
     MDUnit getMDUnit() const = 0;
+    bool canConvertTo(&MDUnit other) const = 0;
 };
 
 class QLab : public MDQuantity{
@@ -75,17 +76,19 @@ HKL (r.l.u) and HKL (A^-1) would be modelled with the same MDQuantity, but with 
 ```cpp
 class MDUnit {
   public:
-    std::string getMDUnitId(); 
-    UnitLabel getUnitLabel() const = 0;
-    bool canConvertTo(&MDUnit other) const = 0;
-    MDUnit convertTo(const std::string mdUnitID) const = 0; 
+    virtual UnitLabel getUnitLabel() const = 0;
+    bool operator==(const MDUnit&) const;
 };
 
-class RLU : public MDUnit {
+class QUnit : public MDUnit { // Useful for equality purposes
+  ...
+}
+
+class RLU : public QUnit {
   ...
 };
 
-class InverseAngstroms : public MDUnit {
+class InverseAngstroms : public QUnit {
   ...
 };
 
@@ -99,8 +102,15 @@ class LabelMDUnit : public MDUnit {
 * Handle persistance 
 * Replace Mantid::Kernel::SpecialCoordateSystem with MDQuantity
 * Add getters/setters to IMDDimension and subtypes
+* Any Slicing Algorithms should warn when Q and non-Q dimensions are mixed via basis vectors
 
 Refactoring all existing code to better use these types would be a further step.
+
+##Further Requirements##
+We are not handling the following yet.
+
+* If we have a workspace in the HKL frame and we do a cut that gives an output dimension that is HH, we should still be able to convert between r.l.u and inverse Angstroms. This implies that the MDQuanity should carry a list of functions required to perform the conversion.
+* What about transformations that involve a shift as well as a scale. For example Energy to Temperature in F.
 
 
 
