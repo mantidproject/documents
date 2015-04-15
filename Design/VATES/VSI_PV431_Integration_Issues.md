@@ -12,19 +12,19 @@ Likely Source of Issue | Key
 
 ### Issues
 
-#### Colour Editor Panel [ ]
+#### Colour Editor Panel
 When loading starting the VSI a second time, we get a message pop up [1](#ParaView) :
 
     > Replacing existing manager for function : 
     > "COLOR_EDITOR_PANEL" 
 
-#### Quad View [ ]
+#### Quad View
 When switch to QuadView, default grid axis is not on any longer displayed (error message) [3](#Mantid)
 
-#### Cut Filter [ ]
+#### Cut Filter
 The cut filter does not seem to have the positioning tool any longer with which the user can manually select a plane [4](#Unknown)
 
-#### Cut then Scale [ ]
+#### Cut then Scale
 First cut then scale does not work [3](#Mantid)
 
 #### Blanking Arrays [ ]
