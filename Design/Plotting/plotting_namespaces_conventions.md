@@ -12,11 +12,13 @@ Main changes
 ------------
 
 * Bring future.pyplot out of future and import it as pyplot. In
-[mantidplotrc.py](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/MantidPlot/mantidplotrc.py)
-there would be a line like:
+[mantidplotrc.py](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/MantidPlot/mantidplotrc.py) or in mantidplot.py (imported from there) there would an import like this:
 ```python
-import pyplot
+import pymantidplot.pyplot
+from pymantidplot.pyplot import *
 ```
+to import the module and bring it into the standard MantidPlot
+namespace.
 
 * This will cause at least one name clash with the traditional
   mantidplot plot() function. This function could be moved into a
@@ -24,18 +26,13 @@ import pyplot
   [mantidplotrc.py](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/MantidPlot/mantidplotrc.py).
 
 * As the change from `plot()` to `qtiplot.plot()` breaks backwards
-  compatibility, the documenation (and also course material, etc.)
+  compatibility, the documentation (and also course material, etc.)
   needs to be checked and updated.
 
 Additional changes
 ------------------
 
-* As Nick came up with the same idea to drop the `tool_` prefix as was
-  already proposed in [trac ticket
-  11075](http://trac.mantidproject.org/mantid/ticket/11075), it would
-  be worth discussing this again.
-
-* Provide an alias for `tool_spectrum`: `tool_sp`, or `sp` if we drop the `tool_` prefix.
-
-* I'm still in favour of dropping the `tool_` prefix as being required and having it accept both. (Martyn) 
+* For the names of the tools in the plot commands, there will be
+  aliases with and without the `tool_` prefix, and for the `spectrum`
+  tool there will be a shorter alias: `sp`.
 
