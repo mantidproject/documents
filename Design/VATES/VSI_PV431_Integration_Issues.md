@@ -27,45 +27,45 @@ The cut filter does not seem to have the positioning tool any longer with which 
 #### Cut then Scale
 First cut then scale does not work [3](#Mantid)
 
-#### Blanking Arrays [ ]
+#### Blanking Arrays
 Structured data (MDHisto) requires blanking arrays. The Histo data appears as a big box. Blanking arrays seem to be missing. [3](#Mantid) longer term [1](#ParaView)
 
-#### BinMD  [ ]
+#### BinMD
 Remove BinMD is not available any longer for rebinned data (probably an issue with active source) [3](#Mantid) 
 
-#### Restart [ ]
+#### Restart
 Once output warning report from PV is started, it propagates when VSI is restarted. [1](#ParaView) 
 
-#### Drag and Drop [ ]
+#### Drag and Drop
 Cannot add PeakWS through drag and drop; it thinks it is an MDEventWS and crashes(More tests needed in Splatterplot, when we can load  PeakWS) [1](#ParaView), [3](#Mantid) 
 
-#### Cube Axis Visibility [ ]
+#### Cube Axis Visibility
 Cube axis visibility does not work any longer. [2](#ParaViewFixed) 
 
-#### Colour Bar [ ]
+#### Colour Bar
 Color bar appears only in SplatterPlot mode. There is no checkbox to enable or disable it. [1](#ParaView)
 
-#### Scale then Cut [ ]
+#### Scale then Cut
 Apply scale/cut filter, then go to view settings( or anything that can change the focus). We cannot remove the filter any longer.  [3](#Mantid)
 
-#### Multiple Instances [ ]
+#### Multiple Instances
 When loading MDEventWS into the VSI and PeakWS into another instance of the VSI, the color scale of the MDEventWS seems to get messed up. It seems that the instances are NOT independent.  [1](#ParaView)
 
-#### Non Orthongonal [ ]
+#### Non Orthongonal
 Probable issue with BasisVectors in newer ParaView. API change. [3](#Mantid)
 
-#### Rotation Splatterplot [ ]
+#### Rotation Splatterplot
 When loading data into splatterplot, it appears that only translation of the data set is possible no rotation. [1](#ParaView)
 
-#### Non-movable slices [ ]
+#### Non-movable slices
 When loading data into the ThreeSliceView (QuadView), we cannot move the slice planes any longer. Trying to move the slice planes just translates the data set.
 [1](#ParaView)
 
-#### View settings [ ]
+#### View settings
 When making a change in the view settings panel, it seems that this does not have an effect on the VSI
 [1](#ParaView)
 
-#### Default view issue [ ]
+#### Default view issue
 
 Found my Andrei "Selected a splatter plot for a histo workspace. Defaulted to standard view." [3](#Mantid)
 
