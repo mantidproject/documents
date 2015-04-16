@@ -18,6 +18,7 @@ Agenda
  * A way to do this would be to find a way to get user-defined functions looping over the MDEvent data. How do Numpy do this? (Owen)
 * [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) for handling of data from moving instruments (Anders) 
 * [MDWorkspace enhancement proposal](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md) (Owen)
+* Plan to move to Github Issues (Stuart)
 
 Minutes
 =======
