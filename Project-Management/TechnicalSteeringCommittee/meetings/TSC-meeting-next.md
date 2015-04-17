@@ -11,3 +11,4 @@ Agenda
 * [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) for handling of data from moving instruments (Anders) 
 * [MDWorkspace enhancement proposal](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md) (Owen)
 * Plan for moving to Github Issues (Stuart)
+* Review any outstanding external pull request
