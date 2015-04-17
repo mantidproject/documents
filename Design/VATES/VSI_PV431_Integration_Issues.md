@@ -10,6 +10,24 @@ Likely Source of Issue | Key
 <a name="Mantid">Mantid</a> | 3
 <a name="Unknown">Unknown</a> | 4
 
+#### Resolved Issues
+
+* [Colour Editor Panel Issue](#colour-editor-panel) : Resolved by going back to single instance
+* [Quad View](#quad-view) : Resolved by not applying grid axis (in PV4.3.1 property is not available)
+* [Cut Filter ](#cut-filter) : Resolved by hooking up the active view with the propertiesPanel
+* [Blanking Arrays](#blanking-arrays): Resolved by loading MDHisto workspaces the old way
+* [BinMD](#binmd) : Resolved by making the pipeline browser available again
+* [Restart](#restart) : Resolved by going back to single instance
+* [Drag and Drop](#drag-and-drop) : Resolved by updating the proxies when properties are changed. Also we needed to hedge for active ParaView servers which can be NULL (new in PV4.3.1)
+* [Cube Axis Visibility](#cube-axis-visibility) : Resolved by hooking up the active view with the propertiesPanel
+* [Colour Bar](#colour-bar) : Resolved by hooking up the active view with the propertiesPanel
+* [Scale then Cut](#scale-then-cut) : Resolved by making the pipeline browser available again
+* [Multiple Instances](#multiple-instances) : Resolved by going back to single instance
+* [Rotation Splatterplot](#rotation-splatterplot) : Resolved by setting interaction mode in splatterplot explicitly
+* [Non-movable Slices](#non-movable-slices) : Resolved. The way the user moves the slices in the QuadView has changed, but the functionality is still there.
+* [View settings](#view-settings) : Resolved by hooking up the active view with the propertiesPanel
+
+
 ### Issues
 
 #### Colour Editor Panel
