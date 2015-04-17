@@ -22,7 +22,7 @@ Minutes
 =======
 
 * Paraview 4.3 branch bundling has been done, but problem with functionality. 
-* Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement
+* Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement.  We could have a set of jenkins jobs that build the latest version of Paraview (that we want to build against) and then zip the output and archive it.  Then the mantid build jobs could just copy this artifact, unzip and build against it.  
 * Switching to Leeroy has solved null builds issues etc. Overall good improvement. Ross technical documentation for Leeroy, send link when done
 * For build server job for every PR: Agree to add doxygen (Ross). Can reference level be set on pylint, technical how to do this (Martyn). Could still allow merging even if pylint fail, and how to make this transparent to developers. Email develpers when Doxygen and pylint added
 * Review any outstanding external pull request at future TSC meetings
