@@ -26,5 +26,5 @@ Minutes
 * Switching to Leeroy has solved null builds issues etc. Overall good improvement. Ross technical documentation for Leeroy, send link when done
 * For build server job for every PR: Agree to add doxygen (Ross). Can reference level be set on pylint, technical how to do this (Martyn). Could still allow merging even if pylint fail, and how to make this transparent to developers. Email develpers when Doxygen and pylint added
 * Review any outstanding external pull request at future TSC meetings
-* Add wiki page with examples for interfacing with Mantid covering different use cases. Perhaps link on contributer.md to this (anders)  
-* Agreed to use label for tickets that need science validation. Suggested names for this label during meeting: VALIDATION, SCIENCETOTEST, SCITEST, VALIDSCI. VALIDATION just means to add comment end of ticket saying "this has been validated by so and so". To agree on label
+* Add page with examples for interfacing with Mantid covering different use cases. Perhaps link on contributer.md to this (anders)  
+* Agreed to use label for tickets which need science validation. Suggested names for this label during meeting: VALIDATION, SCIENCETOTEST, SCITEST, VALIDSCI. VALIDATION just means to add comment end of ticket saying "this has been validated by so and so". To agree on label
