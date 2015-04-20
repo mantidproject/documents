@@ -28,7 +28,7 @@ Likely Source of Issue | Key
 * [View settings 2](#view-settings-2) : This is not an integration issue. The settings subwindow opens in front of the Mantidplot Window. This causes the Mantiplot menu bar to be shown. This is something which already existed earlier on.
 
 #### Still to resolve
-* [View settings](#view-settings)
+* [View settings](#view-settings) : We are in contact with Utkarsh about this
 
 
 ### Issues
