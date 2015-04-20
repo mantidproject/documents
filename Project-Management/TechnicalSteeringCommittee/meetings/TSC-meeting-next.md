@@ -12,3 +12,4 @@ Agenda
 * [MDWorkspace enhancement proposal](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md) (Owen)
 * Plan for moving to Github Issues (Stuart)
 * Review any outstanding external pull request
+* Should [labels](https://github.com/mantidproject/mantid/labels) on github conform to a naming standard (i.e. spaces, pascalcase....)?
