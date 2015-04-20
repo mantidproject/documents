@@ -27,6 +27,9 @@ Likely Source of Issue | Key
 * [Non-movable Slices](#non-movable-slices) : Resolved. The way the user moves the slices in the QuadView has changed, but the functionality is still there.
 * [View settings](#view-settings) : Resolved by hooking up the active view with the propertiesPanel
 
+#### Still to resolve
+* [View settings 2](#view-settings-2)
+
 
 ### Issues
 
@@ -86,6 +89,12 @@ When making a change in the view settings panel, it seems that this does not hav
 #### Default view issue
 
 Found my Andrei "Selected a splatter plot for a histo workspace. Defaulted to standard view." [3](#Mantid)
+
+#### View Settings 2
+
+Found by Andrei: "In VSI, when I go to View->Settings, the settings dialog has the same menus as MantidPlot. I can start my planning tool from there". This issue seems to only exist on Ubuntu and OSX. [1] (#ParaView) 
+
+
 
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
@@ -209,3 +218,8 @@ In terms of rating the issues for Utkarsh:
   2.	Open the view settings
   3.	Change the background color and press apply
   4.	Confirm that the background color does not change
+  
+  * [View settings 2](#view-settings-2)
+  1.	Load a MDEvent sample data set into the VSI (in OSX or Ubuntu)
+  2.	Open the view settings
+  4.	Confirm that you can see the Mantid task bar
