@@ -25,10 +25,10 @@ Likely Source of Issue | Key
 * [Multiple Instances](#multiple-instances) : Resolved by going back to single instance
 * [Rotation Splatterplot](#rotation-splatterplot) : Resolved by setting interaction mode in splatterplot explicitly
 * [Non-movable Slices](#non-movable-slices) : Resolved. The way the user moves the slices in the QuadView has changed, but the functionality is still there.
-* [View settings](#view-settings) : Resolved by hooking up the active view with the propertiesPanel
+* [View settings 2](#view-settings-2) : This is not an integration issue. The settings subwindow opens in front of the Mantidplot Window. This causes the Mantiplot menu bar to be shown. This is something which already existed earlier on.
 
 #### Still to resolve
-* [View settings 2](#view-settings-2)
+* [View settings](#view-settings)
 
 
 ### Issues
