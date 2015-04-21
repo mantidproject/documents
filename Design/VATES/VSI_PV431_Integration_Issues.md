@@ -31,6 +31,7 @@ Likely Source of Issue | Key
 * [View settings](#view-settings) : We are in contact with Utkarsh about this
 * [Slice Viewer](#slice-viewer) : Utkarsh is having a look at this
 * [Remove cut filter](#remove-cut-filter) : Utkarsh is having a look at this. ParaView seemed to have changed the way it resets the active source after a filter has been deleted.
+
 ### Issues
 
 #### Colour Editor Panel
