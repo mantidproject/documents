@@ -29,7 +29,8 @@ Likely Source of Issue | Key
 
 #### Still to resolve
 * [View settings](#view-settings) : We are in contact with Utkarsh about this
-
+* [Slice Viewer](#slice-viewer) : Utkarsh is having a look at this
+* [Remove cut filter](#remove-cut-filter) : Utkarsh is having a look at this. ParaView seemed to have changed the way it resets the active source after a filter has been deleted.
 
 ### Issues
 
@@ -94,7 +95,13 @@ Found my Andrei "Selected a splatter plot for a histo workspace. Defaulted to st
 
 Found by Andrei: "In VSI, when I go to View->Settings, the settings dialog has the same menus as MantidPlot. I can start my planning tool from there". This issue seems to only exist on Ubuntu and OSX. [1] (#ParaView) 
 
+#### Slice Viewer 
 
+When trying to open the Slice Viewer from the MultiSlice window, Mantid crashes. [1] (#ParaView) 
+
+#### Remove cut filter
+
+When applying a cut filter in standard view and switching to splatterplot view, Mantid crashes [1] (#ParaView) 
 
 ### Who is working on what?
 [Drag and Drop](#drag-and-drop): Anton
@@ -223,3 +230,16 @@ In terms of rating the issues for Utkarsh:
   1.	Load a MDEvent sample data set into the VSI (in OSX or Ubuntu)
   2.	Open the view settings
   4.	Confirm that you can see the Mantid task bar
+
+  * [Slice Viewer](#slice-viewer)
+  1.	Load a MDEvent sample data set into the VSI
+  2.	Switch to Multislice
+  3.	Try to open the Slice Viewer by pressing shift and click on the black slice triangle at the same time.
+  4.	Confirm that Mantid breaks
+  
+  * [Remove cut filter](#remove-cut-filter)
+  1.	Load a MDEvent sample data set into the VSI 
+  2.	Switch to Standard view and add a cut filter
+  3.	Switch to splatter plot view
+  4.	Confirm that Mantid breaks
+  
