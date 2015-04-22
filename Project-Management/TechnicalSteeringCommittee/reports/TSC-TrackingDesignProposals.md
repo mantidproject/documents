@@ -12,6 +12,7 @@ Design documents in progress
 | :------------ |:---------------|
 | [pythonAlgorithmsForMDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst)     | Discussed 15th feb 2015, see TSC minutes  |
 | [PocoStringTokenizer](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)     | Discussed 15th feb 2015, see TSC minutes |
+| [IMDDimensionUpdate](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md)     | Discussed 21st April 2015, see TSC minutes |
 
 Approved design documents
 -----------------------------
