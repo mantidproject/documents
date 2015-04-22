@@ -15,10 +15,11 @@ Agenda
 * Should [labels](https://github.com/mantidproject/mantid/labels) on github conform to a naming standard (i.e. spaces, pascalcase....)?
 * 
 
-Actions
+Minutes
 =======
-* [Python api for MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst) will be updated to show the options discussed for this design. The first objective will be to introduce and expose read-only iterators for MDEvents in MDEventWorkspaces. The design document should then be archived. (Andrei)
-* [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) has not been discussed. It needs to be updated and circulated to the TSC, and will be used in the next meeting. (Anders)
-* [MDWorkspace enhancement proposal](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md) will be updated following feed back from the TSC and then circulated on the developer list in the next week. (Owen)
-* All develop jobs will be removed from jenkins (Martyn)
+Present: Pete, Ross, Stuart, Andrei, Anders, Martyn and Owen 
 
+* Action: [Python api for MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst) will be updated to show the options discussed for this design,  and it was agreed the first objective will be to introduce and expose read-only iterators for MDEvents in MDEventWorkspaces. When design document has been updated move it from 'in progress' to 'approved' in [here](https://github.com/mantidproject/documents/edit/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md). (Andrei)
+* Action: [Design proposal](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md) has not been discussed. It will to be updated and re-circulated to the developer list before the next TSC meeting. (Anders)
+* Action: [MDWorkspace enhancement proposal](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md) will be updated following feed back from the TSC and then circulated on the developer list in the next week. (Owen)
+* Action: All develop jobs will be removed from jenkins (Martyn)
