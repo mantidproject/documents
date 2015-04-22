@@ -20,6 +20,7 @@ Agenda
 
 Minutes
 =======
+Present: Pete, Ross, Stuart, Andrei, Anders, Martyn, Owen and Nick
 
 * Paraview 4.3 branch bundling has been done, but problem with functionality. 
 * Build server script updates for bundled ParaView. Not high priority. Uncertain resource requirement.  We could have a set of jenkins jobs that build the latest version of Paraview (that we want to build against) and then zip the output and archive it.  Then the mantid build jobs could just copy this artifact, unzip and build against it.  
