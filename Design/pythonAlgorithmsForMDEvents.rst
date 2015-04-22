@@ -143,3 +143,17 @@ d. Usually the first step to load reactor-source experiment data is to create an
    Thus it can be convenient to program in python script, if a set of APIs are defined and implemented 
    to (1) construct an MDWorkskpace by detectors positions and then 
    (2) modify the detectors' counts by index measurement point and detector ID. 
+
+5. Implementation
++++++++++++++++++
+
+Following feedback from the TSC, we found several ways to implement this.
+ a. Create iterators over the event array, and expose them to Python. As a first step, this could be a read-only
+    iterator. We need to expose accessors to the events themselves, to read gignal, error, coordinates, experiment 
+    info, and detector. Subsequent steps would involve read/write access. Ome should be able to add/delete MDevents.
+    This seems like the easiest approach. It has the disadvantage that looping over large arrays in Python is slow.
+ b. Expose a copy of the whole MDevent array as a list or numpy array. An alternative is to expose arrays for
+    signal, error, each coorinate, etc. separately. Any of these options might be very memory intensive
+ c. Study how numpy functions are implemented, and see if we can replicate that in Mantid. This would be an ideal
+    choice, but we are not sure yet how to do it.
+For now, it seems like the first approach is something we can implement in Mantid relatively fast. 
