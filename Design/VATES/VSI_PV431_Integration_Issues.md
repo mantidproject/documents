@@ -26,11 +26,14 @@ Likely Source of Issue | Key
 * [Rotation Splatterplot](#rotation-splatterplot) : Resolved by setting interaction mode in splatterplot explicitly
 * [Non-movable Slices](#non-movable-slices) : Resolved. The way the user moves the slices in the QuadView has changed, but the functionality is still there.
 * [View settings 2](#view-settings-2) : This is not an integration issue. The settings subwindow opens in front of the Mantidplot Window. This causes the Mantiplot menu bar to be shown. This is something which already existed earlier on.
+* [Slice Viewer](#slice-viewer) : This was resolved by a patch from Utkarsh
+* [Remove cut filter](#remove-cut-filter) : Resolved by using a new way of deleting sources in ParaView
+* * [View settings](#view-settings) : This seems to be intended. See the following links [ViewSettings](http://www.kitware.com/blog/home/post/621) and [ColorPallettes](http://www.paraview.org/Wiki/Color_Palettes). In summary: The view settings have been migrated to the properties panel and the what we see in the view settings menu are color palettes.
 
 #### Still to resolve
-* [View settings](#view-settings) : We are in contact with Utkarsh about this
-* [Slice Viewer](#slice-viewer) : Utkarsh is having a look at this
-* [Remove cut filter](#remove-cut-filter) : Utkarsh is having a look at this. ParaView seemed to have changed the way it resets the active source after a filter has been deleted.
+
+
+
 
 ### Issues
 
