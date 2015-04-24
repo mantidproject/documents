@@ -28,7 +28,7 @@ Likely Source of Issue | Key
 * [View settings 2](#view-settings-2) : This is not an integration issue. The settings subwindow opens in front of the Mantidplot Window. This causes the Mantiplot menu bar to be shown. This is something which already existed earlier on.
 * [Slice Viewer](#slice-viewer) : This was resolved by a patch from Utkarsh
 * [Remove cut filter](#remove-cut-filter) : Resolved by using a new way of deleting sources in ParaView
-* * [View settings](#view-settings) : This seems to be intended. See the following links [ViewSettings](http://www.kitware.com/blog/home/post/621) and [ColorPallettes](http://www.paraview.org/Wiki/Color_Palettes). In summary: The view settings have been migrated to the properties panel and the what we see in the view settings menu are color palettes.
+* [View settings](#view-settings) : This seems to be intended. See the following links [ViewSettings](http://www.kitware.com/blog/home/post/621) and [ColorPallettes](http://www.paraview.org/Wiki/Color_Palettes). In summary: The view settings have been migrated to the properties panel and the what we see in the view settings menu are color palettes.
 
 #### Still to resolve
 
