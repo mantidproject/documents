@@ -13,6 +13,7 @@ We currently have a visualisation request to lock the aspect ratios in the Slice
 In addition to this Andrei has pointed out that we ought to use the frame information to warn users whey they apply cuts with non-orthonongal axis that span a mix of dimension types. For example a cut that included components along an output axis of both Qx and E.
 
 **In summary the benefits of doing this work would be:**
+
 1. The ability to fix aspect ratios for Q dimensions
 1. The ability to detect how slicing has been applied (Andrei's suggestion)
 1. For a subset of cases, The ability to switch units. For example from HKL to r.l.u.
