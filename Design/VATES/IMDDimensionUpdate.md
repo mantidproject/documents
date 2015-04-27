@@ -12,6 +12,12 @@ We currently have a visualisation request to lock the aspect ratios in the Slice
 
 In addition to this Andrei has pointed out that we ought to use the frame information to warn users whey they apply cuts with non-orthonongal axis that span a mix of dimension types. For example a cut that included components along an output axis of both Qx and E.
 
+In summary the benefits of doing this work would be:
+* The ability to fix aspect ratios for Q dimensions
+* The ability to detect how slicing has been applied (Andrei's suggestion)
+* For a subset of cases, The ability to switch units. For example from HKL to r.l.u.
+* Proper definitions for core-concepts, which will greatly aid maintenace and make things a lot easier to extend and test
+
 ##Definitions##
 
 | Term        | Meaning          |
@@ -39,30 +45,31 @@ class IMDDimension {
 
 ```
 
-####MDQuantity####
+####MDFrame####
 
-New abstract type. Replaces Mantid::Kernel::SpecialCoordinateSystem
+New abstract type. This is designed to be light-weight enough save and load from files without affecting speed. This will replace Mantid::Kernel::SpecialCoordinateSystem
+
 ```cpp
-class MDQuantity {
+class MDFrame {
   public:
     UnitLabel getUnitLabel() const = 0; // Concrete implementations will forward
     MDUnit getMDUnit() const = 0;
     bool canConvertTo(&MDUnit other) const = 0;
 };
 
-class QLab : public MDQuantity{
+class QLab : public MDFrame{
   ...
 };
 
-class QSample : public MDQuantity{
+class QSample : public MDFrame{
   ...
 };
 
-class HKL : public MDQuantity{
+class HKL : public MDFrame{
   ...
 };
 
-class General : public MDQuantity{
+class General : public MDFrame{
   ...
 };
 
@@ -71,9 +78,9 @@ class General : public MDQuantity{
 
 ####MDUnit####
 
-The reason to separate MDUnit from MDQuantity is to support the concept of conversion better. While QLab can be converted to QSample and HKL, according to the Busing-Levy model, it is not possible to represent QLab or QSample in anything other than inverse Angstroms. HKL quantities can be represented in either inverse Angstroms or reciprocal lattice units. We would then later be able to add algorithms that support these conversions. We currently have to perform these conversions in a bespoke fashion in numerous places particularly in the Crystal module of Mantid.
+The reason to separate MDUnit from MDFrame is to support the concept of conversion better. While QLab can be converted to a different MDFrame, such as QSample or HKL, according to the Busing-Levy model, it is not possible to represent QLab or QSample in anything other than inverse Angstroms properly. HKL quantities can be represented in either inverse Angstroms or reciprocal lattice units. We would then later be able to add algorithms that support these conversions. We currently have to perform these conversions in a bespoke fashion in numerous places particularly in the Crystal module of Mantid.
 
-HKL (r.l.u) and HKL (A^-1) would be modelled with the same MDQuantity, but with different MDUnits. We would of course overload operator== to ensure that instances of these were treated as non-equal.
+HKL (r.l.u) and HKL (A^-1) would be modelled with the same MDQuantity, but with different MDUnits. We would of course overload operator== to ensure that instances of these were treated as non-equal. Algorithms to perform these conversions both intra MDFrame and inter MDFrame to all data points would be simple enough, but not in the immediate scope of these changes.
 
 ```cpp
 class MDUnit {
@@ -115,5 +122,7 @@ We are not handling the following yet.
 * What about transformations that involve a shift as well as a scale. For example Energy to Temperature in F.
 
 
+##Reviews##
+* This document was presented to and discussed as part of [this](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-04-21.md) SSC meeting. The document has been updated accordingly.
 
 
