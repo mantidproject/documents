@@ -41,6 +41,11 @@ via:
 * a web portal: https://portal.scarf.rl.ac.uk
 * a web service
 
+The IMAT GUI utilizes a RESTFul web service provided by Platforms
+LSF's Platform Application Center, as described here:
+https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
+(with Python client scripts).
+
 Data locations and copying
 ==========================
 
