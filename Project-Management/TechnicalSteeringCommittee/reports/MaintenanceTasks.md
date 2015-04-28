@@ -20,6 +20,7 @@ For 3.5 maintenance period
    42. Editing actual variable and class names
 108. Generate `.py` from `.ui` files as part of the build
 109. Add `f2py` code to the builds
+110. Update `class_maker.py` to generate code following current standards
 
 For a different release
 -----------------------
