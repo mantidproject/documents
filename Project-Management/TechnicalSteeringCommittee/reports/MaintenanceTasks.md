@@ -12,10 +12,13 @@ For 3.5 maintenance period
    4. CutAndPaste detector
    5. gcov (or equivalent)
    6. header analysis (e.g. unused includes)
+   7. [include what you use](http://www.mantidproject.org/IWYU)
 4. Back-port changes from QTIPlot to MantidPlot
 3. Proper rpm and deb packages (see previous item)
 2. Filling in argument list in python bindings (e.g. "self")
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards)
+   2. Re-run `clang-format`
+   42. Editing actual variable and class names
 
 For a different release
 -----------------------
