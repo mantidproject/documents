@@ -23,7 +23,11 @@ These scripts have guided the implementation of the SCARFLSFJobManager
 and LSFJobManager classes in Mantid. The script `paclogin.py`
 represents an exception to the general Platform LSF RESTful API: the
 login request is handled by a script that is specific to SCARF and
-STFC, and uses federal IDs.
+STFC, and uses federal IDs. Also, as an exception to the PAC defaults,
+the paths that are by default defined in the PAC as 
+`/platform/webservice/pacclient/jobs` for example, are modified like 
+`/webservice/pacclient/jobs` (the initial `platform` path component is 
+removed).
 
 Additional references
 ---------------------
