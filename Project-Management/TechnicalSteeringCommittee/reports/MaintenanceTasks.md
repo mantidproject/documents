@@ -15,7 +15,7 @@ For 3.5 maintenance period
 4. Back-port changes from QTIPlot to MantidPlot
 3. Proper rpm and deb packages (see previous item)
 2. Filling in argument list in python bindings (e.g. "self")
-1. Updating the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and enforcing it
+1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards)
 
 For a different release
 -----------------------
