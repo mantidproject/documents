@@ -40,7 +40,7 @@ class IMDDimension {
 
   ...
   public:
-    MDQuantity getMDQuantity() const; // Add new accessor
+    MDFrame getMDFrame() const; // Add new accessor
 
 };
 
@@ -81,7 +81,7 @@ class General : public MDFrame{
 
 The reason to separate MDUnit from MDFrame is to support the concept of conversion better. While QLab can be converted to a different MDFrame, such as QSample or HKL, according to the Busing-Levy model, it is not possible to represent QLab or QSample in anything other than inverse Angstroms properly. HKL quantities can be represented in either inverse Angstroms or reciprocal lattice units. We would then later be able to add algorithms that support these conversions. We currently have to perform these conversions in a bespoke fashion in numerous places particularly in the Crystal module of Mantid.
 
-HKL (r.l.u) and HKL (A^-1) would be modelled with the same MDQuantity, but with different MDUnits. We would of course overload operator== to ensure that instances of these were treated as non-equal. Algorithms to perform these conversions both intra MDFrame and inter MDFrame to all data points would be simple enough, but not in the immediate scope of these changes.
+HKL (r.l.u) and HKL (A^-1) would be modelled with the same MDFrame, but with different MDUnits. We would of course overload operator== to ensure that instances of these were treated as non-equal. Algorithms to perform these conversions both intra MDFrame and inter MDFrame to all data points would be simple enough, but not in the immediate scope of these changes.
 
 ```cpp
 class MDUnit {
@@ -110,7 +110,7 @@ class LabelMDUnit : public MDUnit {
 ###Development Steps###
 * Introduce the new types and subtypes. Ensure equality is implemented properly.
 * Handle persistance 
-* Replace Mantid::Kernel::SpecialCoordateSystem with MDQuantity
+* Replace Mantid::Kernel::SpecialCoordateSystem with MDFrame
 * Add getters/setters to IMDDimension and subtypes
 * Any Slicing Algorithms should warn when Q and non-Q dimensions are mixed via basis vectors
 
@@ -119,7 +119,7 @@ Refactoring all existing code to better use these types would be a further step.
 ##Further Requirements##
 We are not handling the following yet.
 
-* If we have a workspace in the HKL frame and we do a cut that gives an output dimension that is HH, we should still be able to convert between r.l.u and inverse Angstroms. This implies that the MDQuanity should carry a list of functions required to perform the conversion.
+* If we have a workspace in the HKL frame and we do a cut that gives an output dimension that is HH, we should still be able to convert between r.l.u and inverse Angstroms. This implies that the MDFrame should carry a list of functions required to perform the conversion.
 * What about transformations that involve a shift as well as a scale. For example Energy to Temperature in F.
 
 
