@@ -11,8 +11,7 @@ For 3.5 maintenance period
    3. [clang](http://builds.mantidproject.org/view/Develop%20Builds/job/develop_osx-10.9-clang/)
    4. CutAndPaste detector
    5. gcov (or equivalent)
-   6. header analysis (e.g. unused includes)
-   7. [include what you use](http://www.mantidproject.org/IWYU)
+   6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion)
 4. Back-port changes from QTIPlot to MantidPlot
 3. Proper rpm and deb packages (see previous item)
 2. Filling in argument list in python bindings (e.g. "self")
