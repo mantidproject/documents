@@ -9,7 +9,7 @@ For 3.5 maintenance period
 4. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/pylint_develop/)
    2. [coverity](https://scan.coverity.com/projects/335)
-   3. [clang](http://builds.mantidproject.org/view/Develop%20Builds/job/develop_osx-10.9-clang/)
+   3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
    4. CutAndPaste detector
    5. gcov (or equivalent)
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion)
