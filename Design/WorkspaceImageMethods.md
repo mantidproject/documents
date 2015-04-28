@@ -6,8 +6,8 @@ Motivation
 
 Handling Imaging data with Workspace 2D structures is awkward, both for storing data and for plotting.
 
-Current system for handling imange data
----------------------------------------
+Current system for handling image data
+--------------------------------------
 
 There are two approaches that have been attempted:
 
