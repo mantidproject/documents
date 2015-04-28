@@ -8,3 +8,6 @@ Agenda
 * Review of [skipped system tests](http://developer.mantidproject.org/systemtests/)
 * Plan for moving to Github Issues (Stuart)
 * Should [labels](https://github.com/mantidproject/mantid/labels) on github conform to a naming standard (i.e. spaces, pascalcase....)?
+
+Minutes
+=======
