@@ -18,6 +18,8 @@ For 3.5 maintenance period
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework)
    2. Re-run `clang-format`
    42. Editing actual variable and class names
+108. Generate `.py` from `.ui` files as part of the build
+109. Add `f2py` code to the builds
 
 For a different release
 -----------------------
