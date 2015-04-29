@@ -15,5 +15,5 @@ Present: Pete, Ross, Stuart, Owen, Martyn and Anders
 
 * Discuss pros and cons of release brances. Action (Pete) to create 'release next (or next release)' branch for developer who are not fixing bugs for users during beta testing to optionally commit new features for the next release to. Have this branch to twice a day pull in changes from master and inform developer that this branch is available for optional use during beta testing
 * No outstanding external pull request
-* Discussing of moving to newer gcc on RHEL6 waiting changes on cabine PCs and keep this agenda item
+* Discussing of moving to newer gcc on RHEL6 waiting changes on SNS build servers, keep this agenda item
 * Discussed/updated list of maintenance tasks for start of the next development cycle, see link above 
