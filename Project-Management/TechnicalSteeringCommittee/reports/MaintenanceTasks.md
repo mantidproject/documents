@@ -7,7 +7,7 @@ For 3.5 maintenance period
    1. ANN
    2. GSoap ?
 4. Reducing static analysis issues (discus stewards and soft limits)
-   1. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/pylint_develop/)
+   1. [pylint](http://builds.mantidproject.org/job/pylint_master)
    2. [coverity](https://scan.coverity.com/projects/335)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
    4. CutAndPaste detector
