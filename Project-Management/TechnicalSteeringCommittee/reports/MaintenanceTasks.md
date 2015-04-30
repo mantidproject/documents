@@ -29,4 +29,4 @@ For a different release
 2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362), rework cmake as a whole, re-examine the package structure
 2. Move to Qt 5
 3. Move to Python 3
-4. Move to visual studio 2013 community edition
+4. Move to visual studio 2015 community edition
