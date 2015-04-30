@@ -191,5 +191,7 @@ The main output from this design proposal is to:
 | Use case 2      |  | x |  | |
 | Use case 3      |  | (x) |  | |
 | Use case 4a     | | |  | |
-| Use case 4b,5b      | |  |  | x |
+| Use case 4b,5b      | (x) | (x) |  | x |
 | Use case 5a      | (x) | x |  | |
+
+For use case 4b, 5b the choice of implementation may depend on the level of log-entry details the user care about, i.e. if this level of detail is at the level of each neutron or some causer level.
