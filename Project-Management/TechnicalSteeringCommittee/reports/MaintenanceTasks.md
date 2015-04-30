@@ -22,9 +22,11 @@ For 3.5 maintenance period
 108. Generate `.py` from `.ui` files as part of the build
 109. Add `f2py` code to the builds
 110. Update `class_maker.py` to generate code following current standards
+1. Add `LINK_PRIVATE` where possible in CMake
 
 For a different release
 -----------------------
 2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362), rework cmake as a whole, re-examine the package structure
 2. Move to Qt 5
 3. Move to Python 3
+4. Move to visual studio 2013 community edition
