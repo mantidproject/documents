@@ -35,3 +35,7 @@ For a different release
 2. Move to Qt 5
 3. Move to Python 3
 4. Move to visual studio 2015 community edition
+5. Investigate breaking issues with updated dependencies
+    1. [Poco 1.6](http://trac.mantidproject.org/mantid/ticket/10976)
+    2. oce 0.17 or OpenCascade 6.8
+    3. iPython 3.0
