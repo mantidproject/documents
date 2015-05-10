@@ -11,3 +11,12 @@ as the logs of the event data seem to get concatenated.
 For adding the event data, we apply the Plus algorithm on both the event data and the monitor data.
 Once all runs are added, we group the added event data and the added monitor data.
 This group workspace is then stored in a file. This file can then be loaded from the "Run Numbers" tab. 
+
+### Time slicing ###
+The following information is requested during time slicing from the logs
+ * Total charge and time from the [proton_charge logs](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/scripts/SANS/SANSUtility.py#L272:L278)
+
+
+
+
+### Where do things go wrong? ###
