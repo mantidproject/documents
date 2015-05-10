@@ -13,8 +13,9 @@ Once all runs are added, we group the added event data and the added monitor dat
 This group workspace is then stored in a file. This file can then be loaded from the "Run Numbers" tab. 
 
 ### Time slicing ###
-The following information is requested during time slicing from the logs
- * Total charge and time from the [proton_charge logs](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/scripts/SANS/SANSUtility.py#L272:L278)
+The logs are touched during time slicing for the following actions 
+ * Get total charge and time from the [proton_charge logs](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/scripts/SANS/SANSUtility.py#L272:L278)
+* Perform [FilterByTime](http://docs.mantidproject.org/nightly/algorithms/FilterByTime-v1.html) algorithm. This uses the first entry of the proton charge log is used as the zero time.
 
 
 
