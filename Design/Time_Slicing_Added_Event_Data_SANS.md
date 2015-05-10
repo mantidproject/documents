@@ -16,7 +16,7 @@ This group workspace is then stored in a file. This file can then be loaded from
 The logs are touched during time slicing for the following actions 
  * Get total charge and time from the [proton_charge logs](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/scripts/SANS/SANSUtility.py#L272:L278)
  
- * Perform [FilterByTime](http://docs.mantidproject.org/nightly/algorithms/FilterByTime-v1.html) algorithm. This uses the first entry of the proton charge log is used as the zero time.
+ * Perform [FilterByTime](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/scripts/SANS/SANSUtility.py#L293) algorithm. This uses the first entry of the proton charge log is used as the zero time (see [here](http://docs.mantidproject.org/nightly/algorithms/FilterByTime-v1.html))
 
 
 
