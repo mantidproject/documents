@@ -3,6 +3,7 @@ For 3.5 maintenance period
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage)
 1. Remove unused tools
    3. mwclient
+1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/)
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/pylint_master)
    2. [coverity](https://scan.coverity.com/projects/335)
