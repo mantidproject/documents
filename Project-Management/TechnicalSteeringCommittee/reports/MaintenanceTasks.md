@@ -13,7 +13,7 @@ For 3.5 maintenance period
    4. ~~CutAndPaste detector~~
    5. ~~gcov (or equivalent)~~
 1. Update `class_maker.py` to generate code following current standards
-1. Back-port changes from QTIPlot to MantidPlot - 2 man days to produce a shopping list of functionality, benefits and estimates
+1. Removed by agreement
 1. Filling in argument list in python bindings (e.g. "self")
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework)
    1. Re-run `clang-format`
@@ -28,6 +28,7 @@ Too low benefit/priority for this release
 1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
    1. ANN
    2. GSoap ?
+1. Back-port changes from QTIPlot to MantidPlot - 2 man days to produce a shopping list of functionality, benefits and estimates
 
    
 For a different release
