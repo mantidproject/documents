@@ -12,20 +12,20 @@ Workplan for moving to github issues.
 **Critcal reports we need to replicate**
 Mostly taken from the trac queries [here](http://trac.mantidproject.org/mantid/report)
 
-* Tickets created by me
-* Any tickets with no one assigned
-* Tickets assigned to me
-* All tickets by owner
-* My tickets for all iterations
-* Tickets fixed per developer per milestone
-* Patch candiate tickets
-* Ticket burn rate. Per milestone, grouped by label (critical, blocker) etc
-* How much each facility has contributed to Mantid over the last year. Number of issues fixed per facility
+* Tickets created by me (github | [trac](http://trac.mantidproject.org/mantid/report/1))
+* Any tickets with no one assigned (github | [trac](http://trac.mantidproject.org/mantid/report/3))
+* Tickets assigned to me (github | [trac](http://trac.mantidproject.org/mantid/report/7))
+* All tickets by owner (github | [trac](http://trac.mantidproject.org/mantid/report/10))
+* My tickets for all iterations (github | [trac](http://trac.mantidproject.org/mantid/report/15))
+* Tickets fixed per developer per milestone (github | [trac](http://trac.mantidproject.org/mantid/report/21))
+* Patch candiate tickets (github | [trac](http://trac.mantidproject.org/mantid/report/20))
+* Ticket burn rate. Per milestone, grouped by label (critical, blocker) etc (github | [trac](http://trac.mantidproject.org/mantid/report/24))
+* How much each facility has contributed to Mantid over the last year. Number of issues fixed per facility (github | trac)
 * SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from. See [here](http://trac.mantidproject.org/mantid/wiki/SSC%20Report%202015)
-* **Custom query** - for example to create wiki-text for tickets per milestone grouped by technique area
+* **Custom query** - for example to create wiki-text for tickets per milestone grouped by technique area  ([github](https://github.com/mantidproject/mantid/issues) | [trac](http://trac.mantidproject.org/mantid/query))
 
 ***Desired Features***
-* Milestone report (Pete has this covered)
+* Milestone report ([github](https://github.com/mantidproject/mantid/milestones) | [trac](http://trac.mantidproject.org/mantid/roadmap))(Pete has this covered)
 * Easily extact queries by Student, or Core
 
 **Implementation steps**
