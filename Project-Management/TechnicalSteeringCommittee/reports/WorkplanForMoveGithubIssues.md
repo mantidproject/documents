@@ -10,6 +10,8 @@ Workplan for moving to github issues.
 * Critical reports on trac produced from information from github issues (**the sooner we know these, the better**)
 
 **Critcal reports we need to replicate**
+Mostly taken from the trac queries [here](http://trac.mantidproject.org/mantid/report)
+
 * Tickets created by me
 * Any tickets with no one assigned
 * Tickets assigned to me
