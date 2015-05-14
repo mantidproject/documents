@@ -18,10 +18,10 @@ Mostly taken from the trac queries [here](http://trac.mantidproject.org/mantid/r
 * All tickets by owner ([github](https://github.com/mantidproject/mantid/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aassigned) | [trac](http://trac.mantidproject.org/mantid/report/10))
 * My tickets for all iterations (github | [trac](http://trac.mantidproject.org/mantid/report/15))
 * Tickets fixed per developer per milestone (github | [trac](http://trac.mantidproject.org/mantid/report/21))
-* Patch candiate tickets (github | [trac](http://trac.mantidproject.org/mantid/report/20))
+* Patch candiate tickets ([github](https://github.com/mantidproject/mantid/issues?q=is%3Aopen+is%3Aissue+label%3A%22Patch+Candidate%22) | [trac](http://trac.mantidproject.org/mantid/report/20))
 * Ticket burn rate. Per milestone, grouped by label (critical, blocker) etc (github | [trac](http://trac.mantidproject.org/mantid/report/24))
 * How much each facility has contributed to Mantid over the last year. Number of issues fixed per facility (github | trac)
-* SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from. See [here](http://trac.mantidproject.org/mantid/wiki/SSC%20Report%202015)
+* SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from. See [here](http://trac.mantidproject.org/mantid/wiki/SSC%20Report%202015).
 * **Custom query** - for example to create wiki-text for tickets per milestone grouped by technique area  ([github](https://github.com/mantidproject/mantid/issues) | [trac](http://trac.mantidproject.org/mantid/query))
 
 ***Desired Features***
