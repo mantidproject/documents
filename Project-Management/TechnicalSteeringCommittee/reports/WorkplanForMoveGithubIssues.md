@@ -22,5 +22,9 @@ Workplan for moving to github issues.
 * SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from. See [here](http://trac.mantidproject.org/mantid/wiki/SSC%20Report%202015)
 * **Custom query** - for example to create wiki-text for tickets per milestone grouped by technique area
 
+***Desired Features***
+* Milestone report (Pete has this covered)
+* Easily extact queries by Student, or Core
+
 **Implementation steps**
 * Implement the aforementioned reports
