@@ -12,10 +12,10 @@ Workplan for moving to github issues.
 **Critcal reports we need to replicate**
 Mostly taken from the trac queries [here](http://trac.mantidproject.org/mantid/report)
 
-* Tickets created by me (github | [trac](http://trac.mantidproject.org/mantid/report/1))
-* Any tickets with no one assigned (github | [trac](http://trac.mantidproject.org/mantid/report/3))
-* Tickets assigned to me (github | [trac](http://trac.mantidproject.org/mantid/report/7))
-* All tickets by owner (github | [trac](http://trac.mantidproject.org/mantid/report/10))
+* Tickets created by me ([github](https://github.com/issues) | [trac](http://trac.mantidproject.org/mantid/report/1))
+* Any tickets with no one assigned ([github](https://github.com/mantidproject/mantid/issues?q=is%3Aopen+is%3Aissue+no%3Aassignee) | [trac](http://trac.mantidproject.org/mantid/report/3))
+* Tickets assigned to me ([github](https://github.com/issues/assigned) | [trac](http://trac.mantidproject.org/mantid/report/7))
+* All tickets by owner ([github](https://github.com/mantidproject/mantid/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aassigned) | [trac](http://trac.mantidproject.org/mantid/report/10))
 * My tickets for all iterations (github | [trac](http://trac.mantidproject.org/mantid/report/15))
 * Tickets fixed per developer per milestone (github | [trac](http://trac.mantidproject.org/mantid/report/21))
 * Patch candiate tickets (github | [trac](http://trac.mantidproject.org/mantid/report/20))
