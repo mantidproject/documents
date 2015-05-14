@@ -19,7 +19,7 @@ Workplan for moving to github issues.
 * Patch candiate tickets
 * Ticket burn rate. Per milestone, grouped by label (critical, blocker) etc
 * How much each facility has contributed to Mantid over the last year. Number of issues fixed per facility
-* SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from
+* SSC report query by ssc & keyword, columns are summary and milestone. Also need to know which facility the ssc item came from. See [here](http://trac.mantidproject.org/mantid/wiki/SSC%20Report%202015)
 * **Custom query** - for example to create wiki-text for tickets per milestone grouped by technique area
 
 **Implementation steps**
