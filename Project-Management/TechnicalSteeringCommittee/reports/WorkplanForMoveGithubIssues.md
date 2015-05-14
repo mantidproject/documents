@@ -30,3 +30,6 @@ Mostly taken from the trac queries [here](http://trac.mantidproject.org/mantid/r
 
 **Implementation steps**
 * Implement the aforementioned reports
+* Nick want's all tickets migrated over. 
+* All comments should be dragged across if possible
+* Existing tickets need to be assigned to the correct person. Stuart might have a solution to this.
