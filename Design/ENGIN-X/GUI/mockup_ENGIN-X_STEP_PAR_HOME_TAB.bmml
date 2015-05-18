@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="606" measuredH="688" mockupW="564" mockupH="670">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="624" measuredH="694" mockupW="582" mockupH="676">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::TabBar" x="42" y="43" w="550" h="491" measuredW="179" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
@@ -68,9 +68,9 @@
         <text>Calibrate</text>
       </controlProperties>
     </control>
-    <control controlID="21" controlTypeID="com.balsamiq.mockups::StickyNote" x="497" y="565" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::StickyNote" x="497" y="565" w="127" h="129" measuredW="109" measuredH="123" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%22Calibrate%22%3A%20produces%20a%20.par%20file%20that%20can%20be%20loaded%20in%20GSAS</text>
+        <text>%22Calibrate%22%3A%20produces%20a%20.par%20file%20that%20can%20be%20loaded%20in%20GSAS/OpenGENIE</text>
       </controlProperties>
     </control>
   </controls>
