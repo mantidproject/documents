@@ -9,7 +9,7 @@ For 3.5 maintenance period
    2. [coverity](https://scan.coverity.com/projects/335) ([trac #11791](http://trac.mantidproject.org/mantid/ticket/11791))
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/) ([trac #11790](http://trac.mantidproject.org/mantid/ticket/11790))
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days ([trac #11789](http://trac.mantidproject.org/mantid/ticket/11789))
-   7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute
+   7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute ([trac #11753](http://trac.mantidproject.org/mantid/ticket/11753))
    4. ~~CutAndPaste detector~~
    5. ~~gcov (or equivalent)~~
 1. Update `class_maker.py` to generate code following current standards ([trac #11754](http://trac.mantidproject.org/mantid/ticket/11754))
