@@ -73,5 +73,15 @@
         <text>%22Calibrate%22%3A%20produces%20a%20.par%20file%20that%20can%20be%20loaded%20in%20GSAS/OpenGENIE</text>
       </controlProperties>
     </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Button" x="49" y="530" w="-1" h="-1" measuredW="30" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Button" x="532" y="530" w="-1" h="-1" measuredW="56" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Close</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
