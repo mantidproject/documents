@@ -14,7 +14,7 @@ For 3.5 maintenance period
    5. ~~gcov (or equivalent)~~
 1. Update `class_maker.py` to generate code following current standards
 1. Removed by agreement
-1. Filling in argument list in python bindings (e.g. "self")
+1. Filling in argument list in python bindings (e.g. "self") [trac #11786](http://trac.mantidproject.org/mantid/ticket/11786)
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework)
    1. Re-run `clang-format`
    1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
