@@ -55,5 +55,15 @@
         <text>Calibrate%20full%20output%3A</text>
       </controlProperties>
     </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Button" x="49" y="530" w="-1" h="-1" measuredW="30" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Button" x="532" y="530" w="-1" h="-1" measuredW="56" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Close</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
