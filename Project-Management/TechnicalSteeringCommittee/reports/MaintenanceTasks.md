@@ -6,7 +6,7 @@ For 3.5 maintenance period
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/)
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/pylint_master) ([trac #11788](http://trac.mantidproject.org/mantid/ticket/11788))
-   2. [coverity](https://scan.coverity.com/projects/335)
+   2. [coverity](https://scan.coverity.com/projects/335) ([trac #11791](http://trac.mantidproject.org/mantid/ticket/11791))
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/) ([trac #11790](http://trac.mantidproject.org/mantid/ticket/11790))
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days ([trac #11789](http://trac.mantidproject.org/mantid/ticket/11789))
    7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute
