@@ -8,7 +8,7 @@ For 3.5 maintenance period
    1. [pylint](http://builds.mantidproject.org/job/pylint_master) ([trac #11788](http://trac.mantidproject.org/mantid/ticket/11788))
    2. [coverity](https://scan.coverity.com/projects/335)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
-   6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days
+   6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days ((trac #11789](http://trac.mantidproject.org/mantid/ticket/11789))
    7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute
    4. ~~CutAndPaste detector~~
    5. ~~gcov (or equivalent)~~
