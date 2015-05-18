@@ -12,7 +12,7 @@ For 3.5 maintenance period
    7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute
    4. ~~CutAndPaste detector~~
    5. ~~gcov (or equivalent)~~
-1. Update `class_maker.py` to generate code following current standards
+1. Update `class_maker.py` to generate code following current standards ([trac #11754](http://trac.mantidproject.org/mantid/ticket/11754))
 1. Removed by agreement
 1. Filling in argument list in python bindings (e.g. "self") ([trac #11786](http://trac.mantidproject.org/mantid/ticket/11786))
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) ([trac #11787](http://trac.mantidproject.org/mantid/ticket/11787))
