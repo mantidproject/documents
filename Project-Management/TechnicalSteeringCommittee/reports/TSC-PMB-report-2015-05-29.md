@@ -13,7 +13,7 @@ Main communication channel: two-weekly meetings
 * ...
 
 #### TSC actions from last [Mantid PMB minutes](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/Minutes/PMBMinutes29thJan15.docx)
-* (8.5) Agreed to introduce label, ?, for work units which need science validation
+* (8.5) Agreed to introduce label, Science Validation, for work units which need science validation
 * (8.6) Page created on [how to integrate non Mantid code with Mantid](http://www.mantidproject.org/Integrate_non_Mantid_code_with_Mantid)
 
 #### Recommend Qt5 upgrade
@@ -22,3 +22,5 @@ Motivation: Future version of ParaView will only support QT5
 Estimate resource effort: 3 months
 
 Timescale: approximately when ?
+
+Approved designs link
