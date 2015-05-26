@@ -10,7 +10,6 @@ Design documents in progress
 
 | Name  | History/Comments |
 | :------------ |:---------------|
-| [pythonAlgorithmsForMDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst)     | Discussed 15th feb 2015, see TSC minutes  |
 | [IMDDimensionUpdate](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md)     | Discussed 21st April 2015, see TSC minutes |
 
 Approved design documents
@@ -22,4 +21,6 @@ Note tracking of design proposal started 15th feb. 2015.
 | :------------ |:---------------|:-------|
 | [EmbeddedInstrumentInfoNexus](https://github.com/mantidproject/documents/blob/master/Design/EmbeddedInstrumentInfoNexus.md)     | prior to 15th feb 2015  | no |
 | [PocoStringTokenizer](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)  | 17th feb 2015  | no |
+| [pythonAlgorithmsForMDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst)     | 21st April 2015  | no |
+
 
