@@ -20,4 +20,9 @@ Minutes
 2.  Migration to github issues
   * Script working for all the migration nearly complete by Stuart C
   * Pete still working on [reports](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/WorkplanForMoveGithubIssues.md).
+  * Anders is going to send a list of tickets which should be moved across to the autoredcution repository for Stuart to process.
+  * Migration will probably take a few hours. 
+  * SSC report highlighted to be critical (Nick)
+  * We need to make Trac read only and announce the change after the reports are in place
+  
 
