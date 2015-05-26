@@ -16,4 +16,8 @@ Agenda
 Minutes
 =======
 
+1. No external pull requests
+2.  Migration to github issues
+  * Script working for all the migration nearly complete by Stuart C
+  * Pete still working on [reports](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/WorkplanForMoveGithubIssues.md).
 
