@@ -27,4 +27,13 @@ The calibration will be stored in memory as a [TableWorkspace](http://docs.manti
 
 Calibration file
 ----------------
-The data will be stored using HDF5 using as simple a format as possible to allow for external programs to read/write them without excessive effort. Missing values will be assumed to be zero. The data will be stored as multiple parallel 1-dimensional arrays `difc` (double), `difa` (double), `tzero` (double), `detid` (int32), and `group` (int32, with 1 being smallest number, 0 will set to not use). In addition there will be sufficient information to denote which instrument geometry file to use. This geometry will only be used for plotting the various parameters on an instrument view.
+The data will be stored using HDF5 using as simple a nexus-style format to allow for external programs to read/write them without excessive effort. Missing values will be assumed to be zero. The data will be stored as multiple parallel 1-dimensional arrays `difc` (double), `difa` (double), `tzero` (double), `detid` (int32), and `group` (int32, with 1 being smallest number, 0 will set to not use). In addition there will be sufficient information to denote which instrument geometry file to use. This geometry will only be used for plotting the various parameters on an instrument view. A fuller description in tree form
+* `calibration` [with attribute `NX_class=NXentry`]
+  * `instrument` [with attribute `NX_class=NXinstrument`]
+    * `name` (e.g. NOMAD)
+    * `instrument_source` (e.g. NOMAD_Definition.xml or NOMAD_Definition_20120701-20120731.xml)
+  * `difc` (double array of length `n`)
+  * `difa` (double array of length `n`)
+  * `tzero` (double array of length `n`)
+  * `detid` (int32 array of length `n`)
+  * `group` (int32 array of length `n`)
