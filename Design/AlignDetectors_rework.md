@@ -23,7 +23,7 @@ Algorithms
 
 Calibration workspace
 ---------------------
-The calibration will be stored in memory as a [TableWorkspace](http://docs.mantidproject.org/nightly/api/python/mantid/api/ITableWorkspace.html). The columns will be labeled, in order, `detid` (int32), `difc` (double), `difa` (double), and `tzero` (double). The order of the rows and columns will not matter to algorithms that use the workspace. Algorithms that create the TableWorkspace will use this column order with the rows sorted by `detid` (smallest first).
+The calibration will be stored in memory as a [TableWorkspace](http://docs.mantidproject.org/nightly/api/python/mantid/api/ITableWorkspace.html). The columns will be labeled, in order, `detid` (int32), `difc` (double), `difa` (double), and `tzero` (double). The order of the rows and columns will not matter to algorithms that use the workspace. Algorithms that create the TableWorkspace will use this column order with the rows sorted by `detid` (smallest first). Any missing column, other than `detid`, will be assumed to be all zeros.
 
 Calibration file
 ----------------
