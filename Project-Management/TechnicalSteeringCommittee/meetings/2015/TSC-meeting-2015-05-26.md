@@ -16,6 +16,8 @@ Agenda
 Minutes
 =======
 
+Present: Pete, Ross, Martyn, Nick, Owen and Anders
+
 1. No external pull requests
 2.  Migration to github issues
   * Script working for all the migration nearly complete by Stuart C
@@ -25,4 +27,4 @@ Minutes
   * SSC report highlighted to be critical (Nick)
   * We need to make Trac read only and announce the change after the reports are in place
 3. Label to use for science validation was agreed to be: Science Validation. In summarise: purpose is it to use this label for issues/tickets where a scientist, specialist in a science domain, will (is required) validate the output beyond that of a testing developer 
-
+4. PMB report discussed, remaining items forwarded to next meeting
