@@ -37,3 +37,5 @@ The data will be stored using HDF5 using as simple a nexus-style format to allow
   * `tzero` (double array of length `n`)
   * `detid` (int32 array of length `n`)
   * `group` (int32 array of length `n`)
+
+The `group` information will still be extracted into separate `GroupingWorkspace` and `MaskWorkspace`.
