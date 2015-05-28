@@ -27,7 +27,7 @@ The calibration will be stored in memory as a [TableWorkspace](http://docs.manti
 
 Calibration file
 ----------------
-The data will be stored using HDF5 using as simple a nexus-style format to allow for external programs to read/write them without excessive effort. Missing values will be assumed to be zero. The data will be stored as multiple parallel 1-dimensional arrays `difc` (double), `difa` (double), `tzero` (double), `detid` (int32), and `group` (int32, with 1 being smallest number, 0 will set to not use). In addition there will be sufficient information to denote which instrument geometry file to use. This geometry will only be used for plotting the various parameters on an instrument view. A fuller description in tree form
+The data will be stored using HDF5 using as simple a nexus-style format to allow for external programs to read/write them without excessive effort. Missing values will be assumed to be zero. The data will be stored as multiple parallel 1-dimensional arrays as described below. In addition there will be sufficient information to denote which instrument geometry file to use. This geometry will only be used for plotting the various parameters on an instrument view.
 * `calibration` [with attribute `NX_class=NXentry`]
   * `instrument` [with attribute `NX_class=NXinstrument`]
     * `name` (e.g. NOMAD)
@@ -36,6 +36,9 @@ The data will be stored using HDF5 using as simple a nexus-style format to allow
   * `difa` (double array of length `n`)
   * `tzero` (double array of length `n`)
   * `detid` (int32 array of length `n`)
-  * `group` (int32 array of length `n`)
+  * `dasid` (int32 array of length `n`) not used. The pixel number in prenexus files.
+  * `group` (int32 array of length `n`) 1 being smallest number. 0 will set to not use. This can be used in addition to 
+  * `use` (int32 array of length `n`) `0=false` and `1=true`
+  * `offset` (double array of length `n`) not used. Value of the legacy calibration file.
 
 The `group` information will still be extracted into separate `GroupingWorkspace` and `MaskWorkspace`.
