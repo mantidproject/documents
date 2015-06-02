@@ -3,7 +3,7 @@ Agenda
 
 * Review any outstanding external pull request
 * Feedback from PMB meeting 29th March
-* Doc tests on Windows?
+* Doc tests on Windows? Should we move them to Ubuntu?
 * Review [AlignDetectors rework](https://github.com/mantidproject/documents/blob/master/Design/AlignDetectors_rework.md) (Pete)
 * Pros and cons of having `clang-format` provide [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
 * Use tcmalloc on Windows: v3.4 supports releasing memory back to the OS. Initial tests suggest much better performance for large workspaces, e.g. faster non-blocking delete (Martyn)
