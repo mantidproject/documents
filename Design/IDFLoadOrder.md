@@ -1,0 +1,44 @@
+Motivation
+==========
+
+Nexus files have three pieces of information in which we can use to determine which IDF to load.
+The current structure is poorly understood, and on investigation is a mess.
+ 
+At the moment, for determining the mangled filename (how we decide if the file is already loaded in the IDS):
+
+  1. if the filename is present use the file contents if it is available
+  1. use the xml string for loading the file from nexus
+
+and for loading the file
+
+  1. if instrument name is not set, undefined behaviour
+  1. if instrument_xml is present then load that xml (instrument filename is set to the value in the NXS file, not the nxs file itself)
+  1. if filename has been entered them make up a filename out of the directory and instrument name and output an incorrect log message.
+    Load the most fitting file based on the instrument name
+
+At no point would the filename specified be loaded even if correct and present
+
+ 
+Proposed Solution
+=================
+
+For file name mangling:
+
+  1.  use the xml string for loading the file from nexus
+  1.  if the filename is present use the file contents if it is available
+
+for loading the file:
+
+  1. if instrument_xml is present then load that xml (instrument filename is set to the nxs file itself)
+  1. if filename has been entered them Load the file from that location is it is present.
+      1. on the same path
+      1. in any of the instrument directories (in the correct order)
+  1. for both of the above if the instrument name is not set then read it from the inst defnintion.
+  1. Load the most fitting file based on the instrument name
+
+ 
+ 
+This primarily involves changes to:
+
+  * ExperimentInfo::loadInstrumentInfoNexus - for the loading order of the IDF itself
+  * InstrumentDefinitionParser::getMangledName - for the order of determining the mangled name  
