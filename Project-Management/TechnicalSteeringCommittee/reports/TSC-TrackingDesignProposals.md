@@ -10,7 +10,8 @@ Design documents in progress
 
 | Name  | History/Comments |
 | :------------ |:---------------|
-| [IMDDimensionUpdate](https://github.com/mantidproject/documents/blob/master/Design/VATES/IMDDimensionUpdate.md)     | Discussed 21st April 2015, see TSC minutes |
+| [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | Discussed 21st April 2015, see TSC minutes |
+| [pythonAlgorithmsForMDEvents](/Design/pythonAlgorithmsForMDEvents.rst)     | 2015-04-21  | not yet |
 
 Approved design documents
 -----------------------------
@@ -19,8 +20,8 @@ Note tracking of design proposal started 15th feb. 2015.
 
 | Name  | Approval date | Implemented (Not yet/yes/no) |
 | :------------ |:---------------|:-------|
-| [EmbeddedInstrumentInfoNexus](https://github.com/mantidproject/documents/blob/master/Design/EmbeddedInstrumentInfoNexus.md)     | [2014-08-27](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-08-27.md) | not yet |
-| [PocoStringTokenizer](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)  | 2015-02-17  | not yet |
-| [pythonAlgorithmsForMDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst)     | 2015-04-21  | not yet |
+| [EmbeddedInstrumentInfoNexus](/Design/EmbeddedInstrumentInfoNexus.md)     | [2014-08-27](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-08-27.md) | not yet |
+| [PocoStringTokenizer](/Design/PocoStringTokenizer.md)  | [2015-02-17](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-02-17.md)  | not yet |
+
 
 
