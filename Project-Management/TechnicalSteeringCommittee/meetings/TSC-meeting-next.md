@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Review any outstanding external pull request
+* Review any outstanding external pull request or issues?
 * Feedback from PMB meeting 29th March
 * Doc tests on Windows? Should we move them to Ubuntu?
 * Review Nick's [IDF load changes proposal](https://github.com/mantidproject/documents/blob/master/Design/IDFLoadOrder.md)
