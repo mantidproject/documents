@@ -4,7 +4,7 @@ Agenda
 * Review any outstanding external pull request or issues?
 * Feedback from PMB meeting 29th May
 * Doc tests on Windows? Should we move them to Ubuntu?
-* Suggested change for the process of handling of [design proposals](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md). Request from Nick. Also touch on [Design document](http://www.mantidproject.org/Design_Document_Guidelines), [Working with Core Functionality](http://www.mantidproject.org/Working_on_Core_Functionality) ([Anders](https://github.com/Anders-Markvardsen))
+* Suggested change for the process of handling of [design proposals](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md). Request from Nick. Also touch on [Design document](http://www.mantidproject.org/Design_Document_Guidelines), [Working with Core Functionality](http://www.mantidproject.org/Working_on_Core_Functionality) (@Anders-Markvardsen)
 * Review Nick's [IDF load changes proposal](https://github.com/mantidproject/documents/blob/master/Design/IDFLoadOrder.md)
 * Review [AlignDetectors rework](https://github.com/mantidproject/documents/blob/master/Design/AlignDetectors_rework.md) (Pete)
 * Pros and cons of having `clang-format` provide [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
