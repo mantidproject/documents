@@ -20,4 +20,4 @@ Present: Ross, ....
 * Owen volunteer to look at outstanding external pull request and issues before subsequent tsc meetings
 * Brief summary from PMB meeting
 * Doc tests have been moved to Ubuntu
-* 
+* IDF load changes proposal approved
