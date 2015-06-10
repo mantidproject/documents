@@ -49,9 +49,18 @@ https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF
 Data locations and copying
 ==========================
 
-Archive. TODO: structure to be defined.
+As data is produced by IMAT and it becomes available at the IMAT
+control machine, it will be copied to several locations: IMAT data
+analysis machine, ISIS archive, and SCARF disk space for the imat
+project. In principle all these locations will be identical replicas,
+although there are plans to store a subset of the reconstructions
+generated in the archive.
 
-Replica on SCARF. TODO: all the details, storage levels, capacity,
+* Archive. TODO: structure to be defined.
+
+* IMAT data analysis machine (NDAIMAT) which is NDW1520 at the moment.
+
+* Replica on SCARF. TODO: all the details, storage levels, capacity,
 times.
 
 TODO. Practicalities. Data volumes. Bandwidth requirements, etc.
