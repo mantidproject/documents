@@ -18,8 +18,9 @@ Approved design documents
 
 Note tracking of design proposal started 15th feb. 2015.
 
-| Name  | Approval date | Implemented (Not yet/yes/no) |
+| Name  | Approval date | Status) |
 | :------------ |:---------------|:-------|
 | [EmbeddedInstrumentInfoNexus](/Design/EmbeddedInstrumentInfoNexus.md)     | [2014-08-27](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-08-27.md) | not yet |
 | [PocoStringTokenizer](/Design/PocoStringTokenizer.md)  | [2015-02-17](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-02-17.md)  | not yet |
 | [AlignDetectors Redesign](/Design/AlignDetectors_rework.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | in progress: ~~[844](https://github.com/mantidproject/mantid/pull/844)~~ |
+| [IDFLoadOrder](/Design/IDFLoadOrder.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | done |
