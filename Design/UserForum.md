@@ -23,7 +23,7 @@ http://vanillaforums.org
 ### Example
 http://mantidtest.createaforum.com/
 
-A bit restricted by the hosting platform.  Ad free for 30 days then 5$pcm to stay add free.
+A bit restricted by the hosting platform.  Ad free for 30 days then $5pcm to stay add free.
 
 MyBB
 ----
