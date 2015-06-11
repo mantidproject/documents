@@ -16,7 +16,7 @@ Requirements
 ============
 1. Can signup/signin without tremendous hurdles
 2. Anonymous posting ????
-3. Posts to mantid-help will have to be inserted (manually/automatically)
+3. Posts to mantid-help will have to be inserted (manually/automatically) (not so sure about this we can change where we direct people)
 4. UI must be simple enough to not need (much) documentation
 5. Price ???
 6. Responsive from all mantid partner facilities
