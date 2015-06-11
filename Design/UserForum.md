@@ -48,3 +48,9 @@ Discourse
 ---------
 
 http://www.discourse.org/
+
+StackOverflow
+-------------
+Create a "mantidproject" tag.
+
+https://stackoverflow.com/
