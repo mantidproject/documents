@@ -19,3 +19,8 @@ Vanilla Forums
 --------------
 
 http://vanillaforums.org
+
+Discourse
+---------
+
+http://www.discourse.org/
