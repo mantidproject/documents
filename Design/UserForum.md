@@ -22,6 +22,7 @@ http://vanillaforums.org
 
 ### Example
 http://mantidtest.createaforum.com/
+
 A bit restricted by the hosting platform.  Ad free for 30 days then 5$pcm to stay add free.
 
 MyBB
@@ -31,6 +32,7 @@ http://www.mybb.com/
 
 ### Example
 http://mantidtest.icyboards.net/
+
 A bit restricted by the hosting platform.  Ad free cost is $10pcm.
 
 Discourse
