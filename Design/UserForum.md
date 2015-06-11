@@ -12,6 +12,15 @@ PMB has asked that we setup a forum and use this as our main communication with 
 This document will not follow the usual design document format but will be used to track choices/decisions made about
 various options.
 
+Requirements
+============
+* Can signup/signin without tremendous hurdles
+* Anonymous posting ????
+* Posts to mantid-help will have to be inserted (manually/automatically)
+* UI must be simple enough to not need (much) documentation
+* Price ???
+* Responsive from all mantid partner facilities
+
 Options
 =======
 
