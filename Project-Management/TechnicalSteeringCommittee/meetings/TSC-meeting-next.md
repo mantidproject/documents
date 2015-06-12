@@ -3,6 +3,7 @@ Agenda
 
 * Review any outstanding external pull request or issues? (Owen)
 * Any status updates to [tracking design table](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md)? 
+* Summary of moving to gtest (Pete)
 * Give brief summary of use cases collected in [HandlingMovingInstrument](/Design/HandlingMovingInstruments.md) (anders)
 * Pros and cons of having `clang-format` provide [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
 * Use tcmalloc on Windows: v3.4 supports releasing memory back to the OS. Initial tests suggest much better performance for large workspaces, e.g. faster non-blocking delete (Martyn)
