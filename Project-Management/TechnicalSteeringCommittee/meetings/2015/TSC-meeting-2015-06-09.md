@@ -15,12 +15,11 @@ Agenda
 
 Minutes
 =======
-Present: Ross, ....
+Present: Ross, Ross, Stuart, Owen, Martyn and Anders
 
 * Owen volunteer to look at outstanding external pull request and issues before subsequent tsc meetings
 * Brief summary from PMB meeting
 * Doc tests have been moved to Ubuntu
-* 
+* Design proposal process reviewed. Extend tracking table to include full record and links to issue numbers
 * IDF load changes proposal approved
 * AlignDetectors rework proposal approved
-* 
