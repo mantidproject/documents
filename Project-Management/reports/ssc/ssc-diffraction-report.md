@@ -11,7 +11,7 @@ Requirements:
 
 | Issue | Title | Milestone | Assignee | State | Priority | 
 | ----- | ----- | --------- | -------- | ----- | -------- | 
-| [12116](https//github.com/mantidproject/mantid/issue/12116) | Ability to handle Multiple UBs | Release 3.5 | OwenArnold | open | NORMAL | 
+| mantidproject/mantid#12116 | Ability to handle Multiple UBs | Release 3.5 | OwenArnold | open | NORMAL | 
 | [12115](https//github.com/mantidproject/mantid/issue/12115) | Convert to MD is slow for some diffraction cases | Release 3.5 | martyngigg | open | NORMAL | 
 | [12110](https//github.com/mantidproject/mantid/issue/12110) | Non-orthogonal axes in Slice Viewer | Release 3.5 | OwenArnold | open | NORMAL | 
 | [12073](https//github.com/mantidproject/mantid/issue/12073) | Space Group awareness | Release 3.5 | OwenArnold | open | NORMAL | 
