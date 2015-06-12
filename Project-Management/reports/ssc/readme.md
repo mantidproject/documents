@@ -1,7 +1,5 @@
 # SSC Report 2015
 
-##Sections
-
 ##Common
 
 - User Interface
