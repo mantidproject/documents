@@ -2,9 +2,9 @@
 
 ##Introduction##
 
-The purpose of this design document is to form a top level discussion of a better handling of data coming off instruments with moving components. The initial version of this design document includes outcomes from discussions from the development workshop 2015. 
+The purpose of this (use case) document is to form a top level discussion of handling of data coming off instruments with moving components. The initial version of this document includes outcomes from discussions from the development workshop 2015. 
 
-Further this design document has been updated with email contributions from Nick Draper (ND), Marina Ganeva (MG), Mark Koennecke (MK) and Mark Johnson (MJ) and Timothy Charlton (TC).
+Further this document has been updated with email contributions from Nick Draper (ND), Marina Ganeva (MG), Mark Koennecke (MK) and Mark Johnson (MJ) and Timothy Charlton (TC).
 
 ##Motivation##
 
@@ -18,13 +18,11 @@ This example reads: take the first value in the log-file `trolley2_x_displacemen
 
 The current limitation of this approach is that only one position value is calculated from a log-file time series.  Hence, by default this approach will not handle the case where different data in a file are associated with different geometry orientations of the instrument. The later can be handed, post loading of data, by taking a workspace of data and split it up into a series of workspaces, where each such workspace only contains data with log-file values from one geometry orientation of the instrument (and where these new log-file values have been used to update the instrument geometry). 
 
-Here discuss extensions to Mantid for handling moving components. 
-
-An outcome may well be that different solutions are used for different use cases.
+Here report on moving instrument use cases and some high level suggestions for implementing such use cases. 
 
 ##Use cases##
 
-A number of use cases have been provided. These can be grouped in more than one way. Here is a breakdown of these are provided. Some use cases contain sub use cases, these are labelled with letters rather than numbers. 
+Here is a breakdown of the use cases provided. Some use cases contain sub use cases, these are labelled with letters rather than numbers. 
 
 ###Use Case 1, Extending detector coverage###
 A simplified instrument here could be considered to be a pack of PSD tubes on a rotatable arm that can be moved to increase coverage area. The arm would record at several positions to increase coverage within a single run, each position and pixel pair would have a separate neutron count associated. 
@@ -84,6 +82,9 @@ The data from multiple scan points are stored in one file.
 2. Be able to use algorithm to correct data in a workspace generated from item 1
 3. Be able to transform the unit of a workspace generated from item 1 into Q-space. Once transformed into Q-space knowledge of the instrument is no longer needed
 
+###Grouping of the use cases collected###
+For example use cases 1 and 6, and use cases 4b and 5b may be considered to fall within the same category. 
+
 ##Other comments provided to this proposal##
 
 MK: One general problem is that anything can be scanned against anything. And each scan needs to be treated differently. 
@@ -125,7 +126,7 @@ Changes Required:
 3. Write a loader that does this
 4. Handle the normalisation question
 
-ND: We discussed that several of these steps could be combined into a sub algorithm called something like “Combine Workspaces”.  That would just do the job to combining two workspaces (or a workspace group) with possible differences in the instrument into one workspace, not by adding the counts, but by adding those portions of the instruments into a single combined instrument.
+ND: We discussed (during the 2015 workshop) that several of these steps could be combined into a sub algorithm called something like “Combine Workspaces”.  That would just do the job to combining two workspaces (or a workspace group) with possible differences in the instrument into one workspace, not by adding the counts, but by adding those portions of the instruments into a single combined instrument.
 This would take steps 3-5 and change them to this
 
 3. On loading the specific load algorithm would create a new workspace for each position, and use Combine Workspaces as a sub algorithm to merge them into a single workspace for output (optionally, don’t combine and just output as a workspace group).
@@ -140,7 +141,7 @@ MJ: seems good to me for the first use case listed above, using the two step pro
 
 ###Suggestion 2###
 
-When a data file is loaded, a MD-workspace is created, where each data point is associated with an instrument geometry. Note, currently Mantid has limited support for MD-algorithms and no support for the visualisation of such workspaces in instrument view.
+When a data file is loaded, a MD-workspace is created, where each data point is associated with an instrument geometry. Currently Mantid has limited support for MD-algorithms and no support for the visualisation of such workspaces in instrument view.
 
 ND: Makes sense if little to no reduction is required, perhaps for use case 2, although the workflow for TAS needs to be investigated to evaluate this.
 
@@ -150,48 +151,26 @@ MG: may have certain benefits for the diffuse scattering spectrometers. It may m
 
 MJ: using the MD workspace seems appropriate for the 2nd use case – complex scanning instruments. Andrei and colleagues at SNS appear to have used this to treat ‘simple scanning instruments’ (use case 1 above), in particular their powder diffractometer may be like D2b or D4
 
-Related to this design proposal is a proposal to expose MDEvents to Python, see [Python Algorithms For MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst).
+Related to this document is a design proposal to expose MDEvents to Python, see [Python Algorithms For MDEvents](https://github.com/mantidproject/documents/blob/master/Design/pythonAlgorithmsForMDEvents.rst).
 
 ###Suggestion 3###
 
-Adding better support for ‘splitter’ algorithms, which split an existing workspace into smaller workspaces, where each of these workspaces only contains data from one instrument geometry. Mantid at present can do this from Python by splitting data into new workspaces where for each of these workspaces the position of moveable components have been set according to values in log entries. 
+Currently a workspace can be split into smaller workspaces, where each of these workspaces only contains data from one instrument geometry. An expert mantid user can do this from a Python script by splitting data into new workspaces where for each of these workspaces the position of moveable components have been set according to values in log entries. 
 
-This suggestion in itself may not provide a full solution to one of the use cases above, but better support of ‘splitter’ algorithms may in itself be useful and these may be used as part of other solutions.
-
-ND: Doesn’t it make sense to keep splitting in this way a separate later operation after Load?
-
-MK: Why would we need to split the scan data? What for?
+This suggestion is mentioned since this may be all that is needed in some cases, but perhaps with convenience for doing this.
 
 ###Suggestion 4###
 
-This suggestion is meant to target TOF instruments collecting data while instrument components moves around, including the case where user require information (whereabouts of components) for every neutron in calculations.
+Extend how Mantid can query the position of a component, where a log entry contains information about a component as a function of time.  
 
-Extend how Mantid can query the position of a component, where a log entry contains information about the whereabouts of a component as a function of time. At present, if you know the names of such log entries, you could write Python which query these directly, see also suggestion 3. However, this is inconvenient where the user don’t want to remember which log entries contain such information and they don’t want to split a workspace up into bits. 
-The suggestion here is to have a workspace, which automatically make use of time series log information without the need for the user to know names of log entries or the user needing to split the workspace. 
-A basic implementation is
+Have a workspace, which automatically make use of time series log information without the user needing to know the names of log entries or the user needing to split the workspace. 
+
+A very high level implementation is
 
 1. In IDF specify which log time-series entry contains information about which component
-2. Have this information automatically used when a user ask for where a component is at a given time
+2. Extend how instrument parameters are used, to be able to ask not only where a component is positioned but where it is at a given time
+3. Have this information automatically used when users and algorithms ask for where a component is at a given time
 
-E.g. ConvertUnit could  automatically be programmed to use this information if available. 
+One implementation challenge, for this suggestion, is how to apply the Plus algorithm on workspaces of this type, meaning how to combine log information for components into merged log entries in a summed workspace. Not providing a solution for this may be OK, but then this need to be made transparent to users and automatically detectable by algorithms.
 
-A challenge for this suggestion, which could be done as a second step, is how you would apply the Plus algorithm on workspaces of this type, meaning how would you combine log information for the whereabout of components into merged log entries in the summed workspace? At present, expect for some log entries, the brute force approach is taken that the logs of the left hand workspace side of the Plus operator are kept. Not providing a solution for this may be OK, but this need to be made transparent to users and automatically detectable by an algorithm like ConvertUnit.
 
-###Indication of preference for which suggestions to use for each use case###
-These are at this point indications from emails and conversations and are subject to change. Further suggestions and use cases may also be provided before this design proposal is approved. 
-
-The main output from this design proposal is to:
-
-- decide which suggestions should be implement, where separate design proposals may be create for each such suggestion
-- provide (broad) recommendations for which suggestions to use for different use cases
-
-|   | Suggestion 1  | Suggestion 2 | Suggestion 3 | Suggestion 4 |
-| :------------ |:---------------:|:-----:|:-----:|:-----:|
-| Use case 1,6      | x | (x) |  | |
-| Use case 2      |  | x |  | |
-| Use case 3      |  | (x) |  | |
-| Use case 4a     | | |  | |
-| Use case 4b,5b      | (x) | (x) |  | x |
-| Use case 5a      | (x) | x |  | |
-
-For use case 4b, 5b the choice of implementation may depend on the level of log-entry details the user care about, i.e. if this level of detail is at the level of each neutron or some causer level.
