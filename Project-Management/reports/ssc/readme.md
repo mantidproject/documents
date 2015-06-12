@@ -1,7 +1,7 @@
 # SSC Report 2015
 
 ##Sections
-#Common ¶
+#Common
 
 - User Interface
 - Framework 
@@ -9,7 +9,7 @@
 #Technique Specific
 
 - Neutron Spectroscopy
-- Diffraction
+- [Diffraction](ssc-diffraction-report.md)
 - Reflectometry
 - Muon
 - SANS 
