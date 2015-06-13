@@ -8,7 +8,6 @@ import os
 import requests
 import shutil
 
-
 def generate_tablerow_from_issue(ticket):
     issue_text = '[{0}](https://github.com/mantidproject/mantid/issue/{0})'.format(str(ticket['number']))
     milestone = ticket['milestone']
@@ -127,7 +126,7 @@ if __name__ == '__main__':
                 r = requests.get(query_url, headers=_header, params=query_data)
                 # print(r)
 
-                if type(r.json()) is list:
+                if isinstance(r.json(), list):
                     for issue in r.json():
                         total_tickets += 1
                         table_data += generate_tablerow_from_issue(issue)
