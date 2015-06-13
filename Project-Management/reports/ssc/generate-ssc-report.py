@@ -126,16 +126,16 @@ if __name__ == '__main__':
                 r = requests.get(query_url, headers=_header, params=query_data)
                 # print(r)
 
-                req_data = r.json()
+                print(type(r.json()))
 
-                if isinstance(req_data, list):
-                    for issue in req_data:
+                if isinstance(r.json(), list):
+                    for issue in r.json():
                         total_tickets += 1
                         table_data += generate_tablerow_from_issue(issue)
                 else:
                     # Single Issue
                     total_tickets += 1
-                    table_data += generate_tablerow_from_issue(req_data)
+                    table_data += generate_tablerow_from_issue(r.json())
 
             outfile.write(table_data)
             continue
