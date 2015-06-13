@@ -124,7 +124,7 @@ if __name__ == '__main__':
                 # print(query_url)
 
                 r = requests.get(query_url, headers=_header, params=query_data)
-                print(r.text)
+                print(r)
 
                 if isinstance(r.json(), list):
                     for issue in r.json():
