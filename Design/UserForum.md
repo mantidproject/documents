@@ -54,3 +54,8 @@ StackOverflow
 Create a "mantidproject" tag.
 
 https://stackoverflow.com/
+
+Disqus
+------
+
+https://disqus.com/websites/
