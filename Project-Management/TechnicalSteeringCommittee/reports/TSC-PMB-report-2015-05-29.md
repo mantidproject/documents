@@ -7,9 +7,9 @@ Main communication channel: two-weekly meetings
 ## Updates
 * Github pull requests workflow implemented and in use
 * Workplan for moving to use Github issues agreed
+* Moved data for testing to CMake External Data
 * ParaView 4.3 now bundled and shipped with Mantid
 * Dropped support for Mac OS X 10.8 and moved to use clang compiler on Mac
-* Moved data for testing to CMake External Data
 * Link to [design proposal](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-TrackingDesignProposals.md) discussed at TSC meetings
 
 #### TSC actions from last [Mantid PMB minutes](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/Minutes/PMBMinutes29thJan15.docx)
