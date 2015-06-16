@@ -75,6 +75,7 @@ Sandbox that is reset daily - http://try.discourse.org/
   * Inline previews
 * Notification settings can be set after post is created. Not required to post - defaults operate like GitHub
 * No anonymous posting
+* example implementation is here - http://198.74.56.37:8081/ 
 
 
 StackOverflow
