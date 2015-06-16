@@ -29,10 +29,16 @@ Vanilla Forums
 
 http://vanillaforums.org
 
-### Example
+### Hosted Example
 http://mantidtest.createaforum.com/
 
 A bit restricted by the hosting platform.  Ad free for 30 days then $5pcm to stay add free.
+
+### Self Hosted
+
+    * Open-source version does not have all PRO features
+    * Email hard to get working
+    * Looks poor out of the box
 
 MyBB
 ----
@@ -48,6 +54,22 @@ Discourse
 ---------
 
 http://www.discourse.org/
+
+Sandbox that is reset daily - http://try.discourse.org/ 
+
+### Hosted option
+
+    * Offer a one off install on DreamHost for $99 then monthly fee to Dreamhost. $10/$20 would be sufficient
+    * Other hosted packages are available at higher cost.
+
+### Self hosted
+
+    * Open-source project and free version contains all features
+    * Simply Docker-based install with good documentation
+    * Options for login via GitHub, Google, Twitter, Facebook
+    * No anonymous posting
+    * Supports pinned topics
+
 
 StackOverflow
 -------------
