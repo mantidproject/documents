@@ -67,8 +67,14 @@ Sandbox that is reset daily - http://try.discourse.org/
 * Open-source project and free version contains all features
 * Simply Docker-based install with good documentation
 * Options for login via GitHub, Google, Twitter, Facebook
-* No anonymous posting
 * Supports pinned topics
+* UI layout non-standard for forums but posts support 
+  * code-highlighting
+  * drag-n-drop image uploads
+  * Markdown, HTML, BBcode
+  * Inline previews
+* Notification settings can be set after post is created. Not required to post - defaults operate like GitHub
+* No anonymous posting
 
 
 StackOverflow
