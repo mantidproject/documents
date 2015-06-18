@@ -1,6 +1,6 @@
-ParaView 5 includes the option to use the new OpenGL2 rendering backend. This can only be chosen at compile time.
+ParaView 5 will include the option to use the new OpenGL 2.1 rendering backend. This new backend is designed for modern graphcis hardware and the VTK developers have shown some massive performance increases with improved image quality. This can only be chosen at compile time. While the older OpenGL 1 backend is currently default for all but iOS and Android, we expect it will be deprecated as new work focuses on the OpenGL2 rendering backend. 
 
-Most systems built in the last five years should support version 2.1, which was released in 2006. 
+Most systems built in the last five years should support OpenGL versio 2.1, which was released in 2006. 
 In addition, software rendering provided by Mesa supports OpenGL 2.1 (optionally accelerated using LLVM/Gallium).
 
 significant performance enhancements. improved image quality. 
@@ -10,6 +10,8 @@ significant performance enhancements. improved image quality.
 ~~DModule_vtkRenderingVolumeOpenGLNew=ON~~ not necessary after VTK v6.1
 
 [Volume Rendering Improvements in VTK](http://www.kitware.com/source/home/post/154)
+
+recent VTK paper
 
 [The Visualization Toolkit (VTK): Rewriting the rendering code for modern graphics cards](http://www.sciencedirect.com/science/article/pii/S2352711015000035)
 
