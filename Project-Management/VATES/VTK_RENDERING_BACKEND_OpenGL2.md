@@ -11,6 +11,8 @@ significant performance enhancements. improved image quality.
 
 [Volume Rendering Improvements in VTK](http://www.kitware.com/source/home/post/154)
 
+[The Visualization Toolkit (VTK): Rewriting the rendering code for modern graphics cards](http://www.sciencedirect.com/science/article/pii/S2352711015000035)
+
 issue: remote access. Many SNS users remotely access "Analysis Workstations" via the NX client. The current server uses
 the software renderer MesaGL version ?.?.? that only supports OpenGL 1.2.
 
