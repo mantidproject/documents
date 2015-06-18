@@ -1,3 +1,5 @@
+#Mantid, VATES and OpenGL 2.1
+
 ParaView 5 will include the option to use the new OpenGL 2.1 rendering backend. This new backend is designed for modern graphcis hardware and the VTK developers have shown some massive performance increases with improved image quality. This can only be chosen at compile time. While the older OpenGL 1 backend is currently default for all but iOS and Android, we expect it will be deprecated as new work focuses on the OpenGL2 rendering backend. 
 
 Most systems built in the last five years should support OpenGL versio 2.1, which was released in 2006. 
