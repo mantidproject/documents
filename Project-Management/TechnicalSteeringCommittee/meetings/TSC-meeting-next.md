@@ -17,4 +17,6 @@ Agenda
 Minutes
 =======
 * No external pull request and no external issues
+* IMDDimention approved
+* Could move to never cxxtest - not sure what the benefit of this would be. ExternalProject for gest and cxxtest would get rid of external code in repository. gtest does not have enough additional benefit compare to cxxtest. Perhaps take this up at next joint meeting
 * 
