@@ -6,11 +6,11 @@ The IMDWorkspace format in Mantid provides a flexible way to store n-dimensional
 
 Increasingly we need to know more information about the dimensions when algorithm, visualisation and other processing code needs to look for, and act on specific dimensions. The primary use case for this is to find the Q dimensions.
 
-Up until now, we have had no way to do this, and have had to resort to regex matching the dimension names and ids in order to find our Q dimensions in the workspace. For example [here](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/API/src/PeakTransformHKL.cpp#L9:L18). This is fragile, but the information to otherwise identify these dimensions is missing. Likewise, we have no good way of extracting the scaling off these dimensions. Once it gets written as a string. We would again need some kind of regex to rextract it. For example scaling information is applied [here](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/MDAlgorithms/src/MDWSTransform.cpp#L357:L390), and used to create dimensions [by calling this](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/MDAlgorithms/src/MDEventWSWrapper.cpp#L25:L46). you will notice the lack of other information fed into the MDHistoDimension because the MDHistoDimension currently has no proper placeholder for the unit type.
+Up until now, we have had no way to do this, and have had to resort to regex matching the dimension names and ids in order to find our Q dimensions in the workspace. For example [here](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/Geometry/src/Crystal/PeakTransformHKL.cpp#L9:L18). This is fragile, but the information to otherwise identify these dimensions is missing. Likewise, we have no good way of extracting the scaling off these dimensions. Once it gets written as a string. We would again need some kind of regex to rextract it. For example scaling information is applied [here](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/MDAlgorithms/src/MDWSTransform.cpp#L357:L390), and used to create dimensions [by calling this](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Framework/MDAlgorithms/src/MDEventWSWrapper.cpp#L25:L46). you will notice the lack of other information fed into the MDHistoDimension because the MDHistoDimension currently has no proper placeholder for the unit type.
 
 We currently have a visualisation request to lock the aspect ratios in the SliceViewer only for the Q dimensions, and this would be a good opportunity to tackle the issue properly as part of this work, and retrospectively fix the areas of the code base that string based matching to determine these fields.
 
-In addition to this Andrei has pointed out that we ought to use the frame information to warn users whey they apply cuts with non-orthonongal axis that span a mix of dimension types. For example a cut that included components along an output axis of both Qx and E.
+In addition to this Andrei has pointed out that we ought to use the coordinate frame information to warn users when they apply cuts with non-orthonongal axis that span a mix of dimension types. For example a cut that included components along an output axis of both Qx and E.
 
 **In summary the benefits of doing this work would be:**
 
@@ -117,13 +117,15 @@ class LabelMDUnit : public MDUnit {
 Refactoring all existing code to better use these types would be a further step.
 
 ##Further Requirements##
-We are not handling the following yet.
+We are not handling the following yet:
 
 * If we have a workspace in the HKL frame and we do a cut that gives an output dimension that is HH, we should still be able to convert between r.l.u and inverse Angstroms. This implies that the MDFrame should carry a list of functions required to perform the conversion.
 * What about transformations that involve a shift as well as a scale. For example Energy to Temperature in F.
+* Shared implementation between Kernel::Units and MDUnits. It may be possible to bring the two concepts together, but we need to have both concepts working first before we do this.
 
 
 ##Reviews##
 * This document was presented to and discussed as part of [this](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-04-21.md) SSC meeting. The document has been updated accordingly.
+* This document was reviewed by Anders Markvardsen on 23rd June 2015
 
 
