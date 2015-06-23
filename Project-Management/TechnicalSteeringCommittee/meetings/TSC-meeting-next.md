@@ -12,3 +12,9 @@ Agenda
 * Downstream jobs for PR builds. Or can we otherwise speed things up. Request from Nick D.
 * Outstanding issues for metrics reporting (Stuart)
 * Linode Server - Expires End of Year (Stuart)
+
+
+Minutes
+=======
+* No external pull request and no external issues
+* 
