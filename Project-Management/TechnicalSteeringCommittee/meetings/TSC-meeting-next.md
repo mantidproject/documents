@@ -16,10 +16,13 @@ Agenda
 
 Minutes
 =======
+
+Present: Pete, Ross, Owen, Martyn and Anders
+
 * No external pull request and no external issues
-* IMDDimention approved
-* Could move to never cxxtest - not sure what the benefit of this would be. ExternalProject for gest and cxxtest would get rid of external code in repository. gtest does not have enough additional benefit compare to cxxtest. Perhaps take this up at next joint meeting
-* Different version clang-format gives different results. Run clang-format after merge on master. We agree to test this. clang-format 3.6 on ubunto. 
+* [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md) approved, and has been updated with comments
+* Could move to newer cxxtest version - not clear what the benefit of this would be. ExternalProject for gest and cxxtest would get rid of external code in repository. gtest does not have enough additional benefit compare to cxxtest. Perhaps take this up at next joint meeting
+* Different versions of clang-format give different results. Run clang-format after merge on master. We agree to test this. clang-format 3.6 on ubunto. 
 * tcmalloc - problem deleting large event workspaces. Make some further tests around Python (Martyn)
-* Waiting community edition of VS 2015 to be released summer 2015. (add link to 2015 doc https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md)
-* Nuget windows package managemer seems potential good 
+* Waiting for community edition of VS 2015 to be released summer 2015 (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md)
+* Nuget windows package managemer demoed and seems potential good
