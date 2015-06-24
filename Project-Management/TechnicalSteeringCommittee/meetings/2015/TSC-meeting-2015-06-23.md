@@ -22,7 +22,7 @@ Present: Pete, Ross, Owen, Martyn and Anders
 * No external pull request and no external issues
 * [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md) approved, and has been updated with comments
 * Could move to newer cxxtest version - not clear what the benefit of this would be. ExternalProject for gest and cxxtest would get rid of external code in repository. gtest does not have enough additional benefit compare to cxxtest. Perhaps take this up at next joint meeting
-* Different versions of clang-format give different results. Run clang-format after merge on master. We agree to test this. clang-format 3.6 on ubunto. 
+* Different versions of clang-format give different results. Run clang-format after merge on master. Look into this further. clang-format 3.6 on ubunto. 
 * tcmalloc - problem deleting large event workspaces. Make some further tests around Python (Martyn)
 * Waiting for community edition of VS 2015 to be released summer 2015 (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md)
 * Nuget windows package managemer demoed and seems potential good
