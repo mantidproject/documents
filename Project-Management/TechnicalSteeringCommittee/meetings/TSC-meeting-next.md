@@ -8,3 +8,4 @@ Agenda
 * Outstanding issues for metrics reporting (Stuart)
 * Linode Server - Expires End of Year (Stuart)
 * `clang-format` providing [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
+* Dropping support for OSX Mavericks in mantid 3.6 (Pete)
