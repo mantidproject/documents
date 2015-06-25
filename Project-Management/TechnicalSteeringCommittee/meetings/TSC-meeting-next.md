@@ -7,5 +7,6 @@ Agenda
 * Downstream jobs for PR builds. Or can we otherwise speed things up. Request from Nick D.
 * Outstanding issues for metrics reporting (Stuart)
 * Linode Server - Expires End of Year (Stuart)
+* Apt & Yum repos on Linode (Martyn)
 * `clang-format` providing [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
 * Dropping support for OSX Mavericks in mantid 3.6 (Pete)
