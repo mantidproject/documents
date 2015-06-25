@@ -1,28 +1,28 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="592" measuredH="557" mockupW="550" mockupH="539">
+<mockup version="1.0" skin="sketch" measuredW="592" measuredH="558" mockupW="550" mockupH="540">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="42" y="18" w="550" h="539" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>ENGIN-X%20Workflow</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="42" y="43" w="550" h="491" measuredW="198" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="42" y="43" w="550" h="491" measuredW="226" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>1</selectedIndex>
         <text>Calibrate%2C%20Settings</text>
         <verticalScrollbar>false</verticalScrollbar>
       </controlProperties>
     </control>
-    <control controlID="30" controlTypeID="com.balsamiq.mockups::Button" x="49" y="530" w="-1" h="-1" measuredW="30" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Button" x="49" y="530" w="-1" h="-1" measuredW="32" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%3F</text>
       </controlProperties>
     </control>
-    <control controlID="31" controlTypeID="com.balsamiq.mockups::Button" x="532" y="530" w="-1" h="-1" measuredW="56" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Button" x="532" y="530" w="-1" h="-1" measuredW="56" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Close</text>
       </controlProperties>
     </control>
-    <control controlID="37" controlTypeID="com.balsamiq.mockups::FieldSet" x="52" y="79" w="531" h="204" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::FieldSet" x="52" y="79" w="531" h="293" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Calibration%20settings</text>
       </controlProperties>
@@ -32,40 +32,56 @@
         <text>Input%20directories/folders%3A</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="75" y="131" w="81" h="-1" measuredW="65" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="75" y="131" w="81" h="-1" measuredW="77" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Calibration%3A</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Label" x="75" y="164" w="81" h="-1" measuredW="57" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Label" x="75" y="164" w="81" h="-1" measuredW="70" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Raw%20files%3A</text>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="131" w="363" h="-1" measuredW="79" measuredH="26" zOrder="8" locked="false" isInGroup="-1"/>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="164" w="363" h="-1" measuredW="79" measuredH="26" zOrder="9" locked="false" isInGroup="-1"/>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="504" y="131" w="69" h="27" measuredW="65" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="131" w="363" h="-1" measuredW="77" measuredH="29" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="164" w="363" h="-1" measuredW="77" measuredH="29" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="504" y="131" w="69" h="27" measuredW="68" measuredH="28" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Browse</text>
       </controlProperties>
     </control>
-    <control controlID="46" controlTypeID="com.balsamiq.mockups::Button" x="504" y="164" w="69" h="27" measuredW="65" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Button" x="504" y="164" w="69" h="27" measuredW="68" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Browse</text>
       </controlProperties>
     </control>
     <control controlID="47" controlTypeID="com.balsamiq.mockups::FieldSet" x="60" y="220" w="517" h="54" measuredW="200" measuredH="170" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Calibrate%20full%20output%3A</text>
+        <text>Calibrate%20of%20banks%3A</text>
       </controlProperties>
     </control>
-    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="75" y="238" w="66" h="-1" measuredW="60" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="75" y="238" w="66" h="-1" measuredW="69" measuredH="25" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
         <text>File%20name%3A</text>
       </controlProperties>
     </control>
-    <control controlID="49" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="235" w="363" h="-1" measuredW="79" measuredH="26" zOrder="14" locked="false" isInGroup="-1"/>
-    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="504" y="235" w="69" h="27" measuredW="65" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::TextInput" x="141" y="235" w="363" h="-1" measuredW="77" measuredH="29" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="504" y="235" w="69" h="27" measuredW="68" measuredH="28" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Browse</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::FieldSet" x="64" y="280" w="513" h="73" measuredW="200" measuredH="170" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Advanced%20settings%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::TextInput" x="225" y="306" w="279" h="-1" measuredW="77" measuredH="29" zOrder="17" locked="false" isInGroup="-1"/>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="79" y="307" w="131" h="27" measuredW="128" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Template%20.prm%20file%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="504" y="306" w="-1" h="-1" measuredW="68" measuredH="28" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Browse</text>
       </controlProperties>
