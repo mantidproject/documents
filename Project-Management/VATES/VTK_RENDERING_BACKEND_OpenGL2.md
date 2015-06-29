@@ -34,4 +34,10 @@ potentional solution: VirtualGL http://www.virtualgl.org/
 
 `vglrun ./paraview`
 
+One only wants to use VirtualGL for remote access. Therefore, additional logic should be added to [launch_mantidplot.sh](https://github.com/mantidproject/mantid/blob/master/Code/Mantid/Build/CMake/Packaging/launch_mantidplot.sh.in) to determine whether the user is connected via NX, thinlinc. For NX, the appropriate line is 
+```
+if [ -n "$NXSESSIONID" ]; then
+```
+
+
 future investigation: check how performance depends on the choice of video card. Would the analysis computers benefit from high performance professional graphics?
