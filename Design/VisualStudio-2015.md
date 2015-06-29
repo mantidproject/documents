@@ -33,6 +33,8 @@ The following table lists our current third party packages and whether or not th
 | qwt                |            |                         |                       |
 | qwtplot3d          |            |                         |                       |
 
-Once thing to consider strongly is that we will require debug builds of all of these libraries
+Once thing to consider strongly is that we will require debug builds of all of these libraries, which NuGet does not seem to provide.
 
-* For any 3rd party project that uses CMake we should write a cache file and store it in a the repo so that we have a reference to how it was built
+CMake Projects
+--------------
+For any 3rd party project that uses CMake we should write a cache file and store it in a the repo so that we have a reference to how it was built
