@@ -4,6 +4,7 @@ Notes For Move To VS2015
 * Requires minimum of CMake v3.1
 * We want the newest HDF5 to gain extra C++ features
 
+
 Dependencies
 ------------
 
@@ -33,3 +34,5 @@ The following table lists our current third party packages and whether or not th
 | qwtplot3d          |            |                         |                       |
 
 Once thing to consider strongly is that we will require debug builds of all of these libraries
+
+* For any 3rd party project that uses CMake we should write a cache file and store it in a the repo so that we have a reference to how it was built
