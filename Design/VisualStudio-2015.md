@@ -49,9 +49,11 @@ The current 3rd party repositories are separated into
 * [3rdpartylibs-win32](https://github.com/mantidproject/3rdpartylibs-win32)
 * [3rdpartylibs-win64](https://github.com/mantidproject/3rdpartylibs-win64)
 
+We no longer support x86 and Mac this way so they are not considered in this proposal.
+
 The enforced separation of the libaries and includes was intended to ensure consistent versioning but actually makes some things harder as libraries like Qt need to know where their header files are. This is currently done with a `qt.conf` file that **assumes** a final layout when both repositories are cloned. In addition the layout of the repositories is non-standard and makes it more difficult to keep cross platform compatability with things like include paths.
 
-The proposal for the Visual Studio 2015 dependencies is that the includes and libraries go into a single new repository named after the version of VS that they support. This will mean that the history of old versions does not start slowing down the repository. It is proposed that the layout of this new repository follow the standard unix style, i.e.
+The proposal for the Visual Studio 2015 dependencies is that the includes and libraries go into a single new repository named after the version of VS that they support. This will mean that the history of old versions does not start slowing down the repository. It is proposed that the layout of this new repository, named `3rdparty-msvc2015`, follow the standard unix style, i.e.
 
 ```
 --
