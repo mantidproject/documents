@@ -10,4 +10,4 @@ Agenda
 * Apt & Yum repos on Linode (Martyn)
 * `clang-format` providing [automatic reporting](http://builds.mantidproject.org/view/All/job/master_clang-format/) (Ross)
 * Dropping support for OSX Mavericks in mantid 3.6 (Pete)
-* https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md (Martyn) along with minimum cmake version (Martyn/Pete)
+* [Visual Studio 2015](https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn) along with minimum cmake version (Martyn/Pete)
