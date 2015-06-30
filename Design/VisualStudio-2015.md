@@ -61,7 +61,17 @@ The proposal for the Visual Studio 2015 dependencies is that the includes and li
  - share
 ```
 
-The `include` directory will only have subdirectories for those that have sub directories on Linux. This should make it easier to ensure that the headers can be included in the same way for both systems
+The `include` directory will only have subdirectories for those that have sub directories on Linux. This should make it easier to ensure that the headers can be included in the same way for both systems.
+
+The debug executables and libraries will go into a `debug` directory under `bin` and `lib` respectively. This will simplify the cases where library names clash when compiling in `debug` & `release`.
+
+Python
+~~~~~~
+The bundled python distribution is a slightly special case. Our current bundle is just a direct copy of an installed copy of one of the official releases (actually the debug copy is built by us). This means that the layout of its directories is fixed and not optimal for what we require. It is also still linked to `msvcr90.dll` and is causing other problems ([#12301](https://github.com/mantidproject/mantid/issues/12301)).
+
+It is proposed that both release & debug builds are compiled to be dependent only on VS 2015 and the layout of the components follow the layout on RedHat (Debian seems to add complication with `dist-packages`: https://wiki.debian.org/Python#Deviations_from_upstream) using a `pythonX.X` directory under `lib` and `share`.
+
+**To do**: I am not 100% sure that this will work when bundling with the installer. It needs investigation.
 
 Submodule
 =========
