@@ -38,3 +38,35 @@ Once thing to consider strongly is that we will require debug builds of all of t
 CMake Projects
 --------------
 For any 3rd party project that uses CMake we should write a cache file and store it in a the repo so that we have a reference to how it was built
+
+Restructuring Dependency Layout
+-------------------------------
+
+The current 3rd party repositories are separated into
+
+* [3rdpartyincludes](https://github.com/mantidproject/3rdpartyincludes)
+* [3rdpartylibs-mac](https://github.com/mantidproject/3rdpartylibs-mac)
+* [3rdpartylibs-win32](https://github.com/mantidproject/3rdpartylibs-win32)
+* [3rdpartylibs-win64](https://github.com/mantidproject/3rdpartylibs-win64)
+
+The enforced separation of the libaries and includes was intended to ensure consistent versioning but actually makes some things harder as libraries like Qt need to know where their header files are. This is currently done with a `qt.conf` file that **assumes** a final layout when both repositories are cloned. In addition the layout of the repositories is non-standard and makes it more difficult to keep cross platform compatability with things like include paths.
+
+The proposal for the Visual Studio 2015 dependencies is that the includes and libraries go into a single new repository named after the version of VS that they support. This will mean that the history of old versions does not start slowing down the repository. It is proposed that the layout of this new repository follow the standard unix style, i.e.
+
+```
+--
+ - bin
+ - include
+ - lib
+ - share
+```
+
+The `include` directory will only have subdirectories for those that have sub directories on Linux. This should make it easier to ensure that the headers can be included in the same way for both systems
+
+Submodule
+=========
+
+Is it worth considering having the 3rdparty dependencies as a submodule of the main repository?
+
+
+
