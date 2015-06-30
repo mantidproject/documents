@@ -1,6 +1,8 @@
 Notes For Move To VS2015
 ========================
 
+Will be released [20th July 2015](http://blogs.msdn.com/b/somasegar/archive/2015/06/29/save-the-date-visual-studio-2015-rtm-on-july-20th.aspx)
+
 * Requires minimum of CMake v3.1
 * We want the newest HDF5 to gain extra C++ features
 
