@@ -67,7 +67,9 @@ The proposal for the Visual Studio 2015 dependencies is that the includes and li
 
 The `include` directory will only have subdirectories for those that have sub directories on Linux. This should make it easier to ensure that the headers can be included in the same way for both systems.
 
-The debug executables and libraries will go into a `debug` directory under `bin` and `lib` respectively. This will simplify the cases where library names clash when compiling in `debug` & `release`.
+The runtime libraries (dlls) and executables will be put under `bin` and the archive libraries (.lib) will be under `lib`. This will allow developers to simply add the bin directory to the `PATH`. The debug libraries will need to be compiled in such away that their names don't clash with the release versions. 
+
+New scripts will be generated to wrap the startup of Visual Studio & MantidPlot and set the appropriate paths so that these are not required to be present in global environment variables to avoid confliciting with them when running from a package.
 
 ### Python
 
@@ -76,6 +78,8 @@ The bundled python distribution is a slightly special case. Our current bundle i
 It is proposed that both release & debug builds are compiled to be dependent only on VS 2015 and the layout of the components follow the layout on RedHat (Debian seems to add complication with `dist-packages`: https://wiki.debian.org/Python#Deviations_from_upstream) using a `pythonX.X` directory under `lib` and `share`.
 
 **To do**: I am not 100% sure that this will work when bundling with the installer. It needs investigation.
+
+These [instructions](https://wiki.python.org/moin/VS2012) could be useful and should apply to VS2015 as the same things about lack of manifests applies.
 
 Submodule
 =========
