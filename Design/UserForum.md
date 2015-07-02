@@ -19,6 +19,7 @@ Requirements
 1. Can signup/signin easily (M)
 4. UI must be simple enough to not need any documentation sfor simple use (M)
 6. Responsive from all mantid partner facilities (M)
+7. Search (M)
 7. Easy for the dev team to - Notice new posts (M)
 7. Easy for the dev team to - post replies (M) - markdown support would be beneficial
 7. Easy for the dev team to - Include images (M)
@@ -26,6 +27,7 @@ Requirements
 1. Low maintenance effort (M)
 5. Price (S) - Free is easiest, but a moderate price would be acceptable
 7. Easy for the dev team to - Include formatted python, that is then easy to copy out (S)
+8. Ad hoc topic/thread creation (S)
 2. Significant user community (S)
 2. Could allow Anonymous posting (C), the need for this decreases the easier it is to sign up/log in
 3. Posts to mantid-help will have to be inserted (manually/automatically) (C) - we could otherwise just redirect people to the new forum, and change links in Mantid and website.
