@@ -14,7 +14,7 @@ various options.
 
 Requirements
 ============
-MoSCoW prioritised
+[MoSCoW prioritised](https://en.wikipedia.org/wiki/MoSCoW_method)
 
 1. Can signup/signin easily (M)
 2. Could allow Anonymous posting (C), the need for this decreases the easier it is to sign up/log in
