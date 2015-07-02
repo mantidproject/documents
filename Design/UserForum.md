@@ -15,6 +15,7 @@ various options.
 Requirements
 ============
 MoSCoW prioritised
+
 1. Can signup/signin easily (M)
 2. Could allow Anonymous posting (C), the need for this decreases the easier it is to sign up/log in
 3. Posts to mantid-help will have to be inserted (manually/automatically) (C) - we could otherwise just redirect people to the new forum, and change links in Mantid and website.
