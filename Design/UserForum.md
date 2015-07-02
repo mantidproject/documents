@@ -14,12 +14,22 @@ various options.
 
 Requirements
 ============
-1. Can signup/signin without tremendous hurdles
-2. Anonymous posting ????
-3. Posts to mantid-help will have to be inserted (manually/automatically) (not so sure about this we can change where we direct people)
-4. UI must be simple enough to not need (much) documentation
-5. Price ???
-6. Responsive from all mantid partner facilities
+MoSCoW prioritised
+1. Can signup/signin easily (M)
+2. Could allow Anonymous posting (C), the need for this decreases the easier it is to sign up/log in
+3. Posts to mantid-help will have to be inserted (manually/automatically) (C) - we could otherwise just redirect people to the new forum, and change links in Mantid and website.
+4. UI must be simple enough to not need any documentation sfor simple use (M)
+5. Price (S) - Free is easiest, but a moderate price would be acceptable
+6. If cloud hosted it would be better to not add additional servers to administer / maintain contracts (C)
+6. Responsive from all mantid partner facilities (M)
+7. Easy for the dev team to:
+  1. Notice new posts (M)
+  1. post replies (M) - MD support would be beneficial
+  2. Include images (M)
+  3. Include links to our documentation (M)
+  4. Include formatted python, that is then easy to copy out (S)
+1. Low maintenance effort (M)
+2. Significant user community (S)
 
 Options
 =======
