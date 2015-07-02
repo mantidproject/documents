@@ -23,12 +23,11 @@ Requirements
 5. Price (S) - Free is easiest, but a moderate price would be acceptable
 6. If cloud hosted it would be better to not add additional servers to administer / maintain contracts (C)
 6. Responsive from all mantid partner facilities (M)
-7. Easy for the dev team to:
-  1. Notice new posts (M)
-  1. post replies (M) - MD support would be beneficial
-  2. Include images (M)
-  3. Include links to our documentation (M)
-  4. Include formatted python, that is then easy to copy out (S)
+7. Easy for the dev team to - Notice new posts (M)
+7. Easy for the dev team to - post replies (M) - markdown support would be beneficial
+7. Easy for the dev team to - Include images (M)
+7. Easy for the dev team to - Include links to our documentation (M)
+7. Easy for the dev team to - Include formatted python, that is then easy to copy out (S)
 1. Low maintenance effort (M)
 2. Significant user community (S)
 
