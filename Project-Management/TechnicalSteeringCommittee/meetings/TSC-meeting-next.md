@@ -12,3 +12,8 @@ Agenda
 * [Visual Studio 2015](https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn) along with minimum cmake version (Martyn/Pete)
 * Outstanding issues for metrics reporting (Stuart)
 * Linode Server - Expires End of Year (Stuart)
+
+Minutes
+=======
+* Open pull request by Marianna, Owen assigned
+* 
