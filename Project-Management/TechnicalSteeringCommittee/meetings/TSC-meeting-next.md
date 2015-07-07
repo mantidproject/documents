@@ -15,5 +15,5 @@ Agenda
 
 Minutes
 =======
-* Open pull request by Marianna, Owen assigned
+* Open pull request by Marina, Owen assigned
 * 
