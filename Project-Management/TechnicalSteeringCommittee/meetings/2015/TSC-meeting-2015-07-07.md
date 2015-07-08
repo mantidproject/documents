@@ -18,5 +18,5 @@ Minutes
 * Open pull request by Marina, Owen assigned
 * Pros and cons of different user forum options listed in [User forum](/Design/UserForum.md) were discussed against requirement list. In summary the TSC recommend Discourse.
 * Signing mac executable would require an Apple certificate. This can be looked into when there is a user need for this
-* PR builds has now been speeded up moving doctest to Ubunto and more windows hardware, and PR builds is less of a problem. Nothing easy to move downstream 
+* PR builds has now been speeded up moving doctest to Ubuntu and more windows hardware, and PR builds is less of a problem. Nothing easy to move downstream 
 * For `clang-format`. Ross investigate options for giving feedback back to developer where clang-format has changed code. Such feedback may include a link with information about which version of clang-format was used and how the developer can run clang-format prior to a PR 
