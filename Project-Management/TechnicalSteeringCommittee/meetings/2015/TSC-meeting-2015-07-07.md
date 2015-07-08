@@ -16,4 +16,7 @@ Agenda
 Minutes
 =======
 * Open pull request by Marina, Owen assigned
-* 
+* Pros and cons of different user forum options listed in [User forum](/Design/UserForum.md) were discussed against requirement list. In summary the TSC recommendation is Discourse.
+* Signing mac executable would require an Apple certificate, which can be looked into when there is a user need for this
+* PR builds has now been speeded up moving doctest to Ubunto and more windows hardware, and PR builds less of a problem. There is nothing easy to move downstream 
+* For `clang-format` Ross look into having mechanism for feeding back to developer changes clang-format which may have done as part of merging PR into master together with preferably link to information to which version of clang-format was used and how the user may test clang-formatting prior to a PR
