@@ -29,25 +29,32 @@ Pre-processing steps:
 
 Analysis steps (2 types of analysis in principle):
 
-* Who0le pattern fitting
+* Whole pattern fitting
 
 * Single peak fitting
 
 ENGIN-X specific algorithms in Mantid:
 ======================================
 
-So far the following algorithms have been added:
+The following algorithms were initially defined for EnginX:
 
 * EnginXCalibrate
 * EnginXCalibrateFull
 * EnginXFitPeaks
 * EnginXFocus
 
+which have been renamed to:
+
+* EnggCalibrate
+* EnggCalibrateFull
+* EnggFitPeaks
+* EnggFocus
+
 Other relevant Mantid algorithms:
 =================================
 
-Besides the EnginX* algorithms currently included in Mantid
-(EnginXCalibrate, EnginXCalibrateFull, EnginXFitPeaks, EnginXFocus),
+Besides the EnginX algorithms currently included in Mantid
+(EnggCalibrate, EnggCalibrateFull, EnggFitPeaks, EnggFocus),
 there are other algorithms 
 
 The exact way in which they could be used, extended or modified for
@@ -62,6 +69,21 @@ ENGIN-X is still to be clarified. These include:
   http://www.isis.stfc.ac.uk/instruments/osiris/data-analysis/ariel-manual9033.pdf). This
   format does not seem to be equivalent enough to what ENGIN-X
   scientists need.
+
+Datasets
+========
+
+These data files can be used for testing purposes and are being used
+by scientists as of this writing:
+
+* The current (long run) Ceria (CeO2) data is run number 193749 (from
+  cycle_12_4). This is used for CalibrateFull as it contains enough
+  data for every individual detector.
+
+* A recent Ceria file that is used for calibration (not CalibrateFull
+  is in run 241391 (from cycle_15_1).
+
+* Vanadium (V-Nb) data is in run 236516 (from cycle_14_3).
 
 GUI
 ===
