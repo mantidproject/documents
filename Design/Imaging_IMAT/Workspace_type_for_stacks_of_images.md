@@ -139,8 +139,6 @@ Functionality that SOI needs or wishes to have and where to get it from:
 
 - Workspace/algorithm history: included in API::Workspace.
 
-examples: MDHistoWorkspace::compact()
-
 (Obvious) points that are highly certain and are a solid starting point:
 
 - StackOfImagesWorkspace should inherit from Workspace. This also
@@ -185,6 +183,7 @@ interaction between *StackOfImagesWorkspace* (SOI) and other (MD)
 workspaces. A basic version of StackOfImages would relate to other
 classes and look like this:
 
+```
 Kernel::DataItem
   ^
   |
@@ -226,6 +225,7 @@ IStackOfImagesWorkspace             ?CompactMDHistoWorkspace or similar?
   ^
   |
 StakcOfImagesWorkspace
+```
 
 Note: IMDHistoWorkspaceStripped is a regular grid workspace (regular
 on a dimension-by-dimension basis).
