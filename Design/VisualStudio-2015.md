@@ -81,6 +81,10 @@ It is proposed that both release & debug builds are compiled to be dependent onl
 
 These [instructions](https://wiki.python.org/moin/VS2012) could be useful and should apply to VS2015 as the same things about lack of manifests applies.
 
+#### Patch to apply to bundled uuid.py
+
+There is currently a bug in the `ctypes` module that causes the incorrect runtime to be loaded - http://bugs.python.org/issue17213. The patch suggested in the issue has been applied to our bundled python distribution and will need to be reapplied after the rebuild as it has yet to make it to the mainline.
+
 Submodule
 =========
 
