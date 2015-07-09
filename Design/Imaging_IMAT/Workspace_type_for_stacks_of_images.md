@@ -88,12 +88,12 @@ Current hierarchy of MD workspaces at a glimpse
 Kernel::DataItem
   ^
   |
-API::Workspace          API::MDGeometry
-  ^                       ^
-  |                       |
----------------------------
-  ^
-  |
+API::Workspace   API::MDGeometry
+  ^                   ^
+  |            -------|
+  |            |
+  |            |
+  |            |
 API::IMDWorkspace  [Note: it has methods getMask(), getError(), etc. that SOI does not need or want]
   ^
   |
@@ -199,7 +199,7 @@ IMDWorkspaceStripped    [Note: (without getMask(), getError(), etc., without nor
   |
   |
   |-------------------------------   MDGeometry
-  ^                              ^    ^
+  ^                              |    ^
   |                              |    |
   |                          IMDWorkspace
   |                                 ^
