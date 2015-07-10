@@ -285,7 +285,7 @@ Workspace     MDGeometryBase     MultipleExperimentsInfos
 IStackOfImagesWorkspace
   ^
   |
-StakcOfImagesWorkspace
+StackOfImagesWorkspace
 ```
 
 Pros & cons:
@@ -300,3 +300,6 @@ numpy multidimensional arrays, and combine them with flexibility, as
 it will be very convenient for users to be able to manipulate some
 images or the stack as a whole with simple filters or masking,
 algebraic, etc. operations.
+
+# Reviewer
+* Owen Arnold
