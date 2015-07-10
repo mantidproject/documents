@@ -212,7 +212,7 @@ IMDHistoWorkspaceStripped           |
   |-----------------------------    |
   |                            ^    |
   |                            |    |
-IMDWorkspaceStripped         IMDHistoWorkspace
+MDWorkspaceStripped          IMDHistoWorkspace
   ^                               ^
   |                               |
   |                          MDHistoWorkspace
