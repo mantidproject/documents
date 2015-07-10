@@ -1,6 +1,6 @@
 
-Introduction
-============
+# Introduction
+
 
 This document describes the design of a new type of workspaces
 suitable to store and process stacks of images. While that is in
@@ -9,13 +9,15 @@ may be useful in diferent contexts, so additional aspects may be
 introduced as this document evolves.
 
 The basic need is to have an efficient and simple representation of
-stacks of images (with 3 or more dimensions) as for example image
-processing tools like ImageJ (http://imagej.nih.gov/ij/) or
-tomographic reconstruction tools like tomopy
-(https://github.com/tomopy/tomopy/) use.
+stacks of images or n-dimensional images.
 
-Objectives
-==========
+
+
+# Objectives
+
+## High-level
+1. Create an efficient type for storage of stacks of images 3+ dimensions
+2. Create a compressed form of the IMDHistoWorkspace specifically for visualization where the majority of the IMDHistoWorkspace information can be ditched. Compression.
 
 This design is specifically motivated by the new instrument IMAT which
 is expected to produce large collections of images. A new type of
@@ -27,7 +29,7 @@ workspace should be defined that:
   interoperate with third party tools, visualize stacks of images, and
   apply image processing algorithms.
 
-This will require the introduction of a new type of multidmensional
+This will require the introduction of a new type of multidimensional
 (MD) workspace, which should draw from or share as much as possible
 with IMDHistoWorkspace (for example, taking advantage of the
 n-dimensional iterators).
@@ -53,8 +55,7 @@ workspace should be a good representation for images such as those
 produced by the IMAT instrument or calibration images from different
 instruments.
 
-Requirements
-============
+# Requirements
 
 Here is a (potentially growing) list of requirements that should be
 kept in mind for the design. Their implemenation could be iterative.
@@ -81,8 +82,7 @@ kept in mind for the design. Their implemenation could be iterative.
   of tools depending on their objectives and background. Loaders and
   savers will be needed, and these should be efficient.
 
-Current hierarchy of MD workspaces at a glimpse
-===============================================
+# Current hierarchy of MD workspaces at a glimpse
 
 ```
 Kernel::DataItem
@@ -116,8 +116,7 @@ Other relevant interfaces and classes are:
 * Geometry::IMDDimension
 * API::ExperimentInfo
 
-Design alternatives
-===================
+# Design alternatives
 
 There are several general features of workspaces (or some types of
 workspaces) that StackOfImagesWorkspace should have. These include:
@@ -170,8 +169,7 @@ like to find a more specific name for *Base*) which would have roughly
 the first few methods of MDGeometry, excluding aspects like "Q", and
 would become its base/parent class.
 
-Approach 1: try to get as much as possible from traditional (I)MD classes
--------------------------------------------------------------------------
+## Approach 1: try to get as much as possible from traditional (I)MD classes
 
 This assumes that in the current hierarchy of MD classes all the
 functionality, methods and members are placed exactly where they are
@@ -266,8 +264,8 @@ Pros & cons of this approach:
   incrementally.
 
 
-Approach 2: Minimal class hierarchy
------------------------------------
+## Approach 2: Minimal class hierarchy
+
 
 The opposite end to approach 1 is to simply derive from Workspace and
 MultipleExperimentsInfos (or ExperimentInfo in its simplest
@@ -295,8 +293,7 @@ Pros & cons:
 - too limited
 
 
-Additional notes on the practical use of StackOfImagesWorkspace
-===============================================================
+# Additional notes on the practical use of StackOfImagesWorkspace
 
 It should be possible to write Python algorithms that manipulate the
 numpy multidimensional arrays, and combine them with flexibility, as
