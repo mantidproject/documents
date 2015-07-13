@@ -91,7 +91,8 @@ Tools being used and/or considered include:
 
 * Octopus: <http://octopusimaging.eu, includes reconstruction and
   visualization tools. Closed source. IMAT scientists have
-  licence(s). The visualization tool can be downloaded for free.
+  licence(s). The visualization tool (Octopus visualization) can be
+  downloaded for free.
 
 * TomoPy:
   https://www1.aps.anl.gov/Science/Scientific-Software/TomoPy. Open
