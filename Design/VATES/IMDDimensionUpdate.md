@@ -113,11 +113,23 @@ class LabelMDUnit : public MDUnit {
 ```
 
 ###Development Steps###
-* Introduce the new types and subtypes. Ensure equality is implemented properly.
-* Handle persistance 
-* Replace Mantid::Kernel::SpecialCoordateSystem with MDFrame
-* Add getters/setters to IMDDimension and subtypes
-* Any Slicing Algorithms should warn when Q and non-Q dimensions are mixed via basis vectors
+1. Introduce the new type MDUnit and subtypes. Ensure equality is implemented properly.
+1. Introduce the new type MDFrame and subtypes.
+1. Create Factory for MDUnits. Fall through to GeneralUnits.
+1. Make additional constructor MDHistoDimension for the MDUnit type. Try to get rid of old string based constructor on MDHistoDimension
+1. In LoadMD, have createDimension call MDUnitFactory
+1. On MDDimension::createXML, update xml schema to include frame_name
+1. In LoadMD try to read the frame_name. Fall back to GeneralFrame if you can't
+1. Update constructor on MDHistoDimension to take the full MDFrame now, instead of the MDUnit
+1. Look at any algorithm creating MDWorkspaces, where MDDimensions are being created, update them to pass the correct MDFrame and MDUnit information across. 
+
+#### Second Phase
+1. Kill SpecialCoordinateSystem on IMDWorkspaces. Fetch the information off the dimension instead by adding std::set<MDFrame> MDGeometry::qFrame() const. This should reliably return a set with a single entry, as we currently have no algorithms that can convert to a workspace that has a mix of coordinates in the qLab and qSample frame.
+1. Keep the special coordinate member on PeaksWorkspace, but make it a MDFrame instead.
+1. Update SetSpecialCoordinate algorithm so that it can only modify PeaksWorkspaces.
+
+### Third Phase
+Refactor existing code that parses dimension names
 
 Refactoring all existing code to better use these types would be a further step.
 
