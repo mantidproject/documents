@@ -12,6 +12,11 @@ We currently have a visualisation request to lock the aspect ratios in the Slice
 
 In addition to this Andrei has pointed out that we ought to use the coordinate frame information to warn users when they apply cuts with non-orthonongal axis that span a mix of dimension types. For example a cut that included components along an output axis of both Qx and E.
 
+### Why not use Kernel::Unit
+
+1. Kernel::Unit mixes the concepts of Unit and Quantity. Time of Flight is not a [Unit](https://en.wikipedia.org/wiki/Units_of_measurement), it is a Quantity. Physical Quantities have measurement units to describe their magnitude. To describe Time of Flight, you could use either seconds, miliseconds, microseconds etc. Kernel::Unit does not support this option. For additional information on the basic software engineering aspects of this [see](http://martinfowler.com/eaaDev/quantity.html). For MDUnits, converting a measurement to a different set of units is an important operaton. R.L.U and A^-1 are convertable units in the HKL frame.
+2. Kernel::Unit has been written to support conversions between Quantities via a TOF conversion. This does not fit well with the MDUnit.
+
 **In summary the benefits of doing this work would be:**
 
 1. The ability to fix aspect ratios for Q dimensions
