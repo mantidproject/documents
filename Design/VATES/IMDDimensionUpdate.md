@@ -115,7 +115,7 @@ class LabelMDUnit : public MDUnit {
 ###Development Steps###
 1. Introduce the new type MDUnit and subtypes. Ensure equality is implemented properly.
 1. Introduce the new type MDFrame and subtypes.
-1. Create Factory for MDUnits. Fall through to GeneralUnits.
+1. Create Factory for MDUnits. Fall through to GeneralUnits. Use Chain of Responsibility (see PeakShapeFactory)
 1. Make additional constructor MDHistoDimension for the MDUnit type. Try to get rid of old string based constructor on MDHistoDimension
 1. In LoadMD, have createDimension call MDUnitFactory
 1. On MDDimension::createXML, update xml schema to include frame_name
