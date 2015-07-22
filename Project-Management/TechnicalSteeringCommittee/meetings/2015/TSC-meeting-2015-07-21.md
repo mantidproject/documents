@@ -14,7 +14,7 @@ Agenda
 Minutes
 =======
 
-In attendance: Arnold, Campbell, Gigg, Hahn, Markvarsden, Peterson, Whitfield
+In attendance: Arnold, Campbell, Gigg, Hahn, Markvardsen, Peterson, Whitfield
 
 * Owen will handle the outstanding external pull request
 * For apt/yum repositories, the group is showing a preference for bintray. Stuart will try it out.
