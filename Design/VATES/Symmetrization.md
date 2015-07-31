@@ -1,7 +1,7 @@
 Symmetrization
 ==============
 
-A symmety operation is a process trough wich data in a certain zone can be moved to a different zone in such a way that the physical meaning
+A symmetry operation is a process through which data in a certain zone can be moved to a different zone in such a way that the physical meaning
 is not changed. For example, in a cubic system, a measurement along H direction is equivalent to a measurement in the K direction,
 or a measurement in the L direction. It is sometimes easier to measure a part of the data in one region, and part of the data in a different
 region. This can happen simultaneously in the case of instruments with multiple detectors. For visualization and analysis purposes,
