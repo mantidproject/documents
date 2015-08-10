@@ -1,3 +1,7 @@
+For 3.6 maintenance period
+--------------------------
+1. Reorganised files in CurveFitting folder ([issue #13347](https://github.com/mantidproject/mantid/issues/13347))
+
 For 3.5 maintenance period
 --------------------------
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) ([trac #11792](http://trac.mantidproject.org/mantid/ticket/11792))
