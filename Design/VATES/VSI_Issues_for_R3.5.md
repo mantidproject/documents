@@ -10,7 +10,7 @@ This will allow us to have an overview of the status quo and how to channel our 
 ## Tasks
 ### Priority High 
 
-##### GIL compatibility with ParaView for LaTeX style labels
+##### ~~GIL compatibility with ParaView for LaTeX style labels~~
 Owner: Martyn  
 Resolve Python issue with LaTeX in VSI
 
@@ -22,7 +22,7 @@ Utkarsh has provided us with a demo for displaying 2D text on a 3D rendered envi
 Owner:  
 Go through the list of deliverables and check if they have been implemented (see contract)
 
-##### Cut then Scale issue
+##### ~~Cut then Scale issue~~
 Owner: Anton  
 Currently we can scale and then cut, but there is an issue if we reverse the order. See [here.](https://github.com/mantidproject/mantid/issues/12368)
 
@@ -67,6 +67,7 @@ Provide multiple VSI instances. See [here](https://github.com/mantidproject/mant
 ## Resolved
 
 * [GIL compatibility with ParaView for LaTeX style labels](#GIL-compatibility-with-ParaView-for-LaTeX-style-labels)
+* [Cut then Scale issue](#cut-then-scale-issue)
 
 
 ## Resolve later
