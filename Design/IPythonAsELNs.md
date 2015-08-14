@@ -38,13 +38,13 @@ Graphs can be made interactive by using the "nbagg" matplotlib backend. The
 example notebook on the [Using Ipython Notebook] (http://www.mantidproject.org/Using_IPython_Notebook)
 Mantid web page can be changed to display plots with zoom and pan tools by replacing the 
 line
-'''
+```
 %matplotlin inline
-'''
+```
 with
-'''
+```
 %matplotlib nbagg
-'''
+```
 
 Further interactive features, for example plotting different data by dragging a slider, 
 can be provided by ipython widgets. The nbagg backend and ipython widgets require no 
