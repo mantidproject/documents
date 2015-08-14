@@ -3,7 +3,7 @@
 The purpose of this document is to investigate the use of IPython notebooks as
 electronic laboratory notebooks (ELNs) in Mantid.
 
-This document closes github issue [#10085] (https://github.com/mantidproject/mantid/issues/10085).
+This document address github issue [#10085] (https://github.com/mantidproject/mantid/issues/10085).
 
 ## Overview
 
@@ -34,11 +34,23 @@ gives advice on adding custom metadata to the notebook.
 
 ### 2. Interactive Graphs
 
-Currently (Jul-2015), interactive graphs within IPython notebooks cannot be
-produced using only matplotlib. It is worth noting that versions of matplotlib
-after 1.3.0 include the "webagg" backend and it is planned for webagg to support
-IPython notebooks, but this is not currently the case. Therefore, Mantid would
-require another python module. There are three options:
+Graphs can be made interactive by using the "nbagg" matplotlib backend. The 
+example notebook on the [Using Ipython Notebook] (http://www.mantidproject.org/Using_IPython_Notebook)
+Mantid web page can be changed to display plots with zoom and pan tools by replacing the 
+line
+'''
+%matplotlin inline
+'''
+with
+'''
+%matplotlib nbagg
+'''
+
+Further interactive features, for example plotting different data by dragging a slider, 
+can be provided by ipython widgets. The nbagg backend and ipython widgets require no 
+changes to Mantid's current python environment.
+
+If users require more powerful features, other options that are currently available are:
 -[Plotly] (https://plot.ly/),
 -[Bokeh] (http://bokeh.pydata.org/) and
 -[mpld3] (http://mpld3.github.io/).
@@ -46,21 +58,12 @@ require another python module. There are three options:
 Plotly is very powerful and pretty, but has commercial licensing.
 
 Bokeh is more powerful than mpld3 but also heavier and requires some learning
-on the part of the user.
+on the part of the user. It is in active development.
 
 mpld3 has the advantages of being lightweight and that the user requires little
 knowledge beyond matplotlib. By default, plots can be zoomed and panned. Many more
-tools are available and are extensible via [plugins] (https://mpld3.github.io/notebooks/custom_plugins.html).
-mpld3 is likely to be the best option for the Mantid project.
-
->“The mpld3 project brings together Matplotlib, the popular Python-based graphing
->library, and D3js, the popular Javascript library for creating interactive data
->visualizations for the web. The result is a simple API for exporting your
->matplotlib graphics to HTML code which can be used within the browser, within
->standard web pages, blogs, or tools such as the IPython notebook.”
-- [mpld3 website] (http://mpld3.github.io/)
-
-A demonstration of mpld3 in an IPython notebook can be viewed on the [mpld3 website] (http://mpld3.github.io/notebooks/mpld3_demo.html).
+tools are available and are extensible via [plugins] (https://mpld3.github.io/notebooks/custom_plugins.html). 
+Unfortunately the mpld3 project no longer seems to be in active development.
 
 ### 3. Input from Instrument Control
 
