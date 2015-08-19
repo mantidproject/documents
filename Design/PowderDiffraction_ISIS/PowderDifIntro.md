@@ -31,61 +31,61 @@ These algorithms were used during the process (in chronological order) of runnin
 to Mantid by Aziz. (By exposing the repository to python script in Mantid.property). The new Powder Diffraction could possibly
 still be using the following algorithms too:
 
-| Mantid Algorithms               | Summary                                                      | 
-| :-----------------------------: | :----------------------------------------------------------: | 
-| LoadRaw v3                      | Loads the raw data                                           | 
-| MaskBins v1 x5                  | Bins falling within the range given are masked               | 
-| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| Integration v1                  | Sums the data values that are inputted                       | 
-| MaskDetectorsIf v1              | Adjust the selected field for a CalFile depending on input   | 
-| SolidAngle v1                   | Calculates the solid angle in steradians of the detectors    | 
-| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value | 
-| Multiply v1                     | Will multiply the data values and calculate error values     | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| ConvertUnits v1                 | Perform a unit change on the X values of a workspace         | 
-| Integration v1                  | Sums the data values that are inputted                       | 
-| Multiply v1                     | Will multiply the data values and calculate error values     | 
-| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| LoadNexusProcessed v1 x3        | Loads the given nexus processed file contain matid workspace | 
-| MaskBins v1 x5                  | Bins falling within the range given are masked               | 
-| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| Integration v1                  | Sums the data values that are inputted                       | 
-| MaskDetectorsIf v1              | Adjust the selected field for a CalFile depending on input   | 
-| AlignDetectors v1               | Performs a unit change from TOP to DSpacing, correcting the  | 
-|                                 | x Values to account for small errors in detector's positions | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value | 
-| Multiply v1                     | Will multiply the data values and calculate error values     | 
-| DiffractionFocussing v2         | To Focus powder diffraction data in a number of histograms   | 
-|                                 | according to a grouping scheme defined in a CalFile          | 
-| CropWorkspace v1 x3             | Extracts a `block` from WS and place it in a new WS          | 
-| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum | 
-|                                 | , the algorithm builds parameter list passed to the Rebin v1 | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum | 
-| Divide v1                       | Will divide the data values and calculate error values       | 
-| Rebin v1 x3                     | Rebin data with new X bin boundaries                         | 
-| ConvertUnits v1                 | Perform a unit change on the X values of a workspace         | 
-| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity or abs val in the WS  | 
-|                                 | with user defined numbers; if not provided it will not check | 
-| ConvertUnits v1                 | Perform a unit change on the X values of a workspace         | 
-| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity in the workspace      | 
-| ConvertUnits v1                 | Perform a unit change on the X values of a workspace         | 
-| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity in the workspace      | 
-| GroupWorkspaces v1              | Takes workspaces as input and groups similar WS together     | 
-| SaveGSS v1 x4                   | Saves a fucsed data set into a three column GSAS format      | 
-| SaveNexusProcessed v1           | Writes given Mantid WS to Nexus file, can also be invoked by | 
-|                                 | SaveNexus too                                                | 
-| SaveFocusedXYE v1 x6            | Saves a focused data set (usually output of a diffraction    | 
-|                                 | focusing routine) in to a three column format contian X_i,   | 
-|                                 | Y_i and E_i                                                  | 
+| Mantid Algorithms               | Summary                                                       | 
+| :-----------------------------: | :-----------------------------------------------------------: | 
+| LoadRaw v3                      | Loads the raw data.                                           | 
+| MaskBins v1 x5                  | Bins falling within the range given are masked .              | 
+| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| Integration v1                  | Sums the data values that are inputted.                       | 
+| MaskDetectorsIf v1              | Adjust the selected field for a CalFile depending on input.   | 
+| SolidAngle v1                   | Calculates the solid angle in steradians of the detectors.    | 
+| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value. | 
+| Multiply v1                     | Will multiply the data values and calculate error values.     | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| ConvertUnits v1                 | Perform a unit change on the X values of a workspace.         | 
+| Integration v1                  | Sums the data values that are inputted.                       | 
+| Multiply v1                     | Will multiply the data values and calculate error values.     | 
+| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| LoadNexusProcessed v1 x3        | Loads the given nexus processed file contain matid workspace. | 
+| MaskBins v1 x5                  | Bins falling within the range given are masked.               | 
+| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| Integration v1                  | Sums the data values that are inputted.                       | 
+| MaskDetectorsIf v1              | Adjust the selected field for a CalFile depending on input.   | 
+| AlignDetectors v1               | Performs a unit change from TOP to DSpacing, correcting the   | 
+|                                 | x Values to account for small errors in detector's positions. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| CreateSingleValuedWorkspace v1  | To do binary operations between workspace and a single value. | 
+| Multiply v1                     | Will multiply the data values and calculate error values.     | 
+| DiffractionFocussing v2         | To Focus powder diffraction data in a number of histograms    | 
+|                                 | according to a grouping scheme defined in a CalFile.          | 
+| CropWorkspace v1 x3             | Extracts a `block` from WS and place it in a new WS.          | 
+| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum  | 
+|                                 | , the algorithm builds parameter list passed to the Rebin v1. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum. | 
+| Divide v1                       | Will divide the data values and calculate error values.       | 
+| Rebin v1 x3                     | Rebin data with new X bin boundaries.                         | 
+| ConvertUnits v1                 | Perform a unit change on the X values of a workspace.         | 
+| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity or abs val in the WS   | 
+|                                 | with user defined numbers; if not provided it will not check  | 
+| ConvertUnits v1                 | Perform a unit change on the X values of a workspace.         | 
+| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity in the workspace.      | 
+| ConvertUnits v1                 | Perform a unit change on the X values of a workspace.         | 
+| ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity in the workspace.      | 
+| GroupWorkspaces v1              | Takes workspaces as input and groups similar WS together.     | 
+| SaveGSS v1 x4                   | Saves a fucsed data set into a three column GSAS format.      | 
+| SaveNexusProcessed v1           | Writes given Mantid WS to Nexus file, can also be invoked by  | 
+|                                 | SaveNexus too.                                                | 
+| SaveFocusedXYE v1 x6            | Saves a focused data set (usually output of a diffraction     | 
+|                                 | focusing routine) in to a three column format contian X_i,    | 
+|                                 | Y_i and E_i.                                                  | 
 
 
 Files that are being used
