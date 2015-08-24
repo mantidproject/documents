@@ -14,7 +14,7 @@ For 3.5 maintenance period
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627)
    7. Refactoring of specific code areas (load nexus algorithms) - investigate and distribute [#12591](http://github.com/mantidproject/mantid/issues/12591)
    4. ~~CutAndPaste detector~~
-   5. ~~gcov (or equivalent)~~
+   5. gcov (done on `Framework`)
 1. Filling in argument list in python bindings (e.g. "self") [#12624](http://github.com/mantidproject/mantid/issues/12624)
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) [#12625](http://github.com/mantidproject/mantid/issues/12625)
    1. Re-run `clang-format`
