@@ -18,7 +18,6 @@ For 3.5 maintenance period
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) ([trac #11787](http://trac.mantidproject.org/mantid/ticket/11787))
    1. Re-run `clang-format`
    1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
-1. Add `LINK_PRIVATE` where possible in CMake ([trac #11756](http://trac.mantidproject.org/mantid/ticket/11756))
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 
 Too low benefit/priority for this release
