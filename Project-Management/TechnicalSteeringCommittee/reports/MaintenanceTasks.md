@@ -1,5 +1,6 @@
 For 3.6 maintenance period
 --------------------------
+1. Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md)
 1. Reorganised files in CurveFitting folder ([issue #13347](https://github.com/mantidproject/mantid/issues/13347))
 
 For 3.5 maintenance period
@@ -31,11 +32,10 @@ Too low benefit/priority for this release
    
 For a different release
 -----------------------
-2. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362), rework cmake as a whole, re-examine the package structure
-2. Move to Qt 5
-3. Move to Python 3
-4. Move to visual studio 2015 community edition
-5. Investigate breaking issues with updated dependencies
+1. Move to CMake 3 [#9362](http://trac.mantidproject.org/mantid/ticket/9362), rework cmake as a whole, re-examine the package structure
+1. Move to Qt 5
+1. Move to Python 3
+1. Investigate breaking issues with updated dependencies
     1. [Poco 1.6](http://trac.mantidproject.org/mantid/ticket/10976)
     2. oce 0.17 or OpenCascade 6.8
     3. iPython 3.0
