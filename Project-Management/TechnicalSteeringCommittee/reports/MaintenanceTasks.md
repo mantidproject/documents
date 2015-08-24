@@ -1,7 +1,7 @@
 For 3.6 maintenance period
 --------------------------
 1. Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md)
-1. Reorganised files in CurveFitting folder ([issue #13347](https://github.com/mantidproject/mantid/issues/13347))
+1. Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347)
 
 For 3.5 maintenance period
 --------------------------
