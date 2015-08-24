@@ -39,7 +39,7 @@ Owner:
 Investigate zero memory copies
 
 ##### Axes and labels improvement
-Owner:  
+Owner: Anton
 This will most likely be an umbrella ticket. Some issues are:  
 * Provide TeX-like features
 * In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.)
