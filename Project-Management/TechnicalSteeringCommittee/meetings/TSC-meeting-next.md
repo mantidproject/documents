@@ -18,3 +18,4 @@ Minutes
 
 * Ross will look at automatically running `clang-format` on master
 * Look at upgrading linode plan. More disk storage (Anders/Stuart)
+* mary-poppins trial will be a Maintenance item.
