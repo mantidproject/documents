@@ -16,4 +16,4 @@ New Items
 Minutes
 -------
 
-Present: ?????
+* Ross will look at automatically running clang-format on master
