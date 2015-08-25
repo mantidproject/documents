@@ -23,6 +23,8 @@ For 3.5 maintenance period
    1. Re-run `clang-format`
    1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
+1. Roll out MDUnits and MDFrame wider (Owen)
+1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers
 
 Too low benefit/priority for this release
 -----------------------------------------
