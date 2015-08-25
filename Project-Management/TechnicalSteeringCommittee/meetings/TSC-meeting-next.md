@@ -19,3 +19,4 @@ Minutes
 * Ross will look at automatically running `clang-format` on master
 * Look at upgrading linode plan. More disk storage (Anders/Stuart)
 * mary-poppins trial will be a Maintenance item.
+* Pending release of Mantid 3.4.1 patch release. Out very soon.
