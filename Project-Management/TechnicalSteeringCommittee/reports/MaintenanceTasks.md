@@ -5,6 +5,9 @@ For 3.6 maintenance period
 1. Separate classes in `WorkspaceValidators.h` into separate files, including putting implementations in source files [#11035](https://github.com/mantidproject/mantid/issues/11035)
 1. Remove all cases of `#include <iostream>` from headers and see if they required in source files.
 2. Move to ParaView 4.4 or 5.0
+3. Investigate breaking issues with updated dependencies
+    1. Poco 1.6[#11815](http://github.com/mantidproject/mantid/issues/11815)
+    2. oce 0.17 or OpenCascade 6.8
 
 For 3.5 maintenance period
 --------------------------
@@ -41,6 +44,4 @@ For a different release
 1. Move to Qt 5
 1. Move to Python 3
 1. Investigate breaking issues with updated dependencies
-    1. Poco 1.6[#11815](http://github.com/mantidproject/mantid/issues/11815)
-    2. oce 0.17 or OpenCascade 6.8
     3. iPython 3.0
