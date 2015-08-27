@@ -4,10 +4,12 @@ For 3.6 maintenance period
 1. Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347)
 1. Separate classes in `WorkspaceValidators.h` into separate files, including putting implementations in source files [#11035](https://github.com/mantidproject/mantid/issues/11035)
 1. Remove all cases of `#include <iostream>` from headers and see if they required in source files.
-2. Move to ParaView 4.4 or 5.0
-3. Investigate breaking issues with updated dependencies
+1. Move to ParaView 4.4 or 5.0
+1. Investigate breaking issues with updated dependencies
     1. Poco 1.6[#11815](http://github.com/mantidproject/mantid/issues/11815)
     2. oce 0.17 or OpenCascade 6.8
+1. Estimate time require to move from qwt5 -> qwt6
+1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891)
 
 For 3.5 maintenance period
 --------------------------
