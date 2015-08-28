@@ -30,6 +30,7 @@ For 3.5 maintenance period
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Roll out MDUnits and MDFrame wider (Owen)
 1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers
+2. Move main code directory two levels up to simplify `Framework` only builds (MPI)
 
 Too low benefit/priority for this release
 -----------------------------------------
