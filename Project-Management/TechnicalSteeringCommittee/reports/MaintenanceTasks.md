@@ -10,9 +10,6 @@ For 3.6 maintenance period
     2. oce 0.17 or OpenCascade 6.8
 1. Estimate time require to move from qwt5 -> qwt6
 1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891)
-
-For 3.5 maintenance period
---------------------------
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630)
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615)
 1. Reducing static analysis issues (discus stewards and soft limits)
