@@ -34,9 +34,10 @@ When we change the size of the VSI the rendered view does not update. A similar 
 Owner:  
 It was discussed that we should have an input field to define the slice position for the ThreeSliceView.
 
-##### Zero Memory copies
-Owner:  
+##### ~~Zero Memory copies~~
+Owner: Steven Hahn  
 Investigate zero memory copies
+Fixed [here] (https://github.com/mantidproject/mantid/pull/13322)
 
 ##### Axes and labels improvement
 Owner: Anton
@@ -44,13 +45,20 @@ This will most likely be an umbrella ticket. Some issues are:
 * Provide TeX-like features
 * In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.)
 
-##### CutMD in VSI can come back with zero data in it
-Owner:  
+##### ~~CutMD in VSI can come back with zero data in it~~
+Owner: Owen
+We have no ability to remap non-integrated dimensions such that we form a contiguous set of these for generating our 
+vtkDataSets. Integrated dimensions interspersed amongst non-integrated dimensions cause empty datasets in the visualisation.
 See [here](https://github.com/mantidproject/mantid/issues/12554)
 
 
 
 ### Priority Medium
+
+##### ~~Fix Scale Filter~~
+Owner: Owen Arnold
+The scale filter should work with any vtkPointSet, such as the newly provided vtkStructuredGrids (above)
+Fixed [here](https://github.com/mantidproject/mantid/pull/13528)
 
 ##### PipelineBrowser + PropertiesWidget mock ups
 Owner:  
