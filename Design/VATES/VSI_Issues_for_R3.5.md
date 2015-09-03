@@ -72,10 +72,4 @@ Owner:
 Provide multiple VSI instances. See [here](https://github.com/mantidproject/mantid/issues/12395).
 
 
-## Resolved
-
-* [GIL compatibility with ParaView for LaTeX style labels](#GIL-compatibility-with-ParaView-for-LaTeX-style-labels)
-* [Cut then Scale issue](#cut-then-scale-issue)
-
-
 ## Resolve later
