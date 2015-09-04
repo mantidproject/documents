@@ -42,6 +42,9 @@ Fixed [here] (https://github.com/mantidproject/mantid/pull/13322)
 ##### Axes and labels improvement
 Owner: Anton
 This will most likely be an umbrella ticket. Some issues are:  
+* Axes labels are not being picked up by Axes Grid only by Cube Axes system. vtkPVChangeOfBasisHelper does not seem to be used by Axes Grid --> asked on forum about this
+* The Axes Grid boundaries don't seem to be correct in ThreeSliceView (Axes Grid box is smaller than data set)
+* Currently we have both the Axes Grid and the Cube Axes system.
 * Provide TeX-like features
 * In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.)
 
