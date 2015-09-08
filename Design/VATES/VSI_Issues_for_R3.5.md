@@ -14,8 +14,8 @@ This will allow us to have an overview of the status quo and how to channel our 
 Owner: Martyn  
 Resolve Python issue with LaTeX in VSI
 
-##### Check if items of the Kitware contract have been implemented
-Owner:  
+##### ~~Check if items of the Kitware contract have been implemented~~
+Owner:  Owen
 Go through the list of deliverables and check if they have been implemented (see contract)
 
 ##### ~~Cut then Scale issue~~
@@ -23,11 +23,11 @@ Owner: Anton
 Currently we can scale and then cut, but there is an issue if we reverse the order. See [here.](https://github.com/mantidproject/mantid/issues/12368)
 
 ##### Artifacts when changing size
-Owner:  
+Owner:  Roman
 When we change the size of the VSI the rendered view does not update. A similar effect happens when we use the PeaksTable in the Splatterplot mode. The issue is caused by applying the old state xml file when switching views.
 
 ##### Unticking of AutoScale
-Owner: Federico(possibly)
+Owner: Aton (track down a person to do it and ticket number(s))
 The AutoScale option seems to unselect itself whenever you load data into the VSI. Related to saving the view state.
 
 ##### ~~Zero Memory copies~~
@@ -41,8 +41,11 @@ This will most likely be an umbrella ticket. Some issues are:
 * Axes labels are not being picked up by Axes Grid only by Cube Axes system. vtkPVChangeOfBasisHelper does not seem to be used by Axes Grid --> SOLVED
 * The Axes Grid boundaries don't seem to be correct in ThreeSliceView (Axes Grid box is smaller than data set) -->SOLVED
 * Currently we have both the Axes Grid and the Cube Axes system.
-* Provide TeX-like features --> Martyn solved this
+* Provide TeX-like features --> SOLVED (Martyn)
 * In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.)
+
+##### Apply patches to source build of paraview
+Owner: Steve
 
 ##### ~~CutMD in VSI can come back with zero data in it~~
 Owner: Owen
@@ -52,7 +55,7 @@ See [here](https://github.com/mantidproject/mantid/issues/12554)
 
 ##### Loading an MDHisto Workspaces causes the signal to vanish
 Owner: Owen/Andrei
-When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end up with a constant signal value. This seems to be due to the selection of the normalization. This is down to the AutoSelect normalization behaviour for MDWorkspace types.
+When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end up with a constant signal value. This seems to be due to the selection of the normalization. This is down to the AutoSelect normalization behaviour for MDWorkspace types. [#12832](https://github.com/mantidproject/mantid/issues/12832)
 
 ### Priority Medium
 
@@ -60,6 +63,10 @@ When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end u
 Owner: Owen Arnold
 The scale filter should work with any vtkPointSet, such as the newly provided vtkStructuredGrids (above)
 Fixed [here](https://github.com/mantidproject/mantid/pull/13528)
+
+## Resolve later
+
+### Priority Medium
 
 ##### PipelineBrowser + PropertiesWidget mock ups
 Owner:  
@@ -78,6 +85,3 @@ Utkarsh has provided us with a demo for displaying 2D text on a 3D rendered envi
 ##### Multiple Windows/Instances
 Owner:  
 Provide multiple VSI instances. See [here](https://github.com/mantidproject/mantid/issues/12395).
-
-
-## Resolve later
