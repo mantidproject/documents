@@ -85,6 +85,14 @@ These [instructions](https://wiki.python.org/moin/VS2012) could be useful and sh
 
 There is currently a bug in the `ctypes` module that causes the incorrect runtime to be loaded - http://bugs.python.org/issue17213. The patch suggested in the issue has been applied to our bundled python distribution and will need to be reapplied after the rebuild as it has yet to make it to the mainline.
 
+#### pywin32
+
+The default bundle is large and we don't want everything:
+
+* remove pythonwin directory and entry on pywin32.pth
+* move dlls from `pywin32_system32` to `pywin32` directory. The standard install puts them in C:\Windows\System32 but this
+  is not good to our bundled installer
+
 Submodule
 =========
 
