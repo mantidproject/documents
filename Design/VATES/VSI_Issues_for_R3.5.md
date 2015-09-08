@@ -30,9 +30,9 @@ Currently we can scale and then cut, but there is an issue if we reverse the ord
 Owner:  
 When we change the size of the VSI the rendered view does not update. A similar effect happens when we use the PeaksTable in the Splatterplot mode. The issue is caused by applying the old state xml file when switching views.
 
-##### Slice position
-Owner:  
-It was discussed that we should have an input field to define the slice position for the ThreeSliceView.
+##### Unticking of AutoScale
+Owner: Federico(possibly)
+The AutoScale option seems to unselect itself whenever you load data into the VSI. Related to saving the view state.
 
 ##### ~~Zero Memory copies~~
 Owner: Steven Hahn  
@@ -55,8 +55,8 @@ vtkDataSets. Integrated dimensions interspersed amongst non-integrated dimension
 See [here](https://github.com/mantidproject/mantid/issues/12554)
 
 ##### Loading an MDHisto Workspaces causes the signal to vanish
-Owner:
-When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end up with a constant signal value. This seems to be due to the selection of the normalization.
+Owner: Owen/Andrei
+When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end up with a constant signal value. This seems to be due to the selection of the normalization. This is down to the AutoSelect normalization behaviour for MDWorkspace types.
 
 ### Priority Medium
 
@@ -69,6 +69,9 @@ Fixed [here](https://github.com/mantidproject/mantid/pull/13528)
 Owner:  
 Create mock ups for a possible replacement of the pipeline browser and the properties widget
 
+##### Slice position
+Owner:  Anton
+It was discussed that we should have an input field to define the slice position for the ThreeSliceView. 
 
 ### Priority Low
 
