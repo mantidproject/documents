@@ -14,10 +14,6 @@ This will allow us to have an overview of the status quo and how to channel our 
 Owner: Martyn  
 Resolve Python issue with LaTeX in VSI
 
-##### Implement a 2D text filter for Peaks in Splatterplot
-Owner:  
-Utkarsh has provided us with a demo for displaying 2D text on a 3D rendered environment. This needs to be integrated with the PeaksViewer in Splatterplot mode (Anton has the demo code).
-
 ##### Check if items of the Kitware contract have been implemented
 Owner:  
 Go through the list of deliverables and check if they have been implemented (see contract)
@@ -72,6 +68,10 @@ Create mock ups for a possible replacement of the pipeline browser and the prope
 ##### Slice position
 Owner:  Anton
 It was discussed that we should have an input field to define the slice position for the ThreeSliceView. 
+
+##### Implement a 2D text filter for Peaks in Splatterplot
+Owner:  
+Utkarsh has provided us with a demo for displaying 2D text on a 3D rendered environment. This needs to be integrated with the PeaksViewer in Splatterplot mode (Anton has the demo code).
 
 ### Priority Low
 
