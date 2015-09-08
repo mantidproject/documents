@@ -23,7 +23,9 @@ Owner: Anton
 Currently we can scale and then cut, but there is an issue if we reverse the order. See [here.](https://github.com/mantidproject/mantid/issues/12368)
 
 ##### Artifacts when changing size
+
 Owner:  Roman
+
 When we change the size of the VSI the rendered view does not update. A similar effect happens when we use the PeaksTable in the Splatterplot mode. The issue is caused by applying the old state xml file when switching views.
 
 ##### Unticking of AutoScale
