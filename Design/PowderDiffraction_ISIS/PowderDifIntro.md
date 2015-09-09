@@ -92,16 +92,20 @@ Files that are being used
 -------------------------
 Input Files
 ------------
-These are the files that are essentially required and are utilised in order to run the cry_example.py file
+These are the files that are essentially required and are utilised in order to run the cry_example.py and the system test file
 
-| Input Files                    | 
-| :----------------------------: | 
-| hrpd_new_072_01.cal            | 
-| hrpd_new_072_01_corr.cal       | 
-| van_s1_old-0.nxs               | 
-| van_s1_old-1.nxs               | 
-| van_s1_old-2.nxs               | 
-| mtd.pref                       | 
+| Input Files                                       |
+| :-----------------------------------------------: |
+| hrp39191.raw                                      |
+| hrp39187.raw                                      |
+| hrp43022.raw                                      |
+| hrpd/test/GrpOff/hrpd_new_072_01.cal              |
+| hrpd/test/GrpOff/hrpd_new_072_01_corr.cal         |
+| hrpd/test/cycle_09_2/Calibration/van_s1_old-0.nxs |
+| hrpd/test/cycle_09_2/Calibration/van_s1_old-1.nxs |
+| hrpd/test/cycle_09_2/Calibration/van_s1_old-2.nxs |
+| hrpd/test/cycle_09_2/tester/mtd.pref              |
+
 
 
 Output Files
@@ -110,13 +114,17 @@ These are the files that are generated when cry_example.py file is executed
 
 | Output Files                   | 
 | :----------------------------: | 
-| hrp43022_s1_old.gss            | 
-| hrp43022_s1_old.nxs            | 
-| hrp43022_s1_old_b1_TOF.dat     | 
-| hrp43022_s1_old_b2_D.dat       | 
-| hrp43022_s1_old_b3_D.dat       | 
-| hrp43022_s1_old_b3_TOF.dat     | 
-| hrpd_new_072_01_corr.cal       | 
+| hrpd/test/cycle_09_2/Calibration/hrpd_new_072_01_corr.cal    |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old.gss              |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old.nxs              |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b1_D.dat         |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b1_TOF.dat       |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b2_D.dat         |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b2_TOF.dat       |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b3_D.dat         |
+| hrpd/test/cycle_09_2/tester/hrp43022_s1_old_b3_TOF.dat       |
+| hrpd/test/cycle_09_2/hrpd_new_072_01_corr.cal                |
+
 
 
 MantidPlot Output Workspaces
@@ -129,12 +137,15 @@ These are the workspaces produced in MantidPlot by running the cry_example.py fi
 | ResultD-2: MatrixWorkspace     | 
 | ResultD-3: MatrixWorkspace     | 
 | ResultTOFgrp: TableWorkspace   | 
-| totuamps: MatrixWorkspace      | 
+| totuamps: MatrixWorkspace      |
 
+
+ResultTOFgrp found in the MantidPlot output workspace and file found in the following directory
+hrpd/test/cycle_09_2/tester/hrp43022_s1_old.nxs are containing the same data.
 
 
 Prototype example usage
-===============================
+=======================
 
 ```python
 import sys
