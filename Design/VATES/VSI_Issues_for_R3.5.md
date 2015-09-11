@@ -31,7 +31,7 @@ When we change the size of the VSI the rendered view does not update. A similar 
 ##### ~~Unticking of AutoScale~~
 Owner: Anton 
 The AutoScale option seems to unselect itself whenever you load data into the VSI. Related to saving the view state.
-
+Fixed [here](https://github.com/mantidproject/mantid/pull/13595)
 ##### ~~Zero Memory copies~~
 Owner: Steven Hahn  
 Investigate zero memory copies
@@ -45,7 +45,7 @@ This will most likely be an umbrella ticket. Some issues are:
 * Currently we have both the Axes Grid and the Cube Axes system. --> This remains, we need to go to a higher PV version
 * Provide TeX-like features --> SOLVED (Martyn)
 * In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.) --> Solved
-
+Fixed [here](https://github.com/mantidproject/mantid/pull/13565)
 ##### Apply patches to source build of paraview
 Owner: Steve
 
