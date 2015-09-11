@@ -37,7 +37,7 @@ Owner: Steven Hahn
 Investigate zero memory copies
 Fixed [here] (https://github.com/mantidproject/mantid/pull/13322)
 
-##### Axes and labels improvement
+##### ~~Axes and labels improvement~~
 Owner: Anton
 This will most likely be an umbrella ticket. Some issues are:  
 * Axes labels are not being picked up by Axes Grid only by Cube Axes system. vtkPVChangeOfBasisHelper does not seem to be used by Axes Grid --> SOLVED
