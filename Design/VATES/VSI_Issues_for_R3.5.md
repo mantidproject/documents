@@ -28,8 +28,8 @@ Owner:  Roman
 
 When we change the size of the VSI the rendered view does not update. A similar effect happens when we use the PeaksTable in the Splatterplot mode. The issue is caused by applying the old state xml file when switching views.
 
-##### Unticking of AutoScale
-Owner: Aton (track down a person to do it and ticket number(s))
+##### ~~Unticking of AutoScale~~
+Owner: Anton 
 The AutoScale option seems to unselect itself whenever you load data into the VSI. Related to saving the view state.
 
 ##### ~~Zero Memory copies~~
@@ -42,9 +42,9 @@ Owner: Anton
 This will most likely be an umbrella ticket. Some issues are:  
 * Axes labels are not being picked up by Axes Grid only by Cube Axes system. vtkPVChangeOfBasisHelper does not seem to be used by Axes Grid --> SOLVED
 * The Axes Grid boundaries don't seem to be correct in ThreeSliceView (Axes Grid box is smaller than data set) -->SOLVED
-* Currently we have both the Axes Grid and the Cube Axes system.
+* Currently we have both the Axes Grid and the Cube Axes system. --> This remains, we need to go to a higher PV version
 * Provide TeX-like features --> SOLVED (Martyn)
-* In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.)
+* In Threeslice Mode provide a sensible text size (Note that this will need a newer version of PV.) --> Solved
 
 ##### Apply patches to source build of paraview
 Owner: Steve
