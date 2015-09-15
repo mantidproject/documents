@@ -20,7 +20,7 @@ For 3.6 maintenance period
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627)
    4. CutAndPaste detector as a job in static analysis tab
 7. Rewrite/refactor nexus algorithms - investigate and distribute [#12591](http://github.com/mantidproject/mantid/issues/12591) **needs a proper design and into the release**
-1. Clang working on linux
+1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
 1. Filling in argument list in python bindings (e.g. "self") [#12624](http://github.com/mantidproject/mantid/issues/12624)
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) [#12625](http://github.com/mantidproject/mantid/issues/12625)
    1. Re-run `clang-format` (will likely be done much earlier)
