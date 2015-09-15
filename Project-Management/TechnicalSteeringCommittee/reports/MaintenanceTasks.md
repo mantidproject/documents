@@ -19,7 +19,8 @@ For 3.6 maintenance period
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627)
    4. CutAndPaste detector as a job in static analysis tab
-7. Rewrite/refactor nexus algorithms - investigate and distribute [#12591](http://github.com/mantidproject/mantid/issues/12591) **needs a proper design and into the release**1. Clang working on linux
+7. Rewrite/refactor nexus algorithms - investigate and distribute [#12591](http://github.com/mantidproject/mantid/issues/12591) **needs a proper design and into the release**
+1. Clang working on linux
 1. Filling in argument list in python bindings (e.g. "self") [#12624](http://github.com/mantidproject/mantid/issues/12624)
 1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) [#12625](http://github.com/mantidproject/mantid/issues/12625)
    1. Re-run `clang-format` (will likely be done much earlier)
