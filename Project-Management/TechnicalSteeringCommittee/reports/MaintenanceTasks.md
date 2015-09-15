@@ -28,7 +28,7 @@ For 3.6 maintenance period
 1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (needs more detail)
 2. Move main code directory two levels up
    3. Linux-ify the directory names
-   4. Simplify `Framework` only builds (MPI)
+4. Simplify `Framework` only builds (MPI)
 
 Too low benefit/priority for this release
 -----------------------------------------
