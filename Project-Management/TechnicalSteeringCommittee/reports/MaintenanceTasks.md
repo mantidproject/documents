@@ -18,7 +18,6 @@ For 3.6 maintenance period
    2. [coverity](https://scan.coverity.com/projects/335)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
    6. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627)
-
    4. CutAndPaste detector as a job in static analysis tab
 7. Rewrite/refactor nexus algorithms - investigate and distribute [#12591](http://github.com/mantidproject/mantid/issues/12591) **needs a proper design and into the release**1. Clang working on linux
 1. Filling in argument list in python bindings (e.g. "self") [#12624](http://github.com/mantidproject/mantid/issues/12624)
