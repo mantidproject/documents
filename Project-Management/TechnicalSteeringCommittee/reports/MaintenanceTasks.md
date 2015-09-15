@@ -12,6 +12,7 @@ For 3.6 maintenance period
 1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report)
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630)
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615)
+2. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/pylint_master)
    2. [coverity](https://scan.coverity.com/projects/335)
