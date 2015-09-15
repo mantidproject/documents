@@ -15,3 +15,5 @@ New Items
 Minutes
 -------
 
+* Agreed to separate matrix jobs on Jenkins out to jobs per configuration to avoid rebuilding all configurations when one fails.
+* Pete discussed annual developer/SSC meeting with PM. Tentative dates: 18th-29th January.
