@@ -69,9 +69,7 @@ still be using the following algorithms too:
 | Divide v1                       | Will divide the data values and calculate error values.       | 
 | RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum. | 
 | Divide v1                       | Will divide the data values and calculate error values.       | 
-| RebinToWorkspace v1             | Alters binning so that all its spectra match of 1st spectrum. | 
-| Divide v1                       | Will divide the data values and calculate error values.       | 
-| Rebin v1 x3                     | Rebin data with new X bin boundaries.                         | 
+| Rebin v1 x3                     | Rebin data with new X bin boundaries.                         |
 | ConvertUnits v1                 | Perform a unit change on the X values of a workspace.         | 
 | ReplaceSpecialValues v1 x2      | Replaces instances of NaN and infinity or abs val in the WS   | 
 |                                 | with user defined numbers; if not provided it will not check  | 
