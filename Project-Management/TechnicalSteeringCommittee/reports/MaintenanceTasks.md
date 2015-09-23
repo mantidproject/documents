@@ -10,6 +10,7 @@ Pool
    1. [pylint](http://builds.mantidproject.org/job/pylint_master)
    2. [coverity](https://scan.coverity.com/projects/335)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
+1. Fix compilation errors with RHEL6 & devtoolset-2 [#13729](https://github.com/mantidproject/mantid/issues/13729)
 
 
 Assigned
