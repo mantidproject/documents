@@ -35,8 +35,33 @@ There are three basic steps for loading information form cache:
 Processing and Saving to Cache
 ------------------------------
 
-The workspace that will be cached should be saved using `SaveNexusProcessed` using filename described above. The script maintainer should only save the workspace if it was not already found in the cache. In python
+The workspace that will be cached should be saved using `SaveNexusProcessed` using filename described above.
+The script maintainer should only save the workspace if it was not already found in the cache.
+In python
 ```python
 if not os.path.exists(vanCacheFilename):
     SaveNexusProcessed(InputWorkspace=vanWkspName, Filename=vanCacheFilename)
 ```
+
+The Missing Link(s)
+-------------------
+
+**CreateCacheFilename**
+
+The fundamental component that is missing is an "easy" way to create the hash from a set of processing parameters. This will be done as an Algorithm and borrow ideas from [python tempfile](https://docs.python.org/3/library/tempfile.html).
+The algorithm will accept a prefix, [PropertyManager](http://docs.mantidproject.org/nightly/api/python/mantid/kernel/PropertyManager.html), whitelist of properties to use, blacklist of properties to exclude, and a string array (or `List`), and a directory for cache files to exist in.
+All of these properties are optional.
+The whitelist and blacklist will be used to select which of the properties in the `PropertyManager` will be used to calculate the hash.
+The string array is will be key/value pairs of properties that should be considered, but are not in the provided `PropertyManager`.
+If a directory is not specified, cache files will go into a `cache` subdirectory of `ConfigService::getUserPropertiesDir()`.
+On unix this will be `~/.mantid/cache`.
+
+The algorithm will convert all properties to strings as `"%s=%s" % (property.name, property.valueAsStr)`, sort the list, then convert it to a `sha1`.
+A filename with the form `<location>/<prefix>_<sha1>.nxs` will be return as the output property.
+If no prefix is specified then file result will be `<location>/<sha1>.nxs`.
+
+**CleanCache**
+
+There will also be an algorithm to remove files from the cache directory so users won't need to find it themselves. 
+This algorithm will take time (default age is two weeks) or a boolean to remove all files.
+The algorithm will then delete files in the cache directory that end in `<sha1>.nxs`.
