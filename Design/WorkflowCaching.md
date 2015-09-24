@@ -19,3 +19,24 @@ Requirements
 
 Using cache files will likely fall on script writers to take advantage of rather central to workflow algorithms.
 This will allow for them to be used in a variety of ways rather than just to assist workflow algorithms.
+
+Design
+======
+
+Loading Information From Cache
+------------------------------
+
+There are three basic steps for loading information form cache:
+
+1. **Determining what would be produced.** This should be done by looking at the appropriate parameters used to produce the file. Since the list can be restrictively long, this can be passed through a hasing algorithm (e.g. `sha1`) to generate a unique specifier.
+2. **Finding if that exists.** While the hash generated from the processing parameters is unique, it lacks clarity to people that look in the cache directory. To aid this, the cache files should be named (when possible) `<instr>_<runid>_<sha1>.nxs`. This will users to, at a glance, have a cursory understanding what the files are.
+3. **Loading the cache file.** Rather than create a new file format. The cache file will just be loaded using `LoadNexusProcessed`.
+ 
+Processing and Saving to Cache
+------------------------------
+
+The workspace that will be cached should be saved using `SaveNexusProcessed` using filename described above. The script maintainer should only save the workspace if it was not already found in the cache. In python
+```python
+if not os.path.exists(vanCacheFilename):
+    SaveNexusProcessed(InputWorkspace=vanWkspName, Filename=vanCacheFilename)
+```
