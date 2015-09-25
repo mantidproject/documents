@@ -18,7 +18,7 @@ Requirements
 4. Cache files will be deleteable with the only side effect being performance degradation.
 
 Using the cache files will likely fall on script writers to take advantage of rather central to workflow algorithms.
-This will allow for them to be used in a variety of ways rather than just to assist workflow algorithms.
+This will allow for them to be used in a variety of ways rather than just to assist workflow algorithms. This does mean that care must be taken for a race condition with cache files on distributed systems. A possible solution is to use [flock](https://github.com/misli/python-flock).
 
 Design
 ======
@@ -66,3 +66,81 @@ If no prefix is specified then file result will be `<location>/<sha1>.nxs`.
 There will also be an algorithm to remove files from the cache directory so users won't need to find the cache location themselves. 
 This algorithm will take last modified time (default age is two weeks) or a boolean to remove all files.
 The algorithm will then delete files in the cache directory that end in `<sha1>.nxs`.
+
+Example
+-------
+
+This example is taken from NOMAD's autoreduction which is one of the main motivators for generating this infrastructure.
+
+```python
+import hashlib
+import os
+import sys
+import shutil
+sys.path.append("/opt/mantidnightly/bin")
+from mantid.simpleapi import *
+import mantid
+
+eventFileAbs=sys.argv[1]
+outputDir=sys.argv[2]
+maxChunkSize=8.
+if len(sys.argv)>3:
+    maxChunkSize=float(sys.argv[3])
+
+eventFile = os.path.split(eventFileAbs)[-1]
+nexusDir = eventFileAbs.replace(eventFile, '')
+runNumber = eventFile.split('_')[1]
+configService = mantid.config
+dataSearchPath = configService.getDataSearchDirs()
+dataSearchPath.append(nexusDir)
+configService.setDataSearchDirs(";".join(dataSearchPath))
+
+# these should be options that are filled in by the calling script
+resamplex=-6000
+vanradius=0.58
+
+# determine information for vanadium caching
+wksp=LoadEventNexus(Filename=eventFileAbs, MetaDataOnly=True)
+characterizations=PDLoadCharacterizations(Filename="%(char_file)s",
+                                          ExpIniFilename="%(expini_file)s",
+                                          OutputWorkspace="characterizations")[0]
+PDDetermineCharacterizations(InputWorkspace=wksp,
+                             Characterizations=characterizations)
+DeleteWorkspace(str(wksp))
+charPM = mantid.PropertyManagerDataService.retrieve('__pd_reduction_properties')
+van_run=charPM['vanadium'].value[0]
+
+vanWkspName="NOM_"+str(van_run)
+vanProcessingKeys=['vanadium', 'empty', 'd_min', 'd_max', 'tof_min', 'tof_max']
+vanProcessingProperties.append("ResampleX="+str(resamplex))
+vanProcessingProperties.append("VanadiumRadius="+str(vanradius))
+vanCacheFilename=CreateCacheFilename('__pd_reduction_properties', vanProcessingKeys,
+                                 vanProcessingProperties, Prefix=vanWkspName,
+                                 CacheDir=outputDir)
+
+if os.path.exists(vanCacheFilename):
+    print "Loading vanadium cache file '%%s'" %% vanCacheFilename
+    Load(Filename=vanCacheFilename, OutputWorkspace=vanWkspName)
+
+# process the run
+SNSPowderReduction(Instrument="NOM", RunNumber=runNumber, Extension="_event.nxs",
+                   MaxChunkSize=maxChunkSize, PreserveEvents=True,PushDataPositive='AddMinimum',
+                   CalibrationFile="%(cal_file)s",
+                   RemovePromptPulseWidth=50,
+                   ResampleX=resamplex, BinInDspace=True, FilterBadPulses=25.,
+                   SaveAs="gsas and fullprof and pdfgetn", OutputDirectory=outputDir,
+                   StripVanadiumPeaks=True,
+                   VanadiumRadius=vanradius,
+                   NormalizeByCurrent=True, FinalDataUnits="MomentumTransfer")
+
+# save out the vanadium cache file
+if not os.path.exists(vanCacheFilename):
+    SaveNexusProcessed(InputWorkspace=vanWkspName, Filename=vanCacheFilename)
+
+# save a picture of the normalized ritveld data
+wksp_name="NOM_"+runNumber
+SavePlot1D(InputWorkspace=wksp_name,
+           OutputFilename=os.path.join(outputDir,wksp_name+'.png'),
+           YLabel='Intensity')
+
+```
