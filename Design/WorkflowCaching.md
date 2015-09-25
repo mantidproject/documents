@@ -73,10 +73,8 @@ Example
 This example is taken from NOMAD's autoreduction which is one of the main motivators for generating this infrastructure.
 
 ```python
-import hashlib
 import os
 import sys
-import shutil
 sys.path.append("/opt/mantidnightly/bin")
 from mantid.simpleapi import *
 import mantid
