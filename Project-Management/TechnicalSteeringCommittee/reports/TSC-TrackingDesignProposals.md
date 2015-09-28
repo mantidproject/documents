@@ -8,7 +8,7 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 | :------------ |:---------------|:-------|
 | [AlignDetectors Redesign](/Design/AlignDetectors_rework.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | In progress: ~~[844](https://github.com/mantidproject/mantid/pull/844)~~, [12794](https://github.com/mantidproject/mantid/pull/12794) |
 | [IDFLoadOrder](/Design/IDFLoadOrder.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | Done. ~~[12656](https://github.com/mantidproject/mantid/issues/12656)~~ |
-| [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Approved [8943](https://github.com/mantidproject/mantid/issues/8943) |
+| [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Done. ~~[12185](https://github.com/mantidproject/mantid/issues/12185)~~ |
 | [pythonAlgorithmsForMDEvents](/Design/pythonAlgorithmsForMDEvents.rst)     | [2015-04-21](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2015-04-21.md)  | In progress? Issue number? |
 | [PocoStringTokenizer](/Design/PocoStringTokenizer.md)  | [2015-02-17](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-02-17.md)  | Approved. Issue number? |
 | [automatic differentiation](/Design/IntegratingAdept.md) | [2014-11-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-11-11.md) | Approved |
