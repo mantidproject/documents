@@ -11,6 +11,7 @@ New Items
 
 * Review move of master build jobs from matrix to per-configuration jobs and how best to visualize this (Martyn)
 * New `clang-format` [enforcement plan](http://builds.mantidproject.org/job/master_clang-format/) (Ross)
+* Review [Workflow Caching Design](/Design/WorkflowCaching.md) (Pete)
 
 Minutes
 -------
