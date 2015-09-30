@@ -18,7 +18,7 @@ Requirements
 4. Cache files will be deleteable with the only side effect being performance degradation.
 
 Using the cache files will likely fall on script writers to take advantage of rather central to workflow algorithms.
-This will allow for them to be used in a variety of ways rather than just to assist workflow algorithms. This does mean that care must be taken for a race condition with cache files on distributed systems. A possible solution is to use [flock](https://github.com/misli/python-flock).
+This will allow for them to be used in a variety of ways rather than just to assist workflow algorithms. This does mean that care must be taken for a race condition with cache files on distributed systems. A possible solution is to use [flock](https://github.com/misli/python-flock). There is also an issue with properties that change even though their string representation isn't (`FileProperty` and `WorkspaceProperty`). This is not addressed by this design.
 
 Design
 ======
