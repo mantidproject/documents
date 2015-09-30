@@ -17,4 +17,6 @@ New Items
 Minutes
 -------
 
+* Will not process outside pull requests just before release
+* Two designs been implemented and updated in tracking design table
 * Martyn will figure out how to get an extra line in the wall display for the pipeline jobs
