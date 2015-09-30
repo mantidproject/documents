@@ -23,4 +23,4 @@ Minutes
 * Martyn will figure out how to get an extra line in the wall display for the pipeline jobs
 * TSC approves the plan for producing patch files on a pull request basis
 * TSC approved [Workflow Caching Design](/Design/WorkflowCaching.md)
-* Ross will apply `clang-format` and it will be merged into master shortly after the release. Then Stuart will move directories to simplify the builds afterwards. 
+* Ross will apply `clang-format` and it will be merged into master shortly after the release. Then Stuart will move directories to simplify the builds sometime afterwards. The developer mailing list will be updated as things progress.
