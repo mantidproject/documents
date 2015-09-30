@@ -13,7 +13,7 @@ New Items
 * New `clang-format` [enforcement plan](http://builds.mantidproject.org/job/master_clang-format/) (Ross)
 * Review [Workflow Caching Design](/Design/WorkflowCaching.md) (Pete)
 * Visual Studio 2015 licensing (Steve)
-* Dependencies between [maintenance tasks](Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
+* Dependencies between [maintenance tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 
 Minutes
 -------
