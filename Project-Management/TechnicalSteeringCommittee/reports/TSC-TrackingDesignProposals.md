@@ -1,4 +1,4 @@
-Design proposals discussed at TSC meetings 
+Design proposals discussed at TSC meetings
 ==========================================
 
 For design document guidelines see [here]( http://www.mantidproject.org/Design_Document_Guidelines).
@@ -6,6 +6,7 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
+| [Workflow Caching Design](/Design/WorkflowCaching.md) | [2015-09-30](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-09-30.md) | Approved. Issue number? |
 | [AlignDetectors Redesign](/Design/AlignDetectors_rework.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | In progress: ~~[844](https://github.com/mantidproject/mantid/pull/844)~~, [12794](https://github.com/mantidproject/mantid/pull/12794) |
 | [IDFLoadOrder](/Design/IDFLoadOrder.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | Done. ~~[12656](https://github.com/mantidproject/mantid/issues/12656)~~ |
 | [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Done. ~~[12185](https://github.com/mantidproject/mantid/issues/12185)~~ |
