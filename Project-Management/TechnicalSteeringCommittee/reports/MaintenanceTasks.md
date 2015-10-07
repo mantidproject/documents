@@ -27,7 +27,7 @@ Assigned
 1. Move to ParaView 4.4 or 5.0 (Steven H)
 1. Investigate breaking issues with updated dependencies (Steven H)
     1. Poco 1.6 [#11815](http://github.com/mantidproject/mantid/issues/11815) / [design doc](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)
-    2. oce 0.17 or OpenCascade 6.8 on mac
+    2. ~~oce 0.17 or OpenCascade 6.8 on mac~~ [#13844](https://github.com/mantidproject/mantid/issues/13844)
 
 #### Pete (+ helpers)
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
