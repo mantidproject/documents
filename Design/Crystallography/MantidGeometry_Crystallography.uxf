@@ -567,7 +567,7 @@ m2=1
       <w>125</w>
       <h>15</h>
     </coordinates>
-    <panel_attributes>/HKLFilterUnaryLogicOperation/
+    <panel_attributes>/HKLFilterBinaryLogicOperation/
 </panel_attributes>
     <additional_attributes/>
   </element>
