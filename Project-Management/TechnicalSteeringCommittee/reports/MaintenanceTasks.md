@@ -40,8 +40,8 @@ Assigned
    1. Linux-ify the directory names
 4. Simplify `Framework` only builds (MPI) (Stuart)
 
-#### Owen
-1. Roll out MDUnits and MDFrame wider (Owen)
+#### Anton
+1. Roll out MDUnits and MDFrame wider (Anton)
 
 #### Ross
 1. Re-run `clang-format` (will likely be done much earlier)
