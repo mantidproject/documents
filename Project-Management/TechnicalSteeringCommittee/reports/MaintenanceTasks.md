@@ -38,7 +38,6 @@ Assigned
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 1. Move main code directory two levels up (Stuart)
    1. Linux-ify the directory names
-4. Simplify `Framework` only builds (MPI) (Stuart)
 
 #### Anton
 1. Roll out MDUnits and MDFrame wider (Anton)
@@ -47,6 +46,7 @@ Assigned
 1. Re-run `clang-format` (will likely be done much earlier)
 
 #### Unassigned (not suitable for pool)
+4. Simplify `Framework` only builds (MPI) 
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report)
 1. CutAndPaste detector as a job in static analysis tab
