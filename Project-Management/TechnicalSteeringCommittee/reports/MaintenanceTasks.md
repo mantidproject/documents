@@ -4,7 +4,7 @@ For 3.6 maintenance period
 Pool
 ----
 1. Separate classes in `WorkspaceValidators.h` into separate files, including putting implementations in source files [#11035](https://github.com/mantidproject/mantid/issues/11035)
-1. Remove all cases of `#include <iostream>` from headers (or switch to `iosfwd`) and see if they required in source files [#13689](https://github.com/mantidproject/mantid/issues/13689)
+1. ~~Remove all cases of `#include <iostream>` from headers (or switch to `iosfwd`) and see if they required in source files [#13689](https://github.com/mantidproject/mantid/issues/13689)~~
 1. Filling in argument list in python bindings (e.g. "self" etc) ([#12624](http://github.com/mantidproject/mantid/issues/12624) is umbrella issue. Task divided by submodule: ~~kernel ([#13690](http://github.com/mantidproject/mantid/issues/13690))~~, geometry ([#13691](http://github.com/mantidproject/mantid/issues/13691)), api ([#13692](http://github.com/mantidproject/mantid/issues/13692)), dataobjects ([#13693](http://github.com/mantidproject/mantid/issues/13693))
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
