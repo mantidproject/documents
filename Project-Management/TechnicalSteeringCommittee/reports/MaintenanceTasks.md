@@ -21,7 +21,7 @@ Assigned
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 
 #### ~~Anders~~ Nick
-1. ~~Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347) ~~
+1. ~~Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347)~~
 
 #### Steve H
 1. Move to ParaView 4.4 or 5.0 (Steven H)
