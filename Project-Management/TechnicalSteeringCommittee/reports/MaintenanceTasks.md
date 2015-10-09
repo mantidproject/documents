@@ -20,8 +20,8 @@ Assigned
 1. Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn)
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 
-#### Anders
-1. Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347) (Anders)
+#### ~~Anders~~ Nick
+1. ~~Reorganised files in CurveFitting folder [#13347](https://github.com/mantidproject/mantid/issues/13347) ~~
 
 #### Steve H
 1. Move to ParaView 4.4 or 5.0 (Steven H)
