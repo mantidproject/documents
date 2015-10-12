@@ -9,5 +9,7 @@ Pinned Topics
 New Items
 ---------
 
+* OpenCASCADE/OCE API Changes (Steven)
+
 Minutes
 -------
