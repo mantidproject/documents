@@ -39,7 +39,7 @@ The high-level solution involves refactoring and further generalizing the Reflec
 **Key solution features**
 * The bulk of the solution will be about generating a `MantidQt::API::UserSubWindow` subclass called `DataProcessorAlgorithmWindow`  
 * `DataProcessorAlgorithmWindow`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
-* The `DataProcessorAlgorithmWindow` will provide both virtual functions for overriding a `preProcess` and `postProcess` step and signals for those events. I believe the signals will be more python friendly.
+* The `DataProcessorAlgorithmWindow` will provide virtual functions for overriding a `preProcess` and `postProcess` 
 
 
 ##Questions##
