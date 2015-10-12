@@ -36,11 +36,15 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 
 The high-level solution involves refactoring and further generalizing the Reflectometry Reduction Interface into a **Data Processor User Interface**.
 
+**Key solution features**
+* The bulk of the solution will be about generating a `MantidQt::API::UserSubWindow` subclass called `DataProcessorAlgorithmWindow`  
+* `DataProcessorAlgorithmWindow`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
+* The `DataProcessorAlgorithmWindow` will provide both virtual functions for overriding a `preProcess` and `postProcess` step and signals for those events. I believe the signals will be more python friendly.
 
 
 ##Questions##
 
-1. [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) has a nice mechanism for importing workspaces. It attempts to resolve the input either as a workspace, or as a file, and will add together listed runs separted by a +. Is this generic enough? Do we wish to further expand pre-processing steps?
+1. [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) has a nice mechanism for importing workspaces. It attempts to resolve the input either as a workspace, or as a file, and will add together listed runs separted by a `+`. Is this generic enough? Do we wish to further expand pre-processing steps?
 2. Exactly how much of the [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) do we want to provide? Not all menus are needed. For example SlitCalculator is very specific. However Addition, deletion of row etc. Makes a lot of sense. What about the ICAT import?
 
 
