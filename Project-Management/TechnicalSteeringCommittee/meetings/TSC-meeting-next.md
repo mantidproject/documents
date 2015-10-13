@@ -21,3 +21,5 @@ Present: Stuart, Pete, Steven, Owen, Martyn and Anders
 * Two functions OpenCASCADE obsolete which are currently used is Mantid. OpenCASCADE 200MB. Question dropping OpenCASCADE with VTK? Owen look into VTK. 
 * Separate question dropping Poco with QT or boost or ...?
 * Inform PMB that the 3 years for term of taken out for any feedback
+* Pete, Anders provide further feedback to generic batch processing UI design doc
+* 
