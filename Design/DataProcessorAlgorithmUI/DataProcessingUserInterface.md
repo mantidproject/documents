@@ -31,6 +31,15 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 1. Should allow blacklisting of DataProcessingAlgorith properties.
 1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
 
+##Current Structure##
+
+**Top Level Class Diagram**
+
+![Top level class diagram](https://github.com/mantidproject/documents/blob/master/Design/DataProcessorAlgorithmUI/TopLevel.png)
+
+**Table Centric Class Diagram**
+
+![Table class diagram](https://github.com/mantidproject/documents/blob/master/Design/DataProcessorAlgorithmUI/TableModel.png)
 
 ##Proposed Solution##
 
