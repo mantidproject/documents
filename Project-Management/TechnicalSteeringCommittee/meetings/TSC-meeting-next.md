@@ -19,5 +19,5 @@ Minutes
 Present: Stuart, Pete, Steven, Owen, Martyn and Anders
 
 * Two functions OpenCASCADE obsolete which are currently used is Mantid. OpenCASCADE 200MB. Question dropping OpenCASCADE with VTK? Owen look into VTK. 
-* Separate question dropping Poco with QT or boost or ...? 
+* Separate question dropping Poco with QT or boost or ...?
 * 
