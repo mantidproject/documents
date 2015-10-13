@@ -1,0 +1,51 @@
+digraph G {
+        rankdir="BT"
+        splines="ortho"
+
+
+        node [
+                shape = "record"
+        ]
+        
+
+        ITableWorkspace[
+        ]
+        
+        QReflTableModel [
+        ]
+
+                
+        QAbstractTableModel[
+        ]
+        
+        
+        subgraph clusterView {
+                label = "QReflMainView"
+
+                QTableView [
+                ]
+        }
+       
+        
+       
+        edge [
+                arrowhead = "empty"
+                headport = "c"
+        ]
+
+        
+        QReflTableModel->QAbstractTableModel
+        
+        
+        edge [
+                arrowhead = "open"
+                style="dashed"
+        ]
+
+        QReflTableModel->ITableWorkspace
+        
+        QTableView->QReflTableModel
+        
+           
+}
+

@@ -1,0 +1,54 @@
+digraph G {
+        rankdir="BT"
+        splines="ortho"
+
+
+        node [
+                shape = "record"
+        ]
+
+        ReflMainView [     
+        ]
+        
+        ReflMainViewPresenter [
+        ]
+        
+        IReflPresenter [
+        ]
+        
+        QtReflMainView [
+        ]
+        
+        AlgorithmManager[
+        ]
+        
+        IReflSearcher[
+        ]
+        
+        ReflTransferStrategy[
+        ]
+      
+
+        edge [
+                arrowhead = "empty"
+                headport = "c"
+        ]
+
+        
+        ReflMainViewPresenter->IReflPresenter
+        
+        QtReflMainView->ReflMainView
+        
+        edge [
+                arrowhead = "open"
+                style="dashed"
+        ]
+
+        ReflMainViewPresenter->ReflMainView
+        ReflMainViewPresenter->AlgorithmManager
+        ReflMainViewPresenter->IReflSearcher
+        ReflMainViewPresenter->ReflTransferStrategy
+        
+           
+}
+
