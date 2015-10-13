@@ -62,6 +62,7 @@ The high-level solution involves refactoring and further generalizing the Reflec
 * The bulk of the solution will be about generating a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
 * `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
 * The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
+* We also need a way to customise the output table in circumstances that direct mapping between `DataProcessorAlgorithm` properties and the viewable batch Table do not make sense. Currently `QReflTableModel` is specifically set up to do this for the `ReflectometryReductionOneAuto` DataProcessorAlgorithm.
 
 
 ##Questions##
