@@ -18,7 +18,7 @@ Minutes
 -------
 Present: Stuart, Pete, Steven, Owen, Martyn and Anders
 
-* OpenCASCADE functions has been made obsolete which are currently used is Mantid  [ref](http://dev.opencascade.org/index.php?q=node/1060). OpenCASCADE take up about 200MB. Question should we drop OpenCASCADE with VTK? [ref](http://www.vtkjournal.org/browse/publication/797) and [ref](http://www.vtk.org/doc/nightly/html/classvtkBooleanOperationPolyDataFilter.html)? Owen look into VTK. 
+* OpenCASCADE functions has been made obsolete which are currently used is Mantid  [ref](http://dev.opencascade.org/index.php?q=node/1060). OpenCASCADE take up about 200MB. Question should we drop OpenCASCADE with VTK? [VTK boolean operators on surfaces](http://www.vtkjournal.org/browse/publication/797) and [see](http://www.vtk.org/doc/nightly/html/classvtkBooleanOperationPolyDataFilter.html). Owen look into VTK. 
 * Separate question dropping Poco with QT or boost or ...?
 * Inform PMB that the 3 years for term of taken out for any feedback
 * Pete, Anders provide further feedback to generic batch processing UI design doc
