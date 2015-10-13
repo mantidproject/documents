@@ -49,7 +49,7 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 * QReflTableView : Takes a QAbstractModel via setModel. Renders the table on the QReflMainView
 * ITableWorkspace : Should be built from the DataProcessorWorkspace description. Defines the data for the batch processing
 
-** Other Important Actors **
+**Other Important Actors**
 * HintingStrategy : Abstraction of a mechanism to provide hinting information in for a TableColumn (Options column)
 * AlgorithmHintingStrategy : Concrete HintingStrategy taking a DataProcessorAlgorithm and a blacklist of property names not to show.
 * HintingLineEdit : Line editor which applies the HintingStrategy and is set to the QtTableView via setItemDelegateForColumn. Provides the Options column ability.
@@ -59,9 +59,9 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 The high-level solution involves refactoring and further generalizing the Reflectometry Reduction Interface into a **Data Processor User Interface**.
 
 **Key solution features**
-* The bulk of the solution will be about generating a `MantidQt::API::UserSubWindow` subclass called `DataProcessorAlgorithmWindow`  
-* `DataProcessorAlgorithmWindow`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
-* The `DataProcessorAlgorithmWindow` will provide virtual functions for overriding a `preProcess` and `postProcess` 
+* The bulk of the solution will be about generating a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
+* `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
+* The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
 
 
 ##Questions##
