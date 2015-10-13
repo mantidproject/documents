@@ -36,10 +36,23 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 **Top Level Class Diagram**
 
 ![Top level class diagram](https://github.com/mantidproject/documents/blob/master/Design/DataProcessorAlgorithmUI/TopLevel.png)
+* ReflMainView : Abstract View
+* IReflPresenter : Abstract presenter. Has simple notification interface used by the QtReflMainView.
+* ReflMainViewPresenter : Concrete IReflPresenter. Does all UI logic.
+* IReflSeracher : Abstract service to allow searching of runs via instrument and investigation_id (or some other key)
+* IReflTransferStrategy : Abstract strategy for brining runs into the table, grouping them, etc.
 
 **Table Centric Class Diagram**
 
 ![Table class diagram](https://github.com/mantidproject/documents/blob/master/Design/DataProcessorAlgorithmUI/TableModel.png)
+* QReflTableModel: Implements QAbstractModel. Is the MVC model.
+* QReflTableView : Takes a QAbstractModel via setModel. Renders the table on the QReflMainView
+* ITableWorkspace : Should be built from the DataProcessorWorkspace description. Defines the data for the batch processing
+
+** Other Important Actors **
+* HintingStrategy : Abstraction of a mechanism to provide hinting information in for a TableColumn (Options column)
+* AlgorithmHintingStrategy : Concrete HintingStrategy taking a DataProcessorAlgorithm and a blacklist of property names not to show.
+* HintingLineEdit : Line editor which applies the HintingStrategy and is set to the QtTableView via setItemDelegateForColumn. Provides the Options column ability.
 
 ##Proposed Solution##
 
