@@ -179,14 +179,73 @@ smoothed=SmoothMD(InputWorkspace=mdhw, WidthVector=width_vector, SmoothFunction=
 
 ```
 
+## CompactMD
+
+This function takes the same name in Horace [Compact](http://horace.isis.rl.ac.uk/Reshaping_etc#compact). To achieve the same functionality as Compact, CompactMD should crop an MDHistoWorkspace based on the first non-zero signals found in each dimension.
+
+#### Examples
+
+```python
+
+# Create a 4 by 4 workspace with signal values:
+# 0  0  0  0
+# 0  1  0  0
+# 0  0  1  0
+# 0  0  0  0
+mdhw = CreateMDHistoWorkspace(SignalInput=[0]*16, ErrorInput=[0]*16, Dimensionality=2, Extents='0,1,0,1', NumberOfBins=[4,4], Names='A,B', Units='U,U',)
+mdhw.setSignalAt(6, 1.0)
+mdhw.setSignalAt(9, 1.0)
+
+# Use CompactMD algorithm
+compacted_mdhw = CompactMD(mdhw)
+
+# Resultant workspace is 2 by 2 with values:
+# 1  0 
+# 0  1 
+
+```
+
+## ReplicateMD
+
+This function also takes the same name as in Horace [Replicate](http://horace.isis.rl.ac.uk/Reshaping_etc#replicate). ReplicateMD should increase the dimensionality of an MDWorkspace by replicating it along a particular dimension.
+As in Horace, the algorithm will take two inputs: the MDWorkspace to replicate, and a second MDWorkspace with the shape of the output workspace.
+
+#### Examples
+
+```python
+
+# Create workspace to replicate
+mdhw_data = CreateMDHistoWorkspace(SignalInput=range(0,16), ErrorInput=[0]*16, Dimensionality=2, Extents='0,1,0,1', NumberOfBins=[4,4], Names='A,B', Units='U,U',)
+
+# Create workspace with desired shape of output workspace
+mdhw_shape = CreateMDHistoWorkspace(SignalInput=[0]*48, ErrorInput=[0]*48, Dimensionality=3, Extents='0,1,0,1,0,1', NumberOfBins=[4,4,3], Names='A,B,C', Units='U,U,U',)
+
+outWs = ReplicateMD(mdhw_shape, mdhw_data)
+
+```
+
+## TransposeMD
+
+The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. Inputs of TransposeMD are equivalent to those of Permute but note that axes are zero indexed in Mantid.
+
+#### Examples
+
+```python
+
+# Create an MDHistoWorkspace
+mdhw = CreateMDHistoWorkspace(SignalInput=range(0, 48), ErrorInput=[0]*48, Dimensionality=3, Extents='0,1,0,1,0,1', NumberOfBins=[4,4,3], Names='A,B,C', Units='U,U,U',)
+
+# Swap the first and last axes of the MDWorkspace, note that they are zero indexed.
+mdhwOut = TransposeMD(mdhw, [2, 1, 0])
+
+```
+
+## AccumulateMD
+
+#### Examples
+
+```python
 
 
-
-
-
-
-
-
-
-
+```
 
