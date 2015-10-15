@@ -119,9 +119,16 @@ Other relevant interfaces and classes are:
 # Design alternatives
 
 There are several general features of workspaces (or some types of
-workspaces) that StackOfImagesWorkspace should have. These include:
+workspaces) that the new type of workspace should have. These include:
 basic information such as name, comment, memory, but also instrument
 and experiment information, and history.
+
+The name *MDImageWorkspace* is in principle chosen so that it is
+sufficiently general, with the idea that it represents either multiple
+images or a multidimensional structure of images. In what follows,
+this type is sometimes referred to as *stack of images* or *SOI* as
+the initial motivation when writing this document was to add a
+workspace type that is efficient for stacks of images.
 
 Individual images are definitely regular grids. And stacks of them,
 even if along multiple dimensions (for example dimension 3: multiple
@@ -131,7 +138,8 @@ such as (re-)binning, event/histograms, etc. In any case a dimension
 can be collapsed by simple operations such as for example a sum (or
 average) image for all energy levels.
 
-Functionality that SOI needs or wishes to have and where to get it from:
+Functionality that SOI (stack of images) needs or wishes to have and
+where to get it from:
 
 - Instrument and experiment information. Two alternatives:
   API::ExperimentInfo and API::MultipleExperimentInfos.
@@ -140,7 +148,7 @@ Functionality that SOI needs or wishes to have and where to get it from:
 
 (Obvious) points that are highly certain and are a solid starting point:
 
-- StackOfImagesWorkspace should inherit from Workspace. This also
+- MDImageWorkspace should inherit from Workspace. This also
   implies that it derives from DataItem which should be enough to
   guarantee that SOI workspaces can be in the Analysis Data Service
   and that Mantid algorithms can be run on them.
@@ -155,7 +163,7 @@ Functionality that SOI needs or wishes to have and where to get it from:
   const MantidVec references, SOI should have data() and roData()
   methods.
 
-- StackOfImagesWorkspace should also inherit from ExperimentInfo or
+- MDImageWorkspace should also inherit from ExperimentInfo or
   MultipleExperimentsInfos, and the second seems a better option for
   complicated stacks of images.
 
@@ -171,27 +179,29 @@ would become its base/parent class.
 
 ## Approach 1: try to get as much as possible from traditional (I)MD classes
 
+This is in principle the ideal and preferred solution.
+
 This assumes that in the current hierarchy of MD classes all the
 functionality, methods and members are placed exactly where they are
 needed, never higher than strictly needed.
 
 If we want to integrate this new workspace type in the IMD/MD classes
 hierarchy, many issues arise when trying to find a position and proper
-interaction between *StackOfImagesWorkspace* (SOI) and other (MD)
-workspaces. A basic version of StackOfImages would relate to other
+interaction between *MDImageWorkspace* (SOI) and other (MD)
+workspaces. A basic version of MDImageWorkspace would relate to other
 classes and look like this:
 
 ```
 Kernel::DataItem
   ^
   |
-Workspace     MDGeometryBase
-  ^            ^
-  |            |
-  |            |
-  |            |
-  |            |
-IMDWorkspaceStripped    [Note: (without getMask(), getError(), etc., without normalisation)]
+Workspace   MDGeometryBase
+  ^           ^
+  |           |
+  |           |
+  |           |
+  |           |
+IMDLeanWorkspace    [Note: (without getMask(), getError(), etc., without normalisation)]
   ^
   |
   |
@@ -204,52 +214,52 @@ IMDWorkspaceStripped    [Note: (without getMask(), getError(), etc., without nor
   |  MultipleExperimentsInfos       |
   |           ^                     |
   |           |                     |
-IMDHistoWorkspaceStripped           |
+IMDLeanHistoWorkspace               |
   ^                                 |
   |                                 |
   |-----------------------------    |
   |                            ^    |
   |                            |    |
-MDWorkspaceStripped          IMDHistoWorkspace
+MDLeanHistoWorkspace       IMDHistoWorkspace
   ^                               ^
   |                               |
   |                          MDHistoWorkspace
   |
   |
   |
-  |-------------------------------------
-  |                                    |
-IStackOfImagesWorkspace             ?CompactMDHistoWorkspace or similar?
+  |
+  |
+IMDImageWorkspace
   ^
   |
-StakcOfImagesWorkspace
+MDImageWorkspace
 ```
 
-Note: IMDHistoWorkspaceStripped is a regular grid workspace (regular
+Note: IMDLeanHistoWorkspace is a regular grid workspace (regular
 on a dimension-by-dimension basis).
 
-Note: it could well happen that what is now called
-"IMDWorkspaceStripped" in the diagram would rather be something like
+Note: it could well happen that what is now called "IMDLeanWorkspace"
+in the diagram would rather be something like
 "ICompactMDHistoWorkspace".
 
 This obviously gets complicated. And to complicate it further, there
 is much functionality in the API::IMDIterator iterators that would not
-apply to stacks of images. So a stripped version of them would be
-needed as well.
+apply to stacks of images. So a *lean* version of them would be needed
+as well.
 
 On the bright side, the left pipeline path of the diagram can be
 created with extremely minimal functionality taken from the more
-traditional MD classes. Then the "stripped" or "base" functionality
-that is found to be applicable and useful would be moved to the left
-side incrementally.
+traditional MD classes. Then the *lean* or base functionality that is
+found to be applicable and useful would be moved to the left side
+incrementally.
 
-Note that IStackOfImages could actually be something that is not
+Note that IMDImageWorkspace could actually be something that is not
 necessarily images, but just multidimensional regular-grid
 data. StakcOfImagesWorkspace adds imaging specific data and
 functionality. For example, parameters required for image
 pre-/post-processing or tomographic reconstruction, such as center of
 rotation, filter parameters, etc. would be present only under
-IStackOfImagesWorkspace/StackOfImagesWorkspace.
+IMDImageWorkspace/MDImageWorkspace.
 
 In the diagram left path, there cannot be any functionality tied to a
 particular pixel type (double in traditional workspaces). The question
@@ -269,8 +279,7 @@ Pros & cons of this approach:
 
 The opposite end to approach 1 is to simply derive from Workspace and
 MultipleExperimentsInfos (or ExperimentInfo in its simplest
-version). The stripped MDGeometry class would still be worth
-considering.
+version). The lean MDGeometry class would still be worth considering.
 
 ```
 Kernel::DataItem
@@ -282,10 +291,10 @@ Workspace     MDGeometryBase     MultipleExperimentsInfos
   |            |      -----------------
   |            |      |
   |            |      |
-IStackOfImagesWorkspace
+IMDImageWorkspace
   ^
   |
-StackOfImagesWorkspace
+MDImageWorkspace
 ```
 
 Pros & cons:
@@ -293,13 +302,26 @@ Pros & cons:
 - too limited
 
 
-# Additional notes on the practical use of StackOfImagesWorkspace
+# Additional notes on the practical use of MDImageWorkspace
 
 It should be possible to write Python algorithms that manipulate the
 numpy multidimensional arrays, and combine them with flexibility, as
 it will be very convenient for users to be able to manipulate some
 images or the stack as a whole with simple filters or masking,
 algebraic, etc. operations.
+
+# Implementation steps
+
+I'd go for approach 1, and I'd propose to follow a sequence of small
+incremental steps where every of the layers of the *lean* path shown
+in the figure of approach 1 (from top to bottom) is implemented in a
+(relatively) small individual issue/pull request. This would require a
+minimum of 4/5 pull requests until we introduce all the base
+interfaces/classes and MDImageWorkspace can be implemented. I'd be
+very keen to start working on this soon now that we are at the
+beginnin of 3.6 development, so we have time to move code around and
+deal with potential issues well before the code freeze for the next
+release.
 
 # Reviewer
 * Owen Arnold
