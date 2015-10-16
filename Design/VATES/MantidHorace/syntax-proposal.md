@@ -183,6 +183,12 @@ smoothed=SmoothMD(InputWorkspace=mdhw, WidthVector=width_vector, SmoothFunction=
 
 This function takes the same name in Horace [Compact](http://horace.isis.rl.ac.uk/Reshaping_etc#compact). To achieve the same functionality as Compact, CompactMD should crop an MDHistoWorkspace based on the first non-zero signals found in each dimension.
 
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(InputWorkspace)***
+
+* *InputWorkspace* must be an IMDHistoWorkspace.
+
 #### Examples
 
 ```python
@@ -208,7 +214,13 @@ compacted_mdhw = CompactMD(mdhw)
 ## ReplicateMD
 
 This function also takes the same name as in Horace [Replicate](http://horace.isis.rl.ac.uk/Reshaping_etc#replicate). ReplicateMD should increase the dimensionality of an MDWorkspace by replicating it along a particular dimension.
-As in Horace, the algorithm will take two inputs: the MDWorkspace to replicate, and a second MDWorkspace with the shape of the output workspace.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(ShapeWorkspace, DataWorkspace)***
+
+* *ShapeWorkspace* is an MDWorkspace with the shape of the output workspace.
+* *DataWorkspace* is the MDWorkspace to replicate.
 
 #### Examples
 
@@ -226,7 +238,14 @@ outWs = ReplicateMD(mdhw_shape, mdhw_data)
 
 ## TransposeMD
 
-The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. Inputs of TransposeMD are equivalent to those of Permute but note that axes are zero indexed in Mantid.
+The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. Inputs of TransposeMD should be equivalent to those of Permute but note that axes are zero indexed in Mantid.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(InputWorkspace, Axes)***
+
+* *InputWorkspace* must be an IMDHistoWorkspace.
+* *Axes* list of axes indices, zero indexed.
 
 #### Examples
 
@@ -242,10 +261,26 @@ mdhwOut = TransposeMD(mdhw, [2, 1, 0])
 
 ## AccumulateMD
 
+This function takes the same name in Horace [Accumulate](http://horace.isis.rl.ac.uk/Generating_SQW_files#accumulate_sqw), and will append new data to an existing MDWorkspace.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = AccumulateMD(DataSources, InputWorkspace, EFix, Emode, Alatt, Angdeg, u, v, Psi, Gl, Gs, Clean)***
+
+* *OutputWorkspace* is a MDWorkspace containing the data of the InputWorkspace and new data from DataSources appended.
+* *DataSources* can be a list of files or of workspaces (*.nxspe, *.nxs).
+* *EFix* is a list of datasource energy values in meV
+* *Emode* is 'Elastic', 'Direct' or 'Indirect'
+* *InputWorkspace* is the MDWorkspace to append data to.
+* *Alatt*, *Angdeg*, *u*, *v* are used to set the UB matrix.
+* *Psi*, *Gl*, *Gs* are angles for goniometer settings.
+* *Clean* is a boolean value, if true a fresh MDWorkspace is created, optional and default is false.
+
+
 #### Examples
 
 ```python
 
 
-```
 
+```
