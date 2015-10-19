@@ -168,9 +168,8 @@ class Files:
 
 ( # Read preference file: optional params read with updatePrefVal )
 
-| All variables defined in "cry_ini.py" | Equals "="                                 | Equals & Found      |
-| "Def __ init __"                      |                                            | in mtd.pref         |
-| :-----------------------------------: | :----------------------------------------: | :-----------------: |
+| All variables defined in "cry_ini.py" | Equals "="                                 | Equals & Found in mtd.pref | 
+| :-----------------------------------: | :----------------------------------------: | :------------------------: | 
 | RawDir                                | If self.RawDir = " ": Self. RawDir         | Null                |
 |                                       | = join(r'\\isis\inst$\ndx%s' % self.instr, |                     |
 |                                       | 'instrument', 'data', Cycle)               |                     |
