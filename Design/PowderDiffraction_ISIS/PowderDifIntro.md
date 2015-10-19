@@ -144,17 +144,17 @@ hrpd/test/cycle_09_2/tester/hrp43022_s1_old.nxs are containing the same data.
 Variables from mtd.pref file
 ============================
 
-Inside the “cry_ini.py” file, most of the variables from “mtd.pref” have been pre-defined. The variables
-that have been pre-defined, they are being updated from the “mtd.pref” file and imported in to the “cry_ini.py”
+Inside the `cry_ini.py` file, most of the variables from `mtd.pref` have been pre-defined. The variables
+that have been pre-defined, they are being updated from the `mtd.pref` file and imported in to the “cry_ini.py”
 file inside `Def __init__`.
 
-The initialise function inside the “cry_ini.py” file seems to be updating values from “mtd.pref” with special
-function; ```self.OffDir = self.updatePrefVal(“ ”, self.OffDir)```, this would seem to update the .py file with
+The initialise function inside the `cry_ini.py` file seems to be updating values from `mtd.pref` with special
+function; ```self.OffDir = self.updatePrefVal("", self.OffDir)```, this would seem to update the .py file with
 provided data.
 
 However there are some variables which have not been assigned previously and they are being defined by using the
  following function.
-```self.OffFile = self.read_prefline(“Offsets”)```, these variables are compulsory, unless Powder Diffraction
+```self.OffFile = self.read_prefline("Offsets")```, these variables are compulsory, unless Powder Diffraction
 script will not function.
 
 Backed up by an important comment found in `cry_ini.py` which should be considered:
@@ -169,7 +169,7 @@ class Files:
 ( # Read preference file: optional params read with updatePrefVal )
 
 | All variables defined in "cry_ini.py" | Equals "="                                 | Equals & Found      |
-| "Def __init__"                        |                                            | in `mtd.pref        |
+| "Def __ init __"                      |                                            | in mtd.pref         |
 | :-----------------------------------: | :----------------------------------------: | :-----------------: |
 | RawDir                                | If self.RawDir = " ": Self. RawDir         | Null                |
 |                                       | = join(r'\\isis\inst$\ndx%s' % self.instr, |                     |
@@ -236,13 +236,13 @@ class Files:
 
 These variables listed below in the table are read directly from the `mtd.pref` file in
 ``` def initialize(self, Cycle, user, prefFile="", prefDir="", Verbose=False)``` function.
--	Example of how its defined in `cry_ini.py`
-o	self.OffFile = self.read_prefline( "Offsets" )
+Example of how its defined in `cry_ini.py`
+- ```self.OffFile = self.read_prefline( "Offsets" )```
 
 ( # Read preference file: default, read_prefline-label ALWAYS REQUIRED in pref-file )
 
-| All variables defined | Variables name | Equals `=` in `mtd.pref`   |                          |
-| in 'cry_ini.py'       | in `mtd.pref`  |                            |                          |
+| All variables defined | Variables name | Equals = in mtd.pref       |                          |
+| in cry_ini.py         | in mtd.pref    |                            |                          |
 | def initialize()      |                |                            |                          |
 | :-------------------: | :------------: | :--------------------------| :-----------------------:|
 | OffFile               | Offsets        | hrpd_new_072_01_corr.cal   |                          |
