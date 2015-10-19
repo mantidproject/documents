@@ -240,10 +240,8 @@ Example of how its defined in `cry_ini.py`
 
 ( # Read preference file: default, read_prefline-label ALWAYS REQUIRED in pref-file )
 
-| All variables defined | Variables name | Equals = in mtd.pref       |                          |
-| in cry_ini.py         | in mtd.pref    |                            |                          |
-| def initialize()      |                |                            |                          |
-| :-------------------: | :------------: | :--------------------------| :-----------------------:|
+| Variables defined in def initialize() | Variables name mtd.pref | = in mtd.pref | Defined in .py |
+| :-----------------------------------: | :---------------------: | :-----------: | :------------: |
 | OffFile               | Offsets        | hrpd_new_072_01_corr.cal   |                          |
 | GrpFile               | Grouping       | hrpd_new_072_01_corr.cal   |                          |
 | VrunnoList            | Vanadium       | 39191                      |                          |
