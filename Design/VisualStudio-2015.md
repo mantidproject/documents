@@ -75,11 +75,53 @@ New scripts will be generated to wrap the startup of Visual Studio & MantidPlot 
 
 The bundled python distribution is a slightly special case. Our current bundle is just a direct copy of an installed copy of one of the official releases (actually the debug copy is built by us). This means that the layout of its directories is fixed and not optimal for what we require. It is also still linked to `msvcr90.dll` and is causing other problems ([#12301](https://github.com/mantidproject/mantid/issues/12301)).
 
-It is proposed that both release & debug builds are compiled to be dependent only on VS 2015 and the layout of the components follow the layout on RedHat (Debian seems to add complication with `dist-packages`: https://wiki.debian.org/Python#Deviations_from_upstream) using a `pythonX.X` directory under `lib` and `share`.
+**For compatability we will continue to use a Python distribution created by the official Python sources and not change the layout**
 
-**To do**: I am not 100% sure that this will work when bundling with the installer. It needs investigation.
+~~It is proposed that both release & debug builds are compiled to be dependent only on VS 2015 and the layout of the components follow the layout on RedHat (Debian seems to add complication with `dist-packages`: https://wiki.debian.org/Python#Deviations_from_upstream) using a `pythonX.X` directory under `lib` and `share`.~~
 
-These [instructions](https://wiki.python.org/moin/VS2012) could be useful and should apply to VS2015 as the same things about lack of manifests applies.
+~~**To do**: I am not 100% sure that this will work when bundling with the installer. It needs investigation.~~
+
+~~These [instructions](https://wiki.python.org/moin/VS2012) could be useful and should apply to VS2015 as the same things about lack of manifests applies.~~
+
+#### Site-packages
+
+Here is a list of packages we currently ship with Mantid. The library(ies) in brackets are the parent dependency:
+
+* adodbapi (pywin32)
+* backports (IPython)
+* dateutil (IPython)
+* docutils (Sphinx)
+* epics
+* genxmlif
+* IPython
+* isapi (pywin32)
+* jinja2 (Sphinx)
+* markupsafe (Sphinx)
+* matplotlib
+* minixsv
+* mpl_toolkits (matplotlib)
+* numpy
+* nxs
+* pip
+* psutil
+* pygments
+* pylab (matplotlib)
+* pyparsing (IPython)
+* pythoncom (pywin32)
+* PyQt4
+* python_dateutil (IPython)
+* pytz (IPython)
+* scipy
+* setuptools
+* sip
+* six (IPython)
+* sphinx
+* sphinx_bootstrap_theme
+* tornado (IPython)
+* win32 (pywin32)
+* win32com (pywin32)
+* win32comext (pywin32)
+* zmq (IPython)
 
 #### Patch to apply to bundled uuid.py
 
@@ -93,10 +135,14 @@ The default bundle is large and we don't want everything:
 * move dlls from `pywin32_system32` to `pywin32` directory. The standard install puts them in C:\Windows\System32 but this
   is not good to our bundled installer
 
+
+
 Submodule
 =========
 
-Is it worth considering having the 3rdparty dependencies as a submodule of the main repository?
+Is it worth considering having the 3rdparty dependencies as a submodule of the main repository? No
+
+CMake will be used (an external project) to keep them in sync.
 
 
 
