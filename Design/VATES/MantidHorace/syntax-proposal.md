@@ -114,7 +114,6 @@ omega, dpsi, gl, gs, out_filename)***
 * *out_filename* is optional. If provided then the results will be saved to
 this location, and the processing will be conducted on disk rather than in-memory
 * *data_source* could be a number of things. *data_source* can either be a file or a workspace (*.nxspe, *.nxs) *ws_name* is optional [[1]]
-* *sqw_file* is only required in the case that the processing should happen on-disk [[1]]
 * *alatt*, *angdeg*, *u*, *v* are used to set the UB matrix. One can set the UB 
 matrix before. If not empty, it will override and set the UB again [[3]]
 * *omega*, *dpsi*, *gl*, *gs* are angles for goniometer settings. This should be
