@@ -353,3 +353,10 @@ release.
 
 # Reviewer
 * Owen Arnold
+
+## Reviewer Notes ##
+* Do we really want to store errors? What's the use case for this?
+* I would suggest a typdef for the actual inttype to use. Do we have a need to have multiple forms of this workspace with different size types? If so you should see what has been done around the MDEventWorkspace.
+* I would suggest storing the data in contiguous block. This will make a lot of operations easier, such as exporting to numpy.
+* The workspace should inherit from MultipleExperimentInfos to support the IMDHistoWorkspace compression use cases.
+* I much prefer option 1. Of the type hierachy.
