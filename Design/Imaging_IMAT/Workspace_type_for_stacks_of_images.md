@@ -129,8 +129,6 @@ http://doxygen.mantidproject.org/nightly/d8/d57/classMantid_1_1API_1_1MatrixWork
 Other relevant interfaces and classes are:
 * Geometry::IMDDimension:
   http://doxygen.mantidproject.org/nightly/dd/db2/classMantid_1_1Geometry_1_1IMDDimension.html
-* API::ExperimentInfo:
-  http://doxygen.mantidproject.org/nightly/d4/d42/classMantid_1_1API_1_1ExperimentInfo.html
 * API::MultipleExperimentInfo:
   http://doxygen.mantidproject.org/nightly/d7/d1f/classMantid_1_1API_1_1MultipleExperimentInfos.html
 
@@ -156,8 +154,8 @@ average) image for all energy levels.
 Functionality that MDImageWorkspace needs or wishes to have and where
 to get it from:
 
-- Instrument and experiment information. Two alternatives:
-  API::ExperimentInfo and API::MultipleExperimentInfos.
+- Instrument and experiment information. API::ExperimentInfo is not
+  enough for our purposes. Here we use API::MultipleExperimentInfos.
 
 - Workspace/algorithm history: included in API::Workspace.
 
@@ -179,9 +177,8 @@ to get it from:
   const MantidVec references, MDImageWorkspace should have `data()`
   and `roData()` methods.
 
-- MDImageWorkspace should also inherit from ExperimentInfo or
-  MultipleExperimentInfos, and the second seems a better option for
-  complicated stacks of images.
+- MDImageWorkspace should also inherit from MultipleExperimentInfos,
+  to support IMDHistoWorkspace compression use cases.
 
 - Geometry::IMDDimension: should be usable as it is.
 
@@ -290,7 +287,9 @@ types, is to have `data()`/`roData()` and similar methods for the
 supported types, reinterpreted (2 and 4 bytes is good enough, and the
 MDImageWorkspace always knows what is its actual pixel type). In any
 case we need the capability to return numpy arrays of the appropriate
-type in the python interface.
+type in the python interface. This implies that for convenience and
+efficiency the underlying buffer should be allocated as a contiguous
+block (http://docs.scipy.org/doc/numpy/reference/internals.html).
 
 Pros & cons of this approach:
 - The obvious advantage we are after is better integration and code
@@ -305,9 +304,8 @@ Pros & cons of this approach:
 
 
 The opposite end to approach 1 is to simply derive from Workspace and
-MultipleExperimentsInfos (or ExperimentInfo in its simplest
-version). The base or lean MDGeometry class would still be worth
-considering.
+MultipleExperimentsInfos. The base or lean MDGeometry class would
+still be worth considering.
 
 ```
 Kernel::DataItem
@@ -360,3 +358,37 @@ release.
 * I would suggest storing the data in contiguous block. This will make a lot of operations easier, such as exporting to numpy.
 * The workspace should inherit from MultipleExperimentInfos to support the IMDHistoWorkspace compression use cases.
 * I much prefer option 1. Of the type hierachy.
+
+## Comments to reviewer notes ##
+
+* No, errors are not needed and not desired at all. Maybe the document
+  reads confusing somewhere? In principle errors would be included
+  only in the traditional, non-lean classes (right pipeline in the
+  diagram).
+
+* Yes, we need for sure int16, int32, and float32 (more details
+  below). The approach in MDEEventWorkspace would perfectly support
+  all the requirements. If we have good experiences with it then this
+  would be the choice.
+
+  More details on the types required: As an absolute minimum we'd
+  need, int32 and int64. For IMAT for example uint16 looks like the
+  most common case at the moment, and it is important to use only two
+  bytes per pixel whenever possible. But then again there are cases
+  where int32 is needed, or float32. This is also needed to be able to
+  load stacks with their native pixel type/size before converting
+  them. And it would be nice to eventually provide ways of converting
+  between pixel sizes. Ideally we should be as flexible as when you
+  change the dtype of a numpy array with astype.
+
+* Contiguous blocks seem the most sensible option. Thanks for the
+  hint. I had actually wrongly assumed that it would be possible/easy
+  to export numpy arrays from several contiguous blocks (for example
+  every image or slice individually contiguous). Looking at the numpy
+  internals documentation that's not a good idea. I've added a small
+  note on this.
+
+* Edited the text to use MultipleExperimentInfos and not
+  ExperimentInfo.
+
+* I fully agree. Opinions against?
