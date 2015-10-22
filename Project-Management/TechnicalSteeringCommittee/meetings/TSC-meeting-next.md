@@ -8,3 +8,4 @@ Pinned Topics
 
 New Items
 ---------
+* Proposal to update to how we review design documents: Use pull requests to enable better tracking of conversations about the document (Martyn)
