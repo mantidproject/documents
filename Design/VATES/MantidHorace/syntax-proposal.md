@@ -237,7 +237,7 @@ outWs = ReplicateMD(mdhw_shape, mdhw_data)
 
 ## TransposeMD
 
-The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. Inputs of TransposeMD should be equivalent to those of Permute but note that axes are zero indexed in Mantid.
+The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. TransposeMD will also have the alias PermuteMD. Inputs of TransposeMD should be equivalent to those of Permute but note that axes are zero indexed in Mantid.
 
 #### Arguments and Function signature
 
