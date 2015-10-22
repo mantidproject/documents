@@ -40,7 +40,7 @@ Medium term goals
 In addition to the short term goals, there are some issues that could be solved within the existing framework but may require redesign of certain components, some of them even more low level than what’s in Geometry:
 
   - Add "Reflection"-class. Conceptually this class is somewhere between V3D and Peak in terms of complexity and
-  scope. Reflection would essentially include the Miller indices HKL and probably a d-value and a structure factor. Peak would then hold a Reflection internally, probably a pointer. That way, several peaks could point to the same reflection, the reflection could probably also point to its "reflection family". Such a structure would make gathering statistics on reflections and unique reflections very simple.
+  scope. Reflection would essentially include the Miller indices HKL and probably a d-value and a structure factor. Peak would then hold a Reflection internally, probably a pointer. That way, several peaks could point to the same reflection, the reflection could probably also point to its "reflection family". Such a structure would make gathering statistics on reflections and unique reflections very simple. Taking into account a good point from Owen, the reflections' lifetime and ownership have to be managed carefully, for example in a pool.
   - Evaluate feasibility and usage of HKLFilter. If it turns out to be well usable, add the concept of an HKLTransformation. These transformations would provide mappings of the form V3D -> x, where x could be double or again V3D.
   - Create a transforming iterator for use with HKLGenerator. That way, transformations of reflections could be performed on the fly while creating them.
   - Look at other algorithms in Crystal-module. Some of them can be formulated in a much more concise way using HKLGenerator, PointGroup and so on with added possibilities to improve performance (SortHKL example from above). Other algorithms could profit from extended functionality.
@@ -51,14 +51,16 @@ Besides technical goals, there are also scientific considerations to make:
   - Gather requirements from single crystal/powder beam lines to find out if algorithms can be added to improve the workflows.
   - Find out if and how areas other than diffraction may benefit from the crystallographic code.
 
-These goals require some design effort and discussion. The 2016 developer workshop provides a good opportunity for such discussions, but some design documents should be prepared in advance where necessary.
+These goals require some design effort and discussion, which includes writing separate design documents. The 2016 developer workshop provides a good opportunity for such discussions, but some design documents should be prepared in advance where necessary.
 
 Long term goals
 ---------------
 
 This section is a bit broader than the previous two.
 
-Some of the considerations are more long-term and concern for example requirements of new ESS instruments (possibly also existing ones?). One specific example is provided by NMX (macromolecular crystallography beam line) where experiments lead to data sets with potentially millions of peaks. Are the current implementations of Peaks/PeaksWorkspace capable of handling these amounts of data with enough performance?
+Some of the considerations are more long-term and concern for example requirements of new ESS instruments (possibly also existing ones?). One specific example is provided by NMX (macromolecular crystallography beam line) where experiments lead to data sets with potentially millions of peaks. Are the current implementations of Peaks/PeaksWorkspace capable of handling these amounts of data with enough performance? - This has been investigated by Owen & Pete a few years ago, SliceViewer can handle thousands of peaks, so it's probably not a big concern at the moment.
+
+An aspect mentioned by Owen is different integration techniques for single crystal data, namely in detector space instead of Q-space, as currently developed at ILL. Interest in this has also been indicated by Pascal Manuel and Esko Oksanen (NMX scientist).
 
 Another concern may be integration of other crystallographic libraries. What functionality from other libraries such as cctbx could be useful for Mantid? Is it feasible to integrate them on a C++-level or is the possibility of using the python libraries enough? Could it be an advantage to keep, maintain and further improve the code that has been added to the Mantid framework?
 
