@@ -280,6 +280,27 @@ This function takes the same name in Horace [Accumulate](http://horace.isis.rl.a
 
 ```python
 
+# Not all of these files need to exist yet
+input_files = ['data1.nxs', 'data2.nxs', 'data3.nxs' , 'data4.nxs' , 'data5.nxs' ]
 
+psi=[0:2:180 1:2:179]  # list of anticipated scan angles
+
+efix=100  # incident energy
+
+emode = 'Direct'
+
+alatt=[5.7,5.7,5.7]  # lattice parameters
+
+angdeg=[90,90,90]  # lattice angles
+
+u=[1,0,0]; v=[0,1,0]  # specify scattering plane, where u is the crystal direction to ki when psi=0, v is another vector so that with u it specifies the equatorial plane
+
+omega=0; dpsi=0; gl=0; gs=0  # goniometer offsets for the sample
+
+# Any new data in input_files is appended to workspace ws
+ws = AccumulateMD(input_files, ws, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
+
+# OR use "Clean=True" to recreate the workspace from fresh
+ws = AccumulateMD(input_files, ws, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs, Clean=True)
 
 ```
