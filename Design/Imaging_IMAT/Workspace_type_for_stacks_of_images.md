@@ -207,8 +207,8 @@ classes and look like this:
 ```
 Kernel::DataItem
   ^
-  |
-Workspace   MDGeometryBase
+  |                            [Note: MDLeanGeometry could steal the name of the current MDGeometry]
+Workspace   MDLeanGeometry     [it is approx. MDGeometry without transforms]
   ^           ^
   |           |
   |           |
@@ -219,7 +219,7 @@ IMDLeanWorkspace    [Note: (without getMask(), getError(), etc., without normali
   |
   |
   |-------------------------------   MDGeometry
-  ^                              |    ^
+  ^                              ^    ^
   |                              |    |
   |                          IMDWorkspace
   |                                 ^
