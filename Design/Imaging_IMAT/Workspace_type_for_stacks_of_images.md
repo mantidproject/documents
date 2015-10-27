@@ -392,3 +392,7 @@ release.
   ExperimentInfo.
 
 * I fully agree. Opinions against?
+
+##Approval##
+
+Owen Arnold 27th October 2015. I'm happy with the plan. Low level issues still need to be worked out, but the top-level design using Option 1 looks good to me.
