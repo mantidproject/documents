@@ -63,6 +63,13 @@ The high-level solution involves refactoring and further generalizing the Reflec
 * `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
 * The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
 * We also need a way to customise the output table in circumstances that direct mapping between `DataProcessorAlgorithm` properties and the viewable batch Table do not make sense. Currently `QReflTableModel` is specifically set up to do this for the `ReflectometryReductionOneAuto` DataProcessorAlgorithm.
+* 
+
+##Prototyping##
+**Notes from Owen**
+I've checked that sip exports of c++ QtObject base classes will behave as we expect on the python side. 
+
+One problem that we will encounter is how to get sip and boost python exported representations to play together. The situations in which this would occur are where we want ot provide a custom `preProcess` and `postProcess` step, where by we need the ability to receive and modify workspaces, and run algorithms. I propose that a solution to this would be for the preProcess and postProcess steps to return the name of `Algorithms` that the algorithm manager on the c++ side could create and execute on their behalf. The API for these Algorithms would need to be fixed, and well tested to prevent runtime-issues.
 
 
 ##Questions##
