@@ -20,4 +20,5 @@ Present: Pete, Stuart, Ross, Martyn, Owen and Anders
   * git metrics (Stuart)
   * cleaner version of startup statistics (Pete)
   * summary of TSC in the last year (Anders)
-  * Guidance and standards from sine2020 next TSC (Anders)
+* Guidance and standards from sine2020 next TSC (Anders)
+* Bring back the mantid-help email address (Martyn)
