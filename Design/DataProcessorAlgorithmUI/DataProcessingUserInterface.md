@@ -30,6 +30,7 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 1. Should allow for treatment of *Grouped rows* or some other post-processing grouping.
 1. Should allow blacklisting of DataProcessingAlgorith properties.
 1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
+2. Should allow for processing rows via remote launching
 
 ##Current Structure##
 
