@@ -23,3 +23,4 @@ Present: Pete, Stuart, Ross, Martyn, Owen and Anders
   * summary of TSC in the last year (Anders)
 * Guidance and standards from sine2020 next TSC (Anders)
 * Bring back mantid-help email address (Martyn)
+* TSC agreed to ask developers to submit new designs as pull requests to help frame the discussion about them. Anders will email the developer list about the change.
