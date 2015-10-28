@@ -16,10 +16,10 @@ Minutes
 Present: Pete, Stuart, Ross, Martyn, Owen and Anders
 
 * Developer workshop [wiki](http://www.mantidproject.org/Category:Workshop2016) 
+  * TSC would like to have a first (filled in) version of the TSC and developer meetings
 * TSC reports for the PMB in January:
   * git metrics (Stuart)
   * cleaner version of startup statistics (Pete)
   * summary of TSC in the last year (Anders)
 * Guidance and standards from sine2020 next TSC (Anders)
 * Bring back mantid-help email address (Martyn)
-* 
