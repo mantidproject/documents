@@ -13,6 +13,10 @@ New Items
 Minutes
 -------
 
-Present: Pete, Stewart, Ross, Martyn, Owen and Anders
+Present: Pete, Stuart, Ross, Martyn, Owen and Anders
 
-Developer workshop [wiki](http://www.mantidproject.org/Category:Workshop2016) 
+* Developer workshop [wiki](http://www.mantidproject.org/Category:Workshop2016) 
+* TSC reports for the PMB in January:
+  * git metrics (Stuart)
+  * cleaner version of startup statistics (Pete)
+  * summary of TSC in the last year (Anders)
