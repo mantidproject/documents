@@ -9,3 +9,10 @@ Pinned Topics
 New Items
 ---------
 * Proposal to update to how we review design documents: Use pull requests to enable better tracking of conversations about the document (Martyn)
+
+Minutes
+-------
+
+Present: Pete, Stewart, Ross, Martyn, Owen and Anders
+
+Developer workshop [wiki](http://www.mantidproject.org/Category:Workshop2016) 
