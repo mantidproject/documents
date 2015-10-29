@@ -4,7 +4,7 @@
 
 Mantid user interfaces, while simple to create, have caused some of the largest long-term problems in Mantid. Large numbers of users interact with Mantid via technique specific interfaces. Fragility of a single UI can taint the view of the whole project. On the other hand, maintenance has consuming valuable time in development resources for little benefit to the wider project. The movement towards MVP and similar approaches have mitigated some of these problems through the introduction of fast, automated testing. There are several very successful examples of where this approach has been applied to Mantid.
 
-More recently, we developed a [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html), which has provided a neat and concise way to execute complex batch-processing via [DataProcessorAlgorithms](http://doxygen.mantidproject.org/nightly/dd/ddc/classMantid_1_1API_1_1DataProcessorAlgorithm.html). This was developed using our experience of the *MVP Passive View* approach. IOC has allowed us to impement some powerful and reusable features, such as Auto-completing option selection, Data searching/loading, Reduction settings loading, and pre and post-processing reduction in a way that does not strongly tie us into a given solution, or even to a specific techinque area.
+More recently, we developed a [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html), which has provided a neat and concise way to execute complex batch-processing via [DataProcessorAlgorithms](http://doxygen.mantidproject.org/nightly/dd/ddc/classMantid_1_1API_1_1DataProcessorAlgorithm.html). This was developed using our experience of the *MVP Passive View* approach. IOC has allowed us to implement some powerful and reusable features, such as Auto-completing option selection, Data searching/loading, Reduction settings loading, and pre and post-processing reduction in a way that does not strongly tie us into a given solution, or even to a specific techinque area.
 
 Many technique areas have now developed DataProcessorAlgorithms, as this is now the accepted solution to the workflow algorithm problem. Several technique areas are now asking for similar functionality, and **it makes long-term sense to generalize what has been done in [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) to avoid the maintenace effort drain we see involved in looking after specific UIs**.
 
@@ -81,4 +81,10 @@ One problem that we will encounter is how to get sip and boost python exported r
 2. Exactly how much of the [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) do we want to provide? Not all menus are needed. For example SlitCalculator is very specific. However Addition, deletion of row etc. Makes a lot of sense. What about the ICAT import?
 3. How do we deal with properties that should be shared for the entire table? Should there be a way to fill in an entire column, or a part of the gui that holds the "common" properties.
 
+##Commments##
+**Anders**
+
+1. Design should be able to handle future formats users would like to use to set up algorithm properties and to save to such formats to, for example csv format
+2. Would it be possible to list existing interfaces in Mantid that could potentially benefit from this design?
+3. An answer to question 2 above: I favour a minimum set. If the list in the bullet point above is made (and for interfaces planed in the near future) a minimum feature set which satisfy these may be chosen
 
