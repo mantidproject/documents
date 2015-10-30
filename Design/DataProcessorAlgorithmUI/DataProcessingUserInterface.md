@@ -19,6 +19,15 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 * Linked to the above. We now have the ability to generate electronic notebooks via [GenerateIPythonNotebook](http://docs.mantidproject.org/nightly/algorithms/GenerateIPythonNotebook-v1.html). This feature has already been built into [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html)
 * Hooks for pre and post processing available much like the operation of [StartLiveData](http://docs.mantidproject.org/nightly/algorithms/StartLiveData-v1.html)
 
+##Target User Interfaces and Technique Areas##
+We believe that the following Technique areas would benefit from this design. There are likely to be many more areas that would benefit.
+
+| Tehnnique        | Facility           | Reasons Why  |
+| ------------- |:-------------:| -----:|
+|  Reflectometry    | ISIS | Already have a well-tested precursor of this design. But would benefit from common code and shared effort.  |
+|  SANS   | ANSTO      |  Want batch mode processing of SANS data |
+|  SANS   | ISIS      |  Have batch mode processing, but it's very basic, and are now talking about embedding python scripts into their csv batch table, to get around the lack of the `Options column. See below` |
+
 ##Requirements##
 
 **Must Haves**
