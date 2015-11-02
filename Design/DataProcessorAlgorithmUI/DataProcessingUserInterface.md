@@ -32,6 +32,13 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
 2. Should allow for processing rows via remote launching
 
+##Selected Use cases##
+
+1. `SNSPowderReduction` could benefit greatly from this as when users want to re-reduce they want to change a couple of parameters and re-reduce the whole experiment. Things that make this interesting:
+  * There is a CharacterizationsFile which contains much of the information that could be used for filling in the table. Currently the information is brought (mostly) into a TableWorkspace via [PDLoadCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDLoadCharacterizations-v1.html) and then the correct row is selected with [PDDetermineCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDDetermineCharacterizations-v1.html). The user has the option to override the values found this way, but it gives a very good start.
+  * Many of the parameters are common to the whole experiment's reduction (calibration file, final binning, output file formats, etc). The solution should have the ability to have an area for setting these common parameters, rather than forcing them to appear in every row.
+2. For Single Crystal Diffraction (XSD) there is some amount of "twiddling" before reducing each of the individual goiniometer settings to a set of integrated peaks. Then the workflow requires combining all of the individual integrated peaks and finding a common UB matrix and re-indexing all of the peaks. One of the missing pieces in the current reduction, is moving parameters from the individual run to the batch run. This is currently done by hand.
+
 ##Current Structure##
 
 **Top Level Class Diagram**
