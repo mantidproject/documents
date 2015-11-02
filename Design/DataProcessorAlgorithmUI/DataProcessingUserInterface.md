@@ -60,6 +60,13 @@ We believe that the following Technique areas would benefit from this design. Th
 When it comes to batch processing variants. `AlgorithmRunningService`. We need a way to distribute the items in the table to acheive a good load-balancing. The problem comes with acheiveing post-processing on the server side. Post processing does not preclude inter-row dependencies. One way get around this would be to distribute according to equivalent group number. Another way would be to perform all post-processing on the client side.
  
 
+##Selected Use cases##
+
+1. `SNSPowderReduction` could benefit greatly from this as when users want to re-reduce they want to change a couple of parameters and re-reduce the whole experiment. Things that make this interesting:
+  * There is a CharacterizationsFile which contains much of the information that could be used for filling in the table. Currently the information is brought (mostly) into a TableWorkspace via [PDLoadCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDLoadCharacterizations-v1.html) and then the correct row is selected with [PDDetermineCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDDetermineCharacterizations-v1.html). The user has the option to override the values found this way, but it gives a very good start.
+  * Many of the parameters are common to the whole experiment's reduction (calibration file, final binning, output file formats, etc). The solution should have the ability to have an area for setting these common parameters, rather than forcing them to appear in every row.
+2. For Single Crystal Diffraction (XSD) there is some amount of "twiddling" before reducing each of the individual goiniometer settings to a set of integrated peaks. Then the workflow requires combining all of the individual integrated peaks and finding a common UB matrix and re-indexing all of the peaks. One of the missing pieces in the current reduction, is moving parameters from the individual run to the batch run. This is currently done by hand.
+
 ##Current Structure##
 
 **Top Level Class Diagram**
