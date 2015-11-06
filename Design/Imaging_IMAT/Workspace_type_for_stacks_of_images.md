@@ -248,6 +248,15 @@ IMDImageWorkspace
 MDImageWorkspace
 ```
 
+The general idea is that the more general features of the traditional
+interfaces and workspaces (MDGeometry, IMDWorkspace, MDWorkspace,
+IMDHistoWorkspace, MDHistoWorkspace) are extracted (moved right to
+left in the diagram) into their *lean* counterparts (MDGeometryBase,
+IMDLeanWorkspace, MDLeanWorkspace, IMDLeanHistoWorkspace,
+MDHistoWorkspace) so that they can be reused for MDImageWorkspace and
+as much interface as possible is shared between the *lean* and the
+traditional workspaces.
+
 Note: IMDLeanHistoWorkspace is a regular grid workspace (regular
 on a dimension-by-dimension basis).
 
