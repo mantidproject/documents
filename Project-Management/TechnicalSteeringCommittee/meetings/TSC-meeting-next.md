@@ -9,4 +9,4 @@ Pinned Topics
 New Items
 ---------
 * Content for the [TSC and developer meetings](http://www.mantidproject.org/Category:Workshop2016) 
-* Guidance and standards from sine2020 (Anders)
+* [Guidance and standards from sine2020](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/GuidelinesAndStandards.md) (Anders)
