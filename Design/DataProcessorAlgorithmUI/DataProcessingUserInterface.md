@@ -97,11 +97,35 @@ When it comes to batch processing variants. `AlgorithmRunningService`. We need a
 The high-level solution involves refactoring and further generalizing the Reflectometry Reduction Interface into a **Data Processor User Interface**.
 
 **Key solution features**
-* The bulk of the solution will be about generating a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
+* The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
+ 
+
 * `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
 * The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
 * We also need a way to customise the output table in circumstances that direct mapping between `DataProcessorAlgorithm` properties and the viewable batch Table do not make sense. Currently `QReflTableModel` is specifically set up to do this for the `ReflectometryReductionOneAuto` DataProcessorAlgorithm.
 * 
+
+**Example: Simple Use Case In Python - Defaults for All**
+```python
+# Minimal use case.
+presenter = GenericDataProcessorPresenter(data_processor_algorithm='ReflectometryReductionOne', property_white_list=['InputWorkspace', 'InputTheta'])
+self.layout().addWidget(DataProcessorAlgorithmWidget(presenter));
+# Table with 4-columns and the standard editing features added. Group and Options are added to the above. All other properties can be modified via the OptionsColumn.
+```
+
+**Example: Complex Use Case In Python - Lots of Customization**
+```python
+
+pre_process = {'algorithm':'LoadAndAdd', 'column_name':'Runs(s)', 'direct_output_to':'InputWorkspace'}
+post_process_groups{'algorithm':'Stitch1D', 'directed_input_from':'OutputWorkspaces'} # This is what I'm going to do with thing's I have grouped.
+white_list = {'Angle':'InputTheta', 'WavMin':'WavelengthMinimum'} # I don't want to call my columns the same thing as my property names.
+black_list = ['OutputWorkspaceWavelength'] # Things I never want to specify
+
+
+presenter = GenericDataProcessorPresenter(data_processor_algorithm='ReflectometryReductionOne', property_white_list=white_list, pre_process_step=pre_process, post_process_step=post_process, property_black_list=black_list)
+self.layout().addWidget(DataProcessorAlgorithmWidget(presenter));
+# Table with 3-columns and the standard editing features added. All other properties can be modified via the OptionsColumn.
+```
 
 ##Prototyping##
 
