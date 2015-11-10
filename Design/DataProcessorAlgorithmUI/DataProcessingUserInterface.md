@@ -48,8 +48,8 @@ We believe that the following Technique areas would benefit from this design. Th
 2. 
 
 **Should Haves**
-1. Should have property mapping behaviours
- 1. Should allow for white listing for *Common Settings* area (Properties that are fixed for all reductions)  
+
+1. Should have property mapping behaviours. Should allow for white listing for *Common Settings* area (Properties that are fixed for all reductions)  
 1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
 1. Should allow for processing rows via remote launching
 1. Should be easy to opt-in to parts of the above toolkit without having to implement everything. There should be default *behaviours* pre-configured. For example a `NullTransferStrategy` because transfers are going to be technqiue area specific. Another example might be that the `AlgorithmRunningService` is configured to use some `AlgorithmManagerVariant`
