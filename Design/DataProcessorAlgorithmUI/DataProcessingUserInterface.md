@@ -27,6 +27,8 @@ We believe that the following Technique areas would benefit from this design. Th
 |  Reflectometry    | ISIS | Already have a well-tested precursor of this design. But would benefit from common code and shared effort.  |
 |  SANS   | ANSTO      |  Want batch mode processing of SANS data |
 |  SANS   | ISIS      |  Have batch mode processing, but it's very basic, and are now talking about embedding python scripts into their csv batch table, to get around the lack of the `Options column. See below` |
+| Powder | SNS | See justification below in selected use cases|
+| SCD | SNS | See justification below in selected use cases |
 
 ##Requirements##
 
