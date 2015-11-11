@@ -124,7 +124,7 @@ The high-level solution involves refactoring and further generalizing the Reflec
 * The first implementation of the framework should set to replace/refactor the ReflMainViewPresenter and related views. This would be the fastest way to prove the framework.
 * Concrete views should be implemented at the last possible moment in the development lifecycle. Early creation of the views will tend to act as a inferior proxy for proper unit testing.
 
-
+###Low Level Design (subject to change)###
 **Presenter Inputs**
 
 | Input        | Type | Mandatory  | Notes |      
