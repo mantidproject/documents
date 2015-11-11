@@ -96,7 +96,10 @@ When it comes to batch processing variants. `AlgorithmRunningService`. We need a
 The high-level solution involves refactoring and further generalizing the Reflectometry Reduction Interface into a **Data Processor User Interface**.
 
 **Key solution features**
-* The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
+* The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`. This widget provides table and table editing features. Visually, the widget will provide a graphical interface similar to the one currently provided for ISIS reflectometry data processing:
+
+![refl_table](http://docs.mantidproject.org/nightly/_images/ISIS_Reflectometry_(Polref)_groupProcessPane_widget.png) 
+
 * Clients provide a `DataProcessorPresenter` 
 * This `DataProcessorPresenter` defines how the batch reduction occurs
 * `Presenter` and related types are customizable both on the python and c++ side.
