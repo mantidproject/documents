@@ -34,7 +34,7 @@ We believe that the following Technique areas would benefit from this design. Th
 
 **Must Haves**
 
-1. Should require minimal inputs to get things going. The DataProcessor algorithm should be the only required input.
+1. Should require minimal inputs to get things going. The DataProcessor algorithm name and WhiteLists should be the only required inputs.
 1. Should be exposed to python
 1. Should allow imports of existing table data as a ITableWorkpsace
 1. Should allow saving of table data as a ITableWorkspace
