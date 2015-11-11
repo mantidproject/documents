@@ -62,8 +62,8 @@ We have no ability to remap non-integrated dimensions such that we form a contig
 vtkDataSets. Integrated dimensions interspersed amongst non-integrated dimensions cause empty datasets in the visualisation.
 See [here](https://github.com/mantidproject/mantid/issues/12554)
 
-##### Loading an MDHisto Workspaces causes the signal to vanish
-Owner: Owen/Andrei
+##### ~~Loading an MDHisto Workspaces causes the signal to vanish~~
+Owner: Owen/Anton/Andrei
 When loading an MDHisto Workspace or using BinMD on an MDEvent Worspace we end up with a constant signal value. This seems to be due to the selection of the normalization. This is down to the AutoSelect normalization behaviour for MDWorkspace types. [#12832](https://github.com/mantidproject/mantid/issues/12832)
 
 ### Priority Medium

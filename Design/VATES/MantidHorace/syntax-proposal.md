@@ -114,7 +114,6 @@ omega, dpsi, gl, gs, out_filename)***
 * *out_filename* is optional. If provided then the results will be saved to
 this location, and the processing will be conducted on disk rather than in-memory
 * *data_source* could be a number of things. *data_source* can either be a file or a workspace (*.nxspe, *.nxs) *ws_name* is optional [[1]]
-* *sqw_file* is only required in the case that the processing should happen on-disk [[1]]
 * *alatt*, *angdeg*, *u*, *v* are used to set the UB matrix. One can set the UB 
 matrix before. If not empty, it will override and set the UB again [[3]]
 * *omega*, *dpsi*, *gl*, *gs* are angles for goniometer settings. This should be
@@ -179,14 +178,129 @@ smoothed=SmoothMD(InputWorkspace=mdhw, WidthVector=width_vector, SmoothFunction=
 
 ```
 
+## CompactMD
+
+This function takes the same name in Horace [Compact](http://horace.isis.rl.ac.uk/Reshaping_etc#compact). To achieve the same functionality as Compact, CompactMD should crop an MDHistoWorkspace based on the first non-zero signals found in each dimension.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(InputWorkspace)***
+
+* *InputWorkspace* must be an IMDHistoWorkspace.
+
+#### Examples
+
+```python
+
+# Create a 4 by 4 workspace with signal values:
+# 0  0  0  0
+# 0  1  0  0
+# 0  0  1  0
+# 0  0  0  0
+mdhw = CreateMDHistoWorkspace(SignalInput=[0]*16, ErrorInput=[0]*16, Dimensionality=2, Extents='0,1,0,1', NumberOfBins=[4,4], Names='A,B', Units='U,U',)
+mdhw.setSignalAt(6, 1.0)
+mdhw.setSignalAt(9, 1.0)
+
+# Use CompactMD algorithm
+compacted_mdhw = CompactMD(mdhw)
+
+# Resultant workspace is 2 by 2 with values:
+# 1  0 
+# 0  1 
+
+```
+
+## ReplicateMD
+
+This function also takes the same name as in Horace [Replicate](http://horace.isis.rl.ac.uk/Reshaping_etc#replicate). ReplicateMD should increase the dimensionality of an MDWorkspace by replicating it along a particular dimension.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(ShapeWorkspace, DataWorkspace)***
+
+* *ShapeWorkspace* is an MDWorkspace with the shape of the output workspace.
+* *DataWorkspace* is the MDWorkspace to replicate.
+
+#### Examples
+
+```python
+
+# Create workspace to replicate
+mdhw_data = CreateMDHistoWorkspace(SignalInput=range(0,16), ErrorInput=[0]*16, Dimensionality=2, Extents='0,1,0,1', NumberOfBins=[4,4], Names='A,B', Units='U,U',)
+
+# Create workspace with desired shape of output workspace
+mdhw_shape = CreateMDHistoWorkspace(SignalInput=[0]*48, ErrorInput=[0]*48, Dimensionality=3, Extents='0,1,0,1,0,1', NumberOfBins=[4,4,3], Names='A,B,C', Units='U,U,U',)
+
+outWs = ReplicateMD(mdhw_shape, mdhw_data)
+
+```
+
+## TransposeMD
+
+The TransposeMD algorithm corresponds to Horace's [Permute](http://horace.isis.rl.ac.uk/Reshaping_etc#permute) function. TransposeMD will also have the alias PermuteMD. Inputs of TransposeMD should be equivalent to those of Permute but note that axes are zero indexed in Mantid.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = ReplicateMD(InputWorkspace, Axes)***
+
+* *InputWorkspace* must be an IMDHistoWorkspace.
+* *Axes* list of axes indices, zero indexed.
+
+#### Examples
+
+```python
+
+# Create an MDHistoWorkspace
+mdhw = CreateMDHistoWorkspace(SignalInput=range(0, 48), ErrorInput=[0]*48, Dimensionality=3, Extents='0,1,0,1,0,1', NumberOfBins=[4,4,3], Names='A,B,C', Units='U,U,U',)
+
+# Swap the first and last axes of the MDWorkspace, note that they are zero indexed.
+mdhwOut = TransposeMD(mdhw, [2, 1, 0])
+
+```
+
+## AccumulateMD
+
+This function takes the same name in Horace [Accumulate](http://horace.isis.rl.ac.uk/Generating_SQW_files#accumulate_sqw), and will append new data to an existing MDWorkspace.
+
+#### Arguments and Function signature
+
+***OutputWorkspace = AccumulateMD(DataSources, InputWorkspace, EFix, Emode, Alatt, Angdeg, u, v, Psi, Gl, Gs, Clean)***
+
+* *OutputWorkspace* is a MDWorkspace containing the data of the InputWorkspace and new data from DataSources appended.
+* *DataSources* can be a list of files or of workspaces (*.nxspe, *.nxs).
+* *EFix* is a list of datasource energy values in meV
+* *Emode* is 'Elastic', 'Direct' or 'Indirect'
+* *InputWorkspace* is the MDWorkspace to append data to.
+* *Alatt*, *Angdeg*, *u*, *v* are used to set the UB matrix.
+* *Psi*, *Gl*, *Gs* are angles for goniometer settings.
+* *Clean* is a boolean value, if true a fresh MDWorkspace is created, optional and default is false.
 
 
+#### Examples
 
+```python
 
+# Not all of these files need to exist yet
+input_files = ['data1.nxs', 'data2.nxs', 'data3.nxs' , 'data4.nxs' , 'data5.nxs' ]
 
+psi=[0:2:180 1:2:179]  # list of anticipated scan angles
 
+efix=100  # incident energy
 
+emode = 'Direct'
 
+alatt=[5.7,5.7,5.7]  # lattice parameters
 
+angdeg=[90,90,90]  # lattice angles
 
+u=[1,0,0]; v=[0,1,0]  # specify scattering plane, where u is the crystal direction to ki when psi=0, v is another vector so that with u it specifies the equatorial plane
 
+omega=0; dpsi=0; gl=0; gs=0  # goniometer offsets for the sample
+
+# Any new data in input_files is appended to workspace ws
+ws = AccumulateMD(input_files, ws, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs)
+
+# OR use "Clean=True" to recreate the workspace from fresh
+ws = AccumulateMD(input_files, ws, efix, emode, alatt, angdeg, u, v, psi, omega, dpsi, gl, gs, Clean=True)
+
+```

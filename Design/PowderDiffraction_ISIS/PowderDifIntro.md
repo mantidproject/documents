@@ -141,6 +141,126 @@ These are the workspaces produced in MantidPlot by running the cry_example.py fi
 ResultTOFgrp found in the MantidPlot output workspace and file found in the following directory
 hrpd/test/cycle_09_2/tester/hrp43022_s1_old.nxs are containing the same data.
 
+Variables from mtd.pref file
+============================
+
+Inside the `cry_ini.py` file, most of the variables from `mtd.pref` have been pre-defined. The variables
+that have been pre-defined, they are being updated from the `mtd.pref` file and imported in to the “cry_ini.py”
+file inside `Def __init__`.
+
+The initialise function inside the `cry_ini.py` file seems to be updating values from `mtd.pref` with special
+function; ```self.OffDir = self.updatePrefVal("", self.OffDir)```, this would seem to update the .py file with
+provided data.
+
+However there are some variables which have not been assigned previously and they are being defined by using the
+ following function.
+```self.OffFile = self.read_prefline("Offsets")```, these variables are compulsory, unless Powder Diffraction
+script will not function.
+
+Backed up by an important comment found in `cry_ini.py` which should be considered:
+-	# Read preference file: default, read_prefline-label ALWAYS REQUIRED in pref-file
+-	# Read preference file: optional params read with updatePrefVal
+```
+class Files:
+    def __init__(self, instr, RawDir="", Analysisdir="", UnitTest=False, debugMode=False,
+    forceRootDirFromScripts=True, inputInstDir=''):
+```
+
+( # Read preference file: optional params read with updatePrefVal )
+
+| All variables defined in "cry_ini.py" | Equals "="                                 | Equals & Found in mtd.pref | 
+| :-----------------------------------: | :----------------------------------------: | :------------------------: | 
+| RawDir                                | If self.RawDir = " ": Self. RawDir         | Null                |
+|                                       | = join(r'\\isis\inst$\ndx%s' % self.instr, |                     |
+|                                       | 'instrument', 'data', Cycle)               |                     |
+| VanDir                                | = self.RawDir                              | Null                |
+| VEmptyDir                             | = self.RawDir                              | Null                |
+| SEmptyDir                             | = self.RawDir                              | Null                |
+| CorrVanDir                            | = join(self.Analysisdir, Cycle,            | Null                |
+| CorrVanDir                            | "Calibration")                             | Null                |
+| GrpDir                                | = join(self.Analysisdir, "GrpOff")         | Null                |
+| VanFile                               | = []                                       |                     |
+| VEmptyFile                            | = []                                       |                     |
+| SEmptyFile                            | = []                                       |                     |
+| AutoVan                               | Default: False = ""                        |                     |
+| CorrVanFile                           | if self.CorrVanFile =="" : AutoVan = True  | van_s1_old          |
+|                                       | if AutoVan:                                |                     |
+|                                       | self.CorrVanFile = "van_" +                |                     |
+|                                       | self.VrunnoList + "_" + self.VErunnoList   |                     |
+| SacEffFile                            | if AutoVan:True                            |                     |
+|                                       | self.SacEffFile="corr_" + self.VrunnoList  |                     |
+|                                       | else:                                      |                     |
+|                                       | self.SacEffFile = self.updatePrefVal(      |                     |
+|                                       | "SacEffFile", self.SacEffFile)             |                     |
+| ExistV                                | = "no"                                     |                     |
+| VGrpfocus                             | = "van"                                    |                     |
+| Path2DatGrpFile                       | = ""                                       | 2                   |
+| VHeight                               | = "2"                                      | 0.4                 |
+| VRadius                               | = "0.4"                                    | 5.1                 |
+| VAttenuationXSection                  | = "5.1"                                    | 5.08                |
+| VScatteringXSection                   | = "5.08"                                   | 0.072               |
+| VanaNumberDensity                     | = "0.072"                                  | 10                  |
+| VNumberOfSlices                       | = "10"                                     | 10                  |
+| VNumberOfAnnuli                       | = "10"                                     | 100                 |
+| VNumberOfWavelengthPoints             | = "100"                                    | Normal              |
+| VExpMethod                            | = "Normal"                                 | 100                 |
+| VanSmooth                             | = "100"                                    | 60                  |
+| VanSplineCoef                         | = "15"                                     | 15                  |
+| VanPeakRemove                         | = "interpol"                               | interpol            |
+| VanPeakFile                           | = 'VanaPeaks.dat'                          | VanaPeaks.dat       |
+| VanPeakList                           | = []                                       |                     |
+| VanPeakWdt                            | = [20, 50, 0]                              |                     |
+| VanPeakTol                            | = [4, 4, 0]                                |                     |
+| CorrectSampleAbs                      | = "no"                                     | no                  |
+| SampleAbsCorrected                    | = False                                    |                     |
+| SampleHeight                          | = "0.0"                                    | 0.0                 |
+| SampleRadius                          | = "0.0"                                    | 0.0                 |
+| SampleAttenuationXSection             | = "0.0"                                    | 0.0                 |
+| SampleScatteringXSection              | = "0.0"                                    | 0.0                 |
+| SampleNumberDensity                   | = "1"                                      | 1                   |
+| SampleNumberOfSlices                  | = "10"                                     | 10                  |
+| SampleNumberOfAnnuli                  | = "10"                                     | 10                  |
+| SampleNumberOfWavelengthPoints        | = "100"                                    | 100                 |
+| SampleExpMethod                       | = "Normal"                                 | Normal              |
+| LowerLambda                           | = 1.4                                      | 1.4                 |
+| UpperLambda                           | = 3.0                                      | 3                   |
+| OutSuf                                | = ""                                       | "Output" = s1_old   |
+| XYEDspc                               | = "yes"                                    |                     |
+| XYEtof                                | = "yes"                                    |                     |
+| GSS                                   | = "yes"                                    |                     |
+| Nex                                   | = "yes"                                    |                     |
+| NBank                                 | = 3                                        | 3                   |
+| bankList                              | = [1, 2, 3]                                | 1-3                 |
+| Drange                                | = []                                       |                     |
+
+These variables listed below in the table are read directly from the `mtd.pref` file in
+``` def initialize(self, Cycle, user, prefFile="", prefDir="", Verbose=False)``` function.
+Example of how its defined in `cry_ini.py`
+- ```self.OffFile = self.read_prefline( "Offsets" )```
+
+( # Read preference file: default, read_prefline-label ALWAYS REQUIRED in pref-file )
+
+| Variables defined in def initialize() | Variables name mtd.pref | = in mtd.pref | Defined in .py |
+| :-----------------------------------: | :---------------------: | :-----------: | :------------: |
+| OffFile               | Offsets        | hrpd_new_072_01_corr.cal   |                          |
+| GrpFile               | Grouping       | hrpd_new_072_01_corr.cal   |                          |
+| VrunnoList            | Vanadium       | 39191                      |                          |
+| VErunnoList           | V-Empty        | 39187                      |                          |
+| SErunnoList           | S-Empty        | 0                          |                          |
+| ExistV                | ExistingV      | yes                        |                          |
+| XYEtof                | XYE-TOF        | yes                        |                          |
+| XYEdspc               | XYE-D          | yes                        |                          |
+| GSS                   | GSS            | yes                        |                          |
+| Nex                   | Nexus          | yes                        |                          |
+| saveXYEtof (bool)     |                |                            | XYEtof == "yes"          |
+| saveXYEd (bool)       |                |                            | XYEdspc == "yes"         |
+| Nbank                 | Nbank          | 3                          |                          |
+| CropRange             | CropRange      | 0.05 0.95                  | = ("0.05 0.95", Nbank)   |
+| Bining                | Bining         | 0.0001                     | = (0.0001, Nbank)        |
+| bankList              | BankList       | 1-3                        | if (saveXYEtof ||        |
+|                       |                |                            | saveXYEd){ bankList =    |
+|                       |                |                            | cry_utils.get_lis        |
+
 
 Prototype example usage
 =======================

@@ -21,7 +21,7 @@ The Mantid Technical Steering Committee operates on the following basis:
  * The Committee meets at least once a year in person.
  * The Technical Steering Committee can be reached via a mailing list.
  * Each partner facility has the option to provide an employee to sit on the Committee, with the overall membership to be representative of the resources invested by the facilities.
- * The Committee will elect a chair, who should be an employee at one of the partner facilities, for a term of 3 years.
+ * The Committee will elect a chair, who should be an employee at one of the partner facilities.
  * The Committee chair (or delegate) will attend the Mantid Project Management Board meetings.
  * The Committee reports to the Mantid Project Management Board.
  * The regular Technical Committee meetings are open to all interested parties, but the Committee seeks only to find consensus amongst Committee members, and representatives from the team that submitted any proposal under consideration.
