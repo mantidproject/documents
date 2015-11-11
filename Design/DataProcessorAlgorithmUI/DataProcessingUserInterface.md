@@ -98,12 +98,46 @@ The high-level solution involves refactoring and further generalizing the Reflec
 
 **Key solution features**
 * The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
- 
+* Clients provide a `DataProcessorPresenter` 
+* This `DataProcessorPresenterPresenter` defines how the batch reduction occurs
+* `Presenter` and related types are customizable both on the python and c++ side.
 
-* `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
-* The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
-* We also need a way to customise the output table in circumstances that direct mapping between `DataProcessorAlgorithm` properties and the viewable batch Table do not make sense. Currently `QReflTableModel` is specifically set up to do this for the `ReflectometryReductionOneAuto` DataProcessorAlgorithm.
-* 
+
+##Solution Details##
+
+
+
+* `DataProcessorAlgorithmWidget`  will be the concrete form of a `DataProcessorAlgorithmView`
+* The `DataProcessorAlgorithmWidget` will accept an abstract `DataProcessorPresenter`
+* Double dispatch via a visitor setup, will be used to register the `DataProcessorAlgorithmView` and `DataProcessorPresenter` together
+* A `GenericDataProcessorPresenter` will be provided and will cover the majority of the use-cases.
+* The `GenericDataProcessorPresenter` will take behaviours as arguments.
+
+**Key Principles**
+* All behaviours are injectable. Each behaviour is defined as a new axis for change. No template methods.
+* The `DataProcessorPresenter` interacts with the view via the `DataProcessorAlgorithmView` never the concrete subtypes of the view.
+* Aside from the Visitor `accept` method on the view and `DataProcessorPresenter`, The `DataProcessorPresenter` takes all other arguments constructor arguments. This is particularly true of the behaviours.
+* Where a behaviour cannot have a sensible defualt. A `NullObject` implementation must be created.
+* Each `DataProcessorAlgorithmView` may only notifiy the `DataProcessorPresenter` about a change via a `notify(Flag)`. Otherwise it does not interact with any other aspect of the framework.
+
+**Desired Principles**
+* The first implementation of the framework should set to replace/refactor the ReflMainViewPresenter and related views. This would be the fastest way to prove the framework.
+* Concrete views should be implemented at the last possible moment in the development lifecycle. Early creation of the views will tend to act as a inferior proxy for proper unit testing.
+
+
+**Presenter Inputs**
+
+| Input        | Type | Mandatory  | Notes |      
+| ------------- |:-------------:|-------------:|-------------:|
+| DataProcessorAlgorithm | string | yes | |
+| WhiteList | map<string, string> | yes | Defines table columns. key is algorithm property name, value is column name in table | 
+| BlackList | vector<string> | no | Properties blacklisted from Options Column |
+| PreProcess* | PreProcessStep** | NullObject | |
+| PostProcess* | PostProcessStep** | NullObject | |
+
+*This is a behaviour
+**An abstract type with a concrete implementation done as Type2Type for type safety.
+
 
 **Example: Simple Use Case In Python - Defaults for All**
 ```python
