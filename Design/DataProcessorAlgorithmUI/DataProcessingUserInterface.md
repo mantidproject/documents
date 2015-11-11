@@ -98,7 +98,7 @@ The high-level solution involves refactoring and further generalizing the Reflec
 **Key solution features**
 * The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
 * Clients provide a `DataProcessorPresenter` 
-* This `DataProcessorPresenterPresenter` defines how the batch reduction occurs
+* This `DataProcessorPresenter` defines how the batch reduction occurs
 * `Presenter` and related types are customizable both on the python and c++ side.
 
 
