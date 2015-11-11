@@ -44,7 +44,7 @@ We believe that the following Technique areas would benefit from this design. Th
 1. Should have property mapping behaviours
  1. Should allow blacklisting of DataProcessingAlgorithm properties so that they can Never be specified.
  1. Should allow for white listing for *Optional* column. 
- 1. Should allow for white listing for *Table* columns. Properties that will appear as table entries 
+ 1. Should allow for white listing for *Table* columns. Properties that will appear as table entries. Mandatory mapping must be provided.
 1. Should have indirection between the `Presenter` and the `AlgorithmManager` via an `AlgorithmRunningService` not done in the current layout such that other ways of running the algorithm in the future (such as batch processing) via a job submission service could be supported. `AlgorithmRunningService` must be injectable.
 1. Should have a way of brining in settings information that can not be derived from the other inputs. Such information would be added to *Hidden* table columns (in the gui), or most likely the Options column, so that exported ITableWorkspaces are self-contained.
 2. 
@@ -52,7 +52,6 @@ We believe that the following Technique areas would benefit from this design. Th
 **Should Haves**
 
 1. Should have property mapping behaviours. Should allow for white listing for *Common Settings* area (Properties that are fixed for all reductions)  
-1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
 1. Should allow for processing rows via remote launching
 1. Should be easy to opt-in to parts of the above toolkit without having to implement everything. There should be default *behaviours* pre-configured. For example a `NullTransferStrategy` because transfers are going to be technqiue area specific. Another example might be that the `AlgorithmRunningService` is configured to use some `AlgorithmManagerVariant`
 1. Should not assume that the AlgorithmRunningService is synchronous. Async behaviour is likely to be introduced, so would be best if the interface was set up to allow polling, or publish-subsribe notifications for completion.
