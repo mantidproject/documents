@@ -46,7 +46,7 @@ can be read (for example see the LoadMcStas loader).
 Related, no documentation exists which specifies exactly what information Mantid is read from ISIS and SNS Nexus files doing loading. 
 Here, it will make sense that this documentation becomes part of the .rst file for the relevant loader. 
 
-Contributing through Gibhub
+Contributing through Github
 ---------------------------
 The documentation we have for explaining how to get started with Mantid as a new in-house team member has in general been 
 found to be good/sufficient (http://www.mantidproject.org/Category:Development ). However, it has been found
