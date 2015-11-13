@@ -171,17 +171,3 @@ I've checked that sip exports of c++ QtObject base classes will behave as we exp
 
 One problem that we will encounter is how to get sip and boost python exported representations to play together. The situations in which this would occur are where we want ot provide a custom `preProcess` and `postProcess` step, where by we need the ability to receive and modify workspaces, and run algorithms. I propose that a solution to this would be for the preProcess and postProcess steps to return the name of `Algorithms` that the algorithm manager on the c++ side could create and execute on their behalf. The API for these Algorithms would need to be fixed, and well tested to prevent runtime-issues.
 
-
-##Questions##
-
-1. [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) has a nice mechanism for importing workspaces. It attempts to resolve the input either as a workspace, or as a file, and will add together listed runs separted by a `+`. Is this generic enough? Do we wish to further expand pre-processing steps?
-2. Exactly how much of the [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) do we want to provide? Not all menus are needed. For example SlitCalculator is very specific. However Addition, deletion of row etc. Makes a lot of sense. What about the ICAT import?
-3. How do we deal with properties that should be shared for the entire table? Should there be a way to fill in an entire column, or a part of the gui that holds the "common" properties.
-
-##Commments##
-**Anders**
-
-1. Design should be able to handle future formats users would like to use to set up algorithm properties and to save to such formats to, for example csv format
-2. Would it be possible to list existing interfaces in Mantid that could potentially benefit from this design?
-3. An answer to question 2 above: I favour a minimum set. If the list in the bullet point above is made (and for interfaces planed in the near future) a minimum feature set which satisfy these may be chosen
-
