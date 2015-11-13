@@ -163,6 +163,22 @@ self.layout().addWidget(DataProcessorAlgorithmWidget(presenter));
 # Table with 3-columns and the standard editing features added. All other properties can be modified via the OptionsColumn.
 ```
 
+###Implemenation steps###
+
+It would be fastest and most accurate to implement this framework via a refactoring of the existing Reflectometry User Interface. Green-field development should then follow targeting the technique areas already highlighted.
+
+The following is a suggested implementation path via the exisiting Reflectometry User Interface. **In all steps we can verify that there is no external change in functionality**. We **Must also ensure that tests are modified and put in place as we go along.**
+
+1. Split the interaface `ReflMainView` into `ReflMainView` and a new `ReflTableView`. `ReflTableView` will have a subset of the exising `ReflMainView` responsibilities. Have `QReflMainView` implement both abstractions.
+2. Split the `ReflMainViewPresenter` into `ReflMainViewPresenter` and `ReflTableViewPresenter`. The ReflMainView presenter should work with the `ReflTableView` and take a subset fo the functionality from the existing `ReflMainViewPresenter`
+3. Create a QWidget that implements `ReflTableView` called `QReflTableView`. The parent of the `QReflTableView` should be the `QReflMainView`. You should now be able to new-up a `QReflTableView` independently from the `QReflMainView`.
+4. Refactor `ReflTableViewPresenter` so that it creates and configures the DataProcessingAlgorithm completely via it's arguments. Then rename it to `GeneralDataProcessorPresenter`. The `GeneralDataProcessorPresenter` should contain nothing that is reflectometry specific. This will also mean abstracting the post processing and pre processing steps.
+5. Make `GeneralDataProcessorPresenter` take all arguments a abstract behaviours.
+6. Move `GeneralDataProcessorPresenter`, the views and the behaviours into the MantidQtAPI package.
+7. Expose the `GeneralDataProcessorPresenter`, the views and the behaviours via SIP.
+8. Use the new framework to implement DataProcessorAlgorithm batch processing for other technqiue areas as a proof of concept.
+
+
 ##Prototyping##
 
 **Notes from Owen**
