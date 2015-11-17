@@ -43,12 +43,15 @@ Quantity&=NormalizedData-NormalizedTIB\\
 \end{align}
 
 \subsection{Measured background subtraction}
-If we measure an empty can background, we should apply principle 2. However, we can fake the background to be ``measured'' in the same conditions as the data by applying the same rotations, lattice parameters and orientations as the data, and by scaling to the same incident flux.
+If we measure an empty can background, we should apply principle 2. 
+However, people fake the background to be ``measured'' in the same conditions as the data by applying the same rotations, lattice parameters and orientations as the data, and by scaling to the same incident flux.
 
 \begin{align}
 Quantity&=NormalizedData-NormalizedBkg\\
 &=\frac{\sum_{i} Data_i-DataBkg_i \frac{\Phi_i}{\Phi_{bkg}}}{\sum_{i} Norm_i}
 \end{align}
+
+This changes the weight of the background in some places, so it is not correct. It should be done only when background is measured with much more statistical weight than the data.
 
 \subsection{Transforming differential cross section to scattering function}
 Scattering function is a normalized quantity that represents the sample, so we should use principle 1.
