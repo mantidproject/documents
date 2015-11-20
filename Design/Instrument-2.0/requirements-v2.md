@@ -1,15 +1,29 @@
 Suggestions and Requirements for Future Features
 ================================================
 
-### General
+##Motivation##
 
-* The design should be optimized for reads, not for writes, since the former is much more frequent.
+The current instrument geometry matched the requriements in the early programme lifecycle. We have subseqently retrofitted the geometry as more instruments and more facilities joined the project. This has worked well, but we have several major issues to solve for which a deeper and thourough rexeamination of the existing implementation is required. Firstly, experimental setup is becoming increasingly complex, and we need a virutal instrument that can model the real experimental setup. Secondly, the performance demands are now much greater than orignally designed for, particularly with the live-reduction challenge forethcomeing at the ESS. Thirdly, the current syntax for describing instruments is not as logical or straight forward as it ought to be, and encourages instrument related errors in the reduced data.
 
-### Moving Detectors
+##High-level Functional Requrements##
 
-TODO
+###Mandatory###
 
-* For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
+* The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
+* The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
+* Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
+* Instrument parameter syntax should be richer, particularly when labelling and applying multiple functions to components.
+* Any new schema should be more cohesive and self-describing than the current system
+* The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requriements.
+* The design should allows for Moving instruments. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
+
+##Desired##
+* The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
+* In file formats, definitions should be a first-class citizen, not just a textual representation.
+* As far as possible geometry should be shared with instrument control, particularly in terms of instrument definitions.
+* It should be possible to port v1 definitions to v2.
+
+##Performance Non-functional Requriements and Technical Specifications##
 
 ### MPI
 
@@ -22,7 +36,7 @@ We can either keep the complete instrument on each rank and only assign the rele
 * Splitting does not necessarily need to be compatible with visualization: Splitting is relevant for an MPI run of Mantid on a cluster, where we cannot have a GUI anyways.
 * The option to redistribute an instrument might be an advantage. Basically this wold require an instrument design that allows for adding and removing/transferring components without breaking existing workspaces.
 
-### Performance
+### Performance as a (Non-functional Requirement)
 
 It is hard to put down a precise performance requirement.
 We can try to do a worst-case analysis, based on various guessing:
