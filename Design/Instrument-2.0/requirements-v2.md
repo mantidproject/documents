@@ -9,6 +9,7 @@ The current instrument geometry matched the requriements in the early programme 
 
 ###Mandatory###
 
+* Existing funcitonality listed [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/features-v1.md) should be preserved.
 * The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
 * The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
 * Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
@@ -16,6 +17,8 @@ The current instrument geometry matched the requriements in the early programme 
 * Any new schema should be more cohesive and self-describing than the current system
 * The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requriements.
 * The design should allows for Moving instruments. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
+* The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
+* Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
