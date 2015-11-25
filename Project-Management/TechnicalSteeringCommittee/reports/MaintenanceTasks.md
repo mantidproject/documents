@@ -75,3 +75,7 @@ For a different release
     3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
 1. Rework/clean up cmake as a whole
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+
+Release 3.7 maintenance
+-----------------------
+ 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
