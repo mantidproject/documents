@@ -36,15 +36,12 @@ Maybe this item is better done by adding a new training course, which a title li
 Data formats
 ------------
 As part of adapting a new instrument in Mantid it may not be the case that an existing data loader can be used and therefore 
-a new data loader needs to be written. No documentation exists for this. This documentation also needs to demonstrate how 
-information in the data can be tied to externally specified geometry information about the instrument, i.e. an IDF+instrument 
-parameter file in the instrument folder. 
+a new data loader needs to be written. 
 
-Also demonstrate an example where geometry information is already embedded in the data and how both data and instrument info 
-can be read (for example see the LoadMcStas loader). 
+No documentation exists which specifies what information Mantid reads from ISIS and SNS Nexus files during loading. Issue: [14561](https://github.com/mantidproject/mantid/issues/14561).
 
-Related, no documentation exists which specifies exactly what information Mantid is read from ISIS and SNS Nexus files doing loading. 
-Here, it will make sense that this documentation becomes part of the .rst file for the relevant loader. 
+In addition in would be benefitical to have documentation which demonstrates better how 
+information in the data can be tied to externally specified geometry information about the instrument, e.g. an IDF+instrument parameter file in the instrument folder. Here also demonstrate an example where geometry information is read from embedded information in the Nexus file (for example see the LoadMcStas loader). 
 
 Contributing through Github
 ---------------------------
