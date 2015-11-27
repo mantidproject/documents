@@ -48,7 +48,7 @@ all usage data.  This would centralise all the logic covering Usage Reporting in
   1. Checking every n minutes if the feature buffer above the threshold for sending.
 1. Registering Feature usage must be fast, just create the record and return.
 1. Do not lock the feature usage buffer for any longer than is absolutely necessary.
-1. Use a list, rather than a vector for the feature usage buffer.
+1. Use a queue, rather than a vector for the feature usage buffer.
 1. Create multiple overloads for registerFeatureUsage() to make is easy for other developers, one should be specialised for algorithms.
 1. Internet calls should use the InternetHelper.
 
