@@ -79,5 +79,4 @@ It may be more efficient to send the AlgorithmHistory record rather than a piont
 
 ###Algorithm::SendUsage
 
-In order to limit the risk to the current usage reporting this algorithm will be left untouched and used as is, with the exception 
-that the code to generate the user ID and Host ID hashes may be moved to the UsageService.
+In order to harmonise the code and keep things simple and easay to follow, this algorithm will be removed and the functionality added to the UsageService.
