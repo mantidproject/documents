@@ -38,6 +38,9 @@ One only wants to use VirtualGL for remote access. Therefore, additional logic s
 ```
 if [ -n "$NXSESSIONID" ]; then
 ```
-
+For Thinlinc, the appropriate line is
+```
+if [ -n "$TLSESSIONDATA"]; then
+```
 
 future investigation: check how performance depends on the choice of video card. Would the analysis computers benefit from high performance professional graphics?
