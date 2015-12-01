@@ -22,26 +22,35 @@ The contents of a Feature usage would be:
 * time - The datetime of execution start
 * duration - (optional) the execution duration
 * details - (optional) Further details - for algorithms this will be a properties string, or possibly the python string of the Algorithm call.
+* internal - true/false True if the interaction was not a direct response to user interaction (maps to alg.isChild()).
 
-These would be sent in addition to these fields in common with the startup Usage details:
+These would be sent in addition to several fields in common with the startup Usage details.  Take a look at the example json in the appendix for an example of a proposed message.
 
-* User ID hash
-* host ID hash
 
 ###New Code
 
-####API::UsageService
+####Kernel::UsageReporter
 
-We would create a new service class called Usage Service which would be responsible for collating, and sending
+We would create a new class called UsageReporter which would be responsible for collating, and sending
 all usage data.  This would centralise all the logic covering Usage Reporting including:
 
 1. Detecting if repoting is enabled
 1. Registering the startup of Mantid
 1. Sending Startup usage reports, immediately, and every 24 hours thereafter
 1. Registering feature usage, and storing in a feature usage buffer
-1. Sending Feature usage reports on application exit, and when the feature usage buffer is above a size threshold.
+1. Sending Feature usage reports on application exit, and when the feature usage buffer is above a size threshold.  This will need to be timed during development to ensure it does not add significantly to application shutdown.
 
 ###### Implementation Notes:
+This class will be owned and served out from the ConfigService throu a new UsageReporter method.  The ConfigService will also be responsible for the setup and lifetime of the UsageReporter class.  This is beacuse the UsageReporter needs to send a data package as part of it's destructor and needs the ConfigSerivice to still be available when it does that.
+
+The Usage report will have methods to :
+
+1. set and get an enabled status
+2. set the Application string, defaulting to "Mantidplot"
+3. flush the feature usage buffer
+4. set the interval for checking if time based jobs need to be done.
+
+Other Notes :
 
 1. Use Poco::Timer to handle the timed aspects of the class
   1. The 24 resend of startup data
@@ -49,34 +58,91 @@ all usage data.  This would centralise all the logic covering Usage Reporting in
 1. Registering Feature usage must be fast, just create the record and return.
 1. Do not lock the feature usage buffer for any longer than is absolutely necessary.
 1. Use a queue, rather than a vector for the feature usage buffer.
-1. Create multiple overloads for registerFeatureUsage() to make is easy for other developers, one should be specialised for algorithms.
 1. Internet calls should use the InternetHelper.
+1. Internet calls (apart from the final one on application exit) will be down asynchronously on another thread the prevent thread.)
+1. Failures in the reporter should not throw exceptions outside of the reporter, just log and accept any loss of usage data.
 
 ####Server side API
 
 Clearly the django website https://github.com/mantidproject/webapp will need to be extended to accept feature usage reports.
+These would be stored in a seperate table to the startup reports, as there will be somewhere in the order of 10-100 times as many feature usage reports as there are startup reports.
 
 Initially we do not plan to define reports for the feature usage data, they will be queried direct from the database using SQL.
 Once a good understanding of the usefull aspects of the data clarifies we will look to integrating some reports into the API.
+
+#####Database size considerations
+
+The current size of the gears instance we are using is roughly 300MB, of which the Sevices_Usage table (the startup usage table) is 30MB, when populated with roughly 1.5 years of data.  Given that we can expect 10-100 times as much data in the Features usage table then this will make the table 300MB to 3GB in size within 1.5 years.
+
+The current free plan we use allows for 1GB of storage, however the Bronze plan allows for 1GB of free storage, followed by $1 per month for each additional GB (up to 30GB max).  Once we get near to the end of the free plan we would move to the bronze plan and pay the small fee.
+
+The value of old feature usage data over 1 year rapidly diminshes, so we would plan to remove old data on a yearly basis.
 
 ###To Existing Code
 
 ####API::FrameworkManager
 
-Currently the code to send usage reports is in the FrameworkManager (FrameworkManagerImpl::SendStartupUsageInfo).  
-As described above this change would create a UsageService which would be responsible for collating, and sending
-all usage data.  As such I would propose to move the execution code from Framework Manager to the UsageService class, 
-and replace it with a single call to UsageService::Instance().registerStartup().
-This would also allow a single place to allow the additional logic to resend startup usage calls after 24 hours of constant running.
-Currently Long running instances cause the usage statistics of Mantid to underreport.
+Currently the code to send usage reports is in the FrameworkManager (FrameworkManagerImpl::SendStartupUsageInfo).  This would be removed.
+
+
+####Kernel::ConfigService
+
+As described above this change would create a UsageReporter class which would be responsible for collating, and sending
+all usage data.   This will be created, and owened by UsageReporter.registerStartup().
+The config service will also delete the UsageReporter as the first step of its desctutor, when logging and all of the other ConfigService methods remain available.
 
 ###API::Algorithm
 
-We would add a call to UsageService::Instance().registerFeatureUsage(*this) within the Execute method of the Algorithm base class,
+We would add a call to UsageReporter.registerFeatureUsage() within the Execute method of the Algorithm base class,
 after exec has been called, close to where we record history.
-We would need to take care that this method cannot throw or allow exceptions to be thrown from it and executes very quickly.
-It may be more efficient to send the AlgorithmHistory record rather than a pionter to the algorithm itself.
+This would simply record the information to be sent into a local queue object and return quickly.
+
 
 ###Algorithm::SendUsage
 
-In order to harmonise the code and keep things simple and easay to follow, this algorithm will be removed and the functionality added to the UsageService.
+In order to harmonise the code and keep things simple and easy to follow, this algorithm will be removed and the functionality added to the UsageReporter.  As part of this the current hand crafted json creation will be repleaced using jsoncpp.
+
+#Apendix
+##Json for startup calls
+``` json
+{  
+   "ParaView":0,
+   "application":"mantidplot",
+   "dateTime":"2015-11-30T16:20:39.060539000",
+   "host":"df2545f221f5cecc6752219e1716384a",
+   "mantidSha1":"a2c602fb1f8cb339abed583bc1e3e6af992ea9db",
+   "mantidVersion":"3.5.20151127.836",
+   "osArch":"AMD64",
+   "osName":"Windows NT",
+   "osReadable":"Microsoft Windows 7 Professional",
+   "osVersion":"6.1 (Build 7601: Service Pack 1)",
+   "uid":"114ede53ec4e133a0d637f889ef8764d"
+} 
+```
+##Json for feature usage calls
+Note: This has an almost identical header than that of the startup calls.
+``` json
+{  
+   "ParaView":0,
+   "dateTime":"2015-11-30T16:22:35.270917000",
+   "features":[  
+      {  
+         "details":"{\"name\":\"LoadParameterFile\",\"properties\":{\"Filename\":\"C:\\\\Mantid\\\\Code\\\\instrument\\\\GEM_Parameters.xml\"},\"version\":1}\n",
+         "duration":0.25699999928474426,
+         "name":"LoadParameterFile.v1",
+         "start":"2015-11-30T16:21:44.460998000",
+         "type":"Algorithm",
+         "internal":true
+      },
+      { "_comment":".. more feature usage calls ..."  },
+      ],
+   "host":"df2545f221f5cecc6752219e1716384a",
+   "mantidSha1":"a2c602fb1f8cb339abed583bc1e3e6af992ea9db",
+   "mantidVersion":"3.5.20151127.836",
+   "osArch":"AMD64",
+   "osName":"Windows NT",
+   "osReadable":"Microsoft Windows 7 Professional",
+   "osVersion":"6.1 (Build 7601: Service Pack 1)",
+   "uid":"114ede53ec4e133a0d637f889ef8764d"
+} 
+```
