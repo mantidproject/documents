@@ -20,4 +20,9 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 | [Instrument downloading proposal](/Design/InstrumentFetching.md) | [2014-04-22](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-04-22.md) | done. ~~[9767](https://github.com/mantidproject/mantid/issues/9767)~~, ~~[10489](http://trac.mantidproject.org/mantid/ticket/10489)~~ |
 | [Workspace history proposal](/Design/Nested%20History%20Detailed%20Design%20Document.docx) | [2014-04-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-04-11.md) | done.
 | [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | 2015-10-21 Circulated by email. Reviewed by Owen | Approved 27th October 2015.
+| [Data Processing User Interface](/Design/DataProcessingUserInterface.md) | Reviewed by Marytn Gigg | Approved 02 December 2015.
 ~~[9756](https://github.com/mantidproject/mantid/issues/9756)~~,  ~~[10212](https://github.com/mantidproject/mantid/issues/10212)~~, ~~[10213](https://github.com/mantidproject/mantid/issues/10213)~~ |
+
+
+DataProcessingUserInterface.md
+
