@@ -6,10 +6,12 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
+| [Data Processing User Interface](/Design/DataProcessingUserInterface.md) | Reviewed by Marytn Gigg | Approved 02 December 2015.|
+| [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | 2015-10-21 Circulated by email. Reviewed by Owen | Approved 27th October 2015. In progress. First issue: [14165](https://github.com/mantidproject/mantid/issues/14165).|
 | [Workflow Caching Design](/Design/WorkflowCaching.md) | [2015-09-30](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-09-30.md) | Approved. Issue number? |
+| [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Done. ~~[12185](https://github.com/mantidproject/mantid/issues/12185)~~ |
 | [AlignDetectors Redesign](/Design/AlignDetectors_rework.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | In progress: ~~[844](https://github.com/mantidproject/mantid/pull/844)~~, [12794](https://github.com/mantidproject/mantid/pull/12794) |
 | [IDFLoadOrder](/Design/IDFLoadOrder.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | Done. ~~[12656](https://github.com/mantidproject/mantid/issues/12656)~~ |
-| [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Done. ~~[12185](https://github.com/mantidproject/mantid/issues/12185)~~ |
 | [pythonAlgorithmsForMDEvents](/Design/pythonAlgorithmsForMDEvents.rst)     | [2015-04-21](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2015-04-21.md)  | In progress? Issue number? |
 | [PocoStringTokenizer](/Design/PocoStringTokenizer.md)  | [2015-02-17](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-02-17.md)  | Approved. Issue number? |
 | [automatic differentiation](/Design/IntegratingAdept.md) | [2014-11-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-11-11.md) | Approved |
@@ -19,8 +21,6 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 | [Monitors in Live Data](/Design/MonitorsInLiveData.md) | [2014-05-21](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-05-21.md) | done. ~~[10384](https://github.com/mantidproject/mantid/issues/10384)~~, ~~[10383](https://github.com/mantidproject/mantid/issues/10383)~~ |
 | [Instrument downloading proposal](/Design/InstrumentFetching.md) | [2014-04-22](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-04-22.md) | done. ~~[9767](https://github.com/mantidproject/mantid/issues/9767)~~, ~~[10489](http://trac.mantidproject.org/mantid/ticket/10489)~~ |
 | [Workspace history proposal](/Design/Nested%20History%20Detailed%20Design%20Document.docx) | [2014-04-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-04-11.md) | done.
-| [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | 2015-10-21 Circulated by email. Reviewed by Owen | Approved 27th October 2015. In progress. First issue: [14165](https://github.com/mantidproject/mantid/issues/14165)
-| [Data Processing User Interface](/Design/DataProcessingUserInterface.md) | Reviewed by Marytn Gigg | Approved 02 December 2015.
 ~~[9756](https://github.com/mantidproject/mantid/issues/9756)~~,  ~~[10212](https://github.com/mantidproject/mantid/issues/10212)~~, ~~[10213](https://github.com/mantidproject/mantid/issues/10213)~~ |
 
 
