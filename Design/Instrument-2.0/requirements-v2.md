@@ -19,6 +19,7 @@ The current instrument geometry matched the requriements in the early programme 
 * The design should allows for Moving instruments. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
 * The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
 * Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
+* Algebra for positions based on log values should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
