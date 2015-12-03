@@ -13,6 +13,7 @@ This design document should be considered as an extension of the previous implem
 2. Must record algorithm usage, in a flexible way that allows ad-hoc queries to be performed.
 3. Must not significantly adversly affect Mantid interactive performance.
 4. All tracking should be anonimised such that no user can be directly identified from the tracking information.  We will continue to use checksums of user names to prevent direct identification.
+5. Failures in the reporting of usage must not affect wider Mantid activity.  Any failure may log information to the logging system, but that is all.  Usage data loss due to a failure is acceptable, and repeated attempts to send the data are not expected.
 
 ##Should
 
