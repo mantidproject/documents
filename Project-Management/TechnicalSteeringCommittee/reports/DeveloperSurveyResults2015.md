@@ -1,4 +1,5 @@
-The TSC circulated a survey to Mantid Developers in 2015. The following are the common themes extracted from the free-text questions.
+##Summary##
+The TSC circulated a survey to Mantid Developers in November 2015. The following are the common themes extracted from the free-text questions. The following includes the responses from 20 developers of varying experience across 3 facilities.
 
 ##Things that could be done to make day-to-day development easier##
 
