@@ -61,6 +61,8 @@ allow usage reports of features within Mantid, where a feature might be:
 Initially we would only intend to automatically track Algorithm usage, but other usage reports can be added by developer as they deem helpful.
 The contents of a Feature usage would be:
 
+FeatureUsage
+
 * type - Algorithm, Interface, Feature
 * name - Identifying name, for algorithms this would be Algorithm and version
 * internal - true/false True if the interaction was not a direct response to user interaction (maps to alg.isChild()).
