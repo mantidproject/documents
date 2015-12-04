@@ -24,9 +24,6 @@ This design document should be considered as an extension of the previous implem
 3. All algorithm usage should be reported, both as parent or child, if possible how the algorithm is invoked (parent or child) should be recorded.  This is important in order to unserstand the absolute level of usage of an algorithm, but also if an algorithm is sloely used as a child algorithm we know that it is not externally known to end users.
 6. Algorithms are one aspect of Mantid usage we want to track, but we may want to record other feature usages as well, such as Interface Usage (such as the Muon Interface startups), usage of specific features within an interface or Mantidplot (such as the Sliceviewer, or the beam centre finding within the ISIS SANS interface).
 7. Algorithm and feature usages need to be linked to the version of Mantid, and optionally the OS version used.
- 
-##Could
-
 
 
  
@@ -61,12 +58,12 @@ allow usage reports of features within Mantid, where a feature might be:
 Initially we would only intend to automatically track Algorithm usage, but other usage reports can be added by developer as they deem helpful.
 The contents of a Feature usage would be:
 
-FeatureUsage
 
 * type - Algorithm, Interface, Feature
 * name - Identifying name, for algorithms this would be Algorithm and version
 * internal - true/false True if the interaction was not a direct response to user interaction (maps to alg.isChild()).
 * Mantid_version - only the major and minor version (splitting on nightly versions will only complicate queries without particular benefit).
+* count - the number of usages in this report
 
 Take a look at the example json in the appendix for an example of a proposed message.
 
@@ -128,6 +125,8 @@ The value of old feature usage data over 1 year rapidly diminshes, however as th
 
 ####Tables
 This will create a new table to store feature usage with the following structure:
+
+FeatureUsage
 
 * type VARCHAR(10) - Algorithm, Interface, Feature
 * name VARCHAR(80)- Identifying name, for algorithms this would be Algorithm and version
