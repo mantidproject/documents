@@ -124,6 +124,17 @@ The current free plan we use allows for 1GB of storage, however the Bronze plan 
 
 The value of old feature usage data over 1 year rapidly diminshes, however as this data will be very small there is no plan to remove old data.
 
+####Tables
+This will create a new table to store feature usage with the following structure:
+
+* type VARCHAR(10) - Algorithm, Interface, Feature
+* name VARCHAR(80)- Identifying name, for algorithms this would be Algorithm and version
+* internal BOOL- true/false True if the interaction was not a direct response to user interaction (maps to alg.isChild()).
+* Mantid_version VARCHAR(4) - only the major and minor version (splitting on nightly versions will only complicate queries without particular benefit).
+* count INT - the number of usages, if the number passes the MAX the number will remain at MAX.
+
+The type column could potentially be normalised to a seperate table, but given the size of the table and data it is an unnecessary complication.  The primary key of the table will be a compound key of (type,name,internal,mantid_version).
+
 ##To Existing Code
 
 ###API::FrameworkManager
