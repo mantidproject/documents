@@ -27,26 +27,27 @@ This design document should be considered as an extension of the previous implem
  
 ##Could
 
-4. Some algorithms have various modes of operation and these are controlled by a "mode parameter", to allow usage of these modes to be tracked then the parameters of algorithms should be tracked if possible.
-5. A small number of algorithms should have paramters that must be masked for security or truncated for performance.  Therefore MaskedProperties must be masked and long poprerties will need to be truncated.
-6. The duration of execution of algorithms should be reported, this will allow us to track performance of Mantid in the real world.  If combined with Parameter recording this wold the development team to identify and address areas of poor performance that really matter.
+
 
  
 ##Won't - Will not be implemented, but considered for future development
 
 1. Once commonly used queries are developed and understood for the algorithm and feature usage data, then we might add some reporting options to reports.mantidproject.org, until then reporting will be done via SQL queries on the database table directly.
 
+** will not be implemented due to data size considerations ** 
+
+4. 4. Some algorithms have various modes of operation and these are controlled by a "mode parameter", to allow usage of these modes to be tracked then the parameters of algorithms should be tracked if possible.
+5. A small number of algorithms should have paramters that must be masked for security or truncated for performance.  Therefore MaskedProperties must be masked and long poprerties will need to be truncated.
+6. The duration of execution of algorithms should be reported, this will allow us to track performance of Mantid in the real world.  If combined with Parameter recording this wold the development team to identify and address areas of poor performance that really matter.
+
 ## Possible Queries
 The queries we perform an this data are likely to be discovered as we gather the data and mine it to answer questions in the future.  However for the benefit of this design here are some sample queries?
 
-1. What algorithms have not been used in the last 6 months?
-2. What algorithms have not been directly executed in the last  months?
+1. What algorithms have not been used in the last 2 releases?
+2. What algorithms have not been directly executed in the last  release?
 3. What algorithms are being used, but are not part of he Mantid standard installation?
-4. Is the new feature of this algorithm (which is controlled by a parameter), actually being used.
-5. Can  we retire a "mode" or RemoveBins, because we feel it should no longer be used?
-6. Do some algorithms perform particularly poorly in some situations?  What were there parameters.
-7. Does anyone use the X tab of the Y interface?
-8. Can we drop the X parameter of the Y algorithm, does anyone actually use it?
+4. Is the new algorithm , actually being used.
+
 
 #Proposed Changes
 
@@ -62,12 +63,10 @@ The contents of a Feature usage would be:
 
 * type - Algorithm, Interface, Feature
 * name - Identifying name, for algorithms this would be Algorithm and version
-* time - The datetime of execution start
-* duration - (optional) the execution duration
-* details - (optional) Further details - for algorithms this will be a properties string, or possibly the python string of the Algorithm call.  If the algorithm details would be very large, or could expose usernames or passwords then they will be omitted.
 * internal - true/false True if the interaction was not a direct response to user interaction (maps to alg.isChild()).
+* Mantid_version - only the major and minor version (splitting on nightly versions will only complicate queries without particular benefit).
 
-These would be sent in addition to several fields in common with the startup Usage details.  Take a look at the example json in the appendix for an example of a proposed message.
+Take a look at the example json in the appendix for an example of a proposed message.
 
 
 ##New Code
@@ -82,6 +81,8 @@ all usage data.  This would centralise all the logic covering Usage Reporting in
 1. Sending Startup usage reports, immediately, and every 24 hours thereafter
 1. Registering feature usage, and storing in a feature usage buffer
 1. Sending Feature usage reports on application exit, and when the feature usage buffer is above a size threshold.  This will need to be timed during development to ensure it does not add significantly to application shutdown.
+
+The public methods of the UsageService will be exposed to python.
 
 ##### Implementation Notes:
 This class will be owned and served out from the FrameworkManager.  The FrameworkManager will also be responsible for the setup  and will be shut down as part of the FrameworkManager Shutdown method. 
@@ -117,11 +118,11 @@ Once a good understanding of the usefull aspects of the data clarifies we will l
 
 ####Database size considerations
 
-The current size of the gears instance we are using is roughly 300MB, of which the Sevices_Usage table (the startup usage table) is 30MB, when populated with roughly 1.5 years of data.  Given that we can expect 10-100 times as much data in the Features usage table then this will make the table 300MB to 3GB in size within 1.5 years.
+The current size of the gears instance we are using is roughly 300MB, of which the Sevices_Usage table (the startup usage table) is 30MB, when populated with roughly 1.5 years of data.  As this table is only storing summary data it's size will be inconsequential.
 
 The current free plan we use allows for 1GB of storage, however the Bronze plan allows for 1GB of free storage, followed by $1 per month for each additional GB (up to 30GB max).  Once we get near to the end of the free plan we would move to the bronze plan and pay the small fee.
 
-The value of old feature usage data over 1 year rapidly diminshes, so we would plan to remove old data on a yearly basis.
+The value of old feature usage data over 1 year rapidly diminshes, however as this data will be very small there is no plan to remove old data.
 
 ##To Existing Code
 
@@ -138,7 +139,7 @@ This would simply record the information to be sent into a local queue object an
 
 ##Algorithm::SendUsage
 
-In order to harmonise the code and keep things simple and easy to follow, this algorithm will be removed and the functionality added to the UsageReporter.  As part of this the current hand crafted json creation will be repleaced using jsoncpp.
+In order to harmonise the code and keep things simple and easy to follow, this algorithm will be removed and the functionality added to the UsageService.  As part of this the current hand crafted json creation will be repleaced using jsoncpp.
 
 #Apendix
 ##Json for startup calls
@@ -161,26 +162,21 @@ In order to harmonise the code and keep things simple and easy to follow, this a
 Note: This has an almost identical header than that of the startup calls.
 ``` json
 {  
-   "ParaView":0,
-   "dateTime":"2015-11-30T16:22:35.270917000",
    "features":[  
       {  
-         "details":"{\"name\":\"LoadParameterFile\",\"properties\":{\"Filename\":\"C:\\\\Mantid\\\\Code\\\\instrument\\\\GEM_Parameters.xml\"},\"version\":1}\n",
-         "duration":0.25699999928474426,
          "name":"LoadParameterFile.v1",
-         "start":"2015-11-30T16:21:44.460998000",
+         "count":"47",
          "type":"Algorithm",
          "internal":true
       },
+      {  
+         "name":"Muon Analysis",
+         "count":"2",
+         "type":"Interface",
+         "internal":false
+      },
       { "_comment":".. more feature usage calls ..."  },
       ],
-   "host":"df2545f221f5cecc6752219e1716384a",
-   "mantidSha1":"a2c602fb1f8cb339abed583bc1e3e6af992ea9db",
-   "mantidVersion":"3.5.20151127.836",
-   "osArch":"AMD64",
-   "osName":"Windows NT",
-   "osReadable":"Microsoft Windows 7 Professional",
-   "osVersion":"6.1 (Build 7601: Service Pack 1)",
-   "uid":"114ede53ec4e133a0d637f889ef8764d"
+   "mantidVersion":"3.5"
 } 
 ```
