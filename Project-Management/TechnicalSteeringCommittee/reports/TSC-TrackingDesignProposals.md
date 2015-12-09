@@ -6,7 +6,7 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
-| [Algorithm Usage Statistics](https://github.com/mantidproject/documents/blob/338f88be969c68a2bd8b5d8be23b285b64116c2d/Design/Usage/AlgorithmUsageStatistics.md) | Under review (Owen, Martyn, Pete) | ??? [PR](https://github.com/mantidproject/documents/pull/5)|
+| [Algorithm Usage Statistics](/Design/Usage/AlgorithmUsageStatistics.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Approved |
 | [Data Processing User Interface](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) | Reviewed by Marytn Gigg | Approved 02 December 2015.|
 | [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | 2015-10-21 Circulated by email. Reviewed by Owen | Approved 27th October 2015. In progress. First issue: [14165](https://github.com/mantidproject/mantid/issues/14165).|
 | [Workflow Caching Design](/Design/WorkflowCaching.md) | [2015-09-30](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-09-30.md) | Approved. [14716](https://github.com/mantidproject/mantid/issues/14716) [14717](https://github.com/mantidproject/mantid/issues/14717) |
