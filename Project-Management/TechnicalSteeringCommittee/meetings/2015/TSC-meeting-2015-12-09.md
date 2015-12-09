@@ -22,3 +22,4 @@ In attendace: Hahn, Whitfield, Savici, Peterson, Draper, Arnold, Gigg, Pouzols
 * Owen will contact developers with information about lightning talks for the developer meeting
 * Approved [DataProcessorAlgorithm Batch UI](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) design
 * Approved [Algorithm Usage Statistics](Design/Usage/AlgorithmUsageStatistics.md)
+* The next meeting will be on Dec 15th right after the mantid review meeting
