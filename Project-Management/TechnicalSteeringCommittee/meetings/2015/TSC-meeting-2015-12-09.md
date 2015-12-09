@@ -20,5 +20,5 @@ In attendace: Hahn, Whitfield, Savici, Peterson, Draper, Arnold, Gigg, Pouzols
 * Reviewed external pull requests and the design document table
 * Group agreed that 3 TSC members from each facility is fine
 * Owen will contact developers with information about lightning talks for the developer meeting
-* Approved DataProcessorAlgorithm Batch UI design
-* Approved [Algorithm Usage Statistics](https://github.com/mantidproject/documents/blob/master/Design/Usage/AlgorithmUsageStatistics.md)
+* Approved [DataProcessorAlgorithm Batch UI](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) design
+* Approved [Algorithm Usage Statistics](Design/Usage/AlgorithmUsageStatistics.md)
