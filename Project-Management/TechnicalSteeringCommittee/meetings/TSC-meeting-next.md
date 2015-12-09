@@ -9,6 +9,7 @@ Pinned Topics
 New Items
 ---------
 * Review of membership (Pete)
+* Lightning talks 2-5 mins (Owen)
 * Review [#3](https://github.com/mantidproject/documents/pull/3) - DataProcessorAlgorithm Batch UI design doc (Owen)
 * Review [#5](https://github.com/mantidproject/documents/pull/5) - Algorithm Usage Statistics (Nick)
 * Start made on Geometry requrements [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/requirements-v2.md) (Owen)
