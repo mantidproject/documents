@@ -22,3 +22,5 @@ In attendace: Hahn, Whitfield, Savici, Peterson, Draper, Arnold, Gigg, Fede
 
 * Reviewed external pull requests and the design document table
 * Group agreed that 3 TSC members from each facility is fine
+* Owen will contact developers with information about lightning talks for the developer meeting
+* Approved DataProcessorAlgorithm Batch UI design
