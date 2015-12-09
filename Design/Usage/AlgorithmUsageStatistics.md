@@ -192,3 +192,5 @@ Note: This has an almost identical header than that of the startup calls.
    "mantidVersion":"3.5"
 } 
 ```
+
+Approved [2015-12-09](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md)
