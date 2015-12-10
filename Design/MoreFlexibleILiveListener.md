@@ -49,7 +49,9 @@ Possible solutions
 
 ### Dynamic properties on StartLiveData
 
-1. `ILiveData` is a property manager and can have properties.
+The solution here is to specify the connection address as a property, and change/extend the LiveListenerFactory so that the connections are not applied until the client chooses to.
+
+1. `ILiveListener` is a property manager and can have properties.
 2. `StartLiveData` creates disconnected instance of a ILiveListener in its init() method.
 3. It copies properties from the listener (dynamic properties). 
 4. The properties are set by the caller.
