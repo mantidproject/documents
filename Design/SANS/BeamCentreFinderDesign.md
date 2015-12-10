@@ -1,7 +1,7 @@
 # Design Document for Beam Centre Finder
 
 ### Current issue
-Currently the Beam Centre Finder(BCF) is heavily tied up with the ISIS instruments and the ReductionSingleton().
+Currently the Beam Centre Finder (*BCF*) is heavily tied up with the ISIS instruments and the ReductionSingleton().
 ANSTO are looking currently for similar functionality but since their reduction workflow is not based on the
 ReductionSingleton() and they don't make use of the instrument class they cannot use the BCF directly. 
 This document lines out the required changes to make the BCF useable in a more general context which could 
@@ -13,7 +13,7 @@ abstration which hides the instrument specific details, e.g. LARMOR uses an inst
 A common generic interface should allow for the current implementation on the ISIS side as well as other 
 implementations to make use of the Beam Centre Finder logic.
 
-### Compoents which require a workover
+### Components which require a workover
 There are several parts which need to be considered
 
 * Bare calls to the ReductionSingleton, eg ReductionSingleton().inst.cen_find_step
@@ -40,7 +40,7 @@ There are several parts which need to be considered
 
 An abstract base class which can provide a more general interface could look like this
 ```python
-class SANSBeamCentreFinderReductionWrapper(abc):
+class SANSBeamCentreFinderReduction(abc):
    ...
 
    @abstractmethod
@@ -71,7 +71,7 @@ class SANSBeamCentreFinderReductionWrapper(abc):
 ```
 
 ``` python
-class SANSSeekCentreReductionWrapper(abc):
+class SANSSeekCentreReduction(abc):
    ...
 
    @abstractmethod
