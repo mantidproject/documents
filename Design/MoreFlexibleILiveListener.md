@@ -29,7 +29,8 @@ ILiveListner as a PropertyManager
 
 Limitations
 ------------
-
+* `LiveListenerFactory::create()` returns a ILiveDataListener on which connect has been called. If you don't have enough information to start the connection at that point. The connection will simply fail.
+* Reliance on runtime properties is cumbersome. If I want to create an ILiveListner, I need to call it from something that implements all the machinery of `PropertyManager`.
 
 
 Possible solutions
