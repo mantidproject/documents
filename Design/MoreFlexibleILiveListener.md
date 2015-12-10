@@ -59,6 +59,8 @@ Possible solutions
 The instrument name should be enough for creating a disconnected listener. ILiveListener::connect() doesn't have to have an argument.
 The neccessary information can be provided through properties.
 
+There is no need to implement or have knowledge of the PropertyManager machinery. Properties can be set with simple setProperty(...) calls.
+
 ### Not using ILiveListener
 
 Unofficial Mantid plugins do not have to use ILiveListener to collect live data. If the interface is incompatible with the
