@@ -38,7 +38,6 @@ Problems To Fix
 **Nice To Fix**
 
 * Reliance on runtime properties is cumbersome. If I want to create an ILiveListner, I need to call it from something that implements all the machinery of `PropertyManager`.
-* 
 
 Questions
 ---------
