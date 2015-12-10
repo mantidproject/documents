@@ -11,9 +11,23 @@ How Things Currently Work
 -------------------------
 
 * The *Facilities.xml* file allows you to specify listeners like this `<livedata address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />`
-* Listeners speicified in the *Facilities.xml* file are created via the LiveListenerFactory DynamicFactory [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L44:L45) from a `std::string`
+* Listeners speicified in the *Facilities.xml* file are created via the `LiveListenerFactory` `DynamicFactory`  [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L44:L45) from a `std::string`
 * The bare listener objects are connected via `connect(const Poco::Net::SocketAddress &address)`
-* Once a connection has been made. The listener can be Started, Stopped. See full API for more functions. 
+* Once a connection has been made. The listener can be Started, Stopped.  
+* The main hook point is extractData() `virtual boost::shared_ptr<Workspace> extractData() = 0;`
+* Each implementation of the `ILiveListner` has the ability to receive and use additional things at runtime. More below.
+
+ILiveListner as a PropertyManager
+==================================
+* `ILiveListener` inherits from `PropertyManager` 
+* `LiveDataAlgorithm` is the base type of `StartLiveData` and other algorthims using the live data streams.
+* `LiveDataAlgorithm` calls the `LiveListenerFactory` via it's `LiveDataAlgorithm::getLiveListener()` method
+* Crutially in `LiveDataAlgorithm::getLiveListener()` it passes a pointer to itself through to the `LiveListenerFactory::create()`.
+* Remembering that `LiveDataAlgorithm` is also a type of `PropertyManager`, the `LiveListenerFactory::create()` is then able to copy all it's properties over to the specific `ILiveListener` type. This is done [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L48)
+* Now the `LiveDataListener` has the same properties as the calling algorithm, it has access to things like the `SpectraList` off the calling algorithm. Example [here](https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/ISISHistoDataListener.cpp#L105)
+
+Limitations
+------------
 
 
 
