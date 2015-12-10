@@ -59,6 +59,8 @@ Possible solutions
 The instrument name should be enough for creating a disconnected listener. ILiveListener::connect() doesn't have to have an argument.
 The neccessary information can be provided through properties.
 
+Instrument parameters files can be used to store additional information such as network addresses.
+
 There is no need to implement or have knowledge of the PropertyManager machinery. Properties can be set with simple setProperty(...) calls.
 
 ### Not using ILiveListener
