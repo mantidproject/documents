@@ -18,7 +18,8 @@ How Things Currently Work
 * Each implementation of the `ILiveListner` has the ability to receive and use additional things at runtime. More below.
 
 ILiveListner as a PropertyManager
-==================================
+##################################
+
 * `ILiveListener` inherits from `PropertyManager` 
 * `LiveDataAlgorithm` is the base type of `StartLiveData` and other algorthims using the live data streams.
 * `LiveDataAlgorithm` calls the `LiveListenerFactory` via it's `LiveDataAlgorithm::getLiveListener()` method
