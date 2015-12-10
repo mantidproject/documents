@@ -5,7 +5,7 @@ Motivation
 ----------
 
 ILiveListener interface requires that an implementation takes only the instrument name and a network address to create itself. 
-If these are not enough there is no way to pass additional information in.
+If these are not enough there is no way to pass additional information in. For external facilities, we need the ability to provide flexible listners via the plugin/dll mechanism offered via the dyanmic factories, that way custom dependencies can be managed by those external facilities and not added to all distributions of Mantid.
 
 Possible solutions
 ------------------
