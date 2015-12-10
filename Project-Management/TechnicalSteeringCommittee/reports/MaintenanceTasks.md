@@ -10,14 +10,14 @@ Pool
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
    2. [coverity](https://scan.coverity.com/projects/335) (~~[#13918](http://github.com/mantidproject/mantid/issues/13918)~~ and more issues listed in ~~[#12629](https://github.com/mantidproject/mantid/issues/12629)~~)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
-1. Fix compilation errors with RHEL6 & devtoolset-2 [#13729](https://github.com/mantidproject/mantid/issues/13729)
+1. ~~Fix compilation errors with RHEL6 & devtoolset-2 [#13729](https://github.com/mantidproject/mantid/issues/13729)~~
 
 
 Assigned
 --------
 
 #### Martyn
-1. Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn)
+1. ~~Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn)~~
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 
 #### ~~Anders~~ Nick
@@ -40,7 +40,7 @@ Assigned
    1. ~~Linux-ify the directory names~~
 
 #### Anton
-1. Roll out MDUnits and MDFrame wider (Anton)
+1. ~~Roll out MDUnits and MDFrame wider (Anton)~~
 
 #### Ross
 1. ~~Re-run `clang-format` (will likely be done much earlier)~~
