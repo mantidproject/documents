@@ -1,4 +1,7 @@
-# Context
+# Suggestions based on course at ORNL
+
+--
+Context
 
 ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3, 2015 on the topic of "Software Development Best Practices"
 
