@@ -79,3 +79,4 @@ For a different release
 Release 3.7 maintenance
 -----------------------
  1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
+ 2. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
