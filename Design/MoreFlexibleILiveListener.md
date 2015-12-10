@@ -27,10 +27,22 @@ ILiveListner as a PropertyManager
 * Remembering that `LiveDataAlgorithm` is also a type of `PropertyManager`, the `LiveListenerFactory::create()` is then able to copy all it's properties over to the specific `ILiveListener` type. This is done [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L48)
 * Now the `LiveDataListener` has the same properties as the calling algorithm, it has access to things like the `SpectraList` off the calling algorithm. Example [here](https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/ISISHistoDataListener.cpp#L105)
 
-Limitations
-------------
-* `LiveListenerFactory::create()` returns a ILiveDataListener on which connect has been called. If you don't have enough information to start the connection at that point. The connection will simply fail.
+Problems To Fix
+---------------
+
+**Mandatory**
+
+* `LiveListenerFactory::create()` returns a `ILiveDataListener` on which connect has been called. If you don't have enough information to start the connection at that point. The connection will simply fail.
+* Knowing the Instrument is not enough. The `LiveListenerFactory` uses the instrument name to get the `InstrumentInfo` and from that the connection properties. But this does not allow support for more than one live data stream per instrument.
+
+**Nice To Fix**
+
 * Reliance on runtime properties is cumbersome. If I want to create an ILiveListner, I need to call it from something that implements all the machinery of `PropertyManager`.
+* 
+
+Questions
+---------
+Mark mentioned that we are missing a Watcher Algorithm. It's unclear what is required that's not already handled by `MontiorLiveData` and `LoadLiveData` via `StartLiveData`?
 
 
 Possible solutions
