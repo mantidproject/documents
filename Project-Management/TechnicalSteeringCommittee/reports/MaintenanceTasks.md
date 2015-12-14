@@ -10,14 +10,14 @@ Pool
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
    2. [coverity](https://scan.coverity.com/projects/335) (~~[#13918](http://github.com/mantidproject/mantid/issues/13918)~~ and more issues listed in ~~[#12629](https://github.com/mantidproject/mantid/issues/12629)~~)
    3. [clang](http://builds.mantidproject.org/job/master_clean-clang/)
-1. Fix compilation errors with RHEL6 & devtoolset-2 [#13729](https://github.com/mantidproject/mantid/issues/13729)
+1. ~~Fix compilation errors with RHEL6 & devtoolset-2 [#13729](https://github.com/mantidproject/mantid/issues/13729)~~
 
 
 Assigned
 --------
 
 #### Martyn
-1. Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn)
+1. ~~Move to VS2015 Community Edition. See [notes] (https://github.com/mantidproject/documents/blob/master/Design/VisualStudio-2015.md) (Martyn)~~
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 
 #### ~~Anders~~ Nick
@@ -40,7 +40,7 @@ Assigned
    1. ~~Linux-ify the directory names~~
 
 #### Anton
-1. Roll out MDUnits and MDFrame wider (Anton)
+1. ~~Roll out MDUnits and MDFrame wider (Anton)~~
 
 #### Ross
 1. ~~Re-run `clang-format` (will likely be done much earlier)~~
@@ -75,3 +75,9 @@ For a different release
     3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
 1. Rework/clean up cmake as a whole
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+
+Release 3.7 maintenance
+-----------------------
+ 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
+ 2. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
+ 3. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
