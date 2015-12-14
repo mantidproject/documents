@@ -63,12 +63,52 @@ void rebin(std::vector<double> x) {
 Related:
 * [static_assert](http://en.cppreference.com/w/cpp/language/static_assert) in c++11 (with `message`) and c++17 (without `message`)
 * Contracts in c++17? ([reference](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4378.pdf) and [reference](http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2015/n4415.pdf))
+* Preconditions from CppCoreGuidelines ([i.5](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#-i5-state-preconditions-if-any) and [i.7](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#-i7-state-postconditions))
 
 ---
+
 # Make the names follow the contract
 
 * Read [Clean Code](http://www.amazon.com/gp/product/0132350882?keywords=code%20complete&qid=1450118105&ref_=sr_1_2&s=books&sr=1-2) by Robert “Uncle Bob” Martin
 * [The Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule): Leave the code better than you found it
+
+---
+# "Better" coding standards - [mantid's](http://www.mantidproject.org/Coding_Standards)
+
+* Most bugs are syntactically valid
+* Placement of curly braces standards don't really matter
+
+---
+# "Better" coding standards - [mantid's](http://www.mantidproject.org/Coding_Standards)
+
+* Most bugs are syntactically valid - compiler warnings
+* Placement of curly braces standards don't really matter - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+* Code complexity is what matters - more difficult to understand
+* Enforce as much of the standard as possible with tools
+
+---
+# Enforce as much of the standard as possible with tools
+
+Already done:
+* compiler warnings
+* cppcheck - [mantid report](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.71/)
+* coverity - [mantid report](https://scan.coverity.com/projects/mantidproject-mantid)
+* valgrind (broken) - [mantid report](http://builds.mantidproject.org/view/Static%20Analysis/job/valgrind_core_packages/)
+* **bonus** coveralls - [mantid report](https://coveralls.io/github/mantidproject/mantid)
+
+Possibilities - C++
+* [oclint](http://oclint.org/) - code complexity
+* [copy-paste detector](http://pmd.sourceforge.net/pmd-4.3.0/cpd.html)
+
+Possibilities - python
+* [pep8](https://pypi.python.org/pypi/pep8) - easy version of pylint
+* [radon](https://pypi.python.org/pypi/radon) - code complexity
+
+---
+# Write for others
+
+* Mantid [Iteration30](https://github.com/mantidproject/mantid/releases/tag/Iteration30) was created in 2011
+* There are currently [70 contributers](https://github.com/mantidproject/mantid/graphs/contributors)
 
 ---
 
