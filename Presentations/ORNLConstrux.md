@@ -17,8 +17,10 @@ ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3
 
 # Design by contract
 
+* Most bugs come from symantic errors rather than syntax errors
 * Be explicit about what is expected of inputs and what will be provided by outputs
 * Specify the contract in the code
+* Make the names (objects, functions, variables) follow the contract
 
 ---
 
@@ -26,15 +28,22 @@ ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3
 
 ```c++
 /**
+ * \param x Bin boundaries to convert to. This vector will be copied
+ * into this.
  * \pre The x-values will be in increasing order
  * \post The data will be correctly rebined or have thrown an exception
  */
 void rebin(std::vector<double> x);
 ```
+* Advantages:
+  * Puts the contract next to the rest of the code documentation
+  * Uses existing tags
+* Disavantages:
+  * Expects that people read the code before calling it
 
 ---
 
-# Design by contract - assert
+# Design by contract - [assert](http://en.cppreference.com/w/cpp/error/assert) and 
 
 ```c++
 #include <cassert>
@@ -45,6 +54,20 @@ void rebin(std::vector<double> x) {
   assert(this->y.size() == (x.size() + 1));
 }
 ```
+* Advantages:
+  * Enforces the contract at runtime
+  * Assertions only apply to debug builds (which is supported by CMake)
+* Disadvantages:
+  * Calculating assertions can be as expensive as just enforcing them ([sort](http://en.cppreference.com/w/cpp/algorithm/sort) vs [is_sorted](http://en.cppreference.com/w/cpp/algorithm/is_sorted))
+  
+Related:
+* [static_assert](http://en.cppreference.com/w/cpp/language/static_assert) in c++11
+
+---
+# Make the names follow the contract
+
+* Read [Clean Code](http://www.amazon.com/gp/product/0132350882?keywords=code%20complete&qid=1450118105&ref_=sr_1_2&s=books&sr=1-2) by Robert “Uncle Bob” Martin
+* [The Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule): Leave the code better than you found it
 
 ---
 
