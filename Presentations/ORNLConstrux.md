@@ -17,7 +17,7 @@ ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3
 
 # Design by contract
 
-* Most bugs come from symantic errors rather than syntax errors
+* Most bugs come from semantic errors rather than syntax errors
 * Be explicit about what is expected of inputs and what will be provided by outputs
 * Specify the contract in the code
 * Make the names (objects, functions, variables) follow the contract
@@ -43,7 +43,7 @@ void rebin(std::vector<double> x);
 
 ---
 
-# Design by contract - [assert](http://en.cppreference.com/w/cpp/error/assert) 
+# Design by contract - [assert](http://en.cppreference.com/w/cpp/error/assert)
 
 ```c++
 #include <cassert>
@@ -59,7 +59,7 @@ void rebin(std::vector<double> x) {
   * Assertions only apply to debug builds (which is supported by CMake)
 * Disadvantages:
   * Calculating assertions can be as expensive as just enforcing them ([sort](http://en.cppreference.com/w/cpp/algorithm/sort) vs [is_sorted](http://en.cppreference.com/w/cpp/algorithm/is_sorted))
-  
+
 Related:
 * [static_assert](http://en.cppreference.com/w/cpp/language/static_assert) in c++11 (with `message`) and c++17 (without `message`)
 * Contracts in c++17? ([reference](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4378.pdf) and [reference](http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2015/n4415.pdf))
@@ -69,8 +69,9 @@ Related:
 
 # Make the names follow the contract
 
-* Read [Clean Code](http://www.amazon.com/gp/product/0132350882?keywords=code%20complete&qid=1450118105&ref_=sr_1_2&s=books&sr=1-2) by Robert “Uncle Bob” Martin
-* [The Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule): Leave the code better than you found it
+* Read [Clean Code](http://www.amazon.com/gp/product/0132350882?keywords=code%20complete&qid=1450118105&ref_=sr_1_2&s=books&sr=1-2) by Robert “Uncle Bob” Martin.
+* Read [Code Complete 2](http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670/ref=sr_1_1?s=books&ie=UTF8&qid=1450126241&sr=1-1) by Steve McConnell (CEO and Chief Software Engineer at Construx Software).
+* [The Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule): Leave the code better than you found it.
 
 ---
 # "Better" coding standards - [mantid's](http://www.mantidproject.org/Coding_Standards)
