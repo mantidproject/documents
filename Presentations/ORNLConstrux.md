@@ -1,7 +1,7 @@
 # Suggestions based on course at ORNL
 
 --
-Context
+**Context**
 
 ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3, 2015 on the topic of "Software Development Best Practices"
 
@@ -9,9 +9,42 @@ ORNL hired [Construx](http://www.construx.com/) to provide training December 1-3
 
 # What was covered (skipping lots)
 
-1. Introduction
-2. Deep-dive
-3. ...
+1. Design by contract
+2. "Better" coding standards
+3. Write for others
+
+---
+
+# Design by contract
+
+* Be explicit about what is expected of inputs and what will be provided by outputs
+* Specify the contract in the code
+
+---
+
+# Design by contract - doxygen [pre](http://www.stack.nl/~dimitri/doxygen/manual/commands.html#cmdpre) and [post](http://www.stack.nl/~dimitri/doxygen/manual/commands.html#cmdpost)
+
+```c++
+/**
+ * \pre The x-values will be in increasing order
+ * \post The data will be correctly rebined or have thrown an exception
+ */
+void rebin(std::vector<double> x);
+```
+
+---
+
+# Design by contract - assert
+
+```c++
+#include <cassert>
+
+void rebin(std::vector<double> x) {
+  assert(std::is_sorted(x);
+  // do the rebinning
+  assert(this->y.size() == (x.size() + 1));
+}
+```
 
 ---
 
