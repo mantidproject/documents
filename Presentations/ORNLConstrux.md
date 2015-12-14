@@ -43,7 +43,7 @@ void rebin(std::vector<double> x);
 
 ---
 
-# Design by contract - [assert](http://en.cppreference.com/w/cpp/error/assert) and 
+# Design by contract - [assert](http://en.cppreference.com/w/cpp/error/assert) 
 
 ```c++
 #include <cassert>
@@ -61,7 +61,8 @@ void rebin(std::vector<double> x) {
   * Calculating assertions can be as expensive as just enforcing them ([sort](http://en.cppreference.com/w/cpp/algorithm/sort) vs [is_sorted](http://en.cppreference.com/w/cpp/algorithm/is_sorted))
   
 Related:
-* [static_assert](http://en.cppreference.com/w/cpp/language/static_assert) in c++11
+* [static_assert](http://en.cppreference.com/w/cpp/language/static_assert) in c++11 (with `message`) and c++17 (without `message`)
+* Contracts in c++17? ([reference](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4378.pdf) and [reference](http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2015/n4415.pdf))
 
 ---
 # Make the names follow the contract
