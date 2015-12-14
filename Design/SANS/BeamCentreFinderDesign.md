@@ -26,8 +26,12 @@ The current static details of the implementation can be see here:
 ![alt text](beam_centre_finder_classes.png)
 
 
-The current worflow is illustrated here:
+The current worflow is illustrated below. It is separated into two parts, one which is repsonsible for the stepping through the parameter space
+![alt text](FindBeamCentre_py.png)
 
+and one which illustrates how the residuals which are a measure of our search quality. This is achieved by the *SeekCentre* operation:
+
+![alt text](centre_finder_py.png)
 
 ### Proposed solution
 In general terms we want to hide any solution-specific details in the BCF. Currently there is a layer of abstration which hides the instrument specific details, e.g. LARMOR uses an instrument rotation instead of a translation. Extending this abstraction further to make the functionality also facility-agnostic will allow us to apply the BCF to any facility or instrument.
