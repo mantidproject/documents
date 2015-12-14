@@ -5,11 +5,12 @@ In order to calibrate the Beam Centre position with respect to the detectors it 
 
 An implementation for this BCF already exists for ISIS SANS. This implementation is heavily tied up with the ISIS instruments and the specific way the data reduction is implemented for ISIS SANS. ANSTO requires the same functionality as the current BCF provides. Unfortunately, it is not possible to directly use the BCF functionality with the ANSTO specific implementation of data reduction.
 
-The differnert implementation approaches of ISIS and ANSTO are not compatible. The two approaches can be summarized:
+The different implementation approaches of ISIS and ANSTO are not compatible. The two approaches can be summarized:
 
 * ISIS makes use of a so-called ReductionSingleton which has a series of registered reduction steps. During the reduction, the ReductionSingleton() carries state (mainly via the custom ISIS instrument classes). Intermediate results are stored in the Analysis Data Service (ADS).
 
 * ANSTO's reduction implementation is currently still work in progress, but will eventually make use of so-called Workflow-Algorithms which do not populate the ADS or carry state information. This will be a cleaner, more maintainable implementation which will is easier to test and verify.
+
 
 This document outines the required changes to make the BCF useable in a more general, faciltity- and instrument-agnostic way.
 
@@ -18,6 +19,14 @@ The benefits of introducing a more general BCF are:
 * Avoiding a facility-based implemnetation and having this functionality in a dedicated location will make the BCF much more maintainable and it will be easier to introduce changes which affect all facilities.
 * A BCF which does not depend on facility- and instrument-specific should allow for an easy reuse with new instruments and facilities which might join Mantid in the future.
 * Removing the dependence of the ReductionSingleton will allow for easier unit testing of the BCF 
+
+
+The current static details of the implementation can be see here:
+
+![alt text](beam_centre_finder_classes.png)
+
+
+The current worflow is illustrated here:
 
 
 ### Proposed solution
