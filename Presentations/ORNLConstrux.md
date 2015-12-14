@@ -83,7 +83,7 @@ Related:
 
 * Most bugs are syntactically valid - compiler warnings
 * Placement of curly braces standards don't really matter - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
-* Code complexity is what matters - more difficult to understand
+* Code complexity is what matters - hard to understand code is bad
 * Enforce as much of the standard as possible with tools
 
 ---
@@ -105,10 +105,27 @@ Possibilities - python
 * [radon](https://pypi.python.org/pypi/radon) - code complexity
 
 ---
+# More on complexity - defaults of oclint
+
+* `CYCLOMATIC_COMPLEXITY` < 10
+* `LONG_CLASS` < 1000 lines
+* `LONG_LINE` < 100 characters
+* `LONG_METHOD` < 50 lines
+* `MINIMUM_CASES_IN_SWITCH` >= 3
+* `NPATH_COMPLEXITY` < 200
+* `NCSS_METHOD` < 30 non-commenting source statements
+* `NESTED_BLOCK_DEPTH` < 5 levels
+
+[cyclomatic and npath complexity](http://modess.io/2013/05/19/cyclomatic-and-npath-complexity-explained/)
+
+---
 # Write for others
 
-* Mantid [Iteration30](https://github.com/mantidproject/mantid/releases/tag/Iteration30) was created in 2011
+* First commit to mantid was in 2007
+* Mantid [v2.0](https://github.com/mantidproject/mantid/releases/tag/v2.0) was in 2012
+* Mantid [v3.5.1](https://github.com/mantidproject/mantid/releases/tag/v3.5.1) was in 2015
 * There are currently [70 contributers](https://github.com/mantidproject/mantid/graphs/contributors)
+* Currently there is 10^6 lines of code (82% cpp and 15% python by `sloccount`)
 
 ---
 
@@ -116,3 +133,4 @@ Possibilities - python
 
 * Steve Tockey of [Construx](http://www.construx.com/) (he suggests buying his current book [Return on Software](http://www.amazon.com/gp/product/032156149X?keywords=steve%20tockey&qid=1448981669&ref_=sr_1_1&sr=8-1) and is writing another)
 * Slideshow render at [Remarkise](https://gnab.github.io/remark/remarkise?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmantidproject%2Fdocuments%2Fmaster%2FPresentations%2FORNLConstrux.md)
+* [Markdown description](https://www.swipe.to/help/markdown/) and [CommonMark](http://spec.commonmark.org/0.22/)
