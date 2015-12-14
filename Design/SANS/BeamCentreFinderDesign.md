@@ -1,7 +1,7 @@
 # Design Document for Beam Centre Finder
 
 ### Current issue
-In order to calibrate the Beam Centre position with respect to the detectors it is needed to perform an accurate extimation of this position. This functionality is provided by a Beam Centre Finder (BCF). 
+In order to calibrate the Beam Centre position with respect to the detectors it is needed to perform an accurate extimation of this position. This functionality is provided by a Beam Centre Finder (*BCF*). 
 
 An implementation for this BCF already exists for ISIS SANS. This implementation is heavily tied up with the ISIS instruments and the specific way the data reduction is implemented for ISIS SANS. ANSTO requires the same functionality as the current BCF provides. Unfortunately, it is not possible to directly use the BCF functionality with the ANSTO specific implementation of data reduction.
 
@@ -59,7 +59,7 @@ Another, similar way, would be to use a Template Method approach. We would have 
 
 An abstract base class which can provide a more general interface could look like this
 ```python
-class SANSBeamCentreFinderImpl(abc):
+class SANSBeamCentreFinderReduction(abc):
    ...
 
    @abstractmethod
@@ -101,7 +101,7 @@ The methods are intended to map to and replace the following parts of the code b
 -----------------------
 
 ``` python
-class SANSSeekCentreReducer(abc):
+class SANSSeekCentreReduction(abc):
    ...
 
    @abstractmethod
