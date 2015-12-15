@@ -126,7 +126,7 @@ Possibilities - python
 * Mantid [v2.0](https://github.com/mantidproject/mantid/releases/tag/v2.0) was in 2012
 * Mantid [v3.5.1](https://github.com/mantidproject/mantid/releases/tag/v3.5.1) was in 2015
 * There are currently [70 contributers](https://github.com/mantidproject/mantid/graphs/contributors)
-* Currently there is 10^6 lines of code (82% cpp and 15% python by `sloccount`)
+* Currently there is 10^6 lines of code (82% cpp and 15% python according to `sloccount`)
 
 ---
 
