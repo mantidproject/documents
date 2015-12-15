@@ -134,6 +134,7 @@ Possibilities - python
 * We should write a comment about what a function SHOULD do, not what it does. This way someone can check later if the function still does (or if it ever did) what is supposed to do.
 * If there was some choice made in the implementation, we should write comments about why that choice has been made (it can be as simple as "I could not think of something better"). That way the next coder can decide if the implementation can be changed.
 * Delete comments that don't add any value
+
 ---
 
 # Credits / References
