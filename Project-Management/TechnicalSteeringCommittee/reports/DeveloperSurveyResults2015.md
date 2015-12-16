@@ -3,7 +3,7 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 
 ##Things that could be done to make day-to-day development easier##
 
-* Information available on the wiki, but not easy to find
+* Information available on the wiki, but not easy to find (To be discussed at TSC)
 * Not enough effort put into testing, causes problems down-stream
 * Algorithms with exec functions that are far too large (many people highlighed this)
 * Faster local builds (many people requested this)
