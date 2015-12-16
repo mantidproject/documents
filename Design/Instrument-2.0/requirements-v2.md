@@ -50,6 +50,7 @@ We can try to do a worst-case analysis, based on various guessing:
 * The detectors at ESS will have non-negligible depth that might require more complex geometry calculations.
 * Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
 * We hope to do some optimization work on various other parts of Mantid, so we should take into account that the non-geometry related parts will speed up.
+* For certain large IDFs the speed of reading the file can become significant.  It would be worth investigation into the use of a binary on disk format for storing the IDF.
 
 Depending on the precise circumstances that may change very little, or could easily imply >80% time in instrument/geometry related code.
 In the latter case we would ideally like to have at least a factor of 10 speedup.
