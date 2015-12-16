@@ -3,20 +3,21 @@ Suggestions and Requirements for Future Features
 
 ##Motivation##
 
-The current instrument geometry matched the requriements in the early programme lifecycle. We have subseqently retrofitted the geometry as more instruments and more facilities joined the project. This has worked well, but we have several major issues to solve for which a deeper and thourough rexeamination of the existing implementation is required. Firstly, experimental setup is becoming increasingly complex, and we need a virutal instrument that can model the real experimental setup. Secondly, the performance demands are now much greater than orignally designed for, particularly with the live-reduction challenge forethcomeing at the ESS. Thirdly, the current syntax for describing instruments is not as logical or straight forward as it ought to be, and encourages instrument related errors in the reduced data.
+The current instrument geometry matched the requirements in the early programme lifecycle. We have subseqently retro-fitted the geometry as more instruments and more facilities joined the project. This has worked well, but we have several major issues to solve for which a deeper and thourough rexeamination of the existing implementation is required. Firstly, experimental setup is becoming increasingly complex, and we need a virutal instrument that can model the real experimental setup. Secondly, the performance demands are now much greater than orignally designed for, particularly with the live-reduction challenge forethcoming at the ESS. Thirdly, the current syntax for describing instruments is not as logical or straight forward as it ought to be, and encourages instrument related errors in the reduced data.
 
-##High-level Functional Requrements##
+##High-level Functional Requirements##
 
 ###Mandatory###
 
 * Existing funcitonality listed [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/features-v1.md) should be preserved.
 * The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
 * The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
+* The design should allow for indirect secondary (i.e. after sample) beam paths, where the detectors and components may have different positions in real and 'neutronic' space.
 * Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
 * Instrument parameter syntax should be richer, particularly when labelling and applying multiple functions to components.
 * Any new schema should be more cohesive and self-describing than the current system
 * The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requriements.
-* The design should allows for Moving instruments. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
+* The design should allows for Moving instruments. This includes instruments that move between acquisition scan points and continuous motion during acquisition. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
 * The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
 * Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
 * Algebra for positions based on log values should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
