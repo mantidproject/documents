@@ -135,12 +135,16 @@ class SANSSeekCentreReduction(abc):
 
 ```
 
-* moveInstrument -> [move](??)
+* moveInstrument Performs the move operation
 
-* getReducedSlices -> [slices](??). Produces 4 reduced 1D workspaces. These workspaces are used for the residual calculation.
+* getReducedSlices  Produces 4 reduced 1D workspaces. These workspaces are used for the residual calculation.
 
-* ceanUpSlice -> [cleanup](??). Performs a clean up of the slices. We could have this functionality as part of the CentreFinder class
+* ceanUpSlice  Performs a clean up of the slices. We could have this functionality as part of the CentreFinder class
 
+
+### Class diagram of the new classes
+
+![alt text](extension_classes_py.png)
 
 
 ## Example of the altered FindBeamCentre algorithm
