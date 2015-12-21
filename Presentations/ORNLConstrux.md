@@ -126,12 +126,23 @@ Possibilities - python
 * Mantid [v2.0](https://github.com/mantidproject/mantid/releases/tag/v2.0) was in 2012
 * Mantid [v3.5.1](https://github.com/mantidproject/mantid/releases/tag/v3.5.1) was in 2015
 * There are currently [70 contributers](https://github.com/mantidproject/mantid/graphs/contributors)
-* Currently there is 10^6 lines of code (82% cpp and 15% python by `sloccount`)
+* Currently there is 10^6 lines of code (82% cpp and 15% python according to `sloccount`)
+
+---
+# Some Comments on Comments
+
+* We should write a comment about what a function SHOULD do, not what it does. This way someone can check later if the function still does (or if it ever did) what is supposed to do.
+* If there was some choice made in the implementation, we should write comments about why that choice has been made (it can be as simple as "I could not think of something better"). That way the next coder can decide if the implementation can be changed.
+* Delete comments that don't add any value
 
 ---
 
-# Credits
+# Credits / References
 
 * Steve Tockey of [Construx](http://www.construx.com/) (he suggests buying his current book [Return on Software](http://www.amazon.com/gp/product/032156149X?keywords=steve%20tockey&qid=1448981669&ref_=sr_1_1&sr=8-1) and is writing another)
 * Slideshow render at [Remarkise](https://gnab.github.io/remark/remarkise?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmantidproject%2Fdocuments%2Fmaster%2FPresentations%2FORNLConstrux.md)
 * [Markdown description](https://www.swipe.to/help/markdown/) and [CommonMark](http://spec.commonmark.org/0.22/)
+
+* [Clean Code](http://www.amazon.com/gp/product/0132350882?keywords=code%20complete&qid=1450118105&ref_=sr_1_2&s=books&sr=1-2) by Robert “Uncle Bob” Martin.
+* [Code Complete 2](http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670/ref=sr_1_1?s=books&ie=UTF8&qid=1450126241&sr=1-1) by Steve McConnell (CEO and Chief Software Engineer at Construx Software).
+* [The Pragmatic Programmer](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X) by Andrew Hunt

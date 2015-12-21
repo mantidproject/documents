@@ -3,12 +3,12 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 
 ##Things that could be done to make day-to-day development easier##
 
-* Information available on the wiki, but not easy to find
-* Not enough effort put into testing, causes problems down-stream
+* Information available on the wiki, but not easy to find (To be discussed at SSC)
+* Not enough effort put into testing, causes problems down-stream (To be discussed at Worshop)
 * Algorithms with exec functions that are far too large (many people highlighed this)
 * Faster local builds (many people requested this)
 * Faster unit test suites
-* Larger list of historic PR pacakges. Really slows testing down when you have to build and package everything. Should keep packages until the PR is closed.
+* Larger list of historic PR packages. Really slows testing down when you have to build and package everything. Should keep packages until the PR is closed.
 * More build servers.
 * Properly isolating modules and tests so they can be run without  the rest of the code base. This is the soft-link issue.
 * Developers forget to clang-format and then load the build servers when they fix it. Slows everything down.
