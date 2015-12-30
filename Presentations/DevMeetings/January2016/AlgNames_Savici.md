@@ -49,17 +49,11 @@
 # 5. Inconsistent use of the same word
 
 * What does Calculate... do?
-
 --
-
   - CalculateEfficiency returns a workspace with efficiency
-
 --
-
   - CalculateFlatBackground subtracts a constant
-
 --
-
   - CalculateGammaBackground does both
 
 ---
