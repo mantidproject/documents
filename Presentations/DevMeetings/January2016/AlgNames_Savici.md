@@ -22,6 +22,7 @@
 # 3. Incomplete names
 
 * Technique specific algorithms:
+
   - CalculateResolution (Reflectometry only)
   - ComputeSensitivity, IQTransform, Q1D (SANS)
   - RemoveLowResTOF (Powder Diffraction)
@@ -30,6 +31,7 @@
 --
 
 * Cannot tell if some algorithms just generate some correction or apply it
+
   - AnnularRingAbsorption
   - AnvredCorrection
 
@@ -50,15 +52,15 @@
 
 --
 
-** CalculateEfficiency returns a workspace with efficiency
+  - CalculateEfficiency returns a workspace with efficiency
 
 --
 
-** CalculateFlatBackground subtracts a constant
+  - CalculateFlatBackground subtracts a constant
 
 --
 
-** CalculateGammaBackground does both
+  - CalculateGammaBackground does both
 
 ---
 
