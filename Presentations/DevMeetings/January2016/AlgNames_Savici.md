@@ -22,18 +22,16 @@
 # 3. Incomplete names
 
 * Technique specific algorithms:
-
-- CalculateResolution (Reflectometry only)
-- ComputeSensitivity, IQTransform, Q1D (SANS)
-- RemoveLowResTOF (Powder Diffraction)
-- ModeratorTero (Indirect)
+  - CalculateResolution (Reflectometry only)
+  - ComputeSensitivity, IQTransform, Q1D (SANS)
+  - RemoveLowResTOF (Powder Diffraction)
+  - ModeratorTero (Indirect)
 
 --
 
 * Cannot tell if some algorithms just generate some correction or apply it
-
-- AnnularRingAbsorption
-- AnvredCorrection
+  - AnnularRingAbsorption
+  - AnvredCorrection
 
 ---
 
