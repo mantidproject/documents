@@ -5,7 +5,7 @@
 * Start each word with a capital letter
 * Numbers are allowed, after first character 
 * "If possible, avoid abbreviations unless they are common and well understood."
-* Standard prefixes for common tasks: [http://www.mantidproject.org/Mantid_Standards#Naming] (http://www.mantidproject.org/Mantid_Standards#Naming)
+* Standard prefixes for common tasks: http://www.mantidproject.org/Mantid_Standards#Naming
 
 ---
 
@@ -49,11 +49,8 @@
 # 5. Inconsistent use of the same word
 
 * What does Calculate... do?
---
   - CalculateEfficiency returns a workspace with efficiency
---
   - CalculateFlatBackground subtracts a constant
---
   - CalculateGammaBackground does both
 
 ---
