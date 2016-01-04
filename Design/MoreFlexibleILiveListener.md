@@ -32,7 +32,7 @@ Problems To Fix
 
 **Mandatory**
 
-* `LiveListenerFactory::create()` returns a `ILiveDataListener` on which connect has been called. If you don't have enough information to start the connection at that point. The connection will simply fail.
+* As used at the moment, LiveDataAlgorithm has a gateway function called [getLiveListener](https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/LiveDataAlgorithm.cpp#L186:L197), which forces `LiveListenerFactory::create()` to returns a `ILiveDataListener` on which connect has been called because connect is set to true. getLiveListener also starts the listener.If you don't have enough information to start the connection at that point. The connection will simply fail. In addition, even if you have dynamic properties that could be used to create a connection, these cannot be used because `LiveListenerFactory::create()` will establish the connection first, and then copy dynamic properties over.
 * Knowing the Instrument is not enough. The `LiveListenerFactory` uses the instrument name to get the `InstrumentInfo` and from that the connection properties. But this does not allow support for more than one live data stream per instrument.
 
 **Nice To Fix**
