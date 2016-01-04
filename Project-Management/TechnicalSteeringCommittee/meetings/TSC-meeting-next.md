@@ -14,7 +14,7 @@ New Items
 * [Survey results](https://www.surveymonkey.com/results/SM-N5VB8VDJ/) and additions to the January workshop to reflect it ([digested comments](/Project-Management/TechnicalSteeringCommittee/reports/DeveloperSurveyResults2015.md)) (Owen/Pete)
 * Start made on Geometry requrements [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/requirements-v2.md) (Owen) 
 * Tracking of volatile unit tests (Owen)
-* [LiveListener Design](https://github.com/mantidproject/documents/pull/7)
+* [LiveListener Design](https://github.com/mantidproject/documents/pull/7)(Owen)
 Minutes
 -------
 In attendance: Arnold, Gigg, Draper, Wedel, Simon, Campbell, Peterson
