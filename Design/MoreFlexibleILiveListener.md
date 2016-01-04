@@ -10,7 +10,7 @@ If these are not enough there is no way to pass additional information in. For e
 How Things Currently Work
 -------------------------
 
-* The *Facilities.xml* file allows you to specify listeners like this `<livedata address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />`
+* The *Facilities.xml* file allows you to specify listeners like this `<livedata address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />`. The listener is the concrete ILiveListner class name that will be used to create ILiveListener objects. If a listner is not specified at the instrument level, then the listener at the facilities level of the xml hierachy will be used instead.
 * Listeners speicified in the *Facilities.xml* file are created via the `LiveListenerFactory` `DynamicFactory`  [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L44:L45) from a `std::string`
 * The bare listener objects are connected via `connect(const Poco::Net::SocketAddress &address)`
 * Once a connection has been made. The listener can be Started, Stopped.  
@@ -49,20 +49,7 @@ Possible solutions
 
 ### Dynamic properties on StartLiveData
 
-The solution here is to specify the connection address as a property, and change/extend the LiveListenerFactory so that the connections are not applied until the client chooses to.
-
-1. `ILiveListener` is a property manager and can have properties.
-2. `StartLiveData` creates disconnected instance of a ILiveListener in its init() method.
-3. It copies properties from the listener (dynamic properties). 
-4. The properties are set by the caller.
-5. The exec() method passes the set properties to the listener and connects it.
-
-The instrument name should be enough for creating a disconnected listener. ILiveListener::connect() doesn't have to have an argument.
-The neccessary information can be provided through properties.
-
-Instrument parameters files can be used to store additional information such as network addresses.
-
-There is no need to implement or have knowledge of the PropertyManager machinery. Properties can be set with simple setProperty(...) calls.
+One problem is that properties are applied after connections are made. A simple fix would be to reorder the `LiveListenerFactory::create` so that properties are always copied between calling `Algorithm` and `ILiveListener` immediately after creation of the `ILiveListner` and before any connection is called. This will give much more power to each subtype of `ILiveListener` to decide to override the standard connection information such as address etc if it has been provided as a dynamic property.
 
 ### Not using ILiveListener
 
