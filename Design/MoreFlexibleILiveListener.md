@@ -82,8 +82,16 @@ The `LiveDataAlgorithm` base class is then given the ability to provide an optio
 1. [Fix this](https://github.com/mantidproject/mantid/blob/master/Framework/API/src/LiveListenerFactory.cpp#L36) to take a name string, that defaults to an empty string. If specified it should use that to select the right LiveListenerMemeto to create the live listener from. Otherwise it should just create one without any name specified. [LiveDataAlgorithm::getLiveListener]( https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/LiveDataAlgorithm.cpp#L186:L197) should take the name string and forward it to the above method. `LiveDataAlgorithm` should provide an additional non-mandatory property called "Name", if the "Name" property is provided, it should be checked at validateInputs() time against possible Name options available for the selected "Instrument" property declared in [LiveDataAlgorithm] (https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/LiveDataAlgorithm.cpp#L55)
 
 
-### Option 3. Not using ILiveListener
+### Option 3. Overload the `LiveListenerFactory` connect
 
-Unofficial Mantid plugins do not have to use ILiveListener to collect live data. If the interface is incompatible with the
-instrument's systems the plugin can define an independent custom algorithm for collecting data. MantidPlot can be configured
-to use this algorithm instead of StartLiveData in Load->Live Data button menu.
+Currently `LiveListenerFactory::connect` as called by `LiveDataAlgorithm` will:
+
+1. Load the Instrument and then InstrumentInfo for the specified *Instrument* name argument. All taken from the Facility file.
+1. Extract the concrete ILiveListener from the above and create an instance of one
+1. Connect it from the address specified above
+
+The only thing that any `create` method should do is Create the relevant object, and we should have a way of providing the ILiveListenter class name ourselves, and connecting the product ourselves. 
+
+The completed solution would allow users to specify the stuff usually loaded from the facilities.xml file directly in `StartLiveData` namely the address, ILiveListener name and component name. If provided the code would not try to then fetch that information from the instrument.
+
+**In this solution users would be able to use `StartLiveData` and completely bypass the Facilities.xml file.** Again, this can be added in parallel to the above fixes.
