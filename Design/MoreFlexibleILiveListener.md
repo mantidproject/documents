@@ -39,11 +39,8 @@ Problems To Fix
 
 * Should be able to get the create a ILiveListener via the factory in a way that allows Dynamic Properties to be considered prior to the connection being made.
 * Knowing the Instrument is not enough. The `LiveListenerFactory` uses the instrument name to get the `InstrumentInfo` and from that the connection properties. But this does not allow support for more than one live data stream per instrument.
-* Should be able to easily get a `ILiveListener` in the unconnected state
-
-**Nice To Fix**
-
-* Reliance on runtime properties is cumbersome. If I want to create an ILiveListener, I need to call it from something that implements all the machinery of `PropertyManager`.
+* Should be able to easily get an `ILiveListener` in the unconnected state
+* Should be able to create an `ILiveListener` without querying instrument/facility info by specifying the address and class name in the `StartLiveData` algorithm.
 
 Questions
 ---------
