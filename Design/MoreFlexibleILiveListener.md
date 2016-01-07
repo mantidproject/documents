@@ -56,19 +56,21 @@ One problem is that properties are applied after connections are made. A simple 
 
 ### Option 2. Add Hardware Option
 
-The general problem we are trying to solve is that the instrument is assumed to have a single live listener. This solution introduces the possibility of more than one live listener per instrument and introduces a hardware key. The resulting xml can then take this form
+The general problem we are trying to solve is that the instrument is assumed to have a single live listener. This solution introduces the possibility of more than one live listener per instrument and introduces a name key. The resulting xml can then take this form
 
 ```xml
  <instrument name="LET_EVENT" shortname="LET">
     <zeropadding size="8"/>
     <technique>Neutron Spectroscopy</technique>
     <technique>TOF Direct Geometry Spectroscopy</technique>
-    <livedata address="NDXLET:10000" listener="ISISLiveEventDataListener" />
-    <livedata address="NDXLET:10001" listener="ISISLiveEventDataListener" hardware="detector1" />
-    <livedata address="NDXLET:10002" listener="ISISLiveEventDataListener" hardware="bank1" />
+    <livedata default_name="instrument">
+     <address="NDXLET:10000" listener="ISISLiveEventDataListener" name="instrument"/>
+     <address="NDXLET:10001" listener="ISISLiveEventDataListener" name="detector1" />
+     <address="NDXLET:10002" listener="ISISLiveEventDataListener" name="bank1" />
+    </livedata>
   </instrument>
 ```
-The `LiveDataAlgorithm` base class is then given the ability to provide an optional Hardware input. This solution can be implemented in addition to the one provided above. Both forms of flexibility might be useful.
+The `LiveDataAlgorithm` base class is then given the ability to provide an optional name input. This solution can be implemented in addition to the one provided above. Both forms of flexibility might be useful.
 
 
 
