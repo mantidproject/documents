@@ -4,8 +4,17 @@ More flexible live listener interface
 Motivation
 ----------
 
-ILiveListener interface requires that an implementation takes only the instrument name and a network address to create itself. 
-If these are not enough there is no way to pass additional information in. For external facilities, we need the ability to provide flexible listeners via the plugin/dll mechanism offered via the dyanmic factories, that way custom dependencies can be managed by those external facilities and not added to all distributions of Mantid.
+The LiveListeners are not flexible enough and cause problems at collaborator facilities and external facilities where Mantid is used. Specific problems listed below.
+
+Problems To Fix
+---------------
+
+**Mandatory**
+
+* Should be able to get the create a ILiveListener via the factory in a way that allows Dynamic Properties to be considered prior to the connection being made.
+* Knowing the Instrument is not enough. The `LiveListenerFactory` uses the instrument name to get the `InstrumentInfo` and from that the connection properties. But this does not allow support for more than one live data stream per instrument.
+* Should be able to easily get an `ILiveListener` in the unconnected state
+* Should be able to create an `ILiveListener` without querying instrument/facility info by specifying the address and class name in the `StartLiveData` algorithm.
 
 How Things Currently Work
 -------------------------
@@ -31,16 +40,6 @@ Order of Connection
 ####################
 
 As used at the moment, `LiveDataAlgorithm` has a gateway function called [getLiveListener](https://github.com/mantidproject/mantid/blob/master/Framework/LiveData/src/LiveDataAlgorithm.cpp#L186:L197), which forces `LiveListenerFactory::create()` to returns a `ILiveDataListener` on which connect has been called because the connect argument is set to true. `getLiveListener` also starts the listener.If you don't have enough information to start the connection at that point. The connection will simply fail. In addition, even if you have dynamic properties that could be used to create a connection, these cannot be used because `LiveListenerFactory::create()` will establish the connection first, and then copy dynamic properties over.
-
-Problems To Fix
----------------
-
-**Mandatory**
-
-* Should be able to get the create a ILiveListener via the factory in a way that allows Dynamic Properties to be considered prior to the connection being made.
-* Knowing the Instrument is not enough. The `LiveListenerFactory` uses the instrument name to get the `InstrumentInfo` and from that the connection properties. But this does not allow support for more than one live data stream per instrument.
-* Should be able to easily get an `ILiveListener` in the unconnected state
-* Should be able to create an `ILiveListener` without querying instrument/facility info by specifying the address and class name in the `StartLiveData` algorithm.
 
 Questions
 ---------
