@@ -170,6 +170,10 @@ public:
 };
 ```
 
+---
+
+## Controlling Visibility
+
 - Building on `gcc` with `-fvisibility=hidden` is now successful
 
 ```remark
@@ -179,10 +183,6 @@ public:
 Success!
 ```
 
----
-
-## Controlling Visibility
-
 - On `MSVC` we need to define the `A_Exports` definition for a successful build.
 
 ```remark
@@ -191,6 +191,10 @@ Success!
 
 // Success!
 ```
+
+---
+
+## Unexported Symbols
 
 - Trying to use a symbol not marked as exported now produces the familar error:
 
@@ -208,7 +212,12 @@ int main() {
 > cl /EHsc /Femain main.cpp A.lib
 
 // Fails!
-
+/out:main.exe
+main.obj
+A.lib
+main.obj : error LNK2019: unresolved external symbol "public: __thiscall Point2D::Point2D(double,double)" (??0Point2D@@QAE@NN@Z) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "public: double __thiscall Point2D::norm2(void) const " (?norm2@Point2D@@QBENXZ) referenced in function _main
+main.exe : fatal error LNK1120: 2 unresolved externals
 ```
 
 ---
