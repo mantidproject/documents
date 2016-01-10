@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>270</x>
+      <y>190</y>
+      <w>310</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>&lt;model&gt;&gt; Fourier Transform</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>320</x>
+      <y>250</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Slice Table Display</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>320</x>
+      <y>470</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Display Selected Slice</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>320</x>
+      <y>360</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Display Slices 2D</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
