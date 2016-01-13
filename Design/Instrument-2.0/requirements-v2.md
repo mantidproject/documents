@@ -46,6 +46,20 @@ Truely continous scans can only be done in event-mode, and if where possible to 
 
 ![Top level class diagram](GeometryClasses.png)
 
+###Responsibilities in Current Structure###
+
+**ParameterMap**: MulitMap keyed by ComponentID, which is keyed by just the in-memory pointer to that IComponent, and stores values which are Geometry::Parameter
+
+**IComponent**: Something that can be positioned an manipulated in a 3D coordinate system.  With parent IComponents, it can form a 1-D linked list. Despite suggesting it might be Mutable, public functions indicate that it is NOT.
+
+**Component**: A realization of IComponent, that adds methods to allow immutability. Holds a ParameterMap. If the ParameterMap is set, then keyed values are checked to exist in the ParameterMap first. That way components can be copied by using the Map to 'override' base Component properties.
+
+**ObjComponent**: Adds physical attributes such as shape and material to a Component. 
+
+**ICompAssembly**: Defines a Component that is an Assembly of others. This is a composite. 
+
+**CompAssembly**: Realizes the IComponentAssembly. Adds functionality to make the IComponentAssembly mutable.
+
 ##Performance Non-functional Requirements and Technical Specifications##
 
 ### MPI
