@@ -16,7 +16,7 @@ The current instrument geometry matched the requirements in the early programme 
 * Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
 * Instrument parameter syntax should be richer, particularly when labelling and applying multiple functions to components.
 * Any new schema should be more cohesive and self-describing than the current system
-* The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requriements.
+* The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requirements.
 * The design should allows for Moving instruments. This includes instruments that move between acquisition scan points and continuous motion during acquisition. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
 * The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
 * Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
@@ -42,7 +42,10 @@ A variant on 1. Might be whether each scan results in a unique run [D2b](https:/
 **Continous Scans**
 Truely continous scans can only be done in event-mode, and if where possible to specify component positions and rotation as a function of time. It would then be necessary to correlate absolute event times to the position of the detector at that time in order to establish l1,l2. Currently the IDF only takes a single position entry from a given log, even if it does actually contain many time series entries.
 
-##Performance Non-functional Requriements and Technical Specifications##
+##Current Structure##
+![Top level class diagram](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/GeometryClasses.png)
+
+##Performance Non-functional Requirements and Technical Specifications##
 
 ### MPI
 
