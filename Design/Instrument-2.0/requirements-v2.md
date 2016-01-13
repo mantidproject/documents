@@ -21,6 +21,7 @@ The current instrument geometry matched the requirements in the early programme 
 * The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
 * Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
 * Algebra for positions based on log values should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
+* The current functionality lacks a way to coordinate serialization of Geometry Components. This is because the IDF format lacks a proper hierachical structure. Data Transfer Objects should have the responsiblity of serializing an in-memory gemeotry to either a binary or new xml based format.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
