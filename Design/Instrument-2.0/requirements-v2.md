@@ -43,7 +43,8 @@ A variant on 1. Might be whether each scan results in a unique run [D2b](https:/
 Truely continous scans can only be done in event-mode, and if where possible to specify component positions and rotation as a function of time. It would then be necessary to correlate absolute event times to the position of the detector at that time in order to establish l1,l2. Currently the IDF only takes a single position entry from a given log, even if it does actually contain many time series entries.
 
 ##Current Structure##
-![Top level class diagram](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/GeometryClasses.png)
+
+![Top level class diagram](GeometryClasses.png)
 
 ##Performance Non-functional Requirements and Technical Specifications##
 
