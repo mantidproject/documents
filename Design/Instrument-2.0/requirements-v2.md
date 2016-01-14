@@ -12,6 +12,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 ###Mandatory###
 
 * Existing functionality listed [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/features-v1.md) should be preserved.
+* The design should allow users to specify a regular topology and irregular geometry in the IDF, and create detector panels from that definition. This would be somewhat analygous to a [vtkStructuredGrid](http://www.vtk.org/doc/nightly/html/classvtkStructuredGrid.html)
 * The design should allow fast access to L1, L2 via a Detector. Ideally without any lazy computation.
 * The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
 * The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
