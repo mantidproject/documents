@@ -22,6 +22,8 @@ The current instrument geometry matched the requirements in the early programme 
 * Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
 * Algebra for positions based on log values should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
 * The current functionality lacks a way to coordinate serialization of Geometry Components. This is because the IDF format lacks a proper hierachical structure. Data Transfer Objects should have the responsiblity of serializing an in-memory gemeotry to either a binary or new xml based format.
+* The detectors at ESS will have non-negligible depth that might require more complex geometry calculations.
+* Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
@@ -79,8 +81,6 @@ It is hard to put down a precise performance requirement.
 We can try to do a worst-case analysis, based on various guessing:
 
 * In the current SANS reduction run we observed up to 30% time spent in instrument/geometry related code.
-* The detectors at ESS will have non-negligible depth that might require more complex geometry calculations.
-* Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
 * We hope to do some optimization work on various other parts of Mantid, so we should take into account that the non-geometry related parts will speed up.
 * For certain large IDFs the speed of reading the file can become significant.  It would be worth investigation into the use of a binary on disk format for storing the IDF.
 
