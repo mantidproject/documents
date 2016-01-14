@@ -5,6 +5,8 @@ Suggestions and Requirements for Future Features
 
 The current instrument geometry matched the requirements in the early programme lifecycle. We have subseqently retro-fitted the geometry as more instruments and more facilities joined the project. This has worked well, but we have several major issues to solve for which a deeper and thourough rexeamination of the existing implementation is required. Firstly, experimental setup is becoming increasingly complex, and we need a virutal instrument that can model the real experimental setup. Secondly, the performance demands are now much greater than orignally designed for, particularly with the live-reduction challenge forethcoming at the ESS. Thirdly, the current syntax for describing instruments is not as logical or straight forward as it ought to be, and encourages instrument related errors in the reduced data.
 
+One should read 7.2 of the document prepared by Simon Heybrock [here](https://github.com/mantidproject/documents/blob/master/Performance/performance_analysis_of_mantid_for_ess.pdf)
+
 ##High-level Functional Requirements##
 
 ###Mandatory###
