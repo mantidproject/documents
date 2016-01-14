@@ -10,6 +10,7 @@ The current instrument geometry matched the requirements in the early programme 
 ###Mandatory###
 
 * Existing functionality listed [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/features-v1.md) should be preserved.
+* The design should allow fast access to L1, L2 via a Detector. Ideally without any lazy computation.
 * The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
 * The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
 * The design should allow for indirect secondary (i.e. after sample) beam paths, where the detectors and components may have different positions in real and 'neutronic' space.
