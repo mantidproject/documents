@@ -7,9 +7,9 @@ An implementation for this BCF already exists for ISIS SANS. This implementation
 
 The different approaches of ISIS and ANSTO are currently not compatible. They can be summarized as:
 
-* ISIS makes use of a so-called ReductionSingleton which has a series of registered reduction steps. During the reduction, the ReductionSingleton() carries state (mainly via the custom ISIS instrument classes). Intermediate results are stored in the Analysis Data Service (ADS).
+* ISIS makes use of a so-called ReductionSingleton which has a series of registered reduction steps. During the reduction, the ReductionSingleton() carries state (mainly via the custom ISIS instrument classes). Intermediate results are stored in the Analysis Data Service (ADS). ISIS Instrument classes contain information about the movement of instruments. They are responsible for moving the loaded sample workspaces, hence they know about user defined position parameters. Importantly, they contain the information of the beam centre position. In addition, they hold references to calibration files.
 
-* ANSTO's reduction implementation is currently still work in progress, but will eventually make use of so-called Workflow-Algorithms which do not populate the ADS or carry state information. This will be a cleaner, more maintainable implementation which is easier to test and verify. It is desirable that in the long run ISIS SANS switches to such an implementation.
+* ANSTO's reduction implementation is currently still work in progress, but will eventually make use of so-called DataProcessorAlgorithms which do not populate the ADS or carry state information. This will be a cleaner, more maintainable implementation which is easier to test and verify. It is desirable that in the long run ISIS SANS switches to such an implementation.
 
 This document outlines the required changes to make the *BCF* useable in a more general, faciltity- and instrument-agnostic way.
 
@@ -28,7 +28,7 @@ The static details of the current implementation (ie a class diagram) can be see
 The workflow of the current implementation is illustrated below. It is separated into two parts, one which is repsonsible for stepping through the parameter space
 ![alt text](FindBeamCentre_py.png)
 
-and one which illustrates how the residuals -- a measure of our search quality -- are calculated. This is achieved by the *SeekCentre* operation:
+and one which illustrates how the residuals -- a measure of our search quality -- are calculated. This is achieved by the *SeekCentre* operation of the **CentreFinder** class:
 
 ![alt text](centre_finder_py.png)
 
@@ -38,6 +38,9 @@ In general terms we want to hide any solution-specific details in the *BCF*. Cur
 One way of achieving this is a generic interface which is discussed below. In this case each instrument\facility needs to provide an implementation for the generic interface. This implementation is then injected into the BCF. 
 
 Another, similar way, would be to use a Template Method approach. We would have to create a class-based version of the BCF. Each instrument/facility then implements the methods which need to be overwritten.
+
+In order to make the *BCF* future-proof it is advisible to use injection instead of the inheritance of the Template Method approach. If additional functionality is to be added in the future, it is better to use the mix-and-match flexibility provided by an injection-apporach rather than a growing inheritance tree which could result from an extended Template Method approach. Another consideration is testability. Providing implementations and stragtegies through injection is beneficial for mocking out this functionality in unit tests.
+
 
 ### Components in the current implementation which need to be considered
 
