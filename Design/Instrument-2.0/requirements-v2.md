@@ -45,24 +45,6 @@ A variant on 1. Might be whether each scan results in a unique run [D2b](https:/
 **Continous Scans**
 Truely continous scans can only be done in event-mode, and if where possible to specify component positions and rotation as a function of time. It would then be necessary to correlate absolute event times to the position of the detector at that time in order to establish l1,l2. Currently the IDF only takes a single position entry from a given log, even if it does actually contain many time series entries.
 
-##Current Structure##
-
-![Top level class diagram](GeometryClasses.png)
-
-###Responsibilities in Current Structure###
-
-**ParameterMap**: MulitMap keyed by ComponentID, which is keyed by just the in-memory pointer to that IComponent, and stores values which are Geometry::Parameter
-
-**IComponent**: Something that can be positioned an manipulated in a 3D coordinate system.  With parent IComponents, it can form a 1-D linked list. Despite suggesting it might be Mutable, public functions indicate that it is NOT.
-
-**Component**: A realization of IComponent, that adds methods to allow immutability. Holds a ParameterMap. If the ParameterMap is set, then keyed values are checked to exist in the ParameterMap first. That way components can be copied by using the Map to 'override' base Component properties.
-
-**ObjComponent**: Adds physical attributes such as shape and material to a Component. 
-
-**ICompAssembly**: Defines a Component that is an Assembly of others. This is a composite. 
-
-**CompAssembly**: Realizes the IComponentAssembly. Adds functionality to make the IComponentAssembly mutable.
-
 ##Performance Non-functional Requirements and Technical Specifications##
 
 ### MPI
@@ -100,3 +82,38 @@ Thus:
 * Modifying an instrument does not need to be thread-safe.
 
 Basically, I currently think that the requirements here should be the same as for the containers in std (C++11), such as std::vector.
+
+##Current Structure##
+
+![Top level class diagram](GeometryClasses.png)
+
+###Responsibilities in Current Structure###
+
+**ParameterMap**: MulitMap keyed by ComponentID, which is keyed by just the in-memory pointer to that IComponent, and stores values which are Geometry::Parameter
+
+**IComponent**: Something that can be positioned an manipulated in a 3D coordinate system.  With parent IComponents, it can form a 1-D linked list. Despite suggesting it might be Mutable, public functions indicate that it is NOT.
+
+**Component**: A realization of IComponent, that adds methods to allow immutability. Holds a ParameterMap. If the ParameterMap is set, then keyed values are checked to exist in the ParameterMap first. That way components can be copied by using the Map to 'override' base Component properties.
+
+**ObjComponent**: Adds physical attributes such as shape and material to a Component. 
+
+**ICompAssembly**: Defines a Component that is an Assembly of others. This is a composite. 
+
+**CompAssembly**: Realizes the IComponentAssembly. Adds functionality to make the IComponentAssembly mutable.
+
+###More on how Parameterised Instruments Work###
+
+The ParameterMap is a MultiMap. More than one paramer can be stored against the same ComponentID (key field). The Top-level Component (Instrument) holds the actual parameter map for the entire assembly. All other components hold a pointer to that parameter map. When a component is modified, a 'Parameterized' copy of the Component is made, which contains a back reference to the orignal base, component, and has entries in the parameter map for anything overriden. Because Components have to support Parameterized versions of themselves, two constructors are provided for concrete Parameterized Components. Most of the time you work with Instruments in Mantid, you are operating on a Parameterized version. `ExperimentInfo::getInstrument()` creates a parameterized instrument.
+
+###More on how Component::getPos() Works
+
+* In the absence of a parent object `m_parent`, or a base object `m_base` The position in absolute and corresponds to the stored V3D for that component.
+* For Anything that is not the root of the tree, `m_parent` always exists and Component positions are defined relative to that.
+* For a Parameterized Component, the map must be searched to extract a potential overriden value first, which is again a relative position.
+* Since to determine the actual position of a component, you need to walk the entire component tree, to accumulate relative offsets, `getPos()` uses a cache which stores the absolute position of the immediate parent component, so that the entire tree does not need to be traversed each time a position is required (m_map->getCachedLocation()).
+* The map does still need to be searched each time via `this->getRelativePosition()` and this may be an expensive lookup.
+
+
+
+
+
