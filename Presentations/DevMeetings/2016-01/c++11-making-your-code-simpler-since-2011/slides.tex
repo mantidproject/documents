@@ -1,0 +1,303 @@
+%\PassOptionsToPackage{cmyk}{xcolor}
+%\pdfpageattr {/Group << /S /Transparency /I false /CS /DeviceRGB>>}
+\documentclass[english]{beamer}
+
+\usepackage{listings}
+
+% strikethrough
+\usepackage{soul}
+
+
+
+%pseudocode
+%new is the package in my ~/texmf, the uni version is outdated
+%\usepackage{algorithmic_new}
+%\usepackage{algorithm_new}
+
+
+
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\lstset{language=C++,
+                basicstyle=\ttfamily
+}
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,1.0}
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,        
+    language=[GNU]C++,
+    basicstyle=\scriptsize,
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=false,
+    breaklines=false,
+    breakindent=2cm,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    numbers=left,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    linewidth=\textwidth,
+    xleftmargin=0.04\textwidth,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0.5,0},
+    commentstyle=\color[rgb]{0.6,0.1,0.0},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+    numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+    otherkeywords={__m512, __mmask16, complex, override, size_t},
+}
+
+%\usetheme{default}
+%\usetheme{CambridgeUS}
+\usepackage{../ess-beamer-simon/beamerthemeESS}
+\setbeamertemplate{navigation symbols}{}
+
+\graphicspath{{../figures/talk/}}
+
+\begin{document}
+
+
+\title[C++11: Making your code simpler since 2011]{C++11\\Making your code simpler since \st{2011}2015}
+\author[Simon Heybrock]{Simon Heybrock\\\footnotesize\url{simon.heybrock@esss.se}}
+\institute[ESS]{European Spallation Source}
+
+%\date{2015-12-22}
+\date{}
+
+
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+
+
+
+
+
+%\section{Overview and schedule}
+
+\begin{frame}
+    \frametitle{Motivation}
+    \begin{block}{C++11}
+        %Many of us had a look (or already use) C++11
+    \begin{itemize}
+        \item \alert{Overwhelming} number of important and useful features
+        \item Many of them are perceived as \alert{complex}
+    \end{itemize}
+    \end{block}
+    \begin{block}{This talk}
+        %For those who got scared:
+        \begin{itemize}
+            \item Highlight some \alert{simple} but immensely \alert{useful} bits of C++11
+            \item All code examples from Mantid
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+% CurveFitting/src/Algorithms/FitPowderDiffPeaks.cpp:1677
+\begin{frame}[fragile]
+    \frametitle{Range-based for and auto}
+\begin{lstlisting}
+vector<string> names = function->getParameterNames();
+for (size_t i = 0; i < names.size(); ++i) {
+  string &name = names[i];
+  map<string, double>::iterator miter = parmap.find(name);
+  if (miter != parmap.end())
+    function->setParameter(name, miter->second);
+}
+\end{lstlisting}
+\pause
+Step 1: \alert{range-based for} (think of Python's \alert{for item in list:})
+\begin{lstlisting}
+for (string &name : function->getParameterNames()) {
+  map<string, double>::iterator miter = parmap.find(name);
+  if (miter != parmap.end())
+    function->setParameter(name, miter->second);
+}
+\end{lstlisting}
+\pause
+Step 2: \alert{auto}
+\begin{lstlisting}
+for (string &name : function->getParameterNames()) {
+  auto miter = parmap.find(name);
+  if (miter != parmap.end())
+    function->setParameter(name, miter->second);
+}
+\end{lstlisting}
+\end{frame}
+
+
+
+% API/inc/MantidAPI/FunctionDomain1D.h:68
+\begin{frame}[fragile]
+    \frametitle{The \texttt{delete} keyword}
+Old:
+\begin{itemize}
+    \item Private copy constructor, not implemented.
+    \item Fails at link-time if called.
+\end{itemize}
+\begin{lstlisting}
+private:
+  /// Private copy constructor - copying is not allowed.
+  FunctionDomain1D(const FunctionDomain1D &r);
+\end{lstlisting}
+New: use \alert{delete}
+\begin{itemize}
+    \item Public and deleted copy constructor, clearly states intention.
+    \item Fails at compile-time if called.
+\end{itemize}
+\begin{lstlisting}
+public:
+  FunctionDomain1D(const FunctionDomain1D &r) = delete;
+\end{lstlisting}
+\end{frame}
+
+
+% API/inc/MantidAPI/IMDEventWorkspace.h:100
+\begin{frame}[fragile]
+    \frametitle{The \texttt{default} keyword}
+Old:
+\begin{itemize}
+    \item Polymorphic class, copy constructors protected\\
+        $\Rightarrow$ need to write implementation!
+\end{itemize}
+\begin{lstlisting}
+// Header
+protected:
+  IMDEventWorkspace(const IMDEventWorkspace &o);
+
+// Source
+IMDEventWorkspace::IMDEventWorkspace(
+    const IMDEventWorkspace &other)
+    : IMDWorkspace(other), MultipleExperimentInfos(other),
+      m_fileNeedsUpdating(other.m_fileNeedsUpdating) {}
+\end{lstlisting}
+New: use \alert{default}
+\begin{lstlisting}
+protected:
+  IMDEventWorkspace(const IMDEventWorkspace &o) = default;
+\end{lstlisting}
+\end{frame}
+
+
+
+% API/inc/MantidAPI/MatrixWorkspace.h:537
+\begin{frame}[fragile]
+    \frametitle{Replace \texttt{typedef} by \texttt{using}}
+Old:
+\begin{lstlisting}
+typedef boost::shared_ptr<MatrixWorkspace>
+    MatrixWorkspace_sptr;
+typedef boost::shared_ptr<const MatrixWorkspace>
+    MatrixWorkspace_const_sptr;
+\end{lstlisting}
+\pause
+New:
+\begin{lstlisting}
+using MatrixWorkspace_sptr =
+    boost::shared_ptr<MatrixWorkspace>;
+using MatrixWorkspace_const_sptr =
+    boost::shared_ptr<const MatrixWorkspace>;
+\end{lstlisting}
+\pause
+Or: \alert{using} works with templates!
+\begin{lstlisting}
+template <class T>
+using sptr<T> = boost::shared_ptr<T>;
+template <class T>
+using const_sptr<T> = boost::shared_ptr<const T>;
+\end{lstlisting}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+    \frametitle{Class member initializers and delegating constructors}
+\begin{lstlisting}
+Peak::Peak()
+    : m_detectorID(-1), m_H(0), m_K(0), m_L(0),
+      m_intensity(0), m_sigmaIntensity(0), m_binCount(0),
+      m_initialEnergy(0.), m_finalEnergy(0.),
+      m_GoniometerMatrix(3, 3, true),
+      m_InverseGoniometerMatrix(3, 3, true),
+      m_runNumber(0), m_monitorCount(0), m_row(-1),
+      m_col(-1), m_orig_H(0), m_orig_K(0), m_orig_L(0),
+      m_peakShape(new NoShape) {}
+
+Peak::Peak(Geometry::Instrument_const_sptr m_inst,
+           Mantid::Kernel::V3D QLabFrame,
+           boost::optional<double> detectorDistance)
+    : m_H(0), m_K(0), m_L(0), m_intensity(0),
+      m_sigmaIntensity(0), m_binCount(0),
+      m_GoniometerMatrix(3, 3, true),
+      m_InverseGoniometerMatrix(3, 3, true),
+      m_runNumber(0), m_monitorCount(0), m_orig_H(0),
+      m_orig_K(0), m_orig_L(0), m_peakShape(new NoShape) {
+  this->setInstrument(m_inst);
+  this->setQLabFrame(QLabFrame, detectorDistance);
+}
+\end{lstlisting}
+5 more like this!
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Class member initializers and delegating constructors}
+    \begin{block}{Class member initializers}
+\vspace{-1mm}
+\begin{lstlisting}
+private:
+  double m_H = 0.0;
+  double m_intensity = 1.0;
+  Kernel::Matrix<double> m_GoniometerMatrix{3, 3, true};
+\end{lstlisting}
+\vspace{-1mm}
+\end{block}
+\pause
+\begin{block}{Delegating constructors}
+\vspace{-1mm}
+\begin{lstlisting}
+Peak::Peak() = default;
+
+Peak::Peak(Geometry::Instrument_const_sptr m_inst,
+           Mantid::Kernel::V3D QLabFrame,
+           boost::optional<double> detectorDistance)
+    : Peak() {
+  this->setInstrument(m_inst);
+  this->setQLabFrame(QLabFrame, detectorDistance);
+}
+\end{lstlisting}
+\vspace{-1mm}
+\end{block}
+\vspace{-1mm}
+\begin{itemize}
+    \item Can save $>30$ lines of code!
+    \item Significantly reduced risk of bugs.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Also worth mentioning}
+    \begin{itemize}
+        \item \texttt{override} keyword
+        \item scoped enums (\texttt{enum class})
+        \item \texttt{std::unique\_ptr} and \texttt{std::shared\_ptr} (as we know it from \texttt{boost})
+        \item uniform initialization (can get complicated)
+    \end{itemize}
+\end{frame}
+
+
+\end{document}

@@ -5,7 +5,7 @@ Pool
 ----
 1. ~~Separate classes in `WorkspaceValidators.h` into separate files, including putting implementations in source files [#11035](https://github.com/mantidproject/mantid/issues/11035)~~
 1. ~~Remove all cases of `#include <iostream>` from headers (or switch to `iosfwd`) and see if they required in source files [#13689](https://github.com/mantidproject/mantid/issues/13689)~~
-1. Filling in argument list in python bindings (e.g. "self" etc) ([#12624](http://github.com/mantidproject/mantid/issues/12624) is umbrella issue. Task divided by submodule: ~~kernel ([#13690](http://github.com/mantidproject/mantid/issues/13690))~~, ~~geometry ([#13691](http://github.com/mantidproject/mantid/issues/13691))~~, ~~api ([#13692](http://github.com/mantidproject/mantid/issues/13692))~~, dataobjects ([#13693](http://github.com/mantidproject/mantid/issues/13693))
+1. ~~Filling in argument list in python bindings (e.g. "self" etc) ([#12624](http://github.com/mantidproject/mantid/issues/12624) is umbrella issue.~~ Task divided by submodule: ~~kernel ([#13690](http://github.com/mantidproject/mantid/issues/13690))~~, ~~geometry ([#13691](http://github.com/mantidproject/mantid/issues/13691))~~, ~~api ([#13692](http://github.com/mantidproject/mantid/issues/13692))~~, ~~dataobjects ([#13693](http://github.com/mantidproject/mantid/issues/13693))~~
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
    2. [coverity](https://scan.coverity.com/projects/335) (~~[#13918](http://github.com/mantidproject/mantid/issues/13918)~~ and more issues listed in ~~[#12629](https://github.com/mantidproject/mantid/issues/12629)~~)
@@ -78,6 +78,8 @@ For a different release
 
 Release 3.7 maintenance
 -----------------------
- 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
- 2. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
- 3. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
+1. Move all Jenkins builds to use Ninja where possible (incl. Windows)
+1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
+1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
+1. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
+1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
