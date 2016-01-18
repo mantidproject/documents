@@ -1,6 +1,8 @@
 Design proposals discussed at TSC meetings
 ==========================================
 
+Designs currently being proposed/reviewed via [design document pull requests](https://github.com/mantidproject/documents/pulls).
+
 For design document guidelines see [here]( http://www.mantidproject.org/Design_Document_Guidelines).
 
 
