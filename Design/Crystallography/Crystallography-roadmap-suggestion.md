@@ -34,6 +34,15 @@ The second aspect is about using the existing (possibly in some aspects polished
 These points from both aspects can all be handled as fairly well separated tasks (although with some dependencies between them), it's realistic to finish those or at least most of them before the 2016 developer workshop. Overall these changes aim to make the current code more usable and more useful, as well as to provide examples for what is possible using the available tools.
 
 
+### Update: Progress up to Developer Meeting 2016
+- `CrystalStructure` can be attached to workspaces.
+- `CrystalStructure` can be loaded into workspaces from CIF-files using `LoadCIF` - pull request not merged yet.
+- Alternative space group settings are available (rhombohedral, different orthorhombic settings, monoclinic with unique c-axis) - pull request not merged yet.
+- `PredictPeaks` now optionally calculates structure factors, if `CrystalStructure` is available.
+- Instrument view can indicate reflection intensities on qualitative scale - pull request not merged yet.
+- `SortHKL` has been modified to use new `PointGroup`-functionality - significant speed up.
+
+
 Medium term goals
 -----------------
 
