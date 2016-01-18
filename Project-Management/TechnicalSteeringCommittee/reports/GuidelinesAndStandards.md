@@ -15,6 +15,7 @@ We have user documentation for how to
 * basic information about how initial starting values for fitting parameters can be set using instrument parameters (http://www.mantidproject.org/MBC_Intelligent_Fitting ). 
 
 What we currently don’t have includes
+* Almost no documentation about the different minimizers we support ([15014](https://github.com/mantidproject/mantid/issues/15014))
 *	No documentation for how to add new minimizers or cost functions
 *	No documentation which gives a good overview of the fitting framework in Mantid including how we make use of GSL, and description of how this match onto the directory structure in https://github.com/mantidproject/mantid/tree/master/Framework/CurveFitting  
 *	No documentation for adding more advanced fitting functions where some fitting parameters are functions of other fitting parameters or where fitting functions makes use of geometric information like http://docs.mantidproject.org/nightly/fitfunctions/IkedaCarpenterPV.html 
