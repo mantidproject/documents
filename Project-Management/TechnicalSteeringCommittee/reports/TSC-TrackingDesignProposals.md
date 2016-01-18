@@ -1,15 +1,17 @@
 Design proposals discussed at TSC meetings
 ==========================================
 
+Designs currently being proposed/reviewed via [design document pull requests](https://github.com/mantidproject/documents/pulls).
+
 For design document guidelines see [here]( http://www.mantidproject.org/Design_Document_Guidelines).
 
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
-| [Algorithm Usage Statistics](/Design/Usage/AlgorithmUsageStatistics.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Approved.  [12041](https://github.com/mantidproject/mantid/issues/12041)|
-| [Data Processing User Interface](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Approved. [14732](https://github.com/mantidproject/mantid/issues/14732) |
-| [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | 2015-10-21 Circulated by email. Reviewed by Owen | Approved 27th October 2015. In progress. First issue: [14165](https://github.com/mantidproject/mantid/issues/14165).|
-| [Workflow Caching Design](/Design/WorkflowCaching.md) | [2015-09-30](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-09-30.md) | Approved. [14716](https://github.com/mantidproject/mantid/issues/14716) [14717](https://github.com/mantidproject/mantid/issues/14717) |
+| [Algorithm Usage Statistics](/Design/Usage/AlgorithmUsageStatistics.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Done.  ~~[12041](https://github.com/mantidproject/mantid/issues/12041)~~.|
+| [Data Processing User Interface](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Approved. [14732](https://github.com/mantidproject/mantid/issues/14732), [14921](https://github.com/mantidproject/mantid/issues/14921)  |
+| [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | [2015-10-28](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-10-28.md). | In progress. First issue: [14165](https://github.com/mantidproject/mantid/issues/14165).|
+| [Workflow Caching Design](/Design/WorkflowCaching.md) | [2015-09-30](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-09-30.md) | In progress. ~~[14716](https://github.com/mantidproject/mantid/issues/14716)~~ ~~[14717](https://github.com/mantidproject/mantid/issues/14717)~~. **Next tickets?** |
 | [IMDDimensionUpdate](/Design/VATES/IMDDimensionUpdate.md)     | [2015-06-23](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-23.md) | Done. ~~[12185](https://github.com/mantidproject/mantid/issues/12185)~~ |
 | [AlignDetectors Redesign](/Design/AlignDetectors_rework.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | In progress: ~~[844](https://github.com/mantidproject/mantid/pull/844)~~, ~~[12794](https://github.com/mantidproject/mantid/pull/12794)~~, [14676](https://github.com/mantidproject/mantid/issues/14676) |
 | [IDFLoadOrder](/Design/IDFLoadOrder.md) | [2015-06-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-06-09.md) | Done. ~~[12656](https://github.com/mantidproject/mantid/issues/12656)~~ |
