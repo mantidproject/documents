@@ -1,6 +1,10 @@
 Mantid Technical Steering Committee Report to PMB
 =================================================
-
+Arnold, Campbell, Draper, Gigg, Heybrock, Peterson, Wedel
+* Membership
+  * ESS Arnold, Heybrock, Wedel
+  * ISIS Gigg, Pouzols
+  * ORNL Hahn, Peterson, Savici
 * ParaView 5.0
 * External dependencies (QT, GSL)
 * Supported platforms (drop OSX Mavericks;  would like to drop RHEL6; add OSX Yosemite and Ubuntu 16.04)
