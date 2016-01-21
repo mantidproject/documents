@@ -1,3 +1,7 @@
+# Naming algorithms
+
+---
+
 # 1. Conventions
 
 * Names no longer than 20 characters
@@ -26,7 +30,7 @@
   - CalculateResolution (Reflectometry only)
   - ComputeSensitivity, IQTransform, Q1D (SANS)
   - RemoveLowResTOF (Powder Diffraction)
-  - ModeratorTero (Indirect)
+  - ModeratorTzero (Indirect)
 
 --
 
@@ -39,7 +43,7 @@
 
 # 4. Going into extreme - nonsensical names - does much more than the title impplies, or completely unexpected things
 
-* What does MolDyn do? - check if it fails to plot in a non MantidPlot environment
+* What does MolDyn do?
 * QLines, Quest
 * ResNorm
 * TimeSlice

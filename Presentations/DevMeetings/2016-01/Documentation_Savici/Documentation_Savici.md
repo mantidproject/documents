@@ -10,17 +10,28 @@
 # 2. What is Mantid? How do I start?
 
 * We have some tutorials, but it might not be relevant to most users
+
 --
+
 * Should create a "Starting with Mantid" that should tell the users 
-- what is the difference between MantidPlot and the Framework
+
+  - what is the difference between MantidPlot and the Framework
+
 --
-- quick description of what a workspace is, what it contain
+
+  - quick description of what a workspace is, what it contains
+
 --
-- talk about user interfaces (should be links to technique specific ones)
+
+  - talk about user interfaces (should be links to technique specific ones)
+
 --
-- point to tutorials for python in Mantid, MantidPlot, etc
+
+  - point to tutorials for python in Mantid, MantidPlot, etc
+
 --
-- Very important: where can I find more help?
+
+  - Very important: where can I find more help?
 
 ---
 # 3. What does this thing do?
