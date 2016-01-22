@@ -1,7 +1,7 @@
 Minutes
 -------
 
-* Geometry
+* [Geometry](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/requirements-v2.md)
 * Report from the PMB
 * The mantid project needs to improve its public relations (Draper/Peterson)
 * Pull requests [add checklist](http://www.mantidproject.org/Git_Workflow#Pull_Requests) - MaryPoppins(?) (Gigg)
