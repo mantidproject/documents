@@ -120,7 +120,7 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 * Since to determine the actual position of a component, you need to walk the entire component tree, to accumulate relative offsets, `getPos()` uses a cache which stores the absolute position of the immediate parent component, so that the entire tree does not need to be traversed each time a position is required (m_map->getCachedLocation()).
 * The map does still need to be searched each time via `this->getRelativePosition()` and this may be an expensive lookup.
 
-
-
+##Notes##
+* This is viewed as a completely rewrite of geometry and will live side-by-side (separate directories etc) with version 1 and phased in.
 
 
