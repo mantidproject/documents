@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Dynamic Factory Pitfalls</title>
+
+	<meta name="description" content="Lightning Talks">
+	<meta name="author" content="Owen Arnold">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Dynamic Factory Pitfalls</h1>
+					<h3>What they are and how to avoid them</h3>
+					<p>
+						<small>Author <a href="https://github.com/OwenArnold">Owen Arnold</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What is the DynamicFactory?</h2>
+					<p>
+					A &ldquo;Factory&rdquo; type encapuslating a map where values are of type <i>AbstractFactory</i> and keys are of type <i>std::string</i>	
+					</p>
+					<img src="image/book.jpg"></img>
+				</section>
+
+				<section data-markdown>		
+					<script type="text/template">
+						### What is the DynamicFactory?
+
+						This is what the map looks like
+						```cpp
+						std::map<std::string, AbstractFactory*, Comparator>;
+						```
+						The AbstractFactory is declared like this
+						
+						```cpp
+						typedef AbstractInstantiator<Base> AbstractFactory;  
+						```
+					</script>
+				</section>
+
+				<section data-markdown>		
+					<script type="text/template">
+						### What is the DynamicFactory?
+
+						This is how new types are registerd
+						
+						```cpp
+						  template <class C> 
+						  void subscribe(const std::string &className) {
+						  	subscribe(className, new Instantiator<C, Base>);
+						  }
+						```
+					</script>
+				</section>
+
+				<section data-markdown>		
+					<script type="text/template">
+						### What is the DynamicFactory?
+
+						`AbstractInstantiator` provides a factory method 
+						```cpp
+						template <typename Base>
+						class  AbstractInstantiator  {
+						  public:
+						  virtual boost::shared_ptr<Base> createInstance() const = 0;
+						};
+
+						```
+						A concrete `Instantiator` is used everywhere.  Providing `C` "is a" `Base`
+						```cpp
+						template <typename C, typename Base>
+						class Instantiator : public AbstractInstantiator<Base> {
+						  public:
+						  boost::shared_ptr<Base> createInstance() const {
+						    boost::shared_ptr<Base> ptr(new C);
+						    return ptr;
+						  }
+						};
+						```
+					</script>
+				</section>
+
+				<section>
+					<h2>Why are they so useful?</h2> 
+					
+					<ul>
+						<li>Easiy accessible global map</li>
+						<li>Stores light weight proxies to our Product type</li>
+						<li>Very easy to register new Products</li>
+						<li>Gives the illustion of compile time subscription</li>
+						<li>Products from User Dynamically Loaded Libraries can be registered into the DynamicFactory </li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Problem #1</h2> 
+					<h3>Designing around DynamicFactories Requires side-effects</h3>
+					<p>
+						Direct access to singletons prevents IOC. 
+					</p>
+				</section>
+
+				<section>
+					<h2>Problem #2</h2> 
+					<h3>DynamicFactories have their own lifetime</h3>
+					<p>
+				    Most implementations such as <i>AlgorithmFactory</i> encloses the <i>DynamicFactory</i> in a <i>SingletonHoder</i>.
+					</p>
+					<ul>
+						<li>Violates the &ldquo;Single Responsibility&rdquo; principle</li>
+						<li>Ties lifetime of DynamicFactory to the lifetime of the application</li>
+						<li>Doesn't seem necessary to have one instance in lots of cases</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Problem #3</h2> 
+					<h3>All factory products are corruptable (Part 1)</h3>
+				    <p>All factory products created via the Instatiators are corruptable by design.</p>
+				    <pre><code class="c++" data-trim contenteditable>
+virtual Base *createUnwrappedInstance() const {
+  return static_cast<Base *>(new C);
+}</code>
+					</pre>
+					<ul>
+						<li>
+							Client has to know about &ldquo;Temporal Coupling&rdquo; 
+						</li>
+						<li>
+							DynamicFactory products are corrupt until you fix them up
+						</li>
+						<li>
+							Weakens enapsulation
+						</li>
+						<li>
+							Ties API of &ldquo;Things we want to make&rdquo; to mechanism for creating them
+						</li>
+						<p> 
+							<i>
+								Not strictly true that Products must have a default constructor, but Never done otherwise in the codebase.
+							</i>
+						</p>
+					</ul>
+				</section>
+
+
+				<section data-markdown>		
+					<script type="text/template">
+						### Problem #3
+						#### All factory products are corruptable (Part 2)
+
+						Actual code from a `Product` of a DynamicFactory in master mantid code base
+						```cpp
+						  // WARNING!!!! THESE METHODS ARE USED BEFORE INITIALIZE IS EXECUTED SO THEY
+						  // CAN NOT RELY ON THE CONTENTS OF THE CLASS (THEY ARE VIRTUAL STATIC METHODS)
+						  /** return the number of dimensions, calculated by the transformation from the
+						     workspace.
+						     Depending on EMode, this numebr here is either 3 or 4 and do not depend on
+						     input workspace*/
+						  unsigned int
+						  getNMatrixDimensions(Kernel::DeltaEMode::Type mode,
+						                       API::MatrixWorkspace_const_sptr Sptr =
+						                           API::MatrixWorkspace_const_sptr()) const;
+						```
+					</script>
+				</section>
+
+
+
+
+
+				<section>
+					<h2>Problem #4</h2> 
+					<h3>All factory comparisons must be string based</h3>
+				
+					<p>
+						No support for complex comparison. It's just a map.
+					</p>
+
+				</section>
+
+				<section>
+					<h2>Alternative #1</h2> 
+					<h3>Vote Based Construction</h3>
+				    <p>
+						Factories and Products are fully separated concepts. Allows discovery of best factory match. Does not involve Temporal Coupling. Complex matching is possible considering all possible alternatives. 
+					</p>
+					<p>
+						<i>IFileLoader</i> mechanism loosely based upon this.
+					</p>
+				</section>
+
+				<section>
+					<h2>Alternative #2</h2> 
+					<h3>Chain of Responsibility</h3>
+				
+					<p>
+						<i>ChainableFactory</i> uses the GOF &ldquo;Chain of Repsonsibility&rdquo; to daisy-chain successive possible Factories. Factories are fully separated from Products. Complex matching is possible. It does not introduce Temporal Coupling, and does not involve a Singleton. 
+					</p>
+				</section>
+
+				<section>
+					<h2>Alternative #3</h2> 
+					<h3>GOF Creational Patterns</h3>
+				
+					<p>
+						No template or macro magic. Standard OO patterns that have stood the test of time. Are you familar with them?
+
+                        <ul>
+                        	<li>Factory Method</li>
+                        	<li>Abstract Factory</li>
+                        	<li>Builder</li>
+                        	<li>Virtual Constructor</li>
+                        </ul>
+						<a href="https://en.wikipedia.org/wiki/Design_Patterns#Creational">https://en.wikipedia.org/wiki/Design_Patterns#Creational</a>
+					</p>
+				</section>
+
+
+				
+
+
+
+				
+
+				
+
+				
+
+
+
+
+	
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+			</script>
+
+		</body>
+		</html>

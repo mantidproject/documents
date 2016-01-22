@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:project xmlns:ns2="http://www.nebulon.com/xml/2004/fddi" xmlns:ns3="net.sourceforge.fddtools.fddi.extension">
+    <name>DPDF</name>
+    <ns2:aspect>
+        <name>Background Removal Tool</name>
+        <info>
+            <subjectName>&lt;Edit Subject Name&gt;</subjectName>
+            <activityName>&lt;Edit Activity Name&gt;</activityName>
+            <featureName>&lt;Feature Name&gt;</featureName>
+            <milestoneName>&lt;Milestone Name&gt;</milestoneName>
+            <milestoneInfo effort="5">
+                <name>Domain Walkthrough</name>
+            </milestoneInfo>
+            <milestoneInfo effort="25">
+                <name>Design</name>
+            </milestoneInfo>
+            <milestoneInfo effort="5">
+                <name>Design Inspection</name>
+            </milestoneInfo>
+            <milestoneInfo effort="40">
+                <name>Code</name>
+            </milestoneInfo>
+            <milestoneInfo effort="20">
+                <name>Code Inspection</name>
+            </milestoneInfo>
+            <milestoneInfo effort="5">
+                <name>Promote to Build</name>
+            </milestoneInfo>
+        </info>
+        <subject>
+            <prefix>&lt;Edit Prefix&gt;</prefix>
+            <name>Fourier Transform</name>
+            <activity>
+                <name>gQE Viewer</name>
+                <ns2:progress count="0" completion="0"/>
+            </activity>
+            <activity>
+                <name>grE Viewer</name>
+                <ns2:progress count="0" completion="0"/>
+            </activity>
+            <ns2:progress count="0" completion="0"/>
+        </subject>
+        <subject>
+            <prefix></prefix>
+            <name>Background Removal Tool</name>
+            <activity>
+                <name>Fit Tools</name>
+                <ns2:progress count="0" completion="0"/>
+            </activity>
+            <activity>
+                <name>Slice Selector</name>
+                <feature seq="7">
+                    <name>invoque slice-selector from interfaces-menu</name>
+                    <initials></initials>
+                    <milestone planned="2016-01-10-05:00" actual="2016-01-10-05:00" status="complete"/>
+                    <milestone planned="2016-01-11-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-11-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-18-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-21-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-23-05:00" status="notstarted"/>
+                    <ns2:progress count="0" completion="5"/>
+                </feature>
+                <feature seq="8">
+                    <name>load reduced-data in slice-selector</name>
+                    <initials></initials>
+                    <milestone planned="2016-01-24-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-26-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-26-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-30-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-02-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-05-05:00" status="notstarted"/>
+                    <ns2:progress count="0" completion="0"/>
+                </feature>
+                <feature seq="52">
+                    <name>select slice from table-display</name>
+                    <initials></initials>
+                    <milestone planned="2016-02-06-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-08-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-08-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-11-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-13-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-15-05:00" status="notstarted"/>
+                    <ns2:progress count="0" completion="0"/>
+                </feature>
+                <feature seq="53">
+                    <name>select slice from 2d-display</name>
+                    <initials></initials>
+                    <milestone planned="2016-02-16-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-18-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-18-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-21-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-23-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-25-05:00" status="notstarted"/>
+                    <ns2:progress count="0" completion="0"/>
+                </feature>
+                <feature seq="54">
+                    <name>invoque fit-tools for selected-slice</name>
+                    <initials></initials>
+                    <milestone planned="2016-02-26-05:00" status="notstarted"/>
+                    <milestone planned="2016-02-28-05:00" status="notstarted"/>
+                    <milestone planned="2016-03-01-05:00" status="notstarted"/>
+                    <milestone planned="2016-03-03-05:00" status="notstarted"/>
+                    <milestone planned="2016-03-05-05:00" status="notstarted"/>
+                    <milestone planned="2016-03-07-05:00" status="notstarted"/>
+                    <ns2:progress count="0" completion="0"/>
+                </feature>
+                <ns2:progress count="0" completion="1"/>
+            </activity>
+            <ns2:progress count="0" completion="0"/>
+        </subject>
+        <ns2:progress count="0" completion="0"/>
+    </ns2:aspect>
+    <ns2:aspect>
+        <name>Reduction</name>
+        <info>
+            <subjectName>&lt;Edit Subject Name&gt;</subjectName>
+            <activityName>&lt;Edit Activity Name&gt;</activityName>
+            <featureName>&lt;Feature Name&gt;</featureName>
+            <milestoneName>&lt;Milestone Name&gt;</milestoneName>
+            <milestoneInfo effort="5">
+                <name>Domain Walkthrough</name>
+            </milestoneInfo>
+            <milestoneInfo effort="25">
+                <name>Design</name>
+            </milestoneInfo>
+            <milestoneInfo effort="5">
+                <name>Design Inspection</name>
+            </milestoneInfo>
+            <milestoneInfo effort="40">
+                <name>Code</name>
+            </milestoneInfo>
+            <milestoneInfo effort="20">
+                <name>Code Inspection</name>
+            </milestoneInfo>
+            <milestoneInfo effort="5">
+                <name>Promote to Build</name>
+            </milestoneInfo>
+        </info>
+        <subject>
+            <prefix>&lt;Edit Prefix&gt;</prefix>
+            <name>Subject</name>
+            <activity>
+                <name>Activity</name>
+                <ns2:progress count="0" completion="0"/>
+            </activity>
+            <ns2:progress count="0" completion="0"/>
+        </subject>
+        <ns2:progress count="0" completion="0"/>
+    </ns2:aspect>
+    <ns2:progress count="0" completion="0"/>
+</ns2:project>

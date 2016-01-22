@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\title{Operations involving normalized quantities}
+\author{Andrei T. Savici}
+\maketitle
+
+\begin{abstract}
+This document tries to explain the way to apply different operations to data sets that are (or should be) normalized.
+\end{abstract}
+
+\section{Introduction}
+We start with the definition of differential scattering cross section:
+\begin{equation}\label{master}
+\frac{d \sigma}{d \Omega}=\frac{\sum_{i}N_{i} }{\sum_{i}(\Phi_{i}d\Omega_{i})}.
+\end{equation}
+There can be multiple detectors or experimental configurations (noted by index $i$), that can measure $N_i$ neutrons in a given region of reciprocal space ($d{\bf Q}$). Each different combination of detector+experimental configuration corresponds to a different $i$ index. $\Phi_i$ is the part of the incident neutron flux that can contribute to scattering in $d{\bf Q}$, $d \Omega_i$ is the solid angle of the detector.
+
+We are going to call $d \sigma / d \Omega$ a normalized quantity, $N_i$ is un-normalized data (or just data), and $\Phi_{i}d\Omega_{i}$ the norm. Equation \ref{master} becomes then:
+\begin{equation}\label{simplified}
+Normalized=\frac{\sum_{i} Data_i}{\sum_{i} Norm_i}
+\end{equation}
+ 
+We can apply the same procedure for double differential cross section, for the case of inelastic scattering.
+
+To understand how to apply equation \ref{simplified} to different operations involving different quantities, we are going to use the following two principles:
+{\bf
+\begin{enumerate}
+\item If we measure the same physical quantity in two measurements, we add the un-normalized data together, we add the norms together, and then divide.
+\item If we measure different physical processes, we work with normalized quantities
+\end{enumerate}
+}
+
+In certain particular cases, principle 2 can yield the same result as principle 1. If this happens, we can use either procedure, depending on which is easier to implement.
+
+\section{Examples}
+\subsection{Time independent background (TIB) subtraction for inelastic scattering}
+Since we measure different physical quantities, we should apply principle 2. However, this is one particular case when we can modify the data, since TIB is measured in the same conditions as the data.
+\begin{align}
+Quantity&=NormalizedData-NormalizedTIB\\
+&=\frac{\sum_{i} Data_i}{\sum_{i} Norm_i}-\frac{\sum_{i} DataTIB_i}{\sum_{i} Norm_i}\\
+&=\frac{\sum_{i} Data_i-DataTIB_i}{\sum_{i} Norm_i}
+\end{align}
+
+\subsection{Measured background subtraction}
+If we measure an empty can background, we should apply principle 2. 
+However, people fake the background to be ``measured'' in the same conditions as the data by applying the same rotations, lattice parameters and orientations as the data, and by scaling to the same incident flux.
+
+\begin{align}
+Quantity&=NormalizedData-NormalizedBkg\\
+&=\frac{\sum_{i} Data_i-DataBkg_i \frac{\Phi_i}{\Phi_{bkg}}}{\sum_{i} Norm_i}
+\end{align}
+
+This changes the weight of the background in some places, so it is not correct. It should be done only when background is measured with much more statistical weight than the data.
+
+\subsection{Transforming differential cross section to scattering function}
+Scattering function is a normalized quantity that represents the sample, so we should use principle 1.
+\begin{equation}
+S=\frac{\sum_{i} \frac{k_i}{kf} Data_i}{\sum_{i} Norm_i}
+\end{equation}
+
+\subsection{Symmetrization}
+We ``measure'' the same physical quantity, so we apply principle 1.
+
+\begin{equation}
+S=\frac{\sum_{i} Data_i +\sum_j SymmetryzedData_j}{\sum_{i} Norm_i + \sum_j SymmetrizedNorm_j}
+\end{equation}
+
+A quick note: for direct inelastic scattering, if we start from histograms in energy, and we follow the MSlice/Horace procedure (which is wrong according to principle 1, unless we measure with equivalent detectors for the exact same incident flux), the norm is given by the number of energy bins from the original data that contribute to scattering in $d{\bf Q} dE$. $Data_i$ is the value stored in such a bin. By symmetrizing the coordinates of these bins, we do not change the normalization attached to them, so in Mantid we can use BinMD algorithm, which will keep track of the number of MD events. If however we do a correct normalization, the symmetry operation might not transform the $d{\bf Q} dE$ regions into regions of the original grid, so the norma must be recomputed. For example, suppose that I have a 6 fold symmetry around a certain Q1 axis. A rotation by 60$^\circ$ around Q1 will transform an axis aligned rectangle in Q2,Q3 plane into a rectangle that is tilted at 60$^\circ$ with respect to the axes. But normalization must be computed on the original grid. For BinMD, the normalization on the new grid is given by the number of MD events on a symmetry operated grid.   
+
+\end{document}

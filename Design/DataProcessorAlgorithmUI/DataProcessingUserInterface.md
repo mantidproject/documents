@@ -4,7 +4,7 @@
 
 Mantid user interfaces, while simple to create, have caused some of the largest long-term problems in Mantid. Large numbers of users interact with Mantid via technique specific interfaces. Fragility of a single UI can taint the view of the whole project. On the other hand, maintenance has consuming valuable time in development resources for little benefit to the wider project. The movement towards MVP and similar approaches have mitigated some of these problems through the introduction of fast, automated testing. There are several very successful examples of where this approach has been applied to Mantid.
 
-More recently, we developed a [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html), which has provided a neat and concise way to execute complex batch-processing via [DataProcessorAlgorithms](http://doxygen.mantidproject.org/nightly/dd/ddc/classMantid_1_1API_1_1DataProcessorAlgorithm.html). This was developed using our experience of the *MVP Passive View* approach. IOC has allowed us to impement some powerful and reusable features, such as Auto-completing option selection, Data searching/loading, Reduction settings loading, and pre and post-processing reduction in a way that does not strongly tie us into a given solution, or even to a specific techinque area.
+More recently, we developed a [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html), which has provided a neat and concise way to execute complex batch-processing via [DataProcessorAlgorithms](http://doxygen.mantidproject.org/nightly/dd/ddc/classMantid_1_1API_1_1DataProcessorAlgorithm.html). This was developed using our experience of the *MVP Passive View* approach. IOC has allowed us to implement some powerful and reusable features, such as Auto-completing option selection, Data searching/loading, Reduction settings loading, and pre and post-processing reduction in a way that does not strongly tie us into a given solution, or even to a specific techinque area.
 
 Many technique areas have now developed DataProcessorAlgorithms, as this is now the accepted solution to the workflow algorithm problem. Several technique areas are now asking for similar functionality, and **it makes long-term sense to generalize what has been done in [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) to avoid the maintenace effort drain we see involved in looking after specific UIs**.
 
@@ -19,17 +19,61 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 * Linked to the above. We now have the ability to generate electronic notebooks via [GenerateIPythonNotebook](http://docs.mantidproject.org/nightly/algorithms/GenerateIPythonNotebook-v1.html). This feature has already been built into [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html)
 * Hooks for pre and post processing available much like the operation of [StartLiveData](http://docs.mantidproject.org/nightly/algorithms/StartLiveData-v1.html)
 
+##Target User Interfaces and Technique Areas##
+We believe that the following Technique areas would benefit from this design. There are likely to be many more areas that would benefit.
+
+| Tehnnique        | Facility           | Reasons Why  |
+| ------------- |:-------------:| -----:|
+|  Reflectometry    | ISIS | Already have a well-tested precursor of this design. But would benefit from common code and shared effort.  |
+|  SANS   | ANSTO      |  Want batch mode processing of SANS data |
+|  SANS   | ISIS      |  Have batch mode processing, but it's very basic, and are now talking about embedding python scripts into their csv batch table, to get around the lack of the `Options column. See below` |
+| Powder | SNS | See justification below in selected use cases|
+| SCD | SNS | See justification below in selected use cases |
+
 ##Requirements##
 
-1. Should require minimal inputs to get things going. The DataProcessor algorithm should be the only required input.
+**Must Haves**
+
+1. Should require minimal inputs to get things going. The DataProcessor algorithm name and WhiteLists should be the only required inputs.
 1. Should be exposed to python
 1. Should allow imports of existing table data as a ITableWorkpsace
 1. Should allow saving of table data as a ITableWorkspace
 1. Should allow optional hook for execution of row/run pre-processing such as is done [here](https://github.com/mantidproject/mantid/blob/master/MantidQt/CustomInterfaces/src/ReflMainViewPresenter.cpp#L545)
 1. Should allow optional hook of row/run post-processing such as is done [here](https://github.com/mantidproject/mantid/blob/master/MantidQt/CustomInterfaces/src/ReflMainViewPresenter.cpp#L705:L717), albeit not well extracted at this time.
 1. Should allow for treatment of *Grouped rows* or some other post-processing grouping.
-1. Should allow blacklisting of DataProcessingAlgorith properties.
-1. Should allow for renaming of column headings in the table, where the algorithm property names are not a good fit.
+1. Should have property mapping behaviours
+ 1. Should allow blacklisting of DataProcessingAlgorithm properties so that they can Never be specified.
+ 1. Should allow for white listing for *Optional* column. 
+ 1. Should allow for white listing for *Table* columns. Properties that will appear as table entries. Mandatory mapping must be provided.
+1. Should have indirection between the `Presenter` and the `AlgorithmManager` via an `AlgorithmRunningService` not done in the current layout such that other ways of running the algorithm in the future (such as batch processing) via a job submission service could be supported. `AlgorithmRunningService` must be injectable.
+1. Should have a way of brining in settings information that can not be derived from the other inputs. Such information would be added to *Hidden* table columns (in the gui), or most likely the Options column, so that exported ITableWorkspaces are self-contained.
+2. 
+
+**Should Haves**
+
+1. Should have property mapping behaviours. Should allow for white listing for *Common Settings* area (Properties that are fixed for all reductions)  
+1. Should allow for processing rows via remote launching
+1. Should be easy to opt-in to parts of the above toolkit without having to implement everything. There should be default *behaviours* pre-configured. For example a `NullTransferStrategy` because transfers are going to be technqiue area specific. Another example might be that the `AlgorithmRunningService` is configured to use some `AlgorithmManagerVariant`
+1. Should not assume that the AlgorithmRunningService is synchronous. Async behaviour is likely to be introduced, so would be best if the interface was set up to allow polling, or publish-subsribe notifications for completion.
+
+**Could Haves (Future considerations)**
+
+When it comes to batch processing variants. `AlgorithmRunningService`. We need a way to distribute the items in the table to acheive a good load-balancing. The problem comes with acheiveing post-processing on the server side. Post processing does not preclude inter-row dependencies. One way get around this would be to distribute according to equivalent group number. Another way would be to perform all post-processing on the client side.
+ 
+
+##Selected Use cases##
+
+1. `SNSPowderReduction` could benefit greatly from this as when users want to re-reduce they want to change a couple of parameters and re-reduce the whole experiment. Things that make this interesting:
+  * There is a CharacterizationsFile which contains much of the information that could be used for filling in the table. Currently the information is brought (mostly) into a TableWorkspace via [PDLoadCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDLoadCharacterizations-v1.html) and then the correct row is selected with [PDDetermineCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDDetermineCharacterizations-v1.html). The user has the option to override the values found this way, but it gives a very good start.
+  * Many of the parameters are common to the whole experiment's reduction (calibration file, final binning, output file formats, etc). The solution should have the ability to have an area for setting these common parameters, rather than forcing them to appear in every row.
+2. For Single Crystal Diffraction (XSD) there is some amount of "twiddling" before reducing each of the individual goiniometer settings to a set of integrated peaks. Then the workflow requires combining all of the individual integrated peaks and finding a common UB matrix and re-indexing all of the peaks. One of the missing pieces in the current reduction, is moving parameters from the individual run to the batch run. This is currently done by hand.
+
+##Selected Use cases##
+
+1. `SNSPowderReduction` could benefit greatly from this as when users want to re-reduce they want to change a couple of parameters and re-reduce the whole experiment. Things that make this interesting:
+  * There is a CharacterizationsFile which contains much of the information that could be used for filling in the table. Currently the information is brought (mostly) into a TableWorkspace via [PDLoadCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDLoadCharacterizations-v1.html) and then the correct row is selected with [PDDetermineCharacterizations](http://docs.mantidproject.org/nightly/algorithms/PDDetermineCharacterizations-v1.html). The user has the option to override the values found this way, but it gives a very good start.
+  * Many of the parameters are common to the whole experiment's reduction (calibration file, final binning, output file formats, etc). The solution should have the ability to have an area for setting these common parameters, rather than forcing them to appear in every row.
+2. For Single Crystal Diffraction (XSD) there is some amount of "twiddling" before reducing each of the individual goiniometer settings to a set of integrated peaks. Then the workflow requires combining all of the individual integrated peaks and finding a common UB matrix and re-indexing all of the peaks. One of the missing pieces in the current reduction, is moving parameters from the individual run to the batch run. This is currently done by hand.
 
 ##Current Structure##
 
@@ -59,15 +103,95 @@ Many technique areas have now developed DataProcessorAlgorithms, as this is now 
 The high-level solution involves refactoring and further generalizing the Reflectometry Reduction Interface into a **Data Processor User Interface**.
 
 **Key solution features**
-* The bulk of the solution will be about generating a `QWidget` subclass called `DataProcessorAlgorithmWidget`  
-* `DataProcessorAlgorithmWidget`  will take the name of the `DataProcessorAlgorithm` as one of its construction arguments
-* The `DataProcessorAlgorithmWidget` will provide virtual functions for overriding a `preProcess` and `postProcess` 
-* We also need a way to customise the output table in circumstances that direct mapping between `DataProcessorAlgorithm` properties and the viewable batch Table do not make sense. Currently `QReflTableModel` is specifically set up to do this for the `ReflectometryReductionOneAuto` DataProcessorAlgorithm.
+* The deliverable will be a `QWidget` subclass called `DataProcessorAlgorithmWidget`. This widget provides table and table editing features. Visually, the widget will provide a graphical interface similar to the one currently provided for ISIS reflectometry data processing:
+
+![refl_table](http://docs.mantidproject.org/nightly/_images/ISIS_Reflectometry_(Polref)_groupProcessPane_widget.png) 
+
+* Clients provide a `DataProcessorPresenter` 
+* This `DataProcessorPresenter` defines how the batch reduction occurs
+* `Presenter` and related types are customizable both on the python and c++ side.
 
 
-##Questions##
-
-1. [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) has a nice mechanism for importing workspaces. It attempts to resolve the input either as a workspace, or as a file, and will add together listed runs separted by a `+`. Is this generic enough? Do we wish to further expand pre-processing steps?
-2. Exactly how much of the [Reflectometry Reduction Interface](http://docs.mantidproject.org/nightly/interfaces/ISIS_Reflectometry.html) do we want to provide? Not all menus are needed. For example SlitCalculator is very specific. However Addition, deletion of row etc. Makes a lot of sense. What about the ICAT import?
+##Solution Details##
 
 
+
+* `DataProcessorAlgorithmWidget`  will be the concrete form of a `DataProcessorAlgorithmView`
+* The `DataProcessorAlgorithmWidget` will accept an abstract `DataProcessorPresenter`
+* Double dispatch via a visitor setup, will be used to register the `DataProcessorAlgorithmView` and `DataProcessorPresenter` together
+* A `GenericDataProcessorPresenter` will be provided and will cover the majority of the use-cases.
+* The `GenericDataProcessorPresenter` will take behaviours as arguments.
+
+**Key Principles**
+* All behaviours are injectable. Each behaviour is defined as a new axis for change. No template methods.
+* The `DataProcessorPresenter` interacts with the view via the `DataProcessorAlgorithmView` never the concrete subtypes of the view.
+* Aside from the Visitor `accept` method on the view and `DataProcessorPresenter`, The `DataProcessorPresenter` takes all other arguments constructor arguments. This is particularly true of the behaviours.
+* Where a behaviour cannot have a sensible defualt. A `NullObject` implementation must be created.
+* Each `DataProcessorAlgorithmView` may only notifiy the `DataProcessorPresenter` about a change via a `notify(Flag)`. Otherwise it does not interact with any other aspect of the framework.
+
+**Desired Principles**
+* The first implementation of the framework should set to replace/refactor the ReflMainViewPresenter and related views. This would be the fastest way to prove the framework.
+* Concrete views should be implemented at the last possible moment in the development lifecycle. Early creation of the views will tend to act as a inferior proxy for proper unit testing.
+
+###Low Level Design (subject to change)###
+**Presenter Inputs**
+
+| Input        | Type | Mandatory  | Notes |      
+| ------------- |:-------------:|-------------:|-------------:|
+| DataProcessorAlgorithm | string | yes | |
+| WhiteList | map<string, string> | yes | Defines table columns. key is algorithm property name, value is column name in table | 
+| BlackList | vector<string> | no | Properties blacklisted from Options Column |
+| PreProcess* | PreProcessStep** | NullObject | |
+| PostProcess* | PostProcessStep** | NullObject | |
+
+*This is a behaviour
+**An abstract type with a concrete implementation done as Type2Type for type safety.
+
+
+**Example: Simple Use Case In Python - Defaults for All**
+```python
+# Minimal use case.
+presenter = GenericDataProcessorPresenter(data_processor_algorithm='ReflectometryReductionOne', property_white_list=['InputWorkspace', 'InputTheta'])
+self.layout().addWidget(DataProcessorAlgorithmWidget(presenter));
+# Table with 4-columns and the standard editing features added. Group and Options are added to the above. All other properties can be modified via the OptionsColumn.
+```
+
+**Example: Complex Use Case In Python - Lots of Customization**
+```python
+
+pre_process = {'algorithm':'LoadAndAdd', 'column_name':'Runs(s)', 'direct_output_to':'InputWorkspace'}
+post_process_groups{'algorithm':'Stitch1D', 'directed_input_from':'OutputWorkspaces'} # This is what I'm going to do with thing's I have grouped.
+white_list = {'Angle':'InputTheta', 'WavMin':'WavelengthMinimum'} # I don't want to call my columns the same thing as my property names.
+black_list = ['OutputWorkspaceWavelength'] # Things I never want to specify
+
+
+presenter = GenericDataProcessorPresenter(data_processor_algorithm='ReflectometryReductionOne', property_white_list=white_list, pre_process_step=pre_process, post_process_step=post_process, property_black_list=black_list)
+self.layout().addWidget(DataProcessorAlgorithmWidget(presenter));
+# Table with 3-columns and the standard editing features added. All other properties can be modified via the OptionsColumn.
+```
+
+###Implemenation steps###
+
+It would be fastest and most accurate to implement this framework via a refactoring of the existing Reflectometry User Interface. Green-field development should then follow targeting the technique areas already highlighted.
+
+The following is a suggested implementation path via the exisiting Reflectometry User Interface. **In all steps we can verify that there is no external change in functionality**. We **Must also ensure that tests are modified and put in place as we go along.**
+
+1. Split the interaface `ReflMainView` into `ReflMainView` and a new `ReflTableView`. `ReflTableView` will have a subset of the exising `ReflMainView` responsibilities. Have `QReflMainView` implement both abstractions.
+2. Split the `ReflMainViewPresenter` into `ReflMainViewPresenter` and `ReflTableViewPresenter`. The ReflMainView presenter should work with the `ReflTableView` and take a subset fo the functionality from the existing `ReflMainViewPresenter`
+3. Create a QWidget that implements `ReflTableView` called `QReflTableView`. The parent of the `QReflTableView` should be the `QReflMainView`. You should now be able to new-up a `QReflTableView` independently from the `QReflMainView`.
+4. Refactor `ReflTableViewPresenter` so that it creates and configures the DataProcessingAlgorithm completely via it's arguments. Then rename it to `GeneralDataProcessorPresenter`. The `GeneralDataProcessorPresenter` should contain nothing that is reflectometry specific. This will also mean abstracting the post processing and pre processing steps.
+5. Make `GeneralDataProcessorPresenter` take all arguments a abstract behaviours.
+6. Move `GeneralDataProcessorPresenter`, the views and the behaviours into the MantidQtAPI package.
+7. Expose the `GeneralDataProcessorPresenter`, the views and the behaviours via SIP.
+8. Use the new framework to implement DataProcessorAlgorithm batch processing for other technqiue areas as a proof of concept.
+
+
+##Prototyping##
+
+**Notes from Owen**
+
+I've checked that sip exports of c++ QtObject base classes will behave as we expect on the python side. 
+
+One problem that we will encounter is how to get sip and boost python exported representations to play together. The situations in which this would occur are where we want ot provide a custom `preProcess` and `postProcess` step, where by we need the ability to receive and modify workspaces, and run algorithms. I propose that a solution to this would be for the preProcess and postProcess steps to return the name of `Algorithms` that the algorithm manager on the c++ side could create and execute on their behalf. The API for these Algorithms would need to be fixed, and well tested to prevent runtime-issues.
+
+Approved [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md)
