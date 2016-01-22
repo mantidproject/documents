@@ -30,6 +30,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
 * Ability to flag components as 'off'
 * We should be able to still load version 1
+* L1 should not be required (ILL instruments)
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
@@ -124,5 +125,9 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 
 ##Notes##
 * This is viewed as a completely rewrite of geometry and will live side-by-side (separate directories etc) with version 1 and phased in.
+
+##Initial Steps##
+
+##Milestones##
 
 
