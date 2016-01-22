@@ -6,6 +6,7 @@ Arnold, Campbell, Draper, Gigg, Heybrock, Peterson, Wedel
   * ISIS Gigg, Pouzols
   * ORNL Hahn, Peterson, Savici
 * ParaView 5.0
+* Mantid web interface
 * External dependencies (QT, GSL, Python3)
 * Supported platforms (drop OSX Mavericks;  would like to drop RHEL6; add OSX Yosemite and Ubuntu 16.04)
 * (Instrument) Geometry
