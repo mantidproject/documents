@@ -1,6 +1,6 @@
 Mantid Technical Steering Committee Report to PMB
 =================================================
-Arnold, Campbell, Draper, Gigg, Heybrock, Peterson, Wedel
+
 * Membership
   * ESS Arnold, Heybrock, Wedel
   * ISIS Gigg, Pouzols
