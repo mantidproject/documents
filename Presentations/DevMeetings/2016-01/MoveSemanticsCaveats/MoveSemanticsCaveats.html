@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Move Semantics: Some things to consider</title>
+		<title>Some things to consider when using move semantics</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -40,8 +40,7 @@
 			    <!-- ###################################################################
 				     ##################################################################-->
 				<section data-markdown>
-					##Move Semantics:
-					###Some things to consider
+					###Some things to consider when using move semantics
 					<br>
 					<br>
 					<br>
@@ -53,51 +52,11 @@
 				<!-- ##################################################################
 				     ##################################################################-->
 				<!-- Recap move semantics -->
-				<section>
 				<section name ="recap_move_semantics">
-					<h2>Move semantics in a nutshell</h2>
-						<div class="fragment">
-						<pre><code class="cpp" data-trim contenteditable>
-Foo getSource() {
-...
- return source;
-}
-...
-Foo destination = getSource();
-						</code></pre>
-						</div>
-						<div class="fragment">
-						<!-- Copy assignment operation -->
-							<img src="copy_operation.png" width="50%" height = "50%" style="background:none; border:none; box-shadow:none;">
-						<pre><code class="cpp" data-trim contenteditable>
-Foo& operator=(const Foo& other)
-						</code></pre>	
-						</div>
-				</section>	
-				
-				<section name ="recap_move_semantics">
-					<h2>Move semantics in a nutshell</h2>
-						<div>
-						<pre><code class="cpp" data-trim contenteditable>
-Foo getSource() {
-...
- return source;
-}
-...
-Foo destination = getSource();
-						</code></pre>
-						</div>
-						<div>
-						<!-- Move assignment operation -->
-							<img src="move_operation.png" width="50%" height = "50%" style="background:none; border:none; box-shadow:none;">
-						<pre><code class="cpp" data-trim contenteditable>
-Foo& operator=(Foo&& other)
-						</code></pre>	
-						</div>			
-				</section>
-				<section>
-					<img src="moder_effective_cpp.jpg" height="42%" width="42%" style="background:none; border:none; box-shadow:none;">
-				</section>
+					<h2>Move semantics 101</h2>
+					<div class = "fragment">
+						<img src="moder_effective_cpp.jpg" height="42%" width="42%" style="background:none; border:none; box-shadow:none;">
+					</div>
 				</section>
 	
 				<!-- ##################################################################
@@ -110,37 +69,34 @@ Foo& operator=(Foo&& other)
 					<div align="left">
 					<code>std::move</code>
 					</div>
-					<img src="move_operation.png" width="50%" height = "50%" style="background:none; border:none; box-shadow:none;">
-					</div>
-					<ul>
-						<div class="fragment"><li>is unspecified</li></div>
-						<div class="fragment"><li>variables which had <code>std::move</code> applied to it, should be treated as "dead"</li></div>
-					</ul>
-					</section>	
-					<section>
-					<div align="left">
-					Example:
 					<pre><code class="cpp" data-trim contenteditable>
-std::unique_ptr&ltFoo&gt foo1(new Foo);
+std::unique_ptr&ltFoo&gt source(new Foo);
 ...
-std::unique_ptr&ltFoo&gt foo2 = std::move(foo);
-...
-foo1-&gtdoSomething(); // Error, foo1 is equal to nullptr
+std::unique_ptr&ltFoo&gt destination = std::move(source);
 					</code></pre>
 					</div>
-					</section>
+					<div class="fragment">
+					<img src="move_operation.png" width="50%" height = "50%" style="background:none; border:none; box-shadow:none;">
+					</div>
+					<div align="left" class="fragment">
+					<pre><code class="cpp" data-trim contenteditable>
+...
+source-&gtdoSomething(); // Error, source is equal to nullptr
+					</code></pre>
+					</div>
+					</section>	
 				</section>
 				
 				<!-- ##################################################################
 				     ##################################################################-->
 				<section name ="special_memeber_function_generation">
 					<section>
-					<h3>2. Special member function generation</h3>		
+					<h3>2. Special member function generation</h3>
 					<div align="left">
 					<ul>
 					    <div class="fragment"><li>move-constructor + move-assignment operator</li></div>
 						<div class="fragment"><li>rule of five</li></div>
-						<div class="fragment"><li>declaration of special member functions can obstruct generation of other special memeber functions</li>
+						<div class="fragment"><li>rules have become considerably more complex</li>
 						<li>...</li></div>
 					</ul>
 					</div>
@@ -182,7 +138,7 @@ auto foo = createFoo(); // <- Copy assignment !!!
 				<section name ="unintended_conversions">
 					<section>
 					<h3>3. Unintended conversions</h3>		
-						Method overloading via lvalue and rvalue references:
+						Method overloading via rvalue references:
 						<pre><code class="cpp" data-trim contenteditable>
 class Foo {
 public:
