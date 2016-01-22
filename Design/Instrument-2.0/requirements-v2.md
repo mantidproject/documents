@@ -128,6 +128,12 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 
 ##Initial Steps##
 
+* What functions are called through Geometry. What are the questions we need to ask of the system. (Owen Arnold)
+* What questions are users/instrument scientists going to ask of the Geometry outside workspace/algorithm related calculations. Example: beam shape at component. (Owen Arnold)
+* Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
+* Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
+* Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
+
 ##Milestones##
 
-
+* Collect results from inital steps 1st March 2016.
