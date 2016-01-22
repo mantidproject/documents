@@ -1,0 +1,62 @@
+digraph G {
+        rankdir="BT"
+        splines="ortho"
+
+
+        node [
+                shape = "record"
+        ]
+
+        IComponent [     
+        ]
+        
+        ICompAssembly [
+        ]
+        
+        CompAssembly [
+        ]
+        
+        Component [
+        ]
+        
+        Instrument [
+        ]
+        
+        Detector[
+        ]
+        
+        IDetector[
+        ]
+        
+        ObjComponent[
+        ]
+      
+
+        edge [
+                arrowhead = "empty"
+                headport = "c"
+        ]
+
+        
+        ICompAssembly->IComponent
+        
+        Component->IComponent
+        
+        CompAssembly->ICompAssembly
+        
+        CompAssembly->Component
+        
+        Instrument->CompAssembly
+        
+        IObjComponent->IComponent
+        
+        ObjComponent->IObjComponent
+        
+        IDetector->IObjComponent
+        
+        Detector->ObjComponent
+        
+        Detector->IDetector
+           
+}
+
