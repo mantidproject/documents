@@ -27,6 +27,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * The current functionality lacks a way to coordinate serialization of Geometry Components. This is because the IDF format lacks a proper hierachical structure. Data Transfer Objects should have the responsiblity of serializing an in-memory gemeotry to either a binary or new xml based format.
 * The detectors at ESS will have non-negligible depth that might require more complex geometry calculations.
 * Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
+* Ability to flag components as 'off'
 * We should be able to still load version 1
 
 ##Desired##
