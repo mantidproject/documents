@@ -31,6 +31,8 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * Ability to flag components as 'off'
 * We should be able to still load version 1
 * L1 should not be required (ILL instruments)
+* Physical quantities should have a concept of units. For example positions should be convertable into different units of length.
+* The default for theta should be to provide the signed theta.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
