@@ -19,6 +19,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * The design should allow for indirect secondary (i.e. after sample) beam paths, where the detectors and components may have different positions in real and 'neutronic' space.
 * Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
 * Instrument parameter syntax should be richer, particularly when labelling and applying multiple functions to components.
+* Separation of geometry data from metadata.
 * Any new schema should be more cohesive and self-describing than the current system
 * The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requirements.
 * The design should allows for Moving instruments. This includes instruments that move between acquisition scan points and continuous motion during acquisition. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
