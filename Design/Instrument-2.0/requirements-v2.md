@@ -15,7 +15,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * The design should allow users to specify a regular topology and irregular geometry in the IDF, and create detector panels from that definition. This would be somewhat like a [vtkStructuredGrid](http://www.vtk.org/doc/nightly/html/classvtkStructuredGrid.html)
 * The design should allow fast access to L1, L2 via a Detector. Ideally without any lazy computation.
 * The design should simplify the process of directing and configuraton from the current experiment (Instrument control).
-* The design should allow for complex beam paths, where components may order themselves to create the l1 & l2.
+* The design should allow for complex beam paths, where components may order themselves to create the l1 & l2, which could be wavelength dependent
 * The design should allow for indirect secondary (i.e. after sample) beam paths, where the detectors and components may have different positions in real and 'neutronic' space.
 * Any new schema should allow for thorough validation to detect any logical errrors, for example, avoiding component collision
 * Instrument parameter syntax should be richer, particularly when labelling and applying multiple functions to components.
@@ -23,17 +23,18 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * The design should be optimized for reads, not for writes, since the former is much more frequent. See non-functional requirements.
 * The design should allows for Moving instruments. This includes instruments that move between acquisition scan points and continuous motion during acquisition. For this it might be useful to separate things into two different concepts: (1) positions/rotations of spectra/event-list (2) detectors with no position/rotation information.
 * The design should allow for **tagging** of components with an extendable list of attributes. This would include the existing detector, monitor, sample. This would avoid these tags having to be applied at the instrument level.
-* Instruments should have better concept of allowed translations. A work around to this has been found in ISIS SANS.
-* Algebra for positions based on log values should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
+* Algebra for positions based on log values (multiple) should be supported. For example setting the source height based on the incident theta log value. Currently this cannot be done without using hard-coded displacements.
 * The current functionality lacks a way to coordinate serialization of Geometry Components. This is because the IDF format lacks a proper hierachical structure. Data Transfer Objects should have the responsiblity of serializing an in-memory gemeotry to either a binary or new xml based format.
 * The detectors at ESS will have non-negligible depth that might require more complex geometry calculations.
 * Voxel detectors will spread out the events that would normally be registered in a single pixel to several voxels, potentially yielding an additional factor.
+* We should be able to still load version 1
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
+* Could be very useful as a planning tool if the instrument knows its degrees of freedom, i.e able ask question 'can I measure this h,k,l' given knowledge of how detectors can move etc.
+* If possible use standard formats (this will only work for real space) and existing tools e.g. Collada, STL(STEP file) high-level engineering language
 * In file formats, definitions should be a first-class citizen, not just a textual representation.
 * As far as possible geometry should be shared with instrument control, particularly in terms of instrument definitions.
-* It should be possible to port v1 definitions to v2.
 
 ###Moving Instruments Requirements###
 Unique use cases are:
