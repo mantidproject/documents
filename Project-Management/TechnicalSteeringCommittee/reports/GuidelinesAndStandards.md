@@ -2,15 +2,15 @@ Guidelines and standards
 ========================
 
 Here list currently missing guidelines and standards, which purpose are to  
-*	Save time for any developer, who may be new to Mantid and not located within a Mantid team environment, wanting to
- * adapt a new instrument or
- * integrate non-Mantid software with Mantid in some way or
+*	Save time for any developer, who may be new to Mantid and not located within a Mantid team environment, wants to for example
+ * add a new instrument to Mantid
+ * integrate non-Mantid software with Mantid in some way
  * simply just want to contribute to Mantid
-*	Save time of experienced Mantid team members not having to explain the above
+*	Save time for experienced Mantid team members not having to explain the above
 
 Data formats (loaders)
 ------------
-As part of adding a new instrument in Mantid, it may not be the case that an existing data loader can be used, and therefore 
+As part of adding a new instrument to Mantid, it may not be the case that an existing data loader can be used, and therefore 
 a new data loader needs to be written. 
 
 * No guidelines exist for adding a new loader to Mantid
@@ -43,4 +43,4 @@ We currently have the following documentation on this:
 * [Python GUI Control in Mantidplot](http://www.mantidproject.org/Python_GUI_Control_in_MantidPlot)
 * [Create a customized input dialog](http://www.mantidproject.org/Writing_a_CustomDialog)
 
-Perhaps majority of documentation there, and just need to be grouped together.
+Perhaps majority of documentation there. Maybe links about could benefit from being grouped together.
