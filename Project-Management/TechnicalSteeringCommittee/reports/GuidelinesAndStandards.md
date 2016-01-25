@@ -4,10 +4,10 @@ Mantid has quite a few guidelines and standards targeted developers, including c
 
 Here the aim is to list remaining areas of developer documentation that has not been covered fully or is currently missing. 
 
-The target audience is here mainly any developer who is new to Mantid and not located within a Mantid team environment.
+The target audience has an emphasis on any developer who is new to Mantid and not located within a Mantid team environment.
 
 The target purpose of adding these missing guidelines and standards are to
-*	Save time for a developer who for example wants to add a new instrument to Mantid, and want to expand/integrate with/contribute to Mantid
+*	Save time for developer who for example wants to add a new instrument to Mantid
 *	Save time for experienced Mantid team members not having to explain the above
 
 Data formats (loaders)
