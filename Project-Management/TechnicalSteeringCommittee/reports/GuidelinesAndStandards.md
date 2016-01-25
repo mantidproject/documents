@@ -1,11 +1,13 @@
 Guidelines and standards
 ========================
+Mantid has quite a few guidelines and standards targeted developers, including code standards, guidelines for writing tests, guidelines for writing algorithms and so on. 
 
-Here list currently missing guidelines and standards, which purpose are to  
-*	Save time for any developer, who may be new to Mantid and not located within a Mantid team environment, wants to for example
- * add a new instrument to Mantid
- * integrate non-Mantid software with Mantid in some way
- * simply just want to contribute to Mantid
+Here the aim is to list remaining areas of developer documentation that has not been covered as well as it should or is currently missing. 
+
+The target audience is here mainly any developer who is new to Mantid and not located within a Mantid team environment.
+
+The target purpose of adding these missing guidelines and standards are to
+*	Save time for a developer who for example wants to add a new instrument to Mantid, and want to expand/integrate with/contribute to Mantid
 *	Save time for experienced Mantid team members not having to explain the above
 
 Data formats (loaders)
