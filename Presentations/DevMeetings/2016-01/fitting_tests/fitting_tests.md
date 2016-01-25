@@ -3,9 +3,7 @@ class: center, middle
 
 # Fitting: tests for accuracy and reliability
 
-anders @ slack
-
-FedeMPouzols @ slack
+anders, FedeMPouzols @ slack
 ---
 
 # 1. Motivation
