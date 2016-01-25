@@ -10,13 +10,13 @@ FedeMPouzols @ slack
 
 # 1. Motivation
 
-- Fitting: core
+- Fitting: core, essential for several scientific areas
 
 - Hot topic (SSC)
 
-- Issues: convergence, platform dependency
+- Issues: convergence, platform dependency, usability
 
-- Test goodnes of fit and performance of fitting?
+- Test goodnes of fit and performance of fitting (focused on the Fit algorithm)?
 
 ---
 
@@ -52,7 +52,8 @@ FedeMPouzols @ slack
 Did you know?
 
 - Algorithm [CalculateChiSquared](http://docs.mantidproject.org/nightly/algorithms/CalculateChiSquared-v1.html)
-
+  - Calculate the squared errors (different variants)
+  - Explore errors in the neighborhood of the minima
 
 ---
 
