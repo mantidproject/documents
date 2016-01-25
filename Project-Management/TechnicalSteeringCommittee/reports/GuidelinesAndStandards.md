@@ -1,53 +1,48 @@
 Guidelines and standards
 ========================
+Mantid has quite a few guidelines and standards targeted developers, including code standards, guidelines for writing tests, guidelines for writing algorithms and so on. 
 
-Here list non existing guidelines and standards which 
-*	Save time for any new developer wanting to use Mantid 
-*	Save time for the Mantid team by not having to explain the above
-*	Save time for existing Mantid team developer 
+Here the aim is to list remaining areas of developer documentation that has not been covered fully or is currently missing. 
 
-Fitting
--------
-We have user documentation for how to
+The target audience has an emphasis on any developer who is new to Mantid and not located within a Mantid team environment.
 
-* add a new fitting function with Python see http://www.mantidproject.org/Introduction_to_Python_Fit_Functions 
-* new fitting functions with C++ 
-* basic information about how initial starting values for fitting parameters can be set using instrument parameters (http://www.mantidproject.org/MBC_Intelligent_Fitting ). 
+The target purpose of adding these missing guidelines and standards are to
+*	Save time for developer who for example wants to add a new instrument to Mantid
+*	Save time for experienced Mantid team members not having to explain the above
 
-What we currently don’t have includes
-* Almost no documentation about the different minimizers we support ([15014](https://github.com/mantidproject/mantid/issues/15014))
-*	No documentation for how to add new minimizers or cost functions
-*	No documentation which gives a good overview of the fitting framework in Mantid including how we make use of GSL, and description of how this match onto the directory structure in https://github.com/mantidproject/mantid/tree/master/Framework/CurveFitting  
-*	No documentation for adding more advanced fitting functions where some fitting parameters are functions of other fitting parameters or where fitting functions makes use of geometric information like http://docs.mantidproject.org/nightly/fitfunctions/IkedaCarpenterPV.html 
-*	Limitted documentation for how to best tests for new fitting, minimizer or cost functions to mantid, where a developer may want to add both performance test, unit tests, and more systemwide test to test robustness of fitting in general and against different compilers
-*	No documentation for how to add MD fitting functions
-
-GUI
----
-A developer may want to use to expose the Mantid framework through an existing interface, or the reserve expose an existing framework through Mantid.
-
-We currently have
-* [GUI Design Guidelines](http://www.mantidproject.org/GUI_Design_Guidelines)
-* [Python GUI Control in Mantidplot](http://www.mantidproject.org/Python_GUI_Control_in_MantidPlot)
-
-Related to this is [Integrate non mantid code with mantid](http://www.mantidproject.org/Integrate_non_Mantid_code_with_Mantid).
-
-Maybe this item is better done by adding a new training course, which a title like "How to add a new GUI to Mantid".
-
-Data formats
+Data formats (loaders)
 ------------
-As part of adapting a new instrument in Mantid it may not be the case that an existing data loader can be used and therefore 
+As part of adding a new instrument to Mantid, it may not be the case that an existing data loader can be used, and therefore 
 a new data loader needs to be written. 
 
-No documentation exists which specifies what information Mantid reads from ISIS and SNS Nexus files during loading. Issue: [14561](https://github.com/mantidproject/mantid/issues/14561).
-
-In addition in would be benefitical to have documentation which demonstrates better how 
-information in the data can be tied to externally specified geometry information about the instrument, e.g. an IDF+instrument parameter file in the instrument folder. Here also demonstrate an example where geometry information is read from embedded information in the Nexus file (for example see the LoadMcStas loader). 
+* No guidelines exist for adding a new loader to Mantid
+ * This includes no documentation exists which specifies what information Mantid reads from, for example, ISIS and SNS Nexus files during loading [14561](https://github.com/mantidproject/mantid/issues/14561)
 
 Contributing through Github
 ---------------------------
 The documentation we have for explaining how to get started with Mantid as a new in-house team member has in general been 
 found to be good/sufficient (http://www.mantidproject.org/Category:Development ). However, it has been found
-that for a person not located within a existing Mantid developer team can finds it a steep learning code to 
-understand how to start contribute to Mantid. So here not non-trivial exercise of adding better guidelines and standards for
+that for a person not located within a existing Mantid developer team can finds it a steep learning curve to 
+understand how to start contribute to Mantid. So here the non-trivial exercise of adding better guidelines and standards for
 this (perhaps learn from other open source frameworks like django).
+
+Fitting
+-------
+We currently have
+*	No documentation, which gives a good overview of the Mantid fitting framework, which includes a description of how this matches onto the directory structure in CurveFitting
+ *	Including almost no documentation about the different minimizers we support ([15014](https://github.com/mantidproject/mantid/issues/15014))
+* No guidelines for adding advanced fit functions, including fit functions whose parameters are functions of other fitting parameters and fit functions containing explicate dependence on units (like [IkedaCarpenterPV](http://docs.mantidproject.org/nightly/fitfunctions/IkedaCarpenterPV.html))
+* No guidelines for how to add a new minimizer and a cost function
+* No dedicated guidelines exist for how to best tests new fit functions, minimizers and cost functions, including where this is recommended tests for both for robustness and performance (15078)[https://github.com/mantidproject/mantid/issues/15078]
+
+GUI development and integrate non-Mantid code projects with Mantid
+---
+Guidelines for how to add a new GUI to Mantid and integrat non-Mantid code projects with Mantid.
+
+We currently have the following documentation on this:
+* [GUI Design Guidelines](http://www.mantidproject.org/GUI_Design_Guidelines)
+* [Integrate non mantid code projects with mantid](http://www.mantidproject.org/Integrate_non_Mantid_code_projects_with_Mantid)
+* [Python GUI Control in Mantidplot](http://www.mantidproject.org/Python_GUI_Control_in_MantidPlot)
+* [Create a customized input dialog](http://www.mantidproject.org/Writing_a_CustomDialog)
+
+Perhaps majority of documentation there. Maybe links about could benefit from being grouped together.

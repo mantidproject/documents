@@ -83,3 +83,5 @@ Release 3.7 maintenance
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
 1. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
 1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
+2. replace `std::map::insert(std::make_pair(x,y))` with `std::map::emplace(x,y)` [source](http://stackoverflow.com/questions/14218042/most-efficient-way-to-assign-values-to-maps) [source](http://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map)
+   1. [partial list](https://github.com/mantidproject/mantid/search?utf8=%E2%9C%93&q=insert%28make_pair)
