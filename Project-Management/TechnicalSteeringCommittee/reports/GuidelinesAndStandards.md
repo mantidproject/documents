@@ -2,7 +2,7 @@ Guidelines and standards
 ========================
 Mantid has quite a few guidelines and standards targeted developers, including code standards, guidelines for writing tests, guidelines for writing algorithms and so on. 
 
-Here the aim is to list remaining areas of developer documentation that has not been covered as well as it should or is currently missing. 
+Here the aim is to list remaining areas of developer documentation that has not been covered fully or is currently missing. 
 
 The target audience is here mainly any developer who is new to Mantid and not located within a Mantid team environment.
 
