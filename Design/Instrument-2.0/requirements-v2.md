@@ -32,7 +32,9 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * We should be able to still load version 1
 * L1 should not be required (ILL instruments)
 * Physical quantities should have a concept of units. For example positions should be convertable into different units of length.
-* The default for theta should be to provide the signed theta.
+* The default for theta should be to provide the signed theta. Or it should at least be easier to switch.
+* We must be able to provide alternative information based on some other calibrated input. For example L1, L2, etc.
+* We must be able to describe complex components such as parabolic guides and choppers in detail.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
@@ -135,6 +137,7 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 * Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
 * Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
 * Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
+* Investigate how McStas describes complex components (Owen Arnold)
 
 ##Milestones##
 
