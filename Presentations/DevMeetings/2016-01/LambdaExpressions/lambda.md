@@ -11,14 +11,14 @@ michael.wedel@esss.se
 ## What is a lambda expression?
 
 ```cpp
-[=] (double x) { return 2.0 * x; }
+[=] (double x) { return 2.0 * a * x; }
 ```
 --
 
 ### Components
 - `[=]` Capturing variables from surrounding scope (by value)
 - `(double x)` Function arguments
-- `{ return 2.0 * x; }` Function body
+- `{ return 2.0 * a * x; }` Function body, `a` captured from surrounding scope
 --
 
 
