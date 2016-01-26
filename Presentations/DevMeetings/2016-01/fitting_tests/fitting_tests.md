@@ -1,4 +1,3 @@
-
 class: center, middle
 
 # Fitting: tests for accuracy and reliability
