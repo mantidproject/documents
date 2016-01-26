@@ -136,8 +136,9 @@ auto foo = createFoo(); // <- Copy assignment !!!
 				<!-- ##################################################################
 				     ##################################################################-->
 				<section name ="unintended_conversions">
-					<section>
-					<h3>3. Unintended conversions</h3>		
+					<section>	
+					<h3>3. Rvalue overloads</h3>	
+					<div class="fragment">					
 						Method overloading via rvalue references:
 						<pre><code class="cpp" data-trim contenteditable>
 class Foo {
@@ -146,6 +147,17 @@ public:
 	void doSomething(Bar&& input);
 }
 						</code></pre>
+						</div>
+						<div class="fragment">
+						<pre><code class="cpp" data-trim contenteditable>
+class Bar {
+public:
+	void doSomething()&;
+	void doSomething()&&;
+}
+						</code></pre>					
+						</div>
+						
 						</section>
 						<section>
 						<div align="left">
