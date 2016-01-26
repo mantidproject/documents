@@ -43,7 +43,7 @@ anders, FedeMPouzols @ slack
 
 * Performance: [CurveFittingTest](http://builds.mantidproject.org/view/All/job/master_performancetests/Master_branch_performance_tests/)
   - looking at speed
-  ![fabada_perf_plot](CurveFittingTest.FitTestPerformance.test_fit_peaks_FABADA.runtime.v.revision.ALL_60.png)
+  ![fabada_perf_plot](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/fitting_tests/CurveFittingTest.FitTestPerformance.test_fit_peaks_FABADA.runtime.v.revision.ALL_60.png)
 
 ---
 
