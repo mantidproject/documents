@@ -6,7 +6,7 @@ anders, FedeMPouzols @ slack
 
 ---
 
-##  Motivation
+## 1.  Motivation
 
 * Fitting: core, essential for several scientific areas
 
@@ -20,7 +20,7 @@ anders, FedeMPouzols @ slack
 
 ---
 
-##  Aim
+## 2. Aim
 
 * Not trying to solve the problem, but understand
 
