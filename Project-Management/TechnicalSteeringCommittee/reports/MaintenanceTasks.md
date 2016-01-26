@@ -81,7 +81,11 @@ Release 3.7 maintenance
 1. Move all Jenkins builds to use Ninja where possible (incl. Windows)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
+   1. [modernize-use-default](https://github.com/mantidproject/mantid/compare/modernize-use-default) I think we want to move some of these to the header file.
+   2. [cppcoreguidelines-pro-type-static-cast-downcast](https://github.com/mantidproject/mantid/compare/cppcoreguidelines-pro-type-static-cast-downcast) In some of these cases, we need to also check that `dynamic_cast` doesn't return `nullptr`. 
 1. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. 
 1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
-2. replace `std::map::insert(std::make_pair(x,y))` with `std::map::emplace(x,y)` [source](http://stackoverflow.com/questions/14218042/most-efficient-way-to-assign-values-to-maps) [source](http://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map)
-   1. [partial list](https://github.com/mantidproject/mantid/search?utf8=%E2%9C%93&q=insert%28make_pair)
+1. replace `std::map::insert(std::make_pair(x,y))` with `std::map::emplace(x,y)` [source](http://stackoverflow.com/questions/14218042/most-efficient-way-to-assign-values-to-maps) [source](http://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map)
+   1. [PR #15104](https://github.com/mantidproject/mantid/pull/15104)
+1. replace `boost:shared_ptr<Widget>(new Widget())` with `with boost::make_shared<Widget>()`
+   2. grep for `shared_ptr` and `new`.
