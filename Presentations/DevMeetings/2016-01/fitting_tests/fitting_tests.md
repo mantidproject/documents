@@ -2,7 +2,7 @@ class: center, middle
 
 # Fitting: tests for accuracy and reliability
 
-anders, FedeMPouzols @ slack
+anders, FedeMPouzols slack
 
 ---
 
