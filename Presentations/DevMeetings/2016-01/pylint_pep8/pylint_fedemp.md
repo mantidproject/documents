@@ -3,6 +3,7 @@ class: center, middle
 # Pylint and PEP 8
 
 help: shahroz@slack
+
 ---
 
 # 1. Pylint is your (grumpy) friend
@@ -24,9 +25,7 @@ help: shahroz@slack
 
 ![devdoc](doc_development_cut_70.png)
 
-
 ---
-
 
 # 3. Install it and fix issues early
 
@@ -73,4 +72,3 @@ pylint --rcfile tools/Pylint/pylint.cfg scripts/PowderISIS
 ![pylint_graph_old](pylint_graph_old.png)
 
 ![pylint_graph](pylint_graph.png)
-
