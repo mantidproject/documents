@@ -12,7 +12,7 @@ help: shahroz@slack
 * New starters struggle
 * Common cause of re-re-re...builds
 
-![github_pylint_red_image](github_ci_pylint_red_cross.png)
+![github_pylint_red_image](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/github_ci_pylint_red_cross.png)
 
 ---
 
@@ -23,7 +23,7 @@ help: shahroz@slack
 * Implements much of [PEP (Python Enhancement Proposal) 8](https://www.python.org/dev/peps/pep-0008/)
 * New/updated useful how-to's:
 
-![devdoc](doc_development_cut_70.png)
+![devdoc](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/doc_development_cut_70.png)
 
 ---
 
@@ -33,7 +33,7 @@ help: shahroz@slack
   - Windows / OS X: `pip install pylint`
   - Linux, other UXs: `yum / apt-get / pacman / etc.`
 
-.right[![howtos](doc_howtos.png)]
+.right[![howtos](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/doc_howtos.png)]
   
 * Should we include pylint with Mantid on windows?
 
@@ -55,7 +55,7 @@ pylint --rcfile tools/Pylint/pylint.cfg scripts/PowderISIS
 
 * pylint-gui
 
-.right[![pylint_gui](pylint_gui_shot.png)]
+.right[![pylint_gui](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/pylint_gui_shot.png)]
 
 ---
 
@@ -69,6 +69,6 @@ pylint --rcfile tools/Pylint/pylint.cfg scripts/PowderISIS
 
 * Current: ~2200 violations in 262 files.
 
-![pylint_graph_old](pylint_graph_old.png)
+![pylint_graph_old](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/pylint_graph_old.png)
 
-![pylint_graph](pylint_graph.png)
+![pylint_graph](https://raw.githubusercontent.com/mantidproject/documents/master/Presentations/DevMeetings/2016-01/pylint_pep8/pylint_graph.png)
