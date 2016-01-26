@@ -16,6 +16,8 @@ anders, FedeMPouzols @ slack
 
 - Test goodnes of fit and performance of fitting (focused on the Fit algorithm)?
 
+- Project around least squares fitting, ISIS - [Numerical Analysis Group](http://www.scd.stfc.ac.uk/SCD/organisation/42436.aspx?d=Numerical%20Analysis/), Scientific Computing Department, STFC.
+
 ---
 
 # 2. Aim
