@@ -1,4 +1,3 @@
-
 class: center, middle
 
 # Pylint and PEP 8
@@ -12,7 +11,7 @@ help: shahroz@slack
 * New starters struggle
 * Common cause of re-re-re...builds
 
-![Default-aligned image](github_ci_pylint_red_cross.png)
+![github_pylint_red_image](github_ci_pylint_red_cross.png)
 
 ---
 
@@ -35,7 +34,7 @@ help: shahroz@slack
   - Windows / OS X: `pip install pylint`
   - Linux, other UXs: `yum / apt-get / pacman / etc.`
 
-.right[![width](doc_howtos.png)]
+.right[![howtos](doc_howtos.png)]
   
 * Should we include pylint with Mantid on windows?
 
@@ -57,7 +56,7 @@ pylint --rcfile tools/Pylint/pylint.cfg scripts/PowderISIS
 
 * pylint-gui
 
-.right[![width](pylint_gui_shot.png)]
+.right[![pylint_gui](pylint_gui_shot.png)]
 
 ---
 
