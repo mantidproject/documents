@@ -2,11 +2,11 @@ class: center, middle
 
 # Fitting: tests for accuracy and reliability
 
-anders, FedeMPouzols slack
+anders, FedeMPouzols @ slack
 
 ---
 
-# 1. Motivation
+## 1. Motivation
 
 * Fitting: core, essential for several scientific areas
 
@@ -20,7 +20,7 @@ anders, FedeMPouzols slack
 
 ---
 
-# 2. Aim
+## 2. Aim
 
 * Not trying to solve the problem, but understand
 
@@ -35,7 +35,7 @@ anders, FedeMPouzols slack
   
 ---
 
-# 3. System and Performance tests
+## 3. System and Performance tests
 
 * System test: [WeightedLeastSquaresTest](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/WeightedLeastSquaresTest.py)
   - looking at accuracy
@@ -47,7 +47,7 @@ anders, FedeMPouzols slack
 
 ---
 
-# 4. Reliability of fit
+## 4. Reliability of fit
 
 Did you know?
 
@@ -57,7 +57,7 @@ Did you know?
 
 ---
 
-# 5. Call for datasets
+## 5. Call for datasets
 
 * Required: data to fit, function with initial values, brief explanation 
 
