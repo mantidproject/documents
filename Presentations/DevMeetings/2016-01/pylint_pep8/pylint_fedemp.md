@@ -65,7 +65,7 @@ pylint --rcfile tools/Pylint/pylint.cfg scripts/PowderISIS
 
 * Examples (`tools/Pylint/pylint.cfg`):
   - maximum number of arguments: 5
-  - length of functions: <= 150 statments. Modules: <= 1000 lines
+  - length of functions: <= 150 statements. Modules: <= 1000 lines
   - function/method names: PEP 8, with length: 3-31
   - default disables: similar lines in different files
 
