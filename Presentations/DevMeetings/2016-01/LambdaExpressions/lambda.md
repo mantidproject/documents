@@ -1,6 +1,6 @@
 class: center, middle
 
-# Using the standard library with lambda expressions
+# Using the C++ standard library with lambda expressions
 
 Mantid developer meeting 2016
 
