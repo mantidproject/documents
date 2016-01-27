@@ -96,4 +96,4 @@ Release 3.7 maintenance
 1. replace `std::map::insert(std::make_pair(x,y))` with `std::map::emplace(x,y)` [source](http://stackoverflow.com/questions/14218042/most-efficient-way-to-assign-values-to-maps) [source](http://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map)
    1. [PR #15104](https://github.com/mantidproject/mantid/pull/15104)
 1. replace `boost:shared_ptr<Widget>(new Widget())` with `with boost::make_shared<Widget>()`
-   2. grep for `shared_ptr` and `new`.
+   2. grep for `shared_ptr` and `new` in the same line.
