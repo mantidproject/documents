@@ -66,10 +66,10 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
   *     Exposing objects to python could do with more docs / easier to find
   *     What packages to use for what & examples, e.g. xml, json
 * MantidPlot described as a horror, but a "mature/polished/bug-fixed horror"
-  *     The prime example of a missung design doc
+  *     The prime example of a missing design doc
   *     Is possible to extend, but the original design is too rigid
   *     Some of the worst examples of classes that are too long
-  *     ?Not worth complete redesign for a 2nd choice tool of the future
+  *     Not worth complete redesign for a 2nd choice tool of the future
   *     Future interfaces / gui aspects should be designed as widgets for use elsewhere as well
 * Some custom interfaces are too hard to maintain. How can we correct this?
   *     Front end complexity, consider refactoring, consider a simpler interface (in addition)
