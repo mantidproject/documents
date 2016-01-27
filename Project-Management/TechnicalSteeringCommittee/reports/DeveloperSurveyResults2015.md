@@ -74,7 +74,7 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * Some custom interfaces are too hard to maintain. How can we correct this?
   *     Front end complexity, consider refactoring, consider a simpler interface (in addition)
   *     Back end complexity - refactor
-  *     Web interfaces of the future, we need common design - Polt
+  *     Web interfaces of the future, we need common design - Pilot
 * Algorithm options not well explained child/managed/unmanaged
   *     Need to add to the dev documentation
 * We could use some examples of model Mantid code to help new developers (and old-hands too)
