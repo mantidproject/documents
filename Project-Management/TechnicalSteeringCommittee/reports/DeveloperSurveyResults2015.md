@@ -54,3 +54,50 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * I generally know enough of the instrument science, but not always to do my job
 * Nexus file and logs "are a real nightmare"
 * More examples where users can learn how to do things, like the Mantid training courses
+
+###Discussion###
+
+* Developer documentation is low-quality
+ *     induction material is fine
+ *     Architectural design doc ok at a high level
+ *     We are missing scientific technique overviews
+ *     Missing some detailed design docs
+  *     Development processes is fine
+  *     Exposing objects to python could do with more docs / easier to find
+  *     What packages to use for what & examples, e.g. xml, json
+* MantidPlot described as a horror, but a "mature/polished/bug-fixed horror"
+  *     The prime example of a missung design doc
+  *     Is possible to extend, but the original design is too rigid
+  *     Some of the worst examples of classes that are too long
+  *     ?Not worth complete redesign for a 2nd choice tool of the future
+  *     Future interfaces / gui aspects should be designed as widgets for use elsewhere as well
+* Some custom interfaces are too hard to maintain. How can we correct this?
+  *     Front end complexity, consider refactoring, consider a simpler interface (in addition)
+  *     Back end complexity - refactor
+  *     Web interfaces of the future, we need common design - Polt
+* Algorithm options not well explained child/managed/unmanaged
+  *     Need to add to the dev documentation
+* We could use some examples of model Mantid code to help new developers (and old-hands too)
+  *     See suggestion in dev documentation
+* Hard to find history after the code reorganisation
+  *     Reorganise code less often
+  *     Side point: Clang format tools resubmit after PR, can we have this automatically applied
+* "It's overly complicated and demotivating to develop in Mantid. There are a tone of Python Packages that would cut the development by a factor of at least 10."
+  *     Group view: It is complicated, is is not demotivating, in fact is is motivating.
+  *     Hard for part time developers to keep up with changes
+  *     Some areas are overly complicated without good reason e.g. mantidplot (more towards qtiplot + enhancements)
+  *     Web: Django, D3
+  *     General: Addition of a package is possible, but has to justify itself
+* I generally know enough of the instrument science, but not always to do my job
+  *     Instrument scientist generally happy to help
+  *     Andre is a great local resource
+  *     Ask who to check with within dev team, who the assigned inst scientists are.
+* Nexus file and logs "are a real nightmare"
+  *     Mantid shields many devs from this
+  *     No real experince of this in group
+  *     Not everything we will have to work is perfect
+  *     Some cans of worms should remain unopened
+* More examples where users can learn how to do things, like the Mantid training courses
+  *     We have some "really old" examples, these are at best high level examples of the concepts
+  *     Self paced courses available, and good
+  *     However this more likely to be technique specific, in which case instrument specific instruction need to be created by instrument team.
