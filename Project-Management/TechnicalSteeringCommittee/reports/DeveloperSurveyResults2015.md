@@ -127,9 +127,10 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * Algorithms depending on the Analysis Data Service
 * Workspace groups and the Analysis Data Service
 * MantidPlot, ApplicationWindow a complete mess
+ * What is the future of MantidPlot ?
+ * Algorithms that depend on MantidPlot should be either re-written or moved out of Framework
 * Bloated classes and methods for example Application Window, but there are many others.
 * MantidPlot, 3D plotting 
- * What is the future of MantidPlot ?
  * VATES ?
  * Once we go to Qt5 - look at new Qt APIs
  * Matplotlib 
