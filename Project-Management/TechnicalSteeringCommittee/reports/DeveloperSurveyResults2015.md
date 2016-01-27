@@ -159,7 +159,7 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 ###Discussion###
 
 * Developer documentation is low-quality
- *     induction material is fine
+ *     Induction material is fine
  *     Architectural design doc ok at a high level
  *     We are missing scientific technique overviews
  *     Missing some detailed design docs
