@@ -62,5 +62,5 @@
 # 6. Multiple word choices to indicate the same action
 
 * Load/ Import (2)
-* Get/ Calculate (16)/ Find (15)
-* Generate/ Create (25)/ Fake (3)/ Predict (2)
+* Get (8)/ Calculate (16)/ Find (15)
+* Create (25)/ Generate (6)/ Fake (3)/ Predict (2)
