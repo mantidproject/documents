@@ -19,6 +19,85 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * More 'Concepts' in the code base co-located and properly separated. Not all geometry is in Geometry.
 * Documentation from the physics point of view 
 
+###Discussion###
+
+1) Information available on the wiki, but not easy to find (To be discussed at SSC)
+* Go through and clean the wiki every release/maintenance task. 
+* Devs need permission to delete pages
+* Feels like things related to development should be on the github wiki.
+* Guide for GUI development is not a guide for GUI development.
+
+2) Not enough effort put into testing, causes problems down-stream (To be discussed at Workshop)
+* Review process should be done via gatekeepers.
+* Triage step should be reintroduced. But needs to work faster. Probably easy to implement via labels.
+
+3) Algorithms with exec functions that are far too large (many people highlighed this)
+
+* Culture change required.
+
+4) Faster local builds (many people requested this)
+
+* Should be handled by TSC and code reorg.
+
+5) Faster unit test suites
+
+* Start enforcing limits on the long-running tests should be checked at PR
+* Maintenance tasks should be done to go through long-running tests
+* We need some way of logging spurious failing system/unit tests/doctests on master
+
+6) Larger list of historic PR packages. Really slows testing down when you have to build and package everything. Should keep packages until the PR is closed.
+
+* We need to pay for more space, or find ways to host these somewhere else. Would definitely be worth doing.
+* Alternative is to have a manual job to create one-off packages based on a PR and platform
+
+7) More build servers.
+
+* Every facility should have at least one build server for the supported platform. 
+* Run the system tests as a downstream job 
+* Shrink system tests
+* Split system tests (split the system tests across the same jobs)
+* VMs shared across all facilities. What is the cost of this. Create images for all the VMs.
+
+
+8) Properly isolating modules and tests so they can be run without the rest of the code base. This is the soft-link issue.
+
+* Somehow handled by the code reorganisation
+
+9) Developers forget to clang-format and then load the build servers when they fix it. Slows everything down.
+
+* We should have a git pre-commit hook for clang-format. Would solve the amount of churn. We should also check the version.
+
+10) More spontaneous communication between facilities
+
+* Create more channels on Slack. 
+
+11) Macros for git commands
+
+* Working on forks may be made easier. Particularly pulling from another developers branch on their fork.
+* This group is not entirely convinced of the value.
+
+12) Core framework now over-built. Hard to do seemingly simple things in Kernel/API.
+
+* Code re-organization issue
+* Possibly go away with the triage step. Should see the Triage step as a direction for how to implement the fix.
+
+13) A chart explaining where things are in Mantid.
+
+* We might want to do this before the reorg
+* This should definitely be done as part of the code reorganisation 
+
+
+14) More 'Concepts' in the code base co-located and properly separated. Not all geometry is in Geometry.
+
+* Code reorganisation.
+
+15) Documentation from the physics point of view
+
+* Developers are asked to refactor stuff that they don't understand. This doesn't always happen. 
+* Encourage scientists to follow issues on Github
+* Group meetings to inform people that interesting stuff is being worked on.
+* Should notify instrument scientists (a) when stuff has been scheduled (b) a running estimate on when it's going to be ready.
+* We need to have a live schedule communicated to the instrument scientists. This could be done per group.
 
 ##Area's developers highlighted as overly complex##
 
