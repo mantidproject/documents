@@ -102,14 +102,26 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 ##Area's developers highlighted as overly complex##
 
 * Excessive use of Singletons
+ * Stop using them  
 * Workspace hierarchy 
+ * Inheritance is highly overused
+ * Do we have the correct base class ? (Probably not)
+ * MatrixWorkspace is too bloated
+ * Take MDWorkspace out of MatrixWorkspace
+ * ExperimentInfo out of hierarchy
+ * Look into how Qt (QVariant) deal with generic container types ?
+ * Workspace type if tightly coupled to the data type it contains
+  * Should some kind of data object be the place for variation (e.g. Histogram1D)
+ * All workspaces should be able to contain multiple experiment info
 * Function hierarchy 
 * Adding new property types
+ * See Owen's notes from Tuesday afternoon 
 * Finding functionality already implemented (naming/location problems?) 
 * Too many available algorithms, few of them core, some duplicated
 * Instrument being very very complex
 * Geometry, understanding how it works particularly surface/object intersections
 * Parameter Map Leakage
+ * Dealt with as part of Geometry Rewrite 
 * Algorithms depending on the Analysis Data Service
 * Workspace groups and the Analysis Data Service
 * MantidPlot, ApplicationWindow a complete mess
@@ -117,6 +129,7 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * MantidPlot, 3D plotting 
 * Fitting of anything other than 1D too hard to use
 * AlgorithmProxies (do we need them?)
+ * No we don't  
 * Bloated interfaces, for example MatrixWorkspace
 * Units, presumably the distinction between Quantities and Units?
 
