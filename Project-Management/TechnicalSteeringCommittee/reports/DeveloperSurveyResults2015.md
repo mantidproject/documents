@@ -119,7 +119,9 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * Finding functionality already implemented (naming/location problems?) 
 * Too many available algorithms, few of them core, some duplicated
 * Instrument being very very complex
+ * Dealt with as part of Geometry Rewrite 
 * Geometry, understanding how it works particularly surface/object intersections
+ * Dealt with as part of Geometry Rewrite 
 * Parameter Map Leakage
  * Dealt with as part of Geometry Rewrite 
 * Algorithms depending on the Analysis Data Service
@@ -127,12 +129,18 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
 * MantidPlot, ApplicationWindow a complete mess
 * Bloated classes and methods for example Application Window, but there are many others.
 * MantidPlot, 3D plotting 
+ * What is the future of MantidPlot ?
+ * VATES ?
+ * Once we go to Qt5 - look at new Qt APIs
+ * Matplotlib 
+ * Needs to be scritable
 * Fitting of anything other than 1D too hard to use
 * AlgorithmProxies (do we need them?)
  * No we don't  
 * Bloated interfaces, for example MatrixWorkspace
+ * See above
 * Units, presumably the distinction between Quantities and Units?
-
+ * Already have actions to look into this 
 
 ##Other things we ought to worry about##
 
