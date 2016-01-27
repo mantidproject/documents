@@ -99,3 +99,4 @@ Release 3.7 maintenance
    2. grep for `shared_ptr` and `new` in the same line.
 1. profile build time to find which files we should focus on
    2. initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
+1. Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds. 
