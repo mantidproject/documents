@@ -38,7 +38,7 @@
 
 * We have over 750 Algorithms, plus fit functions, concepts, user interfaces 
 * Make sure the names reflect what the algoritm does
-* Make sure to spell out limitrations
+* Make sure to spell out limitations
 * Relevant physics - links to papers, write down formulas, etc. (this is very uneven)
 
 ---
@@ -65,4 +65,5 @@
 
 * we should have advanced Mantid usages for instrument scientists
 * this should include calibration, diagnostic of the instrument, etc.
+* developer documentation
  
