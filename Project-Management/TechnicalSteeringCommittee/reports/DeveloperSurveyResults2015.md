@@ -191,7 +191,7 @@ The TSC circulated a survey to Mantid Developers in November 2015. The following
   *     General: Addition of a package is possible, but has to justify itself
 * I generally know enough of the instrument science, but not always to do my job
   *     Instrument scientist generally happy to help
-  *     Andre is a great local resource
+  *     Andrei is a great local resource
   *     Ask who to check with within dev team, who the assigned inst scientists are.
 * Nexus file and logs "are a real nightmare"
   *     Mantid shields many devs from this
