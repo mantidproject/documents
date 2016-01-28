@@ -3,8 +3,9 @@
 * Python discussion
   * better interaction with python data types
   * identifying and exposing *core* numerical operations
-  * changing framework from a python wrapped package to python package with c++
+  * changing framework from a python wrapped package to python package with c++ innards
 * MPI changes to algorithms
+  * change the algorithm base class
   * re-write `LoadEventNexus`
   * re-write `ConvertToMD`
 * Technical debt
