@@ -23,4 +23,3 @@
 * Stability ranked very high at SSC
   * refactoring user interfaces to improve testability
   * improving testing system(s)
-  * 
