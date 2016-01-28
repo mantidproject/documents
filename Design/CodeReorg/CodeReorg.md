@@ -20,8 +20,6 @@ The current structure of the codebase has remained largely unaltered since the p
 
 ## Proposed Solution ##
 
-## Solution Details ##
-
 Simple tasks:
 
 - Remove `UserAlgorithms` from being built and shipped with Mantid. This will include removing the development headers from the Windows package. Keep the source code but rename to `Examples`
@@ -32,32 +30,65 @@ Simple tasks:
 
 ### Root-directory Structure ###
 
-The proposed root-directory structure is as follows:
+The proposed directory structure (without the framework detail) is as follows:
 
-    -/
-     -cmake/
-     -devtools/
-       -buildconfig
-       -tools
-     -docs/
-     -framework/
-     -instrument/
-     -qt/
-       -applications/
-         -mantidplot/
-	   -qtpropertybrowser
-	   -paraviewext
-     -resources/
-        -fonts
-        -images
-        -properties
-     -scripts/
-     -testing/
-       -data
-     -thirdparty/
+	mantid.git
+	|-- cmake
+	|-- devtools
+	|   |-- buildconfig
+	|   |-- tools
+	|-- docs
+	|   |-- doxygen
+	|   |-- sphinx
+	|-- framework
+	|-- instrument
+	|-- qt
+	|   |-- applications
+	|   |   |-- mantidplot
+	|   |   |-- vsi
+	|   |-- qtpropertybrowser
+	|   |-- paraviewext
+	|   |   |-- api
+	|   |   |-- paraviewplugins
+	|   |-- widgets
+	|   |   |-- resources
+	|-- resources
+	|   |-- fonts
+	|   |-- images
+	|   |-- properties
+	|-- scripts
+	|-- testing
+	|   |-- data
+	|-- thirdparty
 
 ### Framework ###
 
-Notes:
+The proposed directory structure for the framework package is as follows:
 
-Old geometry should go in a `legacy` directory
+	framework
+	|-- catalog
+	|-- common
+	|   |-- algorithms
+	|   |-- constants
+	|   |-- core
+	|   |-- dataobjects
+	|   |-- units
+	|-- geometry
+	|   |-- legacy
+	|-- io
+	|-- mpi
+	|-- optimization
+	|-- neutron
+	|   |-- diffraction
+	|   |-- inelastic
+	|   |-- crystallography
+	|   |...
+	|-- muon
+	|-- remote
+	|   |-- live
+	|   |   |-- common
+	|   |   |-- ess
+	|   |   |-- isis
+	|   |   |-- sns
+	|   |-- cluster
+	|   |-- scriptrepository
