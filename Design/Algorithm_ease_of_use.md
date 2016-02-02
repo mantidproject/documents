@@ -65,7 +65,7 @@ Initializer lists
 or variadic templates
 ([cplusplus](http://www.cplusplus.com/articles/EhvU7k9E/) ,
 [msdn](https://msdn.microsoft.com/en-us/library/dn439779.aspx)), might
-do the job well. The details a bit fuzzy, but the usage would be:
+do the job well. What this would do internally is call `setProperty(string &, Type &)` for each pair in the list then call `executateAsChild()`. The details of how this would exactly work are a bit fuzzy, but the usage would be:
 
 ```C
 double tolerance = getProperty("CompressTolerance");
