@@ -137,7 +137,7 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 * Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
 * Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
 * Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
-* Investigate how McStas describes complex components (Owen Arnold)
+* Investigate how [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
 
 ##Milestones##
 
