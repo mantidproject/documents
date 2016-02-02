@@ -33,9 +33,9 @@ the header would be:
 
 ```C
 static
-EventWorkspace_sptr CompressEvents::execAsChild(EventWorkspace_sptr input,
-                                                EventWorkspace_sptr output,
-                                                double tolerance=1.e-5);
+EventWorkspace_sptr CompressEvents::executeAsChildAlg(EventWorkspace_sptr input,
+                                                      EventWorkspace_sptr output,
+                                                      double tolerance=1.e-5);
 ```
 
 The return is the pointer to the resultant output workspace. This is
@@ -48,7 +48,7 @@ m_outputEW = boost::dynamic_pointer_cast<EventWorkspace>(m_outputW);
 if ((m_outputEW) && (tolerance > 0.)) {
   g_log.information() << "running CompressEvents(Tolerance=" << tolerance
                       << ")\n";
-  m_outputEW = CompressEvents::execAsChild(m_outputEW, m_outputEW, tolerance);
+  m_outputEW = CompressEvents::executeAsChildAlg(m_outputEW, m_outputEW, tolerance);
   m_outputW = boost::dynamic_pointer_cast<MatrixWorkspace>(m_outputEW);
 }
 m_progress->report();
@@ -74,7 +74,7 @@ if ((m_outputEW) && (tolerance > 0.)) {
   g_log.information() << "running CompressEvents(Tolerance=" << tolerance
                       << ")\n";
   API::IAlgorithm_sptr compressAlg = createChildAlgorithm("CompressEvents");
-  compressAlg->execAsChild({"InputWorkspace", m_outputEW},
+  compressAlg->executeAsChildAlg({"InputWorkspace", m_outputEW},
                            {"OutputWorkspace", m_outputEW},
                            {"Tolerance", tolerance});
   m_outputEW = compressAlg->getProperty("OutputWorkspace");
