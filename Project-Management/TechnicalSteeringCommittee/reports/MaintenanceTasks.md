@@ -80,6 +80,7 @@ Release 3.7 maintenance
 -----------------------
 1. Move all Jenkins builds to use Ninja where possible (incl. Windows)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
+   - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds. 
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us.
    1. [modernize-use-default](https://github.com/mantidproject/mantid/compare/modernize-use-default) I think we want to move some of these to the header file.
    2. [cppcoreguidelines-pro-type-static-cast-downcast](https://github.com/mantidproject/mantid/compare/cppcoreguidelines-pro-type-static-cast-downcast) In some of these cases, we need to also check that `dynamic_cast` doesn't return `nullptr`. 
@@ -99,4 +100,3 @@ Release 3.7 maintenance
    2. grep for `shared_ptr` and `new` in the same line.
 1. profile build time to find which files we should focus on
    2. initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
-1. Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds. 
