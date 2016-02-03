@@ -32,6 +32,8 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 
 ####Nice Features####
 
+* Handling of units. Lengths can be specified in different units for example [here](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml#L368)
+
 ###Ideas###
 
 * Components in v2 geometry could solve the flight-path problem for say guides, but allowing each component to specify a `length`, which may be a derived value, but would default to zero. This might suit arbitrarily complex componnents such as non-linear guides
