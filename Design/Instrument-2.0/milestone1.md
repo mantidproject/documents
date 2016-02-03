@@ -39,7 +39,10 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * Handling of copied components explained [here](http://dev.danse.us/trac/instrument/wiki/xml-userguide#Copy)
 * Visitor pattern used to avoid excessive specification of things related to geometry.For example separation of drawing from the base respresentaion. See [here](http://dev.danse.us/trac/instrument)
 
-###Ideas###
+###Ideas to take forward###
 
 * Components in v2 geometry could solve the flight-path problem for say guides, but allowing each component to specify a `length`, which may be a derived value, but would default to zero. This might suit arbitrarily complex componnents such as non-linear guides
+* The concept of Copy components from McVine seems nice
+* The concept of units has been discussed, McVine handles this. How this could be done in Mantid should be investigated. Maybe Boost::Unit would be suitable.
+* Separation of display information from the geometry information should definitely be looked at seriously. Example being a non-linear (parabolic etc) guide. Specifing its neutronic `length` may be sufficient for the data analysis, but we want something to look representative and good via the displays (Instrument View)
 
