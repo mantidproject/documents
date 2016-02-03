@@ -43,8 +43,25 @@ Requirements
    if the reduced chi-squared warrants.
 
 1. The resulting calibration should be usable in tools to update the
-   `IDF`. [AlignComponents](https://github.com/mantidproject/mantid/compare/master...rosswhitfield:AlignComponent)
-   is an example of what would be needed.
+   `idf`. [AlignComponents](https://github.com/mantidproject/mantid/compare/master...rosswhitfield:AlignComponent)
+   is an example of what would be needed. This is needed for better
+   time-of-flight to wavelength conversion that absorption corrections
+   require.
 
 Design
 ======
+
+Pixel-by-pixel
+--------------
+
+Bank-by-bank
+------------
+
+Updating the `idf`
+------------------
+
+Most of this has been done. It involves merging
+[AlignComponents](https://github.com/mantidproject/mantid/compare/master...rosswhitfield:AlignComponent)
+into master, using
+[ExportGeometry](https://github.com/mantidproject/mantid/blob/56237597171dfa7206e868e3eded497673d545cd/Framework/PythonInterface/plugins/algorithms/ExportGeometry.py),
+and improving documentation on using the functionality.
