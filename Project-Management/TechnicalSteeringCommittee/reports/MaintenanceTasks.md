@@ -27,6 +27,7 @@ Assigned
 
 #### Stuart
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
+2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need.
 
 
 #### Unassigned (not suitable for pool)
