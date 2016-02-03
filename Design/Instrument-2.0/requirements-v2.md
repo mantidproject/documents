@@ -130,15 +130,7 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 ##Notes##
 * This is viewed as a completely rewrite of geometry and will live side-by-side (separate directories etc) with version 1 and phased in.
 
-##Initial Steps##
-
-* What functions are called through Geometry. What are the questions we need to ask of the system. (Owen Arnold)
-* What questions are users/instrument scientists going to ask of the Geometry outside workspace/algorithm related calculations. Example: beam shape at component. (Owen Arnold)
-* Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
-* Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
-* Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
-* Investigate how [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
-
 ##Milestones##
 
-* Collect results from inital steps 1st March 2016.
+* Collect results from inital steps 1st March 2016. See [first milestone](https://github.com/mantidproject/documents/edit/master/Design/Instrument-2.0/milestone1.md)
+
