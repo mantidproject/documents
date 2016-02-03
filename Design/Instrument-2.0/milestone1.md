@@ -33,7 +33,7 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 [McVine](http://www.mcvine.org/) is part of the [DANSE](http://wiki.danse.us/danse/index.php?title=Main_Page) project. McVine uses [DANSE](http://wiki.danse.us/danse/index.php?title=Main_Page) [Instruments](http://dev.danse.us/trac/instrument) schema is elaborated upon in the [User Guide](http://dev.danse.us/trac/instrument/wiki/xml-userguide#Copy). Schema allows the use of DANSE [pyre](https://github.com/danse-inelastic/pyre/tree/master/python/pyre/units) units.
 
 
-####Nice Features####
+####Noteable Features####
 
 * Handling of units. Lengths can be specified in different units for example [here](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml#L368)
 * Handling of copied components explained [here](http://dev.danse.us/trac/instrument/wiki/xml-userguide#Copy)
