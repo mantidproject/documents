@@ -11,5 +11,15 @@ Many of these are questions to unknowns:
 1. Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
 1. Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
 1. Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
-1. Investigate how [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
+1. Investigate how other projects, namely [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
+
+##How Other Projects Describe Components##
+
+###McStas###
+
+####Nice Features####
+
+###McVine###
+
+####Nice Features####
 
