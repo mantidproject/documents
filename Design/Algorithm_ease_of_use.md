@@ -83,6 +83,18 @@ if ((m_outputEW) && (tolerance > 0.)) {
 m_progress->report();
 ```
 
+The (never tried compiling) implementation would be
+
+```C
+template <typename First, typename... Rest>
+void Algorithm::executeAsChildAlg(const First& first, const Rest&... rest) {
+    setProperty(first->first, first->second);
+    executeAsChildAlg(rest...); // recursive call using pack expansion syntax
+}
+```
+
+This calls `executeAsChildAlg()` when there are no properties left to unpack.
+
 The benefit of this approach is that it needs to be written once and
 can be used everywhere. The disadvantage is having to specify
 key/value pairs for all parameters.
