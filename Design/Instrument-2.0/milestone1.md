@@ -17,9 +17,23 @@ Many of these are questions to unknowns:
 
 ###McStas###
 
-####Nice Features####
+Uses the *.comp file format to describe components and *.inst files to assemble components into an instrument. Components are generally not nested. Components may be extended via __EXTEND__ , but typically only at the instrument level, otherwise the document suggest copying the component into a local directory and making changes there.
+
+####Noteable Features####
+
+* Components separation of `Parameters` from `Display`
+* `Components` have input and output `Parameters`
+* `Display` geometry specified via `MCDisplay`
+* Instruments declare variables that are accessible to all components, and may, for example be used in positioning.
+* Use of `RELATIVE` and `PREVIOUS` keywords when describing positions via `AT`
+* Predicates available to control positions based on other parameters. For example using _WHEN(%PREDICATE%)_
 
 ###McVine###
 
 ####Nice Features####
+
+###Ideas###
+
+* Components in v2 geometry could solve the flight-path problem for say guides, but allowing each component to specify a `length`, which may be a derived value, but would default to zero. This might suit arbitrarily complex componnents such as non-linear guides
+* 
 
