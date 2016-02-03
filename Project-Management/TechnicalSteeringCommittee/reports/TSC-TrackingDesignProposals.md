@@ -1,5 +1,13 @@
-Design proposals discussed at TSC meetings
-==========================================
+# Requirements and design documents discussed at TSC meetings
+
+
+## Requirements documents
+| Name | date | Status|
+| :------------ |:---------------|:-------|
+| [Geometry 2.0](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/requirements-v2.md) | [2016-01-22](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-01-22.md) | First draft approved in Mantid annual meetings 2016 |
+
+
+## Design proposals
 
 Designs currently being proposed/reviewed via [design document pull requests](https://github.com/mantidproject/documents/pulls).
 
