@@ -33,6 +33,7 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 ####Nice Features####
 
 * Handling of units. Lengths can be specified in different units for example [here](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml#L368)
+* Handling of copied components explained [here](http://dev.danse.us/trac/instrument/wiki/xml-userguide#Copy)
 
 ###Ideas###
 
