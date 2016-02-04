@@ -41,10 +41,15 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * McVine has the concept of a _Geometer_, used for example [here](https://github.com/mcvine/resources/blob/f461af477d119fe6ba9667d06d08569335ab25d1/instruments/ARCS/resources/ARCS.xml#L222) to specify a local coordinate system independent from that of parent components. This is just a way of specifying positions  relative to their parent components.
 * Schema looks slightly better constructed to that used in the current IDF version of Mantid.
 
+###Ideas not to take forward###
+
+* The Mantid `ReferenceFrame` described [here](http://docs.mantidproject.org/nightly/concepts/InstrumentDefinitionFile.html#using-defaults) seems like a more flexible concept than the `LocalGeometer` `coordinate-system` used in McVine
+* 
+
 ###Ideas to take forward###
 
 * Components in v2 geometry could solve the flight-path problem for say guides, but allowing each component to specify a `length`, which may be a derived value, but would default to zero. This might suit arbitrarily complex componnents such as non-linear guides
 * The concept of Copy components from McVine seems nice
 * The concept of units has been discussed, McVine handles this. How this could be done in Mantid should be investigated. Maybe Boost::Unit would be suitable.
 * Separation of display information from the geometry information should definitely be looked at seriously. Example being a non-linear (parabolic etc) guide. Specifing its neutronic `length` may be sufficient for the data analysis, but we want something to look representative and good via the displays (Instrument View)
-
+* We do not want to loose the  `LocalGeometer` (as known by McVine) or relative component aspects used in Mantid. This flexibility has been shown to work well, performance is an issue we'll have to get around.
