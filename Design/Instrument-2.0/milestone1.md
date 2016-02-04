@@ -12,6 +12,15 @@ Many of these are questions to unknowns:
 1. Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
 1. Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
 1. Investigate how other projects, namely [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
+1. Prototype routing the l1 and l2 fetching via a vector. Try eagerly populating the vectors. What is the effect on performance for one or more of our system tests. A second step may be to determine the cost of invalidating/recalculating the l1 and l2's. (Owen?)
+
+##Internal Geometry Use-cases##
+
+This section aims to answer what the internal API calls of geometry related code are within Mantid. We are specifically looking at instrument related geometry calls.
+
+##External Geometry Use-cases##
+
+This section aims to answer what are instrument scientists currently accessing via geometry? What do they need to access in future?
 
 ##How Other Projects Describe Components##
 
