@@ -17,7 +17,12 @@ Protypes and reports requested
 
 ##Internal Geometry Use-cases##
 
-This section aims to answer what the internal API calls of geometry related code are within Mantid. We are specifically looking at instrument related geometry calls.
+This section aims to answer what high-level geometry related requests are made within Mantid. We are specifically looking at instrument related geometry usage.
+
+| Request        | 
+| ------------- |
+| Component position fetch   | 
+| ...   | 
 
 ##External Geometry Use-cases##
 
