@@ -82,3 +82,6 @@ Release 3.7 maintenance
    2. grep for `shared_ptr` and `new` in the same line.
 1. profile build time to find which files we should focus on
    2. initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
+
+1. If CMake version >=3.1, turn on policy [CMP0053](https://cmake.org/cmake/help/v3.2/policy/CMP0053.html). This policy claims to "dramatically improved CMake configure and generate time"
+ 
