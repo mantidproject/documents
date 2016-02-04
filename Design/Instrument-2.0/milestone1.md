@@ -38,6 +38,8 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * Handling of units. Lengths can be specified in different units for example [here](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml#L368)
 * Handling of copied components explained [here](http://dev.danse.us/trac/instrument/wiki/xml-userguide#Copy)
 * Visitor pattern used to avoid excessive specification of things related to geometry.For example separation of drawing from the base respresentaion. See [here](http://dev.danse.us/trac/instrument)
+* McVine has the concept of a _Geometer_, used for example [here](https://github.com/mcvine/resources/blob/f461af477d119fe6ba9667d06d08569335ab25d1/instruments/ARCS/resources/ARCS.xml#L222) to specify a local coordinate system independent from that of parent components. This is just a way of specifying positions  relative to their parent components.
+* Schema looks slightly better constructed to that used in the current IDF version of Mantid.
 
 ###Ideas to take forward###
 
