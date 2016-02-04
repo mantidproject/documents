@@ -83,5 +83,9 @@ Release 3.7 maintenance
 1. profile build time to find which files we should focus on
    2. initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
 
-1. If CMake version >=3.1, turn on policy [CMP0053](https://cmake.org/cmake/help/v3.2/policy/CMP0053.html). This policy claims to "dramatically improved CMake configure and generate time"
+1. If CMake version >=3.1, turn on policy [CMP0053](https://cmake.org/cmake/help/v3.2/policy/CMP0053.html). This policy claims to "dramatically improved CMake configure and generate time" [PR #15183](https://github.com/mantidproject/mantid/pull/15183)
  
+1. Migrate to C++11 standard library features.
+  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,map,multimap}?`)?
+  3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex.
+  4. raw owning pointers to `std::unique_ptr<>`.
