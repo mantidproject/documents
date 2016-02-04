@@ -4,7 +4,7 @@ The following the first-draft of the high-level [requirements](https://github.co
 
 ###Activities Requested###
 
-Many of these are questions to unknowns:
+Protypes and reports requested
 
 | Action        | Who           |
 | ------------- |:-------------:| 
