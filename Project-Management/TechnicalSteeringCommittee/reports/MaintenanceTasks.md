@@ -18,7 +18,7 @@ Assigned
 
 #### Steve H
 1. Investigate breaking issues with updated dependencies (Steven H)
-    1. Poco 1.6 [#11815](http://github.com/mantidproject/mantid/issues/11815) / [design doc](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md)
+    1. Poco 1.6 [#11815](http://github.com/mantidproject/mantid/issues/11815) / [design doc](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md) / [PR #15150](https://github.com/mantidproject/mantid/pull/15150)
 
 #### Pete (+ helpers)
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
