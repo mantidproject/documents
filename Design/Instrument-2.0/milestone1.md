@@ -6,13 +6,14 @@ The following the first-draft of the high-level [requirements](https://github.co
 
 Many of these are questions to unknowns:
 
-1. What functions are called through Geometry. What are the questions we need to ask of the system. (Owen Arnold)
-1. What questions are users/instrument scientists going to ask of the Geometry outside workspace/algorithm related calculations. Example: beam shape at component. (Owen Arnold)
-1. Evaluate user geometry use cases (Tim Charlton / Owen Arnold)
-1. Scanning addition prototype. How bad will the performance be the event-based time positioning be? (Martyn Gigg)
-1. Investigate standards for binary file formats for the IDF HDF5/VTK etc (Pete/Andrei)
-1. Investigate how other projects, namely [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components (Owen Arnold)
-1. Prototype routing the l1 and l2 fetching via a vector. Try eagerly populating the vectors. What is the effect on performance for one or more of our system tests. A second step may be to determine the cost of invalidating/recalculating the l1 and l2's. (Owen?)
+| Action        | Who           |
+| ------------- |:-------------:| 
+| What functions are called through Geometry. What are the questions we need to ask of the system     | O.Arnold |
+| What questions are users/instrument scientists going to ask of the Geometry outside workspace/algorithm related calculations     | O.Arnold  |
+| Scanning addition prototype. How bad will the performance be the event-based time positioning be?     | M.Gigg |
+| Investigate standards for binary file formats for the IDF HDF5/VTK etc | P.Peterson & A.Savici |
+| Investigate how other projects, namely [McStas](http://www.mcstas.org/download/components/) and [McVine](https://github.com/mcvine/resources/blob/master/instruments/ARCS/resources/ARCS.xml) describes complex components | O.Arnold |
+| Prototype routing the l1 and l2 fetching via a vector. Try eagerly populating the vectors. What is the effect on performance for one or more of our system tests. A second step may be to determine the cost of invalidating/recalculating the l1 and l2's. | O.Arnold |
 
 ##Internal Geometry Use-cases##
 
