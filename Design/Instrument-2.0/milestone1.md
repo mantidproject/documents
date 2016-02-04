@@ -44,7 +44,6 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 ###Ideas not to take forward###
 
 * The Mantid `ReferenceFrame` described [here](http://docs.mantidproject.org/nightly/concepts/InstrumentDefinitionFile.html#using-defaults) seems like a more flexible concept than the `LocalGeometer` `coordinate-system` used in McVine
-* 
 
 ###Ideas to take forward###
 
@@ -53,3 +52,4 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * The concept of units has been discussed, McVine handles this. How this could be done in Mantid should be investigated. Maybe Boost::Unit would be suitable.
 * Separation of display information from the geometry information should definitely be looked at seriously. Example being a non-linear (parabolic etc) guide. Specifing its neutronic `length` may be sufficient for the data analysis, but we want something to look representative and good via the displays (Instrument View)
 * We do not want to loose the  `LocalGeometer` (as known by McVine) or relative component aspects used in Mantid. This flexibility has been shown to work well, performance is an issue we'll have to get around.
+* No system seems to have broached the affine transformation as a function of both _logs_ and _position of other components_  = requried. We shall refer to this feature as __Geometry and Log Algebra__
