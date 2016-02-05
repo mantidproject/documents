@@ -23,10 +23,20 @@ This section aims to answer what high-level geometry related requests are made w
 | ------------- | --------- |
 | Component position fetch   |  
 | ...   | 
+TODO O.Arnold
 
 ##External Geometry Use-cases##
 
 This section aims to answer what are instrument scientists currently accessing via geometry? What do they need to access in future?
+TODO O.Arnold
+
+##Scanning Instrument Prototype##
+
+TODO M.Gigg
+
+##Binary Formats##
+
+TODO A.Savici/P.Peterson
 
 ##How Other Projects Describe Components##
 
@@ -69,3 +79,6 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * We do not want to loose the  `LocalGeometer` (as known by McVine) or relative component aspects used in Mantid. This flexibility has been shown to work well, performance is an issue we'll have to get around.
 * No system seems to have broached the affine transformation as a function of both _logs_ and _position of other components_ requried. We shall refer to this feature as __Geometry and Log Algebra__
 * We should be able to _Chain_ components together. This should not depend upon the order of declaration. This would allow for example a non-linear guide above to be made of say a composite of mirrors. We should be able to mark `Components` with some sort of `source-component` metadata. Such a linked-list would describe a chain. I suggest we do this in addtion to allowing each component to express it's length.
+
+##Detector L2 Cache##
+TODO O.Arnold
