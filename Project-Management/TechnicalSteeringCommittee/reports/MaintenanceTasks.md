@@ -85,7 +85,7 @@ Release 3.7 maintenance
 1. If CMake version >=3.1, turn on policy [CMP0053](https://cmake.org/cmake/help/v3.2/policy/CMP0053.html). This policy claims to "dramatically improved CMake configure and generate time" [PR #15183](https://github.com/mantidproject/mantid/pull/15183)
  
 1. Migrate to C++11 standard library features.
-  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,map,multimap}?`)?
+  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`)?
   3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex.
   4. raw owning pointers to `std::unique_ptr<>`.
   5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [15175](https://github.com/mantidproject/mantid/issues/15175) 
