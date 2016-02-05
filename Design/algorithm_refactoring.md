@@ -84,6 +84,34 @@ Things to consider in the design:
 
 -  We need to provide means to deal with several in- and outputs, e.g., in the common case of an input and output `MatrixWorkspace`, where we need x, y, and error data for both input and output. There are also cases that are more complex than that
 
+- Why pass both a workspace and a getter to transform instead of just a function binding to the correct workspace and getter?
+  - The `PARALLEL` macros need the workspace to check whether or not parallel execution is possible.
+  - We may want to call things like `workspace.clearMRU();`.
+  - The users of `transform` would need to use `std::bind`, which is a bit nasty when binding to overloaded functions, e.g., the `const` overloads we have for getters on our workspaces: Basically you need to cast explicitly, e.g.,
+
+    ```cpp
+    std::bind((double &(std::vector<double>::*)(size_t))&std::vector<double>::operator[], &data, _1)
+    ```
+
+    Note that it is not possible to use implicit type conversion in combination with templates. Suppose we modify `transform` to take a `std::function<T&(size_t)>` as a getter. We then **cannot** use
+
+    ```cpp
+    transform(/*...*/,
+              std::bind((double &(std::vector<double>::*)(size_t))&std::vector<double>::operator[],
+                        &data,
+                       _1), /*...*/);
+     ```
+
+     but need to take a detour via a variable,
+
+    ```cpp
+    auto func = std::bind((double &(std::vector<double>::*)(size_t)) &
+                                      std::vector<double>::operator[],
+                                  &data, _1);
+    transform(/*...*/, func, &data, _1), /*...*/);
+       ```
+
+
 
 Furthermore, we would probably want to provide overloads for supporting the following cases:
 
@@ -158,7 +186,8 @@ outputWS = inputWS->clone();
 Apart from the bits covered by the discussion above on casting and creating output event workspaces, there are also others:
 
 - Dealing with the case `inputWS == outputWS`, which is particularly bad in the case of `EventWorkspace`, since it requires even more casting.
-- Setting the output workspace property,
+- Setting the output workspace property.
+
   ```cpp
   this->setProperty("OutputWorkspace", outputWS);
    ```
