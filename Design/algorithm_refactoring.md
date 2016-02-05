@@ -157,7 +157,7 @@ outputWS = inputWS->clone();
 
 Apart from the bits covered by the discussion above on casting and creating output event workspaces, there are also others:
 
-- Dealing with the case `inputWS == outputWS`, which is particularely bad in the case of `EventWorkspace`, since it requires even more casting.
+- Dealing with the case `inputWS == outputWS`, which is particularly bad in the case of `EventWorkspace`, since it requires even more casting.
 - Setting the output workspace property,
   ```cpp
   this->setProperty("OutputWorkspace", outputWS);
@@ -168,7 +168,7 @@ Apart from the bits covered by the discussion above on casting and creating outp
 
 #### Ranges or lists of spectra
 
-There seem to be quite a few algorithms which either run on all spectra, a user-defined range of spectra, or a user-defines list of spectra. We should have a generic way to deal with this.
+There seem to be quite a few algorithms which either run on all spectra, a user-defined range of spectra, or a user-defined list of spectra. We should have a generic way to deal with this.
 
 
 ## Library of smaller building blocks
@@ -177,4 +177,4 @@ An algorithm implementation that uses a `Algorithm::transform` as described abov
 
 - Provide a library of commonly used bits. This can be functions or functors, but probably both.
 - Figure out if there is a reasonable way for automatic chaining of those bits to build the top-level callable.
-- Have a reasonable way to document and search the existing bits, such that developers will use them in there algorithms.
+- Have a reasonable way to document and search the existing bits, such that developers will use them in their algorithms.
