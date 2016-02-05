@@ -132,7 +132,7 @@ EQUATION SHOULD CHANGE TO MAKE THIS CORRECT**)
 1. Calculate the calibration constants, `need_name`, which satisfy the
    equation above. Since it is a scalar, it can be calculated as the
    average `need_name` for each of the peaks in the observed
-   specturm. This is the 1-parameter version of the Gauss-Markov
+   spectrum. This is the 1-parameter version of the Gauss-Markov
    theorem.
 
 Updating the `idf`
