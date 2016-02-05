@@ -8,7 +8,10 @@ The current structure of the codebase has remained largely unaltered since the p
 - More requirements for dedicated GUIs will require a much better library of reusable widgets
 - Greater usage of mantid on headless machines requires separate packages for "framework", "gui", etc
 
+
 ## Requirements ##
+
+Quote from "Large Scale C++ Software Design" by John Lakos - *"Carefully partitioning a system into large units and then considering aggregate dependencies among these units is critical when distributing the development effort for projects across multiple individuals, development teams, or geographical sites."*
 
 ### Must Haves ###
 
@@ -92,3 +95,5 @@ The proposed directory structure for the framework package is as follows:
 	|   |   |-- sns
 	|   |-- cluster
 	|   |-- scriptrepository
+
+The library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantid-common-core.so`.
