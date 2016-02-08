@@ -87,7 +87,7 @@ Release 3.7 maintenance
 
 1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer`
 
-1. We have a lot of in-and-out functions ([example](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/src/Math/Acomp.cpp#L1153)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value. 
+1. We have a lot of in-and-out functions ([example](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value. 
 
 1. Migrate to C++11 standard library features.
   2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`)?
