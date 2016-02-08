@@ -17,6 +17,7 @@ a new data loader needs to be written.
 
 * No guidelines exist for adding a new loader to Mantid
  * This includes no documentation exists which specifies what information Mantid reads from, for example, ISIS and SNS Nexus files during loading [14561](https://github.com/mantidproject/mantid/issues/14561)
+ * and guidelines for what workspace to load data into for different types of instrument data
 
 Contributing through Github
 ---------------------------
@@ -29,7 +30,7 @@ this (perhaps learn from other open source frameworks like django).
 Fitting
 -------
 We currently have
-*	No documentation, which gives a good overview of the Mantid fitting framework, which includes a description of how this matches onto the directory structure in CurveFitting, and no guidelines for adding new fit algorithms
+*	No documentation, which gives a good overview of the Mantid fitting framework, which includes a description of how this matches onto the directory structure in CurveFitting ([15212](https://github.com/mantidproject/mantid/issues/15212)), and no guidelines for adding new fit algorithms
 *	Almost no documentation about the different minimizers we support, and no guidelines for which minimizer may be recommend for different problems ([15014](https://github.com/mantidproject/mantid/issues/15014))
 * No guidelines for adding advanced fit functions, including fit functions whose parameters are functions of other fitting parameters and fit functions containing explicate dependence on units (like [IkedaCarpenterPV](http://docs.mantidproject.org/nightly/fitfunctions/IkedaCarpenterPV.html))
 * No guidelines for how to add a new minimizer and a cost function
