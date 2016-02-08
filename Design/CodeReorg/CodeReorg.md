@@ -5,9 +5,9 @@
 The current structure of the codebase has remained largely unaltered since the project's inception, with the exception of the addition of a few library directories and minor directory relocations. The main drivers for considering a restructure of the codebase are:
 
 - Improving code reusability: A lot of code is current locked in algorithm classes in separate libraries leading to code duplication
-- More requirements for dedicated GUIs will require a much better library of reusable widgets
+- Speeding up build times by having smaller libraries more focused on specific concepts
 - Greater usage of mantid on headless machines requires separate packages for "framework", "gui", etc
-
+- More requirements for dedicated GUIs will require a much better library of reusable widgets
 
 ## Requirements ##
 
@@ -15,11 +15,16 @@ Quote from "Large Scale C++ Software Design" by John Lakos - *"Carefully partiti
 
 ### Must Haves ###
 
-### Could Haves (Future considerations) ###
-
-## Selected Use cases ##
+- GUI and "framework"-code should be separated
+- Framework buildable as an isolated entity
+- Framework buildable without any "GUI" packages installed, e.g X11 (Linux)
+- Separate Linux packages for headless (framework), GUI
+- Includes next to source files makes it easier for some tools & IDEs
+-
 
 ## Current Structure ##
+
+See [here](https://github.com/mantidproject/mantid/tree/69588f49e31434895c656e097d41bbaf99c87dce) for a link to state around the time this document was written.
 
 ## Proposed Solution ##
 
@@ -29,7 +34,6 @@ Simple tasks:
 - Move `Doxygen` to `docs`
 - Remove `MatlabAPI`
 - Either move `PostInstall` up to project root or find a better way to compile the python files for the packages.
-- Move `Properties` directory to a "resources" directory at the top level
 
 ### Root-directory Structure ###
 
@@ -48,17 +52,17 @@ The proposed directory structure (without the framework detail) is as follows:
 	|-- qt
 	|   |-- applications
 	|   |   |-- mantidplot
-	|   |   |-- vsi
-	|   |-- qtpropertybrowser
+	|   |   |-- mdviewer (formerly standalone VSI)
 	|   |-- paraviewext
-	|   |   |-- api
+	|   |   |-- common
 	|   |   |-- paraviewplugins
 	|   |-- widgets
-	|   |   |-- resources
+	|	|   |-- qtpropertybrowser
+	|   |   |-- instrumentview
+	|   |-- resources
 	|-- resources
 	|   |-- fonts
 	|   |-- images
-	|   |-- properties
 	|-- scripts
 	|-- testing
 	|   |-- data
@@ -71,16 +75,21 @@ The proposed directory structure for the framework package is as follows:
 	framework
 	|-- catalog
 	|-- common
-	|   |-- algorithms
+	|   |-- algorithm
 	|   |-- constants
 	|   |-- core
-	|   |-- dataobjects
+	|   |-- datamodel
 	|   |-- units
 	|-- geometry
 	|   |-- legacy
 	|-- io
+	|   |--
 	|-- mpi
 	|-- optimization
+	|   |-- common
+	|   |-- costfunctions
+	|   |-- minimizers
+	|   |-- models
 	|-- neutron
 	|   |-- diffraction
 	|   |-- inelastic
@@ -95,5 +104,10 @@ The proposed directory structure for the framework package is as follows:
 	|   |   |-- sns
 	|   |-- cluster
 	|   |-- scriptrepository
+	|-- resources
+	|   |-- properties
 
-The library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantid-common-core.so`.
+Notes:
+
+- each subdirectory will have its own `testing` directory
+- the library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantidcommoncore.so`
