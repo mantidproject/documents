@@ -73,17 +73,17 @@ The proposed directory structure (without the framework detail) is as follows:
 The proposed directory structure for the framework package is as follows:
 
 	framework
-	|-- catalog
+	|-- catalog: ICAT layer
 	|-- common
-	|   |-- algorithm
-	|   |-- constants
-	|   |-- core
-	|   |-- datamodel
+	|   |-- algorithm: algorithm interface + impl classes (dataprocessor), property manager, basic properties
+	|   |-- constants: maths: e.g. 2*pi, physical: hbar, neutronic: neutron mass
+	|   |-- core: System.h, MantidVersion.h ...
+	|   |-- datamodel: workspaces, axes, validators, workspace property
 	|   |-- units
 	|-- geometry
 	|   |-- legacy
-	|-- io
-	|   |--
+	|-- io: file loader interface, file searching, fileproperty
+	|   |-- nexus: contents of our nexus directory
 	|-- mpi
 	|-- optimization
 	|   |-- common
@@ -110,4 +110,4 @@ The proposed directory structure for the framework package is as follows:
 Notes:
 
 - each subdirectory will have its own `testing` directory
-- the library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantidcommoncore.so`
+- the library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantid-common-algorithm.so`.
