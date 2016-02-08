@@ -92,3 +92,4 @@ Release 3.7 maintenance
   4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.
   5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [15175](https://github.com/mantidproject/mantid/issues/15175) 
   6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.
+  7. We have a lot of in-and-out functions ([example](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/src/Math/Acomp.cpp#L1153)) that accept than immediate clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value.
