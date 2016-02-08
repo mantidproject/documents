@@ -20,7 +20,7 @@ Quote from "Large Scale C++ Software Design" by John Lakos - *"Carefully partiti
 - Framework buildable without any "GUI" packages installed, e.g X11 (Linux)
 - Separate Linux packages for headless (framework), GUI
 - Includes next to source files makes it easier for some tools & IDEs
--
+
 
 ## Current Structure ##
 
