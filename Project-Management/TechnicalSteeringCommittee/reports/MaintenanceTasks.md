@@ -9,6 +9,7 @@ Pool
    2. [coverity](https://scan.coverity.com/projects/335) (For 3.7: [#15214](http://github.com/mantidproject/mantid/issues/15214); highly specific: [#14157](http://github.com/mantidproject/mantid/issues/14157) [#13950](https://github.com/mantidproject/mantid/issues/13950), [#13949](https://github.com/mantidproject/mantid/issues/13949))
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    4. [cppcheck 1.72](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.72/)
+5. Look over tickets (assigned and created by you) and close invalid ones (everybody)
 
 
 Assigned
@@ -37,6 +38,7 @@ Assigned
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report)
 1. oclint as a job in static analysis tab
+1093777. radon as a job in static analysis tab
 1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
 1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (needs more detail)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds
