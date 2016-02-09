@@ -34,27 +34,9 @@ Assigned
     4. Simplify `Framework` only builds (MPI) 
 
 
-
-Too low benefit/priority for this release
------------------------------------------
-1. Proper rpm and deb packages - is this required
-1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
-   1. ANN
-   2. GSoap ?
-1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) [#12625](http://github.com/mantidproject/mantid/issues/12625)
-   1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
-1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
-
-
 For a different release
 -----------------------
-1. Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)
-1. Move to Qt 5
-1. Adding Python 3 compatability
-1. Investigate breaking issues with updated dependencies
-    3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
-1. Rework/clean up cmake as a whole
-1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+
 
 Release 3.7 maintenance
 -----------------------
@@ -90,6 +72,7 @@ Release 3.7 maintenance
   6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.
   7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?
 
+
 For another release
 -------------------
 
@@ -99,3 +82,23 @@ For another release
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1093777. radon as a job in static analysis tab
+1. Move to Qt 5
+1. Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)
+1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
+   1. ANN
+   2. GSoap ?
+1. Enforcing the [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (on Framework) [#12625](http://github.com/mantidproject/mantid/issues/12625)
+   1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
+2. Enforcing python standards
+1. Investigate breaking issues with updated dependencies
+    3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
+1. Rework/clean up cmake as a whole
+1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+
+Converted to actual tickets during a release
+--------------------------------------------
+
+1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
+1. Proper rpm and deb packages (without cpack)
+1. Adding Python 3 compatability (`.py` files in mantid converted)
+1. Editing algorithm and variable names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (Andrei)
