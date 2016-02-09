@@ -39,6 +39,7 @@ Assigned
 1. oclint as a job in static analysis tab
 1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
 1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (needs more detail)
+2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds
 
 Too low benefit/priority for this release
 -----------------------------------------
