@@ -131,5 +131,5 @@ The ParameterMap is a MultiMap. More than one paramer can be stored against the 
 
 ##Milestones##
 
-* Collect results from inital steps 1st March 2016. See [first milestone](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/milestone1.md)
+* Collect results from inital steps 7th March 2016. See [first milestone](https://github.com/mantidproject/documents/blob/master/Design/Instrument-2.0/milestone1.md)
 
