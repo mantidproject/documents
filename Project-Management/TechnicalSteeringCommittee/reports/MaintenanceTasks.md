@@ -19,17 +19,15 @@ Assigned
     1. Poco 1.6 [#11815](http://github.com/mantidproject/mantid/issues/11815) / [design doc](https://github.com/mantidproject/documents/blob/master/Design/PocoStringTokenizer.md) / [PR #15150](https://github.com/mantidproject/mantid/pull/15150)
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
+1. oclint as a job in static analysis tab (Pete)
+1. Implement [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (Martyn)
+1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report) (Roman)
 
 
 #### Unassigned (not suitable for pool)
 23. Top level code re-org decided at 2016 developer meetings
-4. Simplify `Framework` only builds (MPI) 
-1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
-1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report)
-1. oclint as a job in static analysis tab
-1093777. radon as a job in static analysis tab
+    4. Simplify `Framework` only builds (MPI) 
 1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
-1. Explore [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (needs more detail)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds
 
 Too low benefit/priority for this release
@@ -96,3 +94,5 @@ For another release
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
+1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
+1093777. radon as a job in static analysis tab
