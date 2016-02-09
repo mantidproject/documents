@@ -24,13 +24,14 @@ Assigned
 1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report) (Roman)
 2. Run compilation time report weekly(?) on static analysis tab (Simon)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede)
-
+1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
+1085. Streamline pull-request builds (Martyn)
 
 #### Unassigned (not suitable for pool)
 23. Top level code re-org decided at 2016 developer meetings
     4. Simplify `Framework` only builds (MPI) 
 1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
-3. Compilation times of components of the pipeline build for master nightly in static analysis tab
+
 
 Too low benefit/priority for this release
 -----------------------------------------
