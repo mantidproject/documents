@@ -10,7 +10,9 @@ Pool
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    4. [cppcheck 1.72](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.72/)
 5. Look over tickets (assigned and created by you) and close invalid ones (everybody)
-
+1. Clang working on linux. 
+   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not abi compatible)
+   3. A singleton stopping initializing python
 
 Assigned
 --------
@@ -30,7 +32,7 @@ Assigned
 #### Unassigned (not suitable for pool)
 23. Top level code re-org decided at 2016 developer meetings
     4. Simplify `Framework` only builds (MPI) 
-1. Clang working on linux. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670)) and a singleton stopping initializing python
+
 
 
 Too low benefit/priority for this release
