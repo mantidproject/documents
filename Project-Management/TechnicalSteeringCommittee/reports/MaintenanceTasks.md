@@ -36,7 +36,7 @@ Assigned
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 1. oclint as a job in static analysis tab (Pete)
 1. Implement [Mary Poppins](https://github.com/mary-poppins/mary-poppins) as a solution for testers (Martyn)
-1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891) (results in TSC report) (Roman)
+1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
 2. Run compilation time report weekly(?) on static analysis tab (Simon)
   -  profile build time to find which files we should focus on
   -  initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
