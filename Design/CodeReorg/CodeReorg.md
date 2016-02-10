@@ -30,7 +30,7 @@ See [here](https://github.com/mantidproject/mantid/tree/69588f49e31434895c656e09
 
 Simple tasks:
 
-- Remove `UserAlgorithms` from being built and shipped with Mantid. This will include removing the development headers from the Windows package. Keep the source code but rename to `Examples`
+- Remove `UserAlgorithms` from being built and shipped with Mantid. This will include removing the development headers from the Windows package. Keep the source code but rename to `Examples`. [#15206](https://github.com/mantidproject/mantid/issues/15206)
 - Move `Doxygen` to `docs`
 - Remove `MatlabAPI`
 - Either move `PostInstall` up to project root or find a better way to compile the python files for the packages.
