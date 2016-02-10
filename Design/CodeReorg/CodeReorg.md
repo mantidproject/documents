@@ -111,3 +111,8 @@ Notes:
 
 - each subdirectory will have its own `testing` directory
 - the library names will be formed from concatenating directory names togther, e.g. `common/core` would produce `libmantid-common-algorithm.so`.
+
+Sandbox
+-------
+
+To aid in discussing the structure I have created a test repository to play around with the layout. Please see [here](https://github.com/martyngigg/codereorg).
