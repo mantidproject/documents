@@ -2,7 +2,7 @@
 
 ## Issue
 
-Users are able to interactively create and store detector masks via the *Instrument View* of Mantid. A recently added features allows the user to interactively create and add bin masks to workspaces, but we are currently lacking an option (and format) to save these bin masks.
+Users are able to interactively create and store detector masks via the *Instrument View* of Mantid. A recently added feature allows the user to interactively create and add bin masks to workspaces, but we are currently lacking an option (and format) to save these bin masks.
 
 Saving the bin masks created in the Instrument View in order to apply them later on has been requested by several users of the SANS group.
 
@@ -48,7 +48,7 @@ Con:
 
 ### Option2: Create equivalent workflow for bin masks as exists for detector masks
 
-The way detector masks are handled (at least for persisting to a file in the *Instrument View*) could be mimicked for bin masks. This means the algorithm and workspace infrastructure would be extended to be able to have bin information attached to a workspace and handle it accordingly in certain algorithms.
+The way detector masks are handled (at least for persisting to a file in the *Instrument View*) could be mimicked for bin masks. This means the algorithm and workspace infrastructure would be extended to be able to have bin mask information attached to a workspace and handle it accordingly in certain algorithms.
 
 Requires:
 
@@ -58,12 +58,12 @@ Requires:
 
 Pro:
 
-* Is consistent with the workflow of detector masks
+* Is consistent with the workflow of detector masks (at least for saving in the *Instrument View*)
 
 Con:
 
 * Need to extend workspaces (memory overhead?)
-* would have two ways of dealing with bin masks, the old set-to-zero way and the new additinal bin masking information
+* would have two ways of dealing with bin masks, the old set-to-zero way and the new additinal bin-mask-information way
 * more time required to implement
 
 
