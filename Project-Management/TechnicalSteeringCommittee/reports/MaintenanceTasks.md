@@ -50,12 +50,12 @@ Assigned
    4. [modernize-use-nullptr](https://github.com/mantidproject/mantid/pull/14990) - ready as PR #14990.
    5. [readability-simplify-boolean-expr](https://github.com/mantidproject/mantid/pull/15079)- ready as PR #15079.
 1. replace `boost:shared_ptr<Widget>(new Widget())` with `with boost::make_shared<Widget>()`
-   2. grep for `shared_ptr` and `new` in the same line. [PR 15219](https://github.com/mantidproject/mantid/pull/15219) (Pete)
+   2. grep for `shared_ptr` and `new` in the same line. ready as [PR 15219](https://github.com/mantidproject/mantid/pull/15219) (Pete)
 3. Upgrade fedora build server (Stuart)
 4. Move `brian` to be ubuntu 16.04 (Ross)
 
 #### Unassigned (not suitable for pool)
-23. Top level code re-org decided at 2016 developer meetings
+23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11)
     4. Simplify `Framework` only builds (MPI) 
 
 
