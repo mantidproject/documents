@@ -53,11 +53,9 @@ Assigned
    2. grep for `shared_ptr` and `new` in the same line. ready as [PR 15219](https://github.com/mantidproject/mantid/pull/15219) (Pete)
 3. Upgrade fedora build server (Stuart)
 4. Move `brian` to be ubuntu 16.04 (Ross)
+23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 
 #### Unassigned (not suitable for pool)
-23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11)
-    4. Simplify `Framework` only builds (MPI) 
-
 
 For another release
 -------------------
