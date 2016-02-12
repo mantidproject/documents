@@ -8,6 +8,7 @@ Pinned Topics
 
 New Items
 ---------
+* First pass on "big" [TSC items from dev workshop](/Project-Management/TechnicalSteeringCommittee/reports/DevMeetingItems-2016.md) for PMB to prioritize
 * Update on [Maintenence tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 * Potential Workshop topic: Unifcation of interactive-/live-/batch-reduction. At least for some instruments separate code/workflows are maintained, this adds maintenance overhead and might be worth addressing before porting more things to MPI (Simon)
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
