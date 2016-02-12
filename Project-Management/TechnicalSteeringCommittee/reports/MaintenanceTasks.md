@@ -9,7 +9,7 @@ Pool
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/) ([#15173](https://github.com/mantidproject/mantid/issues/15173) and more issues listed in [#14705](https://github.com/mantidproject/mantid/issues/14705))
    2. [coverity](https://scan.coverity.com/projects/335) (For 3.7: [#15214](http://github.com/mantidproject/mantid/issues/15214); highly specific: [#14157](http://github.com/mantidproject/mantid/issues/14157) [#13950](https://github.com/mantidproject/mantid/issues/13950), [#13949](https://github.com/mantidproject/mantid/issues/13949))
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
-   4. [cppcheck 1.72](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.72/)
+   4. [cppcheck 1.72](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.72/) [#15821](https://github.com/mantidproject/mantid/issues/15281)
 1. Clang working on linux. 
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not abi compatible)
    3. A singleton stopping initializing python
