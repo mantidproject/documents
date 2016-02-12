@@ -4,7 +4,7 @@ For 3.7 maintenance period
 Pool
 ----
 
-42. Look over tickets (assigned and created by you) and close invalid ones (everybody)
+42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/) ([#15173](https://github.com/mantidproject/mantid/issues/15173) and more issues listed in [#14705](https://github.com/mantidproject/mantid/issues/14705))
    2. [coverity](https://scan.coverity.com/projects/335) (For 3.7: [#15214](http://github.com/mantidproject/mantid/issues/15214); highly specific: [#14157](http://github.com/mantidproject/mantid/issues/14157) [#13950](https://github.com/mantidproject/mantid/issues/13950), [#13949](https://github.com/mantidproject/mantid/issues/13949))
@@ -13,19 +13,19 @@ Pool
 1. Clang working on linux. 
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not abi compatible)
    3. A singleton stopping initializing python
-1. Move all Jenkins builds to use Ninja where possible (incl. Windows)
+1. Move all Jenkins builds to use Ninja where possible (incl. Windows) [#15282](https://github.com/mantidproject/mantid/issues/15282)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
-   - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds. 
-1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`.
-1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer`
-1. We have a lot of in-and-out functions ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value. 
+   - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
+1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`. [#15284](https://github.com/mantidproject/mantid/issues/15284)
+1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285)
+1. We have a lot of in-and-out functions ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value. [#15286](https://github.com/mantidproject/mantid/issues/15286)
 1. Migrate to C++11 standard library features.
-  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`)?
-  3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex.
-  4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.
-  5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [15175](https://github.com/mantidproject/mantid/issues/15175) 
-  6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.
-  7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?
+  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`) [#15287](https://github.com/mantidproject/mantid/issues/15287)
+  3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex. [#15288](https://github.com/mantidproject/mantid/issues/15288)
+  4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.[#15289](https://github.com/mantidproject/mantid/issues/15289)
+  5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [#15175](https://github.com/mantidproject/mantid/issues/15175) 
+  6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
+  7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291)
 
 Assigned
 --------
