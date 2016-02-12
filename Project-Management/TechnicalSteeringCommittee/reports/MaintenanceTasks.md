@@ -11,8 +11,8 @@ Pool
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    4. [cppcheck 1.72](http://builds.mantidproject.org/view/Static%20Analysis/job/cppcheck-1.72/) [#15821](https://github.com/mantidproject/mantid/issues/15281)
 1. Clang working on linux. 
-   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not abi compatible)
-   3. A singleton stopping initializing python
+   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
+   3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
 1. Move all Jenkins builds to use Ninja where possible (incl. Windows) [#15282](https://github.com/mantidproject/mantid/issues/15282)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
