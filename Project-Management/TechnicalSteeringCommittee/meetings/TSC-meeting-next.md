@@ -15,3 +15,4 @@ New Items
 * Tracking of volatile unit tests (Owen)
 * [LiveListener Design](https://github.com/mantidproject/documents/pull/7)(Owen)
 * QA - Test documents/scripts within the codebase. It's potluck whether the unscripted test process find issues before a release. Should we have a QA section of the repository containing documents (markdown or rst) on how to test specific features? These would then have to be run through before we even go to beta testing (Martyn)
+* Are we supporting Ubuntu 16.04 for Mantid `3.7`? Need to fix [problems](http://builds.mantidproject.org/job/master_clean-ubuntu-16.04) with gsl 2.
