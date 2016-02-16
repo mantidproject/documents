@@ -8,7 +8,7 @@ Pinned Topics
 
 New Items
 ---------
-* First pass on "big" [TSC items from dev workshop](/Project-Management/TechnicalSteeringCommittee/reports/DevMeetingItems-2016.md) for PMB to prioritize
+* First pass on "big" TSC items from dev workshop for PMB to prioritize ([1](/Project-Management/TechnicalSteeringCommittee/reports/DevMeetingItems-2016.md), [2](https://github.com/mantidproject/documents/blob/master/Project-Management/SSC%20%26%20Strategy%20Collated%20requirements.xlsx), [3](https://github.com/mantidproject/documents/blob/master/Project-Management/SSC%20%26%20Strategy%20Task%20list.xlsx))
 * Update on [Maintenence tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 * Potential Workshop topic: Unifcation of interactive-/live-/batch-reduction. At least for some instruments separate code/workflows are maintained, this adds maintenance overhead and might be worth addressing before porting more things to MPI (Simon)
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
