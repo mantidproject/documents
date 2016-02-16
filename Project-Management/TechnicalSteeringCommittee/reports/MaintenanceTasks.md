@@ -78,6 +78,10 @@ For another release
     3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
 1. Rework/clean up cmake as a whole
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+1. enable warnings and fix issues
+  1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
+  1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
+    1. create a common `almost_equals` function in Kernel[see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon). 
 
 Converted to actual tickets during a release
 --------------------------------------------
