@@ -23,7 +23,7 @@ Pool
   4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.[#15289](https://github.com/mantidproject/mantid/issues/15289)
   5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [#15175](https://github.com/mantidproject/mantid/issues/15175) 
   6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
-  7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291)
+ 
 
 Assigned
 --------
@@ -54,6 +54,7 @@ Assigned
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Anton)
 1. We have a lot of in-and-out functions ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least as fast) if the container was constructed internally and returned by value. [#15286](https://github.com/mantidproject/mantid/issues/15286) (Ready as [PR #15354](https://github.com/mantidproject/mantid/pull/15354)) (Tom)
+7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
 
 #### Unassigned (not suitable for pool)
 
