@@ -38,7 +38,7 @@ Assigned
 2. Run compilation time report weekly(?) on static analysis tab (Simon)
   -  profile build time to find which files we should focus on
   -  initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
-2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - [#15246](https://github.com/mantidproject/mantid/issues/15246)
+2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1085. Streamline pull-request builds (Martyn)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
