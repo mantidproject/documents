@@ -17,7 +17,6 @@ Pool
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
 1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`. [#15284](https://github.com/mantidproject/mantid/issues/15284)
-1. We have a lot of in-and-out functions ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least a fast) if the container was constructed internally and returned by value. [#15286](https://github.com/mantidproject/mantid/issues/15286)
 1. Migrate to C++11 standard library features.
   2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`) [#15287](https://github.com/mantidproject/mantid/issues/15287)
   3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex. [#15288](https://github.com/mantidproject/mantid/issues/15288)
@@ -54,6 +53,7 @@ Assigned
 4. Move `brian` to be ubuntu 16.04 (Ross) - [Done](http://builds.mantidproject.org/job/master_clean-ubuntu-16.04/)
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Anton)
+1. We have a lot of in-and-out functions ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least as fast) if the container was constructed internally and returned by value. [#15286](https://github.com/mantidproject/mantid/issues/15286) (Ready as [PR #15354](https://github.com/mantidproject/mantid/pull/15354)) (Tom)
 
 #### Unassigned (not suitable for pool)
 
