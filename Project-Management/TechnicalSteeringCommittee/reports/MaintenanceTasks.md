@@ -18,7 +18,7 @@ Pool
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
 1. Add the [`-Wsuggest-override`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html) flag when building with GCC 5.1 or later and fix resulting warnings. Consider doing the same for `-Wsuggest-final-types` and `-Wsuggest-final-methods`. [#15284](https://github.com/mantidproject/mantid/issues/15284)
 1. Migrate to C++11 standard library features.
-  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`) [#15287](https://github.com/mantidproject/mantid/issues/15287)
+  2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`) [#15287](https://github.com/mantidproject/mantid/issues/15287), [#15370](https://github.com/mantidproject/mantid/issues/15370)
   3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex. [#15288](https://github.com/mantidproject/mantid/issues/15288)
   4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.[#15289](https://github.com/mantidproject/mantid/issues/15289)
   5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists. [#15175](https://github.com/mantidproject/mantid/issues/15175) 
