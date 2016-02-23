@@ -12,7 +12,6 @@ New Items
 * Update on [Maintenence tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 * Are we supporting Ubuntu 16.04 for Mantid `3.7`? Need to fix [problems](http://builds.mantidproject.org/job/master_clean-ubuntu-16.04) with gsl 2.
 * Second pass on "big" TSC items from dev workshop for PMB to prioritize ([1](/Project-Management/TechnicalSteeringCommittee/reports/DevMeetingItems-2016.md), [2](https://github.com/mantidproject/documents/blob/master/Project-Management/SSC%20%26%20Strategy%20Collated%20requirements.xlsx), [3](https://github.com/mantidproject/documents/blob/master/Project-Management/SSC%20%26%20Strategy%20Task%20list.xlsx))
-
 * QA - Test documents/scripts within the codebase. It's potluck whether the unscripted test process find issues before a release. Should we have a QA section of the repository containing documents (markdown or rst) on how to test specific features? These would then have to be run through before we even go to beta testing (Martyn)
 
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
@@ -27,3 +26,4 @@ In attendance: Fede, Campbell, Draper, Gigg, Hahn, Heybrock, Peterson, Savici, W
 * New pull request template was approved. Martyn will merge it in.
 * Ross will write an issue for Roman to figure out the gsl 2 build errors. 
 * TSC should go over the time estimate spreadsheet by COB on Feb 24.
+* Martyn will start a design document for how to do "unscripted testing"
