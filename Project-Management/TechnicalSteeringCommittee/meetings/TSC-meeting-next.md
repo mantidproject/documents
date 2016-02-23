@@ -23,4 +23,4 @@ In attendance: Fede, Campbell, Draper, Gigg, Hahn, Heybrock, Peterson, Savici, W
 
 * Martyn will move the 3.6 release notes over to sphinx to see how they would work in the main repository.
 * New pull request template was approved. Martyn will merge it in.
-* 
+* Ross will write an issue for Roman to figure out the gsl 2 build errors. 
