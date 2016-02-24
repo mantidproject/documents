@@ -20,9 +20,8 @@ Pool
 1. Migrate to C++11 standard library features.
   2. Check for places where we should be using `std::unordered_meow` instead of `std::meow` (`meow = {set,multiset,map,multimap}?`) [#15287](https://github.com/mantidproject/mantid/issues/15287), [#15370](https://github.com/mantidproject/mantid/issues/15370)
   3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex. [#15288](https://github.com/mantidproject/mantid/issues/15288)
-  4. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.[#15289](https://github.com/mantidproject/mantid/issues/15289)
-  5. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists.  ~~[#15175](https://github.com/mantidproject/mantid/issues/15175)~~
-  6. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
+  4. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists.  ~~[#15175](https://github.com/mantidproject/mantid/issues/15175)~~
+  5. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
  
 
 Assigned
@@ -56,6 +55,7 @@ Assigned
 1. We have a lot of in-and-out parameters ([example #1](https://github.com/mantidproject/mantid/blob/master/MantidQt/MantidWidgets/src/AlgorithmSelectorWidget.cpp#L151), [example #2](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ConfigService.cpp#L75)) that accept then immediately clear and fill a container. The intent would be much clearer (and run at least as fast) if the container was constructed internally and returned by value. [#15286](https://github.com/mantidproject/mantid/issues/15286) (Ready as [PR #15354](https://github.com/mantidproject/mantid/pull/15354)) (Tom)
   2. clang-tidy's `google-runtime-references` check may help us find more.
 7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
+1. Change raw owning pointers to `std::unique_ptr<>`. Having `PropertyManager::declareProperty` accept a `unique_ptr` may be a good place to start.[#15289](https://github.com/mantidproject/mantid/issues/15289) Done in [#15439](https://github.com/mantidproject/mantid/pull/15439) (Tom)
 
 #### Unassigned (not suitable for pool)
 
