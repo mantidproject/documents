@@ -1,3 +1,4 @@
+* https://github.com/mantidproject/mantid/pull/15493
 * https://github.com/mantidproject/mantid/pull/15446
 * https://github.com/mantidproject/mantid/pull/15366
 
