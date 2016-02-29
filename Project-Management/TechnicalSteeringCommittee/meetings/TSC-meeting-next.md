@@ -8,7 +8,7 @@ Pinned Topics
 
 New Items
 ---------
-* Poco 1.6
+* [Poco 1.6](/Project-Management/TechnicalSteeringCommittee/reports/Poco_14_to_16.md)
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
 * Tracking of volatile unit tests (Owen)
 * [LiveListener Design](https://github.com/mantidproject/documents/pull/7)(Owen)
