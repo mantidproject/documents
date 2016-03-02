@@ -2,9 +2,10 @@ Agenda
 =========
 
 
-* Add your item here
+* Add items you would like to present
 
 
-* __Questions__
+Questions to discuss
+===========
 
-Add questions you want to discuss here
+* Add questions or items you want to discuss here
