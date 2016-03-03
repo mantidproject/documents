@@ -45,8 +45,16 @@ This section aims to answer what high-level geometry related requests are made w
 
 ##External Geometry Use-cases##
 
-This section aims to answer what are instrument scientists currently accessing via geometry? What do they need to access in future?
-TODO O.Arnold
+| Request        | Example |
+| ------------- | --------- |
+| reference frame | workspace.getInstrument().getReferenceFrame() |
+| move component | MoveInstrumentComponent |
+| two theta | workspace.getDetector(1).getTwoTheta() |
+| phi | workspace.getDetector(1).getPhi() |
+| position | workspace.getDetector(1).getPos() |
+| sample | workspace.getInstrument().getSample() |
+| source | workspace.getInstrument().getSource() |
+
 
 ##Scanning Instrument Prototype##
 
