@@ -54,6 +54,7 @@ This section aims to answer what high-level geometry related requests are made w
 | position | workspace.getDetector(1).getPos() |
 | sample | workspace.getInstrument().getSample() |
 | source | workspace.getInstrument().getSource() |
+| rotate componenet | RotateInstrumentComponent |
 
 
 ##Scanning Instrument Prototype##
