@@ -21,9 +21,27 @@ This section aims to answer what high-level geometry related requests are made w
  
 | Request        | Example |
 | ------------- | --------- |
-| Component position fetch   |  
-| ...   | 
-TODO O.Arnold
+| Component position fetch   | instrument-getComponentByName('X').getPos() |
+| Get l2 | det->getDistance(*sample) |
+| Get l1 | source->getDistance(*sample) |
+| Get theta | source->getDistance(*sample) |
+| Get phi | detector->getPhi() |
+| rotation | component->rotate() |
+| translate | component->translate() |
+| distance | componnent->getDistance() |
+| bounding box | component->getBoundingBox() |
+| get parent | component->getParent() |
+| get sample | instrument->getSample() |
+| get source | instrument->getSource() |
+| reference frame | instrument->getReferenceFrame() |
+| Solid angle | obj_component->solidAngle() |
+| height | obj_component->getHeight() |
+| width | obj_component->getWidth() |
+| depth | obj_component->getDepth() |
+| shape | obj_component->shape() |
+| material | obj_component->material() |
+
+
 
 ##External Geometry Use-cases##
 
