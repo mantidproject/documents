@@ -81,4 +81,4 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * We should be able to _Chain_ components together. This should not depend upon the order of declaration. This would allow for example a non-linear guide above to be made of say a composite of mirrors. We should be able to mark `Components` with some sort of `source-component` metadata. Such a linked-list would describe a chain. I suggest we do this in addtion to allowing each component to express it's length.
 
 ##Detector L2 Cache##
-TODO O.Arnold
+See [issue] where caching has been applied (https://github.com/mantidproject/mantid/issues/15501) 
