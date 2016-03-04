@@ -1,6 +1,7 @@
 Agenda
 =========
 
+* Workspace Indices, Spectrum Numbers and Detector ID's (Nick)
 
 * Add items you would like to present
 
