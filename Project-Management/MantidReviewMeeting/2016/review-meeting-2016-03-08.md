@@ -1,6 +1,12 @@
 Agenda
 =========
 
+* Mantid Roadmap
+ * https://docs.google.com/spreadsheets/d/1vjZ-vQpwa4FehvVHEPo8IXFbI8T1JMzfAWQ0xOsUrqM/pubhtml (read only, ask me for an editable link)
+ * As a project and a team we will be assessed on how we deliver against the Roadmap
+ * Associated tickets have the Roadmap label and should be the first things you work on after a maintenance period
+ * If asked to do urgent work by instrument scientists on other tasks then talk to Me/Pete/Jon as we need to record work that deviates from the plan, and assess the impact.
+
 * Workspace Indices, Spectrum Numbers and Detector ID's (Nick)
  * user documentation: http://www.mantidproject.org/MBC_The_Workspace_Matrix
  * There is NO such thing as a Specta index or spectrum index in mantid (although there is ain a nexus file)
