@@ -5,7 +5,7 @@ Agenda:  Calibration Files in Mantid
 
 
 
-### Power Diffraction (Pete, Vickie or Wendou)
+### Powder Diffraction (Pete, Vickie or Wendou)
 
 
 
