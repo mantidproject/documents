@@ -24,3 +24,9 @@ Agenda
   * Each peak representation has its own color selection, see [here](http://www.mantidproject.org/PeaksViewer#Changing_Peak_Color)
   * In addition to the previously available spherical peaks, the SliceViewer can now display ellipsoidal peaks. See [here](http://www.mantidproject.org/PeaksViewer#Integrated_Peaks).
 
+
+Discussion
+===========
+
+* Simon suggested to have an automatic conversion of workspace indices to spectrum numbers from an algorithm UI to its implementation, such that developers don't have to perform conversions in the algorithm implementation ifself. See [here](https://github.com/mantidproject/documents/pull/13) 
+
