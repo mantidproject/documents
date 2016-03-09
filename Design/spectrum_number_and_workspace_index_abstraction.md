@@ -4,6 +4,7 @@
 ## Motivation
 
 There are two main motivations for this design proposal:
+
 1. We need to provide a consistent user interface that allows users to specify which spectrums in a workspace an algorithm should modify.
 2. Developers of algorithms should not have to deal with conversions between spectrum number and other index types.
 
