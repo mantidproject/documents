@@ -20,11 +20,7 @@ Agenda
 
 
 * Elliptical peak shape cuts in the SliceViewer (Anton)
+  * The SliceViewer is now able to display PeakWorkspaces with mixed peak shapes, eg. non-integrated and spherical.
+  * Each peak representation has its own color selection, see [here](http://www.mantidproject.org/PeaksViewer#Changing_Peak_Color)
+  * In addition to the previously available spherical peaks, the SliceViewer can now display ellipsoidal peaks. See [here](http://www.mantidproject.org/PeaksViewer#Integrated_Peaks).
 
-* Add items you would like to present
-
-
-Questions to discuss
-===========
-
-* Add questions or items you want to discuss here
