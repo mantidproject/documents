@@ -21,14 +21,41 @@ This section aims to answer what high-level geometry related requests are made w
  
 | Request        | Example |
 | ------------- | --------- |
-| Component position fetch   |  
-| ...   | 
-TODO O.Arnold
+| Component position fetch   | instrument-getComponentByName('X').getPos() |
+| Get l2 | det->getDistance(*sample) |
+| Get l1 | source->getDistance(*sample) |
+| Get theta | source->getDistance(*sample) |
+| Get phi | detector->getPhi() |
+| rotation | component->rotate() |
+| translate | component->translate() |
+| distance | componnent->getDistance() |
+| bounding box | component->getBoundingBox() |
+| get parent | component->getParent() |
+| get sample | instrument->getSample() |
+| get source | instrument->getSource() |
+| reference frame | instrument->getReferenceFrame() |
+| Solid angle | obj_component->solidAngle() |
+| height | obj_component->getHeight() |
+| width | obj_component->getWidth() |
+| depth | obj_component->getDepth() |
+| shape | obj_component->shape() |
+| material | obj_component->material() |
+
+
 
 ##External Geometry Use-cases##
 
-This section aims to answer what are instrument scientists currently accessing via geometry? What do they need to access in future?
-TODO O.Arnold
+| Request        | Example |
+| ------------- | --------- |
+| reference frame | workspace.getInstrument().getReferenceFrame() |
+| move component | MoveInstrumentComponent |
+| two theta | workspace.getDetector(1).getTwoTheta() |
+| phi | workspace.getDetector(1).getPhi() |
+| position | workspace.getDetector(1).getPos() |
+| sample | workspace.getInstrument().getSample() |
+| source | workspace.getInstrument().getSource() |
+| rotate componenet | RotateInstrumentComponent |
+
 
 ##Scanning Instrument Prototype##
 
@@ -81,4 +108,4 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * We should be able to _Chain_ components together. This should not depend upon the order of declaration. This would allow for example a non-linear guide above to be made of say a composite of mirrors. We should be able to mark `Components` with some sort of `source-component` metadata. Such a linked-list would describe a chain. I suggest we do this in addtion to allowing each component to express it's length.
 
 ##Detector L2 Cache##
-TODO O.Arnold
+See [issue](https://github.com/mantidproject/mantid/issues/15501) where caching has been applied 
