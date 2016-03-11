@@ -205,4 +205,4 @@ The same work and estimates apply to an optional GUI development.
 
 #### Conclusion
 
-The two approaches are slightly different and require certain work to be done at different times of the development cycle. Nevertheless it appears that roughly the same work is required in the end, hence it is expected to take a similar time (9-12m).
+The two approaches are slightly different and require certain work to be done at different times of the development cycle. Nevertheless it appears that roughly the same work is required in the end, hence it is expected to take a similar time (9-12m). Porting the full GUI is estimated to be another (2-4m).
