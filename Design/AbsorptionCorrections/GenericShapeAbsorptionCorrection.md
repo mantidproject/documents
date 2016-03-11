@@ -19,10 +19,6 @@ approach to correcting for absorption within the sample/can.
 1. Sample should be able to be offset from centre
 1. Separate algorithms to calculate the correction and then apply them, re Paalman & Pings
 
-## Selected Use cases
-
-Add a selection of use cases
-
 ## Current Structure
 
 There are currently 16 algorithms that relate to different methods for calculating the absorption corrections:
@@ -54,19 +50,85 @@ work for any shape. The complexity involved mostly surrounds the interface requi
 
 ## Solution Details
 
+The key parts of the proposal are as follows:
 
-### Example Script
+* [Definition of interface to input sample properties](#S-sample-properties)
+* [Definition of interface to input sample holder properties](#S-sample-holder-properties)
+* [Definition of interface to run the calculational algorithm](#S-calculational-algorithm)
+* [Definition of backend to store known sample holder geometry/properties](#S-backend-sample-holder)
 
+### <a name="S-sample-properties"></a> Definition of Interface for Input of Sample Properties
 
-#### Cylinder sample, no can
+**Idea 1**: Separate algorithms for setting sample geometry/material.
 
 ```python
-# Units in wavelength
-w1 = ConvertUnits(w1, Target="Wavelength")
-w1 = SetSampleGeometry(w1, Shape="Cylinder",
-                       ShapeParameters={"Radius": 40, "Height": 2.5})
-w1 = SetSampleMaterial(w1, ChemicalFormula="V")
-
-w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
-                                   MethodArgs={"NLambda": 500, "NEvents": 300})
+w1 = SetSampleGeometry(w1, Type="Cylinder",
+                       TypeArgs={"Radius": 40, "Height": 2.5})
+w1 = SetSampleMaterial(w1, ChemicalFormula="V", SampleNumberDensity=0.072)
 ```
+
+**Idea 2**: Single algorithm for setting both.
+
+```python
+# Simple cylindrical sample, no can
+# Material dictionary would accept the same arguments as current SetSampleMaterial
+w1 = SetSample(w1, Geometry={"Shape": "Cylinder", "Radius": 40, "Height": 2.5}
+    Material={"Formula": "V", "SampleNumberDensity"=0.072})
+w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
+    MethodArgs={"NLambda": 500, "NEvents": 300})
+```
+
+More complex shapes would have to be defined through [CSG](http://docs.mantidproject.org/nightly/concepts/HowToDefineGeometricShape.html#howtodefinegeometricshape) algebra in both approaches, e.g.
+
+```python
+sphere = '''
+<sphere id="sphere1">
+  <centre x="0" y="0" z="0"/>
+  <radius val="0.1" />
+</sphere>'''
+w1 = SetSample(w1, Geometry={"Shape": "CSG", "Value": sphere},
+    Material={"Formula": "V", "SampleNumberDensity"=0.072})
+```
+
+### <a name="S-sample-holder-properties"></a> Definition of interface to input sample holder properties
+
+Assuming we have a way of defining a [repository of known sample holders](#S-backend-sample-holder) the user could just select from them by name:
+
+```python
+# given sample holder from instrument
+w1 = SetSampleHolder(w1, Name="POLARIS-Can-6mm")
+w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
+    MethodArgs={"NLambda": 500, "NEvents": 300})
+```
+
+The properties, geometry & material, would be assumed to be defined elsewhere. They could however also be specified in a similar manner to the
+sample properties:
+
+```python
+# given sample holder from instrument
+w1 = SetSampleHolder(w1, Geometry={"Shape": "Annulus", "InnerRadius": 35, "OuterRadius": 40, "Height": 2.5},
+    Material={"Formula": "V", "SampleNumberDensity"=0.072})
+w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
+    MethodArgs={"NLambda": 500, "NEvents": 300})
+```
+
+
+### <a name="S-calculation-algorithm"></a> Definition of interface to run the calculational algorithm
+
+The main calculation will take place in the existing [`MonteCarloAbsorption`](http://docs.mantidproject.org/nightly/algorithms/MonteCarloAbsorption-v1.html), algorithm
+which is currently able to cope with sample/can environments. Upgrades required:
+
+* support for inelastic data
+
+Users will be given a new algorithm called `CalculateSampleCorrection` that will form the interface to running different correction algorithms. These algorithms will assume
+that the metadata required, such as geometry and material properties is all completely defined on the workspace. An example of running the algorithm would be:
+
+```python
+w1 = ConvertUnits(w1, Target="Wavelength")
+w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
+    MethodArgs={"NLambda": 500, "NEvents": 300})
+```
+
+### <a name="S-backend-sample-holder"></a> Definition of backend to store known sample holder geometry/properties
+
+TODO
