@@ -2,15 +2,15 @@
 
 ## Motivation
 
-The SANS reduction workflow makes use of the so-called `ReductionSingleton`, which essentially handles the configurational state of the reduction. It stores this state information either directly in itself, in an `ISISInstrument` object or so-called reductions steps. The individual reduction steps can also extract information from the `RedcutionSingleton`. This causes the reduction steps to be deeply coupled to the `ReductionSingleton`, which makes it hard to unit test them (and probably explains why such tests do not exist). In addition there is a strong coupling of the `ReductionSingleton` to the GUI logic, which essentially makes the ISIS SANS reduction a monolithic block.
+The SANS reduction workflow is centered around the so-called `ReductionSingleton`, which essentially handles the configurational state of the reduction. It stores this state information either directly in itself, in an `ISISInstrument` object or so-called reductions steps. The individual reduction steps can also extract information from the `RedcutionSingleton`. This causes the reduction steps to be deeply coupled to the `ReductionSingleton`, which makes it hard to unit test them. In addition there is a strong coupling of the `ReductionSingleton` to the GUI logic, which causes the ISIS SANS reduction to be fairly monolithic.
 
-A more modern approach is to use Mantid WorkflowAlgorithms. This mechanism avoids the deep coupling. Individual algorithms are supplied with the required workspaces and additional configurational information. They return an adequate output workspace. This setup naturally allows for simple unit testing.
+A more modern approach is to use Mantid's WorkflowAlgorithms. This mechanism avoids deep coupling. Individual algorithms are supplied with the required workspaces and additional configurational information. They return an adequate output workspace. This setup naturally allows for unit testing.
 
 ## Current status
 
 Besides being fairly monolithic and largely untested, there are several concerns which have been repeatedly raised by the instrument scientists:
   * speed
-  * and excessive memory consumption
+  * and excessive memory consumption.
 
 A brief investigation of these two issues is presented below.
 
@@ -46,7 +46,7 @@ For the rest of this document it is beneficial to point out the core elements of
 
 #### Profiling speed
 
-Speed profiling was performed using the a SANS2D H2O data set (4 Runs). (The results are not too useful, since we should be looking at 100s of runs to get meaningful results. Nevertheless they indicate that we are not confronted with prominent bottlenecks.) The percentage of the mean total process time for each reduction step is shown below.
+Speed profiling was performed using a SANS2D H2O data set (4 Runs). (The results are not too useful, since we should be looking at 100s of runs to get meaningful results. Nevertheless they indicate that we are not confronted with prominent bottlenecks.) The percentage of the mean total process time for each reduction step is shown below.
 
 |Reduction Element                               |Mean(%)   | Std(%) |
 |------------------------------------------------|--------|----------|
@@ -80,18 +80,16 @@ This preliminary profiling shows that the current workflow is not directly hinde
 
 Memory consumption when running the ISIS SANS reduction is fairly large since small event-mode files are converted to potentially very large histogram-mode files in the very [first reduction step](#SliceEvent).
 
-The first few (non-converting) steps [*CropDetBank*](#CropDetBank), [*MaskISIS*](#MaskISIS) and [*UnitsConvert*](#UnitsConvert) don't seem to require the data in histogram form in principal. [*CropDetBank*](#CropDetBank) performs, in addition to extracting the current detector bank, a dark background correction. This dark background correction subtracts dark background values in the time domain from the sample workspaces. For this to work, the data is required in a histogram-mode format.
-
-One possible workaround would be to allow only event-mode dark background workspaces and to add the dark background event-mode workspace as negative events.
+The first few (non-converting) steps [*CropDetBank*](#CropDetBank), [*MaskISIS*](#MaskISIS) and [*UnitsConvert*](#UnitsConvert) don't seem to require the data in histogram form in principal. [*CropDetBank*](#CropDetBank) performs, in addition to extracting the current detector bank, a dark background correction. This dark background correction subtracts dark background values in the time domain from the sample workspaces. For this to work, the data is required in a histogram-mode format. One possible workaround would be to allow only event-mode dark background workspaces and to add the dark background event-mode workspace as negative events.
 
 The next reduction steps in line, [*NormalizeToMonitor*](#NormalizeToMonitor) and [*TransmissionCalc*](#TransmissionCalc), require the data to be in histogram mode. Hence we can potentially push back the conversion of the event-mode workspace to a histogram-mode workspace to about the fifth reduction step.
 
 #### Reloading data
 
-Another source of performance waste occurs when certain files are loaded multiple times during the reduction process, although the newly loaded file is identical to the old one. Note that this issue of redundant file loading is being addressed independently of a [here](https://github.com/mantidproject/mantid/issues/5106)).
+Another source of performance waste occurs when certain files are loaded multiple times during the reduction process, despite the newly loaded workspace being identical to the old one. Note that this issue of redundant file loading is being addressed independently [here](https://github.com/mantidproject/mantid/issues/5106)).
 
 Loading of "Data Files" and "Tube Calibration Files" are the main culprits. There are two strategies which could minimize redundant loading:
-* Keep track of the modification status of loaded files, i.e. workspaces. If they have not been modified by the user or by the reduction algorithms, then there is no need to reload them. This requires a tracker object which is queried and updated whenever a load-request is performed. Loading will then occur at the recommendation of this tracker. The tracker itself will have to rely on the workspace history to determine the modification status of a workspace.
+* Keep track of the modification status of workspaces. If they have not been modified by the user or by the reduction algorithms, then there is no need to reload them. This requires a tracker object which is queried and updated whenever a load-request is performed. Loading will then occur at the recommendation of this tracker. The tracker itself will have to rely on the workspace history to determine the modification status of a workspace.
 * Load files once and create working copies for individual reduction runs. Presumably it is much quicker to create a clone of a workspace than to reload it from a file. This will however incur a memory penalty which might be prohibitive (depending on the size of the workspace).
 
 While the first strategy is definitely something we should implement, it would require a more careful investigation of current memory issues within the SANS workflow to determine if the second strategy is feasible at all.
@@ -110,7 +108,7 @@ The first strategy mentioned above could provide some relief here. Since common 
 
 ## SNS effort
 
-A similar port has been performed at SNS by M.D. When asked about the time it took him to perform the port he provided the following insightful answer:
+A similar port has been performed at the SNS by M.D. When asked about the time it took him to perform the port he provided the following insightful answer:
 
 >...the re-write took me a good 6 months. But that included a re-write of the Reducer (ReductionSingleton), which still exists but is now only used to process the convenience commands that our users use.
 
@@ -143,7 +141,7 @@ As mentioned above, the internals of the GUI, will have to be touched during thi
 
 #### V1: Gradual implementation
 
-With a gradual implementation approach we try to introduce our new design bit by bit. It is continuously integrated into the current implementation of the SANS reduction. The advantage of this is that we will always have a working version of ISIS SANS available. The disadvantage that we could be restricted (at least in part) by old design decisions.
+With a gradual implementation approach we try to introduce our new design bit by bit. It is continuously integrated into the current implementation of the SANS reduction. The advantage of this is that we will always have a working version of ISIS SANS available. A disadvantage could be that we could be restricted or guided (at least in parts) by old design decisions.
 
  1. State Object and decoupling:
     * Define adequate data structure for the state object. (1w).
@@ -192,7 +190,7 @@ Additional GUI change:
 
 A parallel development of SANS would in many ways be easier at the beginning since we would have less work regarding the decoupling. But later stages of the development would be slightly harder, since we would like to reuse old code which most likely contains coupling. This means that we cannot avoid the decoupling effort.
 
-1. State Object and decoupling:
+1. State Object and workflow handler:
    * Define adequate data structure for the state object (1w)
    * Define a workflow algorithm which handles the entire reduction (2-3w)
    * Define interfaces for GUI and reduction steps (now workflow algorithms) (1-2w)
