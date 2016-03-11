@@ -53,12 +53,12 @@
                     <name>invoque slice-selector from interfaces-menu</name>
                     <initials></initials>
                     <milestone planned="2016-01-10-05:00" actual="2016-01-10-05:00" status="complete"/>
-                    <milestone planned="2016-01-11-05:00" status="notstarted"/>
-                    <milestone planned="2016-01-11-05:00" status="notstarted"/>
+                    <milestone planned="2016-01-11-05:00" actual="2016-01-11-05:00" status="complete"/>
+                    <milestone planned="2016-01-11-05:00" actual="2016-01-11-05:00" status="complete"/>
                     <milestone planned="2016-01-18-05:00" status="notstarted"/>
                     <milestone planned="2016-01-21-05:00" status="notstarted"/>
                     <milestone planned="2016-01-23-05:00" status="notstarted"/>
-                    <ns2:progress count="0" completion="5"/>
+                    <ns2:progress count="0" completion="35"/>
                 </feature>
                 <feature seq="8">
                     <name>load reduced-data in slice-selector</name>
@@ -104,11 +104,11 @@
                     <milestone planned="2016-03-07-05:00" status="notstarted"/>
                     <ns2:progress count="0" completion="0"/>
                 </feature>
-                <ns2:progress count="0" completion="1"/>
+                <ns2:progress count="0" completion="7"/>
             </activity>
-            <ns2:progress count="0" completion="0"/>
+            <ns2:progress count="0" completion="3"/>
         </subject>
-        <ns2:progress count="0" completion="0"/>
+        <ns2:progress count="0" completion="1"/>
     </ns2:aspect>
     <ns2:aspect>
         <name>Reduction</name>

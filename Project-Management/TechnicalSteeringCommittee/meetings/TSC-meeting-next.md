@@ -8,7 +8,7 @@ Pinned Topics
 
 New Items
 ---------
-* Potential Workshop topic: Unifcation of interactive-/live-/batch-reduction. At least for some instruments separate code/workflows are maintained, this adds maintenance overhead and might be worth addressing before porting more things to MPI (Simon)
-* Start made on Geometry requrements [here](https://github.com/mantidproject/documents/blob/Instrument-Geometry/Design/Instrument-2.0/requirements-v2.md) (Owen)
+* [Poco 1.6](/Project-Management/TechnicalSteeringCommittee/reports/Poco_14_to_16.md)
+* Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
 * Tracking of volatile unit tests (Owen)
 * [LiveListener Design](https://github.com/mantidproject/documents/pull/7)(Owen)
