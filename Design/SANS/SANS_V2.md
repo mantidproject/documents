@@ -9,67 +9,70 @@ A more modern approach is to use Mantid WorkflowAlgorithms. This mechanism avoid
 ## Current status
 
 Besides being fairly monolithic and largely untested, there are several concerns which have been repeatedly raised by the instrument scientists:
-* speed
-* and excessive memory consumption
+  * speed
+  * and excessive memory consumption
 
 A brief investigation of these two issues is presented below.
 
 For the rest of this document it is beneficial to point out the core elements of the data reduction (in this order):
 
 *TOF Domain:*
-1. *SliceEvent*<a name="SliceEvent"></a>: Converts an EventWorkspace into a Workspace2D
+
+* *SliceEvent*<a name="SliceEvent"></a>: Converts an EventWorkspace into a Workspace2D
   * Main algorithm: Rebin
-2. *CropDetBank*<a name="CropDetBank"></a>: Crops the workspace such that it only contains the spectra of the "current" detector
+*  *CropDetBank*<a name="CropDetBank"></a>: Crops the workspace such that it only contains the spectra of the "current"  detector
   * Main algorithm: CropWorkspace
-3. *MaskISIS*<a name="MaskISIS"></a>: Excludes times and detectors
+* *MaskISIS*<a name="MaskISIS"></a>: Excludes times and detectors
   * Main algorithm: MaskBins, MaskDetectors, MaskDetectorsInShape
-4. *UnitsConvert*<a name="UnitsConvert"></a>: Converts the units to wavelengths (with additional rebinning)
+* *UnitsConvert*<a name="UnitsConvert"></a>: Converts the units to wavelengths (with additional rebinning)
   * Main algorithm: ConvertUnits
 
 *Wavelength Domain:*
-5. *NormalizeToMonitor*<a name="NormalizeToMonitor"></a>: Selects the incident monitor and subtracts the flat background.
-6. *TransmissionCalc*<a name="TransmissionCalc"></a>: Uses transmission and direct workspaces to calculate the transmission.
+
+* *NormalizeToMonitor*<a name="NormalizeToMonitor"></a>: Selects the incident monitor and subtracts the flat background.
+* *TransmissionCalc*<a name="TransmissionCalc"></a>: Uses transmission and direct workspaces to calculate the transmission.
   * Main algorithm: CalculateTransmission
-7. *AbsoluteUnitsISIS*<a name="AbsoluteUnitsISIS"></a>: Scales part of the cross section calculation.
-8. *SampleGeomCorr*<a name="SampleGeomCorr"></a>: Corrects for the volume of the sample
+* *AbsoluteUnitsISIS*<a name="AbsoluteUnitsISIS"></a>: Scales part of the cross section calculation.
+* *SampleGeomCorr*<a name="SampleGeomCorr"></a>: Corrects for the volume of the sample
   * Main algorithm: ConvertUnits
 
 *MomentumTransfer Domain:*
-9. *ConvertToQ*<a name="ConvertToQ"></a>: Performs the cross section calculation. Takes the output of [*NormalizeToMonitor*](#NormalizeToMonitor) and [*TransmissionCalc*](#TransmissionCalc) and evaluates them in *CalculateNormISIS* (not a reduction step).
+
+* *ConvertToQ*<a name="ConvertToQ"></a>: Performs the cross section calculation. Takes the output of [*NormalizeToMonitor*](#NormalizeToMonitor) and [*TransmissionCalc*](#TransmissionCalc) and evaluates them in *CalculateNormISIS* (not a reduction step).
   * Main algorithm: Q1D and Qxy
-10. *CanSubtraction*<a name="CanSubtraction"></a>: Performs steps 1 to 9 for the Can and subtracts the result from the intermediate Sample result.
-11. *StripEndNans (for 1D)*<a name="StripEndNans"></a>: Strips off front and end of the final output workspace if NANs are present.
+* *CanSubtraction*<a name="CanSubtraction"></a>: Performs steps 1 to 9 for the Can and subtracts the result from the intermediate Sample result.
+* *StripEndNans (for 1D)*<a name="StripEndNans"></a>: Strips off front and end of the final output workspace if NANs are present.
 
 
 #### Profiling speed
 
 Speed profiling was performed using the a SANS2D H2O data set (4 Runs). (The results are not too useful, since we should be looking at 100s of runs to get meaningful results. Nevertheless they indicate that we are not confronted with prominent bottlenecks.) The percentage of the mean total process time for each reduction step is shown below.
 
-|Reduction Element                               |H2O:|Mean(%)| Std(%) |
-|------------------------------------------------||--------|----------|
-|Preprocessing                                   || 0.2    | 0.3      |
-|[*SliceEvent*](#SliceEvent)                     || 5.2    | 2.1      |
-|[*CropDetBank*](#CropDetBank)                   || 6.2    | 1,1      |
-|[*MaskISIS*](#MaskISIS)                         || 7.4    | 0.7      |
-|[*UnitsConvert*](#UnitsConvert)                 || 7.4    | 0.3      |
-|[*NormalizeToMonitor*](#NormalizeToMonitor)     || 2.9    | 0.7      |
-|[*TransmissionCalc*](#TransmissionCalc)         || 8.3    | 3.3      |
-|[*AbsoluteUnitsISIS*](#AbsoluteUnitsISIS)       || 2.1    | 1.1      |
-|[*SampleGeomCorr*](#SampleGeomCorr)             || 1.4    | 0.5      |
-|[*ConvertToQ*](#ConvertToQ)                     || 4.7    | 4.1      |
-|Preprocessing Can                               || 0.8    | 0.6      |
-|[*SliceEvent Can*](#SliceEvent)                 || 2.8    | 2.6      |
-|[*CropDetBank Can*](#CropDetBank)               || 6.8    | 3.4      |
-|[*MaskISIS Can*](#MaskISIS)                     || 8.8    | 0.9      |
-|[*UnitsConvert Can*](#UnitsConvert)             || 8.3    | 1.1      |
-|[*NormalizeToMonitor Can*](#NormalizeToMonitor) || 2.1    | 0.4      |
-|[*TransmissionCalc Can*](#TransmissionCalc)     || 9.4    | 1.4      |
-|[*AbsoluteUnitsISIS Can*](#AbsoluteUnitsISIS)   || 2.8    | 0.6      |
-|[*SampleGeomCorr Can*](#SampleGeomCorr)         || 1.4    | 0.6      |
-|[*ConvertToQ Can*](#ConvertToQ)                 || 6.1    | 5.0      |
-|Acutal Can Subtraction                          || 2.5    | 0.4      |
-|[*StripEndNans*](#StripEndNans)                 || 1.1    | 0.6      |
-|PostProcessing                                  || 1.3    | 0.4      |
+|Reduction Element                               |Mean(%)   | Std(%) |
+|------------------------------------------------|--------|----------|
+|Preprocessing                                   | 0.2    | 0.3      |
+|[*SliceEvent*](#SliceEvent)                     | 5.2    | 2.1      |
+|[*CropDetBank*](#CropDetBank)                   | 6.2    | 1,1      |
+|[*MaskISIS*](#MaskISIS)                         | 7.4    | 0.7      |
+|[*UnitsConvert*](#UnitsConvert)                 | 7.4    | 0.3      |
+|[*NormalizeToMonitor*](#NormalizeToMonitor)     | 2.9    | 0.7      |
+|[*TransmissionCalc*](#TransmissionCalc)         | 8.3    | 3.3      |
+|[*AbsoluteUnitsISIS*](#AbsoluteUnitsISIS)       | 2.1    | 1.1      |
+|[*SampleGeomCorr*](#SampleGeomCorr)             | 1.4    | 0.5      |
+|[*ConvertToQ*](#ConvertToQ)                     | 4.7    | 4.1      |
+|Preprocessing Can                               | 0.8    | 0.6      |
+|[*SliceEvent Can*](#SliceEvent)                 | 2.8    | 2.6      |
+|[*CropDetBank Can*](#CropDetBank)               | 6.8    | 3.4      |
+|[*MaskISIS Can*](#MaskISIS)                     | 8.8    | 0.9      |
+|[*UnitsConvert Can*](#UnitsConvert)             | 8.3    | 1.1      |
+|[*NormalizeToMonitor Can*](#NormalizeToMonitor) | 2.1    | 0.4      |
+|[*TransmissionCalc Can*](#TransmissionCalc)     | 9.4    | 1.4      |
+|[*AbsoluteUnitsISIS Can*](#AbsoluteUnitsISIS)   | 2.8    | 0.6      |
+|[*SampleGeomCorr Can*](#SampleGeomCorr)         | 1.4    | 0.6      |
+|[*ConvertToQ Can*](#ConvertToQ)                 | 6.1    | 5.0      |
+|Acutal Can Subtraction                          | 2.5    | 0.4      |
+|[*StripEndNans*](#StripEndNans)                 | 1.1    | 0.6      |
+|PostProcessing                                  | 1.3    | 0.4      |
 
 This preliminary profiling shows that the current workflow is not directly hindered by any obvious bottlenecks, i.e. there are no outliers when it comes to runtime. It is not immediately obvious that a rewrite could improve this situation.
 
@@ -194,7 +197,6 @@ A parallel development of SANS would in many ways be easier at the beginning sin
    * Define a workflow algorithm which handles the entire reduction (2-3w)
    * Define interfaces for GUI and reduction steps (now workflow algorithms) (1-2w)
 2. These steps are similar to steps [2](#step2) above. It is expected that the  implementation would take longer in this case, since we would like to reuse the reduction steps as much as possible. This would require us to perform the decoupling work in this step instead of in the previous step.
-
 3. Identical to above.
 4. Identical to above.
 5. Identical to above.
