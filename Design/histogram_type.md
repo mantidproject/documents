@@ -1,8 +1,8 @@
 # Histogram Data Type
 
 **Note:** This document is mainly concerned with a data type for a *generic* histogram.
-In the context considered here, a histogram is *not* specific to neutron science or physics.
-In particular it should not be confused with the current data types in Mantid that are containers for histogram data and spectrum information, such as `ISpectrum` and `Histogram1D`.
+In the context considered here, a histogram is *not* specific to neutron science and probably not even specific to physics.
+In particular it should not be confused with the current data types in Mantid that are containers for histogram data and spectrum/detector information, such as `ISpectrum` and `Histogram1D`.
 
 
 ## Motivation
@@ -40,12 +40,11 @@ The problems include:
   - The array `E` of error values is used for both the variance and the standard deviation. The state is again carried as a flag in the brain of a developer. We even have functions such as `rebin` that return an array of `E` values that may mean either variance or standard deviation depending on a flag to the function!
 - Code duplication:
   - Operations like adding histograms are frequent. Re-implementing the same thing 10 times is error prone.
+  - Propagation of errors.
   - Conversions between variance and standard deviation.
 - Unit testing:
   - Many units tests of algorithms do not fully test the range of errors that can happen when, e.g., adding two spectra. Doing so would be very hard in the current de-centralized implementation,
-  - Many algorithms need to modify the errors. Some are unit tested, others are not.
-
-
+  - Many algorithms need to modify the errors. In some algorithms the unit tests cover the errors, in others they do not.
 
 
 ## Design goals
@@ -72,6 +71,15 @@ Bin sizes could in some cases be defined in a parametric way, without keeping bi
 Do we need sub-types for `X`, `Y`, `E`, and `E-squared`? (and dist- data)?
 
 What can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Does it need to be handled at the workspace level, or can we deal with this here? Having parametric `X` would circumvent that case in certain cases.
+
+
+## Implementation
+
+The details of the implementation have not been worked out in detail.
+The basic concept seems simple enough:
+
+- One class for a histogram with an interface that provides standard operations for histogram data.
+- Potentially a few classes for `X`, `Y`, and `E` (etc.) that would mainly be used internally in the histogram class. If these inherit from `std::vetor<double>`, they could also be used to keep the legacy interface for `ISpectrum` alive until the roll-out is complete.
 
 
 ## Interface
