@@ -8,6 +8,7 @@ Pinned Topics
 
 New Items
 ---------
+* Guidelines for using hdf5 and h5py vs nexus and nexus-python?
 * [Poco 1.6](/Project-Management/TechnicalSteeringCommittee/reports/Poco_14_to_16.md)
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
 * Tracking of volatile unit tests (Owen)
