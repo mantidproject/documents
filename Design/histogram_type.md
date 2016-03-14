@@ -30,7 +30,7 @@ dis/count mess (ref ConvertUnits bug)
 
 The current way of dealing with histograms has various shortcomings.
 Basically we have a set of three `std::vector<double>`, for `X`, `Y`, and `E`.
-There is a single `typedef MantidVec` used for all three of them (and other data), and this is probably adding only more confusion. 
+There is a single `typedef MantidVec` used for all three of them (and other data), and this is probably adding only more confusion.
 
 The problems include:
 
@@ -64,3 +64,22 @@ The problems include:
 
 
 If errors are just the square root of the counts the implementation may choose to not carry them explicitly to save computation time and memory.
+
+Jon pointed out that it may make most sense to default to distribution data.
+
+Bin sizes could in some cases be defined in a parametric way, without keeping bin boundaries around explicitly.
+
+Do we need sub-types for `X`, `Y`, `E`, and `E-squared`? (and dist- data)?
+
+What can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Does it need to be handled at the workspace level, or can we deal with this here? Having parametric `X` would circumvent that case in certain cases.
+
+
+## Interface
+
+At least initially not all cases for operations with histograms will be covered by the histogram type or free functions for histograms.
+Therefore we probably need to provide a direct interface to the underlying data as well.
+One option would be to have sub-types for `X`, `Y`, and `E`, let them inherit from `std::vector<double>` and just add new interface functions.
+
+If we want to hide things like error handling, is there a decent way of making this extensible for new operations? Are operators/functions declared as `friend` in our histogram data type? Are they members? Can we allow the use of `std::transform` on, e.g., the `Y` data? How to transform errors?
+
+## Roll-out
