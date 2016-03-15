@@ -18,8 +18,7 @@ There are various motivations for this:
 - Hide discrimination between histogram and distribution data.
 - Decrease risk for certain types of bugs by using the C++ type system.
 
-
-All this would remove duplicated code from the client and puts it into a central place where it can be unit-tested.
+All this would remove duplicated code from the client and put it into a central place where it can be unit-tested.
 
 
 ## Current situation
@@ -52,7 +51,7 @@ The problems include:
   - Arithmetic operations should do the right thing for any data type automatically.
 - Hide error handling.
   - For simple operations with histograms algorithm authors should not need to know how to propagate errors.
-- Enable unit testing of key concepts in Mantid:
+- Enable unit testing of key concepts in Mantid.
   - Arithmetic operations with histograms.
   - Propagation of errors.
 
@@ -60,33 +59,44 @@ The problems include:
 
 ## Implementation
 
+#### Basics
+
 The details of the implementation have not been worked out yet.
 The basic concept seems simple enough:
 
-- One class for a histogram with an interface that provides standard operations for histogram data.
-  - Note that we do not introduce a separate type for histogram and distribution data. This distinction would be only internal, and access to either histogram or distribution data is provided via public interface methods.
-- Potentially a few classes for `X`, `Y`, and `E` (etc.) that would mainly be used internally in the histogram class. If these inherit from `std::vetor<double>`, they could also be used to keep the legacy interface for `ISpectrum` alive until the roll-out is complete.
+- Add one class for a histogram with an interface that provides standard operations for histogram data.
+  - Note that we do not introduce a separate type for histogram and distribution data. This distinction would be only internal, and access to either histogram or distribution data is provided via public interface methods. The goal is to eliminate this distinction from as much of the code as possible.
+- Add a few classes for `X`, `Y`, and `E` (etc.) that would mainly be used internally in the histogram class and for direct access to the underlying data. If these inherit from `std::vetor<double>`, they could also be used to keep the legacy interface for `ISpectrum` alive until the roll-out is complete.
 
-### Internals
+#### Details
 
-Jon pointed out that it may make most sense to default to distribution data, as OpenGenie did by default.
+- It is probably useful to introduce two types for vectors of standard deviation and variance, instead of the current double use of `E`.
+- Similarly we should have distinct internal types for histogram and distribution data, in case our implementation relies on this distinction. Jon pointed out that it may make most sense to default to distribution data, as OpenGenie did by default.
+- The current copy-on-write (COW) mechanism seems useful and should be preserved.
+  - The `typedef` `MantidVecPtr` for a `cow_ptr` is useless and confusing and should be removed.
+  - We should consider extending the COW mechanism and make sure sharing is preserved more than it is now. For example, what can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Does it need to be handled at the workspace level, or can we deal with this here? Having parametric `X` could circumvent that in certain cases (see outlook).
 
+#### Interface
 
-Do we need sub-types for `X`, `Y`, `E`, and `E-squared`? (and dist- data)?
-
-What can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Does it need to be handled at the workspace level, or can we deal with this here? Having parametric `X` would circumvent that case in certain cases.
-
-
-## Interface
-
-At least initially not all cases for operations with histograms will be covered by the histogram type or free functions for histograms.
-Therefore we probably need to provide a direct interface to the underlying data as well.
-One option would be to have sub-types for `X`, `Y`, and `E`, let them inherit from `std::vector<double>` and just add new interface functions.
-
-If we want to hide things like error handling, is there a decent way of making this extensible for new operations? Are operators/functions declared as `friend` in our histogram data type? Are they members? Can we allow the use of `std::transform` on, e.g., the `Y` data? How to transform errors?
+- At least initially not all cases for operations with histograms will be covered by the histogram type or free functions for histograms. Therefore we probably need to provide a direct interface to the underlying data as well.
+- If we want to hide things like error handling, is there a decent way of making this extensible for new operations? Are operators/functions declared as `friend` in our histogram data type? Are they members? Can we allow the use of `std::transform` on, e.g., the `Y` data? How to transform errors?
 
 
 ## Roll-out
+
+Since histograms are in widespread use in the Mantid code the introduction of the new data type is not trivial.
+However, we can probably adopt a step-by-step approach that makes the roll-out quite feasible:
+
+- The new histogram data type is typically encapsulated in an `ISpectrum` object.
+  - Currently the `X` data is part of `ISpectrum`, whereas `Y` and `E` are part of `Histogram1D`. We somehow have to change this, or provide the option to have a histogram without `Y` and `E` data. This may be the main difficulty of these first steps.
+  - The interface of `ISpectrum` could be kept unchanged at first. The data access functions would then forward to the internal `X`, `Y`, and `E` data inside the new histogram type.
+- The interface of `MatrixWorkspace` would continue to forward to the interface of `ISpectrum`.
+- To make use of the new capabilities of the histogram type, the interface of `MatrixWorkspace` and `ISpectrum` could be extended to return a reference to the underlying histogram.
+
+After these initial steps we can then continuously work on reducing the use of the old interface in old and new algorithms.
+After a while we should be in a position to decide whether we want to keep the old interface around, or remove it completely.
+Furthermore, we will be able to decide whether or not we provide direct access to the underlying `X`, `Y`, and `E` data for non-standard operations.
+This direct access would not be identical to the current one, since it would rely on the new types for these data structures.
 
 
 ## Outlook
