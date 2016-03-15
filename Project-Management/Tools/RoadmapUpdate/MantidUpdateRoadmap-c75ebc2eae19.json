@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mantidupdateroadmap",
+  "private_key_id": "c75ebc2eae193721aea6b65302b28c7db4b35c3e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDGUD3arPNm7nNg\nlCKZFhXQUHXocSLwjrGvxTy4tLunnbr08zF3AFm3ty109Nmu35pLhAeQW2TqpmUY\n2ayFn6gQqBgh6WS7Z5o2FtOfxlj+m92aSjgnWys1O/u3BfCct9hwKWn9inpIH3lQ\nKQs6VYPn9RJBoLdPnw87AW1fkgTqTESdtRQXQMW0vhpi6JNLY+XFtuS/zu9Fl9l+\nWHrSLLwMVFGoqDLr8xoy1h51x0x0D4SKaGU2PGY0rDIoZR4kAliUYJQJko9TAY0L\nUlGp4zUKKAyskCCtozeTsxfcIgUILwac3YtU2/IQRE2QLsQAlhZ+q8hu5DQY84dG\n9m0pHftZAgMBAAECggEAAQgn2jxuI8n31bfPmkZQJL5Wbrgv+1pyuDxpfXiLRWr/\nrwiY6EqbLOaKGQKxI0TMk7oDJBAlrUbiXce8KxHSmQuW3I5PVN5MIh3qSfmJOwHq\nnEPomOPTjLpcK+6e+uHGAYdloskWq8tmITGlek85mXpf9vF0IrjsJl1yiT3EQsfS\ncotq1j5SuzJDwOa7+JdepBhW7I7SNrymdmsoabfg9jwW6DSIS1R6OsLdLWmu7xxy\n5yCwfjSqfmVWYqAfihL/I6vauluhToAfNRUA2HInEca2rvAfHKLnxGWIVIvc+nJd\nlHXqbdEovsWn/nB9FLCX4q3cUf8yf327KGQveabcRQKBgQD/koAadWw2ceSRwryC\npcBpUb4xdk2uKFyFKtn56uOI6j9pV54KhLq0f6OPMRyO+ic3tzr0xy9Ie8Pv3FF6\n5d0A4kgULwVR1kkNZ2kMUnVD5vhLiJgr32mmtdPg0P+3OdxjXdw6Mwek2tyyqKG5\n10WKAiW8l5jDoyY8mWOIyT2JTwKBgQDGpTVwgK2KXeEUIy8p7XQD/J6ZFqV1/03y\nrd35HR6l6PzHECWPW2FEfRMTMIBwThPVBoiQCxWZi/1xnwbAX4bHDbCZOB/ijOpE\nLeNRxEmFFdYSezM6DgY2jVGIED5wG2PicC5xnUI8vnzNIb7ywTUXKuJjCHRbrG72\ngQXavLc21wKBgB7ZqVsIR5q+3s91iVnf9j0AYAwKctAOETUF+i//2Z2CYUsvB2XP\npdX5/l1fmUntCmTgWl6H2L5QKlO+7Zr/OlFL/1VoY6UAT+stS3HwVjVvIRPFFlFd\nc5xrIHtn3yZX9rGL9/SSil6tCK0MTBFp2fwRzEpaplcfT5NLFMfDOwljAoGBAJOY\nt49DHS7dOFsVFXsqwvQfZNxM1l5Jd2pkw7TQbTBLYF6sYawV8rzHzj+I3zYS3WuA\nMkIM6lyvhn5A8exITkVip6AA8rgLihlkmy3rEdF/+xK6VcLCHt2zvSvDHhGAWIQs\nZGXougmWY/arJ00KP99Z7uI0qvhetAgWr/nqFJv7AoGBANsw4c48z9p+/gRYNb+6\n9VmynxzccI7bE7m4PjTJZGa13Hr6kc5loHR4eEI8mmylrWReTlB0DL3+9Uc6TgCi\nLQKQo9vTnwil10L0TQ2p5X9r6IP+udptLRELVW1rbfCyn8tGplYWLtRUqgvxmybz\nLHHfYpQ9i8NLNCrByRmJoKHR\n-----END PRIVATE KEY-----\n",
+  "client_email": "mantidupdateroadmap@appspot.gserviceaccount.com",
+  "client_id": "103593939670505757980",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mantidupdateroadmap%40appspot.gserviceaccount.com"
+}
