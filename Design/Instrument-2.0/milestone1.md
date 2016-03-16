@@ -108,4 +108,12 @@ Uses the *.comp file format to describe components and *.inst files to assemble 
 * We should be able to _Chain_ components together. This should not depend upon the order of declaration. This would allow for example a non-linear guide above to be made of say a composite of mirrors. We should be able to mark `Components` with some sort of `source-component` metadata. Such a linked-list would describe a chain. I suggest we do this in addtion to allowing each component to express it's length.
 
 ##Detector L2 Cache##
-See [issue](https://github.com/mantidproject/mantid/issues/15501) where caching has been applied 
+See [issue](https://github.com/mantidproject/mantid/issues/15501) where caching has been applied. This proved fruitless due to fundamental problems with the existing Instrument design.
+
+##Mapless Instrument##
+
+Work in progress on a mapless instrument, which is a fundamental redesign of the parameterized instrument, can be found [here](https://github.com/DMSC-Instrument-Data/instrument-prototype)
+
+
+
+
