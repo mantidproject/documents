@@ -1,6 +1,5 @@
 # Absorption Corrections for a General Shape
 
-
 ## Motivation
 
 Mantid currently contains many different types of algorithm to correct for absorption. It is desired to have a consistent
@@ -52,66 +51,68 @@ work for any shape. The complexity involved mostly surrounds the interface requi
 
 The key parts of the proposal are as follows:
 
+* [Combining shape & material](#S-shape-material)
 * [Definition of interface to input sample properties](#S-sample-properties)
 * [Definition of interface to input sample holder properties](#S-sample-holder-properties)
 * [Definition of interface to run the calculational algorithm](#S-calculational-algorithm)
-* [Definition of backend to store known sample holder geometry/properties](#S-backend-sample-holder)
+* [Mechanism to store predefined sample holder geometries/properties](#S-predefined-sample-holder)
+
+### <a name="S-shape-material"> Combining shape & material
+
+To support composite objects it will be necessary to combine a shape with its composition. The material is already well captured by the
+existing `Material` class and is it proposed that we keep this interface and expose it to Python. Shapes are currently defined via [CSG](http://docs.mantidproject.org/nightly/concepts/HowToDefineGeometricShape.html#howtodefinegeometricshape) but this is only exposed through the XML definition. It is proposed that the primitive shapes & operations are exposed to Python to allow complex geometries to be defined in scripts without resorting constructing
+complex XML defintions.
+
+The final fusion of shape & material will occur inside a `Volume` object that simply binds a CSG object with its corresponding material. Composite objects with many materials will then simply
+be defined as a list of `Volume` objects. A set of examples of increasing complexity is given below.
+
+*Vanadium Cylinder*
+
+```python
+from mantid import mm, Csg, Material
+shape = Csg.Cylinder(Axis=[0,1,0], BaseCenter=[0,0,0], Radius=40*mm, Length=2.5*mm)
+mat = Material(ChemicalFormula="V", NumberDensity=0.072)
+van_cyl = Volume(shape, mat)
+```
+
+*Double-toroid, non-encapsulated (e.g. SNAP)*
+
+```python
+from mantid import mm, Csg, Material
+
+def TopToroid()
+    return csg.Translate(Csg.Difference(Csg.Sphere(Radius=2.5*mm, Center=[0,0,0.634]),
+                                        Csg.Cuboid([5.1,5.1,4.38])), [0,0,-2.19])
+
+van = Material(ChemicalFormula="V", NumberDensity=0.072)
+top = TopToroid()
+bottom = Csg.Rotate(TopToroid(), Angle=[180,0,0])
+sample_volume = Volume(Csg.Union(top, bottom), Material=van)
+```
 
 ### <a name="S-sample-properties"></a> Definition of Interface for Input of Sample Properties
 
-**Idea 1**: Separate algorithms for setting sample geometry/material.
+The current algorithms [CreateSampleShape](http://docs.mantidproject.org/nightly/algorithms/CreateSampleShape-v1.html) & [SetSampleShape](http://docs.mantidproject.org/nightly/algorithms/SetSampleMaterial-v1.html) will
+merge to form `SetSample` that accepts a list of `Volume` objects.
 
 ```python
-w1 = SetSampleGeometry(w1, Type="Cylinder",
-                       TypeArgs={"Radius": 40, "Height": 2.5})
-w1 = SetSampleMaterial(w1, ChemicalFormula="V", SampleNumberDensity=0.072)
+from mantid import mm, Csg, Material
+from mantid.simpleapi import SetSample
+
+shape = Csg.Cylinder(Axis=[0,1,0], BaseCenter=[0,0,0], Radius=40*mm, Length=2.5*mm)
+mat = Material(ChemicalFormula="V", NumberDensity=0.072)
+van_cyl = Volume(shape, mat)
+SetSample(w1, Volumes=[van_cyl])
 ```
 
-**Idea 2**: Single algorithm for setting both.
-
-```python
-# Simple cylindrical sample, no can
-# Material dictionary would accept the same arguments as current SetSampleMaterial
-w1 = SetSample(w1, Geometry={"Shape": "Cylinder", "Radius": 40, "Height": 2.5}
-    Material={"Formula": "V", "SampleNumberDensity"=0.072})
-w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
-    MethodArgs={"NLambda": 500, "NEvents": 300})
-```
-
-More complex shapes would have to be defined through [CSG](http://docs.mantidproject.org/nightly/concepts/HowToDefineGeometricShape.html#howtodefinegeometricshape) algebra in both approaches, e.g.
-
-```python
-sphere = '''
-<sphere id="sphere1">
-  <centre x="0" y="0" z="0"/>
-  <radius val="0.1" />
-</sphere>'''
-w1 = SetSample(w1, Geometry={"Shape": "CSG", "Value": sphere},
-    Material={"Formula": "V", "SampleNumberDensity"=0.072})
-```
+**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat place, cylinder, annulus ?
 
 ### <a name="S-sample-holder-properties"></a> Definition of interface to input sample holder properties
 
-Assuming we have a way of defining a [repository of known sample holders](#S-backend-sample-holder) the user could just select from them by name:
+In general these would be set by a new algorithm called `SetSampleHolder` that also accepts the same `Volumes` type argument as `SetSample` above. In addition this could be extended to accept an identifer that
+would be used to pick up from a set of predefined sample holders defined in a set of files.
 
-```python
-# given sample holder from instrument
-w1 = SetSampleHolder(w1, Name="POLARIS-Can-6mm")
-w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
-    MethodArgs={"NLambda": 500, "NEvents": 300})
-```
-
-The properties, geometry & material, would be assumed to be defined elsewhere. They could however also be specified in a similar manner to the
-sample properties:
-
-```python
-# given sample holder from instrument
-w1 = SetSampleHolder(w1, Geometry={"Shape": "Annulus", "InnerRadius": 35, "OuterRadius": 40, "Height": 2.5},
-    Material={"Formula": "V", "SampleNumberDensity"=0.072})
-w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
-    MethodArgs={"NLambda": 500, "NEvents": 300})
-```
-
+**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat place, cylinder, annulus ?
 
 ### <a name="S-calculation-algorithm"></a> Definition of interface to run the calculational algorithm
 
@@ -129,6 +130,27 @@ w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
     MethodArgs={"NLambda": 500, "NEvents": 300})
 ```
 
-### <a name="S-backend-sample-holder"></a> Definition of backend to store known sample holder geometry/properties
+### <a name="S-predefined-sample-holder"></a> Mechanism to store predefined sample holder geometries/properties
 
-TODO
+It is proposed that the information regarding predefined sample holder properties be defined in a series of files. This provides the easiest route to extension and customisation. They
+will live alongside the IDF files and it would seem to make sense to use the existing format for specifying components but with the addition of defining the material composition for each
+objects. The filename will form the identifier for the particular holder allowing a particular file to be found using a similar mechanism to the IDF files.
+
+**Example: 8mm Vanadium Can:**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="van-cyl-8mm">
+  <cylinder id="body">
+   <centre-of-bottom-base x="0.0" y="0.0" z="0.0" />
+   <axis x="0.0" y="1.0" z="0.0" />
+   <radius val="0.008"/>
+   <height val="0.04"/>
+  </cylinder>
+  <material id="van">
+    <formula>V</formula>
+  </material>
+</type>
+```
+
+**Question**: How do we check the shape that we have defined? It would be best to design it in a CAD program like [OpenSCAD](http://www.openscad.org/) but this will not allow us to assign materials to each of the components.
