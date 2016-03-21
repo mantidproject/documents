@@ -21,5 +21,9 @@ Agenda:  Calibration Files in Mantid
     * New MANDI IDF from script [MANDIFromDetCal.py](https://github.com/mantidproject/mantidgeometry/blob/master/MANDI/MANDIFromDetCal.py)
   
 * Engineering (Federico)
+  * Calibration of every detector/pixel: [EnggCalibrateFull](http://docs.mantidproject.org/nightly/algorithms/EnggCalibrateFull-v1.html)
+  * Calibration of banks: [EnggCalibrate](http://docs.mantidproject.org/nightly/algorithms/EnggCalibrate-v1.html)
+  *  The legacy ascii/csv format that you shouln'd use: [ENGINX_full_pixel_calibration_vana194547_ceria193749.csv](https://github.com/mantidproject/mantid/blob/master/scripts/Engineering/calib/ENGINX_full_pixel_calibration_vana194547_ceria193749.csv)
+  *  The [HDF format]((http://docs.mantidproject.org/nightly/concepts/DiffractionCalibrationWorkspace.html)) that will be used.
 
 * PSDTubes (Anders)
