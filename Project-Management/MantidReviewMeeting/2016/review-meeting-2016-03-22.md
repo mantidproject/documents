@@ -23,7 +23,8 @@ Agenda:  Calibration Files in Mantid
 * Engineering (Federico)
   * Calibration of every detector/pixel: [EnggCalibrateFull](http://docs.mantidproject.org/nightly/algorithms/EnggCalibrateFull-v1.html)
   * Calibration of banks: [EnggCalibrate](http://docs.mantidproject.org/nightly/algorithms/EnggCalibrate-v1.html)
-  *  The legacy ascii/csv format that you shouln'd use: [ENGINX_full_pixel_calibration_vana194547_ceria193749.csv](https://github.com/mantidproject/mantid/blob/master/scripts/Engineering/calib/ENGINX_full_pixel_calibration_vana194547_ceria193749.csv)
-  *  The [HDF format]((http://docs.mantidproject.org/nightly/concepts/DiffractionCalibrationWorkspace.html)) that will be used.
+  *  The legacy ascii/csv format that you should never use: [ENGINX_full_pixel_calibration_vana194547_ceria193749.csv](https://github.com/mantidproject/mantid/blob/master/scripts/Engineering/calib/ENGINX_full_pixel_calibration_vana194547_ceria193749.csv)
+  *  The [HDF format](http://docs.mantidproject.org/nightly/concepts/DiffractionCalibrationWorkspace.html) that should/will be used.
+  *  Under the hood: [EnggFitPeaks](http://docs.mantidproject.org/nightly/algorithms/EnggFitPeaks-v1.html)
 
 * PSDTubes (Anders)
