@@ -133,10 +133,9 @@ w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
 ### <a name="S-predefined-sample-holder"></a> Mechanism to store predefined sample holder geometries/properties
 
 It is proposed that the information regarding predefined sample holder properties be defined in a series of files. This provides the easiest route to extension and customisation. They
-will live alongside the IDF files and it would seem to make sense to use the existing format for specifying components but with the addition of defining the material composition for each
-objects. The filename will form the identifier for the particular holder allowing a particular file to be found using a similar mechanism to the IDF files.
+will live alongside the IDF files. The simplest option is extend the current XML syntax for defining shapes to handle materials.
 
-**Example: 8mm Vanadium Can:**
+**Current XML-based syntax 8mm Vanadium Can**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -151,6 +150,32 @@ objects. The filename will form the identifier for the particular holder allowin
     <formula>V</formula>
   </material>
 </type>
+```
+
+Another proprosal would be to simply use the python syntax defined in [the above section](#S-shape-material) and store this as a straight Python file to be evaluated. There would most likely need to be some kind of registration
+system along similar lines to the Python algorithms.
+
+**Python-based file syntax **
+
+```python
+from mantid import mm, Csg, Material, SampleHolderFactory
+
+def TopToroid()
+    return csg.Translate(Csg.Difference(Csg.Sphere(Radius=2.5*mm, Center=[0,0,0.634]),
+                                        Csg.Cuboid([5.1,5.1,4.38])), [0,0,-2.19])
+
+van = Material(ChemicalFormula="V", NumberDensity=0.072)
+top = TopToroid()
+bottom = Csg.Rotate(TopToroid(), Angle=[180,0,0])
+sample_volume = Volume(Csg.Union(top, bottom), Material=van)
+
+SampleHolderFactory.subscribe("SNAP-Double-Toroid-Enclosed", sample_volume)
+```
+
+and then in a script
+
+```python
+w1 = SetSampleHolder(w1, Name="SNAP-Double-Toroid-Enclosed")
 ```
 
 **Question**: How do we check the shape that we have defined? It would be best to design it in a CAD program like [OpenSCAD](http://www.openscad.org/) but this will not allow us to assign materials to each of the components.
