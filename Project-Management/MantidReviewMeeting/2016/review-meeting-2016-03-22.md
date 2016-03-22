@@ -7,7 +7,7 @@ Agenda:  Calibration Files in Mantid
   * [CalibrateRectangularDetectors](http://docs.mantidproject.org/nightly/algorithms/CalibrateRectangularDetectors-v1.html)
     * [GetDetectorOffsets](http://docs.mantidproject.org/nightly/algorithms/GetDetectorOffsets-v1.html)
     * [GetDetOffsetsMultiPeaks](http://docs.mantidproject.org/nightly/algorithms/GetDetOffsetsMultiPeaks-v1.html)
-  * [AlignComponents](https://github.com/mantidproject/mantid/blob/master/docs/source/algorithms/AlignComponents-v1.rst)
+  * [AlignComponents](https://github.com/mantidproject/mantid/blob/master/docs/source/algorithms/AlignComponents-v1.rst) and [ExportGeometry](http://docs.mantidproject.org/nightly/algorithms/ExportGeometry-v1.html)
   * [ascii file format](http://docs.mantidproject.org/nightly/algorithms/LoadCalFile-v1.html)
   * [h5 file format](http://docs.mantidproject.org/nightly/concepts/DiffractionCalibrationWorkspace.html)
 
@@ -29,3 +29,4 @@ Agenda:  Calibration Files in Mantid
   *  Custom GUI: [calibration tab](http://www.mantidproject.org/File:Engggui_36_calib_tab.png)
 
 * PSDTubes (Anders)
+  * [wiki page](http://www.mantidproject.org/Tube_Calibration)
