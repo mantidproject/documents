@@ -1,5 +1,7 @@
 # Instrument-2.0 Design Notes
 
+The primary focus of this document is to describe and design the top level interface to the `InstrumentTree`. How will the clients of the `Instrument` access the information they need? How will the performance issues associated with fast reads be addressed?
+
 ## Overview
 
 - Copy-on-write `InstrumentTree`, similar to the [prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype). The design of this component is not the core focus of this document.
@@ -59,6 +61,8 @@ V3D position(size_t index);
 
 Furthermore, we need to provide access to lower-level data, e.g., via a method `const Detector &DetectorInfo::detector(size_t index)`.
 For `SpectrumInfo` we could have `const std::vector<const Detector *> detectors(size_t index)`.
+
+Note that although the index in the public interface is the same. They relate to two different indexing mechanisms. For example, on `SpectraInfo::isMonitor(size_t index)` the `index` is the spectrum index, which goes from 0 to the maximum number of spectra. On the other hand `DetectorInfo::isMonitor(size_t index)` the `index` is the detector index. This can be larger than the available number of spectra when mapping is not 1:1. 
 
 ### Read access
 
