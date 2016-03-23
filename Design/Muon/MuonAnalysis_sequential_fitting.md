@@ -33,7 +33,7 @@ Comments from scientists:
   James's suggestion is on the right of the mockup, above the data section.
 
   - Like the option of expand/collapse parameters. 
-  - How would this work with fix/tie/constrain?
+  - How would this work with fix/tie/constrain? These use the same expand/collapse icon.
   - Could have another column of checkboxes for "fix" - but still leaves problem for ties and constraints
 
 3. **Sequential fits**
