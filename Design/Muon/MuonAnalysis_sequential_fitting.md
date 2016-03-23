@@ -31,7 +31,9 @@ Comments from scientists:
   
 2. **Parameters**  
 
-  James's suggestion is on the right of the mockup, above the data section.
+  James's suggestion is on the right of the mockup, above the data section. 
+  
+  It has an expand/collapse icon by each parameter. When collapsed, you can set this parameter to the same value for all data sets, but you can also expand to initialise to different values (e.g. phases). Collapsing again will list all values on one line. 
 
   - Like the option of expand/collapse parameters. 
   - How would this work with fix/tie/constrain? These use the same expand/collapse icon.
@@ -39,10 +41,13 @@ Comments from scientists:
 
 3. **Sequential fits**
 
-  Not related but another point raised:  
-  At the moment you can initialise parameters to the same values each time, or use the previous fit's results.  
+  Not strictly related but another point raised:  
+  At the moment you can:
+  1. initialise parameters to the same values each time, or 
+  2. use the previous fit's results. 
+  
   It would be good to have a third option: initialise a parameter to a log value (e.g. field).  
-  Some way to select which log value to use for a given parameter.  
-  Also should be able to fix the parameter to this value (but a different value for each run).
+  There should be some way to select which log value to use for a given parameter.  
+  Also should be able to fix the parameter to the log value for each run.
   
 
