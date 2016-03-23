@@ -5,7 +5,8 @@ Discussed mockups available at `Design/Mockups/muon/MuonAnalysis.bmpr` - the _Da
 
 This covers adding functionality for simultaneous fitting, which is Roadmap issue [#15518](https://github.com/mantidproject/mantid/issues/15518)
 
-Comments from scientists:
+Comments from scientists:  
+(at the moment just copied into this file, I will restructure them better later on)
 
 1. **Selection of what data to fit**  
   (bottom right of the mockup)
