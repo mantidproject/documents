@@ -27,6 +27,7 @@ Agenda:  Calibration Files in Mantid
   *  The [HDF format](http://docs.mantidproject.org/nightly/concepts/DiffractionCalibrationWorkspace.html) that should/will be used.
   *  Under the hood: [EnggFitPeaks](http://docs.mantidproject.org/nightly/algorithms/EnggFitPeaks1.html), [FindPeaks](http://docs.mantidproject.org/nightly/algorithms/FindPeaks.html),  [EnggVanadiumCorrections](http://docs.mantidproject.org/nightly/algorithms/EnggVanadiumCorrections1.html)
   *  Custom GUI: [calibration tab](http://www.mantidproject.org/File:Engggui_36_calib_tab.png)
+  *  Peak functions (shapes):  [Back2BackExponential](http://docs.mantidproject.org/nightly/fitfunctions/BackToBackExponential.html) (in EnggFitPeaks), [Gaussian](http://docs.mantidproject.org/nightly/fitfunctions/Gaussian.html) (in FindPeaks), Bk2BkExpConvPV (in GSAS).
 
 * PSDTubes (Anders)
   * [wiki page](http://www.mantidproject.org/Tube_Calibration)
