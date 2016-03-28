@@ -16,3 +16,4 @@ New Items
 * Should we add `gtest` (google-test) support to Mantid?
 * [Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) (Simon)
 * [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
+* Plan to remove Qt3Support module?
