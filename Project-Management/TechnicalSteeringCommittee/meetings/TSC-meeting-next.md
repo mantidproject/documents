@@ -17,4 +17,4 @@ New Items
 * [Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) (Simon)
 * [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
 * Plan to remove Qt3Support module?
-  * add `add_definitions(-DQT3_SUPPORT_WARNINGS) to build?   
+  * add [`add_definitions(-DQT3_SUPPORT_WARNINGS)`](https://gist.github.com/quantumsteve/a3d0733cd3ea31452ed0) to the build?   
