@@ -8,6 +8,7 @@ Pinned Topics
 
 New Items
 ---------
+* Patch releases [v3.5.2](https://github.com/mantidproject/mantid/commits/release-3.5) and [v3.6.1](https://github.com/mantidproject/mantid/commits/release-v3.6)
 * Guidelines for using hdf5 and h5py vs nexus and nexus-python?
 * [Poco 1.6](/Project-Management/TechnicalSteeringCommittee/reports/Poco_14_to_16.md)
 * Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
