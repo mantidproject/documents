@@ -19,3 +19,9 @@ New Items
 * [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
 * Plan to remove Qt3Support module?
   * add [`add_definitions(-DQT3_SUPPORT_WARNINGS)`](https://gist.github.com/quantumsteve/a3d0733cd3ea31452ed0) to the build?   
+
+Minutes
+-------
+* After 3.6.1 is out (later this week) move rhel7 build to poco 1.6
+* TSC recommends hdf5/h5py for all future work. nexus-python dependency will be removed and h5py will be added
+* 
