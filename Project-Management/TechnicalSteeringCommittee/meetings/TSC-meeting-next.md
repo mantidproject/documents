@@ -11,8 +11,6 @@ New Items
 * Patch releases [v3.5.2](https://github.com/mantidproject/mantid/commits/release-3.5) and [v3.6.1](https://github.com/mantidproject/mantid/commits/release-v3.6)
 * [Poco 1.6](/Project-Management/TechnicalSteeringCommittee/reports/Poco_14_to_16.md)
 * Guidelines for using hdf5 and h5py vs nexus and nexus-python?
-* Start made on Geometry requrements [here](/Design/Instrument-2.0/requirements-v2.md) (Owen)
-* Tracking of volatile unit tests (Owen)
 * [LiveListener Design](https://github.com/mantidproject/documents/pull/7)(Owen)
 * Should we add `gtest` (google-test) support to Mantid?
 * [Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) (Simon)
