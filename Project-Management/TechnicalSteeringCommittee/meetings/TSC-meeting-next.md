@@ -26,3 +26,5 @@ Minutes
 * LiveListener design will be reassigned to a person at PSI
 * gmock/gtest 1.6 will removed from the mantid source tree
 * The TSC is delaying a decision on adding gtest until there is an example and list of benefits over cxxtest
+* [Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) was approved and the "internals" should move forward on a detailed design/implementation
+
