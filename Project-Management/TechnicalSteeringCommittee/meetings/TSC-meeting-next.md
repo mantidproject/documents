@@ -24,4 +24,4 @@ Minutes
 -------
 * After 3.6.1 is out (later this week) move rhel7 build to poco 1.6
 * TSC recommends hdf5/h5py for all future work. nexus-python dependency will be removed and h5py will be added
-* 
+* Steve will add maintenance task to take care of QT3 warnings. There will be a build in critical tab of jenkins to help stop people from adding more QT3 to mantid
