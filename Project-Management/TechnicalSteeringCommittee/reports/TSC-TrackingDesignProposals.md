@@ -16,6 +16,7 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
+| [Histogram type](https://github.com/mantidproject/documents/pull/14) | 2016-04-12 | TBD. |
 | [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. |
 | [Live listener customisation](https://github.com/mantidproject/documents/pull/7) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Assign to a developer from PSI. |
 | [Algorithm Usage Statistics](/Design/Usage/AlgorithmUsageStatistics.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | Done.  ~~[12041](https://github.com/mantidproject/mantid/issues/12041)~~.|
