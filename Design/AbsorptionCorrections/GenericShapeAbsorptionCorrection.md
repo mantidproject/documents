@@ -110,7 +110,7 @@ SetSample(w1, Volumes=[van_cyl])
 ### <a name="S-sample-holder-properties"></a> Definition of interface to input sample holder properties
 
 In general these would be set by a new algorithm called `SetSampleHolder` that also accepts the same `Volumes` type argument as `SetSample` above. In addition this could be extended to accept an identifer that
-would be used to pick up from a set of predefined sample holders defined in a set of files.
+would be used to pick up from a set of predefined sample holders defined in a set of files - see [below](#S-predefined-sample-holder) for more details.
 
 **Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat place, cylinder, annulus ?
 
