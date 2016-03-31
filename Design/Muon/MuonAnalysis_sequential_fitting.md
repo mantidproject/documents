@@ -57,8 +57,16 @@ Comments from scientists:
   1. initialise parameters to the same values each time, or 
   2. use the previous fit's results. 
   
-  It would be good to have a third option: initialise a parameter to a log value (e.g. field).  
-  There should be some way to select which log value to use for a given parameter.  
-  Also should be able to fix the parameter to the log value for each run.
+It would be good to have a third option: initialise a parameter to a log value (e.g. field).  
+There should be some way to select which log value to use for a given parameter.  
+Also should be able to fix the parameter to the log value for each run.
   
+It would also be convenient to have that option when manually stepping through runs and fitting them one by one. In that case   loading a run would reinitialise the value, though it could be possible to edit it before doing the fit. Also in Simultaneous fits across a sequence of runs, we might want to initialise a (non-global) parameter to a log value per run, and not have to type all the numbers in manually.
+
+Given this is set on a per-parameter basis, it would be logical to add another option “Set from Log” to the main fit dialog, in the pop up menu along with “Fix”, “Constraint” and “Tie” for a fit parameter. Either use this in combination with “Fix”, or have two variants “Fix to log” and “Initialise from log”.
+
+You’d select from log values available in the currently loaded or first run in the sequence and it’s the user’s fault if a later run doesn’t have that log value any more.
+
+We may need either (a) the option to enter a formula to calculate the fit parameter from the log value instead of a direct copy, or (b) variants on functions such as “ExpDecayOsc” which take a field parameter rather than a frequency.
+
 
