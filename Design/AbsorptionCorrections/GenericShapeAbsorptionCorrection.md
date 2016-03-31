@@ -155,7 +155,7 @@ will live alongside the IDF files. The simplest option is extend the current XML
 Another proprosal would be to simply use the python syntax defined in [the above section](#S-shape-material) and store this as a straight Python file to be evaluated. There would most likely need to be some kind of registration
 system along similar lines to the Python algorithms.
 
-**Python-based file syntax **
+**Python-based file syntax**
 
 ```python
 from mantid import mm, Csg, Material, SampleHolderFactory
