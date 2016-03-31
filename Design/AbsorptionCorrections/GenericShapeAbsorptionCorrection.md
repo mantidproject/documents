@@ -105,14 +105,12 @@ van_cyl = Volume(shape, mat)
 SetSample(w1, Volumes=[van_cyl])
 ```
 
-**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat place, cylinder, annulus ?
+**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat plate, cylinder, annulus ?
 
 ### <a name="S-sample-holder-properties"></a> Definition of interface to input sample holder properties
 
 In general these would be set by a new algorithm called `SetSampleHolder` that also accepts the same `Volumes` type argument as `SetSample` above. In addition this could be extended to accept an identifer that
 would be used to pick up from a set of predefined sample holders defined in a set of files - see [below](#S-predefined-sample-holder) for more details.
-
-**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat place, cylinder, annulus ?
 
 ### <a name="S-calculation-algorithm"></a> Definition of interface to run the calculational algorithm
 
@@ -125,6 +123,7 @@ Users will be given a new algorithm called `CalculateSampleCorrection` that will
 that the metadata required, such as geometry and material properties is all completely defined on the workspace. An example of running the algorithm would be:
 
 ```python
+# assume w1 has metadata already set
 w1 = ConvertUnits(w1, Target="Wavelength")
 w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
     MethodArgs={"NLambda": 500, "NEvents": 300})
@@ -133,7 +132,7 @@ w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
 ### <a name="S-predefined-sample-holder"></a> Mechanism to store predefined sample holder geometries/properties
 
 It is proposed that the information regarding predefined sample holder properties be defined in a series of files. This provides the easiest route to extension and customisation. They
-will live alongside the IDF files. The simplest option is extend the current XML syntax for defining shapes to handle materials.
+can live alongside the IDF files. The simplest option is extend the current XML syntax for defining shapes to handle materials.
 
 **Current XML-based syntax 8mm Vanadium Can**
 
@@ -151,6 +150,13 @@ will live alongside the IDF files. The simplest option is extend the current XML
   </material>
 </type>
 ```
+
+Pros:
+* Extension of current format so it should be easy to implement
+
+Cons:
+* Very difficult to define more complex, composite shapes such as pressure anvils
+* 
 
 Another proprosal would be to simply use the python syntax defined in [the above section](#S-shape-material) and store this as a straight Python file to be evaluated. There would most likely need to be some kind of registration
 system along similar lines to the Python algorithms.
@@ -179,3 +185,11 @@ w1 = SetSampleHolder(w1, Name="SNAP-Double-Toroid-Enclosed")
 ```
 
 **Question**: How do we check the shape that we have defined? It would be best to design it in a CAD program like [OpenSCAD](http://www.openscad.org/) but this will not allow us to assign materials to each of the components.
+
+Pros:
+* The same syntax that could be used in a script if a shape was not already implemented in the "library"
+* It should be possible to unit test the volumes
+
+Cons:
+* Completely new system so more effort to implement up front
+* It seems like we're inventing our own way of describing CSG operations again..
