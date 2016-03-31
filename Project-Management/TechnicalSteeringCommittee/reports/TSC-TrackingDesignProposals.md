@@ -9,10 +9,9 @@
 
 ## Design proposals
 
-Designs currently being proposed/reviewed via [design document pull requests](https://github.com/mantidproject/documents/pulls).
-
 For design document guidelines see [here]( http://www.mantidproject.org/Design_Document_Guidelines).
 
+Designs currently being proposed/reviewed via [design document pull requests](https://github.com/mantidproject/documents/pulls).
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
@@ -29,7 +28,13 @@ For design document guidelines see [here]( http://www.mantidproject.org/Design_D
 | [pythonAlgorithmsForMDEvents](/Design/pythonAlgorithmsForMDEvents.rst)     | [2015-04-21](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-04-21.md)  | **Under reconsideration**. |
 | [PocoStringTokenizer](/Design/PocoStringTokenizer.md)  | [2015-02-17](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-02-17.md)  | Done. ~~[11815](https://github.com/mantidproject/mantid/issues/11815)~~, ~~[PR15366](https://github.com/mantidproject/mantid/pull/15366)~~ |
 | [automatic differentiation](/Design/IntegratingAdept.md) | [2014-11-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-11-11.md) | In progress, "almost there". [10624](https://github.com/mantidproject/mantid/issues/10624) |
-| [determining usage statistics](/Design/MeasureUsageStatistics.md) | [2014-11-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-11-11.md) | done. ~~[11401](https://github.com/mantidproject/mantid/issues/11401)~~ |
+
+
+Designs from 2014 that were approved and implemented:
+
+| Name  | date | Status |
+| :------------ |:---------------|:-------|
+| [determining usage statistics](/Design/MeasureUsageStatistics.md) |[2014-11-11](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-11-11.md) | done. ~~[11401](https://github.com/mantidproject/mantid/issues/11401)~~ |
 | [New plotting CLI](/Design/Plotting/plotting_cli.md) | [2014-09-02](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-09-02.md) | done. ~~[9780](https://github.com/mantidproject/mantid/issues/9780)~~, ~~[11395](https://github.com/mantidproject/mantid/issues/11395)~~, ~~[12380](https://github.com/mantidproject/mantid/issues/12380)~~ |
 | [EmbeddedInstrumentInfoNexus](/Design/EmbeddedInstrumentInfoNexus.md)     | [2014-08-27](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-08-27.md) | done. ~~[12255](https://github.com/mantidproject/mantid/issues/12255)~~ |
 | [Monitors in Live Data](/Design/MonitorsInLiveData.md) | [2014-05-21](/Project-Management/TechnicalSteeringCommittee/meetings/2014/TSC-meeting-2014-05-21.md) | done. ~~[10384](https://github.com/mantidproject/mantid/issues/10384)~~, ~~[10383](https://github.com/mantidproject/mantid/issues/10383)~~ |
