@@ -33,6 +33,9 @@ Masking is an operation on the data not on the Instrument. Masking will therfore
 
 ## Design
 
+![](instrument-2.0-sketch-small.jpg)
+**Simons preliminary sketch for a potential design**
+
 ### Structure
 
 Algorithms that work with workspaces need to access information about spectra.
