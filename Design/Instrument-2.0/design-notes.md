@@ -27,6 +27,9 @@ The remainder of this document is thus not concerned with `SpectrumNumber` or `D
 All class names in this document are preliminary and just for the sake of discussion.
 Better names are needed in several cases.
 
+## Masking
+
+Masking is an operation on the data not on the Instrument. Masking will therfore not feature in the `Detector` only in the `DetectorInfo` and `SpectrumINfo` layers. Other meta-data should follow the same protocol.
 
 ## Design
 
