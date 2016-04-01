@@ -90,10 +90,9 @@ Notes:
   1. Invalidate `SpectrumInfo` and `DetectorInfo`
   2. Update `InstrumentTree`.
   3. Update/rebuild `DetectorInfo`.
-  4. Rebuild `SpectrumInfo`.
-  It has to be clarified how this could happen transparently to clients. Ideally we would like to avoid the need for manual calls to something like `invalidateSpectrumInfo()` and `rebuildSpectrumInfo()`. One option might be to just let modifying clients *set* a new `InstrumentTree` (based on a copy of the current tree), which would then trigger the updates.
+  4. Rebuild `SpectrumInfo`. It has to be clarified how this could happen transparently to clients. Ideally we would like to avoid the need for manual calls to something like `invalidateSpectrumInfo()` and `rebuildSpectrumInfo()`. One option might be to just let modifying clients *set* a new `InstrumentTree` (based on a copy of the current tree), which would then trigger the updates.
 - Writes to `InstrumentTree` may need to update, e.g., the position of a detector. A detector should thus have a field `size_t index` that allows upgraded the corresponding data in `DetectorInfo`.
-- 
+
 ### Construction
 
 The `DetectorInfo` should be constructible only with an `InstrumentTree_uptr` as an argument.
