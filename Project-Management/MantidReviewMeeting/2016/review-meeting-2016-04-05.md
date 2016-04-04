@@ -1,7 +1,7 @@
 Agenda
 =========
 
-* Advertise new system test runner. Docs on the [http://www.mantidproject.org/System_Tests](wiki) - Martyn
+* Advertise new system test runner. Docs on the [wiki](http://www.mantidproject.org/System_Tests) - Martyn
 
 Questions
 =========
