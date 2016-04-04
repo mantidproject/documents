@@ -47,7 +47,7 @@ Unique use cases are:
 
 1. A step scan. 
 1. A continous scan.
-1. Tripple axis. Data read as S(**Q**, E), so no need for the instrument.
+1. Triple axis. Data read as S(**Q**, E), so no need for the instrument.
 
 **Step Scans**
 A variant on 1. Might be whether each scan results in a unique run [D2b](https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md#use-case-6-ill-d2b-d4-and-d7-instruments), or whether the runs need to be merged later as each scan appears as a separte runs as suggested by [Marina Ganeva] (https://github.com/mantidproject/documents/blob/master/Design/HandlingMovingInstruments.md#other-comments-provided-to-this-proposal).
