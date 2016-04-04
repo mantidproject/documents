@@ -2,6 +2,14 @@
 
 The primary focus of this document is to describe and design the top level interface to the `InstrumentTree`. How will the clients of the `Instrument` access the information they need? How will the performance issues associated with fast reads be addressed?
 
+The `InstrumentTree` (see below) is our recent attempt to radically redesign how the instrument is put together to mitigate problems regarding copies and reads. 
+
+The `InstrumentTree` and it's subcomponents do not directly address the issue of how the `Workspace` should interact with the geometric aspects of the Instrument. Major current issues are:
+
+* The storage of non-geometric data (masking) on the geometric components
+* Complex Mappings between data (workspace, spectrucm) ids and detector indexes. A related fundamental issue is how might one perform a fast loop over selected detector information from the `Workspace`.
+* Fast access to commonly used, derived geometric information, `L2` for example.
+
 ## Overview
 
 - Copy-on-write `InstrumentTree`, similar to the [prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype). The design of this component is not the core focus of this document.
