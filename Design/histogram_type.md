@@ -162,7 +162,7 @@ The amount of new types introduced may seem appalling at first, but we usually d
 
 #### Interface
 
-- The interface of `Histogram` can be (partially) forwarded by `ISpectrum` and `MatrixWorkspace`, similarly to how it is implemented currently for, e.g., `ISpectrum::datX` and `MatrixWorkspace::dataX`.
+- The interface of `Histogram` can be (partially) forwarded by `ISpectrum` and `MatrixWorkspace`, similarly to how it is implemented currently for, e.g., `ISpectrum::dataX` and `MatrixWorkspace::dataX`.
 
 - The main challenge in the design of the `Histogram` interface is the way how we deal with references.
   If the internal data storage mode of, say, the Y-data is not known, it is not trivial to provide `Counts &counts()` (as a partial equivalent to the current `std::vector<double> &dataY()`), since there may be nothing to reference to.
