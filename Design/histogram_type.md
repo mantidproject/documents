@@ -188,11 +188,11 @@ The amount of new types introduced may seem appalling at first, but we usually d
     // Const accessors return by value (there is no non-const overload):
     // Counts Histogram::counts() const;
     auto counts = hist.counts();
-    // modify counts (triggers copy via cow_ptr)
+    // modify counts
     hist.setCounts(counts);
     ```
 
-  Both options involve some overhead when writing (probably less in the former case if we move the underlying `std::vector<double>` from `Frequencies` to `Counts`).
+  Both options involve some overhead when writing (in the former case we can move the underlying `std::vector<double>` from `Frequencies` to `Counts`, in the latter case we allocate memory for the temporary `Counts` object).
 
   It is not entirely clear how we would deal with the similar situation in the `BinEdges` vs. `Points` case, where a conversion is not lossless and should thus not be done automatically in the generic case.
 
