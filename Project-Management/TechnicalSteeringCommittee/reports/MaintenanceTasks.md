@@ -86,6 +86,8 @@ For another release
   1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
     1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon). 
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
+2. Investigate and resolve differences in fitting tests on different compilers & platforms.
+3. Eliminate remaining uses of the [Qt3Support library](http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
 
 Converted to actual tickets during a release
 --------------------------------------------
