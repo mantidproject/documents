@@ -42,77 +42,24 @@ There are currently 16 algorithms that relate to different methods for calculati
 Most are numerical methods defined for some specific shape. The `MonteCarloAbsorption` algorithm in theory has all of the required parts to allow
 the absorption to be computed but it currently only works for elastic data. Also, the can environment must be defined in C++.
 
-## Proposed Solution
+## Proposal
 
-The proposed solution is centered on using the Monte Carlo approach to provide the calculational engine for the corrections. This will allow it to
+The proposed solution is centered on using the Monte Carlo approach to provide the calculation engine for the corrections. This will allow it to
 work for any shape. The complexity involved mostly surrounds the interface required for a user to enter the details regarding the sample & environment.
 
 ## Solution Details
 
-The key parts of the proposal are as follows:
+The key parts of the proposal are described in the following sections:
+
+* [Running the calculation](#S-running-calculation)
+* [Defining shapes & materials](#S-defining-shapes-and-materials)
 
 * [Combining shape & material](#S-shape-material)
 * [Definition of interface to input sample properties](#S-sample-properties)
 * [Definition of interface to input sample holder properties](#S-sample-holder-properties)
-* [Definition of interface to run the calculational algorithm](#S-calculational-algorithm)
 * [Mechanism to store predefined sample holder geometries/properties](#S-predefined-sample-holder)
 
-### <a name="S-shape-material"> Combining shape & material
-
-To support composite objects it will be necessary to combine a shape with its composition. The material is already well captured by the
-existing `Material` class and is it proposed that we keep this interface and expose it to Python. Shapes are currently defined via [CSG](http://docs.mantidproject.org/nightly/concepts/HowToDefineGeometricShape.html#howtodefinegeometricshape) but this is only exposed through the XML definition. It is proposed that the primitive shapes & operations are exposed to Python to allow complex geometries to be defined in scripts without resorting constructing
-complex XML defintions.
-
-The final fusion of shape & material will occur inside a `Volume` object that simply binds a CSG object with its corresponding material. Composite objects with many materials will then simply
-be defined as a list of `Volume` objects. A set of examples of increasing complexity is given below.
-
-*Vanadium Cylinder*
-
-```python
-from mantid import mm, Csg, Material
-shape = Csg.Cylinder(Axis=[0,1,0], BaseCenter=[0,0,0], Radius=40*mm, Length=2.5*mm)
-mat = Material(ChemicalFormula="V", NumberDensity=0.072)
-van_cyl = Volume(shape, mat)
-```
-
-*Double-toroid, non-encapsulated (e.g. SNAP)*
-
-```python
-from mantid import mm, Csg, Material
-
-def TopToroid()
-    return csg.Translate(Csg.Difference(Csg.Sphere(Radius=2.5*mm, Center=[0,0,0.634]),
-                                        Csg.Cuboid([5.1,5.1,4.38])), [0,0,-2.19])
-
-van = Material(ChemicalFormula="V", NumberDensity=0.072)
-top = TopToroid()
-bottom = Csg.Rotate(TopToroid(), Angle=[180,0,0])
-sample_volume = Volume(Csg.Union(top, bottom), Material=van)
-```
-
-### <a name="S-sample-properties"></a> Definition of Interface for Input of Sample Properties
-
-The current algorithms [CreateSampleShape](http://docs.mantidproject.org/nightly/algorithms/CreateSampleShape-v1.html) & [SetSampleShape](http://docs.mantidproject.org/nightly/algorithms/SetSampleMaterial-v1.html) will
-merge to form `SetSample` that accepts a list of `Volume` objects.
-
-```python
-from mantid import mm, Csg, Material
-from mantid.simpleapi import SetSample
-
-shape = Csg.Cylinder(Axis=[0,1,0], BaseCenter=[0,0,0], Radius=40*mm, Length=2.5*mm)
-mat = Material(ChemicalFormula="V", NumberDensity=0.072)
-van_cyl = Volume(shape, mat)
-SetSample(w1, Volumes=[van_cyl])
-```
-
-**Question**: Do we need a "shortcut" syntax to be able to more easily configure common shapes, e.g. flat plate, cylinder, annulus ?
-
-### <a name="S-sample-holder-properties"></a> Definition of interface to input sample holder properties
-
-In general these would be set by a new algorithm called `SetSampleHolder` that also accepts the same `Volumes` type argument as `SetSample` above. In addition this could be extended to accept an identifer that
-would be used to pick up from a set of predefined sample holders defined in a set of files - see [below](#S-predefined-sample-holder) for more details.
-
-### <a name="S-calculation-algorithm"></a> Definition of interface to run the calculational algorithm
+## <a name="S-running-calculation"></a> Running the calculation
 
 The main calculation will take place in the existing [`MonteCarloAbsorption`](http://docs.mantidproject.org/nightly/algorithms/MonteCarloAbsorption-v1.html), algorithm
 which is currently able to cope with sample/can environments. Upgrades required:
@@ -129,67 +76,121 @@ w1_abs = CalculateSampleCorrection(w1, Method="MonteCarlo",
     MethodArgs={"NLambda": 500, "NEvents": 300})
 ```
 
-### <a name="S-predefined-sample-holder"></a> Mechanism to store predefined sample holder geometries/properties
+The calculation of the correction and application of the correction will be kept separate so that
 
-It is proposed that the information regarding predefined sample holder properties be defined in a series of files. This provides the easiest route to extension and customisation. They
-can live alongside the IDF files. The simplest option is extend the current XML syntax for defining shapes to handle materials.
+* the same correction can be applied to main data sets;
+* the correction can be persisted to a file if necessary
+* more complex procedures for applying the correction, such as Paalman & Pings, can be used.
 
-**Current XML-based syntax 8mm Vanadium Can**
+##<a name="S-defining-shapes-and-materials"></a>Defining shapes & materials
+
+The complex part of this is defining the syntax that users will need to specify the geometry & material for the sample + can setup. The cans available to
+an experiment generally come from a list of known geometries. It is proposed that these geometries are defined in files
+that can be distributed with Mantid and added to by users along a similar mechanism to the python extensions,
+i.e. some user-defined set of locations to search for additional files.
+
+To avoid having to invent a completely new syntax we can instead extend the current [XML-based syntax](http://docs.mantidproject.org/nightly/concepts/HowToDefineGeometricShape.html#howtodefinegeometricshape) 
+to define the geometry. It will require new fields for:
+
+* material definitions of each shape
+* combining multiple components into a single environment.
+
+The current list of "primitive" shapes can also be extended to cover frequently used cases, e.g. annulus.
+
+The can definitions are split into 2 categories:
+
+1. the can geometry constrains the sample geometry and simply fills a proportion of the fill volume, e.g. a powder/liquid in a cylinder
+2. the can geometry does not constrain the sample geometry, e.g. a 'lumpy' sample where
+  * its difficult to make a powder, if the material is too strong, or has some safety issue like radio toxicity
+  * if the sample is a crystal. For isis spectrometers it's quite common to put the crystals on a mount in a can.
+
+## <a name=""></a>Constrained sample geometry
+
+[Example - 50mm Orange Cryostat with V tail (POWGEN)](https://neutrons.ornl.gov/sites/default/files/Powgen%20sample%20cans.pdf)
+
+Liquid and powder samples will assume the geometry of the vessel that contains them. The definition of the can will define
+the nominal sample geometry assuming the sample fills the whole space. The user-provided command would then allow 
+for customization of unconstrained portions of the geometry:
+
+**Filename: instrument/SNS/POWGEN/sample-environments/CRYO-004.xml**
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<type name="van-cyl-8mm">
-  <cylinder id="body">
-   <centre-of-bottom-base x="0.0" y="0.0" z="0.0" />
-   <axis x="0.0" y="1.0" z="0.0" />
-   <radius val="0.008"/>
-   <height val="0.04"/>
-  </cylinder>
-  <material id="van">
-    <formula>V</formula>
-  </material>
-</type>
+<sample-environment>
+  <materials>
+    <material id="vanadium">
+      <formula>V</formula>
+    </material>
+    <material id="inner-mat">
+      <formula>XXX</formula>
+    </material>
+    <material id="outer-mat">
+      <formula>XXX</formula>
+    </material>
+  </materials>
+
+  <components>
+    <cans>
+     <can id="6mm" material="vanadium">
+       <annulus id="an-1">
+       <inner-radius val="0.0030"/>
+       <outer-radius val="0.0031"/>
+       <length val="0.05"/>
+       <axis x="0.0" y="1.0" z="0.0"/>
+       </annulus>
+     </can>
+     <can id="8mm" material="vanadium">
+       <annulus id="an-1">
+       <inner-radius val="0.0076"/>
+       <outer-radius val="0.0080"/>
+       <length val="0.05"/>
+       <axis x="0.0" y="1.0" z="0.0"/>
+       </annulus>
+     </can>
+     <can id="10mm" material="vanadium">
+       <annulus id="an-1">
+       <inner-radius val="0.0092"/>
+       <outer-radius val="0.0100"/>
+       <length val="0.05"/>
+       <axis x="0.0" y="1.0" z="0.0"/>
+       </annulus>
+     </can>
+     </cans>
+
+    <sample-geometry>
+      <cylinder>
+      <centre-of-bottom-base x="0.0" y="0.0" z="0.0" />
+      <axis x="0.0" y="1.0" z="0" />
+      <radius link="can-inner-radius" />
+      <height max="0.05" />
+      </cylinder>
+    </sample-geometry>
+   
+   <component id="inner-shield" material="inner-mat">
+      <annulus id="an-2">
+      <inner-radius val="0.006"/>
+      <outer-radius val="0.0065"/>
+      <length val="0.05"/>
+      <axis x="0.0" y="1.0" z="0.0"/>
+      </annulus>
+   </component>
+
+   <component id="outer-shield" material="outer-mat">
+      <annulus id="an-3">
+      <inner-radius val="0.007"/>
+      <outer-radius val="0.0071"/>
+      <length val="0.05"/>
+      <axis x="0.0" y="1.0" z="0.0"/>
+      </annulus>
+   </component>
+  </components>
+
+</sample-environment>
 ```
 
-Pros:
-* Extension of current format so it should be easy to implement
-
-Cons:
-* Very difficult to define more complex, composite shapes such as pressure anvils
-* 
-
-Another proprosal would be to simply use the python syntax defined in [the above section](#S-shape-material) and store this as a straight Python file to be evaluated. There would most likely need to be some kind of registration
-system along similar lines to the Python algorithms.
-
-**Python-based file syntax**
+An example usage in a script would be:
 
 ```python
-from mantid import mm, Csg, Material, SampleHolderFactory
-
-def TopToroid()
-    return csg.Translate(Csg.Difference(Csg.Sphere(Radius=2.5*mm, Center=[0,0,0.634]),
-                                        Csg.Cuboid([5.1,5.1,4.38])), [0,0,-2.19])
-
-van = Material(ChemicalFormula="V", NumberDensity=0.072)
-top = TopToroid()
-bottom = Csg.Rotate(TopToroid(), Angle=[180,0,0])
-sample_volume = Volume(Csg.Union(top, bottom), Material=van)
-
-SampleHolderFactory.subscribe("SNAP-Double-Toroid-Enclosed", sample_volume)
+SetSample(w1, Material={'ChemicalFormula': 'SomePowder'},
+    Environment={'Name': 'CRYO-004', 'Can': '6mm'},
+    SampleGeometry={'height': 0.025})
 ```
-
-and then in a script
-
-```python
-w1 = SetSampleHolder(w1, Name="SNAP-Double-Toroid-Enclosed")
-```
-
-**Question**: How do we check the shape that we have defined? It would be best to design it in a CAD program like [OpenSCAD](http://www.openscad.org/) but this will not allow us to assign materials to each of the components.
-
-Pros:
-* The same syntax that could be used in a script if a shape was not already implemented in the "library"
-* It should be possible to unit test the volumes
-
-Cons:
-* Completely new system so more effort to implement up front
-* It seems like we're inventing our own way of describing CSG operations again..
