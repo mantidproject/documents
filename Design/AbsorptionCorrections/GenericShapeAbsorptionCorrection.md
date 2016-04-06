@@ -54,11 +54,6 @@ The key parts of the proposal are described in the following sections:
 * [Running the calculation](#S-running-calculation)
 * [Defining shapes & materials](#S-defining-shapes-and-materials)
 
-* [Combining shape & material](#S-shape-material)
-* [Definition of interface to input sample properties](#S-sample-properties)
-* [Definition of interface to input sample holder properties](#S-sample-holder-properties)
-* [Mechanism to store predefined sample holder geometries/properties](#S-predefined-sample-holder)
-
 ## <a name="S-running-calculation"></a> Running the calculation
 
 The main calculation will take place in the existing [`MonteCarloAbsorption`](http://docs.mantidproject.org/nightly/algorithms/MonteCarloAbsorption-v1.html), algorithm
@@ -104,7 +99,7 @@ The can definitions are split into 2 categories:
   * its difficult to make a powder, if the material is too strong, or has some safety issue like radio toxicity
   * if the sample is a crystal. For isis spectrometers it's quite common to put the crystals on a mount in a can.
 
-## <a name=""></a>Constrained sample geometry
+## Constrained sample geometry
 
 [Example - 50mm Orange Cryostat with V tail (POWGEN)](https://neutrons.ornl.gov/sites/default/files/Powgen%20sample%20cans.pdf)
 
@@ -194,3 +189,4 @@ SetSample(w1, Material={'ChemicalFormula': 'SomePowder'},
     Environment={'Name': 'CRYO-004', 'Can': '6mm'},
     SampleGeometry={'height': 0.025})
 ```
+
