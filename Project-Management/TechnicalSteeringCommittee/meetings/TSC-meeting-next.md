@@ -9,3 +9,4 @@ Pinned Topics
 New Items
 ---------
 * [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
+* Distributing optional Python packages, e.g `LoadCIF` & `PyCifRW` (Martyn) 
