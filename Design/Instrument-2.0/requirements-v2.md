@@ -34,6 +34,7 @@ One should read 7.2 of the document prepared by Simon Heybrock [here](https://gi
 * The default for theta should be to provide the signed theta. Or it should at least be easier to switch.
 * We must be able to provide alternative information based on some other calibrated input. For example L1, L2, etc.
 * We must be able to describe complex components such as parabolic guides and choppers in detail.
+* We should be able to rotate components around a user-defined center of rotation.
 
 ##Desired##
 * The design should make it easy for laser scans to be imported. Components may be marked with 0-n referecnce markers.
