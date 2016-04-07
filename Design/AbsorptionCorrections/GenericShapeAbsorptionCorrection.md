@@ -53,6 +53,7 @@ The key parts of the proposal are described in the following sections:
 
 * [Running the calculation](#S-running-calculation)
 * [Defining shapes & materials](#S-defining-shapes-and-materials)
+* [Beam characteristics](#S-beam-characteristics)
 
 ## <a name="S-running-calculation"></a> Running the calculation
 
@@ -207,3 +208,41 @@ would do the following:
 * define the height of the sample to 25mm.
 
 **Question**: Should we have separate commands for setting sample information vs sample environment information?
+
+## Unconstrained sample geometry
+
+For samples where the geometry is completely unconstrained a user will need to provide the full information at runtime. The current
+system would allow for this by requiring the shape to be defined using the same XML markup as is used in the files. Creating a new
+language in Python for describing the objects is a large task in itself (or even trying to reuse something like OpenSCAD is not trivial).
+The scope of this project is already becoming quite large so I offer the following proposal for treating the unconstrained sample geometry
+at this time.
+
+The sample environment would remain defined as it is in the constrained case, it would just be missing the `<sample-geometry>` element
+indicating that all of the information must be provided by the user. These would be provided by the `Geometry` argument of the
+`SetSample` command. The argument accepts a dictionary and can therefore allow different styles of input:
+
+* Basic shapes, flat-plate, cylinder, annulus tc could be provided by having the user specify the type and dimensions, e.g.
+
+```python
+SetSample(w1, Geometry={'Type': 'FlatPlate', 'Lengths'=[0.025,0.025,0.001], 'Center': [0,0,0]})
+```
+
+* At this point in time more complex shapes would have to resort to the current XML syntax and pass this in:
+
+```python
+def create_sample_shape():
+   ...
+
+SetSample(w1, Geometry={'Type': 'CSG', 'Value': create_sample_shape})
+```
+
+*I see this as being an area for improvement in the future.*
+
+##<a name="S-beam-characteristics"></a>Beam characteristics
+
+The beam may not illuminate all of the sample and this needs to be captured in some way. It would seem most sensible to
+have this defined as an aspect of the source component in the IDF files. The source component would define a shape
+and the current assumption would be of a flat beam profile so that sample area interacting with the
+beam simply matches this shape.
+
+The syntax for this would simply use the current CSG syntax.
