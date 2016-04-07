@@ -101,13 +101,12 @@ The can definitions are split into 2 categories:
 
 ## Constrained sample geometry
 
-[Example - 50mm Orange Cryostat with V tail (POWGEN)](https://neutrons.ornl.gov/sites/default/files/Powgen%20sample%20cans.pdf)
-
 Liquid and powder samples will assume the geometry of the vessel that contains them. The definition of the can will define
 the nominal sample geometry assuming the sample fills the whole space. The user-provided command would then allow 
-for customization of unconstrained portions of the geometry:
+for customization of unconstrained portions of the geometry.
 
-**Filename: instrument/SNS/POWGEN/sample-environments/CRYO-004.xml**
+As a more explicit example take the case of the [50mm Orange Cryostat with V tail](https://neutrons.ornl.gov/sites/default/files/Powgen%20sample%20cans.pdf)
+on POWGEN. A definition of the environment would be placed into the file `instrument/SNS/POWGEN/sample-environments/CRYO-004.xml` with the following content:
 
 ```xml
 <sample-environment>
@@ -149,13 +148,13 @@ for customization of unconstrained portions of the geometry:
        <axis x="0.0" y="1.0" z="0.0"/>
        </annulus>
      </can>
-     </cans>
+    </cans>
 
     <sample-geometry>
       <cylinder>
       <centre-of-bottom-base x="0.0" y="0.0" z="0.0" />
       <axis x="0.0" y="1.0" z="0" />
-      <radius link="can-inner-radius" />
+      <radius matches="inner-radius" />
       <height max="0.05" />
       </cylinder>
     </sample-geometry>
@@ -182,11 +181,29 @@ for customization of unconstrained portions of the geometry:
 </sample-environment>
 ```
 
-An example usage in a script would be:
+This defines the environment as having an outer and inner heat shield with cylindrical geometry, the option of 3 cans and constrains
+the sample geometry to also be cylindrical. The `matches` attribute on the `<radius>` tag implies that in this case the
+radius value should match the value of the `inner-radius` element of the chosen can. An explicit value can be used instead using the
+standard `val=` attribute. The `max` attribute on the `height` element indicates that a user can customize this value but that
+it is constrained to a maximum of 0.05m. If it is not provided by the user then the maximum value is used.
+
+At runtime a user would need to provide several inputs:
+
+* the material of the sample (using the same options available on `SetSampleMaterial`)
+* the environment identifier
+* any undefined geometrical parameters
+
+For example, 
 
 ```python
-SetSample(w1, Material={'ChemicalFormula': 'SomePowder'},
-    Environment={'Name': 'CRYO-004', 'Can': '6mm'},
-    SampleGeometry={'height': 0.025})
+SetSample(w1, Geometry={'height': 0.025}, Material={'ChemicalFormula': 'X1Y2'},
+    Environment={'Name': 'CRYO-004', 'Can': '6mm'})
 ```
 
+would do the following:
+
+* select the `CRYO-004` environment with the `6mm` can
+* set the material of the sample that defined by the given chemical formula
+* define the height of the sample to 25mm.
+
+**Question**: Should we have separate commands for setting sample information vs sample environment information?
