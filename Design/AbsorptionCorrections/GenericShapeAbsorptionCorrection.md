@@ -240,9 +240,10 @@ SetSample(w1, Geometry={'Type': 'CSG', 'Value': create_sample_shape})
 
 ##<a name="S-beam-characteristics"></a>Beam characteristics
 
-The beam may not illuminate all of the sample and this needs to be captured in some way. It would seem most sensible to
-have this defined as an aspect of the source component in the IDF files. The source component would define a shape
-and the current assumption would be of a flat beam profile so that sample area interacting with the
-beam simply matches this shape.
+The beam may not illuminate all of the sample. The most common case is for the instrument to have slits that control
+the size of the beam. The user would then need to provide the width & height of the beam in the cases where it
+does not illuminate the entire sample. This information may also be available in experimental logs.
 
-The syntax for this would simply use the current CSG syntax.
+```python
+SetBeam(w1, Geometry={'Type':'Slit', 'Width': 30, 'Height': 30})
+```
