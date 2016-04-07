@@ -9,4 +9,5 @@ Pinned Topics
 New Items
 ---------
 * [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
+* [Absorption Corrections](https://github.com/mantidproject/documents/pull/15) (Martyn)
 * Distributing optional Python packages, e.g `LoadCIF` & `PyCifRW` (Martyn) 
