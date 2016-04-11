@@ -15,6 +15,7 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
+| [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | --- | TBD. |
 | [Histogram type](https://github.com/mantidproject/documents/pull/14) | 2016-04-12 | TBD. |
 | [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. |
 | [Live listener customisation](https://github.com/mantidproject/documents/pull/7) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Assign to a developer from PSI. |
