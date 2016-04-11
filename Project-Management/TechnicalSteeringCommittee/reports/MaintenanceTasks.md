@@ -88,6 +88,7 @@ For another release
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
 3. Eliminate remaining uses of the [Qt3Support library](http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
+4. [Copy only part of a column](https://github.com/mantidproject/mantid/issues/15884).
 
 Converted to actual tickets during a release
 --------------------------------------------
