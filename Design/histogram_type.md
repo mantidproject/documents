@@ -150,16 +150,6 @@ The amount of new types introduced may seem appalling at first, but we usually d
 5. `Variances` and `StandardDeviations` can be automatically converted, you do not have to deal with it yourself.
 
 
-#### Details
-
-- The different low-level types have been introduced in the previous section.
-  To avoid highly duplicate code and tests, such as for the four `Variance` types, these are implemented using the curiously recurring template pattern (CRTP) which provides something like "mixins".
-- Jon pointed out that it may make most sense to default to storing data as `Frequecies`, as OpenGenie did by default.
-  Many operations could probably done in this representation, and furthermore the conversion to `Counts` is cheaper, since it includes a multiplication instead of addition.
-- The current copy-on-write (COW) mechanism seems useful and should be preserved.
-  - The `typedef` `MantidVecPtr` for a `cow_ptr` is useless and confusing and should be removed.
-  - We should consider extending the COW mechanism and make sure sharing is preserved more than it is now. For example, what can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Probably this needs to be handled at the workspace/algorithm level, and cannot be dealt with this here? Having parametric `X` could circumvent that in certain cases (see outlook).
-
 #### Interface
 
 - The interface of `Histogram` can be (partially) forwarded by `ISpectrum` and `MatrixWorkspace`, similarly to how it is implemented currently for, e.g., `ISpectrum::dataX` and `MatrixWorkspace::dataX`.
@@ -187,6 +177,7 @@ The amount of new types introduced may seem appalling at first, but we usually d
     Histogram hist;
     // Const accessors return by value (there is no non-const overload):
     // Counts Histogram::counts() const;
+    // (note that return by value does not imply copying of data: value is a cow_ptr)
     auto counts = hist.counts();
     // modify counts
     hist.setCounts(counts);
@@ -194,14 +185,114 @@ The amount of new types introduced may seem appalling at first, but we usually d
 
   Both options involve some overhead when writing (in the former case we can move the underlying `std::vector<double>` from `Frequencies` to `Counts`, in the latter case we allocate memory for the temporary `Counts` object).
 
-  It is not entirely clear how we would deal with the similar situation in the `BinEdges` vs. `Points` case, where a conversion is not lossless and should thus not be done automatically in the generic case.
+  In an initial review, several people preferred the setter style, in particular since "This seems to fit with the general approach of making things easy to use correctly and hard to misuse that should guide all APIs." (Owen).
 
-  Further thoughts and ideas for this would be really welcome!
+  It is not entirely clear how we would deal with the similar situation in the `BinEdges` vs. `Points` case, where a conversion is not lossless and should thus not be done automatically in the generic case (there is 1 free parameter in the conversion `Points` to `BinEdges`, since the latter vector is longer by 1, so this conversion is not lossless unless the bin width is constant).
+
+- Quite a few algorithms do not care whether they are, e.g., working with bin edges or points. A concrete example for this would be `ScaleX`, which just scales the values of the `X` data, regardless of whether it is dealing with histogram data or point data. As a consequence, these 'ignorant' algorithms cannot use the part of the `Histogram` interface I described so far,
+  
+  ```cpp
+  BinEdges binEdges() const;
+  void setBinEdges(const BinEdges &);
+  Points points() consts;
+  void setPoints(const Points &);
+  ```
+  
+  since the algorithm does not know and does not care what the underlying data layout is. We could ignore this ignorance and just use, e.g., `binEdges` and `setBinEdges`, but that can force a conversion of the underlying data.
+  
+  After a discussion with Michael Wedel, I would like to propose the following solution (examples are for `X`, but the same applies to `Y`):
+  
+  - Introduce an additional type `HistogramX`. This is somewhat similar to the current way of storing `X` data in an `ISpectrum`, but with very important differences.
+    The class members are:
+    ```cpp
+    cow_ptr<std::vector<double>> m_data;
+    HistogramX::XMode m_xMode; // can be XMode::BinEdges or XMode::Points
+    ```
+    That is, a *flag* *indicates* the *current* *state* *of* *the* *data*.
+    The interface is:
+    ```cpp
+    // creation and access similar to std::vector, including iterators, etc.
+    const double &operator[](size_t) const;
+    double &operator[](size_t);
+    // NO RESIZING VIA THE PUBLIC INTERFACE!
+    // Access to data via specific type. BinEdges and Points are as described before, wrappers around `cow_ptr<std::vector<double>>`
+    BinEdges binEdges() const;
+    void setBinEdges(const BinEdges &);
+    Points points() consts;
+    void setPoints(const Points &);
+    ```
+    That is, *we* *forbid* *resizing* `HistogramX`, such that client code cannot break `Histogram`.
+  
+  - `Histogram` contains `HistogramX`. The interface is now slightly extended:
+    ```cpp
+    // Access to underlying data (similar to the current `readX` and `dataX`), *but*:
+    // - state always known, allows for safe operations, length checks, ...
+    // - cannot be resized, i.e., client code cannot break the state of the Histogram
+    HistogramX &x();
+    const HistogramX &x() const;
+    const HistogramX &constX() const;
+  
+    BinEdges binEdges() const;
+    void setBinEdges(const BinEdges &);
+    Points points() consts;
+    void setPoints(const Points &);
+    ```
+
+  A usage example of this interface for `ScaleX` is:
+  ```cpp
+  Histogram histogram( /* init somehow */);
+  histogram.x() *= 0.5;
+  ```
+  
+  Maybe at this point is is worth noting that `HistogramX` has another advantage over the current `readX` and `dataX` interface. Consider, e.g., this piece of code from `BinaryOperation.cpp`:
+  ```cpp
+        // Get reference to output vectors here to break any sharing outside the
+        // function call below
+        // where the order of argument evaluation is not guaranteed (if it's L->R
+        // there would be a data race)
+        MantidVec &outY = m_out->dataY(i);
+        MantidVec &outE = m_out->dataE(i);
+        performBinaryOperation(m_lhs->readX(i), m_lhs->readY(i), m_lhs->readE(i),
+                               m_rhs->readY(rhs_wi), m_rhs->readE(rhs_wi), outY,
+                               outE);
+  ```
+  We are currently returning references to data inside a `cow_ptr`, so there is always the risk of breaking them, as explained in the code comments. In the proposed `HistogramX` we actually return a reference to a `cow_ptr`, i.e., when something triggers a copy the const references to `HistogramX` remain valid!
 
 - Not all cases for operations with histograms will be covered by the histogram type or free functions for histograms.
   Therefore we need to provide a direct interface to the underlying data as well.
 
+- As Andrei pointed out (with strong agreement form everyone), automatic rebinning should not be performed. That is:
+  - No automatic rebinning by `operator+`.
+  - We have to agree on what level of compatibility check operations should have. A good orientation point are the `BinaryOperations` like `Plus`, which seem to be checking the size of `X` but nothing else. 
+  - Operation with different sizes could later be added, but with a more explicit interface, e.g., `Histogram::rebinAndAdd(const Histogram &rhs)`.
+
 - If we want to hide things like error handling, is there a decent way of making this extensible for new operations? Are operators/functions declared as `friend` in our histogram data type? Are they members? Can we allow the use of `std::transform` on, e.g., the `Y` data? How to transform errors?
+
+
+#### Details
+
+- The different low-level types have been introduced in the previous section.
+  To avoid highly duplicate code and tests, such as for the four `Variance` types, these are implemented using the curiously recurring template pattern (CRTP) which provides something like "mixins".
+
+- Jon pointed out that it may make most sense to default to storing data as `Frequecies`, as OpenGenie did by default.
+  However, Andrei and others disagreed, based on more evidence on how this is used in the Mantid code.
+  In fact, we have 3 options:
+  
+  1. always store counts
+  2. always store frequencies
+  3. store either counts or frequencies, switch on demand or automatically
+  
+  During roll-out, we will have option (3), since as long as the old interface (`readY`, `dataY`, etc.) is used and available, we need to be able to return references to the internal data.
+  Once we have completely eliminated the legacy interface we can gather statistic, run more benchmarks, and then decide whether we switch from (3) to (1) or (2) or not.
+
+  It should be noted that due to the design of the interface the internal data structure is hidden as much as possible, and adapting things at a later points is possible.
+  In particular, this implies that we can start with implementation and roll-out before having reached a final decision on this point.
+
+  Note that the same is true for `BinEdges` vs. `Points`, as well as `Variance` vs. `StandardDeviation`.
+
+- The current copy-on-write (COW) mechanism seems useful and should be preserved.
+  - The `typedef` `MantidVecPtr` for a `cow_ptr` is useless and confusing and should be removed.
+  - We should consider extending the COW mechanism and make sure sharing is preserved more than it is now. For example, what can we do to maintain sharing of `X` for all histograms in a workspace where `X` is modified in an identical way? The COW mechanism as it is now should break down in that case. Probably this needs to be handled at the workspace/algorithm level, and cannot be dealt with this here? Having parametric `X` could circumvent that in certain cases (see outlook).
 
 
 ## Roll-out
@@ -249,3 +340,5 @@ The proposed encapsulation of histogram data opens the door for improvements tha
 - Abstraction of error handling may lead to improvements that are currently hard to implement, such as dealing with non-Gaussian errors or taking into account correlation between data.
 - If errors are just the square root of the counts the implementation may choose to not carry them explicitly to save computation time and memory.
 - Bin sizes could in some cases be defined in a parametric way, without keeping bin boundaries around explicitly. This could safe memory, memory bandwidth, and cache space.
+- Martyn suggested that underflow and overflow fields could be added, which are present, e.g., in the ISIS raw files.
+  See also here: https://thepeg.hepforge.org/doxygen/classLWH_1_1Histogram1D.html.
