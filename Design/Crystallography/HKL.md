@@ -105,7 +105,7 @@ NumericType indexSumOfDifference(const IsHKL<NumericType, Derived> &lhs, const I
 Suggested implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-There's a [PR]() against the main repository where this design is implemented. It revealed one unfortunate name clash, `Mantid::Geometry::HKL` already exists as a sub-class of `MDFrame`. My suggestion for this is to use the opportunity and start migrating the crystallography related code into a new module called Crystallography, which then provides a new namespace `Mantid::Crystallography`. Initially I suggest that this new module sits between `Kernel` and `Geometry`. Once the existing crystallography-related code has been migrated, the dependency of the Geometry module on the Crystallography module can be removed.
+There's a [PR](https://github.com/mantidproject/mantid/pull/15914) against the main repository where this design is implemented. It revealed one unfortunate name clash, `Mantid::Geometry::HKL` already exists as a sub-class of `MDFrame`. My suggestion for this is to use the opportunity and start migrating the crystallography related code into a new module called Crystallography, which then provides a new namespace `Mantid::Crystallography`. Initially I suggest that this new module sits between `Kernel` and `Geometry`. Once the existing crystallography-related code has been migrated, the dependency of the Geometry module on the Crystallography module can be removed.
 
 In the pull request there is a performance test as well that compares the performance for some common operations that are performed on HKLs between the different cases `int` and `double`, but also with `V3D`.
 
