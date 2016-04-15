@@ -34,36 +34,31 @@ IsHKL-mixin
 
 All of the above requirements can be solved by the so called "Curiously Recurring Template Pattern" (CRTP). For this particular purpose, the base class needs to be templated on the numeric type as well as on the derived type as it is normal for the CRTP:
 
-
 ```
 template <typename NumericType, typename Derived>
 class IsHKL {
 public:
   const NumericType &h() const { ... }
   void setH(const NumericType &h) { ... }
-  ...
   
   bool operator==(const Derived &rhs) {
-    ...
-  }
+}
 };
 
 class ProHKL : IsHKL<double, ProHKL> {
-  ...
 };
 
 class FractionalHKL : IsHKL<double, FractionalHKL> {
-  ...
 };
 
 class HKL : IsHKL<int, HKL> {
-  ...
 };
 ```
 
 This way, it is possible to compare for example two `ProHKL`-objects or two `HKL`-objects, but not a `ProHKL` and an `HKL`, as expressed in the requirements. It is however no problem to add custom operators to the derived classes should it be desired to allow a certain comparisons between those.
 
 All conversions between different derived types must be marked `explicit` to prevent accidental implicit type conversion. This adds further safety to handling different types of indices within the same algorithm.
+
 
 Writing generic algorithms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +69,7 @@ When writing generic algorithms handling these HKLs it's important to handle typ
 template <typename NumericType, typename Derived>
 bool isNonZero(const IsHKL<NumericType, Derived> &hkl) {
   return std::all_of(hkl.cbegin(), hkl.cend(),
-		     [](const NumericType &index) { return index != NumericType{0}; });
+                     [](const NumericType &index) { return index != NumericType{0}; });
 }
 ```
 
@@ -85,8 +80,7 @@ template <typename NumericType, typename Derived>
 Derived higherOrderHKL(const IsHKL<NumericType, Derived> &hkl, const NumericType &order) {
   Derived higherOrder;
   std::transform(hkl.cbegin(), hkl.cend(), higherOrder.begin(),
-		 [=](const NumericType &index) { return index * order; });
-		 
+                 [=](const NumericType &index) { return index * order; });
   return higherOrder;
 }
 ```
@@ -102,6 +96,7 @@ NumericType indexSumOfDifference(const IsHKL<NumericType, Derived> &lhs, const I
 }
 ```
 
+
 Suggested implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -111,13 +106,13 @@ In the pull request there is a performance test as well that compares the perfor
 
 Relative execution times (normed to `int`, lower is better):
 
-| Test   | `int`  | `double`  | `V3D`*  |
+| Test   | `int`  | `double`  | `V3D`  |
 |---|---|---|---|
 | hkl1 == hkl2  | 1.0  | 1.6  | 2.3 |
 | hkl1 < hkl2   | 1.0  | 1.1  | 0.8 |
 | Matrix * hkl  | 1.0  | 1.5  | 4.8 |
 
-* = `V3D` does not do fuzzy comparison of floating point values for `operator<`, but it does for `operator==`. `IsHKL` does fuzzy comparison for both.
+ Note that `V3D` does not do fuzzy comparison of floating point values for `operator<`, but it does for `operator==`. `IsHKL` does fuzzy comparison for both.
 
 Some of the difference is probably attributable to lack of inlining in `V3D`, but the main point is that the added type-safety doesn't result in runtime penalties.
 
