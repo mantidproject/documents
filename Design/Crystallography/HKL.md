@@ -1,15 +1,12 @@
-Making HKL different
-====================
+# Making HKL different
 
-Motivation
-----------
+## Motivation
 
 Currently the class `Kernel::V3D` is used to represent a large range of points and vectors in different spaces. Detector coordinates, unit cell vectors, Miller indices and many more are all represented by the same very low-level class `V3D`. While this is certainly very flexible in terms of the number of classes and/or interfaces developers need to keep track of, it comes with a number of disadvantages. The most important is probably that it's possible to perform nonsensical operations such as adding detector coordinates to a unit cell vector - since different types do not exist, they can not be enforced by the compiler, which means the burden of preventing errors falls to the developer. A similar case is where real and reciprocal space vectors have to be transformed by using different matrices. Without dedicated types the developer needs to make sure the correct matrix is used and in addition runtime checks have to be performed.
 
 While it is a big task to make each and every use of `V3D` (and connected to that also `Kernel::Matrix`) type-safe, implementing a dedicated type for Miller indices HKL is a rather confined task. Potential replacements for `V3D` in this domain can exist in parallel at first and code can be ported step-by-step, simply reverting to the current "unsafe" implementation where necessary.
 
-Requirements
-------------
+## Requirements
 
 There should be a datatype different from `V3D` but with similar capabilities that is used to represent Miller index triplets.
 
@@ -26,11 +23,9 @@ These types should be by default incompatible, i.e. it should not be possible to
 Furthermore there are some algorithms or operations that are agnostic to the type, so there should be a way to define algorithms that work for general objects that are "HKL-like".
 
 
-Design
-------
+## Design
 
-IsHKL-mixin
-~~~~~~~~~~~
+### IsHKL-mixin
 
 All of the above requirements can be solved by the so called "Curiously Recurring Template Pattern" (CRTP). For this particular purpose, the base class needs to be templated on the numeric type as well as on the derived type as it is normal for the CRTP:
 
@@ -60,8 +55,7 @@ This way, it is possible to compare for example two `ProHKL`-objects or two `HKL
 All conversions between different derived types must be marked `explicit` to prevent accidental implicit type conversion. This adds further safety to handling different types of indices within the same algorithm.
 
 
-Writing generic algorithms
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Writing generic algorithms
 
 When writing generic algorithms handling these HKLs it's important to handle types correctly. Functions dealing with `IsHKL` have to be templated with respect to both parameters, so in general:
 
@@ -97,8 +91,7 @@ NumericType indexSumOfDifference(const IsHKL<NumericType, Derived> &lhs, const I
 ```
 
 
-Suggested implementation
-~~~~~~~~~~~~~~~~~~~~~~~~
+### Suggested implementation
 
 There's a [PR](https://github.com/mantidproject/mantid/pull/15914) against the main repository where this design is implemented. It revealed one unfortunate name clash, `Mantid::Geometry::HKL` already exists as a sub-class of `MDFrame`. My suggestion for this is to use the opportunity and start migrating the crystallography related code into a new module called Crystallography, which then provides a new namespace `Mantid::Crystallography`. Initially I suggest that this new module sits between `Kernel` and `Geometry`. Once the existing crystallography-related code has been migrated, the dependency of the Geometry module on the Crystallography module can be removed.
 
@@ -117,8 +110,7 @@ Relative execution times (normed to `int`, lower is better):
 Some of the difference is probably attributable to lack of inlining in `V3D`, but the main point is that the added type-safety doesn't result in runtime penalties.
 
 
-Remaining issues
-----------------
+## Remaining issues
 
 Some open questions remain:
 
