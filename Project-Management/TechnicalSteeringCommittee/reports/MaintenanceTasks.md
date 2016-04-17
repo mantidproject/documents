@@ -89,6 +89,8 @@ For another release
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
 3. Eliminate remaining uses of the [Qt3Support library](http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
 4. [Copy only part of a column](https://github.com/mantidproject/mantid/issues/15884).
+5. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`
+  1. should some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/)?
 
 Converted to actual tickets during a release
 --------------------------------------------
