@@ -18,7 +18,8 @@ Comments from scientists:
   
   #####Runs#####
   - The Runs option would be better as a box to type a range into, like elsewhere   
-  - Should *not* be restricted to runs that have been loaded into the interface - type any range, like for sequential fitting   
+  - Should *not* be restricted to runs that have been loaded into the interface - type any range, like for sequential fitting  
+    - **Question:** This conflicts with syntax for *co-added* runs on home tab. How to solve this?
   - If several runs selected, would fit the same groups/periods for all
   - If one run selected, can fit several groups/periods for that single run   
     - Can then set up a sequential fit across runs for this (sequential fit not possible if several runs selected in browser)   
