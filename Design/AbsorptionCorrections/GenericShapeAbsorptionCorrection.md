@@ -61,6 +61,8 @@ The main calculation will take place in the existing [`MonteCarloAbsorption`](ht
 which is currently able to cope with sample/can environments. Upgrades required:
 
 * support for inelastic data
+* support for a beam "size"
+* a switch to disable including the total scattering contribution to the attentuation factor
 
 Users will be given a new algorithm called `CalculateSampleCorrection` that will form the interface to running different correction algorithms. These algorithms will assume
 that the metadata required, such as geometry and material properties is all completely defined on the workspace. An example of running the algorithm would be:
