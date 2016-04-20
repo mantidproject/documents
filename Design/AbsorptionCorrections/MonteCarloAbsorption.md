@@ -43,7 +43,7 @@ The algorithm will proceed as follows. For each spectrum:
       - test for intersections of the track & sample + container objects, giving the number of subsections
 	    and corresponding distances within the object for each section, call them `l_2i`
       - compute the self-attenuation factor for all intersections as
-      ![Attenuation equation](/mnt/data1/source/github/mantidproject/documents/Design/AbsorptionCorrections/attenuation-eqn.png)
+      ![Attenuation equation](./attenuation-eqn.png)
 	   where rho is the mass density of the material & sigma the absorption cross-section at a given wavelength
 	  - accumulate this factor with the factor for all `NEvents`
 	* average the accumulated attentuation factors over `NEvents` and assign this as the correction factor for this `lambdaStep`. The error is 1/sqrt(NEvents).
