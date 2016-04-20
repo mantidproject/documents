@@ -13,10 +13,14 @@ the input workspace. The following assumptions on the input workspace will be ma
 * the "size" of the beam has been defined. Currently assumed to be a width & height with no divergence
 * a series of shapes & materials for the can + other sample environment components is defined  (optional)
 
-The additional inputs to the algorithm are:
+By default, the material for the sample & containers will define the values of the cross section used to compute the absorption factor and will
+include contributions from both the scattering cross section & absorption cross section.
 
+The additional inputs to the algorithm are optionally:
+
+* `SampleAbsorptionXSection` - override the defined cross section for the sample and use this value in place
 * `NumberOfWavelengthPoints` - the number of wavelength points per spectrum for which to calculate the correction factor. An interpolation
-                             will fill in the missing values
+                               will fill in the missing values
 * `NEvents` - the number of monte carlo "events" to generate for each simulated wavelength point
 
 The algorithm will proceed as follows. For each spectrum:
@@ -39,8 +43,8 @@ The algorithm will proceed as follows. For each spectrum:
       - test for intersections of the track & sample + container objects, giving the number of subsections
 	    and corresponding distances within the object for each section, call them `l_2i`
       - compute the self-attenuation factor for all intersections as
-      ![Attenuation equation](./attenuation-eqn.png)
-	   where rho is the mass density of the material & sigma_abs the absorption cross-section at a given wavelength
+      ![Attenuation equation](/mnt/data1/source/github/mantidproject/documents/Design/AbsorptionCorrections/attenuation-eqn.png)
+	   where rho is the mass density of the material & sigma the absorption cross-section at a given wavelength
 	  - accumulate this factor with the factor for all `NEvents`
 	* average the accumulated attentuation factors over `NEvents` and assign this as the correction factor for this `lambdaStep`. The error is 1/sqrt(NEvents).
 1. finally, perform an interpolation through the unsimulated wavelength points
