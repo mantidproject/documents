@@ -14,7 +14,7 @@ the input workspace. The following assumptions on the input workspace will be ma
 * a series of shapes & materials for the can + other sample environment components is defined  (optional)
 
 By default, the material for the sample & containers will define the values of the cross section used to compute the absorption factor and will
-include contributions from both the scattering cross section & absorption cross section.
+include contributions from both the total scattering cross section & absorption cross section. This follows the Hamilton-Darwin [HD2257] approach as described by T. M. Sabine in the International Tables of Crystallography Vol. C [Sabine99].  
 
 The additional inputs to the algorithm are optionally:
 
@@ -48,3 +48,6 @@ The algorithm will proceed as follows. For each spectrum:
 	  - accumulate this factor with the factor for all `NEvents`
 	* average the accumulated attentuation factors over `NEvents` and assign this as the correction factor for this `lambdaStep`. The error is 1/sqrt(NEvents).
 1. finally, perform an interpolation through the unsimulated wavelength points
+
+[HD2257]: Darwin (1922), Hamilton (1957)
+[Sabine99]: T. M. Sabine, International Tables of Crystallography Vol C. Page 603 Kluwer Publishers (1999).
