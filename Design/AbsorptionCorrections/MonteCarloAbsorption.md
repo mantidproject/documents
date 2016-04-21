@@ -18,7 +18,7 @@ include contributions from both the scattering cross section & absorption cross 
 
 The additional inputs to the algorithm are optionally:
 
-* `SampleAbsorptionXSection` - override the defined cross section for the sample and use this value in place
+* `SampleAbsorptionXSection` - override the defined cross section for the sample and use a single value or a wavlength dependent cross section defined in a table workspace.
 * `NumberOfWavelengthPoints` - the number of wavelength points per spectrum for which to calculate the correction factor. An interpolation
                                will fill in the missing values
 * `NEvents` - the number of monte carlo "events" to generate for each simulated wavelength point
