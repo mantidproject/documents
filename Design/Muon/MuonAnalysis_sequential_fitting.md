@@ -49,7 +49,7 @@ Comments from scientists:
   This could certainly be done with the fit function / parameters section.
   This is in MantidWidgets and already supports initialising parameters to different values for each dataset (e.g. phases), which is something that was agreed to be a good idea in the meeting.
   
-  Image:
+  ![image](https://cloud.githubusercontent.com/assets/15363125/14713128/c716ea48-07d7-11e6-86ae-7c83eefbc3f6.PNG)
 
 ####3. Sequential fits
 
