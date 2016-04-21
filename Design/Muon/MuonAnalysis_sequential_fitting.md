@@ -9,7 +9,9 @@ This covers adding functionality for simultaneous fitting, which is Roadmap issu
 Comments from scientists:  
 
 ####1. Selection of what data to fit  
-  (bottom right of the mockup)
+
+  Conclusion of this section so far:  
+![mockup](https://cloud.githubusercontent.com/assets/15363125/14645508/d6ba7586-064d-11e6-8b4f-91e89f2573f3.PNG)
 
   At the moment we have a _Data_ section in the fit property browser.  
   The _Workspaces_ line offers a dropdown of workspaces previously loaded into the interface.
