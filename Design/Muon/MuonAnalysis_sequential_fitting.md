@@ -48,6 +48,8 @@ Comments from scientists:
   The intention at present is to reuse the components from the existing MultiDatasetFitting interface, as far as possible.
   This could certainly be done with the fit function / parameters section.
   This is in MantidWidgets and already supports initialising parameters to different values for each dataset (e.g. phases), which is something that was agreed to be a good idea in the meeting.
+  If you click in the "Value" column for a non-global parameter, there is a button that opens a dialog as below.
+  This enables setting/fixing different initial values for each dataset.
   
   ![image](https://cloud.githubusercontent.com/assets/15363125/14713128/c716ea48-07d7-11e6-86ae-7c83eefbc3f6.PNG)
 
