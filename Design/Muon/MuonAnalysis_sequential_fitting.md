@@ -19,7 +19,7 @@ Comments from scientists:
   #####Runs#####
   - The Runs option would be better as a box to type a range into, like elsewhere   
   - Should *not* be restricted to runs that have been loaded into the interface - type any range, like for sequential fitting  
-    - **Question:** This conflicts with syntax for *co-added* runs on home tab. How to solve this?
+    - This conflicts with syntax for *co-added* runs on home tab. Added radio buttons to solve this.
   - If several runs selected, would fit the same groups/periods for all
   - If one run selected, can fit several groups/periods for that single run   
     - Can then set up a sequential fit across runs for this (sequential fit not possible if several runs selected in browser)   
@@ -32,7 +32,7 @@ Comments from scientists:
   
   #####Periods#####
   - Keep the "combination" periods option, should be like it is on the _Home_ tab   
-  - If there is only one period, hide (rather than grey out) the "Periods" group box to avoid presenting the user with irrelevant choices.
+  - If there is only one period, hide the "Periods" group box to avoid presenting the user with irrelevant choices. Scientists would prefer to hide it rather than grey it out.
 
   #####Display#####
   - Rather than having a separate dialog, get rid of the "Data" section of the fit property browser and replace with this  
@@ -43,6 +43,12 @@ Comments from scientists:
 
 ####2. Parameters 
 
+  The intention at present is to reuse the components from the existing MultiDatasetFitting interface, as far as possible.
+  This could certainly be done with the fit function / parameters section.
+  At present, that doesn't support initialising to different values (see below) - but this can be added later (and would then be available elsewhere in Mantid, not specific to muons).
+  
+  **Initialisation of parameters to different values**
+  
   James's suggestion is on the right of the mockup, above the data section. 
   
   It has an expand/collapse icon by each parameter. When collapsed, you can set this parameter to the same value for all data sets, but you can also expand to initialise to different values (e.g. phases). Collapsing again will list all values on one line. 
@@ -62,12 +68,18 @@ It would be good to have a third option: initialise a parameter to a log value (
 There should be some way to select which log value to use for a given parameter.  
 Also should be able to fix the parameter to the log value for each run.
   
-It would also be convenient to have that option when manually stepping through runs and fitting them one by one. In that case   loading a run would reinitialise the value, though it could be possible to edit it before doing the fit. Also in Simultaneous fits across a sequence of runs, we might want to initialise a (non-global) parameter to a log value per run, and not have to type all the numbers in manually.
+There are three possible ways to do this:  
+1. Right-click and "set from log" as in James's suggestion below  
+2. Something similar to the "intelligent fitting" that is done with *IkedaCarpenterPV* on GEM - for specific instruments, certain parameters are initialised from a log  
+3. Doing something with the fit string itself  
 
-Given this is set on a per-parameter basis, it would be logical to add another option “Set from Log” to the main fit dialog, in the pop up menu along with “Fix”, “Constraint” and “Tie” for a fit parameter. Either use this in combination with “Fix”, or have two variants “Fix to log” and “Initialise from log”.
+James's comments:
+> It would also be convenient to have that option when manually stepping through runs and fitting them one by one. In that case   loading a run would reinitialise the value, though it could be possible to edit it before doing the fit. Also in Simultaneous fits across a sequence of runs, we might want to initialise a (non-global) parameter to a log value per run, and not have to type all the numbers in manually.
 
-You’d select from log values available in the currently loaded or first run in the sequence and it’s the user’s fault if a later run doesn’t have that log value any more.
+> Given this is set on a per-parameter basis, it would be logical to add another option “Set from Log” to the main fit dialog, in the pop up menu along with “Fix”, “Constraint” and “Tie” for a fit parameter. Either use this in combination with “Fix”, or have two variants “Fix to log” and “Initialise from log”.
 
-We may need either (a) the option to enter a formula to calculate the fit parameter from the log value instead of a direct copy, or (b) variants on functions such as “ExpDecayOsc” which take a field parameter rather than a frequency.
+> You’d select from log values available in the currently loaded or first run in the sequence and it’s the user’s fault if a later run doesn’t have that log value any more.
+
+> We may need either (a) the option to enter a formula to calculate the fit parameter from the log value instead of a direct copy, or (b) variants on functions such as “ExpDecayOsc” which take a field parameter rather than a frequency.
 
 
