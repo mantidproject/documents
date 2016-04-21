@@ -47,17 +47,9 @@ Comments from scientists:
 
   The intention at present is to reuse the components from the existing MultiDatasetFitting interface, as far as possible.
   This could certainly be done with the fit function / parameters section.
-  At present, that doesn't support initialising to different values (see below) - but this can be added later (and would then be available elsewhere in Mantid, not specific to muons).
+  This is in MantidWidgets and already supports initialising parameters to different values for each dataset (e.g. phases), which is something that was agreed to be a good idea in the meeting.
   
-  **Initialisation of parameters to different values**
-  
-  James's suggestion is on the right of the mockup, above the data section. 
-  
-  It has an expand/collapse icon by each parameter. When collapsed, you can set this parameter to the same value for all data sets, but you can also expand to initialise to different values (e.g. phases). Collapsing again will list all values on one line. 
-
-  - The option of expand/collapse parameters was agreed to be a good idea 
-  - How would this work with fix/tie/constrain? These use the same expand/collapse icon.
-  - Could have another column of checkboxes for "fix" - but still leaves problem for ties and constraints
+  Image:
 
 ####3. Sequential fits
 
