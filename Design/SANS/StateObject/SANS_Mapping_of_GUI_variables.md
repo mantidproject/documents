@@ -140,7 +140,7 @@ For Sample Details:
 | sample_height | `height`(`GetSampleGeom`) | direct |-|
 | sample_width | `width`(`GetSampleGeom`) | direct |-|
 | sample_thick | `thickness`(`GetSampleGeom`) | direct |-|
-
+| smpl_offset | `SAMPLE_Z_CORR`(`ISISInstrument`) | `SetSampleOffset`(ICI)|-|
 
 For Beam Centre:
 

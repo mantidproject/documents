@@ -456,9 +456,77 @@ low angle bank
 | _orientation | set by individial instruments | internal| -|
 
 
+###### `ISISInstrument`
+
+This is dereived from `BaseInstrument`, hence it contains its members too.
+
+| Variable    |  Origin          | Used in                               | Other comment  |
+|-------------|------------------|--------------------------------------|----------------|
+| idf_path | `_defintion_file` from `BaseInstrument`| reducer to reset IDF | -|
+| _incid_monitor | extracted from `definition`, ``set_incident_mon` called by `SANS2D` instrument | `loadUserFile`(GUI), `execute`(`NormalizeToMonitor`)
+| cen_find_step |  extracted from `definition` | used in `BeamCentreFinder`| -|
+| cen_find_step2|  extracted from `definition` | used in `BeamCentreFinder`| -|
+| beam_centre_scale_factor1 | extracted from `definition` | used in `BeamCentreFinder`| -|
+| beam_centre_scale_factor2 | extracted from `definition` | used in `BeamCentreFinder`| -|
+| det_selection | via `setDetector` all over the place | direct in GUI and internal |-|
+| DETECTORS | many accessor methods in the concrete instruments | all over the place | contains the names of the banks|
+| _use_interpol_norm | `SpetMonitorSpectrum`(ICI) directly through reducer | `is_interpolating_norm` used by `NormalizeToMonitor` and GUI | - |
+| use_interpol_trans_calc | - |- |not used|
+| SAMPLE_Z_CORR | `read_line`(`UserFile`), `SetSampleOffset`(ICI)| GUI | used for moving the components|
+| FRONT_DET_RADIUS | internal | `SANS2D` | should be in `SANS2D`|
+| FRONT_DET_DEFAULT_SD_M | internal | `SANS2D` | should be in `SANS2D`|
+| FRONT_DET_DEFAULT_X_M | internal | `SANS2D` | should be in `SANS2D`|
+| REAR_DET_DEFAULT_SD_M | internal | `SANS2D` | should be in `SANS2D`|
+| FRONT_DET_X | internal | `SANS2D` | should be in `SANS2D`|
+| FRONT_DET_Z | internal | `SANS2D` | should be in `SANS2D`|
+| FRONT_DET_ROT | internal | `SANS2D` | should be in `SANS2D`|
+| REAR_DET_Z | internal | `SANS2D` | should be in `SANS2D`|
+| REAR_DET_X | internal | `SANS2D` | should be in `SANS2D`|
+| BENCH_ROT | internal | `LARMOR` | should be in `LARMOR`|
+| default_trans_spec | extracted from `definition` | used by `TransmissionCalc`|-|
+| incid_mon_4_trans_calc | extracted from `definition`, `SetTransSpectrum`(ICI) | used by `TransmissionCalc`, directly by GUI|-|
+| run_number_width| internal|-| not used|
+| _del_incidient_set | internal | internal | see not usefull anymore|
+| _back_ground | `setTOFs` via `UserFile` | `NormalizeToMonitor`, `TransmissionCalc`| -|
+| _back_start| `setTOFs` via `UserFile` | `NormalizeToMonitor`, `TransmissionCalc`| -|
+| _back_start_ROI| `setTOFs` via `UserFile` | `NormalizeToMonitor`, `TransmissionCalc`| -|
+| _back_end_ROI| `setTOFs` via `UserFile` | `NormalizeToMonitor`, `TransmissionCalc`| -|
+| monitor_zs | -| internal| not really used|
+| _newCalibrationWS | `UserFile` and when workspace is loaded | internal |-|
+| beam_centre_pos1_after_move| internal | `BeamCentreFinder` and reducer |-|
+| beam_centre_pos2_after_move| internal | `BeamCentreFinder` and reducer |-|
+
+
 
 ###### LOQ
 
+Contains specifics for the LOQ instrument
+
+| Variable    |  Origin          | Used in                               | Other comment  |
+|-------------|------------------|--------------------------------------|----------------|
+| _NAME |  internal | reducer and `WavRangeReduction`(ICI) |-|
+| WAV_RANGE_MIN |  internal | GUI, `TransmissionCalc`  |-|
+| WAV_RANGE_MAX | internal | GUI, `TransmissionCalc`  |-|
+| monitor_names | internal | internal |-|
+
+
+
 ###### SANS2D
+
+Contains specifics for the LOQ instrument
+
+| Variable    |  Origin          | Used in                               | Other comment  |
+|-------------|------------------|--------------------------------------|----------------|
+| _NAME |  internal | reducer and `WavRangeReduction`(ICI) |-|
+| WAV_RANGE_MIN |  internal | GUI, `TransmissionCalc`  |-|
+| WAV_RANGE_MAX | internal | GUI, `TransmissionCalc`  |-|
+| _marked_dets | internal | internal |-|
+| corrections_applied | internal, when loading a workspace| internal |-|
+| _can_logs | 
+
+
+
+
+
 
 ###### LARMOR
