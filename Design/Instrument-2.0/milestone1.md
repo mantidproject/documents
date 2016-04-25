@@ -114,6 +114,8 @@ See [issue](https://github.com/mantidproject/mantid/issues/15501) where caching 
 
 Work in progress on a mapless instrument, which is a fundamental redesign of the parameterized instrument, can be found [here](https://github.com/DMSC-Instrument-Data/instrument-prototype)
 
+A further disussion regarding a prototype high-level facade to the `InstrumentTree` has been discussed and agreed on [here](Design/Instrument-2.0/design-notes.md)
+
 
 
 
