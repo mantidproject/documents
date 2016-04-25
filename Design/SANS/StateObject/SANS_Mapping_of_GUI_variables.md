@@ -2,48 +2,47 @@
 
 ## Abreviations
 
-The following abreviations will be used below:
+The following abbreviations and synonymns will be used below:
 * `ISISCammondInterface` : ICI
-* in-place: i-p
-* Graphical User Interface. Essentially the `C++` part: GUI
+* Graphical User Interface: GUI
+* the word "reducer" will be used in places for `ReductionSingleton`
 
 ## Purpose
 This document tries to scope the level of connectedness of the GUI with the
-reducer backend. The initial design of the ISIS SANS redcution interface (and backend)
+reducer back-end. The initial design goal of the ISIS SANS reduction interface (and back-end)
 was to have a single communication layer which should be provided by the ICI. Currently
-there is tight coupling between the GUI and the backend. This will be scoped out here.
-
+there is tight coupling between the GUI and the back-end. This document tries to show to which level these two elements are coupled. 
 
 For gravity:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | `gravity_check`         |  `use_gravity`(`ConvertToQISIS`) | `get_gravity`(`ConvertToQISIS`), `Gravity`(ICI)| -|
 | `gravity_extra_length_line_edit` | `_use_gravity`(`ConvertToQISIS`) | `get_extra_length`(`ConvertToQISIS`), `Gravity`(ICI)| -|
 
 For limits:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | rad_min | `min_radius`(`Mask_ISIS`) | direct, `readLimitValues`(`UserFile`)| -|
 | rad_max | `max_radius`(`Mask_ISIS`) | direct, `readLimitValues`(`UserFile`)| -|
 | wav_min | `wav_low`(`ConvertUnits`) | direct, `LimitsWav`(ICI)| -|
 | wav_max | `wav_high`(`ConvertUnits`) | direct, `LimitsWav`(ICI)| -|
 | wav_dw  | `wav_step`(`ConvertUnits`) | direct, `LimitsWav`(ICI)| -|
-| wav_dw_opt | TODO | - | not clear yet|
+| wav_dw_opt | translated into a rebin string by (`readLimitValues`)`UserFile` | `UnitsConvert` | -|
 | q_min | `binning`(`ConvertToQISIS`)| direct, `readLimitValues`(`UserFile`) | `binning` is a comma separated string of variables |
 | q_max | `binning`(`ConvertToQISIS`)| direct, `readLimitValues`(`UserFile`) | `binning` is a comma separated string of variables |
 | q_dq  | `binning`(`ConvertToQISIS`)| direct, `readLimitValues`(`UserFile`) | `binning` is a comma separated string of variables |
-| q_dq_opt | TODO | TOD0| TODO|
+| q_dq_opt |ranslated into a rebin string by (`readLimitValues`)`UserFile` | `ConvertToQISIS` | -|
 | qy_max | `QXY2`(reducer) | direct, `LimitsQXY`(ICI)| the min seems to always start from 0|
 | qy_dqy | `DQXY`(reducer) | direct, `LimitsQXY`(ICI)| -|
-| qy_dqy_opt | TODO | TOD0| TODO|
+| qy_dqy_opt | part of `DQXY`(reducer) | `ConvertToQISIS`|-|
 | trans_selector_opt| `fit_settings`(`TransmissionCalc`)| `isSeparate`(`TransmissionCalc`) + ?| -|
 | transFitOnOff| `fit_settings`(`TransmissionCalc`)| `TransFit`(ICI), `fitMethod`(`TransmissionCalc`)| -|
 | transFit_ck| ?| ?| -|
 | trans_min| `fit_settings`(`TransmissionCalc`) | lamdaMin(`TransmissionCalc`), `TransFit`(ICI)| -|
 | trans_max| `fit_settings`(`TransmissionCalc`)| lamdaMax(`TransmissionCalc`), `TransFit`(ICI)| -|
-| trans_opt| TODO | TODO | -|
+| trans_opt| not clear yet | not clear yet | not clear yet|
 |transFitOnOff_can| same as sample| same as sample| -|
 | transFit_ck_can| same as sample| same as sample| -|
 | trans_min_can| same as sample| same as sample| -|
@@ -52,14 +51,14 @@ For limits:
 
 For efficacy correction:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | direct_file             | `correction_file`(`DetectorBank`)| direct | read only|
 | direct_file_front             | `correction_file`(`DetectorBank`)| direct | read only|
 
 For flood file:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | enableRearFlood_ck      | indirectly "pixel" fieles in `CalculateNormISIS` | `SetDetectorFloodFile`(ICI), `getPixelCorrFile`(`CalculateNormISIS`)| -|
 | floodRearFile |"pixel" fieles in `CalculateNormISIS` | `SetDetectorFloodFile`(ICI), `getPixelCorrFile`(`CalculateNormISIS`)| -|
@@ -68,7 +67,7 @@ For flood file:
 
 For Q Resolution:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | q_resolution_group_box |  `use_q_resolution`(`ConvertToQISIS`) | `get_q_resolution_use`(ICI), `set_q_resolution_use`(ICI)| -|
 | q_resolution_combo_box |  internal | internal| -|
@@ -84,7 +83,7 @@ For Q Resolution:
 
 For Incident Monitors:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | monitor_spec      |   `_incident_monitor`(`instrument`)         | `get_incident_mon`(`instrument`), `SpetMonitorSpectrum`(ICI)| -|
 | monitor_interp | `use_interpol_norm`(`instrument`)| `is_interpolatin_norm`(`instrument`), `SpetMonitorSpectrum`(ICI)|
@@ -94,7 +93,7 @@ For Incident Monitors:
 
 For Transmission Settings:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | trans_M3_checkbox       |  `trans_mon`(`TransmissionCalc`)   | `SetTransmissionMonitorSpectrum`(ICI), `GetTransmissionMonitorSpectrum`(ICI), `UnsetTransmissionMonitorSpectrum`(ICI)| -|
 | trans_M4_checkbox       |  `trans_mon`(`TransmissionCalc`)   | `SetTransmissionMonitorSpectrum`(ICI), `GetTransmissionMonitorSpectrum`(ICI), `UnsetTransmissionMonitorSpectrum`(ICI)| -|
@@ -109,7 +108,7 @@ For Transmission Settings:
 
 For Detector Selection:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | detbank_sel             |  `det_selection`(`instrument`) | direct, `setDetector`(`instrument`), `CompWavRanges`(ICI), `WavRangeReduction`(ICI), beam centre finder procedure, during saving| seems to be very spread out in the GUI|
 | phi_min | `phi_min`(`Mask_ISIS`) | direct, `SetPhiLimit`(ICI)| -|
@@ -126,7 +125,7 @@ For Detector Selection:
 
 For Data Range:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | tof_min | while loading reads from workspace | -| read only|
 | tof_max | while loading reads from workspace | -| read only|
@@ -134,7 +133,7 @@ For Data Range:
 
 For Sample Details:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | sample_geomid | `shape`(`GetSampleGeom`) | direct |-|
 | sample_height | `height`(`GetSampleGeom`) | direct |-|
@@ -146,7 +145,7 @@ For Beam Centre:
 
 Look at only these elements which directly affect the redcution.
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | rear_beam_x             | `_beam_center_x`(`BaseBeamFinder`)  | `SetCentre`(ICI), `get_beam_center`(reducer)| -|
 | rear_beam_y             | `_beam_center_y`(`BaseBeamFinder`)  | `SetCentre`(ICI), `get_beam_center`(reducer)| -|
@@ -156,6 +155,6 @@ Look at only these elements which directly affect the redcution.
 
 For Front Tab:
 
-| Gui Name                | Variable in Backend  |  Interacts  via | Comment |
+| Gui Name                | Variable in back-end  |  Interacts  via | Comment |
 |-------------------------|----------------------|-----------------|---------|
 | sliceEvent   | `_slices_def`(reducer)   | `SetEventSlices`(ICI) |-|

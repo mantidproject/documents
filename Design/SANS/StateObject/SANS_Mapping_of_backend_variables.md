@@ -43,7 +43,7 @@ banks which are not currently being investigated are removed.
 This `ReductionStep` does not store any direct state.
 
 **`ReductionSingleton` dependence**:
-* from `instrument` the current detector is selected and the `crop_to_detector`
+* from `ISISInstrument` the current detector is selected and the `crop_to_detector`
   method is being used to crop the workspace
 
 
@@ -79,19 +79,19 @@ MASK commands from user files).
 |max_radius | via `init`, `set_radi` used by `readLimitValues`(`UserFile`) and `LimitsR`(ICI) | internal, `createColleteScript`(ICI), `loadUserFile`(GUI)| -|
 
 **`ReductionSingleton` dependence**:
-* obtains the `instrument`
+* obtains the `ISISInstrument`
 * obtains the current detector via `cur_detector`
 * gets "MaskFiles" from `settings`
-* obtains the idf path from the `instrument` via `idf_path`
-* uses `name` from the `instrument`
+* obtains the idf path from the `ISISInstrument` via `idf_path`
+* uses `name` from the `ISISInstrument`
 * uses `isAlias` on the current detector
 * uses `spectrum_block` on current detector
 
 
 The `Mask_ISIS` redcution step is also responsible for viewing the masking in the *InstrumentView*. The `ReductionSingleton` dependence for this is:
-* obtains the `instrument`
+* obtains the `ISISInstrument`
 * gets names of all detectors (`cur_detector` and `other_detector`)
-* resets detectors on the `instrument`
+* resets detectors on the `ISISInstrument`
 * deletes workspaces via `deleteWorkspaces`
 
 
@@ -127,12 +127,12 @@ the same bin parameters as above). The result is later on used by the `Calculate
 
 **`ReductionSingleton` dependence**:
 * obtains the scale from `SliceEvent`
-* obtains the incident monitor spectrum number via `instrument` and the `get_incident_mon` method
+* obtains the incident monitor spectrum number via `ISISInstrument` and the `get_incident_mon` method
 * obtains a reference to the monitor via the `Sample` object and the `get_monitor` method
-* obtains the name of the `instrument` (to perform corrections for LOQ)
+* obtains the name of the `ISISInstrument` (to perform corrections for LOQ)
 * obtains information for the LOQ correction from `TransmissionCalc` (`loq_removePromptPeakMin`) via the `RedcutionSingleton`
-* obtains the TOF via `instrument` and the `get_TOFs` method
-* obtains information wether we have a an interpolating norm via `instrument` and the `is_interpolating_norm` method
+* obtains the TOF via `ISISInstrument` and the `get_TOFs` method
+* obtains information wether we have a an interpolating norm via `ISISInstrument` and the `is_interpolating_norm` method
 * obtains the `UnitsConvert` step to perform unit conversion
 
 ### `TransmissionCalc`
@@ -157,17 +157,17 @@ as a function of wavelength. The results are stored as a separate workspace and 
 **`ReductionSingleton` dependence**:
 * checks if is can via `is_can`
 * gets transmission workspaces via `get_transmissions` (for either can or sample)
-* from `instrument` gets the incident monitor (`incid_mon_4_trans_calc`)
-* from `instrument` gets a default transmission spectrum (`default_trans_spec`)
+* from `ISISInstrument` gets the incident monitor (`incid_mon_4_trans_calc`)
+* from `ISISInstrument` gets a default transmission spectrum (`default_trans_spec`)
 * checks if instrument default range should be used via `full_trans_wav`
-* obtains instrument default range from `instrument` via `WAV_RANGE_MIN` and `WAV_RANGE_MAX`
+* obtains instrument default range from `ISISInstrument` via `WAV_RANGE_MIN` and `WAV_RANGE_MAX`
 * obtains wavelength min, step and max from `UnitsConvert`: `wav_low` and `wav_high`, `wav_step`
 * obtains rebin method of `UnitsConvert` via `get_rebin`
 * deletes workspaces via `deleteWorkspaces`
-* gets the TOF from the `instrument` via `get_TOFs` and `get_TOFs_for_ROI`
+* gets the TOF from the `ISISInstrument` via `get_TOFs` and `get_TOFs_for_ROI`
 * gets the instrument name (for LOQ - peak correction)
 * used for `DarkRunSubtraction` of transmission data set
-* gets IDF information from `instrument` via `idf_path`
+* gets IDF information from `ISISInstrument` via `idf_path`
 
 ### `AbsoluteUnitsISIS`
 
@@ -179,7 +179,7 @@ Scales the cross section calculation.
 | rescale| `_initialize_mas`(`UserFile`), `restore_defaults`(`UserFile`), `read_line`(`UserFile`)                         |GUI and internal | -|
 
 **`ReductionSingleton` dependence**:
-* from `instrument` gets name (for LOQ Colette script correction)
+* from `ISISInstrument` gets name (for LOQ Colette script correction)
 
 
 ### `SampleGeomCorr`
@@ -233,8 +233,8 @@ normalization workspaces which is used by `ConvertToQISIS`.
 
 
 **`ReductionSingleton` dependence**:
-* gets the correction file from `instrument` -> `cur_detector` via `correction_file`
-* gets the name of the current detector from `instrument` -> `cur_detector` via `name`
+* gets the correction file from `ISISInstrument` -> `cur_detector` via `correction_file`
+* gets the name of the current detector from `ISISInstrument` -> `cur_detector` via `name`
 * gets the output workspace name `output_wksp`
 * crops to the detector with `crop_to_detector`
 * deletes workspaces with `deleteWorkspaces`
@@ -248,8 +248,8 @@ everything comes together.
 | Variable    |  Origin          | Used in                               | Other comment  |
 |-------------|------------------|--------------------------------------|----------------|
 | _norms      | via `init`       | internal                              | is a `CalculateNormISIS` object|
-| _output_type| TODO | TODO | TODO
-| _Q_alg | TODO | TODO | TODO|
+| _output_type| via GUI selection | in reducer, `CanSubraction`, `CompWavRanges`(ICI), | if 1D or 2D|
+| _Q_alg | internal, coupled to `_output_type` | internal | -|
 | _use_gravity | `set_gravity` used by `Gravity`(ICI) and `read_line`(`UserFile`) | `loadUserFile`(GUI) and internal | -|
 | _grav_set | internal | interanl |-|
 | _grav_extra_length | `set_extra_length` used by `Gravity`(ICI) and `read_line`(`UserFile`) | `loadUserFile`(GUI) and internal | -|
@@ -310,7 +310,7 @@ Reads an ISIS SANS mask file of the format described here mantidproject.org/SANS
 | executed | internal | `set_sample`(reducer)| -|
 
 The dependence on the `ReductionSingleton` is huge, since for each parsed entry
-in the user file information is stored either in the `ReductionSingleton`, the `instrument`
+in the user file information is stored either in the `ReductionSingleton`, the `ISISInstrument`
 or the `ReductionStep`s. It wouldn't make much sense to map out this dependency, since
 it is being mapped out via the recipients of the information.
 
@@ -366,7 +366,7 @@ This class inherits from `LoadRun` and hence contains all its connections.
 
 **`ReductionSingleton` dependence**:
 * passes reducer to `_assignHelper` of `LoadRun`
-* calls `on_load_sample` of the `ISISinstrument`
+* calls `on_load_sample` of the `ISISInstrument`
 * calls `update_beam_center`
 
 
@@ -389,7 +389,7 @@ sample or can.
 
 **`ReductionSingleton` dependence**:
 * passed on to `_assignHelper`  of underlying loaders for transmission and direct
-* calls `load_transmission_inst` of `ISISinstrument`
+* calls `load_transmission_inst` of `ISISInstrument`
 
 
 ### `Sample`
@@ -416,14 +416,32 @@ See `Sample` description
 
 ##### State stored in `ReductionSingleton`
 
-The `RedcutionSingleton` stores not only indirectly state via the `instrument`,
-the loaders and the `ReductionStep`s, but it contains state by itself as well.
+The `RedcutionSingleton` stores the `ReductionStep`s, the `ISISInstrument` and
+direct state. Below we list only items which are not `ReductionStep`s
 
-TODO
+
+| Variable    |  Origin          | Used in                           | Other comment  |
+|-------------|-----------------|-----------------------------------|----------------|
+|_beam_finder | set in `UserFile`, `SetCentre`(ICI)| `FindBeamCentre`(ICI), internal, `WavRangeReduction`(ICI), `LoadTransmissions`, GUI: all via `get_beam_center`| -|
+|_front_beam_finder | set in `UserFile`, `SetCentre`(ICI)| `FindBeamCentre`(ICI), internal, `WavRangeReduction`(ICI), `LoadTransmissions`, GUI: all via `get_beam_center`| -|
+|QXY2 |   `readLimitValues`(`UserFile`) | `ConvertToQISIS`,direct in GUI | is the max y of QXY|
+|DQY | - |-| does not seem to be used|
+|PHIMIN| internal | - | does not seem to be used|
+|PHIMAX| internal | - | does not seem to be used|
+|PHIMIRROR| internal | - | does not seem to be used|
+|_user_file_path| `UserFile` | `UserFile` | -|
+|_can|  on workspace load |  all over the place, but especially `WavRangeReduction`| -|
+|_tidy| internal |internal|-|
+|_out_name| `_init_steps` via `GetOutputName`|  does not seem to be useful|
+|_slices_def| `SetEventSlices`(ICI),  | `SliceEvent` via `getCurrSliceLimits`| seems like you can only set it from the GUI|
+|_slice_index| same as above| `setSliceindex` in `WavRangeReduction`(ICI)|-|
+
+
+
 
 ##### State stored in instrument
 
-One of the more tangled elements is the `ISISinstrument` which is being used in many places
+One of the more tangled elements is the `ISISInstrument` which is being used in many places
 and contains instrument specific information. It is derived from `BaseInstrument`. All of
 these elements do not depend on the `ReductionSingleton`.
 
@@ -444,7 +462,7 @@ low angle bank
 | _names | internal | `isAlias` and `name` are used all over the place | -|
 | _shape | internal | used by `spectrum_block` and `set_first_spec` which are used by `Mask_ISIS` and the concrete instruments
 | n_columns | internal | queried by `GetInstrumentDetails`(ICI) | -|
-| correction_file | via `UserFile` | `read_mon_lin`(`UserFile`), `SetCorrectionFile`(ICI), `calculate`(`CalculateNormISIS`),  GUI via `detector_file`(`ISISinstrument`) |-|
+| correction_file | via `UserFile` | `read_mon_lin`(`UserFile`), `SetCorrectionFile`(ICI), `calculate`(`CalculateNormISIS`),  GUI via `detector_file`(`ISISInstrument`) |-|
 | z_corr | `_readDetectorCorrections`(`UserFile`), `SetDetectorOffsets`(ICI)| individual insturments |-|
 | x_corr | see z_corr| see z_corr| -|
 | _y_corr | see z_corr| see z_corr |-|
@@ -513,7 +531,7 @@ Contains specifics for the LOQ instrument
 
 ###### SANS2D
 
-Contains specifics for the LOQ instrument
+Contains specifics for the SANS2D instrument
 
 | Variable    |  Origin          | Used in                               | Other comment  |
 |-------------|------------------|--------------------------------------|----------------|
@@ -522,11 +540,21 @@ Contains specifics for the LOQ instrument
 | WAV_RANGE_MAX | internal | GUI, `TransmissionCalc`  |-|
 | _marked_dets | internal | internal |-|
 | corrections_applied | internal, when loading a workspace| internal |-|
-| _can_logs | 
-
-
-
-
+| _can_logs | internal, when loading a workspace | internal |  (helps to populate the logs)|
+|monitor_4_offset| via `init`, `read_transpec`(`UserFile`), `SetTransmissionMonitorSpectrumShift`(ICI)| internal, `GetTransmissionMonitorSpectrumShift`(ICI) (for GUI)|
+| monitor_names | internal | internal |-|
 
 
 ###### LARMOR
+
+Contains specifics for the LARMOR instrument
+
+| Variable    |  Origin          | Used in                               | Other comment  |
+|-------------|------------------|--------------------------------------|----------------|
+| _NAME |  internal | reducer and `WavRangeReduction`(ICI) |-|
+| WAV_RANGE_MIN |  internal | GUI, `TransmissionCalc`  |-|
+| WAV_RANGE_MAX | internal | GUI, `TransmissionCalc`  |-|
+| _marked_dets | internal | internal |-|
+| corrections_applied | internal, when loading a workspace| internal |-|
+| _can_logs | internal, when loading a workspace | internal |  (helps to populate the logs)|
+| monitor_names | internal | internal |-|
