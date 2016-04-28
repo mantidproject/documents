@@ -57,6 +57,23 @@ Tasks:
 
 Relevant contacts are Alex Buts at ISIS and Stuart Campbell at SNS.
 
+General Algorithms Used
+
+| Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
+|---|---|---|---|---|
+| rdsum |read and sum sample runs | (1) Load/LoadILL and  (2) MergeRuns | (1) Loads a ILL nexus file. (2) Combines the data contained in an arbitrary number of input workspaces. | Loaders exist for IN4, IN5 and IN6 already. Gives identical results to Lamp, but requires start and end points for each channel. |
+| normalise | Normalises data to monitor or counting time. This should always be the first routine called after reading in the data. | NormaliseToMonitor | Normalizes a 2D workspace by a specified spectrum, spectrum, described by a monitor ID or spectrun provided in a separate worskspace. | No normalisation by time currently exists. |
+| vnorm | Normalises data to vanadium. | NormaliseVanadium | Normalises all spectra to a specified wavelength. | Small discrepancy in normalaisations found by Wilcke. |
+| corr_tof ||||
+| t2e ||||
+| sqw_rebin ||||
+
+Instrument Specific Algorithms
+
+| Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
+|---|---|---|---|---|
+| in4strip ||||
+
 ## Time of Flight Spectroscopy - Event Mode
 
 The second block of 6 months is intended to focus on event mode data collection.
