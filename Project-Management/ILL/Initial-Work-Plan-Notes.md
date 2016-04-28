@@ -64,8 +64,9 @@ General Algorithms Used
 | rdsum |read and sum sample runs | (1) Load/LoadILL and  (2) MergeRuns | (1) Loads a ILL nexus file. (2) Combines the data contained in an arbitrary number of input workspaces. | Loaders exist for IN4, IN5 and IN6 already. Gives identical results to Lamp, but requires start and end points for each channel. |
 | normalise | Normalises data to monitor or counting time. This should always be the first routine called after reading in the data. | NormaliseToMonitor | Normalizes a 2D workspace by a specified spectrum, spectrum, described by a monitor ID or spectrun provided in a separate worskspace. | No normalisation by time currently exists. |
 | vnorm | Normalises data to vanadium. | NormaliseVanadium | Normalises all spectra to a specified wavelength. | Small discrepancy in normalaisations found by Wilcke. |
-| corr_tof ||||
-| t2e ||||
+| corr_tof | Corrects data in TOF for energy-dependence of detector efficiency, frame overlap and time-independent background. | DetectorEfficiencyCorUser | This algorithm calculates the detector efficiency according the formula set in the instrument definition file/parameters. | These are not identical between Lamp and Mantid, despite DetectorEfficiencyCorUser attempting to replicate the Lamp behaviour. |
+| t2e | Transforms time-of-flight data to energy transfer h &#969;. | ConvertUnits(Target='DetlaE') | Performs a unit change on the X values of a workspace. |  The Lamp algorithm performs three steps - convert to dE, correct for Ki/Kf, correct for dT/dE. Mantid treats these separately, but does not have a dT/dE correction. Without the corrections in Lamp t2e and ConvertUnits are identical. |
+| t2e - Ki/Kf | Transforms time-of-flight data to energy transfer h &#969;. | ConvertUnits(Target='DetlaE') | Performs a unit change on the X values of a workspace. |  |
 | sqw_rebin ||||
 
 Instrument Specific Algorithms
