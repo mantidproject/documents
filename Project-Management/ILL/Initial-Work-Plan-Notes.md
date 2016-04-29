@@ -71,6 +71,12 @@ General Algorithms Used
 | t2e | Transforms time-of-flight data to energy transfer h &#969;. | ConvertUnits | Performs a unit change on the X values of a workspace. |  The Lamp algorithm performs three steps - convert to dE, correct for Ki/Kf, correct for dT/dE. Mantid treats these separately, but does not have a separate dT/dE correction. The dT/dE correction seems to be done in the SofQW step in Mantid. Without the corrections in Lamp t2e and ConvertUnits are identical. |
 | t2e - Ki/Kf | In Lamp Ki/Kf is part of t2e algorithm. | CorrectKiKf | Performs k_i/k_f multiplication, in order to transform differential scattering cross section into dynamic structure factor. | A small difference was found between Lamp and Mantid, which is proporitonal to the counts. |
 | sqw_rebin | Rebins data to regular-grid S(Q,&#969;) covering the entire measured Q-E region | SofQW | Computes S(Q,&#969;) using a either centre point or parallel-piped rebinning. | Some minor differences exist here. See report by Wilcke for more information on the comparison. |
+| reb, estrip, qstrip, etc | reb - Rebins data to regular steps in  with error bar propagation. | SofQW | Computes S(Q,&#969;) using a either centre point or parallel-piped rebinning. | Some minor differences exist here. See report by Wilcke for more information on the comparison. |
+| kis | Calculation of the susceptibility/omega (correction of the Bose population). | Not present | | |
+| gdos | Calculate the generalised density of states using the P(alpha, beta) method | Not present | | A similar algorithm might be [simulated density of states](http://docs.mantidproject.org/nightly/algorithms/SimulatedDensityOfState). This requires simulation input. |
+| muphcor | multiphonon contribution | Not present | | |
+
+Also desirable is multiple scattering corrections. There is planned work on this by Martyn Gigg at ISIS.
 
 * Note that CylinderAbsorption and FlatPlateAbsorption both inherit from the more general method [AbsoprtionCorrection](http://docs.mantidproject.org/nightly/algorithms/AbsorptionCorrection). 
 
@@ -79,6 +85,8 @@ Instrument Specific Algorithms
 | Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
 |---|---|---|---|---|
 | in4strip ||||
+| in5_DebyeScherrer | Radial integration over Debye-Scherrer cones. ||||
+| sumbank | Adds spectra together to improve statistics. Used on IN6 | ? | ? | ? |
 
 ## Time of Flight Spectroscopy - Event Mode
 
