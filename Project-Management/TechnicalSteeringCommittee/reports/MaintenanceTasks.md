@@ -22,6 +22,7 @@ Pool
   3. Move Poco::Mutex, Poco::FastMutex, boost::mutex,... to std::mutex. [#15288](https://github.com/mantidproject/mantid/issues/15288)
   4. Remove all uses of `boost::assign::list_of` etc. This should now be able to be replaced by brace-initializer lists.  ~~[#15175](https://github.com/mantidproject/mantid/issues/15175)~~
   5. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
+6. Remove gmock 1.6
  
 
 Assigned
