@@ -7,6 +7,11 @@
  * [Python in Mantid](http://www.mantidproject.org/Python_In_Mantid)
  * [Extending Python with Mantid](http://www.mantidproject.org/Extending_Mantid_With_Python)
 * Read the [Architecture Design Document](https://github.com/mantidproject/documents/blob/master/Design/ArchitectureDesignDocument.doc)
+* Look over some training materials from neutron training courses
+ *  [ISIS Neutron Training Course](http://www.isis.stfc.ac.uk/learning/neutron-training-course/downloads/neutron-training-course-downloads9156.html)
+   * See Neutron Training Course Manual
+ * [14th Oxford School on Neutron Scattering](http://www.oxfordneutronschool.org/2015/Lectures/teaching%20materials_2015.htm)
+   * Practical Neutron Scattering
 * Meetings with scientists in technique areas each person will be working on
 
 ## Project Related Activities
