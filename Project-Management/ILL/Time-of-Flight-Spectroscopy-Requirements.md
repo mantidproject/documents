@@ -5,7 +5,7 @@ ISIS and SNS take two different approaches. ISIS relies mostly on Python scripts
 Tasks:
 * Evaluate what exists in LAMP and Mantid
  * Look at both SNS and ISIS workflows to determine which is the most useful approach
- * See if any extra work is required on the loaders - e.g. with configence levels, check format of NeXuS files
+ * See if any extra work is required on the loaders - e.g. with confidence levels, check format of NeXuS files
 * Create requirements document for missing features
  * This will require working closely with instrument scientists at ILL
 * Implement missing features
@@ -33,7 +33,7 @@ Relevant contacts are Alex Buts at ISIS and Stuart Campbell at SNS.
 | <sub> gdos | <sub> Calculate the generalised density of states using the P(alpha, beta) method | <sub> Not present | | <sub> A similar algorithm might be [simulated density of states](http://docs.mantidproject.org/nightly/algorithms/SimulatedDensityOfState). This requires simulation input. |
 | <sub> muphcor | <sub> multiphonon contribution | <sub> Not present | | |
 
-Also desirable is multiple scattering corrections. There is planned work on this by Martyn Gigg at ISIS.
+Also desirable is multiple scattering corrections. There is planned work on this by Martyn Gigg at ISIS. Discus used for this at ILL, but not within Lamp.
 
 \* Note that CylinderAbsorption and FlatPlateAbsorption both inherit from the more general method [AbsoprtionCorrection](http://docs.mantidproject.org/nightly/algorithms/AbsorptionCorrection).
 
