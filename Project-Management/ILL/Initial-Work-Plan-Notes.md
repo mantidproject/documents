@@ -48,7 +48,7 @@ Separate document to be created on this. See [this document](https://github.com/
 
 ## Time of Flight Spectroscopy
 
-See [Time of Flight Spectoscopy Requirements](Time-of-Flight-Spectroscopy-Requirements).
+See [Time of Flight Spectoscopy Requirements](Time-of-Flight-Spectroscopy-Requirements.md).
 
 ## Time of Flight Spectroscopy - Event Mode
 
@@ -56,11 +56,11 @@ The second block of 6 months is intended to focus on event mode data collection.
 
 ## Backscattering
 
-See [Backsacttering Requirements](Backscattering-Requirements).
+See [Backsacttering Requirements](Backscattering-Requirements.md).
 
 ## Diffraction
 
-See [Diffraction Requirements](Diffraction-Requirements).
+See [Diffraction Requirements](Diffraction-Requirements.md).
 
 ## Strain Scattering
 
@@ -68,11 +68,11 @@ Talk to Federico Pouzols.
 
 ## SANS
 
-See [SANS Requirements](SANS-Requirements).
+See [SANS Requirements](SANS-Requirements.md).
 
 ## Time of Flight - Reflectometry
 
-See [Reflectometry Requirements](Reflectometry-Requirements).
+See [Reflectometry Requirements](Reflectometry-Requirements.md).
 
 ## Live data analysis
 
