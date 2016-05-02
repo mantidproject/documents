@@ -48,7 +48,7 @@ Separate document to be created on this. See [this document](https://github.com/
 
 ## Time of Flight Spectroscopy
 
-See [Time of Flight Spectoscopy Requirements](Time-of-Flight-Specroscopy-Requirements).
+See [Time of Flight Spectoscopy Requirements](Time-of-Flight-Specroscopy-Requirements.md).
 
 ## Time of Flight Spectroscopy - Event Mode
 
