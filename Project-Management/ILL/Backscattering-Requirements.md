@@ -1,0 +1,1 @@
+A lot of work has already been implemented in Mantid for IN16b by Elliot Oram with help from Spencer Howells. Hence the time required on this should be relatively short, and much of it will focus on filling in any gaps.
