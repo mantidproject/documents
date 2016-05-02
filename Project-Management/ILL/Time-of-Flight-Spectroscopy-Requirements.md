@@ -14,7 +14,7 @@ Tasks:
 
 Relevant contacts are Alex Buts at ISIS and Stuart Campbell at SNS.
 
-## General Algorithms Used
+### General Algorithms Used
 
 | Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
 |---|---|---|---|---|
@@ -37,14 +37,13 @@ Also desirable is multiple scattering corrections. There is planned work on this
 
 \* Note that CylinderAbsorption and FlatPlateAbsorption both inherit from the more general method [AbsoprtionCorrection](http://docs.mantidproject.org/nightly/algorithms/AbsorptionCorrection).
 
-Instrument Specific Algorithms
+### Instrument Specific Algorithms
 
 | Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
 |---|---|---|---|---|
-| <sub> in4strip | Extracts sectors of the IN4 detector bank | <sub> Not present | | |
+| <sub> in4strip | <sub> Extracts sectors of the IN4 detector bank | <sub> Not present | | |
 | <sub> in5_DebyeScherrer | <sub> Radial integration over Debye-Scherrer cones. | <sub> Not present | | |
 | <sub> sumbank | <sub> Adds spectra together to improve statistics. Used on IN6 | <sub> Not present | <sub> ? | <sub> Should be straightforward to implement |
-
 
 ## Requirements for Mantid
 
@@ -54,3 +53,11 @@ Instrument Specific Algorithms
 1. Compare cylinder and slab absorption corrections
 1. Investigate differences in detector efficency corrections
 1. Investigate difference in Ki/Kf correction in Mantid
+1. Investigate SofQW differences
+1. Investigate rebinning differences
+1. Mantid kis equivalent
+1. Mantid gdos equivalent
+1. Mantid muphcor equivalent
+1. Debye-Scherrer integration for IN5
+1. Minor instrument routines
+1. Investigate using DGS Workflow Algorithms, with modifications as required for ILL
