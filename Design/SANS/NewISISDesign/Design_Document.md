@@ -60,7 +60,8 @@ Starting point of a reduction is a collection of `SANSStateComplete` objects whi
  reductions in parallel (does this mean, we need to implement it in `C++`?),
  which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
 
-The `SANSBatchReduction` performs two tasks:
+The `SANSBatchReduction` performs two tasks:#
+
 1. Loads files into the ADS if they are not present yet. These workspaces remain
 in mint condition, i.e. we don't want to move them in order to be able to reuse
  them. The calibration workspace is being loaded into the ADS as well.
@@ -73,6 +74,7 @@ The above ADS feature might be considered unclean, since an work-flow algorithm
  of using the ADS as an optional element.
 
 **Open Question**: What should be done with the output workspaces after each reduction:
+
   1. Save each workspace to a file after each individual reduction
   2. Add each workspace to ADS after each individual reduction
   3. Collect the output workspaces and save them all at once.
@@ -89,6 +91,7 @@ The activity diagram  below displays the expected work-flow of the  `SANSBatchRe
 
 A work-flow algorithm `SANSSingleReduction` is responsible for the actual
 reduction. Input properties would be:
+
 1. a `SANSStateComplete` objects (required)
 2. a sample scatter workspace (required)
 2. a sample scatter monitor workspace (required)
