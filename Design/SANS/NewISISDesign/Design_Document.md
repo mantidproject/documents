@@ -25,11 +25,11 @@ In addition there is a strong coupling of this `ReductionSingleton` to the
 GUI logic, which essentially renders the ISIS SANS reduction a monolithic block.
 
 A more modern approach is to use Mantid's `WorkflowAlgorithm`s. A sequence of
-algorithms performs the the reduction, where each algorithm gets the information
+algorithms performs the reduction, where each algorithm gets the information
 required for the reduction at the time it executes. The `WorkflowAlgorithm` is
 used as a unit of clearly defined work and **not** as a container for
-state information. This mechanism avoids the deep coupling as the each algorithm is
-agnostic about its calling environment and information flow is into the algorithms
+state information. This mechanism avoids the deep coupling as each algorithm is
+agnostic about its calling environment and the information flow is into the algorithms
 (except for resulting output workspaces).
 This creates an ideal environment for unit testing and improved documentation.
 
@@ -39,21 +39,23 @@ This creates an ideal environment for unit testing and improved documentation.
 As per requirement [R.2.4](User_Requirements.md#R.2.4) the reduction of a single
 run should be the limit case of the reduction of a batch file. Currently the
 implementations are slightly different. Unifying the two approaches will increase
- maintainability considerably
+maintainability considerably.
 
 ### SANS State
 
-The current ISIS SANS system suffers from a state which is distributed and stored in many different places. The state for a the SANS reduction system should be localized and complete, i.e. it defines the entire reduction.
+The current ISIS SANS system suffers from a state which is distributed and stored
+in many different places. The state for a the SANS reduction system should be
+ localized and complete, i.e. it defines the entire reduction.
 
 A design document for a `SANSState` approach is available
 [here](SANSState/SANSState.md).
 
-The `SANSState` contains a complete set of information to define a single reduction.
+The `SANSStateComplete` contains a complete set of information to define a single reduction.
 
 ### Batch reduction
 
-Starting point of a reduction is a collection of `SANSState`s which define one
- reduction per `SANSState`. This batch reduction is handled by a work-flow
+Starting point of a reduction is a collection of `SANSStateComplete` objects which define one
+ reduction per `SANSStateComplete`. This batch reduction is handled by a work-flow
  algorithm `SANSBatchReduction`. It should be able to operate the individual
  reductions in parallel (does this mean, we need to implement it in `C++`?),
  which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
@@ -62,7 +64,7 @@ The `SANSBatchReduction` performs two tasks:
 1. Loads files into the ADS if they are not present yet. These workspaces remain
 in mint condition, i.e. we don't want to move them in order to be able to reuse
  them. The calibration workspace is being loaded into the ADS as well.
-2. Passes the loaded workspaces and the `SANSState` to a work-flow algorithm,
+2. Passes the loaded workspaces and the `SANSStateComplete` to a work-flow algorithm,
 which performs a single reduction.
 
 The above ADS feature might be considered unclean, since an work-flow algorithm
@@ -71,14 +73,14 @@ The above ADS feature might be considered unclean, since an work-flow algorithm
  of using the ADS as an optional element.
 
 **Open Question**: What should be done with the output workspaces after each reduction:
-  1. Save each workspace to file after each individual reduction
+  1. Save each workspace to a file after each individual reduction
   2. Add each workspace to ADS after each individual reduction
   3. Collect the output workspaces and save them all at once.
   4. Leave this as an option for the user
 
 #### Implementation of `SANSBatchReduction`
 
-The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SansSingleReduction`. It is also responsible for splitting up a `SANSState` object if it was responsible for performing several reductions due to underlying period files.
+The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSState` object if it was responsible for performing several reductions due to underlying period files.
 
 ![](./Images/SANSBatchReduction.png)
 
@@ -87,14 +89,15 @@ The activity diagram  below displays the expected work-flow of the  `SANSBatchRe
 
 A work-flow algorithm `SANSSingleReduction` is responsible for the actual
 reduction. Input properties would be:
-1. a complete `SANSState` (required)
-2. a sample scatter workspace (required).
+1. a `SANSStateComplete` objects (required)
+2. a sample scatter workspace (required)
 2. a sample scatter monitor workspace (required)
 3. a sample transmission workspace (optional), but required if sample direct
 workspace has be provided.
 4. a sample direct workspace (optional) , but required if sample transmission
 workspace has been provided.
 5. a can scatter workspace (optional)
+5. a can scatter monitor workspace (optional)
 6. a can transmission workspace (optional), but required if can direct
 workspace has be provided.
 7. a can direct workspace (optional) , but required if can transmission
@@ -103,8 +106,8 @@ workspace has be provided.
 
 The reduction itself is determined by the `SANSStateReduction`, which would
  contain configurational information which is important for `SANSSingleReduction`.
- This could be e.g. LAB, HAB, BOTH, MERGED. The reduction will have to run a
- core reduction sequence of steps for each period of the sample workspace.
+ This can be LAB, HAB, BOTH, MERGED. The reduction will have to run a
+ core reduction sequence of steps.
 
 The work-flow is depicted below:
 
@@ -113,11 +116,12 @@ The work-flow is depicted below:
 
 #### Core Reduction
 
-The core of the reduction is very similar to the reduction which is currently being performed. The individual tasks are split up into "simple" algorithmic tasks.
+The core of the reduction is very similar to the reduction which is currently
+ being performed. The individual tasks are split up into "simple" algorithmic tasks.
 
 The reduction core performs the following tasks:
 
-1. Creates an adequate copy of the workspace via a `CropWorkspaceToDetector` algorithm (which needs to be written).
+1. Creates an adequate copy of the workspace via a `CropWorkspaceToDetector` algorithm (which needs to be written in C++).
 1. If the workspace is an event workspace and an event slice was specified then this is applied. The `SANSStateSliceEvent` is passed to `SANSSliceEvent`.
 1. Move the instrument to the correct position. Note that we do this on the copied workspace which is to be reduced (not on the original workspace). The information required is passed to `SANSMoveWorkspace` via `SANSStateMoveWorkspace`.
 1. Applies masking to the sample workspace. This passes the sample workspace
@@ -144,7 +148,7 @@ sample workspace, the adjustment workspaces and `SANSStateConvertToQ` to
 8. Return workspaces, e.g. reduced sample, reduced can , maybe partial
  workspaces (if MERGED has been selected)
 
-The basic workflow for this core can be see below:
+The basic work-flow for this core can be see below:
 
 ![](./Images/SANSSingleReductionCore.png)
 
@@ -164,7 +168,9 @@ with the adequate factory.
 
 ### ISIS implementations
 
-The implementation of the work-flow algorithms for ISIS SANS are discussed below. Note that in the activity diagrams below the absence of a connection of an input pin, means that it is connected to the `SANSState` input.
+The implementation of the work-flow algorithms for ISIS SANS are discussed below.
+Note that in the activity diagrams below the absence of a connection of an
+ input pin, means that it is connected to the `SANSState` input.
 
 #### `SANSMaskISIS`
 

@@ -49,29 +49,6 @@ The current system interacts directly with the implementation of the reduction s
 
 ![](./Images/System_Context_Old.png)
 
-
-## Use cases
-### Overview
-Several use case scenarios of the new/old system are described below.
-
-| Uses and external systems | Scenario|
-|---------------------------|---------|
-| Batch reduction via GUI   |   [UC1](#UC1)  |
-| Single reduction via GUI  |   [UC2](#UC2)   |
-| Batch/Single reduction via Python Interface| [UC3](#UC3)  |
-| User investigates loaded scatter workspace | [UC4](#UC4) |
-| User finds beam center |   [UC5](#UC5)  |
-
-### UC 1 <a name="UC1"></a>
-
-### UC 2 <a name="UC2"></a>
-
-### UC 3 <a name="UC3"></a>
-
-### UC 4 <a name="UC4"></a>
-
-### UC 5 <a name="UC5"></a>
-
 ## Requirements
 
 ##### Necessity
@@ -111,4 +88,4 @@ provided.
 | R.3.2  | Should be parallel where possible | D |
 | R.3.3  | Should avoid converting to event-mode data to histogram data as long as possible (Nick Draper)| M|
 | R.3.4 | Should make use of reduced can workspace where applicable (Richard) | D|
-| R.3.5 | Users should be able to load the data workspace with an instrument movment applied to it, in order inspect the positioning of the detector banks (Richard) | M | 
+| R.3.5 | Users should be able to load the data workspace with an instrument movment applied to it, in order inspect the positioning of the detector banks (Richard) | M |
