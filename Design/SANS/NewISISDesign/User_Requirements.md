@@ -88,4 +88,5 @@ provided.
 | R.3.2  | Should be parallel where possible | D |
 | R.3.3  | Should avoid converting to event-mode data to histogram data as long as possible (Nick Draper)| M|
 | R.3.4 | Should make use of reduced can workspace where applicable (Richard) | D|
-| R.3.5 | Users should be able to load the data workspace with an instrument movment applied to it, in order inspect the positioning of the detector banks (Richard) | M |
+| R.3.5 | Users should be able to load the data workspace with an instrument
+movement applied to it, in order to inspect the positioning of the detector banks (Richard) | M |

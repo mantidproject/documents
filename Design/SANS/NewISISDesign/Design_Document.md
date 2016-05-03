@@ -25,7 +25,7 @@ In addition there is a strong coupling of this `ReductionSingleton` to the
 GUI logic, which essentially renders the ISIS SANS reduction a monolithic block.
 
 A more modern approach is to use Mantid's `WorkflowAlgorithm`s. A sequence of
-algorithms performs the reduction, where each algorithm gets the information
+algorithms perform the reduction, where each algorithm gets the information
 required for the reduction at the time it executes. The `WorkflowAlgorithm` is
 used as a unit of clearly defined work and **not** as a container for
 state information. This mechanism avoids the deep coupling as each algorithm is
@@ -38,8 +38,7 @@ This creates an ideal environment for unit testing and improved documentation.
 
 As per requirement [R.2.4](User_Requirements.md#R.2.4) the reduction of a single
 run should be the limit case of the reduction of a batch file. Currently the
-implementations are slightly different. Unifying the two approaches will increase
-maintainability considerably.
+implementations are slightly different. Unifying the two approaches is beneficial to future maintenance.
 
 ### SANS State
 
@@ -50,7 +49,8 @@ in many different places. The state for a the SANS reduction system should be
 A design document for a `SANSState` approach is available
 [here](SANSState/SANSState.md).
 
-The `SANSStateComplete` contains a complete set of information to define a single reduction.
+The result of this document is that the `SANSStateComplete` object contains a
+complete definition of a single reduction (provided the state is valid).
 
 ### Batch reduction
 
@@ -70,19 +70,19 @@ which performs a single reduction.
 
 The above ADS feature might be considered unclean, since a work-flow algorithm
  is accessing the ADS, but this allows us to reuse loaded workspaces which has
- been expressed as requirement [R.3.1](#User_Requirements#R.3.1). We could think
+ been expressed as a requirement ()[R.3.1](#User_Requirements#R.3.1)). We could think
  of using the ADS as an optional element.
 
 **Open Question**: What should be done with the output workspaces after each reduction:
 
   1. Save each workspace to a file after each individual reduction
-  2. Add each workspace to ADS after each individual reduction
-  3. Collect the output workspaces and save them all at once.
+  2. Add each workspace to the ADS after each individual reduction
+  3. Collect the output workspaces and save them all at once (probably not)
   4. Leave this as an option for the user
 
 #### Implementation of `SANSBatchReduction`
 
-The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSStateComplete` object if it was responsible for performing several reductions due to underlying period files.
+The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSStateComplete` object if it was responsible for performing several reductions due to underlying period files. In this case we obtain one `SANSStateComplete` object per period.
 
 ![](./Images/SANSBatchReduction.png)
 
@@ -156,7 +156,7 @@ The basic work-flow for this core can be see below:
 ![](./Images/SANSSingleReductionCore.png)
 
 
-### Selection of instrument specific implementations
+### Selection of instrument-specific implementations
 
 The current SANS implementations are instrument-specific and static. It is
 important to recognize that some parts of the reduction might well have to
@@ -177,10 +177,11 @@ Note that in the activity diagrams below the absence of a connection of an
 
 #### `SANSMaskISIS`
 
-The masking for for ISIS instruments is fairly complex. Masking is applied for:
+The masking for ISIS instruments is fairly complex. Masking is applied for:
+
 1. General bin masking
-2. Bank-specific bin binning
-3. Detector masking for beam stop
+2. Bank-specific bin masking
+3. Detector masking for a beam stop
 4. Detector masking for a list of masking files
 5. Detector masking for a list of spectrum numbers
 6. Detector masking for an angle-slice
@@ -230,14 +231,14 @@ The functionality and its dependence on specific parameters is depicted below.
 
 ![](./Images/SANSCreateAdjustmentWorkspacesISIS.png)
 
-The are several parts to this which are split up into separate work-flow algorithms. In fact the components are very similar to the existing components, but while in the the current setup the different parts of the adjustment workspaces are created at different times and in different locations of the reduction flow, we intend to localize the functionality.
+The are several parts to this which are split up into separate work-flow algorithms. In fact the components are very similar to the existing components, but while in the current setup the different parts of the adjustment workspaces are created at different times and in different locations of the reduction flow, we intend to localize the functionality.
 
-The workflow of the algorithm responsible for creating pixel-dependent and wavelength-dependent adjustments can be seen below:
+The work-flow of the algorithm responsible for creating pixel-dependent and wavelength-dependent adjustments can be seen below:
 
 ![](./Images/SANSCreateWavelengthAndPixelAdjustmentISIS.png)
 
 This algorithm relies on an input workspace which contains information about the normalization to monitor and a workspace
-which contains information about the transmission calculation which are shown below
+which contains information about the transmission calculation which are shown below.
 
 ####### `SANSCalculateTransmissionISIS`
 
@@ -293,32 +294,31 @@ which can be used for
 * the data monitor workspace
 * the transmission/direct workspace
 
-Unlike many other applications in Mantid, loading has gone traditionally through the ADS. Here, this feature is being kept, since it is desireable to avoid reloading already loaded data (see [R.3.1](#User_Requirements)). This optimization should be applicable to all data.
+Unlike many other applications in Mantid, loading has gone traditionally through the ADS. Here, this feature is being kept, since it is desirable to avoid reloading data (see [R.3.1](#User_Requirements)). This optimization should be applicable to all data. Nevertheless we should be able to run the entire reduction without any dependence on the ADS. Hence we use it as an option.
 
 In order to reuse the data which is being requested by a reduction the new work-flow will look for untouched copies of a workspace (i.e. they should not have been moved). It is impossible to judge if a loaded workspace has been altered by the user. The only thing that can be done, is to reset the workspace to its original position, if move operations have been applied to it.
 
-In the most common case, we should not have to worry about altered workspaces, since the reduction does not touch the workspaces themselves. There will be however an option on the loaders to allow Users to apply a move operation on the workspaces while loading. This is required since we
-Users would like to be able to check the detector position on the fly (see [R.3.5.](#User_Requirements)).
+In the most common case, we should not have to worry about altered workspaces, since the reduction does not touch the workspaces themselves. There will be however an option on the loaders to allow users to apply a move operation on the workspaces while loading. This is required since
+users want to be able to check the detector position on the fly (see [R.3.5.](#User_Requirements)). It is essentially used as a diagnostic tool.
 
-A general algorithm `SANSLoadData` will receive a `SANSState` object from which it will decide via `SANSLoaderFactory` which type of `SANSLoader` to  instantiate. This will allow for facility-dependent adjustments should they be required. A `MoveWorkspace` option will allow for moving the workspaces on initial loading should the User explicitly want to do so.
+A general algorithm `SANSLoadData` will receive a `SANSState` object from which it will decide via a `SANSLoaderFactory` which type of `SANSLoader` to  instantiate. This will allow for facility-dependent adjustments should they be required. A `MoveWorkspace` option will allow for moving the workspaces on initial loading should the user explicitly want to do so.
 
 See the details in the image below.
 
 ![](./Images/SANSLoadData.png)
 
 
-The `SANSLoader` will loop over all defined data workspaces and load them with the appropriate command. Note that we need to distinguish between loading transmissions and loading scatter data. The `SANSLoader` is lastly also responsible for search for a workspace on the ADS and for publishing a workspace to the ADS if this has not been done yet. The two diagrams below show the basic logic flow of the actual loaders
+The `SANSLoader` will loop over all defined data workspaces and load them with the appropriate command. Note that we need to distinguish between loading transmissions and loading scatter data. The `SANSLoader` is lastly also responsible for search for a workspace on the ADS and for publishing a workspace to the ADS if this has not been done yet. The two diagrams below show the basic logic flow of the actual loaders.
 
 ![](./Images/SANSLoader.png)
 
 ![](./Images/SANSLoader_load.png)
 
 
-The individual loaders themselves will determine which loading strategy to apply to the file in questio, ie multiperiod, *.raw* etc.
-
+The individual loaders themselves will determine which loading strategy to apply to the file in question, i.e. multiperiod, *.raw* etc.
 
 ## Interfacing the new reducer system with the Python commands
 
-The users have been used to the PI for a long time now and many scripts have been used using this syntax style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. It is a clear goal though to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve we need a global-state contain, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
+The users have been used to the PI for a long time now and many scripts have been used using this syntax style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. It is a clear goal though to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve this we need a global state, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
 
-We can keep the old PI syntax and not have any global state logic in the reduction system by providing a specialized `SANSStateDirectorPythonInterface`, which subclasses from `SANSStateDirector` and is a singleton. This is then used by the standard PI commands to setup a state. When the reduction is to be run by calling the PI's `WavRangeReduction` function the standard `SANSBatchReduction` algorithm is run with the `SANSState` which is provided by the `SANSStateDirectorPythonInterface`.
+We can keep the old PI syntax and not have any global state logic in the reduction system by providing a specialized `SANSStateDirectorPythonInterface`, which subclasses from `SANSStateDirector` and is a singleton. This is then used by the standard PI commands to setup a state. When the reduction is to be run by calling the PI's `WavRangeReduction` function the standard `SANSBatchReduction` algorithm is run with the `SANSStateComplete` which is provided by the `SANSStateDirectorPythonInterface`.
