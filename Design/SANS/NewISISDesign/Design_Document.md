@@ -60,7 +60,7 @@ Starting point of a reduction is a collection of `SANSStateComplete` objects whi
  reductions in parallel (does this mean, we need to implement it in `C++`?),
  which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
 
-The `SANSBatchReduction` performs two tasks:#
+The `SANSBatchReduction` performs two tasks:
 
 1. Loads files into the ADS if they are not present yet. These workspaces remain
 in mint condition, i.e. we don't want to move them in order to be able to reuse
@@ -68,7 +68,7 @@ in mint condition, i.e. we don't want to move them in order to be able to reuse
 2. Passes the loaded workspaces and the `SANSStateComplete` to a work-flow algorithm,
 which performs a single reduction.
 
-The above ADS feature might be considered unclean, since an work-flow algorithm
+The above ADS feature might be considered unclean, since a work-flow algorithm
  is accessing the ADS, but this allows us to reuse loaded workspaces which has
  been expressed as requirement [R.3.1](#User_Requirements#R.3.1). We could think
  of using the ADS as an optional element.
@@ -82,7 +82,7 @@ The above ADS feature might be considered unclean, since an work-flow algorithm
 
 #### Implementation of `SANSBatchReduction`
 
-The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSState` object if it was responsible for performing several reductions due to underlying period files.
+The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSStateComplete` object if it was responsible for performing several reductions due to underlying period files.
 
 ![](./Images/SANSBatchReduction.png)
 

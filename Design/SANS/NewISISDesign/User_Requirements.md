@@ -12,7 +12,7 @@ This document covers the functionality of a new reduction back-end for ISIS SANS
 It tries to capture the needs of the ISIS facility scientists. The requirements
 should describe a first version of this new back-end. New functional features are
 avoided, while non-functional requirements such as performance-constraints are
-captured here-within.
+captured here.
 
 ### Definition of terms
 
@@ -26,11 +26,11 @@ captured here-within.
 
 The rewrite of the ISIS SANS reduction back-end should affect the entire reduction ecosystem, including the actual reduction code, the loaders, the interfacing to Python and the interfacing to the GUI.
 
-The main functional capabilities of the system will be equivalent to the current system. Focus is on creating an performance-improved, maintainable  
+The main functional capabilities of the system will be equivalent to the current system.
 The focus is to make the reduction system:
 * maintainable by defining clear units of work which can be understood and tested individually.
-* performance-improved by reusing existing data and having a parallelizable batch modes operation.
-* extensible by keeping instrument-dependent information out of the reduction system and allowing for easy reconfiguration of the reduction system.
+* performance-improved by reusing existing data and having a parallelizable batch-mode operation.
+* extensible by keeping instrument-dependent information out of the reduction system and allow for easy reconfiguration of the reduction system.
 
 ### System Context
 
