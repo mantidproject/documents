@@ -23,7 +23,7 @@ A detailed analysis of how the state is spread in the current implementation can
 #### State in the GUI
 
 A detailed analysis of the GUI and its coupling to the
-current reducer back-end can be found [here](./SANS_Mapping_of_GUI_variables.md).
+current reducer back-end can be found [here](./SANS_mapping_of_GUI_variables.md).
 
 ## State Object approach
 
@@ -65,8 +65,8 @@ Since a reduction in the SANS work-flow can depend on more than 100 variables it
 
 The envisioned sub-states are:
 
-| Sub `SANSState`     |  Information content |
-| ------------------  | ---                 -|
+| sub-`SANSState`     |  Information content |
+|---------------------|----------------------|
 | `SANSStateData`     | Contains the full file paths for the data which is to be reduced. (sample_scatter, sample_transmission, sample_direct, can_scatter, can_transmission, can_direct)|
 | `SANStateInstrument` | Contains general instrument information. Contain a map to the available detector banks and the detector which is currently being investigated.  |
 | `SANSStateDetector`  | Contains information about a particular detector bank|
@@ -76,16 +76,25 @@ The envisioned sub-states are:
 | `SANSStateConvertEventToHistogram` | Contains information to convert an event workspace into a histogram workspace |
 |`SANSStateCreateAdjustmentWorkspace`| Contains everything which is related with creating adjustment workspaces, e.g normalization, transmission calculation, etc |
 | `SANSStateReduction` | Contains information about which reductions to perform, i.e. if LAB, HAB, both or merged |
-
+| `SANSStateComplete` |
 ## State design for ISIS SANS
 
 The proposed complete `SANSState` is shown below:
-TODO: INSERT IMAGE
 
-## State Builders
+![](../Images/SANSState.png)
+
+## State Builder and State Directors
 
 The issue of constructing the states has been mentioned above. The state objects are constructed via a `SANSStateBuilder` which is orchestrated by a `SANSStateDirector`. The director is appropriate for the current environment in which the state is being generated, e.g. in the PI or the GUI.
 
-Not all sub-states will be set separately. Setting `SANSStateData` causes the `SANSStateBuilder` to choose the correct `SANSStateInstrumentFactory` for the type of instrument associated with the data files. For ISIS this is  `SANSStateInstrumentFactorySANS2D`, `SANSStateInstrumentFactoryLOQ`, `SANSStateInstrumentFactoryLARMOR`. They will be able to provide the required instrument-specific information to populate `SANSStateInstrument` and the nested `SANSStateDetector`s.  
+![](../Images/SANSBuilder.png)
 
-TODO: INSERT IMAGE
+Not all sub-states will be set separately. Setting `SANSStateData` causes the `SANSStateBuilder` to choose the correct `SANSStateMoveWorkspace` for the type of instrument associated with the data files. For ISIS data this should then provide the correct settings for LARMOR, SANS2D and LOQ.
+
+
+## Implementation
+
+Using the `SANSState` as an input entity for work-flow algorithms limits our choice to how these state objects can be implemented. The requirement of a map-like data structure limits us to `PropertyManager`s as an implementation tool for `SANSState`. This means that the we have a layered `PropertyManager` of depth three:
+1. `SANSStateComplete` which defines a complete reduction.
+2. The individual sub-states.
+3. Some of the sub-states require a map in order to store detector-dependent information
