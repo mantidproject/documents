@@ -70,7 +70,7 @@ which performs a single reduction.
 
 The above ADS feature might be considered unclean, since a work-flow algorithm
  is accessing the ADS, but this allows us to reuse loaded workspaces which has
- been expressed as a requirement ()[R.3.1](#User_Requirements#R.3.1)). We could think
+ been expressed as a requirement ([R.3.1](#User_Requirements#R.3.1)). We could think
  of using the ADS as an optional element.
 
 **Open Question**: What should be done with the output workspaces after each reduction:
@@ -82,7 +82,11 @@ The above ADS feature might be considered unclean, since a work-flow algorithm
 
 #### Implementation of `SANSBatchReduction`
 
-The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`. It loads the required workspace and passes it on to the `SANSSingleReduction`. It is also responsible for splitting up a `SANSStateComplete` object if it was responsible for performing several reductions due to underlying period files. In this case we obtain one `SANSStateComplete` object per period.
+The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`.
+ It loads the required workspace and passes it on to the `SANSSingleReduction`.
+ It is also responsible for splitting up a `SANSStateComplete` object if it was
+ responsible for performing several reductions due to underlying period files.
+ In this case we obtain one `SANSStateComplete` object per period.
 
 ![](./Images/SANSBatchReduction.png)
 
@@ -90,7 +94,7 @@ The activity diagram  below displays the expected work-flow of the  `SANSBatchRe
 ### Single reduction
 
 A work-flow algorithm `SANSSingleReduction` is responsible for the actual
-reduction. Input properties would be:
+reduction. Input properties are:
 
 1. a `SANSStateComplete` objects (required)
 2. a sample scatter workspace (required)
@@ -105,7 +109,8 @@ workspace has been provided.
 workspace has be provided.
 7. a can direct workspace (optional) , but required if can transmission
  workspace has been provided.
-8. reduced can workspace (optional)
+8. reduced can workspace (LAB)(optional)
+9. reduced can workspace (HAB)(optional)
 
 The reduction itself is determined by the `SANSStateReduction`, which would
  contain configurational information which is important for `SANSSingleReduction`.
@@ -120,7 +125,7 @@ The work-flow is depicted below:
 #### Core Reduction
 
 The core of the reduction is very similar to the reduction which is currently
- being performed. The individual tasks are split up into "simple" algorithmic tasks.
+ being performed. The individual steps are split up into "simple" algorithmic tasks.
 
 The reduction core performs the following tasks:
 
@@ -129,26 +134,23 @@ The reduction core performs the following tasks:
 1. Move the instrument to the correct position. Note that we do this on the copied workspace which is to be reduced (not on the original workspace). The information required is passed to `SANSMoveWorkspace` via `SANSStateMoveWorkspace`.
 1. Applies masking to the sample workspace. This passes the sample workspace
  along with the `SANSStateMask` object to `SANSMask`.
-2. Convert the TOF data into wavelength-based data. This passes the sample
+1. Convert the TOF data into wavelength-based data. This passes the sample
 workspace along with the `SANSStateConvertToWavelength` object  to `SANSConvertToWavelength`.
-3. Multiply the volume and the absolute scale to the workspace. This passes
+1. Multiply the volume and the absolute scale to the workspace. This passes
 the sample workspace along with `SANSStateMultiplyVolumeAndAbosoluteScale`
 to `SANSMultiplyVolumeAndAbosoluteScale`.
-4. Create adjustment workspaces which are required for the final q-conversion
+1. Create adjustment workspaces which are required for the final q-conversion
 stage. This includes normalization to a monitor,  transmission calculation
 and wide-angle correction as well as handling information which is loaded from
 flood and calibration files. This step passes the sample workspace along with
 the `SANSStateCreateAdjustmentWorkspaces` to `SANSCreateAdjustmentWorkspace`.
-5. Converts potential event-mode data into histogram-based data. This step passes
+1. Converts potential event-mode data into histogram-based data. This step passes
 the sample workspace along with `SANSStateConvertEventToHistogram` to
 `SANSConvertEventToHistogram`.
-6. Converts from wavelength-based data to q-based data. This step passes the
+1. Converts from wavelength-based data to q-based data. This step passes the
 sample workspace, the adjustment workspaces and `SANSStateConvertToQ` to
  `SANSConvertToQ`.
-7. Check if a reduced can workspace was provided.
-  1. If it was provided, then the reduction core is done.
-  1. Else perform the steps above for the can configuration.
-8. Return workspaces, e.g. reduced sample, reduced can , maybe partial
+1. Return workspaces, e.g. reduced workspace,  maybe partial
  workspaces (if MERGED has been selected)
 
 The basic work-flow for this core can be see below:
@@ -156,7 +158,7 @@ The basic work-flow for this core can be see below:
 ![](./Images/SANSSingleReductionCore.png)
 
 
-### Selection of instrument-specific implementations
+#### Selection of instrument-specific implementations
 
 The current SANS implementations are instrument-specific and static. It is
 important to recognize that some parts of the reduction might well have to
@@ -165,15 +167,19 @@ the implementation of a specific step is created by an adequate factory. Some
 ISIS-specific implementations are presented below. These implementations will
 also be used as a default setting.
 
-If a facility requires a different calculation technique then, it needs to create
+If a facility requires a different calculation technique then it needs to create
 a work-flow algorithm which subscribes to the output signature and register it
-with the adequate factory.
+with the adequate factory. This factory approach is used for many parts of the,
+ system but is most notable in the core of a single reduction.
 
 ### ISIS implementations
 
 The implementation of the work-flow algorithms for ISIS SANS are discussed below.
 Note that in the activity diagrams below the absence of a connection of an
  input pin, means that it is connected to the `SANSState` input.
+
+ Note that a lot of input parameters are named explicitly for the individual steps
+ below. This helps to map the current functionality/logic to the new design.
 
 #### `SANSMaskISIS`
 
@@ -266,6 +272,7 @@ The functionality and its dependence on specific parameters is depicted below.
 #### `SANSConvertToQISIS`
 
 The inputs for this algorithm are:
+
 1. `SANSStateConvertToQ` (required)
 2. sample/can workspace (as histogram) (required)
 3. Wavelength-adjustment workspace (optional)
@@ -273,7 +280,7 @@ The inputs for this algorithm are:
 5. Wavelength-and-pixel-adjustment workspace (optional)
 6. Flag if to produce outputs by part
 
-This work-flow algorithm will run mainly call either `Q1D` or `QXY` for the conversion to q-based data.
+This work-flow algorithm will mainly call either `Q1D` or `QXY` for the conversion to q-based data.
 
 The functionality and its dependence on specific parameters is depicted below.
 
@@ -281,7 +288,7 @@ The functionality and its dependence on specific parameters is depicted below.
 
 ## Workspace loading
 
-The logic for loading workspaces has been a seizable part of the original SANS reduction code base. The main reason for this is the fact that there are many different data input formats such as:
+The logic for loading workspaces has been a sizable part of the original SANS reduction code base. The main reason for this is the fact that there are many different data input formats such as:
 * *.raw* files
 * *.nxs* files with histogram-type information
 * *.nxs* files with event-type information
@@ -296,7 +303,7 @@ which can be used for
 
 Unlike many other applications in Mantid, loading has gone traditionally through the ADS. Here, this feature is being kept, since it is desirable to avoid reloading data (see [R.3.1](#User_Requirements)). This optimization should be applicable to all data. Nevertheless we should be able to run the entire reduction without any dependence on the ADS. Hence we use it as an option.
 
-In order to reuse the data which is being requested by a reduction the new work-flow will look for untouched copies of a workspace (i.e. they should not have been moved). It is impossible to judge if a loaded workspace has been altered by the user. The only thing that can be done, is to reset the workspace to its original position, if move operations have been applied to it.
+In order to reuse the data which is being requested by a reduction, the new work-flow will look for untouched copies of a workspace (i.e. they should not have been moved). It is impossible to judge if a loaded workspace has been altered by the user. The only thing that can be done is to reset the workspace to its original position, if move operations have been applied to it.
 
 In the most common case, we should not have to worry about altered workspaces, since the reduction does not touch the workspaces themselves. There will be however an option on the loaders to allow users to apply a move operation on the workspaces while loading. This is required since
 users want to be able to check the detector position on the fly (see [R.3.5.](#User_Requirements)). It is essentially used as a diagnostic tool.
@@ -308,17 +315,17 @@ See the details in the image below.
 ![](./Images/SANSLoadData.png)
 
 
-The `SANSLoader` will loop over all defined data workspaces and load them with the appropriate command. Note that we need to distinguish between loading transmissions and loading scatter data. The `SANSLoader` is lastly also responsible for search for a workspace on the ADS and for publishing a workspace to the ADS if this has not been done yet. The two diagrams below show the basic logic flow of the actual loaders.
+The `SANSLoader` will loop over all defined data workspaces and load them with the appropriate command. Note that we need to distinguish between loading transmissions and loading scatter data. The `SANSLoader` is lastly also responsible for searching for a workspace on the ADS and for publishing a workspace to the ADS if this has not been done yet. The two diagrams below show the basic logic flow of the actual loaders.
 
 ![](./Images/SANSLoader.png)
 
 ![](./Images/SANSLoader_load.png)
 
 
-The individual loaders themselves will determine which loading strategy to apply to the file in question, i.e. multiperiod, *.raw* etc.
+The individual loaders themselves will determine which loading strategy to apply to the file in question, e.g. multiperiod, *.raw* etc.
 
 ## Interfacing the new reducer system with the Python commands
 
-The users have been used to the PI for a long time now and many scripts have been used using this syntax style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. It is a clear goal though to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve this we need a global state, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
+The scientists have been used to the PI for a long time now and many scripts are based on this syntactic style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. It is a clear goal though to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve this we need a global state, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
 
 We can keep the old PI syntax and not have any global state logic in the reduction system by providing a specialized `SANSStateDirectorPythonInterface`, which subclasses from `SANSStateDirector` and is a singleton. This is then used by the standard PI commands to setup a state. When the reduction is to be run by calling the PI's `WavRangeReduction` function the standard `SANSBatchReduction` algorithm is run with the `SANSStateComplete` which is provided by the `SANSStateDirectorPythonInterface`.

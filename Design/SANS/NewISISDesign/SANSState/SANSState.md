@@ -10,7 +10,7 @@ The aim of this document is to introduce a new way to store reduction state info
 
 ## Motivation
 
-The motivation for a State object approach of ISIS SANS can be found [here](../Design_Document.md). The [current status](#CurrentStatus) demonstrates the complexity of the current state distribution among the `ReductionSingleton`, the `ReductionStep`s and the `ISISInstrument`. Besides being "all over the place", there is a tight coupling of the reduction's state and the GUI.
+The motivation for a State object approach of ISIS SANS can be found [here](../Design_Document.md). The [current status](#CurrentStatus) demonstrates the complexity of the current information distribution among the `ReductionSingleton`, the `ReductionStep`s and the `ISISInstrument`. Besides being "all over the place", there is a tight coupling of the reduction's state and the GUI.
 
 ## Current status  <a name="CurrentStatus"></a>
 
@@ -71,14 +71,17 @@ The envisioned sub-states are:
 | `SANSStateConvertToQ` | Contains information for the q binning conversion
 | `SANSStateMultiplyVolumeAndAbosoluteScale` | Contains information about geometry and absolute information |
 | `SANSStateConvertEventToHistogram` | Contains information to convert an event workspace into a histogram workspace |
+| `SANSStateConvertToWavelength` | Contains information about the wavelength conversion |
 |`SANSStateCreateAdjustmentWorkspace`| Contains everything which is related with creating adjustment workspaces, e.g normalization, transmission calculation, etc |
 | `SANSStateReduction` | Contains information about which reductions to perform, i.e. if LAB, HAB, both or merged |
+| `SANSStateSliceEvent` | Contains inforamtion about the event slice |
 | `SANSStateComplete` | Is clearly defined  collection of sub-states. |
 ## State design for ISIS SANS
 
 The proposed complete `SANSState` is shown below:
 
 ![](../Images/SANSState.png)
+
 
 ## State Builder and State Directors
 
