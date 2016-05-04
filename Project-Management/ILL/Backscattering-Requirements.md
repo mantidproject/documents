@@ -1,10 +1,10 @@
 ## Backscattering Requirements
 
-A lot of work has already been implemented in Mantid for IN16b by Elliot Oram and Spencer Howells. Hence the time required on this should be relatively short, and much of it will focus on filling in any gaps found and verifying Mantid and Lamp give the same results.
+A lot of work has already been implemented in Mantid for IN16b by Elliot Oram and Spencer Howells. Hence the time required on this should be relatively short, and much of it will focus on adding in similar functionality for IN13, filling in any gaps found, and verifying Mantid and Lamp give the same results.
 
 For more information on the IN16b reduction see [Indirect Data Reduction](http://docs.mantidproject.org/nightly/interfaces/Indirect_DataReduction.html) document.
 
-## General Algorithms Used
+### General Algorithms Used
 
 | Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
 |---|---|---|---|---|
@@ -24,14 +24,7 @@ Normalisation, absorption and SofQW should be addressed in the Time of Flight Sp
 1. Compare bsnorm to normalise in Lamp, compare this with Mantid
 1. Compare tee and t2e in Lamp, and compare with ConvertUnits in Mantid
 1. Compare integration of PSD data
-1. Compare cylinder and slab absorption corrections
-1. Investigate differences in detector efficency corrections
-1. Investigate difference in Ki/Kf correction in Mantid
-1. Investigate SofQW differences
-1. Investigate rebinning differences
-1. Mantid kis equivalent
-1. Mantid gdos equivalent
-1. Mantid muphcor equivalent
-1. Debye-Scherrer integration for IN5
-1. Minor instrument routines
-1. Investigate using DGS Workflow Algorithms, with modifications as required for ILL
+1. Verify workflows for IN16b
+1. Finalise workflows:
+ * IN16b - already implemented
+ * IN13
