@@ -61,3 +61,8 @@ Also desirable is multiple scattering corrections. There is planned work on this
 1. Debye-Scherrer integration for IN5
 1. Minor instrument routines
 1. Investigate using DGS Workflow Algorithms, with modifications as required for ILL
+1. Finalise workflows:
+ * IN4
+ * IN5
+ * IN6
+ * BRISP
