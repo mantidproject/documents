@@ -8,11 +8,9 @@ Pinned Topics
 
 New Items
 ---------
-* [Histogram Design](https://github.com/mantidproject/documents/pull/14) (Simon)
-* [Absorption Corrections](https://github.com/mantidproject/documents/pull/15) (Martyn)
-* Distributing optional Python packages, e.g `LoadCIF` & `PyCifRW` (Martyn) 
 * [Py-Qt-MVC](https://github.com/morefigs/Py-Qt-MVC) (Owen)
 * Discussion questions:
+  239485. Move `downloads.mantiproject.org` and `docs.mantidproject.org` to `gh-pages`?
   1.  Do we move our 1D/2D plotting to use matplotlib directly?
   2.  Do we drop our fitting for scipy’s?
   3.  Do we move TableWorkspace to be a pandas DataFrame [[1](http://stackoverflow.com/questions/21647054/creating-a-pandas-dataframe-with-a-numpy-array-containing-multiple-types)]?
