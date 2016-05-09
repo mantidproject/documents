@@ -32,7 +32,7 @@ Pool
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
 1. Migrate to C++11 standard library features.
   5. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
-6. Remove gmock 1.6
+6. Remove gmock 1.6 [#16113](https://github.com/mantidproject/mantid/pull/16113)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests
 8. Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)
  
