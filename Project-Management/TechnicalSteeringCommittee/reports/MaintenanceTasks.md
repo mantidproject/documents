@@ -1,5 +1,18 @@
-For 3.7 maintenance period
+For 3.8 maintenance period
 ==========================
+
+Highest priority
+----------------
+
+1. Remove Qt3support requirement from Mantid. 
+   1. Finish removing Qt3support classes [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
+   2. Update functions that were removed in Qt4 (http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
+      3. Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?  
+   3. Remove Qt3support package from [mantid buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73).
+1. Adding Python 3 compatability (`.py` files in mantid converted)
+  1. Ensure Mantid builds when linked against Python 3 and boost::python built against Python 3.
+  2. Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.
+  3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors.
 
 Pool
 ----
@@ -8,12 +21,12 @@ Pool
 1. Reducing static analysis issues (discus stewards and soft limits)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/) 
    2. [coverity](https://scan.coverity.com/projects/335) 
-   3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/) (Lamar)
+   3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/) 
 1. Clang working on linux. 
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
    3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
-1. Move all Jenkins builds to use Ninja where possible (incl. Windows) [#15282](https://github.com/mantidproject/mantid/issues/15282)
+1. Move Windows Jenkins builds to use Ninja where possible.
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
 1. Migrate to C++11 standard library features.
@@ -28,7 +41,6 @@ Assigned
 
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
-1. Look in to removing Qt3 suport code [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
 2. Run compilation time report weekly(?) on static analysis tab (Simon)
   -  profile build time to find which files we should focus on
   -  initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
@@ -36,8 +48,6 @@ Assigned
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1085. Streamline pull-request builds (Martyn)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
-   2. [cppcoreguidelines-pro-type-static-cast-downcast](https://github.com/mantidproject/mantid/compare/cppcoreguidelines-pro-type-static-cast-downcast) In some of these cases, we need to also check that `dynamic_cast` doesn't return `nullptr`. 
-
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Anton)
   2. clang-tidy's `google-runtime-references` check may help us find more.
@@ -55,7 +65,6 @@ For another release
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1093777. radon as a job in static analysis tab
-1. Move to Qt 5
 1. Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)
 1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
    1. ANN
@@ -82,5 +91,4 @@ Converted to actual tickets during a release
 
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
-1. Adding Python 3 compatability (`.py` files in mantid converted)
 1. Editing algorithm and variable names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (Andrei)
