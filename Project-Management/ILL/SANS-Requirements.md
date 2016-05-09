@@ -20,7 +20,7 @@ An example of a D33 reduction script can be seen [here](https://www.ill.eu/filea
 | <sub> sans_cor - empty cell | <sub> empty cell  and background(cadmium) subtraction (transmission calculated for each Q) | <sub> Not present | <sub>  | <sub> See [SANSReduction](http://docs.mantidproject.org/nightly/algorithms/SANSReduction-v1.html) for a description of the process in Mantid |
 | <sub> sans_cor - solid angle (thickness) correction | <sub> Solid angle (thickness) correction | <sub> [SANSSolidAngleCorrection](http://docs.mantidproject.org/nightly/algorithms/SANSSolidAngleCorrection-v1.html),  (2) [NormaliseByThickness](http://docs.mantidproject.org/nightly/algorithms/NormaliseByThickness-v1.html) <sub> | <sub> (1) Performs solid angle correction on SANS 2D data. (2) Normalise detector counts by the sample thickness. | <sub> |
 | <sub> sans_cor | <sub> correction  for detectors efficiencies(water) | <sub> [SANSAbsoluteScale](http://docs.mantidproject.org/nightly/algorithms/SANSAbsoluteScale-v1.html) | <sub> Calculate and apply absolute scale correction for SANS data | <sub> Options for Mantid are Value and ReferenceData |
-| <sub> sans_radial | <sub> Integrate data, 2D(QX,QY) – radial integration => I(Q) | <sub> [http://docs.mantidproject.org/nightly/algorithms/SANSAzimuthalAverage1D-v1.html](SANSAzimuthalAverage1D) | <sub> Compute I(q) for reduced SANS data | <sub> |
+| <sub> sans_radial | <sub> Integrate data, 2D(QX,QY) – radial integration => I(Q) | <sub> [SANSAzimuthalAverage1D](http://docs.mantidproject.org/nightly/algorithms/SANSAzimuthalAverage1D-v1.html) | <sub> Compute I(q) for reduced SANS data | <sub> |
 | <sub> sans_merge | <sub> Merge data, 1D(Q) – merge data covering different Q ranges | <sub> Not present | <sub> | <sub> |
 
 ### Interfaces
