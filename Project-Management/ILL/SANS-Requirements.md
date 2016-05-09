@@ -8,6 +8,8 @@ Normally the algorithms listed below would not be called individually. However, 
 
 An example of a D33 reduction script can be seen [here](https://www.ill.eu/fileadmin/users_files/documents/instruments_and_support/support_facilities/computing_for_science/data_analysis/process_data_final.py).
 
+Note, in addition to Lamp another program is available from the ILL, [GRASP](https://www.ill.eu/fr/instruments-support/instruments-groups/groups/lss/grasp/home/). This is Matlab based, and was found by Wilcke to give somewhat similar results to Lamp, but with more noise in the results.
+
 ### General Algorithms Used
 
 | Lamp Algorithm | Lamp Description | Mantid Equivalent | Mantid Description | Notes |
