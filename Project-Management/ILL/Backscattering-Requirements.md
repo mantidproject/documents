@@ -19,8 +19,9 @@ For more information on the IN16b reduction see [Indirect Data Reduction](http:/
 
 ## Requirements for Mantid
 
-Normalisation, absorption and SofQW should be addressed in the Time of Flight Spectoscopy work.
+Normalisation, absorption and SofQW should be addressed in the Time of Flight Spectroscopy work.
 
+1. Verify loaders are still compatible with current data
 1. Compare bsnorm to normalise in Lamp, compare this with Mantid
 1. Compare tee and t2e in Lamp, and compare with ConvertUnits in Mantid
 1. Compare integration of PSD data
