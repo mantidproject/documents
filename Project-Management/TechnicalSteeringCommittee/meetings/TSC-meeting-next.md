@@ -9,6 +9,7 @@ Pinned Topics
 New Items
 ---------
 * [Py-Qt-MVC](https://github.com/morefigs/Py-Qt-MVC) (Owen)
+* Change of performance review ownership (Owen)
 * OCE 0.17.1 on rhel7 - re-release mantid?
 * Discussion questions:
   239485. Move `downloads.mantiproject.org` and `docs.mantidproject.org` to `gh-pages`?
