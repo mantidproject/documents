@@ -10,7 +10,7 @@ Highest priority
       3. Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?  
    3. Remove Qt3support package from [mantid buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73).
 1. Adding Python 3 compatability (`.py` files in mantid converted)
-  1. Ensure Mantid builds when linked against Python 3 and boost::python built against Python 3.
+  1. Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.
   2. Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors.
       4. Require the above statement in all new work. 
