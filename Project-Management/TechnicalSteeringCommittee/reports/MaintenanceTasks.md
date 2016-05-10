@@ -27,8 +27,6 @@ Pool
 1. Move Windows Jenkins builds to use Ninja where possible.
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
-1. Migrate to C++11 standard library features.
-  5. The [rule of 3](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) is now the rule of 5. In any class with a copy constructor and copy assignment operator, we should add a move constructor and move assignment operator.[#15290](https://github.com/mantidproject/mantid/issues/15290)
 6. Move gmock 1.7 to be ExternalProject
 7. Change tests of `CurveFitting` "functions" to be actual unit tests
 1. Reducing static analysis issues (discus stewards and soft limits)
