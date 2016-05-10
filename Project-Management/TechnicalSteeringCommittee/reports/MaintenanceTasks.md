@@ -29,6 +29,7 @@ Pool
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
 6. Move gmock 1.7 to be ExternalProject
 7. Change tests of `CurveFitting` "functions" to be actual unit tests
+1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285)
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335) 
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  
@@ -42,9 +43,7 @@ Assigned
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
-1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Anton)
-  2. clang-tidy's `google-runtime-references` check may help us find more.
-7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
+2. clang-tidy's `google-runtime-references` check may help us find more.
 
 #### Unassigned (not suitable for pool)
 
@@ -82,6 +81,7 @@ For another release
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
       1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.    
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
+7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
 
 Converted to actual tickets during a release
 --------------------------------------------
