@@ -41,11 +41,7 @@ Assigned
 
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
-2. Run compilation time report weekly(?) on static analysis tab (Simon)
-  -  profile build time to find which files we should focus on
-  -  initial idea: set `CMAKE_EXPORT_COMPILE_COMMANDS=ON`, and time each command in the generated `compile_commands.json`.
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
-1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
       1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.    
@@ -85,6 +81,7 @@ For another release
 4. [Copy only part of a column](https://github.com/mantidproject/mantid/issues/15884).
 5. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`
   1. should some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/)?
+1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 
 Converted to actual tickets during a release
 --------------------------------------------
