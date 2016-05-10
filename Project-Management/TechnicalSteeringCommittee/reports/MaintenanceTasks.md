@@ -21,9 +21,6 @@ Pool
 
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 8. Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)
-1. Clang working on linux. 
-   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
-   3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
 1. Move Windows Jenkins builds to use Ninja where possible.
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
@@ -88,3 +85,6 @@ Converted to actual tickets during a release
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
 1. Editing algorithm and variable names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (Andrei)
+1. Clang working on linux. 
+   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
+   3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
