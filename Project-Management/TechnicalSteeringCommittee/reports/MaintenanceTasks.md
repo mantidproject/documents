@@ -4,12 +4,13 @@ For 3.8 maintenance period
 Highest priority
 ----------------
 
-1. Remove Qt3support requirement from Mantid. 
+1. Remove Qt3support requirement from Mantid (Hahn lead)
    1. Finish removing Qt3support classes [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
    2. Update functions that were removed in Qt4 (http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
       3. Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?  
    3. Remove Qt3support package from [mantid buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73).
-1. Adding Python 3 compatability (`.py` files in mantid converted)
+4. [#15421](https://github.com/mantidproject/mantid/issues/15421)Finish GSL2 compatibility work (Roman)
+1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   1. Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.
   2. Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors.
