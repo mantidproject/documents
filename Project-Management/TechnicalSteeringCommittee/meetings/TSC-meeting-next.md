@@ -26,4 +26,4 @@ Attendees: Heybrook, Gigg, Draper, Fede, Peterson, Savici, Whitfield, Hahn
 
 * rhel7 OCE 0.17.1 means we will release rebuilds of `mantid`, `mantid35` and `mantid36`.
 * Install newer cmake (v3.5.1) on rhel systems now. Move minimum requirement to 3.5.1 for ParaView during next release cycle.
-
+* Maintenance task list was updated
