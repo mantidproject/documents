@@ -46,9 +46,11 @@ Having a clearly localized data structure which contains the complete state requ
 
 The state will have to contain more than 100 configuration variables of which a large fraction are available to the user. The state itself should be (almost) a passive data structure. The only functionality which could be conceivable here is a type of self-consistency check (but the implementation might force us to have this check in place when the object is being created. Alternatively, we a type of schemer object is possible.)
 
-The entire information required for a SANS reduction should be contained in a `SANSStateComplete` object. The configuration of this state should be handled by a `SANSStateBuilder` which in turn is/can be governed by a `SANSStateDirector`.
+The entire information required for a SANS reduction should be contained in a `SANSState` object. The configuration of this state should be handled by a `SANSStateBuilder` which in turn is/can be governed by a `SANSStateDirector`.
 
-#### Where will state be generated?
+Due to the choices of input types into Mantid algorithms, the `SANSState` and the sub-states which are described below have to be implemented in terms of `PropertyManager` objects (see below).
+
+#### Where will the state be generated?
 
 There are several scenarios where a `SANSState` can be generated.
 
@@ -59,7 +61,7 @@ There are several scenarios where a `SANSState` can be generated.
 
 
 ### Sub-states
-Since a reduction in the SANS work-flow can depend on more than 100 variables it is advisable to not store them in a flat data structure. Hence a  `SANSStateComplete` object should be composed of sub-`SANSState` objects which contain information relevant for a unit of work, e.g. a work-flow algorithm, or a specific domain, e.g. instrument information.
+Since a reduction in the SANS work-flow can depend on more than 100 variables it is advisable to not store them in a flat data structure. Hence a  `SANSState` object should be composed of sub-`SANSState` objects which contain information relevant for a unit of work, e.g. a work-flow algorithm, or a specific domain, e.g. instrument information.
 
 The envisioned sub-states are:
 
@@ -75,10 +77,10 @@ The envisioned sub-states are:
 |`SANSStateCreateAdjustmentWorkspace`| Contains everything which is related with creating adjustment workspaces, e.g normalization, transmission calculation, etc |
 | `SANSStateReduction` | Contains information about which reductions to perform, i.e. if LAB, HAB, both or merged |
 | `SANSStateSliceEvent` | Contains inforamtion about the event slice |
-| `SANSStateComplete` | Is clearly defined  collection of sub-states. |
+| `SANSState` | Is clearly defined  collection of sub-states. |
 ## State design for ISIS SANS
 
-The proposed complete `SANSState` is shown below:
+The proposed `SANSState` is shown below:
 
 ![](../Images/SANSState.png)
 
@@ -95,7 +97,7 @@ Not all sub-states will be set separately. Setting `SANSStateData` causes the `S
 ## Implementation
 
 Using the `SANSState` as an input entity for work-flow algorithms limits our choice to how these state objects can be implemented. The requirement of a map-like data structure limits us to `PropertyManager`s as an implementation tool for `SANSState`. This means that the we have a layered `PropertyManager` of depth three:
-1. `SANSStateComplete` which defines a complete reduction.
+1. `SANSState` tself which defines a complete reduction.
 2. The individual sub-states.
 3. Some of the sub-states require a map in order to store detector-dependent information
 

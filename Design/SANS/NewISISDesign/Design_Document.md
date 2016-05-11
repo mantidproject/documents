@@ -49,13 +49,14 @@ in many different places. The state for a the SANS reduction system should be
 A design document for a `SANSState` approach is available
 [here](SANSState/SANSState.md).
 
-The result of this document is that the `SANSStateComplete` object contains a
-complete definition of a single reduction (provided the state is valid).
+The result of this document is that the `SANSState` object contains a
+complete definition of a single reduction (provided the state is valid, which should
+  be checked by validators adequate for the facility/instrument).
 
 ### Batch reduction
 
-Starting point of a reduction is a collection of `SANSStateComplete` objects which define one
- reduction per `SANSStateComplete`. This batch reduction is handled by a work-flow
+Starting point of a reduction is a collection of `SANSState` objects which define one
+ reduction per `SANSState`. This batch reduction is handled by a work-flow
  algorithm `SANSBatchReduction`. It should be able to operate the individual
  reductions in parallel (does this mean, we need to implement it in `C++`?),
  which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
@@ -65,7 +66,7 @@ The `SANSBatchReduction` performs two tasks:
 1. Loads files into the ADS if they are not present yet. These workspaces remain
 in mint condition, i.e. we don't want to move them in order to be able to reuse
  them. The calibration workspace is being loaded into the ADS as well.
-2. Passes the loaded workspaces and the `SANSStateComplete` to a work-flow algorithm,
+2. Passes the loaded workspaces and the `SANSState` to a work-flow algorithm,
 which performs a single reduction.
 
 The above ADS feature might be considered unclean, since a work-flow algorithm
@@ -84,9 +85,9 @@ The above ADS feature might be considered unclean, since a work-flow algorithm
 
 The activity diagram  below displays the expected work-flow of the  `SANSBatchReduction`.
  It loads the required workspace and passes it on to the `SANSSingleReduction`.
- It is also responsible for splitting up a `SANSStateComplete` object if it was
+ It is also responsible for splitting up a `SANSState` object if it was
  responsible for performing several reductions due to underlying period files.
- In this case we obtain one `SANSStateComplete` object per period.
+ In this case we obtain one `SANSState` object per period.
 
 ![](./Images/SANSBatchReduction.png)
 
@@ -96,7 +97,7 @@ The activity diagram  below displays the expected work-flow of the  `SANSBatchRe
 A work-flow algorithm `SANSSingleReduction` is responsible for the actual
 reduction. Input properties are:
 
-1. a `SANSStateComplete` objects (required)
+1. a `SANSState` objects (required)
 2. a sample scatter workspace (required)
 2. a sample scatter monitor workspace (required)
 3. a sample transmission workspace (optional), but required if sample direct
@@ -326,6 +327,24 @@ The individual loaders themselves will determine which loading strategy to apply
 
 ## Interfacing the new reducer system with the Python commands
 
-The scientists have been used to the PI for a long time now and many scripts are based on this syntactic style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. It is a clear goal though to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve this we need a global state, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
+The scientists have been used to the PI for a long time now and many scripts are based on this syntactic style. The syntax actually makes use of a global state (the `ReductionSingleton`) which is not fully in line with the new design. A typical reduction script with the PI looks as follows:
+```python
+# Setup
+SANS2D()
+MaskFile('MASKSANS2D_094i_RKH.txt')
+SetDetectorOffsets('REAR', -16.0, 58.0, 0.0, 0.0, 0.0, 0.0)
+SetDetectorOffsets('FRONT', -44.0, -20.0, 47.0, 0.0, 1.0, 1.0)
+Gravity(False)
+Set1D()
 
-We can keep the old PI syntax and not have any global state logic in the reduction system by providing a specialized `SANSStateDirectorPythonInterface`, which subclasses from `SANSStateDirector` and is a singleton. This is then used by the standard PI commands to setup a state. When the reduction is to be run by calling the PI's `WavRangeReduction` function the standard `SANSBatchReduction` algorithm is run with the `SANSStateComplete` which is provided by the `SANSStateDirectorPythonInterface`.
+# Set the sample
+AssignSample('2500.nxs')
+
+# Start the reduction
+WavRangeReduction(4.6, 12.85, False)
+```
+
+It is a clear goal to ensure backwards-compatibility with the old reduction scripts (see [R.1.2](#User_Requirements)). In order to achieve this we need a global state, similar to the `ReductionSingleton`. In general this is not desirable and we do not want this design to be part of the new reduction system in general.
+
+
+We can keep the old PI syntax and not have any global state logic in the reduction system by providing a specialized `SANSStateDirectorPythonInterface`, which subclasses from `SANSStateDirector` and is a singleton. This is then used by the standard PI commands to setup a state. When the reduction is to be run by calling the PI's `WavRangeReduction` function the standard `SANSBatchReduction` algorithm is run with the `SANSState` which is provided by the `SANSStateDirectorPythonInterface`.
