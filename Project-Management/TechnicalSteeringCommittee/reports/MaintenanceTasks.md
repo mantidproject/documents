@@ -32,7 +32,8 @@ Pool
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
-   1. [pylint](http://builds.mantidproject.org/job/master_pylint/) 
+   1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+2. Support for RPM release numbers [#16147](https://github.com/mantidproject/mantid/issues/16147)
 
 Assigned
 --------
