@@ -1,5 +1,10 @@
 ## Time of Flight Spectroscopy Requirements
 
+Original requirements documents:
+ * [TOF discussion](TOF_and_BS/Bastille_TOF_Discussion_Doc_020415.pdf)
+ * [TOF discussion notes](TOF_and_BS/Bastille_TOF_Discussion_Notes_020415.pdf)
+ * [Time-of-flight data reduction explanation](TOF_and_BS/TOF_BjornFak.pdf)
+
 ISIS and SNS take two different approaches. ISIS relies mostly on Python scripts while the SNS use workflow algorithms. The SNS approach is more likely to be the one to follow. See [Data Reduction for Direct Geometry Neutron Spectrometers](https://github.com/mantidproject/documents/raw/master/Help/DGSReduction/DGSmain_v1_0.pdf) for more information on the workflow algorithms used.
 
 For an example script for IN6 see [here](https://www.ill.eu/fileadmin/users_files/img/instruments_and_support/support_facilities/computing_for_science/Computing_for_Science/Data_analysis/in6.py).
@@ -15,6 +20,10 @@ Tasks:
 * Evaluate Mantid results against LAMP and resolve any major discrepancies
 
 Relevant contacts are Alex Buts at ISIS and Stuart Campbell at SNS.
+
+### Scripts
+
+Scripts, for a collection of example scripts see [TOF scripts](TOF_and_BS/TOF_scripts.md).
 
 ### General Algorithms Used
 
