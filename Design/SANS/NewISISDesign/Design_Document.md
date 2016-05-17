@@ -12,27 +12,24 @@ maintain back-end of the ISIS SANS reduction work-flow.
 |------|------------|
 |ADS   | Analysis Data Service|
 | PI   | Python Interface |
+| GUI | Graphical User Interface|
 
 
 ## Motivation
 
-The current SANS reduction system makes use of the so-called `ReductionSingleton`,
-which essentially stores the configurational state either directly, in `ReductionStep`s
-or in an `ISISInstrument` object. The `ReductionStep`s are deeply coupled to the
-`ReductionSingleton`, which makes it hard to unit test them
-(and probably explains why such tests do not exist).
-In addition there is a strong coupling of this `ReductionSingleton` to the
-GUI logic, which essentially renders the ISIS SANS reduction a monolithic block.
+The current SANS reduction system makes use of the so-called `ReductionSingleton`, which essentially stores the configurational state either directly, in `ReductionStep`s or in an `ISISInstrument` object. The `ReductionStep`s are deeply coupled to the `ReductionSingleton`, which makes it hard to unit test them (and probably explains why such tests do not exist). In addition there is a strong coupling of this `ReductionSingleton` to the GUI logic, which essentially renders the ISIS SANS reduction a monolithic block.
 
-A more modern approach is to use Mantid's `WorkflowAlgorithm`s. A sequence of
-algorithms perform the reduction, where each algorithm gets the information
-required for the reduction at the time it executes. The `WorkflowAlgorithm` is
-used as a unit of clearly defined work and **not** as a container for
-state information. This mechanism avoids the deep coupling as each algorithm is
-agnostic about its calling environment and the information flow is into the algorithms
-(except for resulting output workspaces).
-This creates an ideal environment for unit testing and improved documentation.
+A more modern approach to implement reductions are Mantid's `WorkflowAlgorithm`s. A sequence of algorithms perform the reduction, where each algorithm gets the information required for the reduction at the time it executes. The `WorkflowAlgorithm` is used as a unit of clearly defined work and **not** as a container for state information. This mechanism avoids the deep coupling as each algorithm is agnostic about its calling environment and the information flow is into the algorithms (except for resulting output workspaces). This creates an ideal environment for unit testing and improved documentation.
 
+In addition we have a completely independent reduction framework for SANS experiments at the SNS. Recent work has provided ANSTO with its own flavour of a SANS reduction work-flow. Collaborators at the ILL and ESS are also looking into have reduction capabilities for SANS data. This could lead to five different SANS reduction implementations within Mantid. Clearly, a reduction implementation which is monolithic and rigid will encourage different implementations for different facilities.  A modular approach, on the other hand, where individual reduction steps can be dynamically set depending on the current facility/instruments allows for facilities to use an existing framework while at the same time customize individual components to their needs.
+
+### Summary of Benefits
+
+* Reduced cost of maintenance
+* Reduced development time for additional features
+* High testability and reliability
+* Removes black-box behavior since internals are clearly documented via work-flow algorithm documentation
+* Possible adoption of other facilities (also reduced cost of maintenance)
 
 ## Reducer 2.0
 
@@ -43,36 +40,28 @@ implementations are slightly different. Unifying the two approaches is beneficia
 ### SANS State
 
 The current ISIS SANS system suffers from a state which is distributed and stored
-in many different places. The state for a the SANS reduction system should be
- localized and complete, i.e. it defines the entire reduction.
+in many different places. The state for a the SANS reduction system should be localized and complete, i.e. it defines the entire reduction.
 
 A design document for a `SANSState` approach is available
 [here](SANSState/SANSState.md).
 
 The result of this document is that the `SANSState` object contains a
-complete definition of a single reduction (provided the state is valid, which should
-  be checked by validators adequate for the facility/instrument).
+complete definition of a single reduction (provided the state is valid, which should be checked by validators adequate for the facility/instrument).
 
 ### Batch reduction
 
-Starting point of a reduction is a collection of `SANSState` objects which define one
- reduction per `SANSState`. This batch reduction is handled by a work-flow
- algorithm `SANSBatchReduction`. It should be able to operate the individual
- reductions in parallel (does this mean, we need to implement it in `C++`?),
- which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
+Starting point of a reduction is a collection of `SANSState` objects which define one reduction per `SANSState`. This batch reduction is handled by a work-flow algorithm `SANSBatchReduction`. It should be able to operate the individual reductions in parallel (does this mean, we need to implement it in `C++`?), which is in line with requirement [R.3.2](#User_Requirements#R.3.2).
 
 The `SANSBatchReduction` performs two tasks:
 
-1. Loads files into the ADS if they are not present yet. These workspaces remain
-in mint condition, i.e. we don't want to move them in order to be able to reuse
- them. The calibration workspace is being loaded into the ADS as well.
+1. Loads files into the ADS if they are not present yet. These workspaces remain in mint condition, i.e. we don't want to move them in order to be able to reuse  them. The calibration workspace is being loaded into the ADS as well.
 2. Passes the loaded workspaces and the `SANSState` to a work-flow algorithm,
 which performs a single reduction.
 
-The above ADS feature might be considered unclean, since a work-flow algorithm
+The above ADS feature might be considered "unclean", since a work-flow algorithm
  is accessing the ADS, but this allows us to reuse loaded workspaces which has
- been expressed as a requirement ([R.3.1](#User_Requirements#R.3.1)). We could think
- of using the ADS as an optional element.
+ been expressed as a requirement ([R.3.1](#User_Requirements#R.3.1)). ADS needs to be abstracted away, by
+ making use of a strategy approach, i.e. the reduction needs to work with and without the ADS.
 
 **Open Question**: What should be done with the output workspaces after each reduction:
 

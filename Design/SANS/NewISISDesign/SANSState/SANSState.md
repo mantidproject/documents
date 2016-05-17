@@ -48,7 +48,7 @@ The state will have to contain more than 100 configuration variables of which a 
 
 The entire information required for a SANS reduction should be contained in a `SANSState` object. The configuration of this state should be handled by a `SANSStateBuilder` which in turn is/can be governed by a `SANSStateDirector`.
 
-Due to the choices of input types into Mantid algorithms, the `SANSState` and the sub-states which are described below have to be implemented in terms of `PropertyManager` objects (see below).
+Due to the choices of input types into Mantid algorithms, the `SANSState` and the sub-states which are described below have to be convertible into a `PropertyManager` object since this is the only complex data strucutre which can be currently used as an input property for Mantid algorithms.
 
 #### Where will the state be generated?
 
@@ -96,9 +96,211 @@ Not all sub-states will be set separately. Setting `SANSStateData` causes the `S
 
 ## Implementation
 
-Using the `SANSState` as an input entity for work-flow algorithms limits our choice to how these state objects can be implemented. The requirement of a map-like data structure limits us to `PropertyManager`s as an implementation tool for `SANSState`. This means that the we have a layered `PropertyManager` of depth three:
+Using the `SANSState` as an input entity for work-flow algorithms limits our choice to how these state objects can be implemented. The requirement of a map-like data structure limits us to `PropertyManager`s as an input entity for the `SANSState` information. This means that the we have a layered `PropertyManager` of depth three:
 1. `SANSState` tself which defines a complete reduction.
 2. The individual sub-states.
 3. Some of the sub-states require a map in order to store detector-dependent information
 
-As indicated above, we want to make sure that the workspace is set with valid entries and that an, at least minimal, reduction can be performed with it. Instead of having this check on a `PropertyManager` object itself, it might be better to have external schemers which validate a state before it is passed to a `SANSBatchReduction` or `SANSSingleReduction` instance.
+This does not mean though that the information should exist the entire time as a `PropertyManager` object. A more purposeful data structure which can be converted to and from a `PropertyManager` object would allow us to only have to depend on the `PropertyManager` object when the information is set on the algorithm. Out- and inside the algorithm the `PrropertyManager` is converted to and from a `SANSState` object which includes inbuilt validation logic and makes passing a large chuck of strucutred data into an algorithm much safer.
+
+A prototype implementation could look like this:
+
+```python
+from abc import (ABCMeta, abstractmethod)
+import inspect
+from mantid.kernel import PropertyManager
+
+
+# -------------------------------------------------------
+# Parameters
+# -------------------------------------------------------
+class TypedParameter(object):
+    def __init__(self, name, parameter_type, validator=lambda x: True, default=None):
+        self.name = "_" + name
+        self.parameter_type = parameter_type
+        self.value = default if isinstance(default, parameter_type) else None
+        self.validator = validator
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self
+        else:
+            return getattr(instance, self.name)
+
+    def __set__(self, instance, value):
+        if not isinstance(value, self.parameter_type):
+            raise TypeError("Trying to set {} which expects a value of type {}."
+                            " Got a value of {} which is of type {}".format(self.name, str(self.parameter_type),
+                                                                            str(value), str(type(value))))
+        if self.validator(value):
+            setattr(instance, self.name, value)
+        else:
+            raise ValueError("Trying to set {} with an invalid value of {}".format(self.name, str(value)))
+
+    def __delete__(self):
+        raise AttributeError("Cannot delete the attribute {}".format(self.name))
+
+
+# ---------------------------------------------------------------
+# Validators
+# ---------------------------------------------------------------
+def is_not_none(value):
+    return value is not None
+
+
+def is_positive(value):
+    return value >= 0
+
+
+# ------------------------------------------------
+# SANSStateBase
+# ------------------------------------------------
+class SANSStateBase:
+    __metaclass__ = ABCMeta
+
+    @property
+    @abstractmethod
+    def property_manager(self):
+        pass
+
+    @property_manager.setter
+    @abstractmethod
+    def property_manager(self, value):
+        pass
+
+    @abstractmethod
+    def validate(self):
+        pass
+
+
+class PropertyManagerConverter(object):
+    def __init__(self):
+        super(PropertyManagerConverter, self).__init__()
+
+    @staticmethod
+    def convert_state_to_property_manager(instance):
+        descriptor_values = PropertyManagerConverter.get_descriptor_values(instance)
+
+        # Add the descriptors to a PropertyManager object
+        property_manager = PropertyManager()
+        for key in descriptor_values:
+            value = descriptor_values[key]
+            if value is not None:
+                property_manager.declareProperty(key, value)
+        return property_manager
+
+    @staticmethod
+    def convert_state_to_dict(instance):
+        descriptor_values = PropertyManagerConverter.get_descriptor_values(instance)
+        # Add the descriptors to a dict
+        return {key: value for key, value in descriptor_values.iteritems() if value is not None}
+
+    @staticmethod
+    def get_descriptor_values(instance):
+        # Get all descriptor names which are TypedParameter of instance's type
+        descriptor_names = []
+        for descriptor_name, descriptor_object in inspect.getmembers(type(instance)):
+            if inspect.isdatadescriptor(descriptor_object) and isinstance(descriptor_object, TypedParameter):
+                descriptor_names.append(descriptor_name)
+
+        # Get the descriptor values from the instance
+        descriptor_values = {}
+        for key in descriptor_names:
+            value = getattr(instance, key)
+            descriptor_values.update({key: value})
+        return descriptor_values
+
+    @staticmethod
+    def set_state_from_property_manager(instance, property_manager):
+        keys = property_manager.keys()
+        for key in keys:
+            value = property_manager.getProperty(key).value
+            setattr(instance, key, value)
+```
+
+
+And:
+
+```python
+from SANSStateBase import (SANSStateBase, TypedParameter, is_not_none, is_positive, PropertyManagerConverter)
+
+
+# -----------------------------------------------
+#  SANSStateData Setup for ISIS
+# -----------------------------------------------
+class SANSStatePrototype(SANSStateBase):
+    parameter1 = TypedParameter("parameter1", str, is_not_none)
+    parameter2 = TypedParameter("parameter2", int, is_positive, 1)
+
+    def __init__(self):
+        super(SANSStatePrototype, self).__init__()
+        self.converter = PropertyManagerConverter()
+
+    @property
+    def property_manager(self):
+        # Once algorithms accept Property Managers we can use the version below
+        # return self.converter.convert_state_to_property_manager(self)
+        # otherwise we use this version
+        return self.converter.convert_state_to_dict(self)
+
+    @property_manager.setter
+    def property_manager(self, value):
+        self.converter.set_state_from_property_manager(self, value)
+
+    def validate(self):
+        is_valid = dict()
+        if self.parameter1 is None:
+            is_valid.update({"parameter1": "Parameter may not be none"})
+        if not is_valid:
+            raise ValueError("SANSStatePropertyType: Parameters are not valid")
+```
+
+And:
+
+```python
+
+from mantid.api import DataProcessorAlgorithm
+from mantid.kernel import PropertyManagerProperty
+from SANSStatePrototype import SANSStatePrototype
+
+
+class SANSAlgorithmPrototype(DataProcessorAlgorithm):
+    def category(self):
+        return 'SANS'
+
+    def summary(self):
+        return 'Prototype Algorithm'
+
+    def PyInit(self):
+        self.declareProperty(PropertyManagerProperty("SANSStatePrototype"))
+        self.declareProperty('Factor', defaultValue=Property.EMPTY_DBL, direction=Direction.Input,
+                             doc='Factor')
+
+    def PyExec(self):
+        a = 1
+        b = 2
+        print a
+        property_manager = self.getProperty("SANSStatePrototype").value
+        state = SANSStatePrototype()
+        state.property_manager = property_manager
+        # Do things here
+
+    def validateInputs(self):
+        errors = dict()
+        #Check that the input can be converted into the right state object
+        property_manager = self.getProperty("SANSStatePrototype").value
+        try:
+            state = SANSStatePrototype()
+            state.property_manager = property_manager
+            state.validate()
+        except ValueError, e:
+            # Would have to be more understandable
+            errors.update({"SANSStatePrototype": str(e)})
+        return errors
+
+AlgorithmFactory.subscribe(SANSAlgorithmPrototype)
+```
+
+A use case would look like:
+
+TODO: Add usage here
