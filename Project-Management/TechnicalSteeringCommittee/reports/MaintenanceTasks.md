@@ -18,7 +18,7 @@ Highest priority
    1. Finish removing Qt3support classes [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
    2. Update functions that were removed in Qt4 (http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
       3. Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?  
-      4. Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16128)
+      4. Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16129)
       5. Suggestion: search the [Qt 4.8 docs](http://doc.qt.io/qt-4.8/index.html) for the deprecated class member function. In most cases it will suggest a direct replacement.
       6. [Example pull request](https://github.com/mantidproject/mantid/pull/16235)
    3. Remove Qt3support package from [mantid buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73).
