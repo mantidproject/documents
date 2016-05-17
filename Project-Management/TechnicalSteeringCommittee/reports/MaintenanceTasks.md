@@ -1,5 +1,15 @@
-For 3.8 maintenance period
-==========================
+Maintenance in the Release Period
+=================================
+
+The maintenance period starts as soon as the Beta test period for the current release starts.  However during that time there are some tasks that will always take precendence over any work on maintenance tasks.
+
+1. Urgent Bug fixes or vital improvments for the current release
+2. Testing PR's or manual unscripted testing for the current release
+3. Encouraging and working with scientists on Beta testing
+
+
+Maintenance tasks for 3.8 
+=========================
 
 Highest priority
 ----------------
