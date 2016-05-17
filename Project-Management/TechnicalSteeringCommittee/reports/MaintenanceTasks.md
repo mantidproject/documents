@@ -35,11 +35,11 @@ Pool
 
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 8. Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)
-1. Move Windows Jenkins builds to use Ninja where possible.
+1. Move Windows Jenkins builds to use Ninja where possible [#16265](https://github.com/mantidproject/mantid/issues/16265).
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)
-6. Move gmock 1.7 to be ExternalProject
-7. Change tests of `CurveFitting` "functions" to be actual unit tests
+6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
+7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267)
 1. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285)
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335) 
