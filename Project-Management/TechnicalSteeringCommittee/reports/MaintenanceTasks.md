@@ -27,7 +27,7 @@ Highest priority
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   1. Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.
   2. Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.
-  3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors.
+  3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
       4. Require the above statement in all new work. 
 
 Pool
