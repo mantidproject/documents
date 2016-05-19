@@ -10,6 +10,8 @@ New Items
 ---------
 * [Py-Qt-MVC](https://github.com/morefigs/Py-Qt-MVC) (Owen)
 * Change of performance review ownership (Owen)
+* What version of osx should be supported?
+* Should we move http://docs.mantidproject.org and http://downloads.mantidproject.org from linode to github?
 * Discussion questions:
   239485. Move `downloads.mantiproject.org` and `docs.mantidproject.org` to `gh-pages`?
   1.  Do we move our 1D/2D plotting to use matplotlib directly?
