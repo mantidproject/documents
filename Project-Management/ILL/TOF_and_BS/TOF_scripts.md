@@ -1,8 +1,10 @@
-## Example script for IN5
+## ILL Time of Flight Spectroscopy Scripts
 
 **To Do: Test these and tidy them up**
 
-Data -[IN5_He4](https://www.ill.eu/fileadmin/users_files/img/instruments_and_support/support_facilities/computing_for_science/Computing_for_Science/Data_analysis/IN5_He4.zip)
+## Example script for IN5
+
+Data - [IN5_He4](https://www.ill.eu/fileadmin/users_files/img/instruments_and_support/support_facilities/computing_for_science/Computing_for_Science/Data_analysis/IN5_He4.zip)
 
 ```python
 # --------------------------------------------------------------------------
@@ -221,9 +223,7 @@ GeneratePythonScript(InputWorkspace='Sqw_KiKf',
                      Filename='/home/tofhr/ollivier/utils/Mantid/He4/generated_he_4A.py')
 ```
 
-## Example script for IN6
-
-**To Do: Test these and tidy them up**
+### Example script for IN6
 
 Data - [IN6](https://www.ill.eu/fileadmin/users_files/img/instruments_and_support/support_facilities/computing_for_science/Computing_for_Science/Data_analysis/IN6_Script_Data.zip)
 

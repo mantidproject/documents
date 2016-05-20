@@ -1,8 +1,12 @@
 ## Backscattering Requirements
 
+Original requirements documents:
+ * [BS discussion](TOF_and_BS/Bastille_TOF_Discussion_Doc_020415.pdf)
+ * [BS discussion notes](TOF_and_BS/Bastille_TOF_Discussion_Notes_020415.pdf)
+
 A lot of work has already been implemented in Mantid for IN16b by Elliot Oram and Spencer Howells. Hence the time required on this should be relatively short, and much of it will focus on adding in similar functionality for IN13, filling in any gaps found, and verifying Mantid and Lamp give the same results.
 
-For more information on the IN16b reduction see [Indirect Data Reduction](http://docs.mantidproject.org/nightly/interfaces/Indirect_DataReduction.html) document.
+For more information on the IN16b reduction see [Indirect Data Reduction](http://docs.mantidproject.org/nightly/interfaces/Indirect_DataReduction.html) and [IIndirectILLReduction](http://docs.mantidproject.org/nightly/algorithms/IndirectILLReduction-v1.html) document.
 
 ### General Algorithms Used
 

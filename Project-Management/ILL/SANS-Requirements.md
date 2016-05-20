@@ -1,5 +1,10 @@
 ## SANS Requirements
 
+Original requirements documents:
+ * [SANS discussion](SANS/Bastille_SANS_Discussion_Doc_250315.pdf)
+ * [SANS discussion notes](SANS/Bastille_SANS_Discussion_Notes_250315.pdf)
+ * [Time-of-flight data reduction explanation](SANS/SANS_DirkHonnecker.pdf)
+
 Could be that work done for HFIR at the SNS is most relevant - another reactor. Mathieu Doucet at the SNS knows most about this approach. For general information on SANS reduction in Mantid see [this document](http://docs.mantidproject.org/nightly/algorithms/SANSReduction-v1.html).
 
 The SANS reduction works somewhat differently to [Time of Flight Spectroscopy](Time-of-Flight-Spectroscopy-Requirements.md), as every step is called within the workflow algorithm. For example, for D33 the two algorithms required for the initial reduction are [SetupILLD33Reduction](http://docs.mantidproject.org/nightly/algorithms/SetupILLD33Reduction-v1.html) and [SANSReduction](http://docs.mantidproject.org/nightly/algorithms/SANSReduction-v1.html).
