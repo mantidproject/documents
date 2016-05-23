@@ -9,11 +9,15 @@ Could be that work done for HFIR at the SNS is most relevant - another reactor. 
 
 The SANS reduction works somewhat differently to [Time of Flight Spectroscopy](Time-of-Flight-Spectroscopy-Requirements.md), as every step is called within the workflow algorithm. For example, for D33 the two algorithms required for the initial reduction are [SetupILLD33Reduction](http://docs.mantidproject.org/nightly/algorithms/SetupILLD33Reduction-v1.html) and [SANSReduction](http://docs.mantidproject.org/nightly/algorithms/SANSReduction-v1.html).
 
-Normally the algorithms listed below would not be called individually. However, for the purposes of comparing Lamp and Mantid they should be useful to be scripted separately. In the report by Wilcke some differences were noted between Lamp and Mantid, so the reduction steps will need to be broken down to determine where the differences occur.
+Normally the algorithms listed below would not be called individually. However, for the purposes of comparing Lamp and Mantid they should be useful to be scripted separately. In the [report by Wilcke](Wilcke_Report/Final_Comparison.pdf) some differences were noted between Lamp and Mantid, so the reduction steps will need to be broken down to determine where the differences occur.
 
 An example of a D33 reduction script can be seen [here](https://www.ill.eu/fileadmin/users_files/documents/instruments_and_support/support_facilities/computing_for_science/data_analysis/process_data_final.py).
 
 Note, in addition to Lamp another program is available from the ILL, [GRASP](https://www.ill.eu/fr/instruments-support/instruments-groups/groups/lss/grasp/home/). This is Matlab based, and was found by Wilcke to give somewhat similar results to Lamp, but with more noise in the results.
+
+### SANS Scripts
+
+For some example scripts see [SANS Scripts](SANS/SANS_scripts.md).
 
 ### General Algorithms Used
 

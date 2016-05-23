@@ -9,6 +9,8 @@ ISIS and SNS take two different approaches. ISIS relies mostly on Python scripts
 
 For an example script for IN6 see [here](https://www.ill.eu/fileadmin/users_files/img/instruments_and_support/support_facilities/computing_for_science/Computing_for_Science/Data_analysis/in6.py).
 
+A detailed [report was producded by Wilcke](Wilcke_Report/Final_Comparison.pdf) comparing Time of Flight spectroscopy data reduction in Lamp and Mantid.
+
 Tasks:
 * Evaluate what exists in LAMP and Mantid
  * Look at both SNS and ISIS workflows to determine which is the most useful approach
@@ -23,7 +25,7 @@ Relevant contacts are Alex Buts at ISIS and Stuart Campbell at SNS.
 
 ### Scripts
 
-Scripts, for a collection of example scripts see [TOF scripts](TOF_and_BS/TOF_scripts.md).
+For a collection of example scripts see [TOF scripts](TOF_and_BS/TOF_scripts.md).
 
 ### General Algorithms Used
 
