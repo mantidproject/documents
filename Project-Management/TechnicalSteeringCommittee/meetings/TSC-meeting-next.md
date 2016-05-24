@@ -30,4 +30,5 @@ Attendees: Whitfield, Hahn, Savici, Peterson, Arnold, Gigg, Heybrock
 * Reviewing performance tests has moved to Lamar
 * OSX supported is Yosemite (10.10) and El Capitan (10.11). Yosemite is what most build servers will run.
 * Publish the download html pages to `gh-pages` branch in its repository (Pete)
+* TSC agrees that we should look more into software collections for python 2.7 on rhel6 during the mantid 3.8 development cycle
 * 
