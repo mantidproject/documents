@@ -29,3 +29,5 @@ Attendees: Whitfield, Hahn, Savici, Peterson, Arnold, Gigg, Heybrock
 * Py-Qt-MVC looks like a useful tool to add in the future
 * Reviewing performance tests has moved to Lamar
 * OSX supported is Yosemite (10.10) and El Capitan (10.11). Yosemite is what most build servers will run.
+* Publish the download html pages to `gh-pages` branch in its repository (Pete)
+* 
