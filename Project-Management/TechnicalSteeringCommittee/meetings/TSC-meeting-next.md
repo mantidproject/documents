@@ -14,7 +14,6 @@ New Items
 * Should we move http://docs.mantidproject.org and http://downloads.mantidproject.org from linode to github?
 * [Require Python 2.7 on RHEL 6?](http://www.curiousefficiency.org/posts/2015/04/stop-supporting-python26.html)
 * Discussion questions:
-  239485. Move `downloads.mantiproject.org` and `docs.mantidproject.org` to `gh-pages`?
   1.  Do we move our 1D/2D plotting to use matplotlib directly?
   2.  Do we drop our fitting for scipy’s?
   3.  Do we move TableWorkspace to be a pandas DataFrame [[1](http://stackoverflow.com/questions/21647054/creating-a-pandas-dataframe-with-a-numpy-array-containing-multiple-types)]?
