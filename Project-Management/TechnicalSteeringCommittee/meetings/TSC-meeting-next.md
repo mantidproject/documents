@@ -20,3 +20,12 @@ New Items
   3.  Do we move TableWorkspace to be a pandas DataFrame [[1](http://stackoverflow.com/questions/21647054/creating-a-pandas-dataframe-with-a-numpy-array-containing-multiple-types)]?
   4.  Do we change Workspace2D (or lower) to use XArray?
   5.  Do we migrate our current underlying geometry to [CombLayer](https://github.com/SAnsell/CombLayer), openCascade[[2](https://blog.kitware.com/designing-nuclear-reactor-core-geometry-and-meshes/), [3](http://dev.opencascade.org/index.php?q=node/1090), [4](http://www.opencascade.com/doc/occt-7.0.0/overview/html/occt_user_guides__vis.html)] VTK?
+
+Minutes
+-------
+
+Attendees: Whitfield, Hahn, Savici, Peterson, Arnold, Gigg, Heybrock
+
+* Py-Qt-MVC looks like a useful tool to add in the future
+* Reviewing performance tests has moved to Lamar
+* OSX supported is Yosemite (10.10) and El Capitan (10.11). Yosemite is what most build servers will run.
