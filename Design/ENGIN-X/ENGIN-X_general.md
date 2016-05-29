@@ -114,7 +114,7 @@ Third party software
 Data formats
 ============
 
-* .par (or .prm, .iparm) instrument parameter files of [GSAS](https://subversion.xor.aps.anl.gov/EXPGUI/gsas/all/GSAS%20Manual.pdf)
+* .par (or .prm, .iparm) instrument parameter files of [GSAS](https://subversion.xor.aps.anl.gov/EXPGUI/gsas/all/GSAS%20Manual.pdf). See also the algorithms [SaveGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/SaveGSASInstrumentFile-v1.html), [LoadGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/LoadGSASInstrumentFile-v1.html) and [FixGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/FixGSASInstrumentFile-v1.html)
 
 * .his, see the algorithm SaveOpenGenieAscii for details.
 
