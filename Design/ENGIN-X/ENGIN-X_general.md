@@ -86,12 +86,12 @@ by scientists as of this writing:
   is in run 241391 (from cycle_15_1). The corresponding Vanadium (V-Nb)
   data is in run 236516 (from cycle_14_3).
 
-* Data from the Neutron Training Course 2016:
+* Data from the Neutron Training Course 2016 (phase information: Fe_alpha):
   * Sample runs: 256663-256675
   * Vanadium run: 254854
   * Ceria run: 255924
 
-* Data from the Neutron Training Course 2015:
+* Data from the Neutron Training Course 2015 (also Fe_alpha):
   * Sample runs: 240741-240753
   * Vanadium run: 236516
   * Ceria run: 241390
