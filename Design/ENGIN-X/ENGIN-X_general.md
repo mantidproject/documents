@@ -103,8 +103,8 @@ Third party software
 Data formats
 ============
 
-* .par
+* .par (or .prm, .iparm) instrument parameter files of [GSAS](https://subversion.xor.aps.anl.gov/EXPGUI/gsas/all/GSAS%20Manual.pdf)
 
-* .his
+* .his, see the algorithm SaveOpenGenieAscii for details.
 
-* calibration files
+* calibration files, see http://docs.mantidproject.org/nightly/concepts/Calibration.html
