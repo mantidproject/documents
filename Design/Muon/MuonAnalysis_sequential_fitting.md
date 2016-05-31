@@ -53,6 +53,8 @@ Comments from scientists:
   
   ![image](https://cloud.githubusercontent.com/assets/15363125/14713128/c716ea48-07d7-11e6-86ae-7c83eefbc3f6.PNG)
 
+  One extra option asked for is the ability to initialise parameters to a log value - user gives a log name, a choice of first/last/mean and the values for each workspace are filled in from that (as fixes or initial guesses). This would be useful in the main multi-dataset fitting interface too.
+
 ####3. Sequential fits
 
   Not strictly related but another point raised:  
