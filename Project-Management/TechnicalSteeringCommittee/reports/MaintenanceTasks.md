@@ -21,7 +21,7 @@ Highest priority
       4. Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16129)
       5. Suggestion: search the [Qt 4.8 docs](http://doc.qt.io/qt-4.8/index.html) for the deprecated class member function. In most cases it will suggest a direct replacement.
       6. [Example pull request](https://github.com/mantidproject/mantid/pull/16235)
-   3. Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) (Fede).
+   3. Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) ([#16509](https://github.com/mantidproject/mantid/issues/16509) Fede).
    4. Try building Mantid with Qt5 and see what issues remain (Fede). 
 4. [#15421](https://github.com/mantidproject/mantid/issues/15421)Finish GSL2 compatibility work (Roman)
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
