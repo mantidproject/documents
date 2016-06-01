@@ -25,6 +25,12 @@ def load_workspace_2D(output_ws, X, Y, data, errors):
         if errors.size == data.size:
             output_ws.setE(i, errors[i, :])
 
+    # Now set the y axis correctly
+    y_axis = NumericAxis.create(Y.size)
+    for i in range(Y.size):
+        y_axis.setValue(i, Y[i])   
+    output_ws.replaceAxis(1, y_axis)     
+
 
 def load_workspace_1D(output_ws, X, Y, data, errors):
     output_ws.setX(0, X)
