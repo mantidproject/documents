@@ -12,13 +12,13 @@ def convert_Lamp_X_bins_to_Mantid(array):
     delta_X = array[1] - array[0]
 
     # Move each bin to be a bins start
-    array = array - delta_X
+    array = array - delta_X/2.0
 
     # Return an array with a final bin added
-    return numpy.append(array, array[-1] + delta_X)
+    return numpy.append(array, array[-1] + delta_X/2.0)
 
 
-def load_workspace_2D(output_ws, X, Y, data, errors):
+def load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges):
     for i in range(Y.size):
         output_ws.setX(i, X)
         output_ws.setY(i, data[i, :])
@@ -26,9 +26,17 @@ def load_workspace_2D(output_ws, X, Y, data, errors):
             output_ws.setE(i, errors[i, :])
 
     # Now set the y axis correctly
-    y_axis = NumericAxis.create(Y.size)
+    if y_axis_edges:
+        y_values = convert_Lamp_X_bins_to_Mantid(Y)
+        print y_values.size
+    else:
+        y_values = Y        
+        print y_values.size
+
+    print y_values.size
+    y_axis = NumericAxis.create(y_values.size)
     for i in range(Y.size):
-        y_axis.setValue(i, Y[i])   
+        y_axis.setValue(i, y_values[i])   
     output_ws.replaceAxis(1, y_axis)     
 
 
@@ -47,9 +55,11 @@ class LoadLamp(PythonAlgorithm):
     def PyInit(self):
         self.declareProperty(FileProperty(name="InputFile", defaultValue="", action=FileAction.Load, extensions = ["nxs", "hdf"]))
         self.declareProperty(WorkspaceProperty(name="OutputWorkspace", defaultValue="", direction=Direction.Output))
+        self.declareProperty(name="YAxisEdges", defaultValue=False, doc="Set Y-axis to have bin edges instead of bin centres")
 
     def PyExec(self):
         input_file = self.getProperty("InputFile").value
+        y_axis_edges = self.getProperty("YAxisEdges").value
         
         with h5py.File(input_file, 'r') as hf:
             data = numpy.array(hf.get('entry1/data1/DATA'))
@@ -77,7 +87,7 @@ class LoadLamp(PythonAlgorithm):
         if (Y.size   == 1) :
             load_workspace_1D(output_ws, X, Y, data, errors)
         elif (Y.size > 1):
-            load_workspace_2D(output_ws, X, Y, data, errors)
+            load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges)
 
         self.setProperty('OutputWorkspace', output_ws)
 
