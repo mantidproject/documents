@@ -20,7 +20,8 @@ for package management and deployment.
 
 Cloud. http://anaconda.org
 
-** Binary compatibilities **
+**Binary compatibilities**
+
 Anaconda builds a software environment of its own with little dependencies on the system,
 this allows building single linux binary distribution that works for different flavors
 of linux systems. Certainly 32bit system and 64bit system needs different binaries.
