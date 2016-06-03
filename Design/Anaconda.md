@@ -5,7 +5,7 @@ packages for Mantid framework and/or Mantid GUI for Mantid users.
 
 ##Motivation##
 
-Ana(conda) makes it much easier to manage the deployment of a software package itself
+(Ana)conda makes it much easier to manage the deployment of a software package itself
 and probably more importantly, its dependencies.
 Although only started in 2012, it has seen widespread acceptance in the python community
 and even high performance computing community. 
