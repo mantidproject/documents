@@ -30,18 +30,21 @@ Windows and OSX need their own binaries as well.
 ##Selected Use cases##
 
 **Simple installation for novice users**
+
 All he/she needs to do is
 * Install anaconda
 * Install mantid by
   $ conda install -c mantid mantid
 
 **Simple deployment at High-performance computing facilities**
+
 Manual build of Mantid can be a tedious job for a user of high-performance computing
 facilities. 
 With conda distribution, a user can easily deploy their Mantid-dependent
 computations at such facilties as NERSC.
 
 **Nicely play with other (python) packages**
+
 There are many python packages supported in conda. 
 Installation of the packages and their dependencies alongside with Mantid,
 making sure they are compiled and linked agaist the same libraries,
@@ -49,7 +52,24 @@ would not be a big hassle as it could be.
 
 ##Experiment##
 
-##Proposed Solution##
+An experiment was done to port Mantid (framework only) into conda:
+ https://github.com/mantidproject/mantid/compare/master...mcvine:master
+ 
+The main changes are:
+* Framework/CMakeLists.txt: have to force finding GSL and OpenGL
+* Added subdir conda:
+  - meta.yml: pkg meta data. Name and version. Dependencies
+  - build.sh: linux build script. Installed dependencies that are not included yet in conda, and then call cmake and make to build
+  - run_tests.py: test driver
 
-##Solution Details##
+Artifacts:
+* A mantid-framework-only conda package now available at anaconda "mcvine" channel
+  - it can be installed by
+    $ conda install -c mcvine mantid
+  - Only tested so far to reduce some ARCS data. 
+
+##Proposed Solution##
+* Make a new Mantid ticket for this
+* Migrate changes to a branch
+* Add test of conda package to the jenkins system
 
