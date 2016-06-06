@@ -24,7 +24,7 @@ Cloud. http://anaconda.org
 
 Anaconda builds a software environment of its own with little dependencies on the system.
 This allows for a single linux binary distribution that works for different flavors
-of linux systems (dertainly 32bit system and 64bit system needs different binaries).
+of linux systems (certainly 32bit system and 64bit system needs different binaries).
 Windows and OSX need their own binaries as well.
 
 ##Selected Use cases##
@@ -72,5 +72,7 @@ Artifacts:
 * Make a new Mantid ticket for this
 * Migrate changes to a branch
 * Improve build scripts (windows build script is not implemented at all)
+* Create "mantid" channel at anaconda
+* Build and upload mantid conda pkg to that channel
 * Add test of conda package to the jenkins system
 
