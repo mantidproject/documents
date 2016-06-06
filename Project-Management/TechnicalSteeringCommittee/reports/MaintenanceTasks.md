@@ -21,8 +21,8 @@ Highest priority
       4. Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16129)
       5. Suggestion: search the [Qt 4.8 docs](http://doc.qt.io/qt-4.8/index.html) for the deprecated class member function. In most cases it will suggest a direct replacement.
       6. [Example pull request](https://github.com/mantidproject/mantid/pull/16235)
-   3. Remove Qt3support package from [mantid buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73).
-   4. Try building Mantid with Qt5 and see what issues remain. 
+   3. Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) ([#16509](https://github.com/mantidproject/mantid/issues/16509) Fede).
+   4. Try building Mantid with Qt5 and see what issues remain (Fede). 
 4. [#15421](https://github.com/mantidproject/mantid/issues/15421)Finish GSL2 compatibility work (Roman)
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   1. Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.
@@ -37,7 +37,6 @@ Pool
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Move Windows Jenkins builds to use Ninja where possible [#16265](https://github.com/mantidproject/mantid/issues/16265).
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
-7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267)
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335) 
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  
@@ -53,9 +52,10 @@ Assigned
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
 3. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Matt King)
-8. Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104) (Anton)
+8. ~~Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)~~ (Anton)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default. (Anton)
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283) 
+7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel, Fede)
 
 
 #### Unassigned (not suitable for pool)

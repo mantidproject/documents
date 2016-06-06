@@ -43,12 +43,14 @@ The following algorithms were initially defined for EnginX:
 * EnginXFitPeaks
 * EnginXFocus
 
-which have been renamed to:
+which have been renamed and extended to:
 
 * EnggCalibrate
 * EnggCalibrateFull
 * EnggFitPeaks
+* EnggFitDIFCFromPeaks
 * EnggFocus
+* EnggVanadiumCorrections
 
 Other relevant Mantid algorithms:
 =================================
@@ -81,9 +83,18 @@ by scientists as of this writing:
   data for every individual detector.
 
 * A recent Ceria file that is used for calibration (not CalibrateFull
-  is in run 241391 (from cycle_15_1).
+  is in run 241391 (from cycle_15_1). The corresponding Vanadium (V-Nb)
+  data is in run 236516 (from cycle_14_3).
 
-* Vanadium (V-Nb) data is in run 236516 (from cycle_14_3).
+* Data from the Neutron Training Course 2016 (phase information: Fe_alpha):
+  * Sample runs: 256663-256675
+  * Vanadium run: 254854
+  * Ceria run: 255924
+
+* Data from the Neutron Training Course 2015 (also Fe_alpha):
+  * Sample runs: 240741-240753
+  * Vanadium run: 236516
+  * Ceria run: 241390
 
 GUI
 ===
@@ -103,8 +114,8 @@ Third party software
 Data formats
 ============
 
-* .par
+* .par (or .prm, .iparm) instrument parameter files of [GSAS](https://subversion.xor.aps.anl.gov/EXPGUI/gsas/all/GSAS%20Manual.pdf). See also the algorithms [SaveGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/SaveGSASInstrumentFile-v1.html), [LoadGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/LoadGSASInstrumentFile-v1.html) and [FixGSASInstrumentFile](http://docs.mantidproject.org/nightly/algorithms/FixGSASInstrumentFile-v1.html)
 
-* .his
+* .his, see the algorithm SaveOpenGenieAscii for details.
 
-* calibration files
+* calibration files, see http://docs.mantidproject.org/nightly/concepts/Calibration.html
