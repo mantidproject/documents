@@ -103,7 +103,10 @@ Using the `SANSState` as an input entity for work-flow algorithms limits our cho
 
 This does not mean though that the information should exist the entire time as a `PropertyManager` object. A more purposeful data structure which can be converted to and from a `PropertyManager` object would allow us to only have to depend on the `PropertyManager` object when the information is set on the algorithm. Out- and inside the algorithm the `PrropertyManager` is converted to and from a `SANSState` object which includes inbuilt validation logic and makes passing a large chuck of strucutred data into an algorithm much safer.
 
-A prototype implementation could look like this:
+A prototype implementation could look like the sample code below.
+
+First we define a `TypedParameter` which includes validation regarding
+the underlying type and potential further constraints. The `SANSStateBase` defines a general interface for the `SANSState` and its potential sub-states. The `PropertyManagerConverter` helps with converting the state object into a `PropertyManagerProeprty` and back. This is required to pass the state into algorithms.
 
 ```python
 from abc import (ABCMeta, abstractmethod)
@@ -219,7 +222,8 @@ class PropertyManagerConverter(object):
 ```
 
 
-And:
+The actual state object is defined below. Note that the `validate` method
+on the state object would normally be used to check inter-parameter relationships, e.g. making sure that min is smaller than max.
 
 ```python
 from SANSStateBase import (SANSStateBase, TypedParameter, is_not_none, is_positive, PropertyManagerConverter)
@@ -255,7 +259,8 @@ class SANSStatePrototype(SANSStateBase):
             raise ValueError("SANSStatePropertyType: Parameters are not valid")
 ```
 
-And:
+Finally, the code below demonstrates how the state would be passed into
+a Mantid algorithm.
 
 ```python
 
@@ -277,9 +282,6 @@ class SANSAlgorithmPrototype(DataProcessorAlgorithm):
                              doc='Factor')
 
     def PyExec(self):
-        a = 1
-        b = 2
-        print a
         property_manager = self.getProperty("SANSStatePrototype").value
         state = SANSStatePrototype()
         state.property_manager = property_manager
@@ -300,7 +302,3 @@ class SANSAlgorithmPrototype(DataProcessorAlgorithm):
 
 AlgorithmFactory.subscribe(SANSAlgorithmPrototype)
 ```
-
-A use case would look like:
-
-TODO: Add usage here
