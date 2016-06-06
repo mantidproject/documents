@@ -71,5 +71,6 @@ Artifacts:
 ##Proposed Solution##
 * Make a new Mantid ticket for this
 * Migrate changes to a branch
+* Improve build scripts (windows build script is not implemented at all)
 * Add test of conda package to the jenkins system
 
