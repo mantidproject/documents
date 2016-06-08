@@ -118,10 +118,11 @@ from mantid.kernel import PropertyManager
 # Parameters
 # -------------------------------------------------------
 class TypedParameter(object):
-    def __init__(self, name, parameter_type, validator=lambda x: True, default=None):
+    def __init__(self, name, parameter_type, validator=lambda x: True):
+        self._typed_parameter_name = name
         self.name = "_" + name
         self.parameter_type = parameter_type
-        self.value = default if isinstance(default, parameter_type) else None
+        self.value = None
         self.validator = validator
 
     def __get__(self, instance, owner):
@@ -145,7 +146,7 @@ class TypedParameter(object):
 
 
 # ---------------------------------------------------------------
-# Validators
+# Validator functions
 # ---------------------------------------------------------------
 def is_not_none(value):
     return value is not None
@@ -158,7 +159,7 @@ def is_positive(value):
 # ------------------------------------------------
 # SANSStateBase
 # ------------------------------------------------
-class SANSStateBase:
+class SANSStateBase(object):
     __metaclass__ = ABCMeta
 
     @property
@@ -209,8 +210,9 @@ class PropertyManagerConverter(object):
         # Get the descriptor values from the instance
         descriptor_values = {}
         for key in descriptor_names:
-            value = getattr(instance, key)
-            descriptor_values.update({key: value})
+            if hasattr(instance, key):
+                value = getattr(instance, key)
+                descriptor_values.update({key: value})
         return descriptor_values
 
     @staticmethod
@@ -219,6 +221,7 @@ class PropertyManagerConverter(object):
         for key in keys:
             value = property_manager.getProperty(key).value
             setattr(instance, key, value)
+
 ```
 
 
@@ -227,14 +230,14 @@ on the state object would normally be used to check inter-parameter relationship
 
 ```python
 from SANSStateBase import (SANSStateBase, TypedParameter, is_not_none, is_positive, PropertyManagerConverter)
-
-
+import sys
+import os
 # -----------------------------------------------
 #  SANSStateData Setup for ISIS
 # -----------------------------------------------
 class SANSStatePrototype(SANSStateBase):
     parameter1 = TypedParameter("parameter1", str, is_not_none)
-    parameter2 = TypedParameter("parameter2", int, is_positive, 1)
+    parameter2 = TypedParameter("parameter2", int, is_positive)
 
     def __init__(self):
         super(SANSStatePrototype, self).__init__()
@@ -252,21 +255,22 @@ class SANSStatePrototype(SANSStateBase):
         self.converter.set_state_from_property_manager(self, value)
 
     def validate(self):
-        is_valid = dict()
+        is_invalid = dict()
         if self.parameter1 is None:
-            is_valid.update({"parameter1": "Parameter may not be none"})
-        if not is_valid:
+            is_invalid.update({"parameter1": "Parameter may not be none"})
+        if is_invalid:
             raise ValueError("SANSStatePropertyType: Parameters are not valid")
+
 ```
 
 Finally, the code below demonstrates how the state would be passed into
 a Mantid algorithm.
 
 ```python
-
+from mantid.simpleapi import *
 from mantid.api import DataProcessorAlgorithm
-from mantid.kernel import PropertyManagerProperty
-from SANSStatePrototype import SANSStatePrototype
+from mantid.kernel import Direction, Property, PropertyManagerProperty
+from State.SANSStatePrototype import SANSStatePrototype
 
 
 class SANSAlgorithmPrototype(DataProcessorAlgorithm):
@@ -282,23 +286,43 @@ class SANSAlgorithmPrototype(DataProcessorAlgorithm):
                              doc='Factor')
 
     def PyExec(self):
+        # We accept the State as a dictionary
         property_manager = self.getProperty("SANSStatePrototype").value
+        # A state object is created and the dict/property manager is passed into the state
         state = SANSStatePrototype()
         state.property_manager = property_manager
-        # Do things here
+        print state.parameter1
+        # Algorithm logic comes here
 
     def validateInputs(self):
         errors = dict()
-        #Check that the input can be converted into the right state object
+        # Check that the input can be converted into the right state object
         property_manager = self.getProperty("SANSStatePrototype").value
         try:
-            state = SANSStatePrototype()
-            state.property_manager = property_manager
-            state.validate()
+             state = SANSStatePrototype()
+             state.property_manager = property_manager
+             state.validate()
         except ValueError, e:
-            # Would have to be more understandable
-            errors.update({"SANSStatePrototype": str(e)})
+             errors.update({"SANSStatePrototype": str(e)})
         return errors
 
 AlgorithmFactory.subscribe(SANSAlgorithmPrototype)
+```
+
+A use case for this prototype could look like this:
+```python
+from mantid.api import AlgorithmManager
+from SANSStatePrototype import SANSStatePrototype
+
+state = SANSStatePrototype()
+state.parameter1 = "test_value"
+
+alg = AlgorithmManager.createUnmanaged("SANSAlgorithmPrototype")
+alg.setChild(True)
+alg.initialize()
+# This should accept a PropertyManager
+property_manager = state.property_manager
+alg.setProperty("Factor", 1)
+alg.setProperty("SANSStatePrototype", property_manager)
+alg.execute()
 ```
