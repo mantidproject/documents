@@ -16,7 +16,7 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
 | [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | [2016-04-26](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-04-26.md) | In progress. [15543](https://github.com/mantidproject/mantid/issues/15543) |
-| [Histogram type](https://github.com/mantidproject/documents/pull/14) | [2016-04-12](https://github.com/mantidproject/documents/pull/14) | Approved. |
+| [Histogram type](https://github.com/mantidproject/documents/pull/14) | [2016-04-12](https://github.com/mantidproject/documents/pull/14) | Approved. [16086](https://github.com/mantidproject/mantid/issues/16086) |
 | [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. |
 | [Live listener customisation](https://github.com/mantidproject/documents/pull/7) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Assign to a developer from PSI. |
 | [Data Processing User Interface](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | In progress. [14732](https://github.com/mantidproject/mantid/issues/14732), [14921](https://github.com/mantidproject/mantid/issues/14921)  |
