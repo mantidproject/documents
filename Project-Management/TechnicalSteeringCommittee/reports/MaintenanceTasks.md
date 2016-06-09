@@ -97,6 +97,7 @@ For another release
 7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
 8. Investigate overhead from logging. Specifically
    9. Would we benefit from checking the logging level before constructing a string?
+   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method. 
    10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
    11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 
