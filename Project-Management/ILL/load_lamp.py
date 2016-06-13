@@ -53,13 +53,15 @@ class LoadLamp(PythonAlgorithm):
         return 'DataHandling\\Nexus'
 
     def PyInit(self):
-        self.declareProperty(FileProperty(name="InputFile", defaultValue="", action=FileAction.Load, extensions = ["nxs", "hdf"]))
+        self.declareProperty(FileProperty(name="InputFile", defaultValue="", action=FileAction.Load, extensions = ["hdf", "nxs"]))
         self.declareProperty(WorkspaceProperty(name="OutputWorkspace", defaultValue="", direction=Direction.Output))
-        self.declareProperty(name="YAxisEdges", defaultValue=False, doc="Set Y-axis to have bin edges instead of bin centres")
+        self.declareProperty(name="XAxisBinEdges", defaultValue=True, doc="Set X-axis to have bin edges instead of bin centres")
+        self.declareProperty(name="YAxisBinEdges", defaultValue=False, doc="Set Y-axis to have bin edges instead of bin centres")
 
     def PyExec(self):
         input_file = self.getProperty("InputFile").value
-        y_axis_edges = self.getProperty("YAxisEdges").value
+        x_axis_edges = self.getProperty("XAxisBinEdges").value
+        y_axis_edges = self.getProperty("YAxisBinEdges").value
         
         with h5py.File(input_file, 'r') as hf:
             data = numpy.array(hf.get('entry1/data1/DATA'))
@@ -72,8 +74,6 @@ class LoadLamp(PythonAlgorithm):
         print 'X size: ', X.size, 'Y size: ', Y.size
         print 'errors size: ', errors.size, 'monitors size: ', monitors.size
 
-        output_ws = WorkspaceFactory.create("Workspace2D", NVectors=Y.size, XLength=X.size+1, YLength=X.size)
-
         # Need to convert the type, as can not convert from numpy.float32 to a C++ value        
         X = numpy.array(X, dtype='float')
         Y = numpy.array(Y, dtype='float')
@@ -82,9 +82,14 @@ class LoadLamp(PythonAlgorithm):
         monitors = numpy.array(monitors, dtype='float')
         print 'Monitors:', monitors.shape
 
-        X = convert_Lamp_X_bins_to_Mantid(X)
+        if x_axis_edges:
+            X = convert_Lamp_X_bins_to_Mantid(X)
+        else:
+            X = numpy.append(X, X[-1])
 
-        if (Y.size   == 1) :
+        output_ws = WorkspaceFactory.create("Workspace2D", NVectors=Y.size, XLength=X.size, YLength=X.size-1)
+
+        if (Y.size == 1) :
             load_workspace_1D(output_ws, X, Y, data, errors)
         elif (Y.size > 1):
             load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges)
