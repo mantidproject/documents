@@ -35,7 +35,7 @@ Pool
 ----
 
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
-1. Move Windows Jenkins builds to use Ninja where possible [#16265](https://github.com/mantidproject/mantid/issues/16265).
+1. ~~Move Windows Jenkins builds to use Ninja where possible [#16265](https://github.com/mantidproject/mantid/issues/16265).~~
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335) 
