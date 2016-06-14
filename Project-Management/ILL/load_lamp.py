@@ -7,15 +7,30 @@ import numpy
 import h5py
 
 
-def convert_Lamp_X_bins_to_Mantid(array):
-    # Assume regular spacing for Lamp bins
-    delta_X = array[1] - array[0]
+def convert_Lamp_X_bins_to_Mantid(array, x_axis_equal_bins):
+    
+    if x_axis_equal_bins:
+        # Assume regular spacing for Lamp bins
+        delta_X = array[1] - array[0]
 
-    # Move each bin to be a bins start
-    array = array - delta_X/2.0
+        # Move each bin to be a bins start
+        array = array - delta_X/2.0
 
-    # Return an array with a final bin added
-    return numpy.append(array, array[-1] + delta_X/2.0)
+        # Return an array with a final bin added
+        new_X_bins = numpy.append(array, array[-1] + delta_X/2.0)
+
+    else:
+        new_X_bins = numpy.zeros(array.size + 1)
+        
+        new_X_bins[0] = array[0]
+        new_X_bins[-1] = array[-1]
+        
+        for i in range(1, array.size):
+            new_X_bins[i] = (array[i-1] + array[i])/2.0
+            
+        print  new_X_bins.size, array.size
+
+    return new_X_bins
 
 
 def load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges):
@@ -56,11 +71,13 @@ class LoadLamp(PythonAlgorithm):
         self.declareProperty(FileProperty(name="InputFile", defaultValue="", action=FileAction.Load, extensions = ["hdf", "nxs"]))
         self.declareProperty(WorkspaceProperty(name="OutputWorkspace", defaultValue="", direction=Direction.Output))
         self.declareProperty(name="XAxisBinEdges", defaultValue=True, doc="Set X-axis to have bin edges instead of bin centres")
+        self.declareProperty(name="XAxisEqualBins", defaultValue=True, doc="Set if X axis has constant bin widths")
         self.declareProperty(name="YAxisBinEdges", defaultValue=False, doc="Set Y-axis to have bin edges instead of bin centres")
 
     def PyExec(self):
         input_file = self.getProperty("InputFile").value
         x_axis_edges = self.getProperty("XAxisBinEdges").value
+        x_axis_equal_bins = self.getProperty("XAxisEqualBins").value
         y_axis_edges = self.getProperty("YAxisBinEdges").value
         
         with h5py.File(input_file, 'r') as hf:
@@ -83,7 +100,7 @@ class LoadLamp(PythonAlgorithm):
         print 'Monitors:', monitors.shape
 
         if x_axis_edges:
-            X = convert_Lamp_X_bins_to_Mantid(X)
+            X = convert_Lamp_X_bins_to_Mantid(X, x_axis_equal_bins)
         else:
             X = numpy.append(X, X[-1])
 
