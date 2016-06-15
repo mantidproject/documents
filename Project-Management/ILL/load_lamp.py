@@ -33,7 +33,7 @@ def convert_Lamp_X_bins_to_Mantid(array, x_axis_equal_bins):
     return new_X_bins
 
 
-def load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges):
+def load_workspace_2D(output_ws, X, Y, data, errors, x_axis_equal_bins, y_axis_edges):
     for i in range(Y.size):
         output_ws.setX(i, X)
         output_ws.setY(i, data[i, :])
@@ -42,7 +42,7 @@ def load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges):
 
     # Now set the y axis correctly
     if y_axis_edges:
-        y_values = convert_Lamp_X_bins_to_Mantid(Y)
+        y_values = convert_Lamp_X_bins_to_Mantid(Y, x_axis_equal_bins)
         print y_values.size
     else:
         y_values = Y        
@@ -109,7 +109,7 @@ class LoadLamp(PythonAlgorithm):
         if (Y.size == 1) :
             load_workspace_1D(output_ws, X, Y, data, errors)
         elif (Y.size > 1):
-            load_workspace_2D(output_ws, X, Y, data, errors, y_axis_edges)
+            load_workspace_2D(output_ws, X, Y, data, errors, x_axis_equal_bins, y_axis_edges)
 
         self.setProperty('OutputWorkspace', output_ws)
 
