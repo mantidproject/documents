@@ -181,7 +181,7 @@ The following is a suggested implementation path via the exisiting Reflectometry
 3. ~~Create a QWidget that implements `ReflTableView` called `QReflTableView`. The parent of the `QReflTableView` should be the `QReflMainView`. You should now be able to new-up a `QReflTableView` independently from the `QReflMainView`.~~
 4. ~~Refactor `ReflTableViewPresenter` so that it creates and configures the DataProcessingAlgorithm completely via it's arguments. Then rename it to `GeneralDataProcessorPresenter`. The `GeneralDataProcessorPresenter` should contain nothing that is reflectometry specific. This will also mean abstracting the post processing and pre processing steps.~~
 5. ~~Make `GeneralDataProcessorPresenter` take all arguments a abstract behaviours.~~
-6. Move `GeneralDataProcessorPresenter`, the views and the behaviours into the MantidQtAPI package.
+6. ~~Move `GeneralDataProcessorPresenter`, the views and the behaviours into the MantidQtAPI package.~~
 7. Expose the `GeneralDataProcessorPresenter`, the views and the behaviours via SIP.
 8. Use the new framework to implement DataProcessorAlgorithm batch processing for other technqiue areas as a proof of concept.
 
