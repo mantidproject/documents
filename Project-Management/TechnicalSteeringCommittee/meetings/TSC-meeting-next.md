@@ -14,6 +14,8 @@ New Items
 
 Minutes
 -------
+Attendees: Campbell, Hahn, Heybrock, Lin, Peterson, Pouzols, Savici, Whitfield
+
 * Everybody will individually look at the histogram PR and comment
 * Mantid no longer directly depends on Qt3. Qwt5 and Qwtplot3d do. We need a plan on how to move from these dead project to something else.
 * Python3 compatibility "works" and has a build on the critical tab to see that it continues to build (not running any tests). Python algorithms have not been given compatibility yet.
