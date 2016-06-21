@@ -9,6 +9,7 @@ Pinned Topics
 New Items
 ---------
 * [Anaconda](https://github.com/mantidproject/documents/blob/master/Design/Anaconda.md)
+* [HistogramData module](https://github.com/mantidproject/mantid/pull/16627) needs code review (Simon).
 * Discussion questions:
   1.  Do we move our 1D/2D plotting to use matplotlib directly?
   2.  Do we drop our fitting for scipy’s?
