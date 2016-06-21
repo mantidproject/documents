@@ -15,7 +15,7 @@ Highest priority
 ----------------
 
 1. Remove Qt3support requirement from Mantid (Hahn lead)
-   1. Finish removing Qt3support classes [#11891](https://github.com/mantidproject/mantid/issues/11891)  (Roman)
+   1. Finish removing Qt3support classes ~~[#11891](https://github.com/mantidproject/mantid/issues/11891)~~  (Roman)
    2. Update functions that were removed in Qt4 (http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)
       3. Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?  
       4. Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16129)
@@ -23,7 +23,7 @@ Highest priority
       6. [Example pull request](https://github.com/mantidproject/mantid/pull/16235)
    3. Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) ([#16509](https://github.com/mantidproject/mantid/issues/16509) Fede).
    4. Try building Mantid with Qt5 and see what issues remain (Fede). 
-4. [#15421](https://github.com/mantidproject/mantid/issues/15421)Finish GSL2 compatibility work (Roman)
+4. ~~[#15421](https://github.com/mantidproject/mantid/issues/15421)~~ Finish GSL2 compatibility work (Roman) **needs follow-on?**
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   1. Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.
   2. Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.
@@ -51,7 +51,7 @@ Assigned
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
-3. move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285) (Matt King)
+3. ~~move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285)~~ (Matt King)
 8. ~~Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)~~ (Anton)
 1. Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default. (Anton)
    - Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283) 
