@@ -13,8 +13,6 @@ Agenda
   * Cheat sheet - http://python-future.org/compatible_idioms.html
   * Use `from __future__ import (absolute import, division, print_function)` as the first line in all new Python files. Note that these are scoped to that file.
   * Use [`six`](https://pythonhosted.org/six/) module for 2/3 compatability
-  
-**For next meeting**
 
 * Mutli list selection for properties in Mantid (Nick Draper)
 * feature usage reporting (Nick Draper)
