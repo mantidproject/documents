@@ -19,4 +19,4 @@ Agenda
 
 Questions
 =========
-* Place your item here
+* Would it mess up anyones workflow if we enabled the valid_from - to dates in Instrument_Parameter files?  Which areas would we need to test. https://github.com/mantidproject/mantid/issues/15181
