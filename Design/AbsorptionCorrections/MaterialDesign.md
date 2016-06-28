@@ -31,7 +31,11 @@ The (slightly) bigger picture
 
 A [`Workspace`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Workspace.html) 
 has a [`ExperimentInfo`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/ExperimentInfo.html). 
-`ExperimentInfo` has a [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample.html)
+`ExperimentInfo` has a [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample.html).
+
+The [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample.html) will have the following attributes:
+ * attributes for the Geometry
+ * 
 which has `Geometry`, `CrystalStructure`, and 
 [`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Material.html).
 
