@@ -1,4 +1,4 @@
-### Meeting about sequential fitting in MuonAnalysis ###
+### Meeting about simultaneous fitting in MuonAnalysis ###
 #### 23/3/16 ####
 
 Discussed mockups available at `Design/Mockups/muon/MuonAnalysis.bmpr` - the _Data Analysis_ tab.  
