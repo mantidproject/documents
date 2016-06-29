@@ -54,5 +54,5 @@ test problems from neutron and muon data, considering different
 scientific areas, and also further visualization of fitting results.
 Furthermore, on the basis of our comparisons, we intend to incorporate
 a new, flexible minimizer, RAL-NLLS, whose aim is to improve the
-reliability and broaden the functionality of Mantid's fitting
+reliability and broaden the functionality of the Mantid fitting
 system.
