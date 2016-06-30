@@ -52,7 +52,7 @@ This can inform users and developers as to:
 For the next releases of Mantid we plan to extend the comparison with
 test problems from neutron and muon data, considering different
 scientific areas, and also further visualization of fitting results.
-Furthermore, on the basis of our comparisons, we intend to incorporate
-a new, flexible minimizer, RAL-NLLS, whose aim is to improve the
-reliability and broaden the functionality of the Mantid fitting
-system.
+Furthermore, on the basis of our comparisons, we are working on
+incorporating a new, flexible minimizer, RAL-NLLS, whose aim is to
+improve the reliability and broaden the functionality of the Mantid
+fitting system.
