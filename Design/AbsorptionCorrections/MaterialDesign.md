@@ -40,7 +40,6 @@ The [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample
  * methods for a "friendly name" (currently `getName()`)
 
 The [`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Material.html) will have the attributes
- * the scattering length information is taken from an out-of date source. It sould be using from [link](http://www.ati.ac.at/~neutropt/scattering/)
  * methods for the chemical formula (currently `chemicalForumla()` which returns a `List` of [`Atom`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Atom.html) and a `List` of composition numbers). The chemical formula should also provide functionality to get the relative fraction of each atom.
  * methods for the number density (currently `numberDensity`)
  * methods for the mass density (currently missing)
@@ -49,10 +48,12 @@ The [`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/M
  * methods for the effective/composite cross sections (present) and scattering lengths (missing, including scattering length calculated from the `b=sqrt(total xs) / (4 pi)`). The current neutronic information has the real and (generally zer) imaginary parts, but not the magnitude.
  * methods for `<b>^2`, `<b^2>` and the normalized Laue term
  * improved methods for getting the absorption cross-section as a function of wavelength with information from [link](https://www-nds.iaea.org/ngatlas2/) and [link](http://www.nndc.bnl.gov/sigma/index.jsp)
+ * the `sample material` right-click launched gui needs the scattering lengths as well
+ * all the neutronic information needs to have the units clearly documented and displayed
+ * [`MaterialBuilder`](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/MaterialBuilder.h) needs to be exposed to python
 
-Replacing `SetSampleMaterial`
------------------------------
+`SetSampleMaterial` and `SetSample` currently have heavy overlap. Once the features of the `Material` list above are done, it is believed that `SetSample` will have everything that is needed.
 
-`SetSampleMaterial` currently calculates many values and returns them as output properties. This is inconvenient
-as it ties users to this specific algorithm. Instead, `Material` will have the following attributes:
-
+`Atom` and `NeutronAtom`
+ * the scattering length information is taken from an out-of date source. It sould be using from [link](http://www.ati.ac.at/~neutropt/scattering/)
+ * Rather than having everything determined at compile-time, have a file that contains the atomic information as well as the neutronic information. The absorption cross-sections will likely be a separate file.
