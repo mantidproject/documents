@@ -17,9 +17,11 @@ Assuming they did not change, it seems to me that both errors discovered by Ken 
 
 ### Detector Positions
 
-Using a right handed coordinate spherical coordinate system with r, &theta; and &phi; as shown.
+Using a right handed coordinate spherical coordinate system with r, &theta; and &phi; as shown (not used in the normal way!).
 
-<img src="3D_Spherical_2.png" alt="Coordinate System" style="width: 400px;"/>
+The beam direction is +z, and sample at r = 0.
+
+<img src="3D_Spherical_2.png" alt="Coordinate System" style="width: 450px;"/>
 
 Detector to sample distance is 2.483 m. There are three detector banks, lower phi = -15&deg;, middle phi = 0&deg;, and upper phi = +15&deg;.
 
@@ -35,36 +37,28 @@ The correct angles are:
 
 The 4 different detector arrangements are:
 
-**<= 16.07&deg;**
+**<= 16.07&deg;** - Boxes of 4 detectors in the middle row only
 
-Boxes of 4 detectors in the middle row only
+**17.13&deg; to 43.27&deg;** - Boxes of 4 detectors in the middle row, 3 detectors up and lower
 
-**17.13&deg; to 43.27&deg;**
+**44.33&deg; to 101.07&deg;** - Boxes of 4 detectors in all rows
 
-Boxes of 4 detectors in the middle row, 3 detectors up and lower
-
-**44.33&deg; to 101.07&deg;**
-
-Boxes of 4 detectors in all rows
-
-**>= 102.93&deg;**
-
-Boxes of 3 detectors in all rows
+**>= 102.93&deg;** - Boxes of 3 detectors in all rows
 
 Spectrum numbering goes from the upper, middle, lower for a given detector angle.
 
 ### Detector Boxes
 
-Detectors are squashed cylinders, 32 mm wide and 16 mm deep. They are 300 mm long (in detection terms).
+Detectors are squashed cylinders, 32 mm wide and 16 mm deep. They are 300 mm long (in detection terms). They are approximated for the instrument definition as cuboids.
 
-Detectors are arrange in boxes of 3 or 4. The angle between detector tube centres is 0.78&deg;. This corresponds to 2.483 * sin (0.78&deg;) = 33.80144566 mm.
+Detectors are arrange in boxes of 3 or 4. The angle between detector tube centers is 0.78&deg;. This corresponds to 2.483 m * sin (0.78&deg;) = 33.80144566 mm.
 
-For the boxes of 3 or 4 detectors the mean of the 3 or 4 detector angles is used as the position for the box, and the distance to the sample is also to this middle pont. The detectors are arranged flat in the box with the 33.8 mm separation.
+For the boxes of 3 or 4 detectors the mean of the 3 or 4 detector angles is used as the position for the box, and the distance to the sample is also to this middle point. The detectors are arranged flat in the box with 33.8 mm between the tube centers.
 
 The position of the boxes is given as:
  * x = - r sin &theta; cos &phi;
  * y = r sin &theta;
- * z = r sin &theta; cos & phi
+ * z = r sin &theta; cos &phi;
 
 Rotations are then applied to give the rotation from the x-y plane to face the detector:
  * atan(x/z) (about y-axis)
@@ -76,6 +70,8 @@ The final rotation is made to align the detector on Debye-Scherrer cone.
 ### Resulting Instrument View
 
 ![instrument_view](./Instrument_View.png "Instrument View")
+
+Here blue is z, red is x, and y is green.
 
 The instrument view has issues with the first detector boxes in the upper and lower banks, which overlap the second detector box.
 

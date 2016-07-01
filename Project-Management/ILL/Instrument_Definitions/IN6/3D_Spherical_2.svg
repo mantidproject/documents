@@ -9,7 +9,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="666.61121"
+   width="755.50464"
    height="565.84253"
    id="svg6267"
    sodipodi:version="0.32"
@@ -215,7 +215,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
      inkscape:cx="1173.0227"
-     inkscape:cy="292.04292"
+     inkscape:cy="292.04294"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1855"
@@ -238,7 +238,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -723,13 +723,13 @@
     <text
        xml:space="preserve"
        style="font-size:48px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
-       x="498.0556"
-       y="412.73596"
+       x="586.94904"
+       y="370.30957"
        id="text25752-7-3"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan25756-5-5"
-         x="498.0556"
-         y="412.73596">θ=270°</tspan></text>
+         x="586.94904"
+         y="370.30957">θ=270°</tspan></text>
   </g>
 </svg>
