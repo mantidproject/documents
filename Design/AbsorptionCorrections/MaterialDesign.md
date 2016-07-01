@@ -34,10 +34,21 @@ has a [`ExperimentInfo`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/
 `ExperimentInfo` has a [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample.html).
 
 The [`Sample`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/api/Sample.html) will have the following attributes:
- * attributes for the Geometry
- * 
-which has `Geometry`, `CrystalStructure`, and 
-[`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Material.html).
+ * methods for the Geometry
+ * methods for the `CrystalStructure` (currently `getCrystalStructure()`)
+ * methods for the `Material` (currently `getMaterial()`)
+ * methods for a "friendly name" (currently `getName()`)
+
+The [`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Material.html) will have the attributes
+ * the scattering length information is taken from an out-of date source. It sould be using from [link](http://www.ati.ac.at/~neutropt/scattering/)
+ * methods for the chemical formula (currently `chemicalForumla()` which returns a `List` of [`Atom`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/Atom.html) and a `List` of composition numbers). The chemical formula should also provide functionality to get the relative fraction of each atom.
+ * methods for the number density (currently `numberDensity`)
+ * methods for the mass density (currently missing)
+ * methods for the packing fraction (currently missing)
+ * methods for the effective number density (currently missing) which will be calculated from the product of the number density and the packing fraction.
+ * methods for the effective/composite cross sections (present) and scattering lengths (missing, including scattering length calculated from the b=sqrt(total xs) / (4 pi)). The current neutronic information has the real and (generally zer) imaginary parts, but not the magnitude.
+ * methods for <b>^2, <b^2> and the normalized Laue term
+ * improved methods for getting the absorption cross-section as a function of wavelength with information from [link](https://www-nds.iaea.org/ngatlas2/) and [link](http://www.nndc.bnl.gov/sigma/index.jsp)
 
 Replacing `SetSampleMaterial`
 -----------------------------
