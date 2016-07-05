@@ -8,3 +8,5 @@ Pinned Topics
 
 New Items
 ---------
+
+* PMB have approved 4 weeks of effort for an evaluation of plotting packages in light of `qwt5` -> `qwt6` being a non-trivial transition. In particular the evaluation should include `matplotlib`.
