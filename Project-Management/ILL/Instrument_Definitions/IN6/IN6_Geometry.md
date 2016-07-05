@@ -2,11 +2,11 @@
 
 ### Information Documents
 
-There are three documents describing the instrument geometry - [the original design study from 1976](./IN6_DesignStudy_Scherm_1976.pdf), [an updated list from 2001 (?)](./detector_status_05_09_01.pdf) and a [document describing a correction to angles above 102 degrees](./Andersen91_IN6.pdf).
+There are three documents describing the instrument geometry - [the original design study from 1983](.in6_blanc_1983.pdf), [an updated list from 2001 (?)](./detector_status_05_09_01.pdf) and a [document describing a correction to angles above 102 degrees](./Andersen91_IN6.pdf).
 
 As described in an email from Bjorn Fak (22/06/2016):
 
-> As some of us know, Ken Andersen discovered in 1991 errors in the calculated angular positions of the IN6 detectors in the report by Y. Blanc (1983). Apart from a simple typo in the detector angle at 54.53 degrees, there was a systematic error in ALL the calculated angles above 100 degrees, starting where the number of detectors per box goes from 4 to 3 (entry 84->85 in the old notation). (See attached documents [Andersen91_IN6.pdf](./Andersen91_IN6.pdf) and [IN6_DesignStudy_Scherm_1976.pdf](./IN6_DesignStudy_Scherm_1976.pdf))
+> As some of us know, Ken Andersen discovered in 1991 errors in the calculated angular positions of the IN6 detectors in the report by Y. Blanc (1983). Apart from a simple typo in the detector angle at 54.53 degrees, there was a systematic error in ALL the calculated angles above 100 degrees, starting where the number of detectors per box goes from 4 to 3 (entry 84->85 in the old notation). (See attached documents [Andersen91_IN6.pdf](./Andersen91_IN6.pdf) and [in6_blanc_1983.pdf](./in6_blanc_1983.pdf))
 
 > Since then, the wiring scheme has changed on IN6, but I ignore whether the boxes or their positions did change. 
 Assuming they did not change, it seems to me that both errors discovered by Ken have resurfaced. Indeed, in a document distributed this week by the Bastille team [detector_status_05_09_01.pdf](./detector_status_05_09_01.pdf)) , I find two anomalies. 
@@ -17,7 +17,7 @@ Assuming they did not change, it seems to me that both errors discovered by Ken 
 
 ### Detector Positions
 
-Using a right handed coordinate spherical coordinate system with r, &theta; and &phi; as shown (not used in the normal way!).
+Using a right handed coordinate with r, &theta; and &phi; as shown (not used as spherical coordinates!). r is the distance to the detector, &theta; the angle the detector makes to the +z axis and &phi; the angle to the x-z plane.
 
 The beam direction is +z, and sample at r = 0.
 
@@ -56,9 +56,9 @@ Detectors are arrange in boxes of 3 or 4. The angle between detector tube center
 For the boxes of 3 or 4 detectors the mean of the 3 or 4 detector angles is used as the position for the box, and the distance to the sample is also to this middle point. The detectors are arranged flat in the box with 33.8 mm between the tube centers.
 
 The position of the boxes is given as:
- * x = - r sin &theta; cos &phi;
- * y = r sin &theta;
- * z = r sin &theta; cos &phi;
+ * x = - (r<sup>2</sup> sin<sup>2</sup> &theta; - r<sup>2</sup> sin<sup>2</sup> &phi;)<sup>1/2</sup> ;
+ * y = r sin &phi;
+ * z = r cos &theta;
 
 Rotations are then applied to give the rotation from the x-y plane to face the detector:
  * atan(x/z) (about y-axis)
