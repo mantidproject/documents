@@ -6,7 +6,7 @@ This document contains the required steps to implement the new ISIS design
   * Write User File parser
   * Write `SANSStateDirectorUserFile`
   * Develop validators
-  * ...
+
 
 2. Develop `SANSLoadData` and the required sub-loaders and factories
  * Functionality which checks for instrument
@@ -29,14 +29,29 @@ This document contains the required steps to implement the new ISIS design
  * Integrate with BeamCentreFinder requirements
  * reset to zero functionality
 
+### Left to do in this section:
+  * Handle added data
+  * make use of parallel loading
+  * No director for user file --> has not been necessary yet
+
 ## Basic reduction flow
 
 1. Develop `SANSBatchReduction`
  * Develop initial batch skeleton
+ * Iterator over each passed in state --> parallelisation opportunity
+ * Funcionality to run loader for each state
+ * Functionality to detect if there are more sub states required, i.e. if multiperiod of for event slicing, what is with multiple wavelength regimes?
+ * Potential splitter for each state --> most of work here probably
+ * Functionality for running single reduction --> parallelisation opportunity
 1. Develop `SANSSingleReduction`
  * Develop initial skeleton
-3. Develop core
- * Create factories with place holders
+ * Handle the reduction selection --> HAB, LAB, BOTH, or merged --> is there a more general approach to this? does merge mean when there are more than two detectors?
+ * Functionality for reduced can optimization
+ * Functionality for can reduction tagging --> serialize full reduction state and create a hash
+ * Functionality for stitch mechanism
+1. Develop core of the single reduction algorithm
+ * Create factories with place holders for each reduction step. Actually it might be the other way around that the factory is inside the actual algorithms
+ * Think about NullProducts for factories
 
 ## Core defintitions for ISIS
 
