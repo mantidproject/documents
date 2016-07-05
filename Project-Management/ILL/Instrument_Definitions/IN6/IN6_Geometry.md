@@ -73,7 +73,6 @@ The final rotation is made to align the detector on Debye-Scherrer cone.
 
 Here blue is z, red is x, and y is green.
 
-The instrument view has issues with the first detector boxes in the upper and lower banks, which overlap the second detector box.
 
 
 
