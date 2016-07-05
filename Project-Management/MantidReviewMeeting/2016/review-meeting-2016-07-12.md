@@ -1,7 +1,9 @@
 Agenda
 =========
 
-* Add your resources here
+* Work at the ILL
+ * Time-of-Flight Spectroscopy - Antti and Ian
+ * Backscattering - Verena and Gagik
 
 Questions
 =========
