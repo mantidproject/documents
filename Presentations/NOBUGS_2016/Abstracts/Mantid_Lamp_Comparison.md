@@ -17,6 +17,15 @@ Initial work on adoption has been for Time-of-Flight spectroscopy (IN4, IN5 and 
 
 [2] http://www.mantidproject.org/
 
+##### Alternative (Gagik)
+
+The ILL have begun a project to replace their existing data reduction software, LAMP [1], with the Mantid Framework [2]. Some of the first work being undertaken in the Mantid adoption is to compare the reduction output between LAMP and Mantid. In some cases, such as loading of the raw data, an identical output could be expected. In more complicated scenarios some differences are expected, but the reasons for that should be understood.
+
+LAMP has been in use for over 20 years at the ILL, and there are a number of alterations in the reduction workflows compared with the other facilities using Mantid. This has led to a set of adjustments and additions in the Mantid software in order to make direct comparisons possible.
+
+Initial effort on Mantid integration at ILL has been for Time-of-Flight (IN4, IN5 and IN6) and Backscattering (IN16B) spectroscopies. We present detailed comparisons between the output of LAMP and Mantid for some of these instruments. We discuss some of the different approaches used in Mantid and Lamp for various reduction routines, for example in the S(Q, &omega;) conversion. We also summarise the efficiency of the different approaches for some of the more computationally expensive algorithms.
+
+
 -----------------------------
 
 ##### Original (Ian)
