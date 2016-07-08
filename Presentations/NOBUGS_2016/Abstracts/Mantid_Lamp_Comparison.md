@@ -11,7 +11,7 @@ The ILL have begun a project to phase out the use of their existing data reducti
 
 LAMP has been in use for over 20 years at the ILL, and there are a number of differences in the workflows instrument scientists use when compared with the other facilities that use Mantid. This has led to a number of changes and additions in the Mantid software from the ILL. We will show some of these that were required to make the comparisons, and how we have kept such algorithm changes as general as possible, so they can be used by other facilities.
 
-Initial work on adoption has been for Time-of-Flight spectroscopy (IN4, IN5 and IN6) and Backscattering (IN16B) at the ILL. In this presentation we will present some details of the work comparing the output of LAMP and Mantid for some of these instruments. We will show some of the different approaches in use between Mantid and Lamp for various reduction routines, for example in the S(Q, &omega;) conversion. We will also provide some discussion of the efficiency of the different approaches for the more computationally expensive algorithms.
+Initial work on adoption has been for Time-of-Flight spectroscopy (IN4, IN5 and IN6) and Backscattering (IN16B) at the ILL. In this presentation we will present some details of the work comparing the output of LAMP and Mantid for some of these instruments. We will show some of the different approaches in use between LAMP and Mantid for various reduction routines, for example in the S(Q, &omega;) conversion. We will also provide some discussion of the efficiency of the different approaches for the more computationally expensive algorithms.
 
 [1] https://www.ill.eu/instruments-support/computing-for-science/cs-software/all-software/lamp/the-lamp-book/
 
