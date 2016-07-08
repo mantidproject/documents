@@ -47,7 +47,7 @@ The [`Material`](http://docs.mantidproject.org/v3.7.1/api/python/mantid/kernel/M
  * methods for the effective number density (currently missing) which will be calculated from the product of the number density and the packing fraction.
  * methods for the effective/composite cross sections (present) and scattering lengths (missing, including scattering length calculated from the `b=sqrt(total xs / (4 pi))`). The current neutronic information has the real and (generally zer) imaginary parts, but not the magnitude.
  * methods for `<b>^2`, `<b^2>` and the normalized Laue term
- * improved methods for getting the absorption cross-section as a function of wavelength with information from [link](https://www-nds.iaea.org/ngatlas2/) and [link](http://www.nndc.bnl.gov/sigma/index.jsp)
+ * improved methods for getting the absorption cross-section as a function of wavelength with information from [link](https://www-nds.iaea.org/ngatlas2/) and [link](http://www.nndc.bnl.gov/sigma/index.jsp). A first pass could be the list of all the neutron resonances that are tabulated in the GUDRUN manual Appendix A.
  * the `sample material` right-click launched gui needs the scattering lengths as well
  * all the neutronic information needs to have the units clearly documented and displayed
  * [`MaterialBuilder`](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/MaterialBuilder.h) needs to be exposed to python
