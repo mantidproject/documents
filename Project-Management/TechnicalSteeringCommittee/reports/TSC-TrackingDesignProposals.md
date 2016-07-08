@@ -15,7 +15,7 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
-| [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | [2016-04-26](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-04-26.md) | In progress. [15543](https://github.com/mantidproject/mantid/issues/15543) |
+| [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | [2016-04-26](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-04-26.md) | Done? [15543](https://github.com/mantidproject/mantid/issues/15543) |
 | [Histogram type](https://github.com/mantidproject/documents/pull/14) | [2016-04-12](https://github.com/mantidproject/documents/pull/14) | Done. ~~[16086](https://github.com/mantidproject/mantid/issues/16086), [16096](https://github.com/mantidproject/mantid/issues/16096), [16282](https://github.com/mantidproject/mantid/issues/16282)~~ |
 | [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. |
 | [Live listener customisation](https://github.com/mantidproject/documents/pull/7) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Assign to a developer from PSI. |
