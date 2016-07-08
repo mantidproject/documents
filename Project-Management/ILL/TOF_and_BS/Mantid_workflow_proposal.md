@@ -27,8 +27,6 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
   - Default algorithm: `NormaliseToMonitor`. Additionally, monitor spectra could be corrected for efficiency using `MonitorEfficiencyCorUser`.
   - `DgsReduction`: ditto for `NormaliseToMonitor`.
 
-At this point, `DgsReduction` runs `ConvertUnits` and `Rebin` followed by detector efficiency correction.
-
 6. Sample position fitting (optional, needs good quality elastic peaks or special vanadium run)
   - Currently, no suitable algorithm available.
   - If adjusting the TOF values would be enough, `CorrectTOF` could be used.
@@ -42,8 +40,6 @@ At this point, `DgsReduction` runs `ConvertUnits` and `Rebin` followed by detect
   - Optionally, take Cd into account.
   - `DgsReduction`: not in this workflow.
 
-At this point, `DgsReduction` runs `CorrectKiKf` and `Rebin`.
-
 9. Normalization to vanadium
   - Basic integration and division.
   - Or use `ComputeCalibrationCoefVan` which scales vanadium with regards to its temperature-dependent Debye-Waller factor.
@@ -51,7 +47,7 @@ At this point, `DgsReduction` runs `CorrectKiKf` and `Rebin`.
 
 10. TOF to energy conversion
   - `ConvertUnits`
-  - `DgsRecution`: done between steps 4 and 5.
+  - `DgsReduction`: done with `Rebin` between steps 4 and 5.
 
 11. Correction for detector efficiency
   - ILL: `DetectorEfficiencyCorUser`
@@ -62,6 +58,7 @@ At this point, `DgsReduction` runs `CorrectKiKf` and `Rebin`.
 
 12. Differential scattering cross-section to dynamic structure factor conversion
   - Also known as `CorrectKiKf`.
+  - 'DgsReduction': done with `Rebin` between steps 8 and 9.
 
 13. Absolute normalization (optional)
   - `DgsReduction`: ditto.
