@@ -1,5 +1,7 @@
 ## The ILL Joins the Mantid Project
 
+**Type: Oral Contribution, Track: Distributed Development**
+
 #### Antti Soininen<sup>1</sup>, Gagik Vardanyan<sup>1</sup>, Ian Bush<sup>1,2</sup>, Verena Reimund<sup>1</sup>
 
 1. Institut Laue-Langevin, Grenoble, France
@@ -18,7 +20,7 @@ In this talk we will discuss the progress made thus far in using Mantid on Time-
 [2] http://www.mantidproject.org/
 
 
-
+-----------------------------
 ##### Original (Ian)
 
 A new team from the ILL has joined the Mantid project, building on work already undertaken to support instruments at the ILL. We will discuss the progress made in these areas, Mantid adoption on instruments and the challenges of adding a new distributed development team to the Mantid project. We will also discuss some of the future challenges that will need to be addressed for adoption of Mantid at the ILL.
