@@ -58,7 +58,7 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
 
 12. Differential scattering cross-section to dynamic structure factor conversion
   - Also known as `CorrectKiKf`.
-  - 'DgsReduction': done with `Rebin` between steps 8 and 9.
+  - `DgsReduction`: done with `Rebin` between steps 8 and 9.
 
 13. Absolute normalization (optional)
   - `DgsReduction`: ditto.
