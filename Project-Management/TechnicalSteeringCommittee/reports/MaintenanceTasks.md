@@ -23,7 +23,7 @@ Highest priority
       6. ~~[Example pull request](https://github.com/mantidproject/mantid/pull/16235)~~
    3. ~~Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) ([#16509](https://github.com/mantidproject/mantid/issues/16509) Fede).~~
    4. Try building Mantid with Qt5 and see what issues remain (Fede). 
-4. ~~[#15421](https://github.com/mantidproject/mantid/issues/15421)~~ Finish GSL2 compatibility work (Roman) **needs follow-on?**
+4. ~~[#15421](https://github.com/mantidproject/mantid/issues/15421)~~ Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   1. ~~Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.~~
   2. ~~Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.~~
