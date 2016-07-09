@@ -41,6 +41,7 @@ Pool
    2. [coverity](https://scan.coverity.com/projects/335) 
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
+     1. [modernize-use-using](http://reviews.llvm.org/D18919) in llvm 3.9? 
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
 2. ~~Support for RPM release numbers [#16147](https://github.com/mantidproject/mantid/issues/16147)~~
