@@ -17,7 +17,7 @@ Agenda
  * Time-of-Flight Spectroscopy - Antti and Ian
  * Backscattering - Verena and Gagik
 
-* Histogram Data - Simon
+* [Histogram Data](http://docs.mantidproject.org/nightly/concepts/HistogramData.html) - Simon
 
 Questions
 =========
