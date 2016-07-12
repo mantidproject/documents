@@ -16,7 +16,7 @@ Agenda
 
 * [Histogram Data](http://docs.mantidproject.org/nightly/concepts/HistogramData.html) - Simon
 
-* Work at the ILL
+* [Work at the ILL](https://github.com/mantidproject/documents/blob/master/Project-Management/ILL/Mantid_Review_Meetings/2016-07-12-Mantid_at_the_ILL.pdf)
  * Time-of-Flight Spectroscopy - Antti and Ian
  * Backscattering - Verena and Gagik
 
