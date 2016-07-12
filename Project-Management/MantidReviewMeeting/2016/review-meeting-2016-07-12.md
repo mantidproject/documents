@@ -13,11 +13,12 @@ Agenda
   * Louise McCann 
   * Dimitar Tasev
 
+
+* [Histogram Data](http://docs.mantidproject.org/nightly/concepts/HistogramData.html) - Simon
+
 * Work at the ILL
  * Time-of-Flight Spectroscopy - Antti and Ian
  * Backscattering - Verena and Gagik
-
-* [Histogram Data](http://docs.mantidproject.org/nightly/concepts/HistogramData.html) - Simon
 
 * Good talk on "Practical Performance Practices" - https://youtu.be/lNnBExDoNSQ with slides at https://github.com/lefticus/presentations/blob/master/PracticalPerformancePractices.md
 
