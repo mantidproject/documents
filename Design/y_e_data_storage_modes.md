@@ -67,21 +67,42 @@ For `E` data, the modification of the storage mode is typically very local and a
 
 If we permit storing either counts or frequencies
 
-1. `Histogram` can be in two states `YMode::Counts` and `YMode::Frequencies`.
-  `Histogram::counts()` and `Histogram::frequencies()` will always be able to return the correct thing.
-  However, `Histogram::y()` will reference data that has no fixed interpretation that client code can rely on.
-  To make this option work, we would thus need to refactor all client code to either use the `counts()`/`frequencies()` interface, or check the storage mode before using `y()`.
+1. **Current solution**:
+   - Data in `Histogram` can be in two states counts or frequencies, but the histogram does not know its state.
+   - `Histogram::counts()` and `Histogram::frequencies()` will thus not return the correct thing if the workspace stores distribution data.
+   - `Histogram::y()` references data that has no fixed interpretation that client code can rely on.
 
-2. `Histogram` can be in two states `YMode::Counts` and `YMode::Frequencies`.
-  `Histogram::counts()` and `Histogram::frequencies()` will always be able to return the correct thing.
-  However, `Histogram::y()` would reference data that has no fixed interpretation that client code can rely on.
-  We could thus remove this part of the interface and refactor all client code to use the `counts()`/`frequencies()` interface.
+2. **Switchable Y-storage mode with direct Y access**
+   - `Histogram` can be in two states `YMode::Counts` and `YMode::Frequencies`.
+   - `Histogram::counts()` and `Histogram::frequencies()` will always be able to return the correct thing.
+   - However, `Histogram::y()` will reference data that has no fixed interpretation that client code can rely on.
+   - To make this option work, we would thus need to refactor all client code to either use the `counts()`/`frequencies()` interface, or check the storage mode before using `y()`.
+   - Effort: **major**
+   - Benefit: **small - medium** (not safe but versatile, we can store any data we may need)
+   - Safety: **small - medium** (we have no way of forcing client code to check storage mode before using `y()`)
 
-3. `Histogram` has only a single state and always stores counts.
-  It will always be guaranteed that `Histogram::counts()` and `Histogram::frequencies()` return the correct thing, and client code can rely on `Histogram::y()` returning a reference to a vector of counts.
-  What about data that has no underlying counts, for example a function defined at certain points?
-  Maybe we need a new workspace type for this?
+3. **Switchable Y-storage mode without direct Y access**
+   - `Histogram` can be in two states `YMode::Counts` and `YMode::Frequencies`.
+   - `Histogram::counts()` and `Histogram::frequencies()` will always be able to return the correct thing.
+   - However, `Histogram::y()` would reference data that has no fixed interpretation that client code can rely on.
+   - We could thus remove this part of the interface and refactor all client code to use the `counts()`/`frequencies()` interface.
+   - Effort: **major**
+   - Benefit: **medium - high** (safe and versatile, we can store any data we may need)
+   - Safety: **high** (cannot misinterpret data, but it would be possible to run any algorithm on any type of data even if that would not make sense)
 
+4. **Fixed Y-storage mode (counts)**
+   - `Histogram` has only a single state and always stores counts.
+   - It will always be guaranteed that `Histogram::counts()` and `Histogram::frequencies()` return the correct thing, and client code can rely on `Histogram::y()` returning a reference to a vector of counts.
+   - What about data that has no underlying counts, for example a function defined at certain points?
+     It would basically be converted into fake counts, based on a potentially lossy conversion of `Points` to `BinEdges`.
+     Maybe we need a new workspace type for this?
+   - Effort: **medium**
+   - Benefit: **medium** (safe but not versatile, we can only store counts and need workarounds for non-count data)
+   - Safety: **medium - high** (medium if we use `Histogram` to also store distribution data, converted to counts)
+
+All of these options seem a bit awkward.
+This is also related to the fact that we can convert between `Points` and `BinEdges`.
+Do we need to fix that as well?
 
 The different interpretations of `Y` data effectively breaks the promises that the `Histogram` interface makes:
 
