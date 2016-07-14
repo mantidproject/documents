@@ -103,6 +103,7 @@ If we permit storing either counts or frequencies
 All of these options seem a bit awkward.
 This is also related to the fact that we can convert between `Points` and `BinEdges`.
 Do we need to fix that as well?
+Would it make sense to reduce this to a 3-state system, instead of having independent `XMode` and `YMode`, we would have `StorageMode::CountBins`, `StorageMode::FrequencyBins`, and `StorageMode::Points`, the latter implying that the data represents frequencies?
 
 The different interpretations of `Y` data effectively breaks the promises that the `Histogram` interface makes:
 
@@ -110,14 +111,13 @@ The different interpretations of `Y` data effectively breaks the promises that t
 
 - `RawCountValidator` can this be removed?
 
-- Saving data, e.g., `SEQUOIAreduction.py`
+- Saving data, e.g., `SEQUOIAreduction.py`, need to be able to save distribution data.
 
 - `FitMW` has flag to normalize, but does so only if input is histogram data. Ignores `isDistribution()`? But it seems to be inaccessible and is always off?
 
 - `MatrixWorkspace::isDistribution()` example `CreatePSDBleedMask` needs distribution and manually converts
 
-- binary operations
-
+- binary operations, should it implicitly convert? e.g., `Divide` or `Multiply` may not make sense for `Counts`.
 
 - `Integration` always computes the integral of the counts, not the frequencies, even if the workspace stores distribution data.
 
@@ -150,5 +150,4 @@ This could be done via a simple change in the table view, options are:
 
 - Do we ever want to fit counts?
 - If yes, we need to be able to select what `Fit` does.
-
 
