@@ -17,13 +17,13 @@ Assuming they did not change, it seems to me that both errors discovered by Ken 
 
 ### Detector Positions
 
-Using a right handed coordinate with r, &theta; and &phi; as shown (not used as spherical coordinates!). r is the distance to the detector, &theta; the angle the detector makes to the +z axis and &phi; the angle to the x-z plane.
+Using a right handed Cartesian coordinate system, and defining r, &theta; and &phi; as shown (not used as spherical coordinates!). r is the distance to the detector, &theta; the angle the detector makes to the +z axis and &phi; the angle to the x-z plane.
 
 The beam direction is +z, and sample at r = 0.
 
 <img src="3D_Spherical_2.png" alt="Coordinate System" style="width: 450px;"/>
 
-Detector to sample distance is 2.483 m. There are three detector banks, lower phi = -15&deg;, middle phi = 0&deg;, and upper phi = +15&deg;.
+Detector to sample distance is 2.483 m. There are three detector banks, lower phi = -11.5&deg;, middle phi = 0&deg;, and upper phi = +11.5&deg;.
 
 The angles currently in the NeXus files are:
 ```python
@@ -49,27 +49,33 @@ Spectrum numbering goes from the upper, middle, lower for a given detector angle
 
 ### Detector Boxes
 
-Detectors are squashed cylinders, 32 mm wide and 16 mm deep. They are 300 mm long (in detection terms). They are approximated for the instrument definition as cuboids.
+Detectors are squashed cylinders, 31 mm wide and 16 mm deep. They are 300 mm long (in detection terms). They are approximated for the instrument definition as cuboids.
 
 Detectors are arrange in boxes of 3 or 4. The angle between detector tube centers is 0.78&deg;. This corresponds to 2.483 m * sin (0.78&deg;) = 33.80144566 mm.
 
 For the boxes of 3 or 4 detectors the mean of the 3 or 4 detector angles is used as the position for the box, and the distance to the sample is also to this middle point. The detectors are arranged flat in the box with 33.8 mm between the tube centers.
 
 The position of the boxes is given as:
- * x = - (r<sup>2</sup> sin<sup>2</sup> &theta; - r<sup>2</sup> sin<sup>2</sup> &phi;)<sup>1/2</sup> ;
+ * x = a * (r<sup>2</sup> sin<sup>2</sup> &theta; - r<sup>2</sup> sin<sup>2</sup> &phi;)<sup>1/2</sup> ;
  * y = r sin &phi;
  * z = r cos &theta;
+
+Here a is +1 for instruments scattering to the left, and -1 for instruments scattering to the right.
 
 Rotations are then applied to give the rotation from the x-y plane to face the detector:
  * atan(x/z) (about y-axis)
  * -phi (about x-axis)
 
 The final rotation is made to align the detector on Debye-Scherrer cone.
- * 90&deg; + acos(cot(&theta;) tan(&phi;)) (about z-axis)
+ * a * (90&deg; - acos(cot(&theta;) tan(&phi;))) (about z-axis)
 
 ### Resulting Instrument View
 
-![instrument_view](./Instrument_View.png "Instrument View")
+![instrument_view1](./Instrument_View_1.png "Instrument View")
+![instrument_view2](./Instrument_View_2.png "Instrument View")
+![instrument_view3](./Instrument_View_3.png "Instrument View")
+![instrument_view4](./Instrument_View_4.png "Instrument View")
+
 
 Here blue is z, red is x, and y is green.
 
