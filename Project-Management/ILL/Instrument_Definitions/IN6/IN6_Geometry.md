@@ -15,6 +15,10 @@ Assuming they did not change, it seems to me that both errors discovered by Ken 
 
 > 2. There is a big gap of 1.86 degrees between entry 108 and 109, where the number of detectors per box goes from 4 to 3. As shown by Ken, this ought to be about 1.08 degrees instead, as confirmed by his high-precision measurements on 4He, as well as his inspection of the detector boxes in 1991. Hence, it appears to me that all angles above 102 degrees are again wrong. This error is also present in the ascii raw data files.
 
+Another point from Bjorn (15/07/2016), on positions of upper and lower banks:
+
+> The vertical coverage is quoted to be +-15 degrees, which most likely implies that the top part of the top detector row is at +15 degrees, and hence that the bottom part of the bottom detector row is at -15 degrees. Since the effective detector length is 30 cm, and the detectors are at Lsd=2.466 or 2.483 m from the sample), (these are the nominal design values and believed actual values, respectively), half a single detector covers atan(0.15/2.483)=3.5 degrees vertically. Thus, the middle of the upper bank is at 15-3.5=11.5 degrees. The lower end of detectors in the upper bank would then be at 11.5-3.5=8 degrees, giving a gap of 4.5 degrees to the upper end of the middle bank.
+
 ### Detector Positions
 
 Using a right handed Cartesian coordinate system, and defining r, &theta; and &phi; as shown (not used as spherical coordinates!). r is the distance to the detector, &theta; the angle the detector makes to the +z axis and &phi; the angle to the x-z plane.
@@ -60,7 +64,7 @@ The position of the boxes is given as:
  * y = r sin &phi;
  * z = r cos &theta;
 
-Here a is +1 for instruments scattering to the left, and -1 for instruments scattering to the right.
+Here a = +1 for instruments scattering to the left, and a = -1 for instruments scattering to the right.
 
 Rotations are then applied to give the rotation from the x-y plane to face the detector:
  * atan(x/z) (about y-axis)
