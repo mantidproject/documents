@@ -9,9 +9,7 @@
   Often this is done in-place, i.e., `E` temporarily stores the variance.
 - In a few cases `E` is kept as a variance until just before the end of an algorithm for performance reasons.
   For example, `DiffractionFocussing2` needs to summing many spectra.
-  To avoid repeated evaluation of the expensive `sqrt` function for the target spectrum, all spectra are added without converting back to standard deviation after every addition.
-
-Notable examples include `Kernel::VectorHelper::rebin()` and `Kernel::VectorHelper::rebinHistogram()`.
+  To avoid repeated evaluation of the expensive `sqrt` function for the target spectrum, all spectra are added without converting back to standard deviation after every addition. `DiffractionFocusing2.cpp` calls `Kernel::VectorHelper::rebinHistogram()` where calculations between intput and output E `vector` are performed in terms of variance. This also happens in `Kernel::VectorHelper::rebin()` 
 
 ### Discussion
 
