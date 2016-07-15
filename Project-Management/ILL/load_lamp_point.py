@@ -34,10 +34,12 @@ class LoadLampPoint(PythonAlgorithm):
 
     def PyInit(self):
         self.declareProperty(FileProperty(name="InputFile", defaultValue="", action=FileAction.Load, extensions = ["hdf", "nxs"]))
+        self.declareProperty(name="ConvertToHistogram", defaultValue=False, doc="Set X-axis to have bin edges instead of bin centres - sometimes required for algorithms")
         self.declareProperty(WorkspaceProperty(name="OutputWorkspace", defaultValue="", direction=Direction.Output))
 
     def PyExec(self):
         input_file = self.getProperty("InputFile").value
+        convert_to_histogram = self.getProperty("ConvertToHistogram").value
         
         with h5py.File(input_file, 'r') as hf:
             data = numpy.array(hf.get('entry1/data1/DATA'))
@@ -60,15 +62,21 @@ class LoadLampPoint(PythonAlgorithm):
 
         output_ws = WorkspaceFactory.create("Workspace2D", NVectors=Y.size, XLength=X.size+1, YLength=X.size)
         mtd.add('output_ws', output_ws)
-        output_ws = ConvertToPointData('output_ws')
-        mtd.remove('output_ws')
+        output_ws_point = ConvertToPointData('output_ws')
 
         if (Y.size == 1) :
-            load_workspace_1D(output_ws, X, Y, data, errors)
+            load_workspace_1D(output_ws_point, X, Y, data, errors)
         elif (Y.size > 1):
-            load_workspace_2D(output_ws, X, Y, data, errors)
-
-        self.setProperty('OutputWorkspace', output_ws)
+            load_workspace_2D(output_ws_point, X, Y, data, errors)
+            
+        if convert_to_histogram:
+            output_ws_histo = ConvertToHistogram(output_ws_point)
+            self.setProperty('OutputWorkspace', output_ws_histo)
+            mtd.remove('output_ws_histo')
+        else:
+            self.setProperty('OutputWorkspace', output_ws_point)
+        mtd.remove('output_ws')
+        mtd.remove('output_ws_point')
 
 
 AlgorithmFactory.subscribe(LoadLampPoint)
