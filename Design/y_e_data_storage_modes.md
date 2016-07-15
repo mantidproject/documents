@@ -15,7 +15,7 @@
 
 For `E` data, the modification of the storage mode is typically very local and a fix should be rather easy.
 
-- `Histogram` provides functions for obtaining variances as well as standard deviations, e.g., `countVariances()` and `countStandardDeviations()`.
+- `Histogram` currently provides functions for obtaining variances as well as standard deviations, e.g., `countVariances()` and `countStandardDeviations()`.
   If the internal `E` vector were converted to variances by external means (as it is done currently), these access methods would do the wrong thing.
 
 - `HistogramData` provides means for converting between standard deviations and variances, in particular types that do the conversion automatically.
