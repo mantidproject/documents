@@ -1,5 +1,18 @@
 # Y and E data storage modes
 
+## Introduction
+
+- Current our data structures for X, Y, and E (both the old ones and the new `Histogram` type) all have multiple personalities.
+- This makes writing algorithms harder (need to have checks), implies a higher risk for bugs in algorithms, and work flows that appear to be working may actually yield incorrect results.
+- Ultimate goal: Remove those ambiguities in our data types.
+
+Clearly this cannot be done any time soon, since not only the data structures need fixing, but all of our algorithms.
+This document presents a first step that solves some of the issues, increases safety, and paves the way for future changes that bring us closer to the ultimate goal.
+
+- Get rid of the concept *distribution data*.
+- All data in `MatrixWorkspace` and `Histogram` is stores as `Counts`.
+-
+
 ## Uncertainties
 
 ### Status
@@ -17,6 +30,8 @@ For `E` data, the modification of the storage mode is typically very local and a
 
 - `Histogram` currently provides functions for obtaining variances as well as standard deviations, e.g., `countVariances()` and `countStandardDeviations()`.
   If the internal `E` vector were converted to variances by external means (as it is done currently), these access methods would do the wrong thing.
+  For example, `countVariances()` assumes that the internal `E` vector stores standard deviations.
+  If this is not the case due to an external conversion of this `E` vector to variances, `countVariances()` will still return the square of the `E` vector, i.e., the *square* of the variances.
 
 - `HistogramData` provides means for converting between standard deviations and variances, in particular types that do the conversion automatically.
   These should be used by client code.
@@ -49,6 +64,14 @@ For `E` data, the modification of the storage mode is typically very local and a
     However, to create the vector of histograms as input for `sumHistograms()` we need to **store all histograms at the same time**.
     This will increase memory consumption and reduce cache locality of the computation.
 
+  - This discussion may be less relevant that thought, since e.g., `DiffractionFocussing2` also needs to rebin each spectrum and thus the `sqrt` cost may turn out to be irrelevant.
+
+  - This discussion highlights something important: If clients do not understand the storage mode used in `Histogram`, they may be making inefficient use of its interface.
+    For example, `operator+()` for `Histogram` will not necessarily be the ideal (fastest) solution in some cases, so adding things like this to the interface will always be slightly ambivalent.
+
+- Completely removing the direct access from the API (`e()` and `sharedE() and the respective mutable variants) is not realistic.
+  This is also related to the similar issue for `Y`, since `E` may represent uncertainties of `Counts` or `Frequencies`.
+
 
 ## Count and frequency data
 
@@ -57,13 +80,26 @@ For `E` data, the modification of the storage mode is typically very local and a
 - Data in `Workspace2D` be represent counts or frequencies.
 - Conversions between the two are done with the algorithms `ConvertToDistribution` and `ConvertFromDistribution`, or the helper function `WorkspaceHelpers::makeDistribution()`.
 - `MatrixWorkspace::isDistribution()` can be used for checking the state, and `MatrixWorkspace::setDistribution()` for setting the corresponding flag (note that this does not actually transform the data!).
-- There is a validator that verifies the state of a workspace, `RawCountValidator`, however is is used by relatively few algorithms.
+- There is a validator that verifies the state of a workspace, `RawCountValidator`, however it is used by relatively few algorithms.
 - A considerable number of algorithms use `MatrixWorkspace::isDistribution()` to adapt their behavior, in most cases this adaption is a simple conversion to the desired data storage type.
 - For a large number of algorithms there are no checks, and it is not documented whether or not the work only with counts, only with frequencies, or both.
+- The `MatrixWorkspace::isDistribution()` flag is just a flag on the workspace.
+  I could in principly lie, and there is currently no guarantee that all histograms in a workspace have the same state.
 
 ### Discussion
 
-If we permit storing either counts or frequencies
+Parts of the problem under discussion is related to the fact that `Histogram` provides direct access to the underlying data.
+This is currently required for three reasons:
+
+- Some client code does not care if it works with `Counts` or `Frequencies`, so we cannot force it to use either of those.
+- In-place modifications. Using the new interface this is not possible, since we return a COW object by value, so modification will trigger a copy, making in-place modifications of workspaces inefficient.
+- The issues discussed in this document, i.e., we have places where data is converted between various storage modes, so for now client code cannot always rely on `counts()` and `frequencies()` to return what they need.
+
+We will solve the last point and at least parts of the first point if we come to a good solution for what is being discussed here.
+Examples for the first bullet are `ExtractSpectra` or other algorithms that simply chop off bits at the ends of the histogram.
+Also `ConvertUnits` does not care in many cases.
+
+If we permit storing either counts or frequencies...
 
 1. **Current solution**:
    - Data in `Histogram` can be in two states counts or frequencies, but the histogram does not know its state.
@@ -77,7 +113,7 @@ If we permit storing either counts or frequencies
    - To make this option work, we would thus need to refactor all client code to either use the `counts()`/`frequencies()` interface, or check the storage mode before using `y()`.
    - Effort: **major**
    - Benefit: **small - medium** (not safe but versatile, we can store any data we may need)
-   - Safety: **small - medium** (we have no way of forcing client code to check storage mode before using `y()`)
+   - Safety: **small - medium** (after a global refactoring this would be safe, but we have no way of forcing client code to check storage mode before using `y()`)
 
 3. **Switchable Y-storage mode without direct Y access**
    - `Histogram` can be in two states `YMode::Counts` and `YMode::Frequencies`.
@@ -125,7 +161,56 @@ The different interpretations of `Y` data effectively breaks the promises that t
 
 - `FractionalRebinning` and `RebinnedOutput` workspace?
 
-- how do we deal with point-distribution data? storing counts will be lossy (see maybe `IQTransform`).
+- How do we deal with point-distribution data? storing counts will be lossy (see maybe `IQTransform`).
+  Can store an extra helper value in case the `Histogram` is created from `Points` and `Frequencies`.
+
+  ```cpp
+  class Histogram {
+  private:
+    double m_firstBinEdge = NAN; // not defined in many cases
+  };
+
+  Histogram::Histogram(const Points &points, const Frequencies &frequencies) {
+    m_x = points.cowData();
+    auto edges = BinEdges(points);
+    m_y = Counts(edges, frequencies).cowData();
+    m_firstBinEdges = edges[0];
+  }
+
+  Frequencies Histogram::frequencies() {
+    if(xMode == XMode::BinEdges) {
+      // ...
+    } else {
+      auto edges = BinEdges(Points(m_x), m_firstBinEdge);
+      return Frequencies(edges, Counts(m_y));
+    }
+  }
+
+  BinEdges::BinEdges(const Points &points, double firstBinEdge) {
+    if (std::isnan(firstBinEdge) {
+      // compute edges as midpoints between points
+    } else {
+      // compute edges such that points are midpoints between edges
+    }
+  }
+  ```
+
+  Note that there is one problem with this mechanism:
+If the points are modified after creation of the histogram the value of `m_firstBinEdges` may become outdated.
+
+ I think we can realistically do that only by moving a lot of functionality into the `HistogramData` scope (or a new module for `Histogram` operations).
+Basically most algorithms perform a per-histogram operation.
+These operations could be extracted from the algorithm code and moved into a histogram module.
+The algorithms themselves would then only perform operations with histograms, not with the X, Y, and E data.
+
+This is again a massive effort, but it can easily done step by step over a longer period. That way we will eventually get to the point where the direct access interface is used little.
+
+1. Most algorithms should operate at the Histogram level.
+1. Code relating to the internal manipulation of histograms should be migrated into the `HistogramData` scope
+1. Access to aspects of the Histograms should be increasingly qualified. `X`, `Y`, `E` are internal.
+1. We should aim to make these improvements as part of a longer programme of work.
+
+
 
 ### Data visualization
 
