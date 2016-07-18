@@ -2,18 +2,27 @@
 
 ## Introduction
 
-- Current our data structures for X, Y, and E (both the old ones and the new `Histogram` type) all have multiple personalities.
-- This makes writing algorithms harder (need to have checks), implies a higher risk for bugs in algorithms, and work flows that appear to be working may actually yield incorrect results.
+- Currently our data structures for X, Y, and E (both the old ones and the new `Histogram` type) all have multiple personalities (`BinEdges` and `Points`, `Counts` and `Frequencies`, `StandardDeviations` and `Variances`).
+  In particular, it is typically not clear what type of data a given `Histogram` is storing at a given point in time.
+- Up to a certain point this is making development of an algorithm more convenient, since all data can just be dumped into anonymous container and be modified arbitrarily at will.
+- However, there are several severe disadvantages:
+  - We have no guarantee about an Algorithm's behavior unless only well trodden paths are followed.
+  - Writing algorithms becomes harder since many checks have to be done to attempt determination of the storage modes.
+  - Some checks may not be correct or even possible, e.g., it is impossible to figure out whether `E` stores variances or standard deviations.
+  - Implied higher risk for bugs in algorithms due to more code to deal with several cases.
+  - Work flows that appear to be working may actually yield incorrect results, even if they are constructed from algorithms that are correct when run individually.
 - Ultimate goal: Remove those ambiguities in our data types.
 
-Clearly this cannot be done any time soon, since not only the data structures need fixing, but all of our algorithms.
+Clearly this cannot be done any time soon, since not only the data structures (including the workspace hierarchy) need fixing, but all of our algorithms.
 This document presents a first step that solves some of the issues, increases safety, and paves the way for future changes that bring us closer to the ultimate goal.
 
-- Get rid of the concept *distribution data*.
-- All data in `MatrixWorkspace` and `Histogram` is stores as `Counts`.
--
-
 ## Uncertainties
+
+We start the discussion with the uncertainties (`E`).
+In this case a simple internal change can fix the current ambiguity.
+The effect is local in all cases and will be invisible on the API level and to the user.
+This is thus not part of the design proposal, but due to the similarities we discuss it here as well.
+Experience gained during refactoring `E` can be used to potentially uncover problems overlooked in the design for `Y`.
 
 ### Status
 
@@ -22,7 +31,9 @@ This document presents a first step that solves some of the issues, increases sa
   Often this is done in-place, i.e., `E` temporarily stores the variance.
 - In a few cases `E` is kept as a variance until just before the end of an algorithm for performance reasons.
   For example, `DiffractionFocussing2` needs to summing many spectra.
-  To avoid repeated evaluation of the expensive `sqrt` function for the target spectrum, all spectra are added without converting back to standard deviation after every addition. `DiffractionFocusing2.cpp` calls `Kernel::VectorHelper::rebinHistogram()` where calculations between intput and output E `vector` are performed in terms of variance. This also happens in `Kernel::VectorHelper::rebin()` 
+  To avoid repeated evaluation of the expensive `sqrt` function for the target spectrum, all spectra are added without converting back to standard deviation after every addition.
+  `DiffractionFocusing2` calls `Kernel::VectorHelper::rebinHistogram()` where calculations between input and output E `vector` are performed in terms of variance.
+  This also happens in `Kernel::VectorHelper::rebin()`.
 
 ### Discussion
 
@@ -59,21 +70,37 @@ For `E` data, the modification of the storage mode is typically very local and a
     ```
 
     This would be a clean solution without performance loss.
-    Unfortunately, there will be an implicit performance and ressource issue if the input is an `EventWorkspace`!
+    Unfortunately, there will be an implicit performance and ressource issue if the input is an `EventWorkspace`.
     Obtaining a `Histogram` from the input workspace will create the `Y` and `E` data on the fly (this needs to be done in any solution).
     However, to create the vector of histograms as input for `sumHistograms()` we need to **store all histograms at the same time**.
     This will increase memory consumption and reduce cache locality of the computation.
 
-  - This discussion may be less relevant that thought, since e.g., `DiffractionFocussing2` also needs to rebin each spectrum and thus the `sqrt` cost may turn out to be irrelevant.
+  - `DiffractionFocussing2` also needs to rebin each spectrum and thus the `sqrt` cost may turn out to be irrelevant.
+    There are only very few examples where the `sqrt` computation is postponed for performance reasons, so it might be less relevant to provide an direct solution for this.
 
   - This discussion highlights something important: If clients do not understand the storage mode used in `Histogram`, they may be making inefficient use of its interface.
     For example, `operator+()` for `Histogram` will not necessarily be the ideal (fastest) solution in some cases, so adding things like this to the interface will always be slightly ambivalent.
 
-- Completely removing the direct access from the API (`e()` and `sharedE() and the respective mutable variants) is not realistic.
+- Completely removing the direct access from the API (`e()` and `sharedE()` and the respective mutable variants) is not realistic.
+  With direct access it is impossible to enforce (on a technical level) that `E` always stores standard deviations.
   This is also related to the similar issue for `Y`, since `E` may represent uncertainties of `Counts` or `Frequencies`.
+
+In conclusion:
+
+- `E` should always store standard deviations, never variances or anything else.
+  Storing always variances could be a performance advantage, but the required amount of changes is too big to do this at the current point.
+- We cannot realistically enforce this at a technical level.
+  Providing a good interface to `Histogram` and a set of functions for dealing with uncertainties that covers most common cases will discourage developers from storing variances.
+  Furthermore, a clear documentation and code review should be able to help catch violations.
+- All code that currently stores anything but standard deviations as `E` in a histogram or workspace will be refactored.
+- `Histogram` data will be extended with methods for manipulating standard deviations to eliminate the need for externally dealing with variances.
 
 
 ## Count and frequency data
+
+- Get rid of the concept *distribution data*.
+- All data in `MatrixWorkspace` and `Histogram` is stores as `Counts`.
+-
 
 ### Status
 
