@@ -175,18 +175,27 @@ Note that the alogirthms below may expect the detectors to be of the same kind. 
 ## DgsReduction documentation
 
 General description of the workflow:
+
 https://github.com/mantidproject/documents/raw/master/Help/DGSReduction/DGSmain_v1_0.pdf
 
 Description of the user interface:
+
 http://www.mantidproject.org/Direct:DgsReduction
 
 Top level algorithm documentation:
+
 http://docs.mantidproject.org/nightly/algorithms/DgsReduction-v1.html
 
 Subalgortithm documentation:
+
 http://docs.mantidproject.org/nightly/algorithms/DgsConvertToEnergyTransfer-v1.html
+
 http://docs.mantidproject.org/nightly/algorithms/DgsPreprocessData-v1.html
+
 http://docs.mantidproject.org/nightly/algorithms/DgsDiagnose-v1.html
+
 http://docs.mantidproject.org/nightly/algorithms/DgsRemap-v1.html
+
 http://docs.mantidproject.org/nightly/algorithms/DgsProcessDetectorVanadium-v1.html
+
 http://docs.mantidproject.org/nightly/algorithms/DgsAbsoluteUnitsReduction-v1.html
