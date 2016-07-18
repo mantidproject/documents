@@ -9,7 +9,9 @@ Pinned Topics
 New Items
 ---------
 
-* PMB have approved 4 weeks of effort for an evaluation of plotting packages in light of `qwt5` -> `qwt6` being a non-trivial transition. In particular the evaluation should include `matplotlib`.
+* PMB have approved 4 weeks of effort for an evaluation of plotting packages in light of `qwt5` -> `qwt6` being a non-trivial transition.
+  * Who is doing the full evaluation?
+  * What are the packages to be evaluated?
 * Potential VSI Improvements
   * Enable [multithreading in the VSI](https://blog.kitware.com/simple-parallel-computing-with-vtksmptools/)? 
     * Add Threading Building Blocks to the Mantid Dependencies?
