@@ -98,33 +98,51 @@ In conclusion:
 
 ## Count and frequency data
 
-- Get rid of the concept *distribution data*.
-- All data in `MatrixWorkspace` and `Histogram` is stores as `Counts`.
--
-
 ### Status
 
 - Data in `Workspace2D` be represent counts or frequencies.
 - Conversions between the two are done with the algorithms `ConvertToDistribution` and `ConvertFromDistribution`, or the helper function `WorkspaceHelpers::makeDistribution()`.
-- `MatrixWorkspace::isDistribution()` can be used for checking the state, and `MatrixWorkspace::setDistribution()` for setting the corresponding flag (note that this does not actually transform the data!).
+- `MatrixWorkspace::isDistribution()` can be used for checking the state, and `MatrixWorkspace::setDistribution()` for setting the corresponding flag (note that this does not actually transform the data).
 - There is a validator that verifies the state of a workspace, `RawCountValidator`, however it is used by relatively few algorithms.
 - A considerable number of algorithms use `MatrixWorkspace::isDistribution()` to adapt their behavior, in most cases this adaption is a simple conversion to the desired data storage type.
-- For a large number of algorithms there are no checks, and it is not documented whether or not the work only with counts, only with frequencies, or both.
+- For a large number of algorithms there are no checks, and it is not documented whether or not they work only with counts, only with frequencies, or both.
 - The `MatrixWorkspace::isDistribution()` flag is just a flag on the workspace.
-  I could in principly lie, and there is currently no guarantee that all histograms in a workspace have the same state.
+  It could in principle lie, and there is currently no guarantee that all histograms in a workspace have the same state.
 
 ### Discussion
 
 Parts of the problem under discussion is related to the fact that `Histogram` provides direct access to the underlying data.
 This is currently required for three reasons:
 
+- In-place modifications. Using the new interface, `Histogram::counts()` followed by `Histogram::setCounts()`, this is not possible, since we return a COW object by value, so modification will trigger a copy, making in-place modifications of workspaces inefficient.
 - Some client code does not care if it works with `Counts` or `Frequencies`, so we cannot force it to use either of those.
-- In-place modifications. Using the new interface this is not possible, since we return a COW object by value, so modification will trigger a copy, making in-place modifications of workspaces inefficient.
-- The issues discussed in this document, i.e., we have places where data is converted between various storage modes, so for now client code cannot always rely on `counts()` and `frequencies()` to return what they need.
+  Examples include `ExtractSpectra` or other algorithms that simply chop off bits at the ends of the histogram and also `ConvertUnits` does not care in many cases.
+- We currently have places where data is converted between various storage modes, so for now client code cannot always rely on `counts()` and `frequencies()` to return what they need.
 
-We will solve the last point and at least parts of the first point if we come to a good solution for what is being discussed here.
-Examples for the first bullet are `ExtractSpectra` or other algorithms that simply chop off bits at the ends of the histogram.
-Also `ConvertUnits` does not care in many cases.
+We will solve the last point and at least parts of the second point if we come to a good solution for what is being discussed here.
+
+Removing direct access to the underlying data, or rather removing direct type-agnostic access such as `Histogram::y()`, would ultimately solve this problem.
+This would be an absolutely massive effort and would also require an improved workspace hierarchy.
+Realistically, in my opinion, we can do that only by moving a lot of functionality into the `HistogramData` scope (or a new module for `Histogram` operations).
+Basically most algorithms perform a per-histogram operation.
+These operations could be extracted from the algorithm code and moved into a histogram module.
+The algorithms themselves would then only perform operations with histograms, not with the X, Y, and E data:
+1. Most algorithms should operate at the Histogram level.
+2. Code relating to the internal manipulation of histograms should be migrated into the `HistogramData` scope
+3. Access to aspects of the Histograms should be increasingly qualified. `X`, `Y`, `E` are internal.
+4. We should aim to make these improvements as part of a longer programme of work.
+
+This is again a massive effort, but it can easily done step by step over a longer period. That way we will eventually get to the point where the direct access interface is used little.
+
+As an intermediate step that solves parts of our problems and paves the way for changes suggested in the previous paragraph, we must remove the ambiguity of what `Y` represents, counts or frequencies.
+In contrast to the discussion regarding `E`, there are additional difficulties:
+1. The difference between counts and frequencies is exposed on the API level, workspaces can be *histogram-data* or *distribution-data*.
+2. If the histogram stores *point-data*, i.e., not bin edges, the conversion from frequencies to counts is not reversible without a loss in precision.
+  To compute frequencies from counts, we need the bin widths, which in turn are not uniquely determined by points, since there is one degree of freedom too many.
+
+
+
+
 
 If we permit storing either counts or frequencies...
 
@@ -165,6 +183,14 @@ All of these options seem a bit awkward.
 This is also related to the fact that we can convert between `Points` and `BinEdges`.
 Do we need to fix that as well?
 Would it make sense to reduce this to a 3-state system, instead of having independent `XMode` and `YMode`, we would have `StorageMode::CountBins`, `StorageMode::FrequencyBins`, and `StorageMode::Points`, the latter implying that the data represents frequencies?
+
+
+
+In the case of the `Y` data, removing the ambiguity of storage mode would effectively
+- Get rid of the concept *distribution data*.
+- All data in `MatrixWorkspace` and `Histogram` is stores as `Counts`.
+-
+
 
 The different interpretations of `Y` data effectively breaks the promises that the `Histogram` interface makes:
 
@@ -225,17 +251,6 @@ The different interpretations of `Y` data effectively breaks the promises that t
   Note that there is one problem with this mechanism:
 If the points are modified after creation of the histogram the value of `m_firstBinEdges` may become outdated.
 
- I think we can realistically do that only by moving a lot of functionality into the `HistogramData` scope (or a new module for `Histogram` operations).
-Basically most algorithms perform a per-histogram operation.
-These operations could be extracted from the algorithm code and moved into a histogram module.
-The algorithms themselves would then only perform operations with histograms, not with the X, Y, and E data.
-
-This is again a massive effort, but it can easily done step by step over a longer period. That way we will eventually get to the point where the direct access interface is used little.
-
-1. Most algorithms should operate at the Histogram level.
-1. Code relating to the internal manipulation of histograms should be migrated into the `HistogramData` scope
-1. Access to aspects of the Histograms should be increasingly qualified. `X`, `Y`, `E` are internal.
-1. We should aim to make these improvements as part of a longer programme of work.
 
 
 
