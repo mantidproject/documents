@@ -1,6 +1,6 @@
 # TOF data reduction in Mantid: a draft
 
-This document outlines a possible ILL TOF data reduction workflow in Mantid. The workflow is based on Björn Fåk's requests and is partially inspired by the TOFTOF workflow. Additionally, a comparison to the workflow algorithm `DgsReduction` is done. Links to `DgsReduction` documentation is provided at the end of this document.
+This document outlines a possible ILL TOF data reduction workflow in Mantid. The workflow is based on Björn Fåk's requests and is partially inspired by the TOFTOF workflow. Additionally, a comparison to the workflow algorithm `DgsReduction` is done. Links to `DgsReduction` documentation are provided at the end of this document.
 
 ## Workflow for the sample
 
