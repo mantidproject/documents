@@ -101,8 +101,13 @@ For another release
    10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
    11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 9. clang-tidy
-     1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
-     2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
+     1. While I prefer the modern syntax, these clang-tidy checks suggest A LOT of changes. If we make these changes, divide them up between multiple people over several cycles.
+         1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
+         2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
+      2. Smaller checks that could be updated in a single PR.
+
+10. Clang/C2 working on Windows
+   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for    
 
 Converted to actual tickets during a release
 --------------------------------------------
