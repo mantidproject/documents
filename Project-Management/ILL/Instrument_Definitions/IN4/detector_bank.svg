@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg5882"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="detector_bank.svg">
+  <defs
+     id="defs5884">
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         id="path3837"
+         style="fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path3840"
+         style="fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3782"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5902"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5904"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="269.62035"
+     inkscape:cy="657.18009"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-paths="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1058"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="true"
+     inkscape:object-nodes="true" />
+  <metadata
+     id="metadata5887">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);display:inline"
+       d="m 175.73734,501.76509 0,-200.0102"
+       id="path3755"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4201"
+       d="m 276.9327,467.12223 -200.010196,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);display:inline" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Serif;-inkscape-font-specification:Serif Italic"
+       x="68.125"
+       y="490.05991"
+       id="text4209"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4211"
+         x="68.125"
+         y="490.05991">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Serif;-inkscape-font-specification:Serif Italic"
+       x="189.38019"
+       y="298.68347"
+       id="text4213"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4215"
+         x="189.38019"
+         y="298.68347">z</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path5937"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(-1.3868744,-4.1508959)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2, 1;stroke-dashoffset:0"
+       id="path6461"
+       sodipodi:cx="175.73734"
+       sodipodi:cy="334.6488"
+       sodipodi:rx="132.86426"
+       sodipodi:ry="132.86426"
+       d="m 249.06742,445.44416 a 132.86426,132.86426 0 0 1 -145.34766,0.85759"
+       sodipodi:start="0.98613463"
+       sodipodi:end="2.1436576"
+       sodipodi:open="true" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6463"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(37.685454,-9.6214984)" />
+    <path
+       transform="translate(-39.864269,-9.6418036)"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       sodipodi:ry="9.2857141"
+       sodipodi:rx="9.2857141"
+       sodipodi:cy="471.29074"
+       sodipodi:cx="177.14285"
+       id="path6465"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6467"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(-73.17226,-24.808323)" />
+    <path
+       transform="translate(71.663671,-25.818474)"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       sodipodi:ry="9.2857141"
+       sodipodi:rx="9.2857141"
+       sodipodi:cy="471.29074"
+       sodipodi:cx="177.14285"
+       id="path6469"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:2,1;stroke-dashoffset:0"
+       d="M 175.73734,334.6488 103.97059,446.48242"
+       id="path6471"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       x="124.75384"
+       y="388.18689"
+       id="text6473"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6475"
+         x="124.75384"
+         y="388.18689">r</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       x="157.58379"
+       y="382.18686"
+       id="text6477"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6479"
+         x="157.58379"
+         y="382.18686">θ'</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6481"
+       sodipodi:cx="175.73734"
+       sodipodi:cy="334.90134"
+       sodipodi:rx="25.982225"
+       sodipodi:ry="25.982225"
+       d="m 175.63837,360.88337 a 25.982225,25.982225 0 0 1 -14.17916,-4.27464"
+       sodipodi:start="1.5746054"
+       sodipodi:end="2.1526033"
+       sodipodi:open="true" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path6483"
+       d="m 395.02305,501.76509 0,-200.0102"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);display:inline"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);display:inline"
+       d="m 496.21841,467.12223 -200.01019,0"
+       id="path6485"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text6487"
+       y="490.05991"
+       x="287.41071"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Serif;-inkscape-font-specification:Serif Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="490.05991"
+         x="287.41071"
+         id="tspan6489"
+         sodipodi:role="line">x</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6491"
+       y="298.68347"
+       x="408.66589"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Serif;-inkscape-font-specification:Serif Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="298.68347"
+         x="408.66589"
+         id="tspan6493"
+         sodipodi:role="line">z</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6497"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(191.96982,-6.3248006)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:open="true"
+       sodipodi:end="2.0860763"
+       sodipodi:start="1.0947864"
+       d="M 236.62057,452.74259 A 132.86426,132.86426 0 0 1 110.26469,450.26127"
+       sodipodi:ry="132.86426"
+       sodipodi:rx="132.86426"
+       sodipodi:cy="334.6488"
+       sodipodi:cx="175.73734"
+       id="path6499"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2, 1;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       transform="translate(219.28571,0)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="translate(239.87858,-5.6088296)"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       sodipodi:ry="9.2857141"
+       sodipodi:rx="9.2857141"
+       sodipodi:cy="471.29074"
+       sodipodi:cx="177.14285"
+       id="path6501"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6503"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(153.30811,-20.522544)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path6507"
+       sodipodi:cx="177.14285"
+       sodipodi:cy="471.29074"
+       sodipodi:rx="9.2857141"
+       sodipodi:ry="9.2857141"
+       d="m 186.42857,471.29074 a 9.2857141,9.2857141 0 1 1 -18.57143,0 9.2857141,9.2857141 0 1 1 18.57143,0 z"
+       transform="translate(278.08087,-18.195258)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path6509"
+       d="M 395.02305,334.6488 330.45096,450.7682"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2, 1;stroke-dashoffset:0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text6511"
+       y="388.18777"
+       x="349.46506"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="388.18777"
+         x="349.46506"
+         id="tspan6513"
+         sodipodi:role="line">r</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6515"
+       y="382.18686"
+       x="379.01239"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="382.18686"
+         x="379.01239"
+         id="tspan6517"
+         sodipodi:role="line">θ'</tspan></text>
+    <path
+       sodipodi:open="true"
+       sodipodi:end="2.0858548"
+       sodipodi:start="1.5746054"
+       d="m 175.63837,360.88337 a 25.982225,25.982225 0 0 1 -12.69951,-3.37064"
+       sodipodi:ry="25.982225"
+       sodipodi:rx="25.982225"
+       sodipodi:cy="334.90134"
+       sodipodi:cx="175.73734"
+       id="path6519"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       transform="translate(219.28571,0)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4637"
+       d="m 124.94377,413.80006 -20.97318,32.68236"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:none;marker-start:url(#Arrow2Mstart)"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       x="98.73098"
+       y="425.461"
+       id="text5723"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5725"
+         x="98.73098"
+         y="425.461">z'</tspan></text>
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       sodipodi:nodetypes="cc"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow2Mstart)"
+       d="M 350.51059,414.69515 330.45096,450.7682"
+       id="path5731"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5921"
+       y="425.461"
+       x="326.73099"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="425.461"
+         x="326.73099"
+         id="tspan5923"
+         sodipodi:role="line">z'</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       x="184.37314"
+       y="339.23511"
+       id="text5925"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5927"
+         x="184.37314"
+         y="339.23511">A</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;fill-opacity:1"
+       id="path5929"
+       sodipodi:cx="175.73734"
+       sodipodi:cy="334.6488"
+       sodipodi:rx="1.9412313"
+       sodipodi:ry="1.9412313"
+       d="m 177.67857,334.6488 a 1.9412313,1.9412313 0 1 1 -3.88247,0 1.9412313,1.9412313 0 1 1 3.88247,0 z" />
+    <path
+       d="m 177.67857,334.6488 a 1.9412313,1.9412313 0 1 1 -3.88247,0 1.9412313,1.9412313 0 1 1 3.88247,0 z"
+       sodipodi:ry="1.9412313"
+       sodipodi:rx="1.9412313"
+       sodipodi:cy="334.6488"
+       sodipodi:cx="175.73734"
+       id="path5931"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       transform="translate(219.28571,-3.7109376e-6)"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5933"
+       y="339.23511"
+       x="403.80173"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Sans Italic"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cs/soininen/Documents/mantid/documents/Project-Management/ILL/Instrument_Definitions/IN4/box_geometry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="339.23511"
+         x="403.80173"
+         id="tspan5935"
+         sodipodi:role="line">A</tspan></text>
+  </g>
+</svg>
