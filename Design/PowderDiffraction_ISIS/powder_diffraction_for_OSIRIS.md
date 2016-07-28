@@ -20,8 +20,8 @@ and the algorithm does not work well when used from the GUI.
 
 * For OSIRIS (possibly the other indirect instruments as well?)
   diffraction data can be acquired and processed in two modes:
-  - Diffraction (powder) mode ("diffonly")
-  - Diffraction in spectroscopy mode ("diffspec")
+  - Diffraction (powder) mode (**"diffonly"**)
+  - Diffraction in spectroscopy mode (**"diffspec"**)
 
 From ISIS diffraction instruments we currently have the following
 [scripts](http://docs.mantidproject.org/nightly/api/python/techniques/PowderDiffractionISIS-v1.html):
@@ -38,7 +38,7 @@ consider absorption corrections in their workflow.
 
 ## Objectives for OSIRIS
 
-Initially the focus is on the "diffonly" mode. "diffspec" is left for
+Initially the focus is on the **"diffonly"** mode. **"diffspec"** is left for
 later, when we have made some progress.
 
 ### General objective
@@ -63,8 +63,8 @@ have in our test data.
 
 1. Produce a GSAS instrument parameters file (.prm/.par/.iparm) for
 OSIRIS. Ideally it should work with GSAS I and II
-1. Harmonize the two modes for OSIRIS diffraction: "diffonly" (powder)
-and "diffspec" (spectroscopy)
+1. Harmonize the two modes for OSIRIS diffraction: **"diffonly"**
+(powder) and **"diffspec"** (spectroscopy)
 
 
 ## Requirements
@@ -91,7 +91,7 @@ process every module or wavelength range separately. Users need to
 reduce the data for every module and then stitch. A higher level
 workflow and graphical interface would be desirable.
 
-Spectroscopy mode ("diffspec") uses one single module / no modules
+Spectroscopy mode (**"diffspec"**) uses one single module / no modules
 which implies that there are no issues with stitching in this mode.
 
 According to Sanghamitra there is something in
@@ -127,4 +127,4 @@ formats such as:
 - [GSAS](http://docs.mantidproject.org/nightly/algorithms/SaveGSS-v1.html)
 - [NeXus](http://docs.mantidproject.org/nightly/algorithms/SaveNexus-v1.html)
 - XYE for TOPAS, FullProf or MAUD (algorithm
-  [SaveXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html).
+  [SaveFocusedXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html)).
