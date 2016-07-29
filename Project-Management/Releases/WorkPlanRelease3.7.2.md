@@ -48,5 +48,7 @@
 - [x] Add to relese notes for 3.7.2
 - [x] Create an installer, perform broad tests
 - [x] Push to release pipeline
-- [ ] Provide ISIS SANS scientists with Windows installers for testing
-- [ ] ...
+- [x] Provide ISIS SANS scientists with Windows installers for testing
+- [ ] Fix release label
+- [ ] Get release signed
+- [ ]
