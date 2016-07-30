@@ -105,6 +105,10 @@ Tools being used and/or considered include:
 * Savu: https://github.com/DiamondLightSource/Savu. open source, being
   developed at the Diamond Light Source.
 
+* [MuhRec](https://www.psi.ch/niag/muhrec): developed at PSI. See also
+  [ImagingScience.ch](http://imagingscience.ch/muhrechome/index.html)
+  for downloads, further information and additional complementary
+  tools.
 
 Image processing
 ----------------
