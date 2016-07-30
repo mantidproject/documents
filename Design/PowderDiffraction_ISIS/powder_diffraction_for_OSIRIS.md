@@ -5,6 +5,7 @@
 
 Description of requirements for reducing OSIRIS powder diffraction
 data. This is at the moment based on a first meeting with Sanghamitra
+(2016/7/26).
 
 The status as of this writing is as follows.
 
@@ -29,7 +30,12 @@ From ISIS diffraction instruments we currently have the following
 * [PEARL scripts](http://docs.mantidproject.org/nightly/api/python/techniques/PearlPowderDiffractionISIS-v1.html#pearl-powder-diffraction-ref)
 
 Different variants of the CRY scripts are being used for the
-instruments POLARIS, HRPD, and GEM.
+instruments POLARIS, HRPD, and GEM. Diagrams and further details on
+the CRY scripts can be found in several documents [available in the
+documents
+repository](https://github.com/mantidproject/documents/tree/master/Design/PowderDiffraction_ISIS). For
+example, see this [list of algorithms used in the
+workflow](https://github.com/mantidproject/documents/blob/master/Design/PowderDiffraction_ISIS/PowderDifIntro.md#mantid-algorithms-used).
 
 At present PEARL scripts are used only for the instrument PEARL. These
 are preferred long-term because they are simpler to understand and
