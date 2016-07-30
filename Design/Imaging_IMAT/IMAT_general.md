@@ -89,21 +89,20 @@ Reconstruction and imaging tools
 
 Tools being used and/or considered include:
 
-* Octopus: <http://octopusimaging.eu, includes reconstruction and
-  visualization tools. Closed source. IMAT scientists have
+* [Octopus](http://octopusimaging.eu) which includes reconstruction
+  and visualization tools. Closed source. IMAT scientists have
   licence(s). The visualization tool (Octopus visualization) can be
   downloaded for free.
 
-* TomoPy:
-  https://www1.aps.anl.gov/Science/Scientific-Software/TomoPy. Open
-  source, installed on SCARF.
+* [TomoPy](https://www1.aps.anl.gov/Science/Scientific-Software/TomoPy).
+  Open source, installed on SCARF.
 
-* Astra Toolbox:
-  http://sourceforge.net/p/astra-toolbox/wiki/Home/. Open source,
-  installed on SCARF.
+* [Astra Toolbox](http://sourceforge.net/p/astra-toolbox/wiki/Home/),
+  open source, Python and matlab interfaces to C++ code (with CUDA
+  acceleration), installed on SCARF.
 
-* Savu: https://github.com/DiamondLightSource/Savu. open source, being
-  developed at the Diamond Light Source.
+* [Savu](https://github.com/DiamondLightSource/Savu), open source,
+  being developed at the Diamond Light Source.
 
 * [MuhRec](https://www.psi.ch/niag/muhrec): developed at PSI. See also
   [ImagingScience.ch](http://imagingscience.ch/muhrechome/index.html)
@@ -119,7 +118,7 @@ required to integrate data formats, and packages, or to provide
 similar and/or complementary functionality to process stacks of
 images. These third party tools include:
 
-* imagej: http://imagej.nih.gov/ij/. Open source, very widespread and
+* [imagej](http://imagej.nih.gov/ij/), open source, very widespread and
   included in Linux distributions.
 
 
