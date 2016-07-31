@@ -56,12 +56,12 @@ project. In principle all these locations will be identical replicas,
 although there are plans to store a subset of the reconstructions
 generated in the archive.
 
+* IMAT data analysis machine (NDLIMAT1).
+
 * Archive. TODO: structure to be defined.
-
-* IMAT data analysis machine (NDAIMAT) which is NDW1520 at the moment.
-
-* Replica on SCARF. TODO: all the details, storage levels, capacity,
-times.
+ 
+* Replica on SCARF (\\files.scarf.rl.ac.uk\work\imat\). 
+  TODO: all the details, storage levels, capacity, times.
 
 TODO. Practicalities. Data volumes. Bandwidth requirements, etc.
 
@@ -121,6 +121,13 @@ images. These third party tools include:
 * [imagej](http://imagej.nih.gov/ij/), open source, very widespread and
   included in Linux distributions.
 
+Visualization (3D)
+------------------
+
+- [Paraview](http://www.paraview.org/)
+- [Avizo](https://www.fei.com/software/avizo3d)
+- [VGStudio](www.volumegraphics.com/en/products/vgstudio)
+- [Octopus visualization](https://octopusimaging.eu/octopus/octopus-visualization)
 
 Practical issues
 ----------------
