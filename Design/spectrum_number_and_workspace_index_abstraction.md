@@ -53,7 +53,7 @@ Global workspace index 0 1 2 3 4
   - Maps are build on-demand from the data stored in the vector of spectra and are returned by value.
   - In many cases the spectrum number is defined as `workspace_index + offset`, typically `offset = 1`.
     This definition will break down completely in the MPI case where instead the spectrum number would be defined as `global_workspace_index + offset`.
-    The global workspace index is, however, now immediately available at the level where such computations are currently done.
+    The global workspace index is, however, not immediately available at the level where such computations are currently done.
     Doing so would pull dependencies on MPI-related code into various places.
 - There is no consistent way of defining index ranges or lists for algorithms.
   This is done individually in each algorithm, and properties may be defined for spectrum numbers or workspace indices, and sometimes the interpretation of index properties even seems to depend on the facility (`LoadEventNexus`, see [13475](https://github.com/mantidproject/mantid/issues/13475)).
