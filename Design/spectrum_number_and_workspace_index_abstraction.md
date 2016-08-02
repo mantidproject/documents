@@ -77,7 +77,7 @@ It is thus absolutely crucial that this is done only in a single location in our
 
 #### Instrument 2.0:
 
-Instrument 2.0 will come with MPI support.
+Instrument 2.0 currently under [prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype) will come with MPI support as per the [design](https://github.com/DMSC-Instrument-Data/documents/tree/master/meeting_notes/April_2016/InstrumentPrototype#mpi-support).
 Cleaning up our index handling is thus a prerequisite for its implementation.
 
 
