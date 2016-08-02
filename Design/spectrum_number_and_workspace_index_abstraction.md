@@ -135,6 +135,14 @@ It should be pointed out that:
 - Algorithms that work with *spectra* use `SpectrumNumbersProperty` to translate from a user provided *detector ID* to an *index for a spectrum* (in a workspace).
 - Algorithms that work with *detectors* use `DetectorIDsProperty` to translate from a user provided *detector ID* to an *index for a detector* (in an instrument).
 
+#### Breaking changes?
+
+If new and consistent property naming is introduced this implies that there will be breaking changes in algorithm interfaces.
+Specifically, the properties for setting, e.g., workspace indices will have different names.
+
+There may be a few cases where larger breaks occur.
+For example, [`LoadEventNexus`, issue 13475](https://github.com/mantidproject/mantid/issues/13475) seems to have an ambiguous interpretation of its inputs.
+
 
 ## Internals
 
@@ -155,6 +163,18 @@ It should be pointed out that:
   For example, it could be a member of the workspace.
 - We should make sure that we do not negatively influence performance when a trivial set of indices is specified by the user.
   Trivial can mean either the full range or a range in combination with a trivial mapping from spectrum number to workspace index (such as a simple offset of 1).
+  I think our existing performance tests are in general not sensitive enough for this.
+  However, it will probably be fine if we support some special cases (which are actually the most common ones):
+
+  - We want to avoid going through a `map` or `vector` for translation in the simple cases of "full-range" (all spectra), or a simple "min-max" case.
+    This is simple to do, an example can be found as part of [this pull request](https://github.com/mantidproject/mantid/pull/15465)
+    I believe this will cover 95% of cases and ensure that there will be no performance hit.
+  - In the other cases, when an actual list of spectra is given, I suppose that that list is commonly small (since it is often manual user input), so `map` access is negligible.
+  - The remaining performance critical case is loading event data. Each event has an associated detector ID, and this needs to be translated to a workspace index.
+    This is currently done by creating a `vector` (instead of a `map`) for look-up.
+    We certainly have to support a similar mechanism.
+    This is a case where we will need to write some performance tests, to prevent regression.
+    These tests should be added well in advance so we can gather enough statistics prior to any changes and monitor the introduction of the changes.
 
 To deal with MPI in a way that is hidden from both the user and most developers, `Translator` transforms a user input into, e.g., a `SpectrumIndexSet`.
 This is best illustrated by the example from above:
@@ -207,12 +227,21 @@ That is, we would not return a set of indices but a vector that is a subset of t
 
 - Implement the `Translator` and store it in a workspace.
   Most likely it makes sense to share this between workspaces, i.e., use `Kernel::cow_ptr`, since indices change rarely after initial creation.
+  As either part of the `Translator`, or as a separate entity within `MatrixWorkspace`, we will have a `Partitioning` object.
+  This object is responsible for determining how data of spectra is split among MPI ranks.
+  There can be several implementations of this `Partitioning` to fit the needs of various work flows.
+  `Translator` uses `Partitioning` to set up its internal maps that define which spectrum numbers are present on a specific MPI rank.
 
 - We cannot provide setters and getters for spectrum numbers and detector IDs in `Ispectrum` any more.
   Otherwise it would not be possible to maintain a consistent index map in `Translator`.
 
   This is likely the most critical change, since it will break existing python scripts.
   Since the fix is simple we can probably replace the existing exports by variants that print and error including a replacement suggestion, e.g., `ISpectrum::getSpectrumNo() is longer available. Replace, e.g., ws.getSpectrum(i).getSpectrumNo() with ws.getSpectrumNo(i)`.
+
+  This point is really crucial, and it is probably necessary to consider it in a larger context.
+  Follow up changes to the indexing library discussed here might require yet another change in the Python interface.
+  We must avoid breaking Python scripts twice.
+  That is, we need to work on a implementation/roll-out schedule in combination with other changes, in particular Instrument 2.0 and changes to the creation of workspaces that will become necessary when adding the `Translator` and `SpectrumInfo` (the latter will be part of Instrument 2.0).
 
 - Replace or remove a series of old index mapping methods from `MatrixWorkspace`.
 
