@@ -63,6 +63,19 @@ Global workspace index 0 1 2 3 4
   - Some algorithms do not validate for duplicate spectrum numbers and double-process the corresponding spectra (see [16651](https://github.com/mantidproject/mantid/issues/16651)).
   - Validations are not unit-tested to a good extent.
 
+The current index types and required mappings between them are illustrated in the following figure:
+
+![Index types in Mantid and mappings between them](Diagrams/index_translations.png "Index translations")
+
+- (1) is the bidirectional translation between spectrum number and workspace index.
+- (2) is the bidirectional translation between detector ID and detector index.
+  This is not part of the current implementation, but will be used in Instrument 2.0 (see below).
+- (3) is the association of a spectrum with a set of detector IDs.
+- (4) gives the associated spectrum for a given detector ID.
+  This is used for example when loading an event nexus file, where each event has a detector ID and needs to be added to a spectrum.
+- (5) is used by certain algorithms that require a single detector for a particular spectrum.
+  There are several distinct behaviors, e.g., throw if multiple detector IDs are in the set, or use the first detector.
+
 #### Future problems:
 
 When running Mantid with MPI we will store different spectra on different MPI ranks.
