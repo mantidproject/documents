@@ -126,7 +126,7 @@ Visualization (3D)
 
 - [Paraview](http://www.paraview.org/)
 - [Avizo](https://www.fei.com/software/avizo3d)
-- [VGStudio](www.volumegraphics.com/en/products/vgstudio)
+- [VGStudio](http://www.volumegraphics.com/en/products/vgstudio)
 - [Octopus visualization](https://octopusimaging.eu/octopus/octopus-visualization)
 
 Practical issues
