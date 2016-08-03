@@ -243,6 +243,21 @@ That is, we would not return a set of indices but a vector that is a subset of t
   We must avoid breaking Python scripts twice.
   That is, we need to work on a implementation/roll-out schedule in combination with other changes, in particular Instrument 2.0 and changes to the creation of workspaces that will become necessary when adding the `Translator` and `SpectrumInfo` (the latter will be part of Instrument 2.0).
 
+  After more discussion with @OwenArnold, we believe that we basically need to change the initialization procedure of `MatrixWorkspace`.
+  Currently this initialization happens incrementally, setting, e.g., spectrum numbers and detector IDs bit by bit and only after that a workspace is considered to be in a "valid" state.
+  This is in conflict with how `SpectrumInfo` (part of Instrument 2.0) and the `Translator` work.
+  For example, the `Translator` needs to maintain index maps and partitioning of the instrument onto MPI ranks.
+  It is very hard, inefficient, and error prone to support incremental changes to the related indices such as spectrum numbers.
+  A quick survey of the code using `ISpectrum::setSpectrumNo()` shows that about 95 percent of its use is for initializing a workspace that was created just shortly before.
+  It will thus be relatively easy to refactor this into a more "atomic" creation.
+
+  This could be done by, e.g., providing `MatrixWorkspace::setSpectrumNumbers()` and `MatrixWorkspace::setDetectorIDs()` (note the plural, we are setting the indices of *all* spectra at the same time), which would forward to the `Translator` stored in the `MatrixWorkspace`.
+  The `MatrixWorkspace` interface would get more bloated, and basically this is still a violation of the law of Demeter, in a sense we simply wrapped the old `MatrixWorkspace::getSpectrum(size_t)::setSpectrumNo(specnum_t)`, or a potential new `MatrixWorkspace::getTranslator()::setSpectrumNumbers()` into a new method on `MatrixWorkspace`.
+  @MichaelWedel suggested to instead keep the `Translator` immutable, which makes sense since once created our indices do not change in most cases.
+  Instead we provide, e.g., `MatrixWorkspace::setTranslator(...)`.
+  A default translator will be set by the constructor or the `init` method called by the `WorkspaceFactory`.
+  If that is insufficient, client code can create a new `Translator` based on, e.g., a vector of spectrum numbers and then set it via `MatrixWorkspace::setTranslator(...)`.
+
 - Replace or remove a series of old index mapping methods from `MatrixWorkspace`.
 
 - Implement two new property types, `SpectrumNumbersProperty` and `DetectorIDsProperty`.
