@@ -25,33 +25,33 @@ design decisions.
 The development phases were:
 
 <a name="point_1"></a>
-1. **State Object and work-flow handler**
-   * 4 - 6 w
+* **State Object and work-flow handler**
+ * 4 - 6 w
 <a name="point_2"></a>
-1. **Reduction Workflow Algorithms and General Reduction**
-  * SliceEvent: 1-2 w
-  * CropDetBank: 1-2 w
-  * MaskISIS: 3-6w
-  * UnitsConvert: 1-3d
-  * NormalizeToMonitor: 1.5-3w
-  * TransmissionCalc: 3-5w
-  * AbsoluteUnitsISIS: 0.5d
-  * SampleGeomCorr: 1w
-  * ConvertToQ: 1-1.5w
-  * CanSubtraction: 1w
-  * StripeEndNans: 1-2d
-  * General-Reduction: 3-5w
-1. **GUI**
-  * 2-4m
-1. **Python Interface**
-  * 3.5 -5.5w
+* **Reduction Workflow Algorithms and General Reduction**
+ * SliceEvent: 1-2 w
+ * CropDetBank: 1-2 w
+ * MaskISIS: 3-6w
+ * UnitsConvert: 1-3d
+ * NormalizeToMonitor: 1.5-3w
+ * TransmissionCalc: 3-5w
+ * AbsoluteUnitsISIS: 0.5d
+ * SampleGeomCorr: 1w
+ * ConvertToQ: 1-1.5w
+ * CanSubtraction: 1w
+ * StripeEndNans: 1-2d
+ * General-Reduction: 3-5w
+* **GUI**
+ * 2-4m
+* **Python Interface**
+ * 3.5 -5.5w
 <a name="point_5"></a>
-1. **Batch mode**
-  * 2-5d
-1. **Adding files**
-  * 1-2d
-1. **Beam Centre Finder**
-  * 3-5w
+* **Batch mode**
+ * 2-5d
+* **Adding files**
+ * 1-2d
+* **Beam Centre Finder**
+ * 3-5w
 
 Note that this initial estimate is missing time for the design and the time
 required for loading and moving the data.
@@ -68,14 +68,14 @@ The development phases and their equivalent are drawn out below:
 * **Phase 0: Design**
   * This was not taken into account in the initial estimates
 * **Phase 1: Establish SANSState mechanism and loaders**
-  * This corresponds to [1)](#point_1) in the initial estimate.
+  * This corresponds to [**State Object and work-flow handler**](#point_1) in the initial estimate.
   * The loaders (and movers) were not taken into account in the initial estimate,
   but are developed in this phase.
 * **Phase 2: Create the skeleton for reduction**
- * This corresponds to *General-Reduction* and *StripEndNans* in [2)](#point_2)
- and [5)](#point_5) in the initial estimate
+ * This corresponds to *General-Reduction* and *StripEndNans* in [**Reduction Workflow Algorithms and General Reduction**](#point_2)
+ and [**Batch mode**](#point_5) in the initial estimate
 * **Phase 3: Provide individual reduction steps**
-  * This corresponds to all reduction steps in 2)
+  * This corresponds to all reduction steps in [**Reduction Workflow Algorithms and General Reduction**](#point_2)
 * **Phase 4: Python Interface**
   * Same as in initial estimate
 * **Phase 5: Integration into Beam Center Finder**
@@ -89,7 +89,7 @@ The development phases and their equivalent are drawn out below:
 The unit is days (=7.5h)
 
 | Phase  | April   | May  | June  | July  | Total
-| -------| ---------------------- | ------------------|
+| -------| -------| ----- |-------| ----- |-------|
 | Design | 3.93    | 3.9  | 0.0   | 0.0   | 7.83      |
 | Phase 1| 0.0     | 4.0  | 12.73 | 4.2   | 20.93     |
 | Phase 2| 0.0     | 0.0  | 0.0   | 4.13  | 4.13      |
@@ -103,7 +103,7 @@ The unit is days (=7.5h)
 
 Time spent so far: 20.93d
 
-The expected time from the initial estimate is 4-6w from 1). The intial estimates
+The expected time from the initial estimate is 4-6w from [**State Object and work-flow handler**](#point_1). The intial estimates
 did not account for the loading files and moving workspaces.
 
 ###### Achievements so far:
@@ -125,8 +125,8 @@ are added.
 
 Time spent so far: 4.13d
 
-The expected time from the initial estimate is 3-5w for *General-Reduction* in 2),
-1-2d for *StripEndNans* in 2) and 2-5d from 3). This is a total of 4-6w.
+The expected time from the initial estimate is 3-5w for *General-Reduction* in [**Reduction Workflow Algorithms and General Reduction**](#point_2),
+1-2d for *StripEndNans* in [**Reduction Workflow Algorithms and General Reduction**](#point_2) and 2-5d from [**Batch mode**](#point_5) . This is a total of 4-6w.
 
 
 ###### Achievements so far:
@@ -168,7 +168,7 @@ No work has been done yet on the other phases
 
 
 | Phase  | Original Estimate     | Time taken        |  Ratio     |
-| -------| ----------------------| ------------------|------------|
+| -------|----------------------|------------------|------------|
 | Phase 1| 4 - 6w                |  ~ 4w             |   0.7 - 1  |
 | Phase 2|                       |                   |    -       |
 | Phase 3|                       |                   |    -       |
