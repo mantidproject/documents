@@ -73,12 +73,17 @@ Rotations are then applied to give the rotation from the x-y plane to face the d
 The final rotation is made to align the detector on Debye-Scherrer cone.
  * a * (90&deg; - acos(cot(&theta;) tan(&phi;))) (about z-axis)
 
+### Other Definitions
+
+The L1 value (source position) is taken as the position of the Fermi chopper, at -0.395 m from the sample.
+
+There are three monitors, the first at -0.273 m, the second at +0.570 m and the third at +2.483 m. Only the first monitor is currently used.
+
 ### Resulting Instrument View
 
 ![instrument_view1](./Instrument_View_1.png "Instrument View")
 ![instrument_view2](./Instrument_View_2.png "Instrument View")
 ![instrument_view3](./Instrument_View_3.png "Instrument View")
-![instrument_view4](./Instrument_View_4.png "Instrument View")
 
 
 Here blue is z, red is x, and y is green.
