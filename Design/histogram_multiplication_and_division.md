@@ -24,6 +24,7 @@ Starting with an example:
 - Set bin widths `{1,1,2}`.
 - Assume the number of measured counts per TOF unit is constant, and we have two measurements, a and b.
   We let the prefix `H` and `D` denote histogram data and distribution data, respectively:
+
   ```cpp
   Ha = {1,1,2}
   Hb = {2,2,4}
@@ -31,6 +32,7 @@ Starting with an example:
   Db = d(Hb) = {2,2,2}
   ```
 - Dividing the two measurements yields
+
   ```cpp
   Hb/Ha = {2,2,2} = Db/Ba = Dc
   ```
