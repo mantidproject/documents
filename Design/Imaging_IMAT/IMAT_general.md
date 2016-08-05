@@ -15,11 +15,12 @@ Objectives
 ==========
 
 The new IMAT instrument (ISIS facility) will start its scientific
-commissioning in September 2015. The objective of this document is to
-keep track of all the relevant components being put in place to
-support data analysis and visualization. It should also help to keep
-the overall system as consistent as possible as we move into the
-testing and operation phases and requirements evolve.
+commissioning in September 2015, and first experiments are expected
+for late 2016. The objective of this document is to keep track of all
+the relevant components being put in place to support data analysis
+and visualization. It should also help to keep the overall system as
+consistent as possible as we move into the testing and operation
+phases and requirements evolve.
 
 Functionality provided
 ======================
@@ -29,6 +30,16 @@ Functionality provided
 
 * Visualization, very simple at this point. Also possible with third
   party tools.
+
+* Data handling and manipulation, for example manipulating
+  multidimensional wavelength resolved (energy selective) datasets, or
+  converting stacks of images between different formats.
+
+Custom interface in Mantid
+==========================
+
+A custom interface is included in the Mantid GUI under Diffraction ->
+Tomographic Reconstruction. See [its documentation](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
 
 Remote compute resource used at ISIS: SCARF
 ===========================================

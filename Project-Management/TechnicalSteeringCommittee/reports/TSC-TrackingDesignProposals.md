@@ -15,10 +15,13 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
-| [Mantid 4 release planning](https://github.com/mantidproject/documents/pull/23) | TBD | TBD |
-| [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | [2016-04-26](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-04-26.md) | Done all? [15543](https://github.com/mantidproject/mantid/issues/15543) |
+| [Mantid 4 release planning](https://github.com/mantidproject/documents/pull/23) | TBD | --- |
+| [Indexing module (spectra)](https://github.com/mantidproject/documents/pull/24) | TBD | --- |
+| [Y and E data storage modes](https://github.com/mantidproject/documents/pull/22) | TBD | --- |
+| [Type safe HKLs](https://github.com/mantidproject/documents/pull/18) | TBD | --- |
+| [Generic Shape Absorption Corrections](https://github.com/mantidproject/documents/pull/15) | [2016-04-26](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-04-26.md) | Done ~~[15543](https://github.com/mantidproject/mantid/issues/15543)~~ |
 | [Histogram type](https://github.com/mantidproject/documents/pull/14) | [2016-04-12](https://github.com/mantidproject/documents/pull/14) | Done. ~~[16086](https://github.com/mantidproject/mantid/issues/16086), [16096](https://github.com/mantidproject/mantid/issues/16096), [16282](https://github.com/mantidproject/mantid/issues/16282)~~ |
-| [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. |
+| [Spectrum Number and Workspace Index Abstraction Design](https://github.com/mantidproject/documents/pull/13) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Approved. Continues. |
 | [Live listener customisation](https://github.com/mantidproject/documents/pull/7) | [2016-03-29](/Project-Management/TechnicalSteeringCommittee/meetings/2016/TSC-meeting-2016-03-29.md) | Assign to a developer from PSI. |
 | [Data Processing User Interface](/Design/DataProcessorAlgorithmUI/DataProcessingUserInterface.md) | [2015-12-09](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-12-09.md) | In progress: ~~[14732](https://github.com/mantidproject/mantid/issues/14732)~~, ~~[14921](https://github.com/mantidproject/mantid/issues/14921)~~, [16415](https://github.com/mantidproject/mantid/issues/16415), [16566](https://github.com/mantidproject/mantid/issues/16566)  |
 | [MD Image Format](/Design/Imaging_IMAT/Workspace_type_for_stacks_of_images.md) | [2015-10-28](/Project-Management/TechnicalSteeringCommittee/meetings/2015/TSC-meeting-2015-10-28.md). | In progress.  [15437](https://github.com/mantidproject/mantid/issues/15437), ~~[14165](https://github.com/mantidproject/mantid/issues/14165)~~, ~~[15418](https://github.com/mantidproject/mantid/issues/15418)~~, [15419](https://github.com/mantidproject/mantid/issues/15419).|
