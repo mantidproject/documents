@@ -67,14 +67,24 @@ project. In principle all these locations will be identical replicas,
 although there are plans to store a subset of the reconstructions
 generated in the archive.
 
-* IMAT data analysis machine (NDLIMAT1).
+* IMAT data analysis machine (NDLIMAT1). The files dropped in a
+  location in one of the disks of this machine are automatically
+  transferred to the IMAT disk space of the SCARF clusters, see
+  details in the [documentation of the Mantid custom interface](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
 
-* Archive. TODO: structure to be defined.
+* Archive. The IMAT imaging files (in FITS format) are stored in
+  the archive following the conventions for IMAT imaging files.
+  Several levels of subdirectories are used, with differences
+  between white-beam and energy-selective experiments, but 
+  always starting with the experiment ID / RB number, see details
+  [documentation of the Mantid custom interface](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
  
 * Replica on SCARF (\\files.scarf.rl.ac.uk\work\imat\). 
-  TODO: all the details, storage levels, capacity, times.
+  TODO: all the details, storage levels, capacity, times which
+  are not yet settled. For more information check with the SCD.
 
 TODO. Practicalities. Data volumes. Bandwidth requirements, etc.
+For mor information check with Chris Moreton-Smith and the SCD.
 
 Data formats
 ============
