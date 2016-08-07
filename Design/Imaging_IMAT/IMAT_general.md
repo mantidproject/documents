@@ -130,6 +130,9 @@ Tools being used and/or considered include:
   for downloads, further information and additional complementary
   tools.
 
+* [Additional tools and packages](http://extrema.ua.ac.be/?q=software),
+  including AIR Tools and pyHST2, not evaluated/not considered so far.
+
 Image processing
 ----------------
 
