@@ -152,6 +152,7 @@ Visualization (3D)
 - [Avizo](https://www.fei.com/software/avizo3d)
 - [VGStudio](http://www.volumegraphics.com/en/products/vgstudio)
 - [Octopus visualization](https://octopusimaging.eu/octopus/octopus-visualization)
+- [VolView](http://www.kitware.com/opensource/volview.html)
 
 Practical issues
 ----------------
