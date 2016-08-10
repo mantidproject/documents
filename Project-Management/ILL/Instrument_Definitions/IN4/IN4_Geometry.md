@@ -32,9 +32,9 @@ The conversion to cartesian coordinates is given by
 * *z* = *r* cos *&theta;*
 
 With *r* = 2m, *&theta;* the scattering angle to the centre of a detector box and *&phi;* defined as
-* 12.6&deg; for the top bank
+* 12.5&deg; for the top bank
 * 0&deg; for the middle bank
-* -12.6&deg; for the bottom bank
+* -12.5&deg; for the bottom bank
 
 the conversion formulas above can be used for the initial placement of the detector boxes in the banks.
 
