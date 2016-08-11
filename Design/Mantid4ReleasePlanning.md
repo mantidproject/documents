@@ -60,6 +60,7 @@ With such a collection of changes we will nedd to plan to ensure we communicate 
  - Deprecate the existing API functionality that will be broken in Mantid 4.0, leaving it functional, but sending warning messages to the log.
    - ? Send emails to a special email account on usage of deprecated fn, or store in DB? This would allow us to track down scripts that need changing.
  - Development team to update all scripts in the script repository to the "future" api
+ - Update all docs / training to use new API
  - Provide a deadline for all users to submit scripts by email for them to be update by the dev team
  - Run Script update drop in sessions (once/twice per month?, with cake?)
 
