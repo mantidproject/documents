@@ -164,3 +164,14 @@ they implement.
 
 TODO: how to run them, steps needed, all-important
 pre-/post-processing steps.
+
+
+Development and testing
+=======================
+
+System tests specific to imaging
+--------------------------------
+
+- [ImagingAggregateWavelengths](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingAggregateWavelengths.py).
+- [ImagingIMATTomoScripts](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingIMATTomoScripts.py)
+- [ImagingLoadSave](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingLoadSave.py)
