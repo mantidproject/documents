@@ -166,8 +166,15 @@ TODO: how to run them, steps needed, all-important
 pre-/post-processing steps.
 
 
-Development and testing
-=======================
+# Development and testing
+
+## Algorithms
+
+### Data handling specific to imaging
+
+- [LoadFITS](http://docs.mantidproject.org/nightly/algorithms/LoadFITS.html)
+- [SaveFITS](http://docs.mantidproject.org/nightly/algorithms/SaveFITS.html)
+- Load/SaveImage needs to be added.
 
 System tests specific to imaging
 --------------------------------
