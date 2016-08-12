@@ -170,11 +170,21 @@ pre-/post-processing steps.
 
 ## Algorithms
 
-### Data handling specific to imaging
+### Data handling
 
 - [LoadFITS](http://docs.mantidproject.org/nightly/algorithms/LoadFITS.html)
 - [SaveFITS](http://docs.mantidproject.org/nightly/algorithms/SaveFITS.html)
-- Load/SaveImage needs to be added.
+- Load/SaveImage need to be added, especially the loader ([#6843](https://github.com/mantidproject/mantid/issues/6843)).
+
+- [ImggAggregateWavelengths](http://docs.mantidproject.org/nightly/algorithms/ImggAggregateWavelengths.html)
+  to aggregate files with energy-dependent/wavelength-resolved images. This is
+  the algorithm behind the "Energy bands" of the imaging GUI.
+
+### Reconstruction
+
+- [Remote algorithms](),
+  such as [SubmitRemoteJob](http://docs.mantidproject.org/nightly/algorithms/SubmitRemoteJob.html)
+- [ImggTomographicReconstruction](http://docs.mantidproject.org/nightly/algorithms/ImggTomographicReconstruction.html).
 
 System tests specific to imaging
 --------------------------------
