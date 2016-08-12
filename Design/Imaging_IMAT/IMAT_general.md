@@ -182,7 +182,7 @@ pre-/post-processing steps.
 
 ### Reconstruction
 
-- [Remote algorithms](),
+- [Remote algorithms](http://docs.mantidproject.org/nightly/algorithms/categories/Remote.html),
   such as [SubmitRemoteJob](http://docs.mantidproject.org/nightly/algorithms/SubmitRemoteJob.html)
 - [ImggTomographicReconstruction](http://docs.mantidproject.org/nightly/algorithms/ImggTomographicReconstruction.html).
 
