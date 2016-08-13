@@ -119,7 +119,9 @@ For another release
    2. See which ones we can turn off now. 
    3. Identify functions and classes with deprecated code.
      4. example: we currently use std::auto_ptr with boost::python. 
-   
+
+12. Fix GCC 6 compiler warnings   
+
 
 Converted to actual tickets during a release
 --------------------------------------------
