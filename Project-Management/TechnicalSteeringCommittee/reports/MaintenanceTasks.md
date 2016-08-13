@@ -109,6 +109,18 @@ For another release
 10. Clang/C2 working on Windows
    1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for    
 
+11. Stop using classes and member function removed in C++17.
+   1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
+       2. _HAS_AUTO_PTR_ETC
+       3. _HAS_OLD_IOSTREAMS_MEMBERS
+       4. _HAS_FUNCTION_ASSIGN
+       5. _HAS_TR1_NAMESPACE
+       6. _HAS_IDENTITY_STRUCT
+   2. See which ones we can turn off now. 
+   3. Identify functions and classes with deprecated code.
+     4. example: we currently use std::auto_ptr with boost::python. 
+   
+
 Converted to actual tickets during a release
 --------------------------------------------
 
