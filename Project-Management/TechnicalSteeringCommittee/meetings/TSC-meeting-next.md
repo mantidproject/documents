@@ -26,7 +26,7 @@ Attendees: Bush, Savici, Peterson, Whitfield, Campbell, Hahn, Gigg, Heybrock, Ar
   * Wiki page will be server redirected to the download page (Gigg)
   * Add os version numbers to the download page (Peterson)
   * Add instructions for build from source that is links to appropriate developer docs (Hahn & Heybrock)
-  * Would like to add ubuntu 16.04, but still need to fix some gsl2 issues in system tests
+  * Would like to add ubuntu 16.04, but still need to fix some gsl2 issues in system tests [#16680](https://github.com/mantidproject/mantid/issues/16680)
 * Bundling of python on osx - TSC generically supports, but needs the details
 * Plotting update - Zhou should attend next TSC to provide an update
 * Mantid 4
