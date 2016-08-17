@@ -118,7 +118,8 @@ For another release
        6. _HAS_IDENTITY_STRUCT
    2. See which ones we can turn off now. 
    3. Identify functions and classes with deprecated code.
-     4. example: we currently use std::auto_ptr with boost::python. 
+     4. example: we currently use std::auto_ptr with boost::python.
+42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
 
 12. Fix GCC 6 compiler warnings   
 
