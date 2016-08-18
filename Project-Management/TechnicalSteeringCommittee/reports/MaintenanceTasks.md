@@ -122,7 +122,7 @@ For another release
 42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
 
 12. Fix GCC 6 compiler warnings   
-
+  1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
 
 Converted to actual tickets during a release
 --------------------------------------------
