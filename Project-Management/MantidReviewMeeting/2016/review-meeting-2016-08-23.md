@@ -6,5 +6,6 @@ Agenda
 Questions
 =========
 
+* Question about vector fields in Paraview (Tom)
 * Add your questions here
 
