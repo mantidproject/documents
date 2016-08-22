@@ -4,7 +4,11 @@
 
 ##Motivation##
 
-Describe the motiviation of the design...
+I've been working on decomentating how data from a file (usually a Nexus file) is read by a loader 
+and is transferred to a workspace. I have found it difficult to do. 
+If the code for the loaders was cleaner, I'd expect to easily see how each item of data
+goes from file to workspace and so easily produce a table such as the one at 
+[[http://docs.mantidproject.org/nightly/algorithms/LoadISISNexus-v2.html#data-loaded-from-nexus-file]]
 
 ##Requirements##
 
