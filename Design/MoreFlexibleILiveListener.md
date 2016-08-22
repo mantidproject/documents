@@ -83,7 +83,7 @@ The `LiveDataAlgorithm` base class is then given the ability to provide an optio
 
 ### Option 3. Overload the `LiveListenerFactory` connect
 
-Currently `LiveListenerFactory::connect` as called by `LiveDataAlgorithm` will:
+Currently `LiveListenerFactory::create` as called by `LiveDataAlgorithm` will:
 
 1. Load the Instrument and then InstrumentInfo for the specified *Instrument* name argument. All taken from the Facility file.
 1. Extract the concrete ILiveListener from the above and create an instance of one
