@@ -8,6 +8,16 @@ If the code for the loaders was cleaner, I'd expect to easily see how each item 
 goes from file to workspace and so easily produce a table such as the one 
 [here](http://docs.mantidproject.org/nightly/algorithms/LoadISISNexus-v2.html#data-loaded-from-nexus-file)
 
+**Current Situation**
+
+Loaders often have:
+* Long Loader Class
+* Member variables (behave like global variables)
+* Long functions
+* Functions with many arguments
+* Functions that do too much
+* Functions with misleading names
+
 ##Requirements##
 
 **Must Haves**
