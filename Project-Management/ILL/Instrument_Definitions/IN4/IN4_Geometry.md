@@ -20,7 +20,7 @@ The boxes will eventually be positioned in such a way that point *A* in the abov
 
 The instrument contains three detector banks. Each bank consists of detector boxes arranged horizontally on the surface of a sphere. One of the banks is on the same *xz* plane as the sample (the middle bank) while the two other banks are below and above it (the bottom and top banks).
 
-While the usual cartesian coordinates are used in the instrument definition file, the coordinate system used in the generation of the banks is a modified version of the traditional spherical coordinates.
+While the usual cartesian coordinates are used in the instrument definition file, the coordinate system used in the generation of the banks differs somewhat from the traditional spherical coordinates. This coordinate system was chosen because it naturally described the geometry as was known at the time and it was used in the IN6 IDF generator as well.
 
 <img src="initial_box_placement.png" alt="coordinate system and detector box placement" />
 
@@ -31,21 +31,27 @@ The conversion to cartesian coordinates is given by
 * *y* = *r* sin *&phi;*
 * *z* = *r* cos *&theta;*
 
-With *r* = 2m, *&theta;* the scattering angle to the centre of a detector box and *&phi;* defined as
-* 12.6&deg; for the top bank
-* 0&deg; for the middle bank
-* -12.6&deg; for the bottom bank
+For IN4, *r* = 2m. The *&theta;* values for box centres in degrees are given below:
 
-the conversion formulas above can be used for the initial placement of the detector boxes in the banks.
-
-The *&theta;* values in degrees for the box centers are
-
-|              |       |      |      |      |      |      |       |      |      |       |       |
+| Bank         |       |      |      |      |      |      |       |      |      |       |       |
 |--------------|-------|------|------|------|------|------|-------|------|------|-------|-------|
 | Middle       |       |      | 18.5 | 31.5 | 44.5 | 57.5 | 69.55 | 83.5 | 96.5 | 109.5 | 118.7 |
 | Top & bottom | -14.5 | 14.5 | 20.5 | 28.3 | 37.9 | 49.3 | 62.5  | 75.7 | 88.8 | 101.9 | 115.1 |
 
-The initial placement of the boxes is followed by three rotations around the three local axes of the boxes. The first rotation is around the local *y'* axis and results in the boxes facing the global *y* axis as shown in the next figure.
+The *&phi*; angles are calculated from certain rotation angles given by the instrument's design documents, denoted here by *&alpha;*. The conversion formula is given by
+
+*&phi;* = sin<sup>-1</sup>(sin *&alpha;* sin *&theta;*).
+
+The *&alpha;* values are given in below in degrees:
+
+| Bank         |        |      |      |      |      |      |      |      |      |      |      |
+|--------------|--------|------|------|------|------|------|------|------|------|------|------|
+| Middle       |        |      |  0.0 |  0.0 |  0.0 |  0.0 |  0.0 |  0.0 |  0.0 |  0.0 |  0.0 |
+| Top & bottom | -111.0 | 58.5 | 38.2 | 29.6 | 22.0 | 17.8 | 14.7 | 13.1 | 12.4 | 12.9 | 14.3 |
+
+The above conversion formulas above are used for the initial placement of the detector boxes in the banks.
+
+The initial placement is followed by three rotations around the three local axes of the boxes. The first rotation is around the local *y'* axis and results in the boxes facing the global *y* axis as shown in the next figure.
 
 <img src="first_box_rotation.png" alt="detector box geometry" />
 
