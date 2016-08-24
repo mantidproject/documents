@@ -15,11 +15,12 @@ Objectives
 ==========
 
 The new IMAT instrument (ISIS facility) will start its scientific
-commissioning in September 2015. The objective of this document is to
-keep track of all the relevant components being put in place to
-support data analysis and visualization. It should also help to keep
-the overall system as consistent as possible as we move into the
-testing and operation phases and requirements evolve.
+commissioning in September 2015, and first experiments are expected
+for late 2016. The objective of this document is to keep track of all
+the relevant components being put in place to support data analysis
+and visualization. It should also help to keep the overall system as
+consistent as possible as we move into the testing and operation
+phases and requirements evolve.
 
 Functionality provided
 ======================
@@ -29,6 +30,16 @@ Functionality provided
 
 * Visualization, very simple at this point. Also possible with third
   party tools.
+
+* Data handling and manipulation, for example manipulating
+  multidimensional wavelength resolved (energy selective) datasets, or
+  converting stacks of images between different formats.
+
+Custom interface in Mantid
+==========================
+
+A custom interface is included in the Mantid GUI under Diffraction ->
+Tomographic Reconstruction. See [its documentation](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
 
 Remote compute resource used at ISIS: SCARF
 ===========================================
@@ -56,14 +67,24 @@ project. In principle all these locations will be identical replicas,
 although there are plans to store a subset of the reconstructions
 generated in the archive.
 
-* Archive. TODO: structure to be defined.
+* IMAT data analysis machine (NDLIMAT1). The files dropped in a
+  location in one of the disks of this machine are automatically
+  transferred to the IMAT disk space of the SCARF clusters, see
+  details in the [documentation of the Mantid custom interface](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
 
-* IMAT data analysis machine (NDAIMAT) which is NDW1520 at the moment.
-
-* Replica on SCARF. TODO: all the details, storage levels, capacity,
-times.
+* Archive. The IMAT imaging files (in FITS format) are stored in
+  the archive following the conventions for IMAT imaging files.
+  Several levels of subdirectories are used, with differences
+  between white-beam and energy-selective experiments, but 
+  always starting with the experiment ID / RB number, see details
+  [documentation of the Mantid custom interface](http://docs.mantidproject.org/nightly/interfaces/Tomographic_Reconstruction.html).
+ 
+* Replica on SCARF (\\files.scarf.rl.ac.uk\work\imat\). 
+  TODO: all the details, storage levels, capacity, times which
+  are not yet settled. For more information check with the SCD.
 
 TODO. Practicalities. Data volumes. Bandwidth requirements, etc.
+For mor information check with Chris Moreton-Smith and the SCD.
 
 Data formats
 ============
@@ -89,22 +110,28 @@ Reconstruction and imaging tools
 
 Tools being used and/or considered include:
 
-* Octopus: <http://octopusimaging.eu, includes reconstruction and
-  visualization tools. Closed source. IMAT scientists have
+* [Octopus](http://octopusimaging.eu) which includes reconstruction
+  and visualization tools. Closed source. IMAT scientists have
   licence(s). The visualization tool (Octopus visualization) can be
   downloaded for free.
 
-* TomoPy:
-  https://www1.aps.anl.gov/Science/Scientific-Software/TomoPy. Open
-  source, installed on SCARF.
+* [TomoPy](https://www1.aps.anl.gov/Science/Scientific-Software/TomoPy).
+  Open source, installed on SCARF.
 
-* Astra Toolbox:
-  http://sourceforge.net/p/astra-toolbox/wiki/Home/. Open source,
-  installed on SCARF.
+* [Astra Toolbox](http://sourceforge.net/p/astra-toolbox/wiki/Home/),
+  open source, Python and matlab interfaces to C++ code (with CUDA
+  acceleration), installed on SCARF.
 
-* Savu: https://github.com/DiamondLightSource/Savu. open source, being
-  developed at the Diamond Light Source.
+* [Savu](https://github.com/DiamondLightSource/Savu), open source,
+  being developed at the Diamond Light Source.
 
+* [MuhRec](https://www.psi.ch/niag/muhrec): developed at PSI. See also
+  [ImagingScience.ch](http://imagingscience.ch/muhrechome/index.html)
+  for downloads, further information and additional complementary
+  tools.
+
+* [Additional tools and packages](http://extrema.ua.ac.be/?q=software),
+  including AIR Tools and pyHST2, not evaluated/not considered so far.
 
 Image processing
 ----------------
@@ -115,9 +142,17 @@ required to integrate data formats, and packages, or to provide
 similar and/or complementary functionality to process stacks of
 images. These third party tools include:
 
-* imagej: http://imagej.nih.gov/ij/. Open source, very widespread and
+* [imagej](http://imagej.nih.gov/ij/), open source, very widespread and
   included in Linux distributions.
 
+Visualization (3D)
+------------------
+
+- [Paraview](http://www.paraview.org/)
+- [Avizo](https://www.fei.com/software/avizo3d)
+- [VGStudio](http://www.volumegraphics.com/en/products/vgstudio)
+- [Octopus visualization](https://octopusimaging.eu/octopus/octopus-visualization)
+- [VolView](http://www.kitware.com/opensource/volview.html)
 
 Practical issues
 ----------------
@@ -129,3 +164,31 @@ they implement.
 
 TODO: how to run them, steps needed, all-important
 pre-/post-processing steps.
+
+
+# Development and testing
+
+## Algorithms
+
+### Data handling
+
+- [LoadFITS](http://docs.mantidproject.org/nightly/algorithms/LoadFITS.html)
+- [SaveFITS](http://docs.mantidproject.org/nightly/algorithms/SaveFITS.html)
+- Load/SaveImage need to be added, especially the loader ([#6843](https://github.com/mantidproject/mantid/issues/6843)).
+
+- [ImggAggregateWavelengths](http://docs.mantidproject.org/nightly/algorithms/ImggAggregateWavelengths.html)
+  to aggregate files with energy-dependent/wavelength-resolved images. This is
+  the algorithm behind the "Energy bands" of the imaging GUI.
+
+### Reconstruction
+
+- [Remote algorithms](http://docs.mantidproject.org/nightly/algorithms/categories/Remote.html),
+  such as [SubmitRemoteJob](http://docs.mantidproject.org/nightly/algorithms/SubmitRemoteJob.html)
+- [ImggTomographicReconstruction](http://docs.mantidproject.org/nightly/algorithms/ImggTomographicReconstruction.html).
+
+System tests specific to imaging
+--------------------------------
+
+- [ImagingAggregateWavelengths](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingAggregateWavelengths.py).
+- [ImagingIMATTomoScripts](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingIMATTomoScripts.py)
+- [ImagingLoadSave](https://github.com/mantidproject/mantid/blob/master/Testing/SystemTests/tests/analysis/ImagingLoadSave.py)

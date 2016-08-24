@@ -5,10 +5,7 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
 ## Workflow for the sample
 
 1. Loading
-  - Multiple runs are combined with `MergeRuns`.
-  - Currently, metadata isn't handled correctly when merging.
-    - TOFTOF uses its own `TOFTOFMergeRuns` to deal with the metadata.
-    - Proposal: Improve `MergeRuns` to deal with the metadata.
+  - Multiple runs are combined with `MergeRuns`. The algorithm is being improved to deal with metadata (average temperatures, sum total neutron counts, etc.)
 
 2. Time-independent background subtraction
   - Basic subtraction using `CalculateFlatBackground`, takes care of monitors, as well.
@@ -22,7 +19,7 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
   - `DgsReduction`: Done after vanadium normalization (step 9). A complex set of diagnostics is available.
 
 4. Incident energy calibration (instrument dependent)
-  - Currently, no suitable algorithm available.
+  - `GetEiMonDet` version 2 is being developed to suit ILL's requirements.
   - `DgsReduction`: incident energy is always calculated using `GetEi` which is incompatible with ILL instruments.
 
 5. Normalization to monitor/time
@@ -33,7 +30,7 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
 
 6. Sample position fitting (optional, needs good quality elastic peaks or special vanadium run)
   - Currently, no suitable algorithm available.
-  - If adjusting the TOF values would be enough, `CorrectTOF` could be used.
+    - `CorrectTOF` would adjust the time-of-flights but it is deemed suboptimal.
   - Proposal: have this as a separate algorithm whose output can be used during this workflow.
 
 7. Transmission calculation
@@ -46,6 +43,7 @@ This document outlines a possible ILL TOF data reduction workflow in Mantid. The
 9. Normalization to vanadium (optionally absolute)
   - Basic mathematics.
   - Or use `ComputeCalibrationCoefVan` which scales vanadium with regards to its temperature-dependent Debye-Waller factor.
+    - The Debye-Walled factor calculation should be improved to use a more accurate formula.
   - `DgsReduction` just divides.
 
 10. TOF to energy conversion
@@ -144,13 +142,9 @@ Note that the alogirthms below may expect the detectors to be of the same kind. 
 
 ### High priority
 
-* Further evaluation of the `DgsReduction` algorithm
+* Improve `MergeRuns` to handle metadata correctly.
 
-* Metadata handling in `MergeRuns`
-  - Improving `MergeRuns` instead of writing something separate in lines of `TOFTOFMergeRuns` would help the whole Mantid project.
-
-* `IncindentEnergyCalibration` algorithm
-  - Evaluate, if `GetEi` could be used for ILL's instruments as well. If not, a new algorithm needs to be developed.
+* Improve `GetEiMonDet` to be suitable for incident energy calibration.
 
 * Evaluation of detector efficiency correction algorithms
   - How to deal with the different detector types of IN4?
