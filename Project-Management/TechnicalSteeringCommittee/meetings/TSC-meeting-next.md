@@ -9,6 +9,7 @@ Pinned Topics
 New Items
 ---------
 
+* gsl2 status
 * Update on [Mantid 4](https://github.com/mantidproject/documents/pull/23)
 * Update on plotting evaluation
 * Bundling of python on osx
