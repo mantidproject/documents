@@ -50,7 +50,10 @@ Furthermore there are comparisons between the respective spectrum and detector i
   }
   ```
 
-- Should we set default detector IDs? This is was workspaces are doing currently, but it does not really make sense.
+- Should we set default detector IDs?
+  This is was workspaces are doing currently, but it does not really make sense.
+  Probably we should find a better way if setting sensible detector IDs once an instrument has been set.
+  This is something that potentially needs to be decided together with other decisions regarding Instrument-2.0.
 
 
 ## NearestNeighbours
