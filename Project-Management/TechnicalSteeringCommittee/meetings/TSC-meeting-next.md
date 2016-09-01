@@ -13,3 +13,4 @@ New Items
 * Update on [Mantid 4](https://github.com/mantidproject/documents/pull/23)
 * Update on plotting evaluation
 * Bundling of python on osx
+* Installing 3rd party projects (e.g. [mslice](https://github.com/mantidproject/mslice), [FastGR](https://github.com/neutrons/FastGR), and [PyVDrive](https://github.com/neutrons/PyVDrive)) that require mantid
