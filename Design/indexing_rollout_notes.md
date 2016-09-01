@@ -1,6 +1,6 @@
 # Indexing rollout
 
-This is not a design document.
+This is not a design document, but an addendum to the [Indexing design document](https://github.com/mantidproject/documents/blob/master/Design/spectrum_number_and_workspace_index_abstraction.md).
 This document contains notes and is meant for planning the rollout of indexing changes, in particular removing spectrum number and detector IDs from `ISpectrum`.
 
 ## Remarks
