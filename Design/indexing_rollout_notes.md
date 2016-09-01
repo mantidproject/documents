@@ -14,9 +14,9 @@ Note that this does not necessarily imply that the nomenclature on user-interfac
 ## Statistics
 
 Most relevant methods that need to be removed are part of `ISpectrum`.
-The following table gives and estimate of the number of occurences of the respective methods.
+The following table gives and estimate of the number of occurrences of the respective methods.
 
-| Method        | Occurences | Files  |
+| Method        | Occurrences | Files  |
 | ------------- |:-------------:|:-----:|
 | `ISpectrum::getSpectrumNo()` | 271 | 99 |
 | `ISpectrum::setSpectrumNo()` | 153 | 104 |
@@ -76,6 +76,12 @@ Furthermore there are comparisons between the respective spectrum and detector i
   }
   ```
 
+## File- and UI output
+
+Similar to logging, there are also several algorithms that write, e.g., detector IDs to a file.
+Maybe a similar or even the same helper function as suggested above in the logging section could be used.
+
+
 ## Obtaining detector information
 
 Frequently, detector IDs are used to obtain detector pointers or other detector-related information from the instrument.
@@ -90,6 +96,7 @@ class SpectrumInfo {
   bool isMonitor(const size_t index) const;
   double l2(const size_t index) const;
   Detector_sptr uniqueDetector(const size_t index) const; // Throws if no or more than 1 detector
+  bool hasUniqueDetector(const size_t index) const; // Should this be part of IndexInfo instead?
 };
 ```
 
@@ -123,6 +130,28 @@ Should this be cleaned up as part of this refactoring effort?
 Examples:
 
 - `AppendSpectra`
+
+
+## MatrixWorkspace
+
+There is a considerable number of methods in `MatrixWorkspace` that could potentially be replaced or removed during this refactoring effort.
+The detailed strategy should depend on how and where these methods are used.
+
+```cpp
+class MatrixWorkspace {
+public:
+  void updateSpectraUsing(const SpectrumDetectorMapping &map);
+  void rebuildSpectraMapping(const bool includeMonitors);
+  spec2index_map getSpectrumToWorkspaceIndexMap() const;
+  detid2index_map getDetectorIDToWorkspaceIndexMap(bool throwIfMultipleDets) const;
+  std::vector<size_t> getDetectorIDToWorkspaceIndexVector(detid_t &offset, bool throwIfMultipleDets) const;
+  std::vector<size_t> getSpectrumToWorkspaceIndexVector(specnum_t &offset) const;
+  std::vector<size_t> getIndicesFromSpectra(const std::vector<specnum_t> &spectraList) const;
+  size_t getIndexFromSpectrumNumber(const specnum_t specNo) const;
+  std::vector<size_t> getIndicesFromDetectorIDs(const std::vector<detid_t> &detIdList) const;
+  std::vector<specnum_t> getSpectraFromDetectorIDs(const std::vector<detid_t> &detIdList) const;
+};
+```
 
 
 ## Notes about individual algorithms
