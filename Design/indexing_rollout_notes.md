@@ -51,9 +51,9 @@ Furthermore there are comparisons between the respective spectrum and detector i
   ```
 
 - Should we set default detector IDs?
-  This is was workspaces are doing currently, but it does not really make sense.
+  This is what workspaces are doing currently, but it does not really make sense.
   Probably we should find a better way if setting sensible detector IDs once an instrument has been set.
-  This is something that potentially needs to be decided together with other decisions regarding Instrument-2.0.
+  This is something that potentially needs to be planned together with other decisions regarding Instrument-2.0.
 
 
 ## NearestNeighbours
@@ -116,7 +116,8 @@ if (numDetectors > 1) {
 ## Duplicate spectrum numbers
 
 Currently quite a few algorithms or tests use or create workspaces with non-unique spectrum numbers.
-Ultimately we want to forbid this, but it is not yet clear if we should attempt to clean this up right away, or wait until `IndexInfo` has developed into a more stable state.
+Ultimately we want to forbid this, but we should avoid changing too many things at once.
+This should be cleaned up once `IndexInfo` has developed into a more stable state.
 
 
 ## Standards
@@ -166,7 +167,7 @@ It would probably be easier and cleaner to simply remove special handling of spe
 
 #### MDWorkspace
 
-`ConvertToDiffractionMDWorkspace::convertEventList` takes an `EventList` and its its events to an `MDWorkspace`.
+`ConvertToDiffractionMDWorkspace::convertEventList` takes an `EventList` and adds its events to an `MDWorkspace`.
 This procedure requires the position of the `EventList`.
 Currently this is determined by the detector IDs stored in the `EventList`.
 A different mechanism is required here, probably with a change in the function signature.
@@ -207,3 +208,6 @@ We seem to have two options:
   The disadvantage of this are potential performance issues.
 
 2. Simply replace the exports by dummy versions that print errors containing information on how to fix scripts.
+
+Realistically, we will have to go with option 1, then add exports for the new Python interface and deprecate the old interface.
+In a later release we can then either directly remove the old interface, or use option 2 as yet another intermediate step, before actually removing the old exports.
