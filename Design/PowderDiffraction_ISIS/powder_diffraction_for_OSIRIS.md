@@ -130,7 +130,7 @@ as vectors of min/max for every module could be all that is needed.
 The outputs of the CRY and PEARL scripts seem to match the needs of
 OSIRIS. The outputs would be saved into focused files in different
 formats such as:
-- [GSAS](http://docs.mantidproject.org/nightly/algorithms/SaveGSS-v1.html)
 - [NeXus](http://docs.mantidproject.org/nightly/algorithms/SaveNexus-v1.html)
 - XYE for TOPAS, FullProf or MAUD (algorithm
   [SaveFocusedXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html)).
+- [GSAS](http://docs.mantidproject.org/nightly/algorithms/SaveGSS-v1.html), and [SaveFocusedXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html).
