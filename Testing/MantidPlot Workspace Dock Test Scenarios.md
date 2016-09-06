@@ -1,6 +1,6 @@
 ## Test Scenarios for Workspace Dock Widget
 * **Load button in Workspace Dock**
- 1. Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into ADS and the workspace name is added to the workspace dock. [Load1-1](ScenariosScreenshots/Load1-1.png) [Load1-2](ScenariosScreenshots/Load1-2.png)
+ 1. Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into ADS and the workspace name is added to the workspace dock. ![Load1-1](ScenariosScreenshots/Load1-1.png) ![Load1-2](ScenariosScreenshots/Load1-2.png)
  2. Load button used to launch load dialog, user selects multiple files from the file open dialog and clicks the Run button. A group workspace is created called MultipleFiles which contains the selected workspaces.
  3. Load button used to launch load dialog, user cancels load (Close). No interaction with ADS or workspace dock.
  4. Load button used to launch load dialog, workspace is not set by user. User selects Run. User presented with a dialog which states that one or more invalid properties (filename) have been set.
