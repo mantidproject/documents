@@ -18,11 +18,16 @@ Loaders often have:
 * Functions that do too much
 * Functions with misleading names
 
+Other features that impair readability are:
+* Intermediate storage of data outside of workspace
+* Use of static functions in singleton helper
+
 ##Requirements##
 
 **Must Haves**
 
-Add a numbered list of things that the design *must* address
+* Functions have informative names
+* Storage for data not immediately transferred to workspace needs to be justified
 
 **Could Haves (Future considerations)**
 
