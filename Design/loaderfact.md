@@ -26,8 +26,23 @@ Other features that impair readability are:
 
 **Must Haves**
 
-* Functions have informative names
+* Functions have informative names that follow a naming convention
 * Storage for data not immediately transferred to workspace needs to be justified
+
+***Naming Convention***
+
+A naming convention would make it clearer exavtly what a function does. For example:
+* Load... read something and put it into workspace
+* Read... read something and store in self
+* Put... put something stored in self into workspace
+* Get... return something stored in self
+ 
+***Intermediate Storage Justifications***
+
+These are possible justifications for use of intermediate storage, which could be put into comments.
+* Storage for multiple uses (e.g. number of spectra may be needed to set up arrays for workspace).
+* Data may need to be gathered from several places in file, before it can be put into workspace.
+* Efficiency issues with large data.
 
 **Could Haves (Future considerations)**
 
