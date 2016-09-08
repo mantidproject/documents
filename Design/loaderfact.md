@@ -1,5 +1,7 @@
 #REFACTORING LOADER ALGORITHMS#
 
+This document arose from an informal code talk I gave at ISIS on 29 July 2016.
+
 ##Motivation##
 
 I've been working on decomentating how data from a file (usually a Nexus file) is read by a loader 
