@@ -60,7 +60,12 @@ may have a function to put its data into the workspace.
 
 ##Selected Use cases##
 
-Add a selection of use cases
+One example is a function of ``IsisRawHelper::readTitle(FILE *file, std::string &title)``.
+This does more that just read the title. it reads the header of the file and outputs the title.
+According to my suggested naming convention, it could be named
+``IsisRawHelper::readHeaderAndGetTitle(FILE *file, std::string &title)``.
+
+This long name, suggests it would be a good candidate to break up in functions that each do less.
 
 ##Current Structure##
 
