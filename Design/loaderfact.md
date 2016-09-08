@@ -46,7 +46,15 @@ These are possible justifications for use of intermediate storage, which could b
 
 **Could Haves (Future considerations)**
 
-Add a numbered list of things that the design *could* address but it would not be vital to cover
+In thinking of ways to reduce the number of arguments of functions, 
+I came up with the idea of having one or more classes to contain different data that travel together.
+Then it would be possible to:
+* Reduce number of arguments in functions
+* Put all output into return value
+* Create when needed and delete or let go out of scope when not needed
+ 
+Such an object may contain appropriate pointers to large date and 
+may have a function to put its data into the workspace.
 
 ##Selected Use cases##
 
