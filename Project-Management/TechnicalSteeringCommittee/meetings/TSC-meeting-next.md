@@ -14,3 +14,4 @@ New Items
 * Update on plotting evaluation
 * Bundling of python on osx
 * Installing 3rd party projects (e.g. [mslice](https://github.com/mantidproject/mslice), [FastGR](https://github.com/neutrons/FastGR), and [PyVDrive](https://github.com/neutrons/PyVDrive)) that require mantid
+* Migration to C++17 Filesystem library? Is boost::filesystem a useful stepping stone?
