@@ -123,6 +123,8 @@ For another release
 
 12. Fix GCC 6 compiler warnings   
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
+ 
+13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)  
 
 Converted to actual tickets during a release
 --------------------------------------------
