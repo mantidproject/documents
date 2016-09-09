@@ -38,7 +38,7 @@ The `OutputWorkspace` properties in the above are empty strings for the **a** an
 **b**  | **c**            | "b_out"
 **c**  |                  | *c_out*
 
-Quotes in the input columns are treated as 'hard workspace names', and no input-output resolution is done to them. Therefore, 'SetupTable'
+Additionally, quotes in the input columns are treated as 'hard workspace names', and no input-output resolution is done to them. Therefore, `SetupTable`
 
 `Id`   | `InputWorkspace` | `OutputWorkspace`
 -------|------------------|------------------
@@ -72,4 +72,4 @@ Algorithm(InputWorkspace='c_out', Param=3, OutputWorkspace='b_out')
 
 ## Planned use of `WorkflowAlgorithmRunner`
 
-In conjunction with a well designed workflow algorithm, `WorkflowAlgorithmRunner` could make a powerful tool for data reduction, even for large datasets with complex dependencies. As `WorkflowAlgorithmRunner` takes care of dependency resolution and overall data flow management, the workflow algorithms can be kept relatively simple and understandable, and thus accessible for modification and extension. Usually, we expect `WorkflowAlgorithmRunner` to be used through some graphical user interface. However, wrapper algorithms specific for each workflow algorithm are planned to supply the `InputOutputMap`s which should ease the usage of `WorkflowAlgorithmRunner` if a user wants to calls it manually. For simple reductions, a user can call the workflow algorithms directly, as well.
+In conjunction with a well designed workflow algorithm, `WorkflowAlgorithmRunner` could make a powerful tool for data reduction, even for large datasets with complex dependencies. As `WorkflowAlgorithmRunner` takes care of dependency resolution and overall data flow management, the workflow algorithms can be kept relatively simple and understandable, and thus accessible for modification and extension. Usually, we expect `WorkflowAlgorithmRunner` to be used through some graphical user interface. However, wrapper algorithms specific for each workflow algorithm are planned to supply the `InputOutputMap`s which should ease the usage of `WorkflowAlgorithmRunner` if a user wants to call it manually. For simple reductions, a user can call the workflow algorithms directly, as well.
