@@ -34,10 +34,10 @@ Other features that impair readability are:
 ***Naming Convention***
 
 A naming convention would make it clearer exavtly what a function does. For example:
-* Load... read something and put it into workspace
-* Read... read something and store in self
-* Put... put something stored in self into workspace
-* Get... return something stored in self
+* **Load...** read something and put it into workspace
+* **Read...** read something and store in self
+* **Put...** put something stored in self into workspace
+* **Get...** return something stored in self
  
 ***Intermediate Storage Justifications***
 
