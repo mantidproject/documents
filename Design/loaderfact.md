@@ -55,8 +55,9 @@ Then it would be possible to:
 * Put all output into return value
 * Create when needed and delete or let go out of scope when not needed
  
-Such an object may contain appropriate pointers to large date and 
-may have a function to put its data into the workspace.
+Such an object may contain appropriate pointers to large data and 
+may have a function to put its data into the workspace. 
+It may also reduce the need of a singleton helper, which would obsure the flow of data.
 
 ##Selected Use cases##
 
@@ -67,15 +68,17 @@ According to my suggested naming convention, it could be named
 
 This long name, suggests it would be a good candidate to break up in functions that each do less.
 
-##Current Structure##
-
-If the design addresses a current issue then briefly describe the current solution to the problem
-
 ##Proposed Solution##
 
-Summarize the proposed solution
+* Rename function appropriately, using naming convention
+* Break up functions that were difficult to rename or were given long names
+* Move data away from algorithm or helper member variables
+* Transfer data directly from file to workspace if possible and efficient, else
+* Put data in temporary objects of appropriate scope and
+* Group data travelling together into a object of a new (or existing) class
 
 ##Solution Details##
 
-More detailed sections on proposed design
+No details of solution at present. This can be worked out after the renaming has been done. 
+The ranaming may give some useful hints to the details of the solution.
 
