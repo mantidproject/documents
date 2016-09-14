@@ -126,6 +126,9 @@ For another release
  
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)  
 
+14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
+
+
 Converted to actual tickets during a release
 --------------------------------------------
 
