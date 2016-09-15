@@ -70,14 +70,14 @@ For another release
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1093777. radon as a job in static analysis tab
-1. Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)
+1. ~~Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)~~
 1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
    1. ANN
    2. GSoap ?
 1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
 2. Enforcing python standards
 1. Investigate breaking issues with updated dependencies
-    3. iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)
+    3. ~~iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)~~
 1. Rework/clean up cmake as a whole
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1. enable warnings and fix issues
