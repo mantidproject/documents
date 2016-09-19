@@ -64,9 +64,7 @@ Unassigned (not suitable for pool)
     1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
-4. [Copy only part of a column](https://github.com/mantidproject/mantid/issues/15884).
-5. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`
-  1. should some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/)?
+5. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`. Some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/).
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
