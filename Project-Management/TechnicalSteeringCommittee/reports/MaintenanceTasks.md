@@ -87,10 +87,8 @@ Unsorted
          1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
          2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
       2. Smaller checks that could be updated in a single PR.
-
 10. Clang/C2 working on Windows
    1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for
-
 11. Stop using classes and member function removed in C++17.
    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
        2. _HAS_AUTO_PTR_ETC
@@ -102,16 +100,10 @@ Unsorted
    3. Identify functions and classes with deprecated code.
      4. example: we currently use std::auto_ptr with boost::python.
 42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
-
 12. Fix GCC 6 compiler warnings
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
-
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
-
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
-
-
-
 
 For another release
 -------------------
