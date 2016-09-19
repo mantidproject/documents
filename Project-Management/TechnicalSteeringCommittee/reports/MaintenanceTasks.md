@@ -97,7 +97,7 @@ Unsorted
          2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
       2. Smaller checks that could be updated in a single PR.
 10. Clang/C2 working on Windows
-   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for
+   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
 For another release
