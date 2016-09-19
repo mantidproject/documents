@@ -8,25 +8,24 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.8
+Maintenance tasks for 3.9
 =========================
 
 Highest priority
 ----------------
 
-1. Remove Qt3support requirement from Mantid (Hahn lead)
-   4. Try building Mantid with Qt5 and see what issues remain (Fede).
 4. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
       4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
       4. Require the above statement in all new work.
+1. Remove Qt3support requirement from Mantid (Hahn lead)
+   4. Try building Mantid with Qt5 and see what issues remain (Fede).
 
 Pool
 ----
 
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
-6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335)
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  and [#17155](https://github.com/mantidproject/mantid/issues/17155)
@@ -45,23 +44,18 @@ Assigned
 
 #### Unassigned (not suitable for pool)
 
-For another release
--------------------
-
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
-1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1093777. radon as a job in static analysis tab
 1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
+   6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
    1. ANN
-   2. GSoap ?
 1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
 2. Enforcing python standards
-1. Investigate breaking issues with updated dependencies
-    3. ~~iPython 4.0 [#13481](https://github.com/mantidproject/mantid/issues/13481)~~
+1. Investigate breaking issues with updated dependencies: iPython 4.0 on mac
 1. Rework/clean up cmake as a whole
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1. enable warnings and fix issues
@@ -113,6 +107,9 @@ For another release
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
 12. Move documentation builds to rhel7
+
+For another release
+-------------------
 
 Converted to actual tickets during a release
 --------------------------------------------
