@@ -105,6 +105,7 @@ Unassigned (not suitable for pool)
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
 12. Move documentation builds to rhel7
+13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the 35 files that do it
 
 For another release
 -------------------
