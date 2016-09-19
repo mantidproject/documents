@@ -32,6 +32,20 @@ Pool
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
    2. [flake8](http://builds.mantidproject.org/job/master_flake8/)
 13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the 35 files that do it
+11. Stop using classes and member function removed in C++17.
+   1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
+       2. _HAS_AUTO_PTR_ETC
+       3. _HAS_OLD_IOSTREAMS_MEMBERS
+       4. _HAS_FUNCTION_ASSIGN
+       5. _HAS_TR1_NAMESPACE
+       6. _HAS_IDENTITY_STRUCT
+   2. See which ones we can turn off now.
+   3. Identify functions and classes with deprecated code.
+     4. example: we currently use std::auto_ptr with boost::python.
+42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
+12. Fix GCC 6 compiler warnings
+  1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
+13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 
 Assigned
 --------
@@ -89,20 +103,6 @@ Unsorted
       2. Smaller checks that could be updated in a single PR.
 10. Clang/C2 working on Windows
    1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for
-11. Stop using classes and member function removed in C++17.
-   1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
-       2. _HAS_AUTO_PTR_ETC
-       3. _HAS_OLD_IOSTREAMS_MEMBERS
-       4. _HAS_FUNCTION_ASSIGN
-       5. _HAS_TR1_NAMESPACE
-       6. _HAS_IDENTITY_STRUCT
-   2. See which ones we can turn off now.
-   3. Identify functions and classes with deprecated code.
-     4. example: we currently use std::auto_ptr with boost::python.
-42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
-12. Fix GCC 6 compiler warnings
-  1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
-13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
 For another release
