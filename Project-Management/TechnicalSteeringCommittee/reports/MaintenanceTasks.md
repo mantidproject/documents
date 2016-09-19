@@ -8,53 +8,38 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.8 
+Maintenance tasks for 3.8
 =========================
 
 Highest priority
 ----------------
 
 1. Remove Qt3support requirement from Mantid (Hahn lead)
-   1. ~~Finish removing Qt3support classes [#11891](https://github.com/mantidproject/mantid/issues/11891)~~  (Roman)
-   2. ~~Update functions that were removed in Qt4 (http://builds.mantidproject.org/job/master_clean-Qt3-warnings/)~~
-      3. ~~Set `WITH_QT3_SUPPORT_WARNINGS=ON` by default?~~
-      4. ~~Sign up for a block of warnings in issues [#16128](https://github.com/mantidproject/mantid/issues/16128) and [#16129](https://github.com/mantidproject/mantid/issues/16129)~~
-      5. ~~Suggestion: search the [Qt 4.8 docs](http://doc.qt.io/qt-4.8/index.html) for the deprecated class member function. In most cases it will suggest a direct replacement.~~
-      6. ~~[Example pull request](https://github.com/mantidproject/mantid/pull/16235)~~
-   3. ~~Remove Qt3support package from [mantid  buildscript](https://github.com/mantidproject/mantid/blob/082354338d1fca01065c1b6af235d5ad769bdc69/CMakeLists.txt#L73) ([#16509](https://github.com/mantidproject/mantid/issues/16509) Fede).~~
-   4. Try building Mantid with Qt5 and see what issues remain (Fede). 
-4. ~~[#15421](https://github.com/mantidproject/mantid/issues/15421)~~ Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
+   4. Try building Mantid with Qt5 and see what issues remain (Fede).
+4. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
-  1. ~~Ensure Mantid builds when [linked against Python 3](https://docs.python.org/3.5/howto/cporting.html#changes-to-object-apis) and boost::python built against Python 3.~~
-  2. ~~Categorize the order which Python files will be made compatible with BOTH Python 2 & Python 3.~~
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
       4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
-      4. Require the above statement in all new work. 
+      4. Require the above statement in all new work.
 
 Pool
 ----
 
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
-1. ~~Move Windows Jenkins builds to use Ninja where possible [#16265](https://github.com/mantidproject/mantid/issues/16265).~~
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266)
 1. Reducing static analysis issues (discus stewards and soft limits)
-   2. [coverity](https://scan.coverity.com/projects/335) 
+   2. [coverity](https://scan.coverity.com/projects/335)
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  and [#17155](https://github.com/mantidproject/mantid/issues/17155)
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
-2. ~~Support for RPM release numbers [#16147](https://github.com/mantidproject/mantid/issues/16147)~~
 
 Assigned
 --------
 
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
-2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) - ~~[#15246](https://github.com/mantidproject/mantid/issues/15246)~~, [#15319](https://github.com/mantidproject/mantid/issues/15319)
-3. ~~move functions currently using `boost::tokenizer` to `Mantid::Kernel::StringTokenizer` [#15285](https://github.com/mantidproject/mantid/issues/15285)~~ (Matt King)
-8. ~~Fix class_maker.py when used with Geometry folder. [#16104](https://github.com/mantidproject/mantid/issues/16104)~~ (Anton)
-1. ~~Set a consistent policy for symbol visibility on all platforms. Currently on MSVC hides symbols by default.~~ (Anton)
-   - ~~Set [`CXX_VISIBILITY_PRESET`](https://cmake.org/cmake/help/v2.8.12/cmake.html#prop_tgt:LANG_VISIBILITY_PRESET) to `hidden` for gcc/clang and fix the builds.  [#15283](https://github.com/mantidproject/mantid/issues/15283)~~
+2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) [#15319](https://github.com/mantidproject/mantid/issues/15319)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel, Fede)
 
 
@@ -70,7 +55,6 @@ For another release
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1. Estimate time require to move from qwt5 -> qwt6 (results in TSC report)
 1093777. radon as a job in static analysis tab
-1. ~~Move to CMake 3 [#10205](http://github.com/mantidproject/mantid/issues/10205)~~
 1. Making packages properly external - benefit low, current version is effectively frozen this way which is actually good for us.
    1. ANN
    2. GSoap ?
@@ -83,7 +67,7 @@ For another release
 1. enable warnings and fix issues
   1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
   1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
-    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon). 
+    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
 4. [Copy only part of a column](https://github.com/mantidproject/mantid/issues/15884).
@@ -92,12 +76,12 @@ For another release
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
-      1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.    
+      1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
 8. Investigate overhead from logging. Specifically
    9. Would we benefit from checking the logging level before constructing a string?
-   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method. 
+   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
    10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
    11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 9. clang-tidy
@@ -107,7 +91,7 @@ For another release
       2. Smaller checks that could be updated in a single PR.
 
 10. Clang/C2 working on Windows
-   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for    
+   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure for
 
 11. Stop using classes and member function removed in C++17.
    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
@@ -116,18 +100,19 @@ For another release
        4. _HAS_FUNCTION_ASSIGN
        5. _HAS_TR1_NAMESPACE
        6. _HAS_IDENTITY_STRUCT
-   2. See which ones we can turn off now. 
+   2. See which ones we can turn off now.
    3. Identify functions and classes with deprecated code.
      4. example: we currently use std::auto_ptr with boost::python.
 42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)).
 
-12. Fix GCC 6 compiler warnings   
+12. Fix GCC 6 compiler warnings
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
- 
-13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)  
+
+13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
+12. Move documentation builds to rhel7
 
 Converted to actual tickets during a release
 --------------------------------------------
@@ -135,6 +120,6 @@ Converted to actual tickets during a release
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
 1. Editing algorithm and variable names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (Andrei)
-1. Clang working on linux. 
+1. Clang working on linux.
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
    3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
