@@ -17,10 +17,8 @@ Highest priority
 4. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
-      4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
-      4. Require the above statement in all new work.
-1. Remove Qt3support requirement from Mantid (Hahn lead)
-   4. Try building Mantid with Qt5 and see what issues remain (Fede).
+  4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
+  4. Require the above statement in all new work.
 
 Pool
 ----
@@ -32,6 +30,8 @@ Pool
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+   2. [flake8](http://builds.mantidproject.org/job/master_flake8/)
+13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the 35 files that do it
 
 Assigned
 --------
@@ -40,11 +40,18 @@ Assigned
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) [#15319](https://github.com/mantidproject/mantid/issues/15319)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel, Fede)
-6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Pete)
+6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Peterson)
+7. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`. Some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/). (Savici)
 
 
 Unassigned (not suitable for pool)
 ----------------------------------
+
+12. Move documentation builds from rhel6 to rhel7
+
+
+Unsorted
+--------
 
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
@@ -64,7 +71,6 @@ Unassigned (not suitable for pool)
     1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
-5. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`. Some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/).
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
@@ -104,8 +110,8 @@ Unassigned (not suitable for pool)
 
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
-12. Move documentation builds to rhel7
-13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the 35 files that do it
+
+
 
 For another release
 -------------------
@@ -119,3 +125,5 @@ Converted to actual tickets during a release
 1. Clang working on linux.
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
    3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
+1. Remove Qt3support requirement from Mantid (Hahn lead)
+   4. Try building Mantid with Qt5 and see what issues remain (Fede).
