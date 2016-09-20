@@ -1,0 +1,77 @@
+\documentclass[11pt,oneside,reqno]{amsart}
+%\usepackage{amssymb}
+
+
+\title{Simple energy resolution for DGS}
+\author{A. T. Savici}
+
+\begin{document}
+\maketitle
+
+The following notations are going to be used:
+\begin{itemize}
+\item $t_M$ - time the neutron leaves the moderator (will be set to 0 later)
+\item $t_C$ - time the neutron arrives at the chopper
+\item $t_S$ - time the neutron arrives at the sample
+\item $t_D$ - time the neutron arrives at the detector (total time of flight)
+\item $l_0$ - distance from moderator to chopper
+\item $l_1$ - distance from chopper to sample
+\item $l_2$ - distance from sample to detector
+\item $E_i$ - incident energy (constant from moderator to chopper and chopper to sample)
+\item $E_f$ - final energy (from sample to detector)
+\item $v_i, v_f$ - the corresponding velocities
+\end{itemize}
+
+The time neutrons arrive at the sample is given by
+\begin{eqnarray}
+t_S &=& t_M + \frac{l_0+l_1}{v_i}\\
+&=&t_M + (t_C - t_M)\frac{l_0+l_1}{l_0}\\
+&=&t_C\frac{l_0+l_1}{l_0}-t_M\frac{l_1}{l_0}
+\end{eqnarray}
+
+The energy transfer is given by
+\begin{eqnarray}
+\hbar \omega &=& E_i-E_f\\
+&=& \frac{m}{2}\left(v_i^2-v_f^2\right)\\
+&=&\frac{m}{2}\left[\left(\frac{l_0}{t_C-t_M}\right)^2-\left(\frac{l_2}{t_D-t_S}\right)^2\right]\\
+&=&\frac{m}{2}\left[\left(\frac{l_0}{t_C-t_M}\right)^2-\left(\frac{l_2}{t_D-t_C\frac{l_0+l_1}{l_0}-t_M\frac{l_1}{l_0}}\right)^2\right]
+\end{eqnarray}
+
+The energy resolution is given in terms of partial derivatives:
+\begin{equation}
+\Delta \hbar \omega = \sqrt{\sum_x \left(\frac{\partial \hbar \omega}{\partial t_x}\Delta t_x \right)^2}
+\end{equation}
+
+The $\Delta t_x$ are uncertainties with respect  to different time instances (moderator, chopper, detector).
+\begin{eqnarray}
+\left(\frac{\Delta \hbar \omega}{E_i}\right)^2&=&\frac{1}{E_i^2}\left[\left(\frac{\partial \hbar \omega}{\partial t_M}\Delta t_M \right)^2
++\left(\frac{\partial \hbar \omega}{\partial t_C}\Delta t_C \right)^2
++\left(\frac{\partial \hbar \omega}{\partial t_D}\Delta t_D \right)^2\right]\\
+&=&\left[\frac{m}{2E_i}\left(\frac{2 l_0^2}{(t_C-t_M)^3} + \frac{2 l_2^2 \left(\frac{l_1}{l_0}\right)}{\left(t_D-t_C\frac{l_0+l_1}{l_0}-t_M\frac{l_1}{l_0}\right)^3}\right)\Delta t_M\right]^2+\nonumber\\
+&&\left[\frac{m}{2E_i}\left(\frac{2 l_0^2}{(t_C-t_M)^3} + \frac{2 l_2^2 \left(1+\frac{l_1}{l_0}\right)}{\left(t_D-t_C\frac{l_0+l_1}{l_0}-t_M\frac{l_1}{l_0}\right)^3}\right)\Delta t_C\right]^2+\nonumber\\
+&&\left[\frac{m}{2E_i}\left(\frac{2 l_2^2}{\left(t_D-t_C\frac{l_0+l_1}{l_0}-t_M\frac{l_1}{l_0}\right)^3}\right)\Delta t_D\right]^2
+\end{eqnarray}
+
+We can now plug in $t_M=0$. We are going to use
+\begin{equation}
+\frac{m l_0^2}{2t_C^2}=E_i
+\end{equation}
+and 
+\begin{equation}
+\frac{m l_2^2}{2\left(t_D-t_C\frac{l_0+l_1}{l_0}\right)^2}=E_f
+\end{equation}
+Then:
+\begin{eqnarray}
+\left(\frac{\Delta \hbar \omega}{E_i}\right)^2&=& \left[\frac{2\Delta t_M }{t_C}+2\Delta t_M \left(\frac{m l_2^2}{2\left(t_D-t_C\frac{l_0+l_1}{l_0}\right)^2}\right)^\frac{3}{2}\frac{1}{E_i^\frac{3}{2}}\left(\frac{2E_i}{m l_2^2}\right)^\frac{1}{2}\frac{l_1}{l_0}\right]^2+\nonumber\\
+&&\left[\frac{2\Delta t_C }{t_C}+2\Delta t_C \left(\frac{m l_2^2}{2\left(t_D-t_C\frac{l_0+l_1}{l_0}\right)^2}\right)^\frac{3}{2}\frac{1}{E_i^\frac{3}{2}}\left(\frac{2E_i}{m l_2^2}\right)^\frac{1}{2}\frac{l_0+l_1}{l_0}\right]^2+\nonumber\\
+&&\left[2\Delta t_D \left(\frac{m l_2^2}{2\left(t_D-t_C\frac{l_0+l_1}{l_0}\right)^2}\right)^\frac{3}{2}\frac{1}{E_i^\frac{3}{2}}\left(\frac{2E_i}{m l_2^2}\right)^\frac{1}{2}\frac{l_0}{l_0}\right]^2\\
+&=&\left[\frac{2\Delta t_M }{t_C}+2\Delta t_M\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\left(\frac{2E_i}{m l_0^2}\right)^\frac{1}{2}\frac{l_1}{l_2}\right]^2+\nonumber\\
+&&\left[\frac{2\Delta t_C}{t_C}+2\Delta t_C\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\left(\frac{2E_i}{m l_0^2}\right)^\frac{1}{2}\frac{l_0+l_1}{l_2}\right]^2+\nonumber\\
+&&\left[2\Delta t_D\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\left(\frac{2E_i}{m l_0^2}\right)^\frac{1}{2}\frac{l_0}{l_2}\right]^2\\
+&=&\left\lbrace\frac{2\Delta t_M }{t_C}\left[1+\frac{l_1}{l_2}\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\right]\right\rbrace^2+\nonumber\\
+&&\left\lbrace\frac{2\Delta t_C }{t_C}\left[1+\frac{l_0+l_1}{l_2}\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\right]\right\rbrace^2+\nonumber\\
+&&\left\lbrace\frac{2\Delta t_D }{t_C}\left[\frac{l_0}{l_2}\left(\frac{E_f}{E_i}\right)^\frac{3}{2}\right]\right\rbrace^2
+\end{eqnarray}
+
+If the time resolution of the detector is negligible compared to the other terms, $\Delta t_D=0$.
+\end{document}
