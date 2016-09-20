@@ -62,11 +62,14 @@ Assigned
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Peterson)
 7. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`. Some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/). (Savici)
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
+42. Move [coverity builds](http://builds.mantidproject.org/view/All/job/coverity_build_and_submit/) to rhel7 (Peterson)
+
 
 Unassigned (not suitable for pool)
 ----------------------------------
 
 12. Move documentation builds from rhel6 to rhel7
+42. Move [valgrind builds](http://builds.mantidproject.org/label/valgrind/) to rhel7
 
 
 Unsorted
