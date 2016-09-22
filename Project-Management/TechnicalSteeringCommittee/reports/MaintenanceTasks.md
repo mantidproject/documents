@@ -15,7 +15,7 @@ Highest priority
 ----------------
 
 4. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
-1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead)
+1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
   4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
   4. Require the above statement in all new work.
