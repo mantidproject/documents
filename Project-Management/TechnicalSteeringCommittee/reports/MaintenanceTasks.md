@@ -62,7 +62,7 @@ Assigned
 13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the ~~35~~ 40 files that do it [#17590](https://github.com/mantidproject/mantid/issues/17590) (Dimitar)
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar)
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
-42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)). (Lottie)
+42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)). [#17600](https://github.com/mantidproject/mantid/issues/17600) (Lottie)
 
 Unassigned (not suitable for pool)
 ----------------------------------
