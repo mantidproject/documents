@@ -29,8 +29,8 @@ Pool
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  and [#17155](https://github.com/mantidproject/mantid/issues/17155)
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
+   294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
-   2. [flake8](http://builds.mantidproject.org/job/master_flake8/)
 11. Stop using classes and member function removed in C++17.
    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
        2. _HAS_AUTO_PTR_ETC
