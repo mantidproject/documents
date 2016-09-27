@@ -1,10 +1,15 @@
-## Test Scenarios for Workspace Dock Widget
+## Test Scenarios for Workspace Dock Widget 
+![Dock1](ScenariosScreenshots/MantidDock.png)
+Concepts:
+ - [Workspace](http://docs.mantidproject.org/nightly/concepts/Workspace.html)
+ - [Algorithm](http://docs.mantidproject.org/nightly/concepts/Algorithm.html)
+ 
 * **Load button in Workspace Dock**
- 1. Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into ADS and the workspace name is added to the workspace dock. ![Load1-1](ScenariosScreenshots/Load1-1.png) ![Load1-2](ScenariosScreenshots/Load1-2.png)
+ 1. Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into the displayed workspace list (DWL) and the workspace name is added to the workspace dock. ![Load1-1](ScenariosScreenshots/Load1-1.png) ![Load1-2](ScenariosScreenshots/Load1-2.png)
  2. Load button used to launch load dialog, user selects multiple files from the file open dialog and clicks the Run button. A group workspace is created called MultipleFiles which contains the selected workspaces. ![Load2-1](ScenariosScreenshots/Load2-1.png) ![Load2-2](ScenariosScreenshots/Load2-2.png) ![Load2-3](ScenariosScreenshots/Load2-3.png)
- 3. Load button used to launch load dialog, user cancels load (Close). No interaction with ADS or workspace dock.
+ 3. Load button used to launch load dialog, user cancels load (Close). No interaction with DWL or workspace dock.
  4. Load button used to launch load dialog, workspace is not set by user. User selects Run. User presented with a dialog which states that one or more invalid properties (filename) have been set.
- 5. User runs Load algorithm outside of workspace dock with valid data file. Workspace loaded into ADS and the workspace name is added to the workspace dock. ![Load5-1](ScenariosScreenshots/Load5-1.png) ![Load5-2](ScenariosScreenshots/Load5-2.png) ![Load5-3](ScenariosScreenshots/Load5-3.png)
+ 5. User runs Load algorithm outside of workspace dock with valid data file. Workspace loaded into DWL and the workspace name is added to the workspace dock. ![Load5-1](ScenariosScreenshots/Load5-1.png) ![Load5-2](ScenariosScreenshots/Load5-2.png) ![Load5-3](ScenariosScreenshots/Load5-3.png)
 * **Group Button**
  1. User selects multiple workspaces within the workspace dock and clicks the Group button.  A group workspace called NewGroup is created which contains the selected workspaces. The workspaces are no longer displayed independently of the group. ![Group1-1](ScenariosScreenshots/Group1-1.png) ![Group1-2](ScenariosScreenshots/Group1-2.png) ![Group1-3](ScenariosScreenshots/Group1-3.png)
  2. User selects a workspace group within the workspace dock and clicks the UnGroup button. The workspace group is removed and the individual constituent workspaces are listed in the workspace dock. ![Group2-1](ScenariosScreenshots/Group2-1.png) ![Group2-2](ScenariosScreenshots/Group2-2.png)
@@ -27,5 +32,5 @@
 * **Load button for Live Data**
  1. User clicks Load Button and a dropdown list appears with the options File and Live Data. User selects Live Data and the Start Live dialog is launched.
 * **Other Actions**
- 1. User right clicks workspace/group in workspace dock and selects Rename. A rename dialog is launched which prompts for the new workspace name. User enters a valid workspace name. The workspace name is updated in the ADS and the workspace dock. ![Other1-1](ScenariosScreenshots/Other1-1.png) ![Other1-2](ScenariosScreenshots/Other1-2.png) ![Other1-3](ScenariosScreenshots/Other1-3.png)
- 2. User right clicks workspace/group in workspace dock and selects Rename. A Yes/No confirmation dialog is launched. The user selects Yes. The workspace is removed from the workspace dock and ADS. ![Other2-1](ScenariosScreenshots/Other2-1.png) ![Other2-2](ScenariosScreenshots/Other2-2.png) ![Other2-3](ScenariosScreenshots/Other2-3.png)
+ 1. User right clicks workspace/group in workspace dock and selects Rename. A rename dialog is launched which prompts for the new workspace name. User enters a valid workspace name. The workspace name is updated in the DWL and the workspace dock. ![Other1-1](ScenariosScreenshots/Other1-1.png) ![Other1-2](ScenariosScreenshots/Other1-2.png) ![Other1-3](ScenariosScreenshots/Other1-3.png)
+ 2. User right clicks workspace/group in workspace dock and selects Rename. A Yes/No confirmation dialog is launched. The user selects Yes. The workspace is removed from the workspace dock and DWL. ![Other2-1](ScenariosScreenshots/Other2-1.png) ![Other2-2](ScenariosScreenshots/Other2-2.png) ![Other2-3](ScenariosScreenshots/Other2-3.png)
