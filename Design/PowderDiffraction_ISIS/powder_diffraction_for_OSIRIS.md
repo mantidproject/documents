@@ -134,3 +134,14 @@ formats such as:
 - XYE for TOPAS, FullProf or MAUD (algorithm
   [SaveFocusedXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html)).
 - [GSAS](http://docs.mantidproject.org/nightly/algorithms/SaveGSS-v1.html), and [SaveFocusedXYE](http://docs.mantidproject.org/nightly/algorithms/SaveFocusedXYE-v1.html).
+
+### Potential action plan
+
+Prioritized list of tasks (ordered approximately considering usefulness / development effort required / knowledge needed):
+- Support multiple modules in the diffraction algorithm [OSIRISDiffractionReduction](http://docs.mantidproject.org/nightly/algorithms/OSIRISDiffractionReduction-v1.html) (this could also be added in the GUI).
+- Add different output formats (tick boxes in the GUI).
+- Alternatively, depending on availability of calibration files and absorption requirements:
+  - Add calibration support
+  - Add support for absorption corrections
+  
+- Integrate with GUI: this may happen incrementally together with the last two steps (likely), or after them (probably less convenient from users and scientists' perspective).
