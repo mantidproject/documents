@@ -14,11 +14,21 @@ Maintenance tasks for 3.9
 Highest priority
 ----------------
 
-4. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
+1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
   4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
   4. Require the above statement in all new work.
+1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface.
+  * Start by reading concepts page for [HistogramData](http://docs.mantidproject.org/nightly/concepts/HistogramData.html)
+  * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h) 
+  * Take ownership of an Issue covering a subset of the codebase (TODO)
+  * Create a new Issue based on the umbrella Issue above for a specific feature i.e. an Algorithm.
+  * Create performance tests for the feature 
+  * Refactor the code to utilse the `HistogramData` concepts. Add additional unit tests where required.
+  * When the issue is ready for testing post the performance tests results before and after the changes as a comment against the issue.
+  * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold
+  
 
 Pool
 ----
