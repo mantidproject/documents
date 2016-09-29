@@ -1,5 +1,5 @@
-More flexible live listener interface
-=====================================
+More Flexible LiveListener Interface
+====================================
 
 Motivation
 ----------
@@ -50,8 +50,8 @@ Questions
 Mark mentioned that we are missing a Watcher Algorithm. It's unclear what is required that's not already handled by `MontiorLiveData` and `LoadLiveData` via `StartLiveData`?
 
 
-Partial solutions
-------------------
+Partial Solution Options
+------------------------
 
 ### Option 1: Add Named Component Option
 
@@ -86,18 +86,17 @@ The `LiveDataAlgorithm` base class is then given the ability to provide an optio
 Currently `LiveListenerFactory::create` as called by `LiveDataAlgorithm` will:
 
 1. Load the Instrument and then InstrumentInfo for the specified *Instrument* name argument. All taken from the Facility file.
-1. Extract the concrete ILiveListener from the above and create an instance of one
-1. Connect it from the address specified above
+1. Extract the concrete ILiveListener from the above and create an instance of one.
+1. Connect it from the address specified in the Facilities.xml.
 
 The only thing that any `create` method should do is create the relevant object, and we should have a way of providing the ILiveListener class name ourselves, and connecting the product ourselves.
 
-The completed solution would allow users to specify the stuff usually loaded from the facilities.xml file directly in `StartLiveData` namely the address, ILiveListener name and component name. If provided the code would not try to then fetch that information from the instrument.
+The completed solution would allow users to specify the stuff usually loaded from the facilities.xml file directly in `StartLiveData`. Namely, the address, ILiveListener name and component name. If provided, the code would not try to then fetch that information from the instrument.
 
 **In this solution users would be able to use `StartLiveData` and completely bypass the Facilities.xml file.** Again, this can be added in parallel to the above fixes.
 
 
-Solution
---------
-
+Proposed Solution
+-----------------
 
 
