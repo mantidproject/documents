@@ -2,7 +2,7 @@
 
 Apart from 1:1 replacements (such as `readX -> x` or `dataX -> mutableX`), pay special attention to the following:
 
-- There are `consts` variants of `dataX`, `dataY`, and `dataE`, so there are cases where they should be replaced by `x`, `y`, and `e` instead of the "mutable" variants.
+- There are `const` variants of `dataX`, `dataY`, and `dataE`, so there are cases where they should be replaced by `x`, `y`, and `e` instead of the "mutable" variants.
 - Sometimes the non-`const` variants of `dataX`, `dataY`, and `dataE` are misused, i.e., used in cases where data is not actually modified.
   It is important to find these cases and replace them by `x`, `y`, and `e`, since otherwise a copy of the data is forced (internal sharing is broken).
 - It is now easy to "share" also Y and E data.
@@ -17,13 +17,14 @@ Apart from 1:1 replacements (such as `readX -> x` or `dataX -> mutableX`), pay s
 
   ```cpp
    outWS->setSharedY(i, inWS->sharedY(i));
-   // Share the whole Histogram
+   // If X, Y, and E are copied, share the whole Histogram:
    outWS->setHistogram(i, inWS->histogram(i));
   ```
 
 - Improving sharing is the (only) main reason for improved performance by using functionality from the new `HistogramData` module.
+  This can yield a big improvement in some cases, but is completely negligible in others.
   We want to track these improvements, please keep track of the algorithms where you did such improvements, implement a performance tests (or manually test it, e.g., my adapting a doctest) and give the results in the pull request.
-- If in doubt, create a pull request for an early/intermediate code review by one of the team members that has already done more work with these refactorign steps.
+- If in doubt, create a pull request for an early/intermediate code review by one of the team members that has already done more work with these refactoring steps.
   In particular, do this before putting effort into writing performance tests.
 - Replace uses of `std::vector<double>` (`MantidVec`) in function arguments by the new types for improved type-safety.
 - **Keep pull request small, in particular is this is your first contact with `HistogramData`.**
@@ -56,3 +57,6 @@ BinEdges edges(count, LinearGenerator(start, increment));
 
 // Similar for LogarithmicGenerator
 ```
+
+Also note that the comment regarding Y storage mode in the transition document is outdated.
+`Histogram` now **does** keep track of the storage mode internally.
