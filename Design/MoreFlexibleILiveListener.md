@@ -147,7 +147,7 @@ Supporting direct LiveListener instantiation using a class name and connection s
 
 The existing `create` method can be modified to function the same way it does now, but internally call the new `create` method, passing in the class name and address retrieved from Facilities.xml. `LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly.
 
-By adding a "Connection" group under the "Instrument" drop down box, to select an address / listener pair defined in the Facilities.xml using a drop down box, or to specify a custom address and listener, we could support both the general use case and allow for custom setups. This enables selection of the correct connection entry as described in Requirement 3.
+By adding a "Connection" group under the "Instrument" drop down box, to select an address / listener pair defined in the Facilities.xml using a drop down box, or to specify a custom address and listener, we could support both the general use case and allow for custom setups. This enables selection of the correct connection entry as described in Requirement 2.
 
 #### Requirement 4
 
