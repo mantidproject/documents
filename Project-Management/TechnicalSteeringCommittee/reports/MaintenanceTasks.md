@@ -24,8 +24,7 @@ Highest priority
   * Read these [refactoring notes](https://github.com/mantidproject/documents/blob/master/Help/HistogramData/HistogramData-refactoring.md)
   * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h).
   * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold.
-  * Take ownership of an Issue covering a subset of the codebase (TODO Simon: create issue & link here)
-  * Create a new Issue based on the umbrella Issue above for a specific feature i.e. an Algorithm. 
+  * Pick some algorithm from the (umbrella issue)[https://github.com/mantidproject/mantid/issues/17641] and get started. 
 
   
 
