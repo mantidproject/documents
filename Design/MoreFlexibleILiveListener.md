@@ -12,9 +12,10 @@ Problems To Fix
 
 **Mandatory**
 
-* Should be able to create a specific LiveListener via the StartLiveData algorithm by specifying the address and class, without querying the facilities.xml / InstrumentInfo.
-* Should support multiple LiveListeners (multiple addresses/connection string) per instrument
-* Should be able to plug new specific LiveListener implementations into an existing Mantid install.
+1. *Listener Properties* in StartLiveData should update dynamically based on properties that the specific `LiveListener` has.
+1. Should support multiple LiveListeners (multiple addresses/connection string) per instrument.
+1. Should be able to create a specific LiveListener via the StartLiveData algorithm by specifying the address and class, without querying the facilities.xml / InstrumentInfo.
+1. Should be able to plug new specific LiveListener implementations into an existing Mantid install.
 
 
 How Things Currently Work
@@ -99,4 +100,53 @@ The completed solution would allow users to specify the stuff usually loaded fro
 Proposed Solution
 -----------------
 
+#### Requirement 1
 
+Dynamic properties for listeners were already supported previously, but this feature was removed in [PR #234](https://github.com/mantidproject/mantid/pull/234) in response to [Trac #11059](http://trac.mantidproject.org/mantid/ticket/11059) because it interfered with help generation and Python API support.
+
+Reverting this PR will satisfy this requirement, but we will need to deal with the help and Python issues in a different way. This is beyond the scope of this design and can be handled separately.
+
+#### Requirement 2
+
+Support for multiple LiveListeners can be implemented using Option 1, described above.
+
+This will require changes to the way existing code and interfaces work. Facilities.xml should also be updated to replace workaround constructs like:
+
+```xml
+  <instrument name="ENGIN-X" shortname="ENGINX" >
+    <zeropadding size="8"/>
+    <technique>Neutron Diffraction</technique>
+    <livedata address="NDXENGINX:6789" />
+  </instrument>
+
+  <instrument name="ENGIN-X_EVENT" shortname="ENGINX" >
+    <zeropadding size="8"/>
+    <technique>Neutron Diffraction</technique>
+    <livedata address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />
+  </instrument>
+```
+
+With a single instrument that has two connection types:
+
+```xml
+  <instrument name="ENGIN-X" shortname="ENGINX" >
+    <zeropadding size="8"/>
+    <technique>Neutron Diffraction</technique>
+    <livedata default="histo">
+      <connection name="histo" address="NDXENGINX:6789" listener="ISISHistoDataListener" />
+      <connection name="event" address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />
+    </livedata>
+  </instrument>
+```
+
+#### Requirement 3
+
+Supporting direct LiveListener instantiation using a class name and connection string will require either modifying the existing `LiveListenerFactoryImpl::create` method, as per Option 2 above, or overloading it. The proposed solution is to overload it to provide an alternative while minimizing impact on existing code.
+
+The existing `create` method can be modified to function the same way it does now, but internally call the new `create` method, passing in the class name and address retrieved from Facilities.xml. `LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly.
+
+By adding a "Connection" group under the "Instrument" drop down box, to select an address / listener pair defined in the Facilities.xml using a drop down box, or to specify a custom address and listener, we could support both the general use case and allow for custom setups.
+
+#### Requirement 4
+
+This feature is already supported, but poorly documented and therefore not well known. The proposed solution is to improve documentation and provide a minimal but fully working example implementation to showcase how one could plug a new specific listener into an existing Mantid install without rebuilding any part of Mantid.
