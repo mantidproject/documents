@@ -20,14 +20,13 @@ Highest priority
   4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
   4. Require the above statement in all new work.
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface.
-  * Start by reading concepts page for [HistogramData](http://docs.mantidproject.org/nightly/concepts/HistogramData.html)
-  * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h) 
-  * Take ownership of an Issue covering a subset of the codebase (TODO)
-  * Create a new Issue based on the umbrella Issue above for a specific feature i.e. an Algorithm.
-  * Create performance tests for the feature 
-  * Refactor the code to utilse the `HistogramData` concepts. Add additional unit tests where required.
-  * When the issue is ready for testing post the performance tests results before and after the changes as a comment against the issue.
-  * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold
+  * Start by reading the concepts page for [HistogramData](http://docs.mantidproject.org/nightly/concepts/HistogramData.html)
+  * Read these [refactoring notes](https://github.com/mantidproject/documents/blob/master/Help/HistogramData/HistogramData-refactoring.md)
+  * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h).
+  * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold.
+  * Take ownership of an Issue covering a subset of the codebase (TODO Simon: create issue & link here)
+  * Create a new Issue based on the umbrella Issue above for a specific feature i.e. an Algorithm. 
+
   
 
 Pool
