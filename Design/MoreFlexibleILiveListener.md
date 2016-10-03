@@ -143,11 +143,28 @@ Requirement 3 handles how the correct connection can be selected by the user.
 
 #### Requirement 3
 
-Supporting direct LiveListener instantiation using a class name and connection string will require either modifying the existing `LiveListenerFactoryImpl::create` method, as per Option 2 above, or overloading it. The proposed solution is to overload it to provide an alternative while minimizing impact on existing code.
+Supporting direct LiveListener instantiation using a class name and connection string will require modifying the existing `LiveListenerFactoryImpl::create` method and adding an overloaded version of it, as per Option 2 above.
 
-The existing `create` method can be modified to function the same way it does now, but internally call the new `create` method, passing in the class name and address retrieved from Facilities.xml. `LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly.
+One version should take an instrument name and connection name (which could have a default based on the `default` attribute of the `livedata` tag). The other version should take a LiveListener class name and an address string.
 
-By adding a "Connection" group under the "Instrument" drop down box, to select an address / listener pair defined in the Facilities.xml using a drop down box, or to specify a custom address and listener, we could support both the general use case and allow for custom setups. This enables selection of the correct connection entry as described in Requirement 2.
+`LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly. The following GUI additions would allow regular users to just select an instrument and connection, while also giving advanced users the option to specify a LiveListener class and address string manually:
+
+```
+ Instrument       [ Dropdown Box    |V]
+ Connection       [ Dropdown Box    |V]
+
+----------- Custom Connection ----------
+| Listener Type   [ Dropdown Box   |V] |
+| Address String  [ Text Box         ] |
+----------------------------------------
+```
+
+Where:
+* When the user selects an `Instrument`, `Connection` is populated with connection names, an additional "[Custom]" option, and is preset based on the `default_name` attribute of the `livedata` tag
+* When the user selects a `Connection` (or as a result of the above), the `Listener Type` and `Address String` are filled in based on that connection's attributes in facilities.xml
+* `Listener Type` and `Address String` are disabled for editing normally, and only enabled when "[Custom]" is selected
+
+This enables selection of the correct connection entry as described in Requirement 2.
 
 #### Requirement 4
 
