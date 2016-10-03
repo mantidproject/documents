@@ -86,7 +86,7 @@ A solution to calculate new calibrations is required. Sanghamitra
 would like to draw from the calibration routines of other powder
 diffraction instruments.
 
-For diffraction experiments OSIRIS uses 11 modules. Every module
+For diffraction experiments OSIRIS uses ~~11 modules~~ 8 modules according to the [documentation](http://www.isis.stfc.ac.uk/instruments/osiris/documents/osiris-user-guide6672.pdf#page=30&zoom=130,-252,730). Every module
 produces data in a different range of wavelength. All the wavelength
 need to be combined (stitched together).
 
