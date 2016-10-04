@@ -132,7 +132,7 @@ With a single instrument that has two connection types:
   <instrument name="ENGIN-X" shortname="ENGINX" >
     <zeropadding size="8"/>
     <technique>Neutron Diffraction</technique>
-    <livedata default="histo">
+    <livedata default_name="histo">
       <connection name="histo" address="NDXENGINX:6789" listener="ISISHistoDataListener" />
       <connection name="event" address="NDXENGINX:10000" listener="ISISLiveEventDataListener" />
     </livedata>
@@ -147,7 +147,7 @@ Supporting direct LiveListener instantiation using a class name and connection s
 
 One version should take an instrument name and connection name (which could have a default based on the `default` attribute of the `livedata` tag). The other version should take a LiveListener class name and an address string.
 
-`LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly. The following GUI additions would allow regular users to just select an instrument and connection, while also giving advanced users the option to specify a LiveListener class and address string manually:
+`LiveDataAlgorithm` and `StartLiveData` (as well as its dialog) will need to be modified as well, to provide a user interface and call LiveListenerFactory accordingly. The following GUI additions to the top-right of the StartLiveData dialog would allow regular users to just select an instrument and connection, while also giving advanced users the option to specify a LiveListener class and address string manually:
 
 ```
  Instrument       [ Dropdown Box    |V]
@@ -160,7 +160,7 @@ One version should take an instrument name and connection name (which could have
 ```
 
 Where:
-* When the user selects an `Instrument`, `Connection` is populated with connection names, an additional "[Custom]" option, and is preset based on the `default_name` attribute of the `livedata` tag
+* When the user selects an `Instrument`, `Connection` is populated with connection names for that instrument, an additional "[Custom]" option, and is preset based on the `default_name` attribute of the `livedata` tag
 * When the user selects a `Connection` (or as a result of the above), the `Listener Type` and `Address String` are filled in based on that connection's attributes in facilities.xml
 * `Listener Type` and `Address String` are disabled for editing normally, and only enabled when "[Custom]" is selected
 
