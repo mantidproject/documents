@@ -137,11 +137,17 @@ formats such as:
 
 ### Potential action plan
 
+*Last Updated 05/10/2016*
+
 Prioritized list of tasks (ordered approximately considering usefulness / development effort required / knowledge needed):
+- Allow specific detectors to be excluded from both the calibration and run [issue](https://github.com/mantidproject/mantid/issues/17706)
+- Fix an issue with processing multiple d-ranges with different types of data leading to crash [issue](https://github.com/mantidproject/mantid/issues/17707) - Pending both data and steps to cause crash from Sanghamitra 
 - Support multiple modules in the diffraction algorithm [OSIRISDiffractionReduction](http://docs.mantidproject.org/nightly/algorithms/OSIRISDiffractionReduction-v1.html) (this could also be added in the GUI).
-- Add different output formats (tick boxes in the GUI).
-- Alternatively, depending on availability of calibration files and absorption requirements:
-  - Add calibration support
-  - Add support for absorption corrections
-  
-- Integrate with GUI: this may happen incrementally together with the last two steps (likely), or after them (probably less convenient from users and scientists' perspective).
+- Fix an issue where Adsorption corrections can lead to negative correction values - Pending both data and steps from Sanghamitra that exhibits this bug. It also could potentially affect other instruments depending on how it is performed in the algorithm. 
+- Add support adsorption correction on other container types as we currently support empty containers. Elliot may have already been working on this, is there an issue/branch with work on it? Closer to the time we can look into requirments for this.
+- Add different output formats and harmonise across all instruments in the interface (tick boxes in the GUI).
+- Talk to other diffraction instruments with a view to:
+  - Find resources to help us with the process and look for potential improvements then:
+  - Adapt existing calibration if applicable 
+  - Or Add calibration support
+- Bring documentation up to date, some features already exist and are in place ready but not documented so go unused. 
