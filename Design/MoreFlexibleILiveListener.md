@@ -176,5 +176,5 @@ TSC
 | Who        | When          | 
 | ------------- |:-------------:|
 | Owen Arnold      | 7th Oct 2016 |
-| Martyn Gigg      |       |  
+| Martyn Gigg      | 7th Oct 2016 |  
 | Pete Peterson |      |   
