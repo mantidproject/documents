@@ -14,7 +14,7 @@ Problems To Fix
 
 1. *Listener Properties* in StartLiveData should update dynamically based on properties that the specific `LiveListener` has.
 1. Should support multiple LiveListeners (multiple addresses/connection string) per instrument.
-1. Should be able to create a specific LiveListener via the StartLiveData algorithm by specifying the address and class, without querying the facilities.xml / InstrumentInfo.
+1. Should be able to create a specific LiveListener via the StartLiveData algorithm by specifying the connection information and listener type, without querying the facilities.xml / InstrumentInfo.
 1. Should be able to plug new specific LiveListener implementations into an existing Mantid install.
 
 
