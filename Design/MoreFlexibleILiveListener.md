@@ -100,13 +100,13 @@ The completed solution would allow users to specify the stuff usually loaded fro
 Proposed Solution
 -----------------
 
-#### Requirement 1
+#### Satisfying Requirement 1
 
 Dynamic properties for listeners were already supported previously, but this feature was removed in [PR #234](https://github.com/mantidproject/mantid/pull/234) in response to [Trac #11059](http://trac.mantidproject.org/mantid/ticket/11059) because it interfered with help generation and Python API support.
 
 Reverting this PR will satisfy this requirement, but we will need to deal with the help and Python issues in a different way. This is beyond the scope of this design and can be handled separately.
 
-#### Requirement 2
+#### Satisfying Requirement 2
 
 Support for multiple LiveListeners can be implemented using Option 1, described above.
 
@@ -141,7 +141,7 @@ With a single instrument that has two connection types:
 
 Requirement 3 handles how the correct connection can be selected by the user.
 
-#### Requirement 3
+#### Satisfying Requirement 3
 
 Supporting direct LiveListener instantiation using a class name and connection string will require modifying the existing `LiveListenerFactoryImpl::create` method and adding an overloaded version of it, as per Option 2 above.
 
@@ -166,6 +166,6 @@ Where:
 
 This enables selection of the correct connection entry as described in Requirement 2.
 
-#### Requirement 4
+#### Satisfying Requirement 4
 
 This feature is already supported, but poorly documented and therefore not well known. The proposed solution is to improve documentation and provide a minimal but fully working example implementation to showcase how one could plug a new specific listener into an existing Mantid install without rebuilding any part of Mantid.
