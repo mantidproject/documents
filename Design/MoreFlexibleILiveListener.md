@@ -169,3 +169,12 @@ This enables selection of the correct connection entry as described in Requireme
 #### Satisfying Requirement 4
 
 This feature is already supported, but poorly documented and therefore not well known. The proposed solution is to improve documentation and provide a minimal but fully working example implementation to showcase how one could plug a new specific listener into an existing Mantid install without rebuilding any part of Mantid.
+
+## Approval
+TSC
+
+| Who        | When          | 
+| ------------- |:-------------:|
+| Owen Arnold      | 7th Oct 2016 |
+| Martyn Gigg      |       |  
+| Pete Peterson |      |   
