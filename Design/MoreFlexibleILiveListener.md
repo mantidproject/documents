@@ -95,19 +95,25 @@ The only thing that any `create` method should do is create the relevant object,
 
 The completed solution would allow users to specify the stuff usually loaded from the facilities.xml file directly in `StartLiveData`. Namely, the address, ILiveListener name and component name. If provided, the code would not try to then fetch that information from the instrument.
 
-**In this solution users would be able to use `StartLiveData` and completely bypass the Facilities.xml file.** Again, this can be added in parallel to the above fixes.
+**In this solution users would be able to use `StartLiveData` and completely bypass the Facilities.xml file.**
+This can be added in parallel to the above fixes.
 
 
 Proposed Solution
 -----------------
 
-#### Satisfying Requirement 1
+The proposed solution is a combination of both of the above partial solution options, with some modifications and additions. The entire solution is described below, split into sections by the individual requirements that they address.
+
+Option 1 is used to address Requirement 2.
+Option 2 is used to address Requirement 3.
+
+#### Addressing Requirement 1
 
 Dynamic properties for listeners were already supported previously, but this feature was removed in [PR #234](https://github.com/mantidproject/mantid/pull/234) in response to [Trac #11059](http://trac.mantidproject.org/mantid/ticket/11059) because it interfered with help generation and Python API support.
 
 Reverting this PR will satisfy this requirement, but we will need to deal with the help and Python issues in a different way. This can be solved the same way that the `Load` algorithm handles it: The Python function should accept any arguments and ensure it sets the `Instrument` and `Connection` arguments first. The remaining, dependent properties are set afterwards, raising an error if a mismatch occurs.
 
-#### Satisfying Requirement 2
+#### Addressing Requirement 2
 
 Support for multiple LiveListeners can be implemented using Option 1, described above.
 
@@ -142,7 +148,7 @@ With a single instrument that has two connection types:
 
 Requirement 3 handles how the correct connection can be selected by the user.
 
-#### Satisfying Requirement 3
+#### Addressing Requirement 3
 
 Supporting direct LiveListener instantiation using a class name and connection string will require modifying the existing `LiveListenerFactoryImpl::create` method and adding an overloaded version of it, as per Option 2 above.
 
@@ -167,7 +173,7 @@ Where:
 
 This enables selection of the correct connection entry as described in Requirement 2.
 
-#### Satisfying Requirement 4
+#### Addressing Requirement 4
 
 This feature is already supported, but poorly documented and therefore not well known. The proposed solution is to improve documentation and provide a minimal but fully working example implementation to showcase how one could plug a new specific listener into an existing Mantid install without rebuilding any part of Mantid.
 
