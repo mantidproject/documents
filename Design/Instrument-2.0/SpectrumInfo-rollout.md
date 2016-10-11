@@ -67,3 +67,5 @@ Masking in Nexus files is stored as part of `ParameterMap`, that is we need to b
 
 - Masking and the addition of `DetectorInfo` looks like a worthwhile next step to push things closer towards the ultimate Instrument-2.0 design.
   Masks are written to in relatively few places so this could be achieved within a reasonable time frame.
+
+- Adding converters as part of the masking implementation is something that will also aid in the implementation of Instrument-2.0 since we will need to convert between Instrument-1.0 and Instrument-2.0 and vice versa during the likely very long period in which both instrument versions coexist due to partial rollout and compatibility with legacy code.
