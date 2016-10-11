@@ -8,7 +8,7 @@ Part of the implementation of Instrument-2.0 will then simply consist in replaci
 This document is not a design document but merely discusses the rollout methodology and process.
 
 So far `SpectrumInfo` supports a limited set of key functionality and is used in relatively few algorithms.
-All current functionality is read-only.
+All current functionality is read-only. The intention is to make this the de-facto mechanism for accessing everything apart from the counts and event/histogram information and used as widely as possible.
 
 
 ## Rollout Status and Hurdles
