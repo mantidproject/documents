@@ -48,7 +48,8 @@ As used at the moment, `LiveDataAlgorithm` has a gateway function called [getLiv
 
 Questions
 ---------
-Mark mentioned that we are missing a Watcher Algorithm. It's unclear what is required that's not already handled by `MontiorLiveData` and `LoadLiveData` via `StartLiveData`?
+
+Mark asked whether we have a Watcher Algorithm. This functionality is handled by `MonitorLiveData` and `LoadLiveData` via `StartLiveData`.
 
 
 Partial Solution Options
