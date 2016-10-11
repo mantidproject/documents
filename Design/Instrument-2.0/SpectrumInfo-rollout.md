@@ -40,7 +40,7 @@ The by far most frequent use of `ParameterMap` is to obtain the `EFixed` paramet
 
 `SpectrumInfo` does currently not provide access to the shape of a detector or things like the solid angle (`Object::solidAngle()`).
 It is not clear whether or not providing this is beneficial.
-The result would be a considerable bigger interface of `SpectrumInfo` that is used be relatively few clients.
+The result would be a considerably bigger interface of `SpectrumInfo` that is used be relatively few clients.
 
 We can avoid this by providing access to the `Detector` via `SpectrumInfo`.
 Read access should not create difficulties, the only effect is that client code refactoring would be postponed until the introduction of Instrument-2.0.
