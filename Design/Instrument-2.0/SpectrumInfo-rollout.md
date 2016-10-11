@@ -13,7 +13,7 @@ All current functionality is read-only. The intention is to make this the de fac
 
 ## Rollout Status and Hurdles
 
-The rollout fraction of `SpectrumInfo` is roughly given the number of uses of `MatrixWorkspace::getDetector()`.
+The rollout fraction of `SpectrumInfo` is roughly given by the number of uses of `MatrixWorkspace::getDetector()`.
 There are several cases where this is used:
 
 1. `SpectrumInfo` has the required functionality but simply has not been rolled out to that algorithm yet.
