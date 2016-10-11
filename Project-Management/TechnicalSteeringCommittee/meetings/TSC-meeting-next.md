@@ -8,7 +8,7 @@ Pinned Topics
 
 New Items
 ---------
-
+* External GUI(s) [Ansto Proposed Example](https://github.com/mantidproject/documents/blob/master/Design/ANSTO_SANS/AnstoSans.pdf). How do we recommend we do them. Needed for no-bugs week. (Owen & Anton)
 * Move from 14.04 to 16.04
 * Move "main" builds from rhel6 to rhel7
 * Move from pylint to flake8
