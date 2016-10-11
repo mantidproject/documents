@@ -105,7 +105,7 @@ Proposed Solution
 
 Dynamic properties for listeners were already supported previously, but this feature was removed in [PR #234](https://github.com/mantidproject/mantid/pull/234) in response to [Trac #11059](http://trac.mantidproject.org/mantid/ticket/11059) because it interfered with help generation and Python API support.
 
-Reverting this PR will satisfy this requirement, but we will need to deal with the help and Python issues in a different way. This is beyond the scope of this design and can be handled separately.
+Reverting this PR will satisfy this requirement, but we will need to deal with the help and Python issues in a different way. This can be solved the same way that the `Load` algorithm handles it: The Python function should accept any arguments and ensure it sets the `Instrument` and `Connection` arguments first. The remaining, dependent properties are set afterwards, raising an error if a mismatch occurs.
 
 #### Satisfying Requirement 2
 
