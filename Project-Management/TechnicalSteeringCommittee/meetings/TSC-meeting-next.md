@@ -12,7 +12,7 @@ New Items
 * Move from 14.04 to 16.04
 * Move "main" builds from rhel6 to rhel7
 * Move from pylint to flake8
-* gsl2 status - open issues: [#16680](https://github.com/mantidproject/mantid/issues/16680), [#16679](https://github.com/mantidproject/mantid/issues/16679), [#16681](https://github.com/mantidproject/mantid/issues/16681), [#16682](https://github.com/mantidproject/mantid/issues/16682), [#16684](https://github.com/mantidproject/mantid/issues/16684),
+* gsl2 status - open issues: [#16680](https://github.com/mantidproject/mantid/issues/16680), [#16679](https://github.com/mantidproject/mantid/issues/16679), [#16681](https://github.com/mantidproject/mantid/issues/16681), [#16682](https://github.com/mantidproject/mantid/issues/16682), [#16684](https://github.com/mantidproject/mantid/issues/16684), [#17778](https://github.com/mantidproject/mantid/issues/17778)
 * Update on [Mantid 4](https://github.com/mantidproject/documents/pull/23)
 * Update on plotting evaluation
 * Bundling of python on osx
