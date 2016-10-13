@@ -34,3 +34,5 @@ Concepts:
 7. **Other Actions**
  * **s22** - User right clicks workspace/group in workspace dock and selects Rename. A rename dialog is launched which prompts for the new workspace name. User enters a valid workspace name. The workspace name is updated in the DWL and the workspace dock. ![Other1-1](ScenariosScreenshots/Other1-1.png) ![Other1-2](ScenariosScreenshots/Other1-2.png) ![Other1-3](ScenariosScreenshots/Other1-3.png)
  * **s23** - User right clicks workspace/group in workspace dock and selects Rename. A Yes/No confirmation dialog is launched. The user selects Yes. The workspace is removed from the workspace dock and DWL. ![Other2-1](ScenariosScreenshots/Other2-1.png) ![Other2-2](ScenariosScreenshots/Other2-2.png) ![Other2-3](ScenariosScreenshots/Other2-3.png)
+ 
+ <link href="ScenariosScreenshots/style.css" type="text/css" rel="stylesheet" />
