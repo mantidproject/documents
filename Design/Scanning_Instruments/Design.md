@@ -38,9 +38,59 @@ The file format used by D2B is [described here](https://www.ill.eu/instruments-s
 
 #### D4
 
+> Operates like D2B, except that it has much more flexible scanning practices and the detector does not have vertical resolution.
+
 #### D7
 
-### Proposed solution
+> Compared to D2B and D4 this instrument uses fewer scan points, and data from each scan point is stored in separate files.
+
+### Outstanding Questions
+
+* What normalisation is required for the different merged runs?
+ * Time or monitor counts?
+ * Any use for not normalising straight away - how to keep appropriate meta-data for later normalsiations?
+* Overlaps between detector positions expected for D2B (see `LoadILLASCII` description below)
+ * For D2B the discussion document indicates no overlap, but is this true with the full detector geometry?
+* How would masking bad detectors work, for all pixels or changing based on detector positions?
+
+### Solution Ideas - Loading
+
+#### Conjoin
+
+1. Load each workspace and merge workspaces with different spectrum number ranges
+
+This might be less helpful on instruments with flexible scanning practices - spectrum number would not have any meaning.
+
+##### Merge Workspaces
+
+1. Load each angle into a separate workspace
+1. Call a merge algorithm (either one by one or on entire loaded workspace)
+
+### Solution Ideas - Workspace Form
+
+#### Instrument Clone
+
+1. Base instruments with detectors in home positions, tagged as movable
+1. Number of positions and angle of displacement recorded in NeXus file
+1. Make unique copy of each detector bas instrument in memory
+ 1. Clone each component with unique detector IDs (negative IDs?)
+ 1. Cloned detectors need to map back to original detector
+1. Assign spectra to appropriate detector
+
+#### Angle Map
+
+1. Base instruments with detectors in home positions, tagged as movable
+1. Number of positions and angle of displacement recorded in NeXus file
+1. Each spectrum has the associated detector as normal, but also a knowledge of which position the detector was at
+ 1. This could be a TableWorkspace, which records angle, and information required for normalisation, and sample log information or a new workspace type
+
+For this what changes could be required to support getting the detector positions in Mantid? For example for the instrument view and the S(Q,&omega;) conversion.
+
+**Notes**
+
+* Overlapping detectors should only be a problem in the instrument view.
+* For D2B taking into account 100 steps ~1 million detectors, which takes about 400 MB of memory (probably OK, but not optimal)
+* Look at ray tracing - any issues with overlapping detectors?
 
 ## Notes on other solutions
 
