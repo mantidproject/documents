@@ -110,7 +110,8 @@ BinMD(InputWorkspace='526105', AlignedDim0='x,0,1.99989,100', AlignedDim1='y,-0.
 ```xml
 <parameter name="t-position">
    <logfile id="rotangle"  eq="0.0+value"/>
-</parameter>```
+</parameter>
+```
 
 <img src="D2B_Single_Angle.png" alt="D2B Single Angle" style="width: 800px;"/>
 
@@ -119,6 +120,7 @@ BinMD(InputWorkspace='526105', AlignedDim0='x,0,1.99989,100', AlignedDim1='y,-0.
 <img src="D2B_VATES.png" alt="D2B VATES" style="width: 800px;"/>
 
 <center> 25 angles from one file in VATES (merge to an MDWorkspace) </center>
+
 
 ### SNS StepScan
 
