@@ -26,14 +26,17 @@ List of breaking changes
 ------------------------
 
 1. Change from qwt5 graphs to ? [3 people 1-3m]
+ 42. Expose `Histogram` object to python to simplify the task [1 person 1m]
 1. Sanitise Algorithm and property names (including merging) [Plan - 1 person 2w, Impl 3 people 1-3m]
  1. Remove unused algorithms, and old unused algorithm versions
 1. Removing InOut workspace usage [1 person 2w]
 2. Python API Changes
  1. ?Moving the Python API from the SimpleAPI (the impacts of this need further consideration) [????????]
  2. Remove the old Python interface to workspaces, only provide the new one (removing, e.g.,  readY()  and  dataY() ).
- 3. Remove Indexing breaking operations -  e.g ISpectrum::setSpectrumNo() 
- 1. Move to Python 3 on all platforms, removal of Python 2.7 support. [1 person 2m]
+ 3. Remove Indexing breaking operations -  e.g ISpectrum::setSpectrumNo()
+1. Move to Python 3 on all platforms
+ 42. Finish adding forward compatibility [2 people 1m]
+ 42. Removal of Python 2.7 support. [1 person 2m]
 
 List of other changes
 ---------------------
