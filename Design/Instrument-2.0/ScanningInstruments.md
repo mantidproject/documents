@@ -4,7 +4,13 @@ In Instrument 2.0 access to information about detectors will go via a DectorInfo
 
 Parts of the DetectorInfo class can be implemented early, so that ScanningInstruments at the ILL can be supported by April 2017. The DetectorInfo layer will hold detector positions with a time index, corresponding to the step scan.
 
-This is a document to capture the plans to support Scanning Instruments. The parts of Instrument 2.0 required to supporort this are listed below. 
+This is a document to capture the plans to support Scanning Instruments. The parts of Instrument 2.0 required to supporort this are listed below.
+
+Relevant notes:
+ * [Notes on Instrument 2.0 discussion - might be slightly outdated](https://github.com/DMSC-Instrument-Data/documents/tree/master/meeting_notes/April_2016/InstrumentPrototype)
+ * [See whiteboard notes here](https://github.com/DMSC-Instrument-Data/documents/tree/master/meeting_notes/August_2016)
+ * [Instrument Protoype](https://github.com/DMSC-Instrument-Data/instrument-prototype)
+ * [Add link to Owen's poster here](...)
 
 ### Current work
 
