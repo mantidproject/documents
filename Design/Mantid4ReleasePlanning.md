@@ -36,7 +36,7 @@ List of breaking changes
  3. Remove Indexing breaking operations -  e.g ISpectrum::setSpectrumNo()
 1. Move to Python 3 on all platforms
  42. Finish adding forward compatibility [2 people 1m]
- 42. Removal of Python 2.7 support. [1 person 2m]
+ 42. Removal of Python 2.7 support. [1 person 2m] (requires re-building all python dependencies except numpy for rhel7, droping rhel6 altogether)
 
 List of other changes
 ---------------------
