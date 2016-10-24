@@ -8,6 +8,7 @@ Pinned Topics
 
 New Items
 ---------
+* Ubuntu 14.04 build servers
 * gsl2 status - open issues: [#16680](https://github.com/mantidproject/mantid/issues/16680)
 * Bundling of python on osx
 * Migration to C++17 Filesystem library? Is `boost::filesystem` a useful stepping stone?
