@@ -7,7 +7,7 @@ Concepts:
 <link href="ScenariosScreenshots/style.css" type="text/css" rel="stylesheet" />
  
 1. **Load button in Workspace Dock**
- * **s1** - Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into the displayed workspace list (DWL) and the workspace name is added to the workspace dock. ![Load1-1](ScenariosScreenshots/Load1-1.png) ![Load1-2](ScenariosScreenshots/Load1-2.png)
+ * **s1** - Load button used to launch load dialog, user selects valid data file and hits Run. Workspace loaded into the displayed workspace list (DWL) and the workspace name is added to the workspace dock. <img src="ScenariosScreenshots/Load1-1.png" width="300"/> ![Load1-2](ScenariosScreenshots/Load1-2.png)
  * **s2** - Load button used to launch load dialog, user selects multiple files from the file open dialog and clicks the Run button. A group workspace is created called MultipleFiles which contains the selected workspaces. ![Load2-1](ScenariosScreenshots/Load2-1.png) ![Load2-2](ScenariosScreenshots/Load2-2.png) ![Load2-3](ScenariosScreenshots/Load2-3.png)
  * **s3** - Load button used to launch load dialog, user cancels load (Close). No interaction with DWL or workspace dock.
  * **s4** - Load button used to launch load dialog, workspace is not set by user. User selects Run. User presented with a dialog which states that one or more invalid properties (filename) have been set.
