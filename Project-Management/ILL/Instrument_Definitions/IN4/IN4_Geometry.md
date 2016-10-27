@@ -6,7 +6,7 @@ This document describes the instrument geometry of IN4 in Mantid's instrument de
 
 ### Detector shape
 
-The wide-angle detector tubes are cylindrical in shape with a radius of 1.27cm (half an inch) and a length of 30cm. The origin of the local detector coordinates is in the centre of the tube with *y'* axis parallel to the long axis of the cylinder.
+The wide-angle detector tubes are cylindrical in shape with a radius of 1.22cm (1mm thick tube wall taken into account) and a length of 30cm. The origin of the local detector coordinates is in the centre of the tube with *y'* axis parallel to the long axis of the cylinder.
 
 ### Detector boxes
 
