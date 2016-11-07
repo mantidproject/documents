@@ -14,13 +14,25 @@ The global coordinate system used in the IN4 instrument definition is the Mantid
 
 ## Wide-angle detectors
 
+### Detector classes
+
+There are three classes of wide-angle detectors in IN4:
+
+| Class | Manufacturer  | Shape             | Pressure | High voltage |
+|-------|---------------|-------------------|----------|--------------|
+| 1     | Reuter Stokes | Cylindrical       | 4bar     | 1140V        |
+| 2     | LMT           | Cylindrical       | 4bar     |  950V        |
+| 3     | Pechiné       | Squashed cylinder | 6bar     | 1300V        |
+
 ### Detector shape
 
-The wide-angle detector tubes are taken as cylindrical in shape with a radius of 1.22cm (0.5mm thick tube wall taken into account) and a length of 30cm. The origin of the local detector coordinates is in the centre of the tube with *y'* axis parallel to the long axis of the cylinder.
+Class 1 and 2 wide-angle detector tubes are taken as cylindrical in shape with a radius of 1.2cm (0.5mm thick tube wall taken into account) and a length of 30cm. The origin of the local detector coordinates is in the centre of the tube with *y'* axis parallel to the long axis of the cylinder.
+
+The squashed shape of class 3 detectors is approximated by a cuboid dimensions of which are 30cm x 3.1cm x 1.65cm (height x width x depth, 0.5mm thick walls are taken into account). The origin of the local detector coordinates is in the centre of the cuboid. The *z'* axis is normal to the wider face of the detector while the *y'* axis is along the long dimension.
 
 ### Detector boxes
 
-The detector tubes are arranged in boxes of four, eight, or twelve detectors. The local arrangement of a four detector box is shown in the figure below.
+The detector tubes are arranged in boxes of four, eight, or twelve detectors. Each box contains detectors of a single class. The local arrangement of a four detector box is shown in the figure below.
 
 <img src="box_geometry.png" alt="Detector box geometry" />
 
@@ -30,15 +42,21 @@ The boxes will eventually be positioned in the global coordinate system in such 
 
 ### Detector banks
 
-The instrument contains three detector banks. Each bank consists of detector boxes, center points of which are arranged horizontally on the surface of a sphere in the global coordinate system. One of the banks is on the same *xz* plane as the sample (the middle bank) while the two other banks are below and above it (the bottom and top banks).
+The detector boxes are organized into three banks. The boxes of the middle bank are on the same *xz* plane as the sample while the boxes in the two other banks are below and above it (the bottom and top banks). The numbers of detectors and their classes in the boxes in each bank are shown in the table below.
 
-While the usual cartesian coordinates are used in the instrument definition file, the coordinate system used in the generation of the banks differs somewhat from the traditional spherical coordinates. This coordinate system was chosen because it naturally describes the geometry. It is used in the IN6 IDF generator as well.
+| Bank   | Box 1        | Box 2        | Box 3        | Box 4        | Box 5        | Box 6        | Box 7        | Box 8        | Box 9        | Box 10       | Box 11      |
+|------- |--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|-------------|
+| Top    |  4 x class 1 |  4 x class 1 |  4 x class 1 |  8 x class 2 |  8 x class 3 | 12 x class 3 | 12 x class 1 | 12 x class 1 | 12 x class 2 | 12 x class 2 | 12 x class 2|
+| Middle | 12 x class 3 | 12 x class 3 | 12 x class 3 | 12 x class 3 | 12 x class 1 | 12 x class 1 | 12 x class 2 | 12 x class 2 | 12 x class 2 |              |             |
+| Bottom |  4 x class 1 |  4 x class 1 |  4 x class 3 |  8 x class 1 |  8 x class 3 | 12 x class 3 | 12 x class 3 | 12 x class 1 | 12 x class 2 | 12 x class 2 | 12 x class 2|
+
+While the usual cartesian coordinates are used in the instrument definition file, the coordinate system used in the generation of the banks differs somewhat from the traditional spherical coordinates. This coordinate system was chosen because it naturally describes the geometry and is used in the IN6 IDF generator as well.
 
 <img src="initial_box_placement.png" alt="coordinate system and detector box placement" />
 
 **Figure 2.** *Detector box placement into detector banks in the global coordinate system.*
 
-In the above figure, *&theta;* is the angle between **r** and the *z* axis (the true scattering angle), and *&mu;* defines the lifting angle, the angle between the center point of a detector box and the horizontal *xz* plane.
+In the above figure, *&theta;* is the angle between **r** and the *z* axis (the true scattering angle), and *&mu;* defines the lifting angle, i.e. the angle between the center point of a detector box and the horizontal *xz* plane.
 
 The conversion to cartesian coordinates is given by
 * *x* = *sr* (cos<sup>2</sup> *&mu;* - cos<sup>2</sup> *&theta;*)<sup>1/2</sup>
@@ -52,11 +70,11 @@ For IN4, *r* = 2m. The *&theta;* values for box centres in degrees are given bel
 | Bank *&theta;* | Box 1 | Box 2 | Box 3 | Box 4 | Box 5 | Box 6 | Box 7 | Box 8 | Box 9 | Box 10 | Box 11 |
 |----------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|--------|--------|
 | Middle         | 18.5  | 31.5  | 44.5  | 57.5  | 69.55 | 83.5  | 96.5  | 109.5 | 118.7 |        |        |
-| Top & bottom   | 14.5  | 14.5  | 20.5  | 28.3  | 37.9  | 49.3  | 62.5  | 75.7  | 88.8  | 101.9  | 115.1  |
+| Top & bottom   | 14.5  | 14.5  | 20.5  | 28.3  | 37.9  | 49.3  | 62.5  |  75.7 |  88.8 | 101.9  | 115.1  |
 
 The *&mu;* angles are calculated from certain rotation angles given by the instrument's design documents, denoted here by *&alpha;*. The conversion formula is given by
 
-*&mu;* = sin<sup>-1</sup>(sin *&alpha;* sin *&theta;*).
+*&mu;* = arcsin(sin *&alpha;* sin *&theta;*).
 
 The *&alpha;* values are given below in degrees:
 
@@ -75,7 +93,7 @@ The orientation factors *s* are as follows:
 
 The formulas above are used for the initial placement of the detector boxes in the global coordinate system. This is followed by three rotations around the three local axes of the boxes. The first rotation is around the local *y''* axis and results in the boxes facing the global *y* axis as shown in the next figure (point *A* in figure 1 coincides with the *x* axis). The rotation angle is calulated as follow:
 
-*&gamma;<sub>1</sub>* = tan<sup>-1</sup> (*x* / *y*).
+*&gamma;<sub>1</sub>* = arctan (*x* / *y*).
 
 <img src="first_box_rotation.png" alt="first detector box rotation" />
 
@@ -87,9 +105,9 @@ The second rotation, this time around the local *x''* axis results in all detect
 
 **Figure 4.** *Second detector box rotation.*
 
-The last rotation applied to the detector boxes will orient the local *y''* axes along the Debye-Scherrer rings. For this, two circles need to be defined: a Debye-Scherrer ring centre of which is on the *z* axis, and a detector bank ring which is centered on the *y* axis. Both circles intersect at a point defined by the detector bank centre position **r** as shown in the figure below.
+The last rotation applied to the detector boxes will orient the local *y''* axes along the Debye-Scherrer cones. For this, two circles need to be defined: a Debye-Scherrer cone, centre of which is on the *z* axis, and a detector bank ring which is centered on the *y* axis. Both circles intersect at a point defined by the detector bank centre position **r** as shown in the figure below.
 
-<img src="rings.png" alt="Debye-Scherrer ring and the third detector box rotation" />
+<img src="rings.png" alt="Debye-Scherrer cone and the third detector box rotation" />
 
 **Figure 5.** *Third and last detector box rotation.*
 
@@ -103,21 +121,21 @@ We also define a unit vector **t<sub>xz</sub>** which is parallel to the tangent
 * *y* = 0
 * *z* = (cos<sup>2</sup> *&mu;* - cos<sup>2</sup> *&theta;*)<sup>1/2</sup> / cos *&mu;*
 
-The Debye-Scherrer ring is handled similarly. We construct a unit vector **n<sub>xy</sub>** parallel to the normal of the ring:
+The Debye-Scherrer cone is handled similarly. We construct a unit vector **n<sub>xy</sub>** parallel to the normal of the cone:
 * *x* = (cos<sup>2</sup> *&mu;* - cos<sup>2</sup> *&theta;*)<sup>1/2</sup> / sin *&theta;*
 * *y* = sin *&mu;* / sin *&theta;*
 * *z* = 0
 
-For the corresponding vector **t<sub>xy</sub>** parallel to the tangent of the Debye-Scherrer ring we get
+For the corresponding vector **t<sub>xy</sub>** parallel to the tangent of the Debye-Scherrer cone we get
 * *x* = sin *&mu;* / sin *&theta;*
 * *y* = (sin<sup>2</sup> *&theta;* - sin<sup>2</sup> *&mu;*)<sup>1/2</sup> / sin *&theta;*
 * *z* = 0
 
 Finally, the inner product between **t<sub>xz</sub>** and **t<sub>xy</sub>** gives
 
-*&gamma;<sup>*</sup>* = cos<sup>-1</sup> (cos *&theta;* sin *&mu;* / (sin *&theta;* cos *&mu;*)),
+*&gamma;<sup>*</sup>* = arccos (cos *&theta;* sin *&mu;* / (sin *&theta;* cos *&mu;*)),
 
-as the angle between the tangents of the Debye-Scherrer and detector bank rings. This gives
+as the angle between the tangents of the Debye-Scherrer cone and detector bank rings. This gives
 
 *&gamma;<sub>3</sup>* = *s* *&gamma;<sup>*</sup>* - *90&deg;*
 
