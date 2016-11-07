@@ -54,7 +54,7 @@ While the usual cartesian coordinates are used in the instrument definition file
 
 <img src="initial_box_placement.png" alt="coordinate system and detector box placement" />
 
-**Figure 2.** *Detector box placement into detector banks in the global coordinate system.*
+**Figure 2.** *Detector box placement into the detector banks in the global coordinate system.*
 
 In the above figure, *&theta;* is the angle between **r** and the *z* axis (the true scattering angle), and *&mu;* defines the lifting angle, i.e. the angle between the center point of a detector box and the horizontal *xz* plane.
 
@@ -97,7 +97,7 @@ The formulas above are used for the initial placement of the detector boxes in t
 
 <img src="first_box_rotation.png" alt="first detector box rotation" />
 
-**Figure 3.** *First detector box rotation.
+**Figure 3.** *First detector box rotation.*
 
 The second rotation, this time around the local *x''* axis results in all detectors in the box facing the sample position (point *A* in figure 1 coincides with the global origin). The rotation angle is simply *&mu;*.
 
