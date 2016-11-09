@@ -1,0 +1,27 @@
+DEFINE INSTRUMENT My_Instrument(DIST=10)
+
+/* Here comes the TRACE section, where the actual 	*/
+/* instrument is defined as a sequence of components	*/
+TRACE
+
+/* The Arm() class component defines reference points 	*/
+/* and orientations in 3D space				*/
+COMPONENT Origin = Arm()
+	AT(0, 0, 0) ABSOLUTE
+
+COMPONENT Source = Source_simple(radius = 0.1, yheight = 0.1,
+			xwidth = 0.1, dist = DIST, E0 = 5,
+			dE = 1)
+	AT(0, 0, 0) RELATIVE Origin
+
+COMPONENT Emon = E_monitor(filename="Emon.dat", xmin = -0.1,
+			xmax = 0.1,  ymin = -0.1, ymax = 0.1,
+			Emin = 0, Emax = 10)
+	AT(0, 0, DIST) RELATIVE Origin
+
+COMPONENT PSD = PSD_monitor(nx = 128, ny = 128, filename="PSD.dat",
+			xmin = -0.1, xmax = 0.1, ymin = -0.1, ymax = 0.1)
+	AT(0, 0, 1e-10) RELATIVE Emon
+
+/* The END token marks the instrument definition end	*/
+END
