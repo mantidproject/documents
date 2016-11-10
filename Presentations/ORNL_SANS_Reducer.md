@@ -95,7 +95,7 @@ def AzimuthalAverage(
 
 ```
 
-This all sets properties in the Reducer: `Reducer.reduction_properties`.
+This sets properties in the Reducer: class attribute :`Reducer.reduction_properties`.
 
 **Script 2:**
 
@@ -106,11 +106,6 @@ ReductionSingleton().pre_process()
 ```
 `ReductionSingleton().pre_process()` does not execute any of the algorithms:
  - Just sets properties in the `PropertyManagerDataService`.
- -
-
-
-
-
 
 Note in `ReductionSingleton().set_instrument`:
 ```
@@ -118,8 +113,11 @@ setup_algorithm="SetupHFIRReduction"
 reduction_algorithm="HFIRSANSReduction")
 ```
 
+The `setup_algorithm="SetupHFIRReduction"` is now instantiated and all the properties defined by that algorithm whose values exist in `Reducer.reduction_properties` are set and the algorithm called.
 
-`SetupHFIRReduction` is a C++ algorithm that accepts 
+E.g. we set:
+`reduction_properties["Normalisation"] = "Timer"`
+The `SetupHFIRReduction` has an input property called `Normalisation` whose value assigned will be `Timer`
 
 
 ### Dump the properties:
