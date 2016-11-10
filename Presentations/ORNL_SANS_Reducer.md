@@ -104,8 +104,7 @@ Reduce()
 # Or without executing algorithms
 ReductionSingleton().pre_process()
 ```
-`ReductionSingleton().pre_process()` does not execute any of the algorithms:
- - Just sets properties in the `PropertyManagerDataService`.
+`ReductionSingleton().pre_process()` does not execute any of the algorithms. Just sets properties (name - value) in the `PropertyManagerDataService`.
 
 Note in `ReductionSingleton().set_instrument`:
 ```
@@ -119,6 +118,11 @@ E.g. we set:
 `reduction_properties["Normalisation"] = "Timer"`
 The `SetupHFIRReduction` has an input property called `Normalisation` whose value assigned will be `Timer`
 
+The `setup_algorithm` is a CPP algorith with logic inside. It also calls algorithms.
+
+The `Reduce()` calls the `Reducer.reduce()`. The latters calls `Reducer.pre_process()` and starts 
+
+# TODO
 
 ### Dump the properties:
 
