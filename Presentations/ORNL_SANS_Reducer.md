@@ -1,15 +1,13 @@
 # ORNL_SANS_Reducer
 
-## TL;TR;
+## Script Mode
 
 Documentation: http://docs.mantidproject.org/nightly/concepts/ORNL_SANS_Reduction.html
 
-## 
-
-Code is in the folder:
+The code is in the folder:
 `mantid/scripts/reduction_workflow`
 
-## Reduction script
+### Reduction script
 
 imports:
 ```python
@@ -24,7 +22,7 @@ SetSampleDetectorDistance(1802.5)
 Reduce()
 ```
 
-## Code
+### Code
 
 https://github.com/mantidproject/mantid/blob/master/scripts/reduction_workflow/instruments/sans/hfir_command_interface.py
 
@@ -207,7 +205,7 @@ DefaultDarkCurrentAlgorithm :: {"name":"HFIRDarkCurrentSubtraction","properties"
         InputWorkspace -> None
         Filename -> 
         OutputWorkspace -> None
-        PersistentCorrection -> True
+        PersistentCorrection -> True bill hamilton
         ReductionProperties -> __reduction_parameters_nP9lQ
         OutputDarkCurrentWorkspace -> None
         OutputMessage -> 
@@ -351,5 +349,7 @@ SetupAlgorithm :: {"name":"SetupHFIRReduction","properties":{"Normalisation":"Ti
         OutputDirectory -> 
         OutputMessage -> HFIR reduction options set
         ReductionProperties -> __reduction_parameters_nP9lQ
-
 ```
+
+## User interface
+
