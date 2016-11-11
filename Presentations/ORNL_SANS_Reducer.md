@@ -95,16 +95,17 @@ def AzimuthalAverage(
 
 ```
 
-This sets properties in the Reducer: class attribute :`Reducer.reduction_properties`.
+This sets properties in the Reducer attribute :`Reducer.reduction_properties`.
 
-**Script 2:**
+**Script 2.1:**
+
+Last call:
 
 ```python
-Reduce()
 # Or without executing algorithms
 ReductionSingleton().pre_process()
 ```
-`ReductionSingleton().pre_process()` does not execute any of the algorithms. Just sets properties (name - value) in the `PropertyManagerDataService`.
+`ReductionSingleton().pre_process()` does not execute any of the algorithms. Just call `setup_algorithm` which sets properties (name - value) in the `PropertyManagerDataService`.
 
 Note in `ReductionSingleton().set_instrument`:
 ```
@@ -112,17 +113,37 @@ setup_algorithm="SetupHFIRReduction"
 reduction_algorithm="HFIRSANSReduction")
 ```
 
-The `setup_algorithm="SetupHFIRReduction"` is now instantiated and all the properties defined by that algorithm whose values exist in `Reducer.reduction_properties` are set and the algorithm called.
+The `setup_algorithm="SetupHFIRReduction"` is now instantiated and all the properties defined by that algorithm, whose values exist in `Reducer.reduction_properties`, are set. Finnaly the algorithm is executed.
 
-E.g. we set:
-`reduction_properties["Normalisation"] = "Timer"`
-The `SetupHFIRReduction` has an input property called `Normalisation` whose value assigned will be `Timer`
+E.g., if the `Reducer` has a property:
+- `reduction_properties["Normalisation"] = "Timer"`
+and the `SetupHFIRReduction` has an input property called `Normalisation`, that poperty will be set with the value `Timer`.
 
-The `setup_algorithm` is a CPP algorith with logic inside. It also calls algorithms.
+The `setup_algorithm` is a CPP algorith with some logic inside. It also calls algorithms.
 
-The `Reduce()` calls the `Reducer.reduce()`. The latters calls `Reducer.pre_process()` and starts 
+```
+$ find Framework/ -iname "*.cpp" | grep Setup
+Framework/WorkflowAlgorithms/src/SetupEQSANSReduction.cpp
+Framework/WorkflowAlgorithms/src/SetupHFIRReduction.cpp
+Framework/WorkflowAlgorithms/src/SetupILLD33Reduction.cpp
+```
 
-# TODO
+**Script 2.2:**
+
+Last call:
+
+```python
+Reduce()
+```
+
+The `Reduce()` calls the `Reducer.reduce()`. The latter calls `Reducer.pre_process()` to set the properties in the `PropertyManagerDataService` and starts the Reduction process.
+
+`Reducer.reduce()` intantiates `reduction_algorithm="HFIRSANSReduction"` and sets the input properties of the `reduction_algorithm` including the name of the `ReductionProperties` set by `Reducer.pre_process()`.
+
+`HFIRSANSReduction` is here: https://github.com/mantidproject/mantid/blob/master/Framework/PythonInterface/plugins/algorithms/WorkflowAlgorithms/HFIRSANSReduction.py
+
+It goes through all the properties and executes algorithms and sets the respective properties. See below.
+
 
 ### Dump the properties:
 
