@@ -113,9 +113,10 @@ Unsorted
 For another release
 -------------------
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
-1. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
-1. Rework/clean up cmake as a whole
-42. Making ANN an ExternalProject
+2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
+3. Rework/clean up cmake as a whole
+4. Making ANN an ExternalProject
+5. Replace Boost.TypeTraits with <type_traits>
 
 Converted to actual tickets during a release
 --------------------------------------------
