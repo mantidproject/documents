@@ -147,8 +147,9 @@ It goes through all the properties and executes algorithms and sets the respecti
 
 ### Dump the properties:
 
-```python
+Reduce one file with all defaults:
 
+```python
 '''
 Dummy setup
 '''
@@ -158,19 +159,15 @@ from reduction_workflow.instruments.sans.hfir_command_interface import *
 
 BIOSANS()
 AppendDataFile(["/home/rhf/Documents/SANS/BioSans/BioSANS_exp270_scan0000_0001.xml"])
-Reduce()
 
-# This line is important and should always be used to validate the options above.
+I just want to see the Properties set, no need for algorithm execution:
+# Reduce()
 ReductionSingleton().pre_process()
+```
 
+Let's print the properties in the PropertyManager:
 
-'''
-Print properties after SetupSwans...
-'''
-
-
-
-PropertyManagerDataService
+```
 i = PropertyManagerDataService.Instance()
 property_name = i.getObjectNames()[0]
 s = i[property_name]
@@ -183,10 +180,10 @@ for algo_name in s.keys():
 			print '\t', key, '->', algo.value[key].value
 	except:
 		pass
-
 ```
 
 Output:
+
 ```
 
 InstrumentName :: HFIRSANS
