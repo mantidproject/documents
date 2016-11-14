@@ -1,6 +1,6 @@
-# ORNL_SANS_Reducer
+# ORNL SANS Reducer
 
-## Script Mode
+## Python interface overview
 
 Documentation: http://docs.mantidproject.org/nightly/concepts/ORNL_SANS_Reduction.html
 
@@ -351,5 +351,95 @@ SetupAlgorithm :: {"name":"SetupHFIRReduction","properties":{"Normalisation":"Ti
         ReductionProperties -> __reduction_parameters_nP9lQ
 ```
 
-## User interface
+## Adding a new instrument
+
+* Add the new instrument specification command to the corresponding SNS / HFIR command interface:
+
+- HFIR: https://github.com/mantidproject/mantid/blob/master/scripts/reduction_workflow/instruments/sans/hfir_command_interface.py
+- SNS: https://github.com/mantidproject/mantid/blob/master/scripts/reduction_workflow/instruments/sans/sns_command_interface.py	
+
+```
+def <instrument name>():
+    Clear()
+    ReductionSingleton().set_instrument("<instrument name>",
+                                        setup_algorithm="Setup<instrument name>Reduction",
+                                        reduction_algorithm="<HFIRSANSReduction|SANSReduction>")
+    # Default operations that should be performed by the Reducer
+    TimeNormalization()
+    SolidAngle()
+    AzimuthalAverage()
+```
+
+* Eventualy add new functionality
+
+```
+def <directive name>():
+    ReductionSingleton().reduction_properties["<key>"] = "<value>"
+```
+
+* Make the "<key>" as input property in the `setup_algorithm`
+
+For example, if in the command interface there's:
+
+```python
+def TimeNormalization():
+    ReductionSingleton().reduction_properties["Normalisation"] = "Timer"
+
+def MonitorNormalization():
+    ReductionSingleton().reduction_properties["Normalisation"] = "Monitor"
+
+def NoNormalization():
+    ReductionSingleton().reduction_properties["Normalisation"] = "None"
+```
+
+In the setup algorithm the following definitions must exist:
+
+
+```c++
+
+void SetupHFIRReduction::init() {
+  
+  //(.....)
+  
+  // Normalisation
+  std::vector<std::string> incidentBeamNormOptions;
+  incidentBeamNormOptions.emplace_back("None");
+  incidentBeamNormOptions.emplace_back("Monitor");
+  incidentBeamNormOptions.emplace_back("Timer");
+  this->declareProperty(
+      "Normalisation", "Monitor",
+      boost::make_shared<StringListValidator>(incidentBeamNormOptions),
+      "Options for data normalisation");
+
+void SetupHFIRReduction::exec() {
+  
+  //(.....)
+  
+  // Normalization
+  const std::string normalization = getProperty("Normalisation");
+  
+  if (!boost::contains(normalization, "None")) {
+    IAlgorithm_sptr normAlg = createChildAlgorithm("HFIRSANSNormalise");
+    normAlg->setProperty("NormalisationType", normalization);
+    auto normAlgProp = make_unique<AlgorithmProperty>("NormaliseAlgorithm");
+    normAlgProp->setValue(normAlg->toString());
+    reductionManager->declareProperty(std::move(normAlgProp));
+    reductionManager->declareProperty(
+        Kernel::make_unique<PropertyWithValue<std::string>>(
+            "TransmissionNormalisation", normalization));
+  } else
+    reductionManager->declareProperty(
+        make_unique<PropertyWithValue<std::string>>("TransmissionNormalisation",
+                                                    "Timer"));
+  
+```
+
+
+Existing setups:
+```
+$ find ./Framework/ -iname "Setup*.cpp"
+./Framework/WorkflowAlgorithms/src/SetupEQSANSReduction.cpp
+./Framework/WorkflowAlgorithms/src/SetupHFIRReduction.cpp
+./Framework/WorkflowAlgorithms/src/SetupILLD33Reduction.cpp
+```
 
