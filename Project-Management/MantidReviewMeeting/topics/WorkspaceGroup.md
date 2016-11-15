@@ -27,8 +27,7 @@ UnGroupWorkspace(wsGroup)
 
 Is a collection of arbitrary workspaces:
 
-![gouped](group.PNG)
-
+<img src="group.PNG" width=270 height=200/>
 
 This means that cannot provide a lot of functionality:
 
