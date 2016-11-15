@@ -23,11 +23,11 @@ UnGroupWorkspace(wsGroup)
 ```
 
 
-## WorkspaceGroup in the Workspace Taxonomy
+## WorkspaceGroup in the workspace taxonomy
 
 Is a collection of arbitrary workspaces:
 
-![Workspace Taxonomy](group.png)
+![gouped](group.PNG)
 
 
 This means that cannot provide a lot of functionality:
@@ -79,7 +79,7 @@ Intrinsically built to work with the ADS!
 
 Grouping and Ungrouping see above.
 
-###### Adding and removing V1
+###### Adding and removing
 
 *Only* via a name:
 ```Python
