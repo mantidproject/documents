@@ -44,6 +44,10 @@ The `ReductionSingleton()` contains an instance of `Reducer`
 In the end `Reduce()` calls `ReductionSingleton().reduce()` which in turn calls `Reducer.reduce()`.
 
 
+
+![](https://s22.postimg.org/f1ykyjlk1/Diagram1.png)
+
+
 ### Example:
 
 **Script 1:**
@@ -158,7 +162,7 @@ from reduction_workflow.instruments.sans.hfir_command_interface import *
 BIOSANS()
 AppendDataFile(["/home/rhf/Documents/SANS/BioSans/BioSANS_exp270_scan0000_0001.xml"])
 
-I just want to see the Properties set, no need for algorithm execution:
+# I just want to see the Properties set, no need for algorithm execution:
 # Reduce()
 ReductionSingleton().pre_process()
 ```
