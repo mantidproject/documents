@@ -4,16 +4,16 @@
 
 This is based on the [COSMOS Procedure document](COSMOS Procedure.pdf) Anything in brackets refers 
 
-**&#10004;** Indicates something that Mantid should generally be able to do, **&#10007;** something it can not, and **?** for unknown.
+**&#10004;** Indicates something that Mantid should generally be able to do, **~** something that might need adapting, **&#10007;** something it can not, and **?** for unknown.
 
-#### 1 Read Input:
+#### Read Input:
 Requirements:
 * User input: Runnumbers (REF, DB, WATER, INST BACK) **&#10004;**
 * Metadata: slits, detector angle, sample angle, MONITOR, TIME ... **&#10004;**
-* User input data: foreground range, background range, wavelength range, grouping, **&#10004;**
+* User input data: foreground range, background range, wavelength range, grouping **&#10004;**
 * Detector: 2D, line, 1D **&#10004;**
 
-** Currently Mantid will load data for old D17 data only, in both ToF and non-ToF modes. In newer data some NeXus entires are moved/missing**
+** Currently Mantid will load data for old D17 data only, in both ToF and non-ToF modes. In newer data some NeXus entires are moved/missing.**
 
 To implement:
 * Add Figaro instrument definition
@@ -22,31 +22,31 @@ To implement:
  * Check how ToF axis should be determined for newer data sets
  * Any missing metadata that needs to be loaded
 
-#### 2 Determine Measurement Type
+#### Determine Measurement Type
 
 Requirements:
-* A: ToF (Polarised or Unpolarised) **&#10004;**
+* A: ToF (Polarised or Unpolarised) **~**
 * (B: Monochromatic (Polarised or Unpolarised))
 
 To implement:
 * The measurement type should be determined from the NeXus file, by the loader
 
-#### 3 Kinetic / Streaming
+#### Kinetic / Streaming
 
 Requirements:
-* Determine if kinetic / streaming
+* Determine if kinetic / streaming **~**
 
 To implement:
 * Determined by loader?
 
-#### 4 Axes
+#### Axes
 
 Requirements:
 * Determine XYZ coordinate of axis **&#10004;**
 * If detector XY: Integrate loose collimation direction **?**
 * (If monochromatic: determine scan axis, stack data on scan axis direction)
 
-#### 5 Sort or group measurements to measurement type
+#### Sort or group measurements to measurement type
 
 * Different measurements can be stored in 5th dimension
 * 1: x-axis, 2: y-axis, 3: intensity, 4: polarization, 5: time/streaming/temperature/fields/etc...
@@ -60,20 +60,26 @@ Requirements:
 To implement:
 * Sort/Group measurements on a given parameter
 
-#### 6 Errors
+#### Errors
 
 Requirements:
 * Calculate errors and propagate appropriately through following steps **&#10004;**
 
 **Mantid should always do this**
 
-#### 7 Determine foreground (ROI) and background (back)
+#### Find Regions of Interest
 
 Requirements:
-* If no DB: DB=monitor OR DB=1
+* Find region of interest peak for sample run in reflected and direct beam, and for background
+* If no Direct Beam: Direct Beam = monitor OR DB=1
 * Here a binning can take place, but that requires calculating lambda, theta and the resolutions before.
 
-#### 8 Normalization:
+**Mantid has lots of fitting and peaking finding routines.**
+
+To implement:
+* Determine what fitting/peaking finding needs to be used in Mantid
+
+#### Normalization:
 
 Requirements:
 * slits **~**
@@ -81,25 +87,29 @@ Requirements:
 * monitor/time **&#10004;**
 
 To implement:
-* Slit and water normalisation. Could just be done using standard workspace arithmetic, divide/subtract?
+* Slit and water normalisation, should be possible just using divide
+* Normalization by monitor time can be done with [`NormaliseToMonitor`](http://docs.mantidproject.org/nightly/algorithms/NormaliseToMonitor-v1.html) or just using `Integration` and `Divide`
 
-#### 9 Background:
+#### Background:
 
 Requirements:
-* Subtract instrument background from REF and DB, subtract background from REF and DB (averaged or fitted) **&#10004;**
+* Subtract instrument background from reflected and direct beam, subtract background from reflected and direct beam (averaged or fitted) **&#10004;**
+
+**Mantid has some rountines for background fitting, e.g. [`CalculateFlatBackground`](http://docs.mantidproject.org/nightly/algorithms/CalculateFlatBackground-v1.html).**
 
 To implement:
-* Any different methods for determining background for reflectometry at the ILL
+* Workspace arithmetic if just subtracting backgrounds
+* Need to work out if we can use existing routines for fitting background, or need to implement new ones
 
-#### 10 Average data at similar XY coordinates:
+#### Average data at similar XY coordinates:
 
 Requirements:
 * (IF MONO: average same theta/2theta values)
 * IF TOF: probably no further averaging
 
-Nothing to implement for now.
+**Nothing to implement for now.**
 
-#### 11 Gravity
+#### Gravity
 
 Requirements:
 * Gravity correction for horizontal reflectometer
@@ -110,7 +120,7 @@ To implement:
 * Gravity correction in reflectometry workflow
  * Possible to turn `GravitySANSHelper` into a new algorithm
 
-#### 12 Calculate missing axes
+#### Calculate missing axes
 
 Requirements:
 * theta, 2theta, lambda
@@ -119,77 +129,105 @@ Requirements:
 
 **Can the conversions be done using [`ConvertUnits`](http://docs.mantidproject.org/nightly/algorithms/ConvertUnits-v1.html) or [`ConvertAxisByFormula`](http://docs.mantidproject.org/nightly/algorithms/ConvertAxisByFormula-v1.html)?**
 
-#### 13 Calculate angular width on detector of REF and DB => sample waviness for coherent
+#### Calculate angular width
+
+Requirements:
+* Calculate angular width on detector of REF and DB => sample waviness for coherent
 
 ?
 
-#### 14 IF DB supplied: Integrate DB foreground
-IF TOF: => 1D DB(lambda)
-IF MONO: => 1D DB(scan axis)
+#### Direct Beam foreground
 
-#### 15 IF POL: Correct 1D DB for polarization efficiency
+Requirements:
+* If TOF 1D DB (lambda)
+* (If Monochromatic 1D DB (scan axis))
 
-#### 16 Calculate 1D reflectivity:
+?
+
+#### Polarisation correction
+
+Requirements:
+* If polarised Correct 1D DB for polarization efficiency
+* If polarised ToF loop to get all polarization efficiencies as a function of lambda
+* Perform polarization efficiency correction on all spin channels column wise
+
+**Mantid has a [`PolarizationCorrection`](http://docs.mantidproject.org/nightly/algorithms/PolarizationCorrection-v1.html) algorithm for reflectometry. Based on *Fredrikze, H, et al. 'Calibration of a polarized neutron reflectometer' Physica B 297 (2001)*, not *Wildes, Rev. Sci. Instrum., 70 (1999) 4241*. **
+
+To implement:
+* Determine if existing algorithm can be used or adapted
+
+#### Calculate 1D reflectivity
+
+Requirements:
+* Incoherent 
+ * Integrate at constant lambda over 2theta => 1D REF
+ * Divide 1D REF by 1D DB => 1D REF/DB + E
+* Coherent
+ * Divide 2D REF by 1D DB column wise
+ * Regroup data within new wavelength limits onto a given 2theta line
+* Bent sample
+* Divergent beam
+ * 1D REF/DB + E
+
+**These cover standard operations for workspaces in Mantid, and the grouping is mentioned under *Sort or group measurements to measurement type*.**
+
+To implement:
+* Implement options as part of workflow
+
+#### Calculate resolutions in theta, lambda
 CASE: incoherent
-Integrate at constant lambda over 2theta => 1D REF
-Divide 1D REF by 1D DB => 1D REF/DB + E
-CASE: coherent
-Divide 2D REF by 1D DB column wise
-Regroup data within new wavelength limits onto a given 2theta line
-CASE: bent sample
-CASE: divergent beam
-=> 1D REF/DB + E
-
-#### 17 IF TOF POL: loop to get all the polarizations to correct for efficiencies the 1D REF/DB as a function of
-lambda
-IF POL MONO: loop to get all polarizations to correct for polarization efficiency at fixed lambda
-
-
-#### 18 Calculate resolutions in theta, lambda
-CASE: incoherent
 CASE: coherent
 
-#### 19 Q
+#### Q and Q binning
 
 Requirements:
 * Calculate Q
+* Group to a fraction of the Q resolution
 
 **Mantid has algorithms [`ConvertUnits`](http://docs.mantidproject.org/nightly/algorithms/ConvertUnits-v1.html) and [`ConvertToReflectometryQ`](http://docs.mantidproject.org/nightly/algorithms/ConvertToReflectometryQ-v1.html)**
 
-#### 20 Group to a fraction of the Q resolution
-NOTE: for the incoherent method it is possible here to use 1D REF(rebinned)/1D DB (rebinned)
+#### 2D Reflectivity
 
-#### 21 Calculate 2D reflectivity in requested coordinates: QX/QZ, pi/pf/ theta/2theta
-Divide 2D REF by 1D DB column wise
+Requirements:
+* Calculate 2D reflectivity in requested coordinates: 
+ * Qx/Qy
+ * Pi/Pf
+ * theta/2theta
+* Divide 2D REF by 1D DB column wise
 
-#### 22 Polarization
+**Mantid has an algorithm for converting to (Qx, Qy), (Pi, Pf) and (Ki, Kf - [`ConvertToReflectometryQ`](http://docs.mantidproject.org/nightly/algorithms/ConvertToReflectometryQ-v1.html).**
 
-Requirement:
-* Perform polarization efficiency correction on all spin channels column wise
+To implement:
+* See if ConvertToReflectometryQ method can be used
+* Similar methods for 
 
-**Potential candidate is the Mantid algorithm [`PolarizationCorrection`](http://docs.mantidproject.org/nightly/algorithms/PolarizationCorrection-v1.html)**
-
-#### 23 Update storage with direct beam
-
-?
-
-#### 24 IF kinetic: loop over slices
+#### Update storage with direct beam
 
 ?
 
-#### 25 IF multiple datasets: loop over 5 th dimension
+#### If kinetic loop over slices
 
 ?
 
-#### 26 Perform final normalization corrections
+#### If multiple datasets loop over 5th dimension
+
+?
+
+#### Perform final normalization corrections
 
 What are the final normalization corrections?
 
-#### 27 Join data corresponding to 1 measurement
+#### Join data 
 
-?
+Requirements:
+* Join data corresponding to 1 measurement
 
-#### 28 Saving
+**Mantid has the [`Stitch1D`](http://docs.mantidproject.org/nightly/algorithms/Stitch1D-v3.html) - is this what is required?**
+
+To implement:
+* See if `Stich1D` can be used
+
+#### Saving
 
 Requirements:
 * Store 1D and 2D outputs in readable format with metadata
