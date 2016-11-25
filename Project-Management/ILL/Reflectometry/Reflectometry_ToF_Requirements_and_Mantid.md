@@ -144,7 +144,7 @@ Requirements:
 * If polarised ToF loop to get all polarization efficiencies as a function of lambda **~**
 * Perform polarization efficiency correction on all spin channels column wise **~**
 
-**Mantid has a [`PolarizationCorrection`](http://docs.mantidproject.org/nightly/algorithms/PolarizationCorrection-v1.html) algorithm for reflectometry. Based on *Fredrikze, H, et al. 'Calibration of a polarized neutron reflectometer' Physica B 297 (2001)*, not *Wildes, Rev. Sci. Instrum., 70 (1999) 4241*. **
+**Mantid has a [`PolarizationCorrection`](http://docs.mantidproject.org/nightly/algorithms/PolarizationCorrection-v1.html) algorithm for reflectometry. Based on *Fredrikze, H, et al. 'Calibration of a polarized neutron reflectometer' Physica B 297 (2001)*, not *Wildes, Rev. Sci. Instrum., 70 (1999) 4241*.**
 
 To implement:
 * Determine if existing algorithm can be used or adapted
@@ -171,8 +171,7 @@ To implement:
 
 Requirements:
 * Theta, lambda
-* Incoherent
-* Coherent
+* Incoherent, Coherent
 
 **The [`CalculateResolution`](http://docs.mantidproject.org/nightly/algorithms/CalculateResolution-v1.html) used for ISIS reflectometry should be able to calculate this.**
 
@@ -183,8 +182,8 @@ To implement:
 ### Q and Q binning
 
 Requirements:
-* Calculate Q
-* Group to a fraction of the Q resolution
+* Calculate Q **&#10004;**
+* Group to a fraction of the Q resolution **&#10004;**
 
 **Mantid has algorithms [`ConvertUnits`](http://docs.mantidproject.org/nightly/algorithms/ConvertUnits-v1.html) and [`ConvertToReflectometryQ`](http://docs.mantidproject.org/nightly/algorithms/ConvertToReflectometryQ-v1.html). For rebinning [`Rebin`](http://docs.mantidproject.org/nightly/algorithms/Rebin-v1.html) is normally used.**
 
@@ -192,9 +191,9 @@ Requirements:
 
 Requirements:
 * Calculate 2D reflectivity in requested coordinates: 
- * Qx/Qy
- * Pi/Pf
- * theta/2theta
+ * Qx/Qy **&#10004;**
+ * Pi/Pf **&#10004;**
+ * theta/2theta **&#10007;**
 * Divide 2D REF by 1D DB column wise
 
 **Mantid has an algorithm for converting to (Qx, Qy), (Pi, Pf) and (Ki, Kf) - [`ConvertToReflectometryQ`](http://docs.mantidproject.org/nightly/algorithms/ConvertToReflectometryQ-v1.html).**
@@ -218,7 +217,7 @@ To implement:
 ### Saving
 
 Requirements:
-* Store 1D and 2D outputs in readable format with metadata
+* Store 1D and 2D outputs in readable format with metadata **~**
 
 **Mantid can save a range of file types, e.g. [`SaveNexus`](http://docs.mantidproject.org/nightly/algorithms/SaveNexus-v1.html)**
 
