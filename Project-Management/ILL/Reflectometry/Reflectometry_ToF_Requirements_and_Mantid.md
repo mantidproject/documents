@@ -224,11 +224,11 @@ Requirements:
 To implement:
 * Extra file types - most likely ASCII data in columns with headers for analysis programs
 
-### Workflow algorithms
+## Workflow algorithms
 
 **[`ReflectometryReductionOne`](http://docs.mantidproject.org/nightly/algorithms/ReflectometryReductionOne-v1.html)** - used at ISIS
 
-### GUI for reduction
+## GUI for reduction
 
 We are planning something along the lines of the COSMOS interface for the ILL ToF GUI. This will likely be based on the generic `DataProcessorWidget` in Mantid, as used for reflectometry at ISIS. This might be a good fit for ILL reflectometry reduction too.
 
