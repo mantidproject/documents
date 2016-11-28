@@ -1,6 +1,6 @@
 # Reflectometry (ToF) at ILL Using Mantid - Initial Requirements Analysis
 
-## Generic Reduction Procedure
+## Reduction Steps
 
 This is based on the [COSMOS Procedure document](COSMOS Procedure.pdf). Anything in brackets refers to monochromatic mode, not to be addressed initially.
 
