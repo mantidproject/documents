@@ -6,11 +6,15 @@ Some details on requirements for the ILL were originally provided in a document 
 
 The three instruments concerned with this work at ILL are D2B, D4 and D7. D16 also potentially has a similar mode to D4, and the TAS instruments should be kept in mind, although not in the scope of this work.
 
+**Note:** These are some initial notes on the ILL instrument requirements. Further clarification is still required.
+
 ### D2B
+
+[D2B](https://www.ill.eu/instruments-support/instruments-groups/instruments/d2b/) is a high-resolution two-axis diffractometer.
 
 D2B is the most straightforward case. D2B is a high-resolution two-axis diffractometer with 64 detectors, each with 256 pixels (= 16384 spectra). A complete diffraction pattern is obtained by 100 steps of 0.025&deg; as the detectors are spaced at 2.5&deg; intervals. One numor contains data from 25 detector positions. The base position is given as the angle x 1000.
 
-For example 
+For example one file might contain the angles:
 
 147.496
 147.548
@@ -18,7 +22,33 @@ For example
 148.647
 148.699
 
-The file format used by D2B is [described here](https://www.ill.eu/instruments-support/computing-for-science/data-analysis/raw-data/).
+The detectors operate in continuous mode, so each NeXus file just contains counts for each detector.
+
+The file format used by D2B is [described here](https://www.ill.eu/instruments-support/computing-for-science/data-analysis/raw-data/). Currently only ASCII files are produced, but NeXus files should be produced in the future, and before any loaders are written.
+
+### D7
+
+[D7](https://www.ill.eu/?id=13310) is a diffuse scattering spectrometer.
+
+D7 is the only instrument with NeXus files available, so will most likely be the first target for the scanning instrument work at the ILL. Each scan point is stored in a separate NeXus file, with ~10 files being typical for a run. Scanning is done to cover the gaps between detector banks (?). 
+
+D7 has three banks of 44 detectors. Angular offsets are stored in the NeXus file for each bank. Each detector has an angular offset from the centre of the bank given in the NeXus file too, as they are not regularly spaced. These do not change with different runs.
+
+As for D2B, D7 operatees in continuous mode.
+
+### D4
+
+[D4(c)](https://www.ill.eu/instruments-support/instruments-groups/instruments/d4/) is a disordered materials diffractometer.
+
+D4 is similar to D2B, but has no vertical resolution. The scanning practices are more flexible.
+
+The ASCII files do not appear to contain the angles. It needs to be established how these are stored.
+
+### D16
+
+[D16](https://www.ill.eu/instruments-support/instruments-groups/instruments/d16/) is a small momentum transfer diffractometer.
+
+**To be confirmed:** need to obtain data for D16 to check requirements.
 
 ### Requirements
 
@@ -32,17 +62,18 @@ The file format used by D2B is [described here](https://www.ill.eu/instruments-s
 
 #### D2B
 
-* Angles are read from the ASCII file
+* Angles are read from the ASCII file (or NeXus file if available)
 * 100 steps can be supported
  * 100 steps x 64 detectors x 256 pixels = 1,638,400 spectra
 
-#### D4
-
-> Operates like D2B, except that it has much more flexible scanning practices and the detector does not have vertical resolution.
-
 #### D7
 
-> Compared to D2B and D4 this instrument uses fewer scan points, and data from each scan point is stored in separate files.
+* Read angle for each numor from NeXus file 
+* Merge ~10 files, each with 44 detectors
+
+#### D4
+
+* Can handle 'flexible' scanning practices
 
 ### Outstanding Questions
 
@@ -52,47 +83,6 @@ The file format used by D2B is [described here](https://www.ill.eu/instruments-s
 * Overlaps between detector positions expected for D2B (see `LoadILLASCII` description below)
  * For D2B the discussion document indicates no overlap, but is this true with the full detector geometry?
 * How would masking bad detectors work, for all pixels or changing based on detector positions?
-
-### Solution Ideas - Loading
-
-#### Conjoin
-
-1. Load each workspace and merge workspaces with different spectrum number ranges
-
-This might be less helpful on instruments with flexible scanning practices - spectrum number would not have any meaning.
-
-##### Merge Workspaces
-
-1. Load each angle into a separate workspace
-1. Call a merge algorithm (either one by one or on entire loaded workspace)
-
-### Solution Ideas - Workspace Form
-
-#### Instrument Clone
-
-1. Base instruments with detectors in home positions, tagged as movable
-1. Number of positions and angle of displacement recorded in NeXus file
-1. Make unique copy of each detector bas instrument in memory
- 1. Clone each component with unique detector IDs (negative IDs?)
- 1. Cloned detectors need to map back to original detector
-1. Assign spectra to appropriate detector
-
-#### Angle Map
-
-1. Base instruments with detectors in home positions, tagged as movable
-1. Number of positions and angle of displacement recorded in NeXus file
-1. Each spectrum has the associated detector as normal, but also a knowledge of which position the detector was at
- 1. This could be a TableWorkspace, which records angle, and information required for normalisation, and sample log information or a new workspace type
-
-For this what changes could be required to support getting the detector positions in Mantid? For example for the instrument view and the S(Q,&omega;) conversion.
-
-**Notes**
-
-* Overlapping detectors should only be a problem in the instrument view.
-* For D2B taking into account 100 steps ~1 million detectors, which takes about 400 MB of memory (probably OK, but not optimal)
-* Look at ray tracing - any issues with overlapping detectors?
-
-## Notes on other solutions
 
 ### LoadILLASCII
 
@@ -120,17 +110,6 @@ BinMD(InputWorkspace='526105', AlignedDim0='x,0,1.99989,100', AlignedDim1='y,-0.
 <img src="D2B_VATES.png" alt="D2B VATES" style="width: 800px;"/>
 
 <center> 25 angles from one file in VATES (merge to an MDWorkspace) </center>
-
-
-### SNS StepScan
-
-[SNS StepScan](http://docs.mantidproject.org/nightly/algorithms/StepScan-v1.html)
-
-### DNS MergeRuns
-
-[DNSMergeRuns](https://github.com/mantidproject/mantid/blob/e5d13b3ea533aab6a33ea65c281a20719ee5e6d1/Framework/PythonInterface/plugins/algorithms/DNSMergeRuns.py) - DNS is a neutron time-of-flight spectometer with movable detectors.
-
-`DNSMergeRuns` allows merging multiple data files with the detectors at different positions. Here one data file corresponds to one detector positions. The algorithm takes a number of files, and converts to either 2theta, |Q| or d-Spacing.
 
 
 
