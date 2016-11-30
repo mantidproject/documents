@@ -52,12 +52,27 @@ void setRotation(const Geometry::IComponent &comp, const Kernel::Quat &rot, cons
 
 The `timeIndex` argument is optional, so algorithms that do not care about time indexing will simply return the first/only time index.
 
+`DetectorInfo` will ultimately store the information for masking, positions etc., so will need to do this in a way that can be accessed by `index` and `timeIndex`.
+
 #### SpectrumInfo
 
-Currently [`SpectrumInfo`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/DetectorInfo.h) has a `getDetector` method for finding the detector for the workspace. This uses the `getSpectrum(index)` method on `MatrixWorkspace` to return the detector IDs for the spectrum.
+Currently [`SpectrumInfo`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/SpectrumInfo.h) has a `getDetector` method for finding the detector for the workspace. This uses the `getSpectrum(index)` method on `MatrixWorkspace` to return the detector IDs for the spectrum.
 
-This should be changed, or a new method added, for example `getTimeIndexedDetectorIDs(index)` to return a set of `std::pair<detid_t, size_t>`.
+A new method should be added, for example `getTimeIndexedDetectorIDs(index)` to return a set of `std::pair<detid_t, size_t>`.
 
-This can be used to access methods on `DetectorInfo` of the form `m_detectorInfo.twoTheta(detIndex, timeIndex)`.
+This can be used to access methods on `DetectorInfo`, for example `m_detectorInfo.twoTheta(detIndex, timeIndex)`.
+
+#### MatrixWorkspace
+
+As metioned under **`SpectrumInfo`** `MatrixWorkspace` will require a `getTimeIndexedDetectorIDs(index)`.
+
+#### ISpectrum/Spectrum
+
+This implies the member variable `std::set<detid_t> detectorIDs` in `ISpectrum` will become `std::set<std::pair<detid_t, size_t>>`.
+
+The corresponding methods in `ISpectrum` would also need to be replicated for the time indexed case. For example `addDetectorID(const std::pair<detid_t, size_t> timeIndexedDetID)`.
+
+The original methods such as `this->detectorIDs.insert(detID)` should remain and the detectors at time index 0. This allows existing algorithms, e.g. loaders, that do not need time indexing to work as before.
+ 
 
 
