@@ -30,7 +30,9 @@ The three instruments concerned with this work at ILL are D2B, D4 and D7. D16 al
 
 ### Performance
 
-Instrument 2.0 is already providing a new framework for performance. The only requirement for the ILL to use scanning instruments is not to introduce any performance regressions. Otherwise the performance only needs to be the equivalent to that of having a larger instrument.
+One of the main aims of the Instrument 2.0 work is to eventually bring performance improvements to Mantid. Currently Instrument 2.0 exists as a [prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype/) for benchmarking performance and the impact of design decisions.
+
+The only requirement for the ILL to use scanning instruments is not to introduce any performance regressions. Otherwise the performance only needs to be the equivalent to that of having a larger instrument.
 
 D2B represents the most difficult case for performance at the ILL, with 100 steps x 64 detectors x 256 pixels = 1,638,400 spectra.
 
