@@ -6,7 +6,41 @@ Some details on requirements for the ILL were originally provided in a document 
 
 The three instruments concerned with this work at ILL are D2B, D4 and D7. D16 also potentially has a similar mode to D4, and the TAS instruments should be kept in mind, although not in the scope of this work.
 
-**Note:** These are some initial notes on the ILL instrument requirements. Further clarification is still required.
+**Note:** These are some initial notes on the ILL instrument requirements. Some further validation and clarification of the requirements is still required.
+
+## Requirements
+
+### Mandatory
+* A loader can load data from a single file, and create the workspace with the correct positions and rotations stored for each detector
+* Multiple workspaces can be merged, with different sets of time indexes, and positions and rotations stored correctly for each detector
+* Detector movement at the ILL is limited to the case of rotation around sample position - but full positional changes should be allowed, for example in case the sample is off-centre
+* Flexible scanning is supported, times at a given position can differ, as can angular step size changes between steps
+* Each spectrum ultimately links to a detector or detector group, and a time index
+* A start and end time, as the full time and date, can be obtained for each time index
+* Extra metadata can be accessed for a given position in the step scan - for example so normalisation to monitors can be performed later
+* Metadata values that changes in time can be shared appropriately between positions in the step scan (for example in D2B files each file contains a single value for monitor counts, but 25 different detector positions, so the monitor counts for each position should be divided by 25)
+* Overlaps in detector positions are possible
+* The instrument view shows every step position for each detector, even when they overlap
+
+### Desirable
+* Multiple workspaces can be merged with the same detector positions for certain time indexes - the data for spectra is then summed
+
+### Performance
+
+Instrument 2.0 is already providing a new framework for performance. The only requirement for the ILL to use scanning instruments is not to introduce any performance regressions. Otherwise the performance only needs to be the equivalent to having a larger instrument.
+
+D2B represents the most difficult case for performance at the ILL, with 100 steps x 64 detectors x 256 pixels = 1,638,400 spectra.
+
+### Not Required
+
+Just for information these are things that are likely to be implemented and related to moving instruments. These are not currently ILL requirements, but might be in the future.
+
+* Continuous scanning
+* Triple axis spectrometers
+* Components other than detectors can be time indexed
+* Masking of different time indexes
+
+## Further Notes on Instruments
 
 ### D2B
 
@@ -22,7 +56,9 @@ For example one file might contain the angles:
 148.647
 148.699
 
-The detectors operate in continuous mode, so each NeXus file just contains counts for each detector.
+The detectors operate in continuous mode, so each NeXus file just contains counts for each detector, there is no time-of-flight information.
+
+The detectors can overlap, see section **`LoadILLASCII`** below.
 
 The file format used by D2B is [described here](https://www.ill.eu/instruments-support/computing-for-science/data-analysis/raw-data/). Currently only ASCII files are produced, but NeXus files should be produced in the future, and before any loaders are written.
 
@@ -50,39 +86,7 @@ The ASCII files do not appear to contain the angles. It needs to be established 
 
 **To be confirmed:** need to obtain data for D16 to check requirements.
 
-### Requirements
 
-#### General
-
-* Loading data results in a MatrixWorkspace
-* There is a spectrum for every detector at every position
-* Each spectrum has knowledge of its detector and the angle the detector was at
- * The detectors can be seen in their duplicated positions in the instrument view
-* Merging or summing runs with different detector positions is possible, while still keeping the correct instrument view
-
-#### D2B
-
-* Angles are read from the ASCII file (or NeXus file if available)
-* 100 steps can be supported
- * 100 steps x 64 detectors x 256 pixels = 1,638,400 spectra
-
-#### D7
-
-* Read angle for each numor from NeXus file 
-* Merge ~10 files, each with 44 detectors
-
-#### D4
-
-* Can handle 'flexible' scanning practices
-
-### Outstanding Questions
-
-* What normalisation is required for the different merged runs?
- * Time or monitor counts?
- * Any use for not normalising straight away - how to keep appropriate meta-data for later normalsiations?
-* Overlaps between detector positions expected for D2B (see `LoadILLASCII` description below)
- * For D2B the discussion document indicates no overlap, but is this true with the full detector geometry?
-* How would masking bad detectors work, for all pixels or changing based on detector positions?
 
 ### LoadILLASCII
 
