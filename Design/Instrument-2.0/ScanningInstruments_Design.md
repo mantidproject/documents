@@ -18,6 +18,8 @@ Two classes related to this have already been partially implemented in Mantid, [
 
 Support for the moving instruments will be implemented via the `DetectorInfo` class. The usage `SpectrumInfo` class needs no direct knowledge of the time indexing. The methods on the `DetectorInfo` class for accessing detector information will be accessed by giving a detector index and an optional time index. It will also hold information on the start and end times for each time index. Any further information, for example to normalise to monitor counts, can be held in a time series sample log.
 
+Currently initialisation of workspaces is usually done in an incremental way. This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, via a `DetectorInfo` factory, which will ensure the loader creates a workspace in a consistent state.
+
 ### Design
 
 #### `DetectorInfo`
@@ -28,33 +30,52 @@ The current plan is to access to add methods that take a detector index and a ti
 
 The `timeIndex` argument is optional, so algorithms that do not care about time indexing will simply return the first/only time index. `DetectorInfo` should also contain a vector of start and end times for each time index. This will mean any information stored as a time series sample log can also be obtained for the correct step, for example the monitor counts for normalisation.
 
-`DetectorInfo` will ultimately store the information for positions and rotation, so will need to do this in a way that can be accessed by both the detector index and time index. Masking could also be stored in a time indexed fashion.
+`DetectorInfo` will ultimately store the information for positions and rotation, so will need to do this in a way that can be accessed by both the detector index and time index. Masking would be done at the spectrum level, if it is required for a detector for some time steps, but not all. `DetectorInfo` will also hold the start and end times for each step in the scan. The objects it will need to hold for this would be:
+* `std::vector<std::vector<Kernel::V3D>> positions`
+* `std::vector<std::vector<Kernel::V3D>> rotations`
+* `std::vector<std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>>> timeRanges`
+
+Appropriate typedefs should be used here for readability. All of the vector object would have the same size, the number of steps in the scan for the vector of vectors, and the number of detectors for the vector of positions.
 
 #### `SpectrumInfo`
 
 Currently [`SpectrumInfo`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/SpectrumInfo.h) has a private `getDetector` method for finding the detector for the workspace. This uses the `getSpectrum(index)` method on `MatrixWorkspace` to return the detector IDs for the spectrum.
 
-A new method should be added, for example `getTimeIndexedDetectorIDs(index)` to return a set of `std::pair<detid_t, size_t>`.
+A new method should be added, for example `std::set<std::pair<detid_t, size_t>> getTimeIndexedDetectorIDs(index)`. The time indices for each detector can be stored in `SpectrumInfo` as a `std::set<std::pair<detid_t, size_t>>` within a vector of the same size as the number of workspace spectra. This will avoid the need to change methods on `MatrixWorkspace` or `ISpectrum/Spectrum` to return the set of detector IDs and time indexes for the spectrum. This is something that will help to move away from the incremental construction of `DetectorInfo`.
 
 This can be used to access methods on `DetectorInfo`, for example `m_detectorInfo.twoTheta(detIndex, timeIndex)`.
 
 #### `MatrixWorkspace` & `ISpectrum`/`Spectrum`
 
-As metioned under **`SpectrumInfo`** `MatrixWorkspace` will require a `getTimeIndexedDetectorIDs(index)` method.
+The original methods such as `this->detectorIDs.insert(detID)` should remain for now. This allows existing algorithms, e.g. loaders, that do not need time indexing to work as before. Similarly the `getDetectorIDs(index)` method would still return detector IDs without the time indexing information.
 
-This implies the member variable `std::set<detid_t> detectorIDs` in `ISpectrum` will need to become `std::set<std::pair<detid_t, size_t>> timeIndexedDetectorIDs`.
+**Note:** working directly with the detector IDs is something that should be eliminated with the use of `SpectrumInfo` and `DetectorInfo`. The use of a `getDetectorIDs` should not be needed in the final Instrument 2.0. Similarly the method `getSpectrum(index)` on `MatrixWorkspace` should eventually be eliminated.
 
-The corresponding methods in `ISpectrum` would also need to be replicated for the time indexed case. For example `addDetectorID(const std::pair<detid_t, size_t> timeIndexedDetID)`.
+#### StepScan Construction
 
-The original methods such as `this->detectorIDs.insert(detID)` should remain and add detectors at time index 0. This allows existing algorithms, e.g. loaders, that do not need time indexing to work as before. Similarly the `getDetectorIDs(index)` method would still return detector IDs without the time indexing information.
+Currently the `DetectorInfo` constructor takes the instrument parameter map. There will be a new constructor which takes as an argument everything that is required for step scans. This would be the instrument, the parameter map, a vector of positions for each time index, a vector of rotations for each time index and a vector of start and end times for each time index.
 
-**Note:** working directly with the detector IDs is something that should be eliminated with the use of `SpectrumInfo` and `DetectorInfo`. The use of a `getTimeIndexedDetectorIDs` or `getDetectorIDs` should not be needed in the final Instrument 2.0. Similarly the method `getSpectrum(index)` on `MatrixWorkspace` should eventually be eliminated.
+It is important that the scan positions are created in a consistent state. These should be created with the aid of a class, which will return a `StepScanInfo` object that contains the positions, rotations and start and end times. This could follow the builder pattern for creating the `StepScanInfo` object. The loader will set the required values for position, rotation and time ranges and the `StepScanInfoBuilder` will ensure these are created in an internally consistent state. For example:
+* A position, rotation and time range exist for every detector for each point in the scan
+* The time ranges do not overlap
+* The end times are always after the start times
+
+The `StepScanInfo` object would have the following fields:
+* `std::vector<std::vector<Kernel::V3D>> positions`
+* `std::vector<std::vector<Kernel::V3D>> rotations`
+* `std::vector<std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>>> timeRanges`
+
+All of the vector object would have the same size, the number of steps in the scan for the vector of vectors, and the number of detectors for the vector of positions.
+
+The construction of `DetectorInfo` should be done in one call, and no more time indexes for the step scan should be allowed to be created after the construction of `DetectorInfo`. Care should be taken to move the vectors in `StepScanInfo`, to avoid copying them.
+
+The only exception to this will be when using live data, where workspaces are built up in parts. In this case `DetectorInfo` should have a method to take another `DetectorInfo` object, and deal correctly with the shifting the time indices. Both `DetectorInfo` objects will be in a valid state, but there would still need to be checks to ensure the time indices do not overlap between the two `DetectorInfo` objects.
 
 ### Implementation
 
 For more details on the rollout plan see the document [Scanning Instruments Plan](ScanningInstruments_Plan.md).
 
-For this design to be implemented the use of `SpectrumInfo` and `DetectorInfo` will need to be rolled out in Mantid. The rollout for [`SpectrumInfo`](https://github.com/mantidproject/mantid/issues/17743) has been started.
+For this design to be implemented the use of `SpectrumInfo` and `DetectorInfo` will need to be rolled out in Mantid. The rollout for [`SpectrumInfo`](https://github.com/mantidproject/mantid/issues/17743) has been started. This will be a significant amount of work to complete with around 100 algorithms to update.
 
 ### New DetectorInfo Signatures
 
