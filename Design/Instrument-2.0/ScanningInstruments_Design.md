@@ -90,9 +90,17 @@ Algorithms should be responsible for getting detector positions from the correct
 
 Moving detectors should be able to be marked as scanning instruments in the instrument definition, for example `<isMovingDetector = "true" />`. The corresponding method should be added to the `IDetector` class in Mantid, for example `bool isMovingDetector() const;`.
 
-On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position.
+On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position. This does not imply that the instrument must always be performing a step scan, as it could still do a run while in a single position. It does imply an offset always has to be given for the detectors.
 
 This could alternatively be done at the `Instrument` level, but a scanning instrument may have static parts that can be sensibly accessible via the instrument tree.
+
+### Saving
+
+The information relating to step scans needs loading and saving in the `LoadNexusProcessed` and `SaveNexusProcessed` algorithms. Currently the detector information is saved in the `instrument` NeXus group. Within the `detector` entry in `instrument` information about the location of the detectors is saved, with any moves to the base instrument applied. 
+
+The base instrument definition from the XML file is saved in `instrument_xml`. The parameter map is also saved in its entirety in the `instrument_parameters` entry.
+
+As the storage of this information is moved out from the parameter map and into `DetectorInfo` and `SpectrumInfo` within Mantid it should also be stored within a corresponding NeXus entries `detector_info` and `spectrum_info`. In the case of a step scan `detector_info` should contain an appropriate flag that a step scan is being stored. In this case some of the entries will contain an extra dimension corresponding to the step scan. For example a list of detector positions would be of size `n_detectors` normally, or `n_detectors x n_steps` for a step scan.
 
 ### Implementation
 
