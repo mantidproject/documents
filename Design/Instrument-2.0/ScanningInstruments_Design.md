@@ -84,13 +84,16 @@ The construction of `DetectorInfo` should be done in one call, and no more time 
 
 The only exception to this will be when using live data, where workspaces are built up in parts. In this case `DetectorInfo` should have a method to take another `DetectorInfo` object, and deal correctly with the shifting the time indices. Both `DetectorInfo` objects will be in a valid state, but there would still need to be checks to ensure the time indices do not overlap between the two `DetectorInfo` objects.
 
+The construction of `SpectrumInfo` should be done in a similar way. This needs to take a vector of `std::set<std::pair<detid_t, size_t>>` objects for step scans. The `StepScanInfo` could also have a method to return such an object, also ensuring it is in a consistent state with valid detector IDs and time indices. This would create an extra field in `StepScanInfo`:
+* `std::vector<std::set<std::pair<detid_t, size_t>>>`
+
 ### Instrument Access
 
-Algorithms should be responsible for getting detector positions from the correct place, the `DetectorInfo`/`SpectrumInfo` class as opposed to the static instrument. However, there are potential dangers where assumptions are made about an instrument not being scanning.
+Algorithms should be responsible for getting detector positions from the correct place, the `DetectorInfo`/`SpectrumInfo` class as opposed to the static instrument. However, there are potential dangers where assumptions are made about an instrument not being able to move.
 
-Moving detectors should be able to be marked as scanning instruments in the instrument definition, for example `<isMovingDetector = "true" />`. The corresponding method should be added to the `IDetector` class in Mantid, for example `bool isMovingDetector() const;`.
+Moving detectors should be able to be marked as such in the instrument definition, for example `<isMovingDetector = "true" />`. The corresponding method should be added to the `IDetector` class in Mantid, for example `bool isMovingDetector() const;`.
 
-On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position. This does not imply that the instrument must always be performing a step scan, as it could still do a run while in a single position. It does imply an offset always has to be given for the detectors.
+On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position. This does not imply that the instrument must always be performing a step scan, as it could still do a run while in a single position. It does imply that an offset always has to be given for the detectors.
 
 This could alternatively be done at the `Instrument` level, but a scanning instrument may have static parts that can be sensibly accessible via the instrument tree.
 
