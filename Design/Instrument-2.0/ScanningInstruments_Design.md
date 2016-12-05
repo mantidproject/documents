@@ -18,7 +18,20 @@ Two classes related to this have already been partially implemented in Mantid, [
 
 Support for the moving instruments will be implemented via the `DetectorInfo` class. The usage `SpectrumInfo` class needs no direct knowledge of the time indexing. The methods on the `DetectorInfo` class for accessing detector information will be accessed by giving a detector index and an optional time index. It will also hold information on the start and end times for each time index. Any further information, for example to normalise to monitor counts, can be held in a time series sample log.
 
-Currently initialisation of workspaces is usually done in an incremental way. This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, via a `DetectorInfo` factory, which will ensure the loader creates a workspace in a consistent state.
+Currently initialisation of workspaces is usually done in an incremental way. Exactly how this is done varies between loaders, but is often spectrum-by-spectrum. For example a common pattern for an instrument with PSD tubes would be as follows:
+
+```cpp
+for (size_t i = 0; i < numberOfTubes; ++i) {
+  for (size_t j = 0; j < m_numberOfPixelsPerTube; ++j) {
+    int *data_p = &data(static_cast<int>(i), static_cast<int>(j), 0);
+    m_localWorkspace->setHistogram(spec, m_localWorkspace->binEdges(0),
+        Counts(data_p, data_p + m_numberOfChannels));
+    spec++;
+  }
+}
+```
+
+This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, via a `DetectorInfo` factory, which will ensure the loader creates a workspace in a consistent state.
 
 ### Design
 
@@ -70,6 +83,16 @@ All of the vector object would have the same size, the number of steps in the sc
 The construction of `DetectorInfo` should be done in one call, and no more time indexes for the step scan should be allowed to be created after the construction of `DetectorInfo`. Care should be taken to move the vectors in `StepScanInfo`, to avoid copying them.
 
 The only exception to this will be when using live data, where workspaces are built up in parts. In this case `DetectorInfo` should have a method to take another `DetectorInfo` object, and deal correctly with the shifting the time indices. Both `DetectorInfo` objects will be in a valid state, but there would still need to be checks to ensure the time indices do not overlap between the two `DetectorInfo` objects.
+
+### Instrument Access
+
+Algorithms should be responsible for getting detector positions from the correct place, the `DetectorInfo`/`SpectrumInfo` class as opposed to the static instrument. However, there are potential dangers where assumptions are made about an instrument not being scanning.
+
+Moving detectors should be able to be marked as scanning instruments in the instrument definition, for example `<isMovingDetector = "true" />`. The corresponding method should be added to the `IDetector` class in Mantid, for example `bool isMovingDetector() const;`.
+
+On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position.
+
+This could alternatively be done at the `Instrument` level, but a scanning instrument may have static parts that can be sensibly accessible via the instrument tree.
 
 ### Implementation
 
