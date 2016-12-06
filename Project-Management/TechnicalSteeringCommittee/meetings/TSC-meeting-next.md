@@ -17,6 +17,7 @@ New Items
 
 Minutes
 -------
-Attendees:
+Attendees: Draper, Gigg, Heybrock, Bush, Campbell, Peterson, Whitfield, Savici, Hahn
 
-* Inform the dev list future code should use `boost::filesystem` in C++
+* Inform the dev list future code should use `boost::filesystem` in C++ (Pete)
+* Mantid 3.9 will bundle python on osx. This can be moved to the next release if time does not allow. (Gagik, Steve, Samuel)
