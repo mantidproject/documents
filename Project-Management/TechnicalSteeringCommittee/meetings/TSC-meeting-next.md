@@ -14,3 +14,9 @@ New Items
 * Update on plotting evaluation
 * Update on [Mantid 4](https://github.com/mantidproject/documents/pull/23)
 * Update on installing 3rd party projects (e.g. [mslice](https://github.com/mantidproject/mslice), [FastGR](https://github.com/neutrons/FastGR), and [PyVDrive](https://github.com/neutrons/PyVDrive)) that require mantid
+
+Minutes
+-------
+Attendees:
+
+* Inform the dev list future code should use `boost::filesystem` in C++
