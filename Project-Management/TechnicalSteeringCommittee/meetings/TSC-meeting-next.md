@@ -20,4 +20,5 @@ Minutes
 Attendees: Draper, Gigg, Heybrock, Bush, Campbell, Peterson, Whitfield, Savici, Hahn
 
 * Inform the dev list future code should use `boost::filesystem` in C++ (Pete)
-* Mantid 3.9 will bundle python on osx. This can be moved to the next release if time does not allow. (Gagik, Steve, Samuel)
+* Mantid 3.9 will bundle python on osx. This can be moved to the next release if time does not allow. (Steve, Gagik, Samuel)
+* gsl2 works on linux (ignoring sporadic test failures). osx has one remaining [#17778](https://github.com/mantidproject/mantid/issues/17778)
