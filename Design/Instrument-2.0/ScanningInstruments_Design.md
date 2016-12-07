@@ -31,7 +31,7 @@ for (size_t i = 0; i < numberOfTubes; ++i) {
 }
 ```
 
-This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, via a `DetectorInfo` factory, which will ensure the loader creates a workspace in a consistent state.
+This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, via a `DetectorInfo` factory, which will ensure the loader creates a workspace in a consistent state. While the example above relates to the `Historgram` aspect of the workspace, this is analogous to the information that will be cached in `DetectorInfo`.
 
 ### Design
 
@@ -43,7 +43,7 @@ The current plan is to access to add methods that take a detector index and a ti
 
 The `timeIndex` argument is optional, so algorithms that do not care about time indexing will simply return the first/only time index. `DetectorInfo` should also contain a vector of start and end times for each time index. This will mean any information stored as a time series sample log can also be obtained for the correct step, for example the monitor counts for normalisation.
 
-`DetectorInfo` will ultimately store the information for positions and rotation, so will need to do this in a way that can be accessed by both the detector index and time index. Masking would be done at the spectrum level, if it is required for a detector for some time steps, but not all. `DetectorInfo` will also hold the start and end times for each step in the scan. The objects it will need to hold for this would be:
+`DetectorInfo` will ultimately store the information for positions and rotation, so will need to do this in a way that can be accessed by both the detector index and time index. Masking would be done at the spectrum level, if it is required for a detector for some time steps, but not all. `DetectorInfo` will also hold the start and end times for each step in the scan. The objects it would need might be along the lines of:
 * `std::vector<std::vector<Kernel::V3D>> positions`
 * `std::vector<std::vector<Kernel::V3D>> rotations`
 * `std::vector<std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>>> timeRanges`
@@ -56,7 +56,7 @@ Currently [`SpectrumInfo`](https://github.com/mantidproject/mantid/blob/master/F
 
 A new method should be added, for example `std::set<std::pair<detid_t, size_t>> getTimeIndexedDetectorIDs(index)`. The time indices for each detector can be stored in `SpectrumInfo` as a `std::set<std::pair<detid_t, size_t>>` within a vector of the same size as the number of workspace spectra. This will avoid the need to change methods on `MatrixWorkspace` or `ISpectrum/Spectrum` to return the set of detector IDs and time indexes for the spectrum. This is something that will help to move away from the incremental construction of `DetectorInfo`.
 
-This can be used to access methods on `DetectorInfo`, for example `m_detectorInfo.twoTheta(detIndex, timeIndex)`.
+This can be used to access methods on `DetectorInfo`, for example `m_detectorInfo.twoTheta(detIndex, timeIndex)`. Because Mantid algorithms usually work with either spectra or detectors, but not both, this would only be needed in rare cases.
 
 #### `MatrixWorkspace` & `ISpectrum`/`Spectrum`
 
@@ -89,13 +89,7 @@ The construction of `SpectrumInfo` should be done in a similar way. This needs t
 
 ### Instrument Access
 
-Algorithms should be responsible for getting detector positions from the correct place, the `DetectorInfo`/`SpectrumInfo` class as opposed to the static instrument. However, there are potential dangers where assumptions are made about an instrument not being able to move.
-
-Moving detectors should be able to be marked as such in the instrument definition, for example `<isMovingDetector = "true" />`. The corresponding method should be added to the `IDetector` class in Mantid, for example `bool isMovingDetector() const;`.
-
-On a moving instrument access to the instrument in its default position is meaningless. Any detectors that are set to be moving should throw for direct access via the static instrument for properties such as position. This does not imply that the instrument must always be performing a step scan, as it could still do a run while in a single position. It does imply that an offset always has to be given for the detectors.
-
-This could alternatively be done at the `Instrument` level, but a scanning instrument may have static parts that can be sensibly accessible via the instrument tree.
+Algorithms should always get the geometry information via the `DetectorInfo`/`SpectrumInfo` class as opposed to the static instrument. There will not be any runtime checking performed to prevent this, but eventually the API will make it hard to get the geometry from the instrument itself without going through the caching layers. 
 
 ### Saving
 
@@ -159,12 +153,17 @@ void setRotation(const size_t index, const Kernel::Quat &rotation);
 void setRotation(const size_t index, const Kernel::Quat &rotation, const size_t timeIndex);
 
 void setPosition(const Geometry::IComponent &comp, const Kernel::V3D &pos);
-void setPosition(const Geometry::IComponent &comp, const Kernel::V3D &pos, const size_t timeIndex);
 void setRotation(const Geometry::IComponent &comp, const Kernel::Quat &rot);
-void setRotation(const Geometry::IComponent &comp, const Kernel::Quat &rot, const size_t timeIndex);
 ```
 
 `isMonitor` and `isMasked` do not need to have moving instrument access. Monitors should not ever need to change. If a specific detector position needs to be masked that should be done by masking the spectrum.
 
 The routines without time indexing should always throw if they are attempted to be used on a non-moving instrument.
+
+It would also be nice to have the following methods, to move banks and tubes, but component positions would not be stored in `DetectorInfo`, so this might not be possible to implement for now.
+
+```cpp
+void setPosition(const Geometry::IComponent &comp, const Kernel::V3D &pos, const size_t timeIndex);
+void setRotation(const Geometry::IComponent &comp, const Kernel::Quat &rot, const size_t timeIndex);
+```
 
