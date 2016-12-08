@@ -2,22 +2,33 @@
 
 This is merely a listing of the different algorithms available in Mantid for direct and indirect geometry spectrometers. For more information, see the algorithm documentation and references therein.
 
+### Summary
+
++ All of the algorithms expect a reduced sample workspace and separately the empty can workspace, when applicable.
+
++ Workspaces must have wavelenght as x-axis unit, and raw spectrum number as y-axis. Some of the algorithms are able to automatically convert the x-axis to wavelenght. But for consistency, it is probably better to accept wavelenght as standard.
+
++ All of the algorithms, except the MonteCarloAbsorption, use numerical integration, the latter uses Monte Carlo integration.
+
++ When the sample has a simple geometry, it is recommended to use the corresponding algorithm directly, if possible.
+
++ None of the algorithms, except MultipleScatteringCylinderAbsorption and MayersSampleCorrection, take multiple scattering into account.
+
++ These are corrections that are applied in offline analysis, and some of them are time-consuming to compute. Moreover they require a lot of input parameters. Hence, these probably should not be calculated on-the-fly from the reduction algorithms. Instead one should produce the reduced sample (and empty can) workspaces separately, and then corrections can be computed and applied aposteriori. (This is at least what ISIS indirect does) 
+
++ ISIS indirect has Indirect->Corrections GUI, with 4 tabs:
+  - Can subtraction (simple subtraction without corrections)
+  - Calculate Paalman&Pings
+  - Apply Paalman&Pings
+  - Absorption
+
 ### Generic sample shapes
+
++ A *gauge volume* can be defined (by [`DefineGaugeVolume`](http://docs.mantidproject.org/nightly/algorithms/DefineGaugeVolume-v1.html#algm-definegaugevolume) or [`CuboidGaugeVolumeAbsorption`](http://docs.mantidproject.org/nightly/algorithms/CuboidGaugeVolumeAbsorption-v1.html#algm-cuboidgaugevolumeabsorption)) algorithms if the neutron beam does not illuminate the entire sample.
 
 ## [`AbsorptionCorrection`](http://docs.mantidproject.org/nightly/algorithms/AbsorptionCorrection-v1.html)
 
-  + Calculates attenuation factors resulting from absorption and single scattering.
-  + Uses numerical integration.
-  + For generic sample shapes.
-    - For the usual sample geometries, such as slab, using a specific algorithm is recommended.
-  + A *gauge volume* can be defined (by [`DefineGaugeVolume`](http://docs.mantidproject.org/nightly/algorithms/DefineGaugeVolume-v1.html#algm-definegaugevolume) or [`CuboidGaugeVolumeAbsorption`](http://docs.mantidproject.org/nightly/algorithms/CuboidGaugeVolumeAbsorption-v1.html#algm-cuboidgaugevolumeabsorption)) algorithms if the neutron beam does not illuminate the entire sample.
-
 ## [`MonteCarloAbsorption`](http://docs.mantidproject.org/nightly/algorithms/MonteCarloAbsorption-v1.html#algm-montecarloabsorption)
-
-  + Calculates self-attenuation factors resulting from absorption and single scattering.
-  + Uses Monte Carlo simulation.
-  + For generic sample shapes.
-  + Beam shape and size can be defined.
 
 ### Slab geometry
 
