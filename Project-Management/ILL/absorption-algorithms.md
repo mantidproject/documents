@@ -6,7 +6,7 @@ This is merely a listing of the different algorithms available in Mantid for dir
 
 + All of the algorithms expect a reduced sample workspace and separately the empty can workspace, when applicable.
 
-+ Workspaces must have wavelenght as x-axis unit, and raw spectrum number as y-axis. Some of the algorithms are able to automatically convert the x-axis to wavelenght. But for consistency, it is probably better to accept wavelenght as standard.
++ Workspaces must have wavelength as x-axis unit, and raw spectrum number as y-axis. Some of the algorithms are able to automatically convert the x-axis to wavelenght. But for consistency, it is probably better to accept wavelenght as standard.
 
 + All of the algorithms, except the MonteCarloAbsorption, use numerical integration, the latter uses Monte Carlo integration.
 
