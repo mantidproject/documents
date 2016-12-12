@@ -106,6 +106,8 @@ Packages required from Ubuntu repositories for various extensions:
 * `texlive-lang-greek`
 * `texlive-latex-recommended`
 
+Consider implementing some of https://www.mediawiki.org/wiki/Manual:Performance_tuning
+
 ### Static Documenation (docs, doxygen)
 
 Static HTML that can be served directly by Apache or NGINX.
