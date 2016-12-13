@@ -41,7 +41,7 @@ List of other changes
 These changes are not bound to be included in this release, but being significant changes it would be good to include them together if
 the timing and resource allows.
 
-1. Change to matplotlib? [3 people 1-3m]
+1. Change to matplotlib? [See PMB report Dec 2016]
 1. Finish python 2/3 compatiblity [1 people 1m]
 
 Nice to have
