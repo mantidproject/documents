@@ -31,7 +31,7 @@ for (size_t i = 0; i < numberOfTubes; ++i) {
 }
 ```
 
-This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, see [#stepscan-construction](StepScan construction), which will ensure the loader creates a workspace in a consistent state. While the example above relates to the `Historgram` aspect of the workspace, this is analogous to the information that will be cached in `DetectorInfo`.
+This will have performance impacts for the loader, but can also leave the workspace in an inconsistent state. For the scanning instrument design the workspace should be initialised all at once, see [StepScan construction](#stepscan-construction), which will ensure the loader creates a workspace in a consistent state. While the example above relates to the `Historgram` aspect of the workspace, this is analogous to the information that will be cached in `DetectorInfo`.
 
 ### Design
 
