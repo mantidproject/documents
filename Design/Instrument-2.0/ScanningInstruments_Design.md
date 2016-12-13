@@ -44,9 +44,9 @@ The current plan is to access to add methods that take a detector index and a ti
 `DetectorInfo` will ultimately store the information for positions and rotation, so will need to do this in a way that can be accessed by both the detector index and time index. Masking would be done at the spectrum level, if it is required for a detector for some time steps, but not all. `DetectorInfo` will also hold the start and end times for each step in the scan. The objects it would need might be along the lines of:
 * `std::vector<std::vector<Kernel::V3D>> positions`
 * `std::vector<std::vector<Kernel::V3D>> rotations`
-* `std::vector<std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>>> timeRanges`
+* `std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>> timeRanges`
 
-Appropriate typedefs should be used here for readability. All of the vector objects would have the same size, the number of steps in the scan for the vector of vectors, and the number of detectors for the vector of positions.
+Appropriate typedefs should be used here for readability. The first index for the outer vector for `positions` and `rotations` would be the time index, and the second index for the inner vector would be the detector index - e.g. `positions[time_index][detector_index]`. For the `timeRanges` vector this would be just a vector of time indexes - `timeRanges[time_index]`.
 
 #### `SpectrumInfo`
 
@@ -74,9 +74,9 @@ It is important that the scan positions are created in a consistent state. These
 The `StepScanInfo` object would have the following fields:
 * `std::vector<std::vector<Kernel::V3D>> positions`
 * `std::vector<std::vector<Kernel::V3D>> rotations`
-* `std::vector<std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>>> timeRanges`
+* `std::vector<std:pair<Kernel::DateAndTime, Kernel::DateAndTime>> timeRanges`
 
-All of the vector object would have the same size, the number of steps in the scan for the vector of vectors, and the number of detectors for the vector of positions.
+As in the [`DetectorInfo`](#detectorinfo) class the first index for the outer vector for `positions` and `rotations` would be the time index, and the second index for the inner vector would be the detector index - e.g. `positions[time_index][detector_index]`. For the `timeRanges` vector this would be just a vector of time indexes - `timeRanges[time_index]`. All of the vector object would have the same size, the number of time steps for the time indexed vector and the number of detectors for the vector of positions.
 
 The construction of `DetectorInfo` should be done in one call, and no more time indexes for the step scan should be allowed to be created after the construction of `DetectorInfo`. Care should be taken to move the vectors in `StepScanInfo`, to avoid copying them.
 
