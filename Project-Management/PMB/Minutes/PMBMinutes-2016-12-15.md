@@ -60,18 +60,18 @@ ISIS - Draper, Greenfield, Manuel, Cottrell
 - As before, they should suggest a list of recomendations to improve key areas of the code.
 - JT will send a reminder in the new year to remind ILL/ORNL/ISIS about what will be the next part of the review.
 
-7. Technical Steering Committee report (PP)
+### 7. Technical Steering Committee report (PP)
 
 - Need to reduce the supported systems. RHEL6 is the top priority followed by Ubuntu 14.04 (used by ILL).
 - Matplotlib appears to be the best plotting solution.
 - All algorithms are now Python 3 compatible.
 
-8. Mantid 4.0 discussion
+### 8. Mantid 4.0 discussion
 
 - After discussion of the several options for Mantid 4.0 plotting, the PMB approved a new Workbench to replace MantidPlot.
 - ND will send the details about the calculation of effort needed for this task.
 
-9. Scientific steering committee discussion (SC / ND)
+### 9. Scientific steering committee discussion (SC / ND)
 
 - It was suggested the creation of a Pre-Meeting before the annual SSC.
   - Pre-Meeting happens 1 month before the Main meeting. It will happen at a facility / technique level with representation of users.
@@ -85,7 +85,7 @@ Important dates:
 - 12-13 June : Mantid users meeting
 - 14-16 June : Mantid developers workshop
 
-10. Next Meeting
+### 10. Next Meeting
 
 - Late March. RL will send a doodle around next year.
 
