@@ -19,6 +19,8 @@
 
 ### 2. Minutes from the last PMB meeting
 
+[PMB Minutes 2016-08-09](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/Minutes/PMBMinutes-2016-08-09.md)
+
 1. New and ongoing actions
 
   8.8 - Drive the adding of Mantid training material for powder diffraction (GG/TP). 
@@ -35,6 +37,7 @@
 
 ### 3. PM Report (ND)
 
+[PM report to the PMB 9 August 2016](https://github.com/mantidproject/documents/blob/master/Project-Management/PMB/PM%20report%20to%20the%20PMB%209%20August%202016.doc)
 - Mantid usage grew significantly
 - List of algorithms to potentially remove
 - Release dates: ORNL will contact Nick about pushing the October 9th 2007 release date.
@@ -62,6 +65,8 @@
 
 ### 7. Technical Steering Committee report (PP)
 
+[TSC-PMB-report-2016-12-15](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/TSC-PMB-report-2016-12-15.md)
+
 - Need to reduce the number of supported systems: RHEL6 is the top priority to remove followed by Ubuntu 14.04 (used by ILL).
 - Matplotlib appears to be the best plotting solution.
 - All algorithms are now Python 3 compatible.
@@ -85,7 +90,27 @@ Important dates:
 - 12-13 June : Mantid users meeting
 - 14-16 June : Mantid developers workshop
 
-### 10. Next Meeting
+### 10. Actions (Summary)
+
+2)
+
+  8.8 - GG/TP: Prepare Nobebooks and a video (May) for Powder diffraction.
+
+  9.5 - TSC will prioritise the next generation of IDF.
+
+  11.2 - Organize Mantid review documents and list of possible reviewers.
+
+6)
+
+  - List of actions to improve key areas in the survey for both Collaborative review and Technical review  (JT?)
+  - JT will send a reminder in the new year to remind ILL/ORNL/ISIS about what will be the next part of the review.
+
+8)
+
+  - ND will send the details about the effort estimation needed to develop the new workbench
+  
+### 11. Next Meeting
 
 - Late March. RL will send a doodle around next year.
+
 
