@@ -12,21 +12,21 @@ The three instruments concerned with this work at ILL are D2B, D4 and D7. D16 al
 
 ### Mandatory
 * A loader can load data from a single file, and create the workspace with the correct positions and rotations stored for each detector
-* Multiple workspaces can be merged, with different sets of time indexes, and positions and rotations stored correctly for each detector
+* Multiple workspaces can be loaded with the same detector positions for certain time indexes - the data for spectra is then summed
+* Multiple numors can be loaded, with different sets of time indexes, and positions and rotations stored correctly for each detector
 * Detector positions for a given time index can still be modified after loading
-* Detector movement at the ILL is limited to the case of rotation around sample position - but full positional changes should be allowed, for example in case the sample is off-centre
+* Moving a detector to any new position is allowed
 * Flexible step scans are supported, times at a given position can differ, as can angular step size changes between steps
 * Each spectrum ultimately links to a detector or detector group and a time index for scanning instruments
 * A start and end time, as the full time and date, can be obtained for each time index
 * Extra metadata can be accessed for a given position in the step scan - for example so normalisation to monitors can be performed later
 * Metadata values that change in time can be shared appropriately between positions in the step scan (for example in D2B files each file contains a single value for monitor counts, but 25 different detector positions, so the monitor counts for each position might need to be divided by 25)
 * Overlaps in detector positions are possible
-* The instrument view shows every step position for each detector, and deals with overlapping detectors
-* Saving/loading workspaces should deal with all of the information related to step scans
+* Saving/loading workspaces should handle all of the information related to step scans
 
 ### Desirable
-* Multiple workspaces can be merged with the same detector positions for certain time indexes - the data for spectra is then summed
-* Masking of detectors at different time indexes
+
+* The instrument view shows every step position for each detector, and deals with overlapping detectors
 
 ### Performance
 
@@ -40,6 +40,8 @@ D2B represents the most difficult case for performance at the ILL, with 100 step
 
 Just for information these are things that are likely to be implemented and related to moving instruments. These are not currently ILL requirements, but might be in the future.
 
+* Merging different workspaces into a single scan after loading - everything can be done in the load step
+* Masking of detectors at different time indexes - this is done via masking a specturm
 * Continuous scanning
 * Triple axis spectrometers
 * Components other than detectors can be time indexed
@@ -91,7 +93,11 @@ The ASCII files do not appear to contain the angles. It needs to be established 
 
 **To be confirmed:** need to obtain data for D16 to check requirements.
 
+### D17
 
+[D17](https://www.ill.eu/instruments-support/instruments-groups/instruments/d16/) is effectively a moving instrument in monochromatic mode.
+
+**To be confirmed:** how D17 moves.
 
 ### LoadILLASCII
 
