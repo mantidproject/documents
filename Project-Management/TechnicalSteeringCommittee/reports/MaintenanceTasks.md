@@ -129,3 +129,7 @@ Converted to actual tickets during a release
    3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
 1. Remove Qt3support requirement from Mantid (Hahn lead)
    4. Try building Mantid with Qt5 and see what issues remain (Fede).
+1. [Boost 1.63](http://www.boost.org/users/history/version_1_63_0.html) has some nice improvements to `boost::python`
+   1. Added (basic) support for C++11 (std::shared_ptr, std::unique_ptr)
+   2. Incorporated an extension API to wrap NumPy
+   3. Would require building packages for Linux distributions with older version.
