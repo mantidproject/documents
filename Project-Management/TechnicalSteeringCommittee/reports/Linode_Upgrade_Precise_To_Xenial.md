@@ -44,7 +44,7 @@ as it is very low cost and provides fallback.
 ### Common system packages required:
 
 * `git`
-* Java
+* Java 8
 * Docker
 
 ### Current ppa list:
@@ -52,45 +52,15 @@ as it is very low cost and provides fallback.
 Apt Configuration
 -----------------
 
-### Additions to `/etc/sources.list`
-
-```
-# Jenkins LTS repo
-deb http://pkg.jenkins-ci.org/debian-stable binary/
-```
-
-### Additional files in `/etc/sources.list.d`:
-
-### `docker.list`
-
-```
-deb https://get.docker.com/ubuntu docker main
-```
-
-### `git-core-ppa-precise.list`
-
-```
-deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
-deb-src http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
-```
-
 ### `longview.list`
 
 ```
 deb http://apt-longview.linode.com/ precise main
 ```
 
-### `webupd8team-java-precise.list`
-
-```
-deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main
-deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main
-```
-
 ### Nginx
 
-It is proposed that Apache be replaced by [NGINX](https://www.nginx.com/resources/wiki/). NGINX provides better scalablity and places a lower
-fooprint on the server.
+It is proposed that Apache be replaced by [NGINX](https://www.nginx.com/resources/wiki/). NGINX provides better scalablity and places a lower fooprint on the server.
 
 ### Wiki
 
@@ -118,6 +88,8 @@ Self-contained package. The current configuration will need to be exported to th
 
 This would be a good time to review the list of plugins that are in active use to try and reduce the memory
 footprint and load time of Jenkins.
+
+Jenkins binds to port 8080 on localhost by default and Apache currently proxies `builds.mantidproject.org` to `builds.mantidproject.org:8080/jenkins`. NGINX will need to be told about this. There are instructions on the [Jenkins wiki](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu)
 
 ### Leeroy
 
