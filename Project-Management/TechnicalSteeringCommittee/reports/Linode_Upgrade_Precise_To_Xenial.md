@@ -58,6 +58,13 @@ Apt Configuration
 deb http://apt-longview.linode.com/ precise main
 ```
 
+iptables
+--------
+
+The iptables configuration must be migrated. It is heavily based on the defaults suggested in the Linode documentation but
+with additions for servies such as Leeroy.
+
+
 ### Nginx
 
 It is proposed that Apache be replaced by [NGINX](https://www.nginx.com/resources/wiki/). NGINX provides better scalablity and places a lower fooprint on the server.
