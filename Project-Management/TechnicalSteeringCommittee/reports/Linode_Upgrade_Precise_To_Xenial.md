@@ -102,7 +102,7 @@ Jenkins binds to port 8080 on localhost by default and Apache currently proxies 
 
 Our Leeory fork lives at https://github.com/rosswhitfield/leeroy.
 
-The current configuration will need to be backed up and transferred to the new instance.
+The whole leeroy home directory can be copied to the new instance. There is also a cron config for the leeroy user that will need to be copied.
 
 ### Forums
 
