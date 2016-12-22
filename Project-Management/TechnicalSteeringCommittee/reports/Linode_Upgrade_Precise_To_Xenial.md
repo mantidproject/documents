@@ -98,6 +98,40 @@ footprint and load time of Jenkins.
 
 Jenkins binds to port 8080 on localhost by default and Apache currently proxies `builds.mantidproject.org` to `builds.mantidproject.org:8080/jenkins`. NGINX will need to be told about this. There are instructions on the [Jenkins wiki](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu)
 
+The following plugins will be removed or not reinstalled:
+
+```
+Amazon EC2 plugin
+Amazon Web Services SDK
+Bitbucket Approve Plugin
+Bitbucket Build Status Notifier Plugin
+BLINK(1) Notifier
+Build Failure Analyzer
+Build Monitor View
+BuildResultTrigger Plug-in
+CCCC Plug-in
+CloudBees Amazon Web Services Credentials Plugin
+Credentials Binding Plugin
+CVS Plug-in
+Docker Plug-in
+Edgewall Trac Plugin
+EZ Templates
+GitHub Pull Request Builder
+Jackson 2 API Plugin
+Mercurial plugin
+OpenShift Deployer Plugin
+Publish Over Dropbox
+Publish Over SSH
+Slack Notification Plugin
+Slave Monitor for network connectivity
+Slave Utilization Plugin
+slave-status
+SLOCCount Plug-in
+Translation Assistance plugin
+Twitter plugin
+```
+
+
 ### Leeroy
 
 Our Leeory fork lives at https://github.com/rosswhitfield/leeroy.
