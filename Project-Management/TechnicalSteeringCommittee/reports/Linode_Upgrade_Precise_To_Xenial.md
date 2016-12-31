@@ -131,6 +131,7 @@ Translation Assistance plugin
 Twitter plugin
 ```
 
+The `.ssh` directory is required to keep the keys for github pushes etc
 
 ### Leeroy
 
