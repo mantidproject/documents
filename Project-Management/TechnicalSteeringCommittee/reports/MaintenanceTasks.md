@@ -8,25 +8,24 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.9
-=========================
+Maintenance tasks for 3.10
+==========================
 
 Highest priority
 ----------------
 
-1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
-1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
-  3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
-  4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
-  4. Require the above statement in all new work.
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface.
   * Start by reading the concepts page for [HistogramData](http://docs.mantidproject.org/nightly/concepts/HistogramData.html)
   * Read these [refactoring notes](https://github.com/mantidproject/documents/blob/master/Help/HistogramData/HistogramData-refactoring.md)
   * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h).
   * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold.
-  * Pick some algorithm from the [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started. 
+  * Pick some algorithm from the [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started.
+1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
+1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
+  3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
+  4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
+  4. Require the above statement in all new work.
 
-  
 
 Pool
 ----
@@ -39,6 +38,8 @@ Pool
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
+1. Replace Boost.TypeTraits with <type_traits>
 11. Stop using classes and member function removed in C++17.
    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
        2. _HAS_AUTO_PTR_ETC
@@ -54,39 +55,37 @@ Pool
   1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
   1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
     1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
-1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
+
 
 Assigned
 --------
 
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
-2. Explore ways to reduce number of recursive includes in `Algorithm.h` with desire of speeding up builds (Fede) [#15319](https://github.com/mantidproject/mantid/issues/15319)
-7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel, Fede)
+7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel)
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Peterson)
-7. Replace `boost::math::isnan` and `boost::math::isinf` with `std::isnan` and `std::isinf`. Some of these checks be replaced with [`std::isnormal`](http://www.cplusplus.com/reference/cmath/isnormal/). (Savici) [#17697](https://github.com/mantidproject/mantid/pull/17697)
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
-42. ~~Move [coverity builds](http://builds.mantidproject.org/view/All/job/coverity_build_and_submit/) to rhel7 (Peterson)~~
 13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the ~~35~~ 40 files that do it [#17590](https://github.com/mantidproject/mantid/issues/17590) (Dimitar)
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar)
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
-42. Modernize more code to use c++11. Specifically functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)). [#17600](https://github.com/mantidproject/mantid/issues/17600) (Lottie)
+42. Modernize more code to use functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)). [#17600](https://github.com/mantidproject/mantid/issues/17600) (Lottie)
 
 Unassigned (not suitable for pool)
 ----------------------------------
-
-12. Move documentation builds from rhel6 to rhel7
-42. Move [valgrind builds](http://builds.mantidproject.org/label/valgrind/) to rhel7
 
 
 Unsorted
 --------
 
+8. Investigate overhead from logging. Specifically
+   9. Would we benefit from checking the logging level before constructing a string?
+   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
+   10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
+   11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1093777. radon as a job in static analysis tab
 1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
-2. Enforcing python standards
 1. Investigate breaking issues with updated dependencies: iPython 5.0 on mac
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 2. Investigate and resolve differences in fitting tests on different compilers & platforms.
@@ -96,11 +95,6 @@ Unsorted
       1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.
 23. Top level code re-org decided at 2016 developer meetings [design](https://github.com/mantidproject/documents/pull/11) (Martyn)
 7. Are there places where std::array (size known at compile time)  is more appropriate than std::vector (size known only at runtime)?[#15291](https://github.com/mantidproject/mantid/issues/15291) (Raquel)
-8. Investigate overhead from logging. Specifically
-   9. Would we benefit from checking the logging level before constructing a string?
-   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
-   10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
-   11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 9. clang-tidy
      1. While I prefer the modern syntax, these clang-tidy checks suggest A LOT of changes. If we make these changes, divide them up between multiple people over several cycles.
          1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
@@ -116,7 +110,6 @@ For another release
 2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
 3. Rework/clean up cmake as a whole
 4. Making ANN an ExternalProject
-5. Replace Boost.TypeTraits with <type_traits>
 1. [Boost 1.63](http://www.boost.org/users/history/version_1_63_0.html) has some nice improvements to `boost::python`
    1. Added (basic) support for C++11 (std::shared_ptr, std::unique_ptr)
    2. Incorporated an extension API to wrap NumPy
@@ -127,10 +120,6 @@ Converted to actual tickets during a release
 
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
-1. Editing algorithm and variable names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) (Andrei)
 1. Clang working on linux.
    2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
    3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
-1. Remove Qt3support requirement from Mantid (Hahn lead)
-   4. Try building Mantid with Qt5 and see what issues remain (Fede).
-
