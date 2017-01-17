@@ -36,9 +36,12 @@ The special case comes from a splitter's start or stop time is within a proton c
 For example for a splitter i, its start time T\_i is inside a proton charge entry j, such that
 t\_j < T\_i < t\_(j+1).
 Since 
+
 1. it is not supposed to split a proton charge log entry, and 
 2. it is assumed that the proton charge is constant within an arbitrary entry,
+
 The the solution is to modify the proton charge value of split entry considering the partial time.
 Thus the split entry j' shall
+
 1. be from t\_j to t\_(j+1); and
 2. have its value is modified to v_j x (t\_(j+1) - T\_i) / (t\_(j+1) - t\_j), where v_j is the proton charge value of entry j.
