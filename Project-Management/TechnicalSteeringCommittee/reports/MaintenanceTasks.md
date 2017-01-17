@@ -52,6 +52,7 @@ Pool
      4. example: we currently use std::auto_ptr with boost::python.
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 1. enable warnings and fix issues
+  1. `/W3` on Visual C++ - https://msdn.microsoft.com/en-us/library/thxezb7y.aspx recommends this for production
   1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
   1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
     1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
