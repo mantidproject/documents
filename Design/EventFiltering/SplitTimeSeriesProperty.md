@@ -5,11 +5,11 @@ It is split by a set of N-1 splitters, such as (T\_0, T\_1, w\_0), (T\_1, T\_2, 
 
 ## Split TimeSeriesProperty use case 1
 
-In this case, a splitter i, (T\_(i-1), T\_i, w\_(i-1)), is used to split `P`, 
-with t\_(j-1) <= T\_(i-1) < t\_j, and t\_(k-1) < T\_i <= t\_k, where j < k.
-The split-out TimeSeriresProperty by this splitter shall have the entries as (t\_(i-1), t\_i, ..., t\_k) and indexed as w\_(i-1).
-
-Finally this TimeSeriesProperty will be combined with other split TimeSeresProperty with the same index.
+In this case, there are more than 1 entry of TimeSeriesPrperty `P` between the start and stop time of a splitter i, i..e,  T\_(i-1), and T\_i, respectively. 
+The split entries will be written to a new TimeSeriesProperty indexed as w\_(i-1)).
+Hence there will have entries of `P` such that t\_(j-1) <= T\_(i-1) < t\_j, and t\_(k-1) < T\_i <= t\_k, where j < k.
+The split-out TimeSeriresProperty by this splitter shall have the entries as (t\_(i-1), t\_i, ..., t\_k) and
+be written to output TimeSeriesProperty indexed as w\_(i-1).
 
 ![alt text](tsp_split_1.png)
 
