@@ -26,5 +26,17 @@ Then no splitting is required to `P`'s j entry in this situation.
 
 ## Special case: Proton charge
 
-The sum of split proton charge logs shall be same as the original proton charge. 
-The algorithms for use case 1 and 2 are not fit.
+A proton charge log is stored in a  TimeSeriesProperty.
+Assume that the total proton charge is `C`.
+If this log is split to `P\_ 1`, `P\_2`, ..., `P\_m`, and the total proton charges for 
+each split log are `C\_ 1`, `C\_2`, ..., `C\_m`, respectively.
+Then the sum of  `C\_ 1`, `C\_2`, ..., `C\_m` shall be `C`.
+
+The special case comes from a splitter's start or stop time is within a proton charge log's entry.
+For example for a splitter i, whose start time T\_i is inside a proton charge entry j, such that
+t\_j < T\_i < t\_(j+1).
+Since it is not supposed to split a proton charge log entry, and 
+it is assumed that the proton charge is constant within an arbitrary entry,
+the solution is to modify the proton charge value of that entry by the portion of the time of the split entry,
+such that the split entry shall be from t\_j to t\_(j+1), and its value is modified 
+to v_j x (t\_(j+1) - T\_i) / (t\_(j+1) - t\_j), where v_j is the proton charge value of entry j.
