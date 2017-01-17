@@ -9,3 +9,4 @@ Pinned Topics
 New Items
 ---------
 * Update from PMB meeting
+* Discussion about [splitting TimeSeriesProperty] (https://github.com/mantidproject/documents/blob/master/Design/EventFiltering/SplitTimeSeriesProperty.md)
