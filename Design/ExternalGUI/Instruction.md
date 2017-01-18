@@ -18,7 +18,7 @@ Some of these items were reported at the [2016 developer workshop](https://githu
 | Name        | Facility           | Technique  | Good features  | Bad features  |
 | ------------- |:-------------:| -----:| -----:| -----:|
 | Reflectometry Old     | ISIS | Reflectometry |  python | Everything else about this is bad  |
-| Reflectometry Old     | ISIS | Reflectometry |  <ul><li>created from sub-components</li><li>proven robust</li><li>well tested</li><li>sophistocated but maintainable</li></ul> | c++  |
+| Reflectometry New     | ISIS | Reflectometry |  <ul><li>created from sub-components</li><li>proven robust</li><li>well tested</li><li>sophistocated but maintainable</li></ul> | c++  |
 
 
 ## Inventory of External GUIs
