@@ -16,6 +16,6 @@ New Items
 
 Minutes
 -------
-Attendees: Savici, Hahn, Peterson, Whitfield, Zhou, Heybrock, Bush, Markvedsen, Draper, Arnold, Gigg
+Attendees: Savici, Hahn, Peterson, Whitfield, Zhou, Heybrock, Bush, Markvardsen, Draper, Arnold, Gigg
 
 * Abins is not currently going to be merged into mantid. Anders will talk with the developers about further options for interoperability with mantid.
