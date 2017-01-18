@@ -13,13 +13,8 @@ Maintenance tasks for 3.10
 
 Highest priority
 ----------------
-
-1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface.
-  * Start by reading the concepts page for [HistogramData](http://docs.mantidproject.org/nightly/concepts/HistogramData.html)
-  * Read these [refactoring notes](https://github.com/mantidproject/documents/blob/master/Help/HistogramData/HistogramData-refactoring.md)
-  * Look at unsafe methods marked *Deprecated* in the `MatrixWorkspace` header [here](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MatrixWorkspace.h).
-  * If you require help or have questions ask Simon Heybrock, Lamar Moore or Owen Arnold.
-  * Pick some algorithm from the [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started.
+1. `SpectrumInfo` caching layer rollout across Algorithms. *Issues and Instructions TODO*.
+1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started.
 1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
