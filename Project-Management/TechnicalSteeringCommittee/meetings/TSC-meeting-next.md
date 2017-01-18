@@ -13,3 +13,9 @@ New Items
 * [Maintenance tasks](../reports/MaintenanceTasks.md)
 * Update from PMB meeting
 * Discussion about [splitting TimeSeriesProperty] (https://github.com/mantidproject/documents/blob/master/Design/EventFiltering/SplitTimeSeriesProperty.md)
+
+Minutes
+-------
+Attendees: Savici, Hahn, Peterson, Whitfield, Zhou, Heybrock, Bush, Markvedsen, Draper, Arnold, Gigg
+
+* Abins is not currently going to be merged into mantid. Anders will talk with the developers about further options for interoperability with mantid.
