@@ -30,6 +30,15 @@ This is merely a listing of the different algorithms available in Mantid for dir
 
 ## [`MonteCarloAbsorption`](http://docs.mantidproject.org/nightly/algorithms/MonteCarloAbsorption-v1.html#algm-montecarloabsorption)
 
+  + Does not take multiple scattering into account.
+  + Does not give errors on the corrections.
+  + Requires input workspace to have wavelength as x-axis unit.
+  + Has 3 modes:
+    - Elastic : lambdaIn = lambdaOut = lambdaStep
+    - InDirect: lambdaIn = lambdaStep, lambdaOut = lambdaFixed
+    - Direct  : lambdaIn = lambdaFixed, lambdaOut = lambdaStep
+    - Do we need new EFixed mode ? lambdaIn = lambdaOut = lambdaFixed
+
 ### Slab geometry
 
 ## [`FlatPlateAbsorption`](http://docs.mantidproject.org/nightly/algorithms/FlatPlateAbsorption-v1.html#algm-flatplateabsorption)
