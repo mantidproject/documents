@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add your links here
+* GroupWorkspaces overview (Lamar and Anton)
 
 
 Questions
