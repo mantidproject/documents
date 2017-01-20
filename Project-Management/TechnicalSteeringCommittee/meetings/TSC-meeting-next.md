@@ -10,3 +10,4 @@ New Items
 ---------
 * Discussion about [splitting TimeSeriesProperty] (https://github.com/mantidproject/documents/blob/master/Design/EventFiltering/SplitTimeSeriesProperty.md)
 * [Maintenance tasks](../reports/MaintenanceTasks.md)
+* Add a [python3](http://builds.mantidproject.org/job/python3/) build to pull requests (Ross)
