@@ -3,7 +3,7 @@ Agenda
 
 * GroupWorkspaces overview (Lamar and Anton)
 * Maintenance Tasks (Pete, Martyn or Nick)
-* Instrument 2.0 caching layers (Ian or Owen)
+* SpectrumInfo & DetectorInfo rollout  - [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) & [#17743](https://github.com/mantidproject/mantid/issues/17743) (Ian)
 
 
 Questions
