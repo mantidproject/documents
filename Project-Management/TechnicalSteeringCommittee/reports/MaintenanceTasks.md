@@ -13,7 +13,7 @@ Maintenance tasks for 3.10
 
 Highest priority
 ----------------
-1. `SpectrumInfo` and `DetectorInfo` rollout across Framework. [umbrella](https://github.com/mantidproject/mantid/issues/17743) *Granular Issues and Instructions TODO*.
+1. `SpectrumInfo` and `DetectorInfo` rollout across Framework. See [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) for full details and [#17743](https://github.com/mantidproject/mantid/issues/17743) for the umbrella ticket.
   - Join `#instrument-2_0` on Slack if you need help or have questions.
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started.
 1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
