@@ -94,7 +94,7 @@ not exposed yet.
 
 ###### Orphaned workspaces
 
-Does not seem possible purely within Python as `GroupWorkspaces` uses the `ADSValidator` on the `InputWorkspaces` field, but can have "invisible" WorkspaceGroup via loading:
+Sub-workspaces can become orphaned on the ADS. 
 ``` Python
 CreateSampleWorkspace(OutputWorkspace='alice')
 CreateSampleWorkspace(OutputWorkspace='bob')
