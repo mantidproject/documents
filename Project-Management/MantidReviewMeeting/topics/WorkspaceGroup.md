@@ -85,30 +85,50 @@ group.add("ws2")
 group.remove("ws1")
 ```
 
-###### WorkspaceGroup outside the ADS
+e.g.:
+```python
+ws3 = CreateSampleWorkspace()
+group.add(ws3)
+```
+not exposed yet.
+
+###### Orphaned workspaces
 
 Does not seem possible purely within Python as `GroupWorkspaces` uses the `ADSValidator` on the `InputWorkspaces` field, but can have "invisible" WorkspaceGroup via loading:
 ``` Python
-alg = AlgorithmManager.createUnmanaged("Load")
-alg.initialize()
-alg.setChild(True)
-alg.setProperty("Filename", "WorkspaceGroup")
-alg.setProperty("OutputWorkspace", "dummy")
-alg.execute()
-ws = alg.getProperty("OutputWorkspace").value
-print("The workspace is of type {0} and contains {1} elements".format(type(ws), len(ws)))
+CreateSampleWorkspace(OutputWorkspace='alice')
+CreateSampleWorkspace(OutputWorkspace='bob')
+CreateSampleWorkspace(OutputWorkspace='charles')
+GroupWorkspaces(InputWorkspaces='alice,bob,charles', OutputWorkspace='NewGroup')
+# .....
+GroupWorkspaces(InputWorkspaces='alice,bob', OutputWorkspace='NewGroup')
 ```
-
+Have to delete the old group workspace first!
 
 ###### Two references to the same object on the ADS
 ```Python
 ws1 = CreateSampleWorkspace()
 ws2 = CreateSampleWorkspace()
 group = GroupWorkspaces([ws1, ws2])
-group2 = GroupWorkspaces([ws1, ws2])
 new_name = RenameWorkspace(group.getItem(0))
 
-# ...
-# cloned = group.clone()
-# new_name = RenameWorkspace(cloned.getItem(0))
+cloned = group.clone()
+new_name = RenameWorkspace(cloned.getItem(0))
+
+```
+
+###### `WorkspaceGroup` outside of the ADS
+
+Does not seem possible purely within Python as `GroupWorkspaces` uses the `ADSValidator` on the `InputWorkspaces` field, but can have "invisible" WorkspaceGroup via loading:
+```python
+file_path = "C:/Users/pica/Desktop/WorkspaceGroup.nxs"
+alg = AlgorithmManager.createUnmanaged("Load")
+alg.initialize()
+alg.setChild(True)
+alg.setProperty("Filename", file_path)
+alg.setProperty("OutputWorkspace", "dummy")
+alg.execute()
+ws = alg.getProperty("OutputWorkspace").value
+print("The workspace is of type {} and contains {} elements".format(type(ws), len(ws)))
+print("Number of workspaces on ADS is {}".format(len(mtd.getObjectNames())))
 ```
