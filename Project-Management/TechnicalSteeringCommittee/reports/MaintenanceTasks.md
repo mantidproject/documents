@@ -57,8 +57,6 @@ Pool
 Assigned
 --------
 
-1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
-2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need. (Stuart)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel)
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Peterson)
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
@@ -70,6 +68,7 @@ Assigned
 Unassigned (not suitable for pool)
 ----------------------------------
 
+2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need.
 
 Unsorted
 --------
@@ -110,6 +109,7 @@ For another release
    1. Added (basic) support for C++11 (std::shared_ptr, std::unique_ptr)
    2. Incorporated an extension API to wrap NumPy
    3. Would require building packages for Linux distributions with older version.
+1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 
 Converted to actual tickets during a release
 --------------------------------------------
