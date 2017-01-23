@@ -65,10 +65,6 @@ add((WorkspaceGroup)self, (str)workspace_name) -> None
 
 Intrinsically built to work with the ADS!
 
-## Using WorkspaceGroups in Algorithms
-* Algorithms which accept Workspaces properties which are not groups may in some cases still run with WorkspaceGroups. The result will be the algorithm being executed on each workspace in the group in turn.
-* Algorithms which accept WorkspaceGroup do not behave like this. Any operations on the group will be handled internally as defined by the developer of the algorithm.
-* Algorithms which accept WorkspaceGroup specifically will not work if a single workspace is passed.
 
 ## Interplay with ADS (Python)
 
@@ -114,7 +110,6 @@ new_name = RenameWorkspace(group.getItem(0))
 
 cloned = group.clone()
 new_name = RenameWorkspace(cloned.getItem(0))
-
 ```
 
 ###### `WorkspaceGroup` outside of the ADS
@@ -132,3 +127,11 @@ ws = alg.getProperty("OutputWorkspace").value
 print("The workspace is of type {} and contains {} elements".format(type(ws), len(ws)))
 print("Number of workspaces on ADS is {}".format(len(mtd.getObjectNames())))
 ```
+
+## Using WorkspaceGroups in Algorithms
+* Algorithms which accept Workspaces properties which are not groups may in some cases still run with WorkspaceGroups. The result will be the algorithm being executed on each workspace in the group in turn.
+* Algorithms which accept WorkspaceGroup do not behave like this. Any operations on the group will be handled internally as defined by the developer of the algorithm.
+* Algorithms which accept WorkspaceGroup specifically will not work if a single workspace is passed.
+
+
+
