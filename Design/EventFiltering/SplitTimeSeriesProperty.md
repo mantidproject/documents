@@ -3,6 +3,10 @@
 Assume that a TimeSeriesProperty `P` has entries (t\_0, v\_0), (t\_1, v\_1), ..., (t\_n, v\_n).
 It is split by a set of (N-1) splitters, (T\_0, T\_1, w\_0), (T\_1, T\_2, w\_1), ... and (T\_(N-1), T\_N, w\_(N-1)).
 
+There are two types of sample logs that are recorded in TimeSeriesProperty.
+* TYPE I: The log value within an arbitrary entry is constant. For example, motor position and temperature can be treated as this type of log;
+* TYPE II: The log value is a value measured at the beginning of a TimeSeriesProperty entry.  And between start and stop time of the entry, the log value is not measured and cannot be treated as a constant. For example, proton charge is of this type. 
+
 ## Split TimeSeriesProperty use case 1
 
 In this case, there are more than 1 entry of TimeSeriesPrperty `P` between the start and stop time of a splitter i, i..e,  T\_(i-1), and T\_i, respectively. 
@@ -25,6 +29,8 @@ Then no splitting is required to `P`'s j entry in this situation.
 
 
 ## Special case: Proton charge
+
+A proton charge 
 
 A proton charge log is stored in a  TimeSeriesProperty.
 Assume that the total proton charge is `C`.
