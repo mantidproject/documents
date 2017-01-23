@@ -49,3 +49,7 @@ then it requires detailed information about how to split it in order to normaliz
 the data correctly. 
 
 We plan to leave it for future till there is a solid use case.
+
+## Calculate average value of the split TimeSeriesProperty
+
+Recalculation of the split TimeSeriesProperty should consider the split proton charge TimeSeriesProperty.
