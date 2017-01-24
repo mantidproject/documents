@@ -16,8 +16,9 @@ Highest priority
 1. `SpectrumInfo` and `DetectorInfo` rollout across Framework. See [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) for full details and [#17743](https://github.com/mantidproject/mantid/issues/17743) for the umbrella ticket. (Ian)
   - Join `#instrument-2_0` on Slack if you need help or have questions.
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started. (Lamar)
-1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
-  5. Add python3 to the pull requests
+1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue **to be created** but similar to  [#16739](https://github.com/mantidproject/mantid/issues/16739)
+  1. Add python3 to the pull requests
+  5. Will cover `scripts` folder and systemtests
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
   4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
   4. Require the above statement in all new work.
