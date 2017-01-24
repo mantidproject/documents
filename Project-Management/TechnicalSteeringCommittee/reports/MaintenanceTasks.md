@@ -30,7 +30,7 @@ Pool
 42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335)
-   4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)  and [#17155](https://github.com/mantidproject/mantid/issues/17155)
+   4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
