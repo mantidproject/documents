@@ -70,7 +70,7 @@ Intrinsically built to work with the ADS!
 
 Grouping and Ungrouping see above.
 
-###### Adding and removing
+#### Adding and removing
 
 *Only* via a name:
 ```Python
@@ -88,7 +88,7 @@ group.add(ws3)
 ```
 not exposed yet.
 
-###### Orphaned workspaces
+#### Orphaned workspaces
 
 Sub-workspaces can become orphaned on the ADS. 
 ``` Python
@@ -101,7 +101,7 @@ GroupWorkspaces(InputWorkspaces='alice,bob', OutputWorkspace='NewGroup')
 ```
 Have to delete the old group workspace first!
 
-###### Two references to the same object on the ADS
+#### Two references to the same object on the ADS
 ```Python
 ws1 = CreateSampleWorkspace()
 ws2 = CreateSampleWorkspace()
@@ -112,7 +112,7 @@ cloned = group.clone()
 new_name = RenameWorkspace(cloned.getItem(0))
 ```
 
-###### `WorkspaceGroup` outside of the ADS
+#### `WorkspaceGroup` outside of the ADS
 
 Does not seem possible purely within Python as `GroupWorkspaces` uses the `ADSValidator` on the `InputWorkspaces` field, but can have "invisible" WorkspaceGroup via loading:
 ```python
@@ -127,6 +127,24 @@ ws = alg.getProperty("OutputWorkspace").value
 print("The workspace is of type {} and contains {} elements".format(type(ws), len(ws)))
 print("Number of workspaces on ADS is {}".format(len(mtd.getObjectNames())))
 ```
+
+Workspace on ADS, but group workspace does not have to be
+```python
+ws1 = CreateSampleWorkspace()
+ws2 = CreateSampleWorkspace()
+
+group_alg = AlgorithmManager.create("GroupWorkspaces")
+group_alg.setChild(True)
+group_alg.initialize()
+group_alg.setProperty("InputWorkspaces", [ws1, ws2])
+group_alg.setProperty("OutputWorkspace", "test")
+group_alg.execute()
+
+group_ws = group_alg.getProperty("OutputWorkspace").value
+print "The group workspace has a size of {}.".format(len(group_ws))
+
+```
+
 
 ## Using WorkspaceGroups in Algorithms
 * Algorithms which accept Workspaces properties which are not groups may in some cases still run with WorkspaceGroups. The result will be the algorithm being executed on each workspace in the group in turn.
