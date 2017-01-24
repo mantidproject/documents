@@ -13,3 +13,10 @@ New Items
 * Add a [python3](http://builds.mantidproject.org/job/python3/) build to pull requests (Ross)
 * Creating release branch
 * Editing release notes
+
+Minutes
+-------
+
+Attendees: Zhou, Whitfield, Peterson, Savici, Hahn, Bush, Draper, Arnold, Gigg
+
+* python3 on ubutuntu 16.04 after #18047 is fixed. It will build mantidplot and run the unit tests.
