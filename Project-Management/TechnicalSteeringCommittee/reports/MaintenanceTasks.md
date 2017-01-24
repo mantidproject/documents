@@ -35,7 +35,7 @@ Pool
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
-1. Replace Boost.TypeTraits with <type_traits>
+1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
        2. _HAS_AUTO_PTR_ETC
