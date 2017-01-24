@@ -46,7 +46,6 @@ Pool
    2. See which ones we can turn off now.
    3. Identify functions and classes with deprecated code.
      4. example: we currently use std::auto_ptr with boost::python.
-13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 1. enable warnings and fix issues
   1. `/W3` on Visual C++ - https://msdn.microsoft.com/en-us/library/thxezb7y.aspx recommends this for production
   1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
@@ -111,6 +110,7 @@ For another release
    2. Incorporated an extension API to wrap NumPy
    3. Would require building packages for Linux distributions with older version.
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
+13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 
 Converted to actual tickets during a release
 --------------------------------------------
