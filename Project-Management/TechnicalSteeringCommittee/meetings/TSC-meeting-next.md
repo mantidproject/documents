@@ -19,4 +19,4 @@ Minutes
 
 Attendees: Zhou, Whitfield, Peterson, Savici, Hahn, Bush, Draper, Arnold, Gigg
 
-* python3 on ubutuntu 16.04 after #18047 is fixed. It will build mantidplot and run the unit tests.
+* python3 on ubutuntu 16.04 after [#18047](https://github.com/mantidproject/mantid/issues/18047) is fixed. It will build mantidplot and run the unit tests.
