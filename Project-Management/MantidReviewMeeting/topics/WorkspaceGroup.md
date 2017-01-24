@@ -88,6 +88,16 @@ group.add(ws3)
 ```
 not exposed yet.
 
+*NB:* Removing a WorkspaceGroup using the ADS does not delete the child workspaces
+```python
+#Create group workspace with ws1 and ws2
+group = GroupWorkspace([ws1, ws2])
+
+#Removing group using an ADS call deletes the group
+#but not the workspaces.
+mtd.remove("group")
+```
+
 #### Orphaned workspaces
 
 Sub-workspaces can become orphaned on the ADS. 
@@ -111,7 +121,21 @@ new_name = RenameWorkspace(group.getItem(0))
 cloned = group.clone()
 new_name = RenameWorkspace(cloned.getItem(0))
 ```
+```Python
+dataX = [0, 2, 4, 6, 8, 10, 12, 14]
+dataY = [98, 30, 10, 2, 1, 1, 1]
 
+ws1 = CreateWorkspace(dataX, dataY)
+ws2 = CloneWorkspace(ws1)
+ws3 = Multiply(ws1, ws2)
+
+#Groups share ws1
+group = GroupWorkspaces([ws1, ws2])
+group2 = GroupWorkspaces([ws1, ws3])
+
+#This will delete workspace 1
+DeleteWorkspace(group2)
+```
 #### `WorkspaceGroup` outside of the ADS
 
 Does not seem possible purely within Python as `GroupWorkspaces` uses the `ADSValidator` on the `InputWorkspaces` field, but can have "invisible" WorkspaceGroup via loading:
