@@ -16,7 +16,6 @@ Highest priority
 1. `SpectrumInfo` and `DetectorInfo` rollout across Framework. See [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) for full details and [#17743](https://github.com/mantidproject/mantid/issues/17743) for the umbrella ticket.
   - Join `#instrument-2_0` on Slack if you need help or have questions.
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started.
-1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Gigg and Whitfield lead) Issue [#16739](https://github.com/mantidproject/mantid/issues/16739)
   5. Add python3 to the pull requests
   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
@@ -58,6 +57,7 @@ Pool
 Assigned
 --------
 
+1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel)
 6. Move gmock 1.7 to be ExternalProject [#16266](https://github.com/mantidproject/mantid/issues/16266) (Peterson)
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
