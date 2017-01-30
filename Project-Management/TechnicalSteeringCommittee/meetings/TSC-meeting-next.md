@@ -8,4 +8,4 @@ Pinned Topics
 
 New Items
 ---------
-* Exceptions and error logging in algorithms: https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/exceptions_and_error_logging.md.
+* [Exceptions and error logging in algorithms](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/exceptions_and_error_logging.md).
