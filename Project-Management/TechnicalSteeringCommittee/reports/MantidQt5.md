@@ -15,14 +15,12 @@ Unofficial patches are required to build with MSVC 2015. What about
 MSVC 2017?
 https://github.com/mantidproject/thirdparty-msvc2015/blob/master/build-scripts/build-qt4.bat#L50
 
-2016-12 Qt4 was removed from Homebrew
-https://github.com/Homebrew/homebrew-core/commit/05eaba4cd570b000aa85d91a01e2b4d503894f00
-
-pyqt4 was moved to the boneyard.
-https://github.com/Homebrew/homebrew-core/pull/6817
-
-unofficial Qt4 tap. Unofficial patches required to build with El
-Capitan and Sierra.  https://github.com/cartr/homebrew-qt4
+2016-12 Qt4 was
+[removed from Homebrew](https://github.com/Homebrew/homebrew-core/commit/05eaba4cd570b000aa85d91a01e2b4d503894f00)
+2016-12. pyqt4 was
+[moved to the boneyard](https://github.com/Homebrew/homebrew-core/pull/6817). There
+is still an
+[unofficial Qt4 tap(https://github.com/cartr/homebrew-qt4). Unofficial patches required to build with El Capitan and Sierra.
 
 ParaView 5.3 will, by default, build against Qt 5. One or two build
 servers will keep Qt4.  Utkarsh is planning to keep Qt4 support for
