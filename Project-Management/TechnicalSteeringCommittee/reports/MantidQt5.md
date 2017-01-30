@@ -20,7 +20,7 @@ https://github.com/mantidproject/thirdparty-msvc2015/blob/master/build-scripts/b
 2016-12. pyqt4 was
 [moved to the boneyard](https://github.com/Homebrew/homebrew-core/pull/6817). There
 is still an
-[unofficial Qt4 tap(https://github.com/cartr/homebrew-qt4). Unofficial patches required to build with El Capitan and Sierra.
+[unofficial Qt4 tap](https://github.com/cartr/homebrew-qt4). Unofficial patches required to build with El Capitan and Sierra.
 
 ParaView 5.3 will, by default, build against Qt 5. One or two build
 servers will keep Qt4.  Utkarsh is planning to keep Qt4 support for
