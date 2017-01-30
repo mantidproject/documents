@@ -1,3 +1,8 @@
+As of 2015-12 **Qt 4.8 is unsupported**. Afterwards, there will be
+**NO UPDATES** to the open source project.
+http://blog.qt.io/blog/2015/05/26/qt-4-8-7-released/
+http://blog.qt.io/blog/2014/11/27/qt-4-8-x-support-to-be-extended-for-another-year/
+
 Mantid requires Qwt 5.2, which requires Qt4 with the Qt3Support
 library. Qwt 6 has a different API and the decision was made to switch
 1D and 2D plotting to matplotlib
@@ -5,11 +10,6 @@ library. Qwt 6 has a different API and the decision was made to switch
 Mantid Depends on QwtPlot3d, which hasn't been updated since
 2007-06. It requires Qt4 with the Qt3Support library. Similar
 functionality is available in matplotlib and ParaView.
-
-2015-12 Qt 4.8 is unsupported. Afterwards, there will be
-**NO UPDATES** to the open source project.
-http://blog.qt.io/blog/2015/05/26/qt-4-8-7-released/
-http://blog.qt.io/blog/2014/11/27/qt-4-8-x-support-to-be-extended-for-another-year/
 
 Unofficial patches are required to build with MSVC 2015. What about
 MSVC 2017?
