@@ -13,8 +13,9 @@ Maintenance tasks for 3.10
 
 Highest priority
 ----------------
-1. `SpectrumInfo` and `DetectorInfo` rollout across Framework. See [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) for full details and [#17743](https://github.com/mantidproject/mantid/issues/17743) for the umbrella ticket. (Ian)
-  - Join `#instrument-2_0` on Slack if you need help or have questions.
+1. ~~`SpectrumInfo` and `DetectorInfo` rollout across Framework. See [InstrumentAccessLayers](http://docs.mantidproject.org/nightly/concepts/InstrumentAccessLayers.html) for full details and [#17743](https://github.com/mantidproject/mantid/issues/17743) for the umbrella ticket. (Ian)~~ - All eligible files completed.
+  - ~~Join `#instrument-2_0` on Slack if you need help or have questions.~~ 
+  
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started. (Lamar)
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue [#18550](https://github.com/mantidproject/mantid/issues/18550)
   1. Add python3 to the pull requests
