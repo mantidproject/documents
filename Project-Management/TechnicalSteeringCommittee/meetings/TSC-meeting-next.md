@@ -8,13 +8,3 @@ Pinned Topics
 
 New Items
 ---------
-* [Exceptions and error logging in algorithms](/Project-Management/TechnicalSteeringCommittee/reports/exceptions_and_error_logging.md).
-* [Report on Qt4 being unsupported](/Project-Management/TechnicalSteeringCommittee/reports/MantidQt5.md)
-* Status of [release v3.9](https://github.com/mantidproject/mantid/pulls?q=is%3Aopen+is%3Apr+milestone%3A%22Release+3.9%22)
-* Status of [maintenance tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
-
-Minutes
--------
-Attendees: Draper, Gigg, Peterson, Savici, Whitfield
-
-We went through the items, (nominally) approved the various reports, and discussed status of the release.
