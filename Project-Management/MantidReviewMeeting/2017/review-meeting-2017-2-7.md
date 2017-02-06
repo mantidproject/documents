@@ -10,6 +10,9 @@ Agenda
   * System tests are skipped if changes are **only** in `docs/`, `MantidQt/*` or `MantidPlot/*`
   * Packaging has been turned off by default on all PR builds. Use rebuild with `BUILD_PACKAGE=true` to force a package build
 
+* Reminder
+  * If your ticket is merged into `release-v3.9` check if the corresponding issue is closed when the branch is merged into master
+
 Questions
 =========
 
