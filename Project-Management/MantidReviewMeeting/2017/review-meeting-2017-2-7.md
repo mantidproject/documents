@@ -6,6 +6,10 @@ Agenda
   * Instrument scientists maintain a script to [process a chunk](https://github.com/mantidproject/autoreduce/blob/master/ReductionScripts/sns/powgen/reduce_PG3_live_proc.py) and a script to [process the acumulated data](https://github.com/mantidproject/autoreduce/blob/master/ReductionScripts/sns/powgen/reduce_PG3_live_post_proc.py)
   * When the run finishes normal autoreduction processes the data and pushes a final updated plot
 
+* Jenkins updates
+  * System tests are skipped if changes are **only** in `docs/`, `MantidQt/*` or `MantidPlot/*`
+  * Packaging has been turned off by default on all PR builds. Use rebuild with `BUILD_PACKAGE=true` to force a package build
+
 Questions
 =========
 
