@@ -1,6 +1,7 @@
 Agenda
 ======
 
+* Welcome Anthony Lim!
 * [livereduce](https://github.com/mantidproject/livereduce) daemon
   * Wraps [live data listening](https://www.mantidproject.org/MBC_Live_Data_User_Interface) in a `systemd` process for publishing images to [sns monitor](https://monitor.sns.gov/report/nom/88677/)
   * Instrument scientists maintain a script to [process a chunk](https://github.com/mantidproject/autoreduce/blob/master/ReductionScripts/sns/powgen/reduce_PG3_live_proc.py) and a script to [process the acumulated data](https://github.com/mantidproject/autoreduce/blob/master/ReductionScripts/sns/powgen/reduce_PG3_live_post_proc.py)
@@ -16,4 +17,4 @@ Agenda
 Questions
 =========
 
-* Add your questions here
+* Has anyone managed to step with a debugger into `PyExec`?
