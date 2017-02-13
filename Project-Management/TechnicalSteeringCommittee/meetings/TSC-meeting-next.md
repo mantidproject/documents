@@ -8,3 +8,4 @@ Pinned Topics
 
 New Items
 ---------
+* [`gtest` as an `ExternalProject`](https://github.com/mantidproject/mantid/pull/18737)
