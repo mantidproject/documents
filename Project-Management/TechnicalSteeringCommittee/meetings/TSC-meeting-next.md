@@ -10,3 +10,4 @@ New Items
 ---------
 * [`gtest` as an `ExternalProject`](https://github.com/mantidproject/mantid/pull/18737)
 * Adding python3 and dropping RHEL6 on pull requests?
+* [Named tuples returns](https://github.com/mantidproject/mantid/pull/18809)
