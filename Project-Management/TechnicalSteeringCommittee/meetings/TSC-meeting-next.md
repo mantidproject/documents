@@ -26,3 +26,4 @@ Bush, Heybrock, Gigg, Draper, Savici, Whitfield, Peterson
 * OSX moving to 10.11
   * Check usage statistics for which versions are used (Pete)
   * This release cycle should move to bundling python
+* Add named tuples to the user documentation and the next mantid review meeting (Andrei)
