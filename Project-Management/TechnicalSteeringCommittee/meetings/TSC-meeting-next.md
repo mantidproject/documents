@@ -19,7 +19,9 @@ Bush, Heybrock, Gigg, Draper, Savici, Whitfield, Peterson
 
 * Release checklist needs updating - emails to announce to, main DOI author list should be updated
 * Release testing - next round of beta testing need to determine a way to improve accountablity in unscripted testing
-* RHEL6 is dead to us. Add it to the v3.9.0 release notes (Pete) and downloads page (Nick).
+* RHEL6 is dead to us
+  * Add it to the v3.9.0 release notes (Pete) and downloads page (Nick).
+  * Move ORNL build servers from RHEL6 to RHEL7 (Ross)
 * Ubuntu14.04 should try gcc v5 (Ian)
 * OSX moving to 10.11
   * Check usage statistics for which versions are used (Pete)
