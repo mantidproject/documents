@@ -12,3 +12,15 @@ New Items
 * Adding python3 and dropping RHEL6 on pull requests?
 * [Named tuples returns](https://github.com/mantidproject/mantid/pull/18809)
 * Supported OSX
+
+Minutes
+-------
+Bush, Heybrock, Gigg, Draper, Savici, Whitfield, Peterson
+
+* Release checklist needs updating - emails to announce to, main DOI author list should be updated
+* Release testing - next round of beta testing need to determine a way to improve accountablity in unscripted testing
+* RHEL6 is dead to us. Add it to the v3.9.0 release notes (Pete) and downloads page (Nick).
+* Ubuntu14.04 should try gcc v5 (Ian)
+* OSX moving to 10.11
+  * Check usage statistics for which versions are used (Pete)
+  * This release cycle should move to bundling python
