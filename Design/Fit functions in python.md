@@ -31,3 +31,62 @@ Another way of setting member functions is via positional arguments of the condt
 ```
   c = CompositeFunction(Gaussian(PeakCentre=1), Gaussian(PeakCentre=2))
 ```
+`FitFunctionWrapper` class will override the `__add__()` method to allow construction of composite functions from a sum of member functions:
+```
+  c = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
+```
+`ProductFunction` can be constructed from a product of member functions:
+```
+  p = ExpDecay() * UserFunction(Formula='sin(w*x)', w=1)
+```
+
+### Multi-domain functions
+
+A [`MultiDomainFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MultiDomainFunction.h) needs a custom constructor which sets domain indices to its members.
+
+## Updating functions
+
+### Getting and setting parameters and attributes
+
+`FitFunctionWrapper` will implement `__getitem__(self, name)` and `__setitem__(self, name, value)` methods to access parameters and attributes in a dictionary-like style (`name` is a string):
+```
+  sigma = gaussian['Sigma']
+  
+  comp_func['f1.A0'] = 0.5
+```
+
+Parameters of members of composite functions can be accessed via their wrapper objects. For example:
+```
+  bk = LinearBackground()
+  peak = Lorentzian()
+  spectrum = bk + peak
+  ...
+  bk['A0'] = 1
+  peak['FWHM'] = 0.123
+  assert spectrum['f0.A0'] == 1
+  assert spectrum['f1.FWHM'] == 0.123
+```
+*Question: what to do if a function becomes a member of two or more composite functions?*
+  1. *Ignore and let the user be responsible for it*
+  2. *Set a flag on `FtFunctionWrapper` and prevent subsequent attempts to add it*
+
+### Managing members of composite functions
+
+`FitFunctionWrapper` will implement `__getitem__(self, i)` and `__setitem__(self, i, value)` methods to access members of a composite function in a list-like style (`i` is an `int`):
+```
+  spectrum = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
+  peak1 = spectrum[1]
+  peak1['Sigma'] = 0.123
+  spectrum[2] = Lorentzian(PeakCentre=2)
+```
+
+`FitFunctionWrapper` will override `__iadd__(self, func)` and `__delitem__(self, i)` (`i` is an `int`, `func` is a `FitFunctionWrapper`) to implement adding and deleting members via `+=` and `del` operators:
+```
+  spectrum += Lorentzian(PeakCentre=3)
+  del spectrum[0]
+```
+
+Implement `__len__(self)` to return the number of member functions.
+```
+  n_peaks = len(spectrum)
+```
