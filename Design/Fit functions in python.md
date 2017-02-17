@@ -90,3 +90,32 @@ Implement `__len__(self)` to return the number of member functions.
 ```
   n_peaks = len(spectrum)
 ```
+
+### Setting ties
+
+```
+  func.tie(A0=2.0)
+  func.tie({'f1.A2': '2*f0.A1', 'f2.A2': '3*f0.A1 + 1'})
+  func.fix('A0')
+  func.fix(A0=2.0, A1=1.0)
+```
+
+### Setting constraints
+
+Constraints are set with `constraints` method passing constraints as strings:
+```
+  g.constraints('-1 < PeakCentre < 1', 'Sigma > 0')
+```
+
+For composite functions constraints can be set both through the composite function and its members:
+```
+  c = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
+  c.constraints('f1.Sigma > 0')
+  c[2].constraints('0 < Sigma < 1')
+```
+
+Composite functions should be able to set constraints on all members with a single call:
+```
+  c.constrainAll('Height > 1', 'Sigma > 0')
+```
+This should constrain the named parameters in all members that have them. Members that don't have these parameters should be skipped.
