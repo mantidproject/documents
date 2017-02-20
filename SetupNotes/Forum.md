@@ -16,4 +16,4 @@ I found that the email giving the admin user their account was unreliable. [This
 Mailserver
 ----------
 
-We use http://mandrill.com as our transactional email service. The login details are with TSC members.
+We use [SparkPost](https://www.sparkpost.com/) as our transactional email service. The login details are with TSC members.
