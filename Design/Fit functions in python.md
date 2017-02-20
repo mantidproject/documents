@@ -93,12 +93,40 @@ Implement `__len__(self)` to return the number of member functions.
 
 ### Setting ties
 
+Ties are set with the `tie` method. Both keyword arguments and dictionaries of name/value pairs can be used as arguments.
 ```
   func.tie(A0=2.0)
   func.tie({'f1.A2': '2*f0.A1', 'f2.A2': '3*f0.A1 + 1'})
-  func.fix('A0')
-  func.fix(A0=2.0, A1=1.0)
 ```
+
+Tying to a constant can also be done with the `fix` method.
+```
+  func.fix('A0')             # Fix to the current value
+  func.fix(A0=2.0, A1=1.0)   # Fix to new values
+  func.fix({'f1.A2': 1.0, 'f2.A2': 2.0})
+```
+
+Ties are removed with the `removeTie` or `free` methods.
+```
+  func.free('f1.Sigma', 'f3.Sigma')
+  func.removeTie('f1.Sigma', 'f3.Sigma')
+```
+
+Composite functions should be able to set ties on all members with a single call:
+```
+  c.tieAll('Sigma')
+```
+The above call should tie all `Sigma` parameters in the member functions. It is equivalent to calling
+```
+  c.tie({'f1.Sigma': 'f0.Sigma', 'f2.Sigma': 'f0.Sigma', 'f3.Sigma': 'f0.Sigma', ...})
+```
+Similarly a call to `fixAll` fixes all parameters with the given name to their current value or to a new value if provided.
+```
+  spectrum.fixAll('FWHM')
+  spectrum.fixAll(FWHM=0.01)
+  spectrum.fixAll({'f1.FWHM': 0.01})
+```
+Calling `fixAll()`/`freeAll()` without arguments fixes/frees all parameters of a function.
 
 ### Setting constraints
 
