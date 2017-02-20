@@ -147,3 +147,32 @@ Composite functions should be able to set constraints on all members with a sing
   c.constrainAll('Height > 1', 'Sigma > 0')
 ```
 This should constrain the named parameters in all members that have them. Members that don't have these parameters should be skipped.
+
+## Fitting
+
+Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` does't modify the input function but the returned value has the output function with the fitted parameters. Instead of a tuple `Fit` will return an instance of class `FitOutput` that contains all outputs from the algorithm and gives access to them both via the index operator and python read-only properties:
+```
+  res = Fit(func, ws)
+  output_func = res.function
+  chi2 = res.chiSquared
+  ...
+```
+
+## Function evaluation
+
+`FitFunctionWrapper` class will implement `__call__(...)` method to evaluate the function. The method will be able to accept a variety of input types:
+1. Workspace
+2. Numpy array
+3. List of numbers
+4. Single number
+The output type is the same as that of the input.
+
+## Plotting
+
+Python function `plotFunction` will plot one or more fitting functions in MantidPlot. It will have the arguments:
+1. first positional argument - the function(s) to plot
+2. `workspace` - optional workspace on which x-values to evaluate the function
+3. `workspaceIndex` - optional index of a spectrum to get the x-values from
+4. `startX` - optional if `workspace` is given, mandatory otherwise. The start of the plot region.
+5. `endX` - optional if `workspace` is given, mandatory otherwise. The end of the plot region.
+
