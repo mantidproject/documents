@@ -165,6 +165,7 @@ Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Fu
  2. Numpy array
  3. List of numbers
  4. Single number
+ 
 The output type is the same as that of the input.
 
 ## Plotting
