@@ -66,9 +66,17 @@ Parameters of members of composite functions can be accessed via their wrapper o
   assert spectrum['f0.A0'] == 1
   assert spectrum['f1.FWHM'] == 0.123
 ```
+
 *Question: what to do if a function becomes a member of two or more composite functions?*
   1. *Ignore and let the user be responsible for it*
   2. *Set a flag on `FtFunctionWrapper` and prevent subsequent attempts to add it*
+
+Implement `__getattr__()` and `__setattr__()` to access parameters of non-composite functions through instance attributes with the same name as the parameter.
+```
+  bk.A0 = 1
+```
+
+*Question: should composite functions have attributes like `c.f0`, `c.f1`, ...?*
 
 ### Managing members of composite functions
 
