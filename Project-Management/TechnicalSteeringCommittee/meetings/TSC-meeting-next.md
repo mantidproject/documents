@@ -8,3 +8,4 @@ Pinned Topics
 
 New Items
 ---------
+[Design of fit functions python API](https://github.com/mantidproject/documents/pull/38)
