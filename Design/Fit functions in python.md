@@ -1,6 +1,6 @@
 # Working with fit functions in python
 
-Although fitting functions have some of the functionality exposed to python the use of it is very limited and functions are constructed via strings. Values of the optimised parameters get extracted from `TableWorkspace`s output from the Fit algorithm. Both function construction and extraction of the results are cumbersome and error prone. This document describes a design of a python fitting API aiming to overcome these problems. The main idea of the solution proposed here is to create and manipulate a C++ [`IFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/IFunction.h) object from python directly via a thin wrapper python class `FitFunctionWrapper`.
+Although fitting functions have some of the functionality exposed to python the use of it is very limited and functions are constructed via strings. Values of the optimised parameters get extracted from `TableWorkspace`s output from the Fit algorithm. Both function construction and extraction of the results are cumbersome and error prone. This document describes a design of a python fitting API aiming to overcome these problems. The main idea of the solution proposed here is to create and manipulate a C++ [`IFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/IFunction.h) object from python directly via a thin wrapper python classes. `FitFunctionWrapper` will be the base class functionality common for all fit functions. Composite functions (`CompositeFunction`, `ProductFunction`, `Convolution`, `MultiDomainFunction`) will have their own wrappers inheriting from `FitFunctionWrapper`. If a fit function exibits a special behaviour a custom wrapper can be defined.
 
 ## Function construction
 
@@ -19,7 +19,7 @@ Parameter and attribute names can also be used as the keys:
   
   p = Polynomial(n=3, A0=1, A1=2, A3=3, A4=4)
 ```
-The implementation must check each keyword argument if it's a parameter or an attribute by calling `IFunction::hasAttribute(name)`. All passed attributes must be set before setting parameters. There is need to be a provision for setting attributes in a particular order in case it is essential for a fitting function. This can be done for example by passing a list of name/value pairs (tuples or lists) to the `attributes` keyword argument.
+The implementation must check each keyword argument if it's a parameter or an attribute by calling `IFunction::hasAttribute(name)`. All passed attributes must be set before setting parameters.
 
 ### Construction of composite functions
 
@@ -31,11 +31,11 @@ Another way of setting member functions is via positional arguments of the condt
 ```
   c = CompositeFunction(Gaussian(PeakCentre=1), Gaussian(PeakCentre=2))
 ```
-`FitFunctionWrapper` class will override the `__add__()` method to allow construction of composite functions from a sum of member functions:
+Wrapper classes will override the `__add__()` method to allow construction of composite functions from a sum of member functions:
 ```
   c = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
 ```
-`ProductFunction` can be constructed from a product of member functions:
+`ProductFunction` can be constructed from a product of member functions by defining the `__mul__` method:
 ```
   p = ExpDecay() * UserFunction(Formula='sin(w*x)', w=1)
 ```
@@ -43,6 +43,13 @@ Another way of setting member functions is via positional arguments of the condt
 ### Multi-domain functions
 
 A [`MultiDomainFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MultiDomainFunction.h) needs a custom constructor which sets domain indices to its members.
+
+Usage:
+```
+  md_fun = MultiDomainFunction(Gaussian(PeakCentre=1, Sigma=0.1), Gaussian(PeakCentre=1, Sigma=0.2), ...)
+```
+
+To implement the constructor methods of C++ class `MultiDomainFunction` need to be exported to python. In particular the `setDomainIndex` method.
 
 ## Updating functions
 
@@ -66,29 +73,30 @@ Parameters of members of composite functions can be accessed via their wrapper o
   assert spectrum['f0.A0'] == 1
   assert spectrum['f1.FWHM'] == 0.123
 ```
-
-*Question: what to do if a function becomes a member of two or more composite functions?*
-  1. *Ignore and let the user be responsible for it*
-  2. *Set a flag on `FtFunctionWrapper` and prevent subsequent attempts to add it*
+This allows python variables to serve as named references to the member functions that simplifies parameter and attribute setting.
 
 Implement `__getattr__()` and `__setattr__()` to access parameters of non-composite functions through instance attributes with the same name as the parameter.
 ```
   bk.A0 = 1
 ```
 
-*Question: should composite functions have attributes like `c.f0`, `c.f1`, ...?*
-
 ### Managing members of composite functions
 
-`FitFunctionWrapper` will implement `__getitem__(self, i)` and `__setitem__(self, i, value)` methods to access members of a composite function in a list-like style (`i` is an `int`):
+Wrappers for composite functions will implement `__getitem__(self, i)` method to access members of a composite function in a list-like style (`i` is an `int`):
 ```
   spectrum = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
   peak1 = spectrum[1]
   peak1['Sigma'] = 0.123
   spectrum[2] = Lorentzian(PeakCentre=2)
 ```
+Composite wrappers will also define the `fn` attributes (where `n` is a number) for example: `c.f0`, `c.f1`, ... The following three lines will have the same effect:
+```
+  c.f1.f0.A0 = 2
+  c[1][0]['A0'] = 2
+  c['f1.f0.A0'] = 2
+```
 
-`FitFunctionWrapper` will override `__iadd__(self, func)` and `__delitem__(self, i)` (`i` is an `int`, `func` is a `FitFunctionWrapper`) to implement adding and deleting members via `+=` and `del` operators:
+The wrappers will override `__iadd__(self, func)` and `__delitem__(self, i)` (`i` is an `int`, `func` is a `FitFunctionWrapper`) to implement adding and deleting members via `+=` and `del` operators:
 ```
   spectrum += Lorentzian(PeakCentre=3)
   del spectrum[0]
@@ -107,11 +115,10 @@ Ties are set with the `tie` method. Both keyword arguments and dictionaries of n
   func.tie({'f1.A2': '2*f0.A1', 'f2.A2': '3*f0.A1 + 1'})
 ```
 
-Tying to a constant can also be done with the `fix` method.
+Tying to a constant value that a parameter currently has can also be done with the `fix` method.
 ```
-  func.fix('A0')             # Fix to the current value
-  func.fix(A0=2.0, A1=1.0)   # Fix to new values
-  func.fix({'f1.A2': 1.0, 'f2.A2': 2.0})
+  func.fix('A0')
+  func.fix('f1.A2', 'f2.A2')
 ```
 
 Ties are removed with the `removeTie` or `free` methods.
@@ -128,11 +135,10 @@ The above call should tie all `Sigma` parameters in the member functions. It is 
 ```
   c.tie({'f1.Sigma': 'f0.Sigma', 'f2.Sigma': 'f0.Sigma', 'f3.Sigma': 'f0.Sigma', ...})
 ```
-Similarly a call to `fixAll` fixes all parameters with the given name to their current value or to a new value if provided.
+Similarly a call to `fixAll` fixes all parameters with the given name to their current value.
 ```
   spectrum.fixAll('FWHM')
-  spectrum.fixAll(FWHM=0.01)
-  spectrum.fixAll({'f1.FWHM': 0.01})
+  spectrum.fixAll('f1.FWHM': 0.01)
 ```
 Calling `fixAll()`/`freeAll()` without arguments fixes/frees all parameters of a function.
 
@@ -158,12 +164,10 @@ This should constrain the named parameters in all members that have them. Member
 
 ## Fitting
 
-Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` does't modify the input function but the returned value has the output function with the fitted parameters. Instead of a tuple `Fit` will return an instance of class `FitOutput` that contains all outputs from the algorithm and gives access to them both via the index operator and python read-only properties:
+Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` does't modify the input function but the returned value has the output function with the fitted parameters. The namedtuple returned by `Fit` must contain the fitted function:
 ```
   res = Fit(func, ws)
-  output_func = res.function
-  chi2 = res.chiSquared
-  ...
+  output_func = res.Function
 ```
 
 ## Function evaluation
@@ -174,7 +178,14 @@ Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Fu
  3. List of numbers
  4. Single number
  
-The output type is the same as that of the input.
+The output type is the same as that of the input. For example:
+```
+  g = Gaussian(Sigma=0.1, Height=1)
+  y1 = g(0.2)
+  y2 = g(2*g.Sigma)
+  y_list = g([-2, -1, 0, 1, 2])
+  out_ws = g(ws)
+```
 
 ## Plotting
 
