@@ -10,11 +10,11 @@ The global coordinate system used is the Mantid-default right-handed system: `z`
 
 ## Source
 
-The monochromator, situated at `z = -??m`, is defined as the beam source. 
+The monochromator, situated at `z = -2.986m`, is defined as the beam source. 
 
 ## Monitor
 
-There is one monitor present, situated at ... with the shape of ....
+There is one monitor present, situated at `z = -0.476m`.
 
 ## Sample
 
@@ -22,7 +22,7 @@ Sample is located at the origin of the global coordinate system.
 
 ## Detector
 
-The entire detector is composed of `1280` evenly spaced cells with height of `0.1m` placed at `1.5m` from the sample. Each cell covers `0.1 degree` in scattering angle. The overall coverage of the detector is thus `128 degree` spanning from *0.8 < 2&theta; < 128.8* degrees.
+The entire detector is composed of `1280` evenly spaced cells with height of `0.1m` placed at `1.5m` from the sample. Each cell covers *0.1&deg;* in scattering angle. The overall coverage of the detector is thus *128&deg;* spanning from *0.8 < 2&theta; < 128.8&deg;*.
 
 ## Instrument view
 
