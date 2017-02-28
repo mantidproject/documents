@@ -23,7 +23,7 @@ The implementation must check each keyword argument if it's a parameter or an at
 
 ### Construction of composite functions
 
-Composite functions can be created in a similar way, by callig a constructor. It should be able to accept the same types of arguments as a simple function but also it must have the `functions` keyword argument that takes a list of member functions. For example:
+Composite functions can be created in a similar way, by calling a constructor. It should be able to accept the same types of arguments as a simple function but also it must have the `functions` keyword argument that takes a list of member functions. For example:
 ```
   c = CompositeFunction(functions=[Gaussian(PeakCentre=1), Gaussian(PeakCentre=2)])
 ```
@@ -49,13 +49,13 @@ Usage:
   md_fun = MultiDomainFunction(Gaussian(PeakCentre=1, Sigma=0.1), Gaussian(PeakCentre=1, Sigma=0.2), ...)
 ```
 
-To implement the constructor methods of C++ class `MultiDomainFunction` need to be exported to python. In particular the `setDomainIndex` method.
+To implement the constructor methods of C++ class `MultiDomainFunction` it needs to be exported to python. In particular the `setDomainIndex` method.
 
 ## Updating functions
 
 ### Getting and setting parameters and attributes
 
-`FitFunctionWrapper` will implement `__getitem__(self, name)` and `__setitem__(self, name, value)` methods to access parameters and attributes in a dictionary-like style (`name` is a string):
+`FitFunctionWrapper` will implement the `__getitem__(self, name)` and `__setitem__(self, name, value)` methods to access parameters and attributes in a dictionary-like style (`name` is a string):
 ```
   sigma = gaussian['Sigma']
   
@@ -164,7 +164,7 @@ This should constrain the named parameters in all members that have them. Member
 
 ## Fitting
 
-Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` does't modify the input function but the returned value has the output function with the fitted parameters. The namedtuple returned by `Fit` must contain the fitted function:
+Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` doesn't modify the input function but the returned value has the output function with the fitted parameters. The namedtuple returned by `Fit` must contain the fitted function:
 ```
   res = Fit(func, ws)
   output_func = res.Function
