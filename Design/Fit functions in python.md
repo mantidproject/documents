@@ -4,7 +4,7 @@ Although fitting functions have some of the functionality exposed to python the 
 
 ## Function construction
 
-For each concrete function type (Gaussian, Lorentzian, etc) there should exist a corresponding python function with the same name automatically generated in a way similar to the algorithm functions. A function object is then constructed by calling such a function (constructor) and is an instance of `FitFunctionWrapper`. For example
+For each concrete function type (Gaussian, Lorentzian, etc) there should exist a corresponding python function in `simpleapi.fitfunctions` namespace with the same name automatically generated in a way similar to the algorithm functions. A function object is then constructed by calling such a function (constructor) and is an instance of `FitFunctionWrapper`. For example
 ```
   g = Gaussian()
 ```
@@ -62,19 +62,6 @@ To implement the constructor methods of C++ class `MultiDomainFunction` it needs
   comp_func['f1.A0'] = 0.5
 ```
 
-Parameters of members of composite functions can be accessed via their wrapper objects. For example:
-```
-  bk = LinearBackground()
-  peak = Lorentzian()
-  spectrum = bk + peak
-  ...
-  bk['A0'] = 1
-  peak['FWHM'] = 0.123
-  assert spectrum['f0.A0'] == 1
-  assert spectrum['f1.FWHM'] == 0.123
-```
-This allows python variables to serve as named references to the member functions that simplifies parameter and attribute setting.
-
 Implement `__getattr__()` and `__setattr__()` to access parameters of non-composite functions through instance attributes with the same name as the parameter.
 ```
   bk.A0 = 1
@@ -94,6 +81,16 @@ Composite wrappers will also define the `fn` attributes (where `n` is a number) 
   c.f1.f0.A0 = 2
   c[1][0]['A0'] = 2
   c['f1.f0.A0'] = 2
+```
+They will also define attributes with names equal to the names of the member functions + a suffix. The suffix is an int numbering repeating names. For example, members of function
+```
+  spectrum = LinearBackground() + Gaussian(PeakCentre=1) + Gaussian(PeakCentre=2)
+```
+can be refered to like this:
+```
+  spectrum.LinearBackground
+  spectrum.Gaussian0
+  spectrum.Gaussian1
 ```
 
 The wrappers will override `__iadd__(self, func)` and `__delitem__(self, i)` (`i` is an `int`, `func` is a `FitFunctionWrapper`) to implement adding and deleting members via `+=` and `del` operators:
@@ -121,10 +118,10 @@ Tying to a constant value that a parameter currently has can also be done with t
   func.fix('f1.A2', 'f2.A2')
 ```
 
-Ties are removed with the `removeTie` or `free` methods.
+Ties are removed with the `untie` or `unfix` methods.
 ```
-  func.free('f1.Sigma', 'f3.Sigma')
-  func.removeTie('f1.Sigma', 'f3.Sigma')
+  func.unfix('f1.Sigma', 'f3.Sigma')
+  func.untie('f1.Sigma', 'f3.Sigma')
 ```
 
 Composite functions should be able to set ties on all members with a single call:
@@ -140,7 +137,7 @@ Similarly a call to `fixAll` fixes all parameters with the given name to their c
   spectrum.fixAll('FWHM')
   spectrum.fixAll('f1.FWHM': 0.01)
 ```
-Calling `fixAll()`/`freeAll()` without arguments fixes/frees all parameters of a function.
+Calling `fixAll()`/`unfixAll()` without arguments fixes/frees all parameters of a function.
 
 ### Setting constraints
 
@@ -164,11 +161,7 @@ This should constrain the named parameters in all members that have them. Member
 
 ## Fitting
 
-Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` doesn't modify the input function but the returned value has the output function with the fitted parameters. The namedtuple returned by `Fit` must contain the fitted function:
-```
-  res = Fit(func, ws)
-  output_func = res.Function
-```
+Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Function` argument. `Fit` doesn't modify the input function but the returned value has the output function with the fitted parameters.
 
 ## Function evaluation
 
