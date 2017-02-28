@@ -40,6 +40,8 @@ Wrapper classes will override the `__add__()` method to allow construction of co
   p = ExpDecay() * UserFunction(Formula='sin(w*x)', w=1)
 ```
 
+In both ways of constructing composites the functions passed as arguments shouldn't be used (attached) directly, they should be copied.
+
 ### Multi-domain functions
 
 A [`MultiDomainFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MultiDomainFunction.h) needs a custom constructor which sets domain indices to its members.
@@ -102,6 +104,12 @@ The wrappers will override `__iadd__(self, func)` and `__delitem__(self, i)` (`i
 Implement `__len__(self)` to return the number of member functions.
 ```
   n_peaks = len(spectrum)
+```
+
+Implement `__iter__` method to allow iteration over the members:
+```
+  for func in comp: 
+    print(func)
 ```
 
 ### Setting ties
