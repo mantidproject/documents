@@ -196,7 +196,7 @@ Python function `Fit` should accept instances of `FitFunctionWrapper` as its `Fu
 
 ## Function evaluation
 
-`FitFunctionWrapper` class will implement `__call__(...)` method to evaluate the function. The method will be able to accept a variety of input types:
+`FitFunctionWrapper` class will implement `__call__(...)` method to evaluate the function. The method will be able to accept a variety of input types for its first positional argument:
  1. Workspace
  2. Numpy array
  3. List of numbers
@@ -210,6 +210,34 @@ The output type is the same as that of the input. For example:
   y_list = g([-2, -1, 0, 1, 2])
   out_ws = g(ws)
 ```
+
+If the `__call__` method has the signature `__call__(self, x, *params)` then the function wrappers could be used directly with `scipy.optimize` fitting as the following example demonstrates:
+```
+import scipy.optimize
+
+class Linear:
+    
+    def __init__(self):
+        self.fun = FunctionFactory.createFunction('LinearBackground')
+        
+    def __call__(self, x, *params):
+        for i in range(len(params)):
+            self.fun.setParameter(i, params[i])
+        y = x[:]
+        ws = CreateWorkspace(x, y)
+        out = EvaluateFunction(str(self.fun), ws, OutputWorkspace='out')
+        return out.readY(1)
+        
+        
+fun = Linear()
+x = [1, 2, 3]
+y = [3, 2, 1]
+sigma = [0.1, 0.2, 0.3]
+popt, pcov = scipy.optimize.curve_fit(fun, x, y, p0=[0, 0], sigma=sigma)
+print popt
+print fun(x)
+```
+The actual implementation of `__call__` will take into account any ties that are set on the parmeters.
 
 ## Plotting
 
