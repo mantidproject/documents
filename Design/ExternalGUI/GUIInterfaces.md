@@ -9,7 +9,7 @@ We currently have 2 approaches for registering a new user interface such that it
 1. C++ interfaces use the [`DECLARE_SUBWINDOW`][macro_subwindow] macro to register themselves into the [InterfaceFactor][interface_factory] when
 their shared library is loaded. MantidPlot startup code checks these registrations and populates the menu accordingly. The menu under "Interfaces"
 is specified by the `category()` method on the main window.
-2. Python interfaces define a startup file, e.g.
+1. Python interfaces define a startup file, e.g.
 [HFIR_Powder_Diffraction_Reduction.py][hfir_startup_file] and also place
 an entry in the `mantidqt.python_interfaces` key in the [properties file][properties_file]. MantidPlot startup code separately checks this key and populates
 the menu accordingly. The menu is specified by the text preceding the forward slash in the properties file.
@@ -77,6 +77,23 @@ else:
     mantidqt.InterfaceFactory.subscribe(HFIRPowderMetadata)
 ```
 
+## Code Layout
+
+While not a prerequisite for these changes it would be beneficial while analysing the interface code to assess the current layout in the repository. We have two locations for
+interfaces at the time of writing:
+
+1. C++ interfaces live in the [MantidQt/CustomInterfaces][mantidqt_custominterfaces] library
+1. Python interfaces are scattered in the [scripts][scripts] directory.
+
+A overview simply overview of the code directories does not given any simple indication of how many interfaces are contained within the project. Ideally the C++ "CustomInterfaces" shared
+library would be refactored to split each interface into its own library and own set of directories with the Python interfaces living along side them so that
+
+1. an interface is isolated from all others and changes to one along with its tests does not require a full rebuild of all C++ interfaces.
+1. easier to find interface code and see what is related to a single one.
+1. modification of a Python interface would no longer trigger a build of the system tests on a PR as we could exclude those folders.
+
+**Question: Is this scope creep?**
+
 ## Externally-Managed Code
 
 PLACEHOLDER
@@ -94,3 +111,5 @@ PLACEHOLDER
 [hfir_startup_file]: https://github.com/mantidproject/mantid/blob/master/scripts/HFIR_Powder_Diffraction_Reduction.py
 [interface_factory]: https://github.com/mantidproject/mantid/blob/master/MantidQt/API/inc/MantidQtAPI/InterfaceFactory.h
 [properties_file]: https://github.com/mantidproject/mantid/blob/master/Framework/Properties/Mantid.properties.template
+[mantidqt_custominterfaces]:https://github.com/mantidproject/mantid/tree/636367aff41d00a13f23514f90065f5aa1044dfa/MantidQt/CustomIntefaces
+[scripts]:https://github.com/mantidproject/mantid/tree/636367aff41d00a13f23514f90065f5aa1044dfa/scripts
