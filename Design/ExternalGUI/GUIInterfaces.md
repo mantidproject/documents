@@ -77,6 +77,26 @@ else:
     mantidqt.InterfaceFactory.subscribe(HFIRPowderMetadata)
 ```
 
+## Interface Discovery
+
+C++ interfaces will automatically register themselves when the shared library is loaded. Python interfaces will need to have their startup file imported so
+that the registration can occur. In contrast to the Python algorithms, which are a single file, a user interface will consist of many files across multiple directories. Discovery of
+both C++ & Python interfaces currently involves 3 separate keys in the Mantid `ConfigService`:
+
+* `mantidqt.python_interfaces`
+* `mantidqt.python_interfaces_directory`
+* `mantidqt.plugins.directory`
+
+It is proposed that a new key, `mantidqt.plugins` replaces these keys and is defined as a list of paths to either a shared library or python interface startup file. These can be all be
+processed together and internally the code would simply need to decide whether to load the `.dll/.so/.dylib` or import the Python startup file based on the extension. CMake would be
+responsible for creating the build-time variables.
+
+### User-Defined Interfaces
+
+A new key `user.mantidqt.plugins` will be recognised to allow runtime-registration of additional interfaces much like the current `user.python.plugins.directories` used for additional
+Python algorithms & fit functions. The config dialog in MantidPlot will be updated to allow for easy addition of such interfaces.
+
+
 ## Code Layout
 
 While not a prerequisite for these changes it would be beneficial while analysing the interface code to assess the current layout in the repository. We have two locations for
@@ -92,16 +112,62 @@ library would be refactored to split each interface into its own library and own
 1. easier to find interface code and see what is related to a single one.
 1. modification of a Python interface would no longer trigger a build of the system tests on a PR as we could exclude those folders.
 
-**Question: Is this scope creep?**
+A suggested layout would be:
+
+```
+mantid.git
+   |-- Framework
+   |-- gui
+   |   |-- lib
+   |   |   |-- reduction_gui # Python reduction gui framework
+   |   |-- interfaces
+   |   |   |-- CMakeLists.txt
+   |   |   |-- Diffraction
+   |   |   |   |-- PowderDiffractionReduction
+   |   |   |   |   |-- Powder_Diffraction_Reduction.py
+   |   |   |   |   |-- Powder_Diffraction_Reduction
+   |   |   |   |   |   |-- ...
+   |   |   |-- Indirect
+   |   |   |   |-- Common
+   |   |   |   |-- Corrections
+   |   |   |   |-- DataAnalysis
+   |   |   |-- Muon
+   |   |   |   |-- ALC
+   |   |   |   |-- DataAnalysis
+   |   |   |-- Reflectometry
+   |   |   |   |-- ISISReflectometry
+   |   |   |   |   |-- ISIS_Reflectometry.py
+   |   |   |   |   |-- ISIS_Reflectometry
+   |   |   |   |   |   |-- ...
+   |-- ...
+```
+
+**Comment: It is not technically necessary to do this but it would be good preparation for Mantid 4.0 and I think should be done in the medium to long term anyway.**
 
 ## Externally-Managed Code
 
-PLACEHOLDER
+Several GUIs have been developed with their code external to the [mantid][mantid_repo] code base:
+
+* [MSlice][mslice_repo]
+* [PyVDrive][pyvdrive]
+* [FastGR][fastgr]
+
+In order to balance ease of development against ease of deployment it is proposed that on a case-by-case basis requests can be made to ship GUIs such as this with
+the Mantid bundle. A minimal requirement on these external codebases will be that they are based on `setuptools` to give a common langauge in which to talk with the project.
+
+The mechanics of the system to handle these GUIs will be as follows (assuming the code layout changes above have been applied):
+
+* the startup file, as described above, is created/updated to allow the GUI to function standalone or as part of MantidPlot
+* `setup.py` is modified to include this script as part of the `build`/`install` command if necessary
+* a new directory is created in the appropriate directory under the `interfaces` directory
+* a `CMakeLists.txt` file is added that contains a newly-written CMake macro to instruct the Mantid build to fetch and build/install the code at the appropriate time.
+  * An example of an equivalent macro would be VTK's `vtk_module_third_party` macro to include third party code. It reduces the code required to include an additional module
+    to a single call, for example [VTK's Zlib dependency][vtk_thirdparty_zlib].
+
 
 ### Documentation
 
 PLACEHOLDER
-
 
 <!-- Link definitions -->
 
@@ -110,6 +176,9 @@ PLACEHOLDER
 [macro_subwindow]: https://github.com/mantidproject/mantid/blob/636367aff41d00a13f23514f90065f5aa1044dfa/MantidQt/API/inc/MantidQtAPI/UserSubWindow.h#L9
 [hfir_startup_file]: https://github.com/mantidproject/mantid/blob/master/scripts/HFIR_Powder_Diffraction_Reduction.py
 [interface_factory]: https://github.com/mantidproject/mantid/blob/master/MantidQt/API/inc/MantidQtAPI/InterfaceFactory.h
-[properties_file]: https://github.com/mantidproject/mantid/blob/master/Framework/Properties/Mantid.properties.template
+[properties_file]: https://github.com/mantidproject/mantid/blob/636367aff41d00a13f23514f90065f5aa1044dfa/Framework/Properties/Mantid.properties.template
 [mantidqt_custominterfaces]:https://github.com/mantidproject/mantid/tree/636367aff41d00a13f23514f90065f5aa1044dfa/MantidQt/CustomIntefaces
 [scripts]:https://github.com/mantidproject/mantid/tree/636367aff41d00a13f23514f90065f5aa1044dfa/scripts
+[pyvdrive]:https://github.com/neutrons/PyVDrive
+[fastgr]:https://github.com/neutrons/FastGR
+[vtk_thirdparty_zlib]:https://gitlab.kitware.com/vtk/vtk/blob/master/ThirdParty/zlib/CMakeLists.txt
