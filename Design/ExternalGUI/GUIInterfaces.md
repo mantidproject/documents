@@ -151,6 +151,7 @@ Several GUIs have been developed with their code external to the [mantid][mantid
 * [MSlice][mslice_repo]
 * [PyVDrive][pyvdrive]
 * [FastGR][fastgr]
+* [RefRed](https://github.com/neutrons/RefRed)
 
 In order to balance ease of development against ease of deployment it is proposed that on a case-by-case basis requests can be made to ship GUIs such as this with
 the Mantid bundle. A minimal requirement on these external codebases will be that they are based on `setuptools` to give a common langauge in which to talk with the project.
