@@ -167,7 +167,21 @@ The mechanics of the system to handle these GUIs will be as follows (assuming th
 
 ### Documentation
 
-PLACEHOLDER
+As Sphinx does not allow multiple source directories for the `.rst` there are 2 approaches to handling the documentation:
+
+1. use the [Sphinx intersphinx][sphinx_intersphinx] extension to link to externally hosted HTML
+   * advantages: simple mechanism only involving the Sphinx `:ref:` mechanism
+   * disadvantages: requires documentation to be hosted externally, offline version still only contains link to online HTML
+2. add a pre-build step to the documentation build to gather the documentation files from across the source tree into a `combined-src`
+   directory and run the `docs` build based off this
+   * advantages: documentation is uniform and uses the same styling, offline help would include full documentation
+   * disadvantages: more complex to build documentation
+
+Option 2 does not actually proclude using Sphinx intersphinx from option 1 and seems like it will be able to then have the best of both worlds:
+
+* a more full-developed interface may want to simply link to their good documentation and can use intersphinx;
+* a limited interface would be happier to simply include the docs in our build.
+
 
 <!-- Link definitions -->
 
@@ -182,3 +196,4 @@ PLACEHOLDER
 [pyvdrive]:https://github.com/neutrons/PyVDrive
 [fastgr]:https://github.com/neutrons/FastGR
 [vtk_thirdparty_zlib]:https://gitlab.kitware.com/vtk/vtk/blob/master/ThirdParty/zlib/CMakeLists.txt
+[sphinx_intersphinx]:http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
