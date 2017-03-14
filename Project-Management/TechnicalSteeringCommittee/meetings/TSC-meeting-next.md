@@ -19,3 +19,4 @@ Attendees: Bush, Draper, Gigg, Hahn, Peterson, Savici
 - Fit functions in python were approved
 - Will move to newer ParaView with additional patches `cherry-pick`ed in
 - External interfaces design is largely good. Still needs to address installing 2nd/3rd party guis. Also needs to address incorporating external gui documentation.
+- Mantid 4.0 design/requirements gathering is expected to begin in May
