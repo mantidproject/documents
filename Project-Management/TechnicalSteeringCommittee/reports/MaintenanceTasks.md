@@ -66,6 +66,7 @@ Assigned
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar)
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
 42. Modernize more code to use functions now found in `<string>`. `atoi` should move to `std::stoi` and `atof` should move to `std::stof` ([reference](http://www.cplusplus.com/reference/string/stof/)). [#17600](https://github.com/mantidproject/mantid/issues/17600) (Lottie)
+1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
 
 Unassigned (not suitable for pool)
 ----------------------------------
