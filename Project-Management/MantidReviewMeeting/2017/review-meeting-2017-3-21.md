@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* DataProcessorWidget in Python
+* [DataProcessorWidget in Python](https://github.com/mantidproject/mantid/pull/18922)
 
 
 Questions
