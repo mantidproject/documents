@@ -1,7 +1,8 @@
 Agenda
 ======
 
-* Add your materal/links here
+* DataProcessorWidget in Python
+
 
 Questions
 =========
