@@ -9,3 +9,4 @@ Pinned Topics
 New Items
 ---------
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
+- [Custom URL for Algorithms not part of the Mantid distribution](https://github.com/mantidproject/documents/pull/41/files)
