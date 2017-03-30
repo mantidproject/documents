@@ -60,7 +60,7 @@ Assigned
 
 1. Finish GSL2 compatibility work (Roman) **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Raquel)
-6. Move gmock 1.7 to be ExternalProject [#18737](https://github.com/mantidproject/mantid/issues/18737) (Peterson)
+~~6. Move gmock 1.7 to be ExternalProject [#18737](https://github.com/mantidproject/mantid/issues/18737) (Peterson)~~
 1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
 13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the ~~35~~ 40 files that do it [#17590](https://github.com/mantidproject/mantid/issues/17590) (Dimitar)
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar)
