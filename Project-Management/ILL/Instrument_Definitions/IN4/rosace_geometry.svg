@@ -42,10 +42,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="213.37307"
-     inkscape:cy="607.45498"
+     inkscape:cx="147.71316"
+     inkscape:cy="587.25193"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:snap-global="true"
      inkscape:object-paths="true"
@@ -101,7 +101,7 @@
          y="558.36218"
          x="447.14285"
          id="tspan3073"
-         sodipodi:role="line">z</tspan></text>
+         sodipodi:role="line">z''</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3075"
@@ -112,7 +112,7 @@
          y="389.36218"
          x="170.71429"
          id="tspan3077"
-         sodipodi:role="line">y</tspan></text>
+         sodipodi:role="line">y''</tspan></text>
   </g>
   <g
      inkscape:label="Before"
