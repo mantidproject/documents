@@ -115,6 +115,7 @@ For another release
 1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
+15. Remove uses of strcpy, sprintf, etc.[See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 
 Converted to actual tickets during a release
 --------------------------------------------
