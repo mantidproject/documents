@@ -116,6 +116,7 @@ For another release
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
+16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
 
 Converted to actual tickets during a release
 --------------------------------------------
