@@ -15,7 +15,11 @@ Highlights
 **C++20**
 * Metaclasses (proposal)
 
-**Learing & Teaching Modern C++**
+**Tools**
+* [`rr`](http://rr-project.org/) Record and debug recording with reverse execution 
+* [`uftrace`](https://github.com/namhyung/uftrace) Traces each function in exe and prints time taken
+
+**Learning & Teaching Modern C++**
 * C++ on Slack: http://cpplang.diegostamigni.com/
 * C++ on Beta Stack Overflow documentation site: http://stackoverflow.com/documentation/c++
 * Meeting C++ Blogroll: https://meetingcpp.com/index.php/blogroll.html
