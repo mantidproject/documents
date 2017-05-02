@@ -23,7 +23,10 @@ Highlights
 
 **Technical Writing Techniques**
 * What defines a good README
-* Tips on ways of structuring technical articles
+* Tips on ways of structuring technical articles:
+
+![ACCU Writing Tips](ACCU-Writing1.jpg)
+![ACCU Writing Tips](ACCU-Writing2.jpg)
 
 Questions
 =========
