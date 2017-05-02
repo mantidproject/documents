@@ -9,7 +9,7 @@ Highlights
 
 **C++17**
 * Structured Bindings `auto [iter, success] = mymap.insert(value);`
-* Selection statement with initializer `if (auto it = m.find(10); it != m.end()) { return it->size(); }`
+* Selection statement with initializer `if (auto it = mymap.find(10); it != mymap.end()) { return it->size(); }`
 * Library features: `std::optional`, `std::variant`, `std::any`, (`std::expected` proposal) 
 
 **C++20**
