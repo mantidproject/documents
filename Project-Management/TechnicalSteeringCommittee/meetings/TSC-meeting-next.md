@@ -8,5 +8,11 @@ Pinned Topics
 
 New Items
 ---------
-- [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
 - [Custom URL for Algorithms not part of the Mantid distribution](https://github.com/mantidproject/documents/pull/41/files)
+- Request to include [yaml-cpp](https://github.com/jbeder/yaml-cpp) as a dependency:
+  * packages are available for Red Hat, Ubuntu.
+  * homebrew has a formula
+  * just needs building on Windows.
+- [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
+- Are we comfortable mixing `boost::shared_ptr` and `std::shared_ptr`?
+  - former has better support in `boost::python`
