@@ -15,6 +15,16 @@ Highlights
 **C++20**
 * Metaclasses (proposal)
 
+**Learing & Teaching Modern C++**
+* C++ on Slack: http://cpplang.diegostamigni.com/
+* C++ on Beta Stack Overflow documentation site: http://stackoverflow.com/documentation/c++
+* Meeting C++ Blogroll: https://meetingcpp.com/index.php/blogroll.html
+* isocpp.org: status of standard plus other updates
+
+**Technical Writing Techniques**
+* What defines a good README
+* Tips on ways of structuring technical articles
+
 Questions
 =========
 
