@@ -117,6 +117,7 @@ For another release
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
+17. [Use erase-remove idiom instead of PeaksWorkspace::removePeak(...)](https://github.com/mantidproject/mantid/issues/19472)
 
 Converted to actual tickets during a release
 --------------------------------------------
