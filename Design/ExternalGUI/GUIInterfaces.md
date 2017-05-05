@@ -144,7 +144,7 @@ mantid.git
 
 **Comment: It is not technically necessary to do this but it would be good preparation for Mantid 4.0 and I think should be done in the medium to long term anyway.**
 
-## Externally-Managed Code
+## Deployment
 
 Several GUIs have been developed with their code external to the [mantid][mantid_repo] code base:
 
@@ -153,35 +153,19 @@ Several GUIs have been developed with their code external to the [mantid][mantid
 * [FastGR][fastgr]
 * [RefRed](https://github.com/neutrons/RefRed)
 
-In order to balance ease of development against ease of deployment it is proposed that on a case-by-case basis requests can be made to ship GUIs such as this with
-the Mantid bundle. A minimal requirement on these external codebases will be that they are based on `setuptools` to give a common langauge in which to talk with the project.
+These GUIs depend only on the `mantid` python library and development of the GUIs is likely to happen at a faster pace to the main codebase so restricting releases
+of these GUIs to the mantid release schedule seems restrictive. It is proposed that we allow release & installation of these GUIs by using `setuptools` and integrating
+this installation with the installers on Windows & OSX. On Linux systems a standard package can be created that simply has the `mantid` dependency listed within it.
 
-The mechanics of the system to handle these GUIs will be as follows (assuming the code layout changes above have been applied):
+### Windows
 
-* the startup file, as described above, is created/updated to allow the GUI to function standalone or as part of MantidPlot
-* `setup.py` is modified to include this script as part of the `build`/`install` command if necessary
-* a new directory is created in the appropriate directory under the `interfaces` directory
-* a `CMakeLists.txt` file is added that contains a newly-written CMake macro to instruct the Mantid build to fetch and build/install the code at the appropriate time.
-  * An example of an equivalent macro would be VTK's `vtk_module_third_party` macro to include third party code. It reduces the code required to include an additional module
-    to a single call, for example [VTK's Zlib dependency][vtk_thirdparty_zlib].
+On Windows it is proposed that we use `pip` to install a wheel using the `--user` argument during the Mantid install process. The main Mantid installer would simply contain a link to the URL for
+`pip` to install during the main install procedure. If a new release, of `mslice` for example, occurs then `pip install --user -U mslice <mslice-url>` will upgrade `mslice` leaving Mantid untouched.
+I suggest we provide a small dialog within Mantid to manage this for users as most will not wish to do this on the command line.
 
+### OSX
 
-### Documentation
-
-As Sphinx does not allow multiple source directories for the `.rst` there are 2 approaches to handling the documentation:
-
-1. use the [Sphinx intersphinx][sphinx_intersphinx] extension to link to externally hosted HTML
-   * advantages: simple mechanism only involving the Sphinx `:ref:` mechanism
-   * disadvantages: requires documentation to be hosted externally, offline version still only contains link to online HTML
-2. add a pre-build step to the documentation build to gather the documentation files from across the source tree into a `combined-src`
-   directory and run the `docs` build based off this
-   * advantages: documentation is uniform and uses the same styling, offline help would include full documentation
-   * disadvantages: more complex to build documentation
-
-Option 2 does not actually proclude using Sphinx intersphinx from option 1 and seems like it will be able to then have the best of both worlds:
-
-* a more full-developed interface may want to simply link to their good documentation and can use intersphinx;
-* a limited interface would be happier to simply include the docs in our build.
+A `pip` user install will also work here but I am unsure how to have this happen at install time. Suggestions welcome.
 
 
 <!-- Link definitions -->
