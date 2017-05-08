@@ -16,3 +16,4 @@ New Items
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
 - Are we comfortable mixing `boost::shared_ptr` and `std::shared_ptr`?
   - former has better support in `boost::python`
+- [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
