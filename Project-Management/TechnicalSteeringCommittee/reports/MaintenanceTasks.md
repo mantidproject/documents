@@ -124,6 +124,6 @@ Converted to actual tickets during a release
 
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
-1. Clang working on linux.
-   2. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
-   3. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
+1. Clang working on linux
+   1. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
+   1. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
