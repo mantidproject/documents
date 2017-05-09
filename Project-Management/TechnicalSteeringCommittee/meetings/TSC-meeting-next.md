@@ -23,3 +23,9 @@ New Items
   - Focus this year continues on maintenance
   - Mantid is a scipy styled library - how do we make this a reality
   - Progress on mantid v4 work
+
+Minutes
+-------
+Attendees: Draper, Heybrock, Moore, Borreguero, Peterson, Savici, Hahn
+
+- Design for custom help url for algorithms was approved with minor changes
