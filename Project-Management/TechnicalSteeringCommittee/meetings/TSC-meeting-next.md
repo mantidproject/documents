@@ -17,3 +17,9 @@ New Items
 - Are we comfortable mixing `boost::shared_ptr` and `std::shared_ptr`?
   - former has better support in `boost::python`
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
+- Mantid developer meeting
+  - [Developer survey](https://docs.google.com/forms/d/e/1FAIpQLSfm8KZ1BXvb_3zrOJKhjCjnaudooW4M5i6DRYC9giG0jl2v3Q/viewform?usp=sf_link)
+  - SSI reports (science and tech one)
+  - Focus this year continues on maintenance
+  - Mantid is a scipy styled library - how do we make this a reality
+  - Progress on mantid v4 work
