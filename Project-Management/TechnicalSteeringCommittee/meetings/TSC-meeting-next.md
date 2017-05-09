@@ -30,3 +30,4 @@ Attendees: Draper, Heybrock, Moore, Borreguero, Peterson, Savici, Hahn
 
 - Design for custom help url for algorithms was approved with minor changes
 - `boost::shared_ptr` is required until all supported platforms are at boost 1.63 - Pete send email to dev list
+- WorkspacePropertyWithIndex design was given some comments and will be reviewed again at the next meeting
