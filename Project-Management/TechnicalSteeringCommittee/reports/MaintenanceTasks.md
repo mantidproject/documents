@@ -108,7 +108,7 @@ For another release
 2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
 3. Rework/clean up cmake as a whole
 4. Making ANN an ExternalProject
-1. [Boost 1.63](http://www.boost.org/users/history/version_1_63_0.html) has some nice improvements to `boost::python`
+1. [Boost 1.63](http://www.boost.org/users/history/version_1_63_0.html) has some nice improvements to `boost::python` - not available everywhere
    1. Added (basic) support for C++11 (std::shared_ptr, std::unique_ptr)
    2. Incorporated an extension API to wrap NumPy
    3. Would require building packages for Linux distributions with older version.
