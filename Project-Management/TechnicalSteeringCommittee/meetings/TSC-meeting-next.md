@@ -8,32 +8,10 @@ Pinned Topics
 
 New Items
 ---------
-- [Custom URL for Algorithms not part of the Mantid distribution](https://github.com/mantidproject/documents/pull/41/files)
 - Request to include [yaml-cpp](https://github.com/jbeder/yaml-cpp) as a dependency:
   * packages are available for Red Hat, Ubuntu.
   * homebrew has a formula
   * just needs building on Windows.
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
-- Are we comfortable mixing `boost::shared_ptr` and `std::shared_ptr`?
-  - former has better support in `boost::python`
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
 - Mantid developer meeting
-  - [Developer survey](https://docs.google.com/forms/d/e/1FAIpQLSfm8KZ1BXvb_3zrOJKhjCjnaudooW4M5i6DRYC9giG0jl2v3Q/viewform?usp=sf_link)
-  - SSI reports (science and tech one)
-  - Focus this year continues on maintenance
-  - Mantid is a scipy styled library - how do we make this a reality
-  - Progress on mantid v4 work
-
-Minutes
--------
-Attendees: Draper, Heybrock, Moore, Boreguerro, Peterson, Savici, Hahn
-
-- Design for custom help url for algorithms was approved with minor changes
-- `boost::shared_ptr` is required until all supported platforms are at boost 1.63 - Pete send email to dev list
-- WorkspacePropertyWithIndex design was given some comments and will be reviewed again at the next meeting
-- Developer meeting
-  - Working groups work on projects in 2 hour chunks
-  - Show off good examples of project philosophy
-  - Mid/long term plans and progress (workspace index, instrument 2.0, histogram, mpi, new workbench, algorithm/parameter renaming, external projects, scipy style library & conda, ...)
-  - Review previous developer meeting agendas
-  - Lighting talks
