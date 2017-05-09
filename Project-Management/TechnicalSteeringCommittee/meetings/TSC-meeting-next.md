@@ -26,8 +26,14 @@ New Items
 
 Minutes
 -------
-Attendees: Draper, Heybrock, Moore, Borreguero, Peterson, Savici, Hahn
+Attendees: Draper, Heybrock, Moore, Boreguerro, Peterson, Savici, Hahn
 
 - Design for custom help url for algorithms was approved with minor changes
 - `boost::shared_ptr` is required until all supported platforms are at boost 1.63 - Pete send email to dev list
 - WorkspacePropertyWithIndex design was given some comments and will be reviewed again at the next meeting
+- Developer meeting
+  - Working groups work on projects in 2 hour chunks
+  - Show off good examples of project philosophy
+  - Mid/long term plans and progress (workspace index, instrument 2.0, histogram, mpi, new workbench, algorithm/parameter renaming, external projects, scipy style library & conda, ...)
+  - Review previous developer meeting agendas
+  - Lighting talks
