@@ -91,9 +91,9 @@ setProperty("InputWorkspaceWithIndex", ws, std::vector<SpectrumNumber>{1, 2, 3, 
 //or
 setProperty("InputWorkspaceWithIndex", ws, IndexType::SpectrumNumber, "1:33,42");
 //or
-setProperty("InputWorkspaceWithIndex", std::tie(ws, std::vector<SpectrumNumber>{1, 2, 3, 4}));
+setProperty("InputWorkspaceWithIndex", std::make_pair<MatrixWorkspace_sptr, std::vector<SpectrumNumber>>(ws, {1, 2, 3, 4}));
 //or 
-setProperty("InputWorkspaceWithIndex", std::tie(ws, IndexType::SpectrumNumber, "1:33,42"));
+setProperty("InputWorkspaceWithIndex", std::make_tuple<MatrixWorkspace_sptr, IndexType, std::string>(ws, IndexType::SpectrumNumber, "1:33,42"));
 ```
 
 Accessing the property:
