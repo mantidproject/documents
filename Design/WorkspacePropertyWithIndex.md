@@ -1,6 +1,7 @@
 # WorkspacePropertyWithIndex Type
 
-This document relates to an algorithm property type which can be used to specify a workspace and desired input index type(s). Index translation will will be handled by the new `IndexInfo` (design [here](https://github.com/mantidproject/documents/blob/master/Design/spectrum_number_and_workspace_index_abstraction.md)) object internally. Badly unit tested code and inconsistencies in validating user indices would be absorbed by this type. This design complements `IndexInfo` and reinforces some of the design concepts. **Note**:The property would then return the workspace and workspace indices (after automatic translation).
+This document relates to an algorithm property type which can be used to specify a workspace and desired input index type(s). Index translation will will be handled by the new `IndexInfo` (design [here](https://github.com/mantidproject/documents/blob/master/Design/spectrum_number_and_workspace_index_abstraction.md)) object internally. Badly unit tested code and inconsistencies in validating user indices would be absorbed by this type. This design complements `IndexInfo` and reinforces some of the design concepts. **Note**:This property is only related to situations where workspace index is required, it does not cater for applications that directly require SpectrumNumber of DetectorID for example.
+
 ## Motivation
 The `IndexInfo` object recently included in the Mantid framework introduces a strict policy for the definition of and translations between index types. However, this has not yet been reflected at the algorithm property level. There is still user-facing confusion among index types. Algorithms inconsistently capture and use index types without a clear mechanism for defining them e.g spectrum number, spectrum index, workspace index, workspace id, detector index, detector id etc. This is compounded by the soon to be implemented MPI build of Mantid. Indices captured by algorithms must be translated in accordance with data partitioning across MPI ranks. The mechanism in place for this translation exists within *IndexInfo* `IndexInfo::makeIndexSet` but developers must manually make this translation upon obtaining a workspace property.
 
@@ -32,6 +33,10 @@ The points are taken from the original `IndexInfo` design document linked in the
  - Hide index translations from the developer (this will take place internally within the property).
  - Automatically generate the required GUI input controls based on the specified index types.
  - Return the workspace and correct index set simultaneously in one call to `PropertyManager::getProperty`. 
+ - Consistent and unit-tested translation without code duplication.
+ - Consistent and unit-tested validation without code duplication.
+ - Consistent and simple way of defining index properties without code duplication.
+ - Consistent user interface.
  
 ## Implementation
 
@@ -40,6 +45,7 @@ The points are taken from the original `IndexInfo` design document linked in the
 - Extend the `WorkspaceProperty` type.
 - Own an `ArrayProperty` which can make use of `ListPropertyWidget` for capturing list data from the GUI.
 - Add a set of flags which control allowed index types (for use in the constructor).
+- Use a PropertyWithValue<std::string> to capture the selected index type.
 
 ### Details
 
@@ -56,36 +62,66 @@ The points are taken from the original `IndexInfo` design document linked in the
 	-  `PropertyWidgetFactory` may need to handle `WorkspacePropertyWithIndex` specifically.
 	-  May need to introduce a concept of a group of property widgets.
 
-<sup>1</sup><sub>The distinction is made here between local (a subset of all data partitioned on an MPI Rank) and global (entire data set).</sub>
+<sup>1</sup><sub>The distinction is made here between local (a subset of all data partitioned on an MPI Rank) and global (entire data set). This will not be visible at the GUI or client API level.</sub>
 
 ### Example usage
 
 **Property Declaration**:
 
+Declaring the property in C++:
 ```cpp
-//Property name is fixed
-declareProperty(make_unique<WorkspacePropertyWithIndex>(IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
+//Property name may be fixed?
+declareProperty(make_unique<WorkspacePropertyWithIndex<MatrixWorkspace>>("InputWorkspaceWithIndex", IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
 ```  
 
 **Algorithm Dialog Box (GUI)**:
 
-**InputWorkspaceWithIndex** [ _________________ ]<br>
+**InputWorkspace** [ _________________ ]<br>
 ( **.** ) **SpectrumNumber** (  ) **WorkspaceIndex**<br>
 **Indices** [ _________________ ]
  
 **Client Code Access**:
 
-C++:
+*C++*:
+
+Setting the property manually:
+
+```cpp
+setProperty("InputWorkspaceWithIndex", ws, std::vector<SpectrumNumber>{1, 2, 3, 4});
+//or
+setProperty("InputWorkspaceWithIndex", ws, IndexType::SpectrumNumber, "1:33,42");
+//or
+setProperty("InputWorkspaceWithIndex", std::tie(ws, std::vector<SpectrumNumber>{1, 2, 3, 4}));
+//or 
+setProperty("InputWorkspaceWithIndex", std::tie(ws, IndexType::SpectrumNumber, "1:33,42"));
+```
+
+Accessing the property:
 
 ```cpp
 //C++11
 MatrixWorkspace_const_sptr inputWS;
 IndexSet indices;
-std::tie(inputWS, indices) = getProperty("InputWorkspaceWithIndex");
+std::tie(inputWS, indices) = std::pair<MatrixWorkspace_const_sptr, SpectrumIndexSet>(getProperty("InputWorkspaceWithIndex"));
 ```
 
-Python:
+*Python*:
 
+The simplest scenario for a call to an algorithm could be:
+```python
+ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, [1:33, 42]))
+# or 
+ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, "1:33, 42"))
+```
+Creating special handling for Index types could allow for:
+```python
+ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber("1:33")))
+```
+The property could also generate separate keyword arguments for all inputs:
+```python
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, InputIndexType=SpectrumNumbers, InputIndices=[1:10,42])
+```
+Property Access would then take the form:
 ```python
 inputWS, indices = getProperty("InputWorkspaceWithIndex")
 ```
