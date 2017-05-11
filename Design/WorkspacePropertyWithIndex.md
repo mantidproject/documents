@@ -45,7 +45,7 @@ The points are taken from the original `IndexInfo` design document linked in the
 - Extend the `WorkspaceProperty` type.
 - Own an `ArrayProperty` which can make use of `ListPropertyWidget` for capturing list data from the GUI.
 - Add a set of flags which control allowed index types (for use in the constructor).
-- Use a PropertyWithValue<std::string> to capture the selected index type.
+- Use a `PropertyWithValue<std::string>` to capture the selected index type.
 
 ### Details
 
@@ -84,25 +84,20 @@ declareProperty(make_unique<WorkspacePropertyWithIndex<MatrixWorkspace>>("InputW
 
 *C++*:
 
-Setting the property manually:
+Setting the property manually (tuple is created internally):
 
 ```cpp
 setProperty("InputWorkspaceWithIndex", ws, std::vector<SpectrumNumber>{1, 2, 3, 4});
 //or
 setProperty("InputWorkspaceWithIndex", ws, IndexType::SpectrumNumber, "1:33,42");
-//or
-setProperty("InputWorkspaceWithIndex", std::make_pair<MatrixWorkspace_sptr, std::vector<SpectrumNumber>>(ws, {1, 2, 3, 4}));
-//or 
-setProperty("InputWorkspaceWithIndex", std::make_tuple<MatrixWorkspace_sptr, IndexType, std::string>(ws, IndexType::SpectrumNumber, "1:33,42"));
 ```
 
 Accessing the property:
 
 ```cpp
-//C++11
 MatrixWorkspace_const_sptr inputWS;
 IndexSet indices;
-std::tie(inputWS, indices) = std::pair<MatrixWorkspace_const_sptr, SpectrumIndexSet>(getProperty("InputWorkspaceWithIndex"));
+std::tie(inputWS, indices) = getProperty("InputWorkspaceWithIndex");//returns tuple
 ```
 
 *Python*:
@@ -112,6 +107,9 @@ The simplest scenario for a call to an algorithm could be:
 ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, [1:33, 42]))
 # or 
 ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, "1:33, 42"))
+
+# optionally no indices. Will just assume all spectra 
+ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber))
 ```
 Creating special handling for Index types could allow for:
 ```python
@@ -125,6 +123,7 @@ Property Access would then take the form:
 ```python
 inputWS, indices = getProperty("InputWorkspaceWithIndex")
 ```
+
 ### Development Stages and Roll-Out
 
 - The first release of this type will only include support for `IndexType::SpectrumNumber` and `IndexType::WorkspaceIndex`. There `DetectorID` translation, which is rarely used, is tricky and is not currently supported within IndexInfo, another translator specific to detector ids must be developed before this mode can be supported.
