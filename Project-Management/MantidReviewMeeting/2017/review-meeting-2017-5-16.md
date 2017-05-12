@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add your links here
+* [Advanced Plotting](https://www.mantidproject.org/MBC_Displaying_data_in_multiple_workspaces) (Karl)
 
 Questions
 =========
