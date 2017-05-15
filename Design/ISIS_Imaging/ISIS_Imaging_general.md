@@ -130,7 +130,7 @@ Currently the automatic COR calculation is done on the sinograms and uses `core.
 ### Center of Rotation (COR) with imopr corwrite
 Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
 
-The `cor.imopr.corwrite` module works with sinograms. It saves out reconstructed slices with a range of CORs. We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
+The `core.imopr.corwrite` module works with sinograms. It saves out reconstructed slices with a range of CORs. We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
 
 ## Reconstruction
 Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
