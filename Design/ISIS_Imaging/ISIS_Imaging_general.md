@@ -63,6 +63,19 @@ The Loading will be done via a dialogue:
 - The image format will be determined from the selected file.
 - The absolute path to the directory will be determined from the selected file.
 
+## Handling multiple stacks in dialogues
+This is a consequence of being able to load multiple stack inside the program. How does the user select on which stack to apply the operation? 
+
+This produces problems when trying to sync in after a window has been closed. The naive approach of keeping them in a list does not work, as it would require every stack window to know it's position inside the list, but if the one that is close is _not_ the last, they all get out of sync. Thus it's going to be a nightmare to implement and test.
+
+The current desing for the solution is to generate a unique ID for each stack, and store that plus a reference to the stack object in a dictionary. Qt provides `closeEvent` which is triggered when the user clicks the `X` button. Each stack window will know it's own unique ID, and then deletion (and sync) is just a `del dict[uid]`. 
+
+To answer the initial question, building the selection for the user is now just a matter of iterating the dict and getting the (user friendly) name, not the uuid, and displaying that.
+
+The unique ID will be generated using python's `uuid` package.
+
+A future upgrade on this will take into account which is the _current focus_ of the user, and when applying an operation will automatically select _that_ stack as the default choice.
+
 ## Visualisation
 Visualisation will be done using Matplotlib. Each stack will be a separate part of a QDockWidget, so the users will be able to arrange the visualised stacks in any way they want. This also means that there can be more than one stack loaded at a time.
 
