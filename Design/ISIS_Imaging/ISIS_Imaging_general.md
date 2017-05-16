@@ -6,6 +6,7 @@
 - [Design](#design)
     - [General structure](#general-structure)
     - [Loading](#loading)
+    - [Handling multiple stacks in dialogues](#handling-multiple-stacks-in-dialogues)
     - [Visualisation](#visualisation)
     - [Applying a filter](#applying-a-filter)
     - [Undoing an operation](#undoing-an-operation)
