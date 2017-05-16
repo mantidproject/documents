@@ -73,6 +73,13 @@ Declaring the property in C++:
 //Property name may be fixed?
 declareProperty(make_unique<WorkspacePropertyWithIndex<MatrixWorkspace>>("InputWorkspaceWithIndex", IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
 ```  
+In order to reduce typing we could include builder functions which allow for more concise property declaration:
+```cpp
+//Builder method returns a unique_ptr?
+declareProperty(CreateMatrixWorkspaceWithSpectrumNumber("InputWorkspaceWithIndex");
+//or
+declareProperty(CreateEventWorkspaceWithSpectrumNumber("InputWorkspaceWithIndex");
+```
 
 **Algorithm Dialog Box (GUI)**:
 
@@ -102,22 +109,14 @@ std::tie(inputWS, indices) = getProperty("InputWorkspaceWithIndex");//returns tu
 
 *Python*:
 
-The simplest scenario for a call to an algorithm could be:
-```python
-ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, [1:33, 42]))
-# or 
-ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber, "1:33, 42"))
 
-# optionally no indices. Will just assume all spectra 
-ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber))
-```
-Creating special handling for Index types could allow for:
+In order to reduce the load on script authors, we could split keyword arguments and create types which capture each index type:
 ```python
-ChangePulsetime(TimeOffset=10, InputWorkspaceWithIndex=("ws", SpectrumNumber("1:33")))
-```
-The property could also generate separate keyword arguments for all inputs:
-```python
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, InputIndexType=SpectrumNumbers, InputIndices=[1:10,42])
+# The index types could accept a range as a string or
+# a numpy array which contains the values.
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Spectra=("1:33") )
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Indices=("1:33") )
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, IDs=("1:33") )
 ```
 Property Access would then take the form:
 ```python
@@ -126,5 +125,5 @@ inputWS, indices = getProperty("InputWorkspaceWithIndex")
 
 ### Development Stages and Roll-Out
 
-- The first release of this type will only include support for `IndexType::SpectrumNumber` and `IndexType::WorkspaceIndex`. There `DetectorID` translation, which is rarely used, is tricky and is not currently supported within IndexInfo, another translator specific to detector ids must be developed before this mode can be supported.
+- The first release of this type will only include support for `IndexType::SpectrumNumber` and `IndexType::WorkspaceIndex`. The `DetectorID` translation, which is rarely used, is tricky and is not currently supported within IndexInfo, another translator specific to detector ids must be developed before this mode can be supported.
 - The Roll-out for this would be simple since it is completely independent for all algorithms. However, this could become more complex in situations where there are non-standard conventions in validation and translation (e.g silently ignoring bad indices).
