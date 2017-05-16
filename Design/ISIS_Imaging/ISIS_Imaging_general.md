@@ -67,7 +67,7 @@ The Loading will be done via a dialogue:
 ## Handling multiple stacks in dialogues
 This is a consequence of being able to load multiple stack inside the program. How does the user select on which stack to apply the operation? 
 
-This produces problems when trying to sync in after a window has been closed. The naive approach of keeping them in a list does not work, as it would require every stack window to know it's position inside the list, but if the one that is close is _not_ the last, they all get out of sync. Thus it's going to be a nightmare to implement and test.
+This produces problems when trying to sync in after a window has been closed. The naive approach of keeping them in a list does not work, as it would require every stack window to know it's position inside the list, but if the one that is closed is _not_ the last, they all get out of sync. Thus it's going to be a nightmare to implement and test.
 
 The current desing for the solution is to generate a unique ID for each stack, and store that plus a reference to the stack object in a dictionary. Qt provides `closeEvent` which is triggered when the user clicks the `X` button. Each stack window will know it's own unique ID, and then deletion (and sync) is just a `del dict[uid]`. 
 
