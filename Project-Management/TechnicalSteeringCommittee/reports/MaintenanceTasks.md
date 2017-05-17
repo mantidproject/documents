@@ -17,7 +17,6 @@ Highest priority
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started. (Lamar)
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue [#18550](https://github.com/mantidproject/mantid/issues/18550)
-   1. Add python3 to the pull requests
    5. Will cover `scripts` folder and systemtests
    3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
    4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
