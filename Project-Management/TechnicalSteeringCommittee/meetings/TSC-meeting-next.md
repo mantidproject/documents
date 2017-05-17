@@ -15,3 +15,4 @@ New Items
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
 - Mantid developer meeting
+- [Tomography GUI Design (in python)](https://github.com/mantidproject/documents/pull/43)
