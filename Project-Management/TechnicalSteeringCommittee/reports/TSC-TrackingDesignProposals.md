@@ -17,7 +17,7 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 | :------------ |:---------------|:-------|
 | [Workspace Property with Index](https://github.com/mantidproject/documents/pull/42) | TBD | --- |
 | [Mantid 4 release planning](https://github.com/mantidproject/documents/pull/23) | TBD | --- |
-| [Indexing module (spectra)](https://github.com/mantidproject/documents/pull/24) | TBD | --- |
+| [Indexing module (spectra)](https://github.com/mantidproject/documents/pull/24) | 2016-09-01 | approved |
 | [Y and E data storage modes](https://github.com/mantidproject/documents/pull/22) | TBD | --- |
 | [Type safe HKLs](https://github.com/mantidproject/documents/pull/18) | TBD | --- |
 | [Custom URL for Algorithms not part of the Mantid distribution](https://github.com/mantidproject/documents/pull/41) | [2017-05-09](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/meetings/2017/TSC-meeting-2017-05-09.md) | approved |
