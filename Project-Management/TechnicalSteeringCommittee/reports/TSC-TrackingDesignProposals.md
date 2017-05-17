@@ -15,6 +15,7 @@ Designs currently being proposed/reviewed via [design document pull requests](ht
 
 | Name  | date | Status |
 | :------------ |:---------------|:-------|
+| [Tomography GUI Design](https://github.com/mantidproject/documents/pull/43) | TBD | --- |
 | [Workspace Property with Index](https://github.com/mantidproject/documents/pull/42) | TBD | --- |
 | [Mantid 4 release planning](https://github.com/mantidproject/documents/pull/23) | TBD | --- |
 | [Indexing module (spectra)](https://github.com/mantidproject/documents/pull/24) | 2016-09-01 | approved |
