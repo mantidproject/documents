@@ -88,7 +88,17 @@ The visualisation must allow for a rectangle ROI selection, that is persistent i
 ## Applying a filter
 Applying a filter will bring up a dialogue in which the user has to select on which stack to apply the filter via a dropdown menu, and fill in the required parameters the filter has.
 
-Any filters should be dynamically registered using a [cli_registrator](https://github.com/mantidproject/isis_imaging/blob/master/isis_imaging/core/algorithms/cli_registrator.py) style approach. This brings issues outlined in https://github.com/mantidproject/isis_imaging/issues/40, the most important of which how to not pull in (import) the PyQt library when NOT using the GUI, and thus not needing dynamic registering for the GUI.
+Any filters should be dynamically registered using a [cli_registrator](https://github.com/mantidproject/isis_imaging/blob/master/isis_imaging/core/algorithms/cli_registrator.py) style approach.
+
+Current issues for this section:
+- Dynamic dialogue building
+  - Solution is to use an approach like the `cli_registrator`, but pass in the QObject in which the filters will register themselves in
+  - Dialogue registration is a bit more complicated, because we have to connect the dropdown menu to the dialogue's `.show()` method.
+- Transferring information from the dialogue (the parameters) to the execution
+  - Current solution is to use a partial function, decorated with all of the parameters. No other function down the chain of execution will have to worry about the parameters that way.
+- Handling filters with multiple steps
+  - Background correction and contrast normalisation need to calculate values for scaling, do the filter execution, and then apply the scaling to the images.
+     - Currently the solution is to apply a monad style approach.
 
 ## Undoing an operation
 Building the Undo operation may be complicated, but here are a few high level approaches:
