@@ -26,7 +26,7 @@ Highest priority
 Pool
 ----
 
-42. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
+1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Reducing static analysis issues (discus stewards and soft limits)
    2. [coverity](https://scan.coverity.com/projects/335)
    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)
@@ -34,18 +34,14 @@ Pool
    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+   2. [valgrind](http://builds.mantidproject.org/view/Valgrind/job/valgrind_core_packages/) (is currently only kernel and geometry)
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
-   1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/).
-       2. `_HAS_AUTO_PTR_ETC`
-       3. `_HAS_OLD_IOSTREAMS_MEMBERS`
-       4. `_HAS_FUNCTION_ASSIGN`
-       5. `_HAS_TR1_NAMESPACE`
-       6. `_HAS_IDENTITY_STRUCT`
-   2. See which ones we can turn off now.
-   3. Identify functions and classes with deprecated code.
-     4. example: we currently use std::auto_ptr with boost::python.
+    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/): `_HAS_AUTO_PTR_ETC`, `_HAS_OLD_IOSTREAMS_MEMBERS`, `_HAS_FUNCTION_ASSIGN`, `_HAS_TR1_NAMESPACE`, `_HAS_IDENTITY_STRUCT`
+    2. See which ones we can turn off now.
+    3. Identify functions and classes with deprecated code.
+    4. example: we currently use `std::auto_ptr` with `boost::python`.
 1. enable warnings and fix issues
    1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
    1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
