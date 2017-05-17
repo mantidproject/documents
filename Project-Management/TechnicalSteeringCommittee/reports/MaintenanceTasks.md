@@ -8,7 +8,7 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.10
+Maintenance tasks for 3.11
 ==========================
 
 Highest priority
