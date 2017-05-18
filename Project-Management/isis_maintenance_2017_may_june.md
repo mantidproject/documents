@@ -31,6 +31,9 @@ As a trial we would like to pair two developers to a small team to tackle the ma
 ### Paring people
 
 The initial pairs are chosen via the script below. 
+
+TODO: Modify script to have only one group of people
+
 ```python
 import numpy as np
 import pprint as pp
@@ -63,10 +66,9 @@ The idea is to have new teams every two days.
 
 ## Task list
 
-During the retrospecitve of the last release a lot of developers mentioned that the false-positives on the build serves are a major impediment to our productivity. There is a recurring set of tests which tend to be failing and the main objective for 
-developers at ISIS will be to tackle the tests which show a large amount of false-positives.
+During the retrospecitve of the last release a lot of developers mentioned that the false-positives on the build serves are a major impediment to our productivity. There is a reocurring set of tests which tend to be producing false-positives. We would like to fix these tests if possible.
 
-During the last months/weeks the developers have been collecting data which can be found [here](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=1630384006)
+During the last months/weeks everyone has been collecting data which can be found [here](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=1630384006)
 
 The first set of tests we want to tackle are:
 
