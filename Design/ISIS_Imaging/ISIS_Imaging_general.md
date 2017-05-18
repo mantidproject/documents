@@ -84,6 +84,7 @@ This must allow for the user to go to any indice from the volume.
 
 The visualisation must allow for a rectangle ROI selection, that is persistent if the image underneath is changed. It also must allow for the visualisation of a histogram of the selected ROI (computation should be done in the `core` package).
 
+Currently the idea is to use `FigureCanvasQtAgg` with the default drawing algorithms, for visusalisation of the images. Matplotlib provides a `RectangleSelector` class which will be used to do the ROI selection. If this proves to be too slow, a solution may be to tailor the drawing function, while still retaining the ROI selection functionality.
 
 ## Applying a filter
 Applying a filter will bring up a dialogue in which the user has to select on which stack to apply the filter via a dropdown menu, and fill in the required parameters the filter has.
