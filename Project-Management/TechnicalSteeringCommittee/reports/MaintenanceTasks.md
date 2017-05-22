@@ -67,11 +67,11 @@ Unassigned (not suitable for pool)
 Unsorted
 --------
 
-8. Investigate overhead from logging. Specifically
-   9. Would we benefit from checking the logging level before constructing a string?
-   10. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
-   10. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
-   11. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
+1. Investigate overhead from logging. Specifically
+   1. Would we benefit from checking the logging level before constructing a string?
+   1. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
+   1. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
+   1. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 1093777. radon as a job in static analysis tab
