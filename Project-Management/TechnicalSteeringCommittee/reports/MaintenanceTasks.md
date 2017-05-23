@@ -22,7 +22,7 @@ Highest priority
    4. Require the above statement in all new work.
 14. move to gcc >= 5.3
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
-    2. Ubuntu 14.04 (Whitfield/Bush)
+    2. [Ubuntu 14.04](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test?field.series_filter=trusty) (Whitfield/Bush)
 3. Reducing static analysis issues that are on every pull request
    1. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/)
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
