@@ -71,14 +71,16 @@ The points are taken from the original `IndexInfo` design document linked in the
 Declaring the property in C++:
 ```cpp
 //Property name may be fixed?
-declareProperty(make_unique<WorkspacePropertyWithIndex<MatrixWorkspace>>("InputWorkspaceWithIndex", IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
+declareProperty(WorkspacePropertyWithIndex("InputWorkspace", IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
+//IndexType::WorkspaceIndex is the defaul
+declareProperty(WorkspacePropertyWithIndex("InputWorkspace"));
 ```  
 In order to reduce typing we could include builder functions which allow for more concise property declaration:
 ```cpp
 //Builder method returns a unique_ptr?
 declareProperty(CreateMatrixWorkspaceWithSpectrumNumber("InputWorkspaceWithIndex");
-//or
-declareProperty(CreateEventWorkspaceWithSpectrumNumber("InputWorkspaceWithIndex");
+//or alternatively
+declareProperty(CreateWithSpectrumNumber<MatrixWorkspace>("InputWorkspaceWithIndex");
 ```
 
 **Algorithm Dialog Box (GUI)**:
@@ -110,17 +112,23 @@ std::tie(inputWS, indices) = getProperty("InputWorkspaceWithIndex");//returns tu
 *Python*:
 
 
-In order to reduce the load on script authors, we could split keyword arguments and create types which capture each index type:
+In order to reduce the load on script authors, we could split keyword arguments and create types which capture each index type. This expanding arguments allows users to understand the autocomplete in the scripting editor more easily.:
 ```python
 # The index types could accept a range as a string or
 # a numpy array which contains the values.
 ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Spectra=("1:33") )
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Indices=("1:33") )
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, IDs=("1:33") )
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Indices=("0:32") )
+ChangePulseTime(TimeOffset=10, InputWorkspace=ws, IDs=("1001:1101") )
+```
+For multiple properties of this type in an algorithm, we could enforce a policy of pre-pending the property name on the extra keyword:
+```python
+# The index types could accept a range as a string or
+# a numpy array which contains the values.
+ChangePulseTime(TimeOffset=10, Workspace1=ws, Workspace2=ws, Workspace1Spectra=("1:33"), Workspace2Indices=("0:32"))
 ```
 Property Access would then take the form:
 ```python
-inputWS, indices = getProperty("InputWorkspaceWithIndex")
+inputWS, indices = getProperty("InputWorkspace")
 ```
 
 ### Development Stages and Roll-Out
