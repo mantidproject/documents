@@ -14,6 +14,7 @@ Maintenance tasks for 3.11
 Highest priority
 ----------------
 
+1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue [#18550](https://github.com/mantidproject/mantid/issues/18550)
    1. Will cover `scripts` folder and systemtests
@@ -30,7 +31,6 @@ Highest priority
 Pool
 ----
 
-1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
