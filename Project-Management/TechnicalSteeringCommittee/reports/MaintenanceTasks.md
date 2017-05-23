@@ -23,19 +23,14 @@ Highest priority
 14. move to gcc >= 5.3
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
     2. Ubuntu 14.04 (Whitfield/Bush)
+3. Reducing static analysis issues that are on every pull request
+    4. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/)
+    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
 
 Pool
 ----
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
-1. Reducing static analysis issues (discus stewards and soft limits)
-    1. [coverity](https://scan.coverity.com/projects/335)
-    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)
-    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
-    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
-    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
-    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
-    2. [valgrind](http://builds.mantidproject.org/view/Valgrind/job/valgrind_core_packages/) (is currently only kernel and geometry)
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
@@ -43,6 +38,12 @@ Pool
     2. See which ones we can turn off now.
     3. Identify functions and classes with deprecated code.
     4. example: we currently use `std::auto_ptr` with `boost::python`.
+1. Reducing static analysis issues (discus stewards and soft limits)
+    1. [coverity](https://scan.coverity.com/projects/335)
+    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
+    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
+    2. [valgrind](http://builds.mantidproject.org/view/Valgrind/job/valgrind_core_packages/) (is currently only kernel and geometry)
 1. enable warnings and fix issues
    1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
    1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
