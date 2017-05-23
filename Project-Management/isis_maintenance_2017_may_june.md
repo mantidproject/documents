@@ -34,7 +34,6 @@ The initial pairs are chosen via the script below.
 
 TODO: Modify script to have only one group of people
 
-```python
 import numpy as np
 import pprint as pp
 
@@ -43,23 +42,41 @@ def get_random_index(high_value):
     return int(np.random.uniform(low=0, high=high_value, size=None))
 
 
-def pair_people(group1, group2):
-    if len(group1) != len(group2):
-        raise RuntimeError("The categories are not matched in length")
+def pair_people(group):
     pairs = {}
-    total_length = len(group1)
-    for index in range(len(group1)):
-        high_value = total_length - index
-        index_cat1 = get_random_index(high_value)
-        index_cat2 = get_random_index(high_value)
-        pairs.update({group1.pop(index_cat1): group2.pop(index_cat2)})
-    return pairs
+    unpaired = None
+    number_of_groups = len(group)/2
+
+    for index in range(number_of_groups):
+        person1_index = get_random_index(len(group))
+        person1 = group.pop(person1_index)
+
+        person2_index = get_random_index(len(group))
+        person2 = group.pop(person2_index)
+        pairs.update({person1: person2})
+    return pairs, group
 
 
-group_people1 = ["P1", "P2"]
-group_people2 = ["P3", "P4"]
-programming_pairs = pair_people(group_people1, group_people2)
-pp.pprint(programming_pairs)
+def generate_pairs(group):
+    pairs, unpaired = pair_people(group)
+    print("+++++++++++++++++++++++++++++++")
+    print("Groups")
+    print("+++++++++++++++++++++++++++++++")
+    pp.pprint(pairs)
+    if unpaired:
+        print("The unpaired is {}.".format(unpaired))
+    else:
+        print("Everyone has been paired.")
+    print('\n\n')
+
+
+group_people = ["P1", "P2", "P3", "P4"]
+generate_pairs(group_people)
+
+
+group_people = ["P1", "P2", "P3", "P4", "P5"]
+generate_pairs(group_people)
+
 ```
 
 The idea is to have new teams every two days.
