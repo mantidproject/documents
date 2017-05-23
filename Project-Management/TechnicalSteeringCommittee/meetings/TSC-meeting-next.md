@@ -12,7 +12,14 @@ New Items
   * packages are available for Red Hat, Ubuntu.
   * homebrew has a formula
   * just needs building on Windows.
+- [Maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
+- [Mantid developer meeting](https://www.mantidproject.org/Category:Workshop2017)
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
-- [Mantid developer meeting](https://www.mantidproject.org/Category:Workshop2017)
 - [Tomography GUI Design (in python)](https://github.com/mantidproject/documents/pull/43)
+
+Minutes
+-------
+Attendees: Draper, Gigg, Hahn, Moore, Peterson, Savici, Whitfield
+
+- yaml-cpp will be an additional dependency
