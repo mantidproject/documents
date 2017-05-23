@@ -26,13 +26,13 @@ Pool
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
 1. Reducing static analysis issues (discus stewards and soft limits)
-   2. [coverity](https://scan.coverity.com/projects/335)
-   4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)
-   3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
-   2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
-   294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
-   1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
-   2. [valgrind](http://builds.mantidproject.org/view/Valgrind/job/valgrind_core_packages/) (is currently only kernel and geometry)
+    1. [coverity](https://scan.coverity.com/projects/335)
+    4. [cppcheck 1.73](http://builds.mantidproject.org/job/master_cppcheck/)
+    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
+    2. [address-sanitizer](http://builds.mantidproject.org/view/Static%20Analysis/job/address_sanitizer/)
+    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
+    1. [pylint](http://builds.mantidproject.org/job/master_pylint/)
+    2. [valgrind](http://builds.mantidproject.org/view/Valgrind/job/valgrind_core_packages/) (is currently only kernel and geometry)
 1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
 1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
