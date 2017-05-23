@@ -87,8 +87,6 @@ Unsorted
          1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
          2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
    2. Smaller checks that could be updated in a single PR.
-10. Clang/C2 working on Windows
-   1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
 14. move to [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
 
 For another release
@@ -107,6 +105,9 @@ For another release
 15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
 17. [Use erase-remove idiom instead of PeaksWorkspace::removePeak(...)](https://github.com/mantidproject/mantid/issues/19472)
+10. Clang/C2 working on Windows
+    1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
+9. MSVS 2017 support
 
 Converted to actual tickets during a release
 --------------------------------------------
