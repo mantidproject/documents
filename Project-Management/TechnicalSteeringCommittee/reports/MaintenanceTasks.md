@@ -20,7 +20,6 @@ Highest priority
    3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
    4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
    4. Require the above statement in all new work.
-1. Migrate Mantid internals to use `HistogramData` features. Remove usage of the "Deprecated" legacy interface. [umbrella issue](https://github.com/mantidproject/mantid/issues/17641) and get started. (Lamar)
 
 Pool
 ----
