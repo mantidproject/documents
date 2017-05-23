@@ -32,8 +32,6 @@ As a trial we would like to pair two developers to a small team to tackle the ma
 
 The initial pairs are chosen via the script below. 
 
-TODO: Modify script to have only one group of people
-
 ```python
 import numpy as np
 import pprint as pp
