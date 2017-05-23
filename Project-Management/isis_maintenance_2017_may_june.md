@@ -101,4 +101,4 @@ The available developers are:
 Some methods are:
 * Check if unit test generates a file. Check if another test uses and deletes a file with the same name.
 * Run all tests in Windows debug mode.
-* ???
+* Try setting `OMP_NUM_THREADS` to a value above the number of cores you have to stress the test.
