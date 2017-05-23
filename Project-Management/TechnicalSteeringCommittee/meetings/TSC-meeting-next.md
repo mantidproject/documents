@@ -14,5 +14,5 @@ New Items
   * just needs building on Windows.
 - [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
-- Mantid developer meeting
+- [Mantid developer meeting](https://www.mantidproject.org/Category:Workshop2017)
 - [Tomography GUI Design (in python)](https://github.com/mantidproject/documents/pull/43)
