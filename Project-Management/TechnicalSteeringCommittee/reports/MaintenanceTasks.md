@@ -24,8 +24,8 @@ Highest priority
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
     2. Ubuntu 14.04 (Whitfield/Bush)
 3. Reducing static analysis issues that are on every pull request
-    4. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/)
-    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
+   1. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/)
+   294742. [flake8](http://builds.mantidproject.org/job/master_flake8/)
 
 Pool
 ----
