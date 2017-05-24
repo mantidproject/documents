@@ -27,7 +27,7 @@ The user requirements for the interface have been listed [here](https://github.c
 The development requirements, following from the user requirements, are listed [here](https://github.com/mantidproject/isis_imaging/wiki/High-Level-Development-Requirements-and-Guidelines)
 
 # Motivation
-The current [Tomography Reconstruction](https://github.com/mantidproject/mantid/tree/043095a619bc8851942a31253a1a8f8b820ab30f/MantidQt/CustomInterfaces/inc/MantidQtCustomInterfaces/Tomography) interface was found to not satisfy the current imaging requirements. An easy solution to the problems was not found. With the agreement of the IMAT imaging scientists work is to be started on this design for a rewrite of the interface. Python is the language of choice, in order to be able to make use of visualising libraries like Matplotlib and reconstruction packages like Tomopy.
+The current [Tomography Reconstruction](https://github.com/mantidproject/mantid/tree/043095a619bc8851942a31253a1a8f8b820ab30f/MantidQt/CustomInterfaces/inc/MantidQtCustomInterfaces/Tomography) interface was found to not satisfy the current imaging requirements. An easy solution to the problems was not found. With the agreement of the IMAT imaging scientists and senior members of the Mantid team, work is to be started on this design for a rewrite of the interface. Python is the preferred language here, in order to be able to make use of visualising libraries like Matplotlib and interactions with Python based reconstruction packages like Tomopy.
 
 # Requirements
 1. Visualisation of single or volume of images.
