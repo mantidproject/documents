@@ -80,7 +80,7 @@ A future upgrade on this will take into account which is the _current focus_ of 
 ## Visualisation
 Visualisation will be done using Matplotlib. Each stack will be a separate part of a QDockWidget, so the users will be able to arrange the visualised stacks in any way they want. This also means that there can be more than one stack loaded at a time.
 
-This must allow for the user to go to any indice from the volume. 
+This must allow for the user to go to any index from the volume. 
 
 The visualisation must allow for a rectangle ROI selection, that is persistent if the image underneath is changed. It also must allow for the visualisation of a histogram of the selected ROI (computation should be done in the `core` package).
 
@@ -89,7 +89,7 @@ Currently the idea is to use `FigureCanvasQtAgg` with the default drawing algori
 ## Applying a filter
 Applying a filter will bring up a dialogue in which the user has to select on which stack to apply the filter via a dropdown menu, and fill in the required parameters the filter has.
 
-Any filters should be dynamically registered using a [cli_registrator](https://github.com/mantidproject/isis_imaging/blob/master/isis_imaging/core/algorithms/cli_registrator.py) style approach.
+Any filters should be dynamically registered using the [registrator](https://github.com/mantidproject/isis_imaging/blob/master/isis_imaging/core/algorithms/registrator.py) style approach. Filters will have to implement `cli_register` and `gui_register` functions that register them with the command line and graphical interface, respectively, in order to be visible on each of the interfaces.
 
 Current issues for this section:
 - Dynamic dialogue building
