@@ -88,7 +88,7 @@
 * mantid.sns
 * can add instrument or technique specific sublibraries
     - `mantid.sns.corelli.CrossCorelate`
-    - `mantid.sns.directinelatic.GetIncidentEnergy`
+    - `mantid.sns.inelatic.GetIncidentEnergy`
 
 ---
 
