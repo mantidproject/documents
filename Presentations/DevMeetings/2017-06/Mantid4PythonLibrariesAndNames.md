@@ -70,6 +70,9 @@
     - neutronic constants
 * mantid.remote
     - `SubmitRemoteJob`, `AbortRemoteJob`
+* mantid.simulations
+    - deal with outside simulation programs (CASTEP, SASSENA, ...)
+    - `CalculateInelasticScatteringFromAbInitioPhonon` (`Abins`)
 * mantid.workspace
     - manipulate workspaces, history
     - should we move all workspace objects here?
@@ -88,7 +91,7 @@
 * mantid.sns
 * can add instrument or technique specific sublibraries
     - `mantid.sns.corelli.CrossCorelate`
-    - `mantid.sns.inelatic.GetIncidentEnergy`
+    - `mantid.sns.inelastic.GetIncidentEnergy`
 
 ---
 
