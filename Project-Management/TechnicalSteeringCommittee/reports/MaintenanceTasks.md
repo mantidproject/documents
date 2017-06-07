@@ -31,7 +31,7 @@ Highest priority
 Pool
 ----
 
-1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h)
+1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h) [#19824](https://github.com/mantidproject/mantid/issues/19824)
 1. Replace `Boost.TypeTraits` with `<type_traits>`
 11. Stop using classes and member function removed in C++17.
     1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/): `_HAS_AUTO_PTR_ETC`, `_HAS_OLD_IOSTREAMS_MEMBERS`, `_HAS_FUNCTION_ASSIGN`, `_HAS_TR1_NAMESPACE`, `_HAS_IDENTITY_STRUCT`
