@@ -32,10 +32,16 @@ In addition to addressing algorithm name violations and inconsistencies, we have
 		```
 		
 		Users would then retrieve a tuple of values:
+		
+		C++11/14
 		```cpp
-		const MatrixWorkspace_const_sptr inputWS;
-		const IndexSet indexSet;
+		MatrixWorkspace_const_sptr inputWS;
+		IndexSet indexSet;
 		std::tie(inputWS, indexSet) = getProperty("InputWorkspaceAndIndex");
+		```
+		C++17
+		```cpp
+		auto [inputWS, indexSet] = getProperty("InputWorkspaceAndIndex");
 		```
 		
 		or in python:
