@@ -14,8 +14,8 @@
 
 # [Move from Qt4 and Qwt5](/Project-Management/TechnicalSteeringCommittee/reports/MantidQt5.md)
 
-* Qt4 is unsupported since December 2015
 * Qwt5 requires Qt4
+* Qt4 is unsupported since December 2015
 
 ---
 
