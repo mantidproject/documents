@@ -100,4 +100,9 @@
 * Move things from mantid.kernel (mostly to mantid.math or mantid.api)
 * Move things from mantid.geometry (mostly into mantid.math.instrument)
 
+---
+
+# New names
+
+* [new names](https://www.dropbox.com/s/ksh5qu9fgu6a732/Mantid4Algorithms.xlsx?dl=0)
 
