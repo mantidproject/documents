@@ -29,7 +29,7 @@ Highlights of information from the TSC
 # On the horizon - [move from python2](/Project-Management/TechnicalSteeringCommittee/reports/MantidPython3.md)
 
 * Python2.7 is end of life in 2020
-* IPython stop supporting pyhon2 in 2019
+* IPython stop supporting python2 in 2019
 * matplotlib stops supporting python2 in 2018
 --
 
