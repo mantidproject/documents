@@ -24,4 +24,6 @@ In addition to addressing algorithm name violations and inconsistencies, we have
 	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceIDs="1:33", TimeOffset=10)
 	```
 	- Users will be presented with the following when running the algorithm using the UI. Notice the user may select the desired index type based on the allowed input index types specified by the algorithm author:
-	![](https://github.com/mantidproject/documents/edit/master/Presentations/DevMeetings/2017-06/IndexPropertyGUI1.png) ![](https://github.com/mantidproject/documents/edit/master/Presentations/DevMeetings/2017-06/IndexPropertyGUI2.png)
+	
+	![alt text](https://github.com/mantidproject/documents/edit/master/Presentations/DevMeetings/2017-06/IndexPropertyGUI1.png ) 
+	![alt text](https://github.com/mantidproject/documents/edit/master/Presentations/DevMeetings/2017-06/IndexPropertyGUI2.png "User can select one of multiple types")
