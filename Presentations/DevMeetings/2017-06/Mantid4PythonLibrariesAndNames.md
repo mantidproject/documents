@@ -30,10 +30,13 @@
 * mantid.math.events
     - deals with events (technique agnostic)
     - `FilterEvents`, `RebinByPulseTime`
-* mantid.math.instrument
+* mantid.math.instrument (maybe mantid.instrument)
     - grouping, masking, etc
     - include `Instrument`, `Goniometer` objects
     - `GroupDetectors`, `MaskBankTubePixel` (currently `MaskBTP`), `SetGoniometer`, `MoveInstrumentComponent`
+
+---
+
 * mantid.math.multidimensional
     - technique agnostic multidimensional workspaces
     - `mantid.math.multidimensional.Rebin`(`BinMD`/`SliceMD`)
@@ -41,13 +44,16 @@
 * mantid.metadata
     - logs, title, but not history
     - `AddLog` (instead of `AddSampleLog`), `CorrectLogTimes`
-* mantid.muon
+* mantid.muons
     - muon related stuff
     - `CalculateAsymmetry` (instead of `AsymmetryCalc`)
 * mantid.neutrons
     - things that are related to neutrons (time of flight), but not specific to a certain subfield (like diffraction)
     - `ConvertUnits`, `ConvertToMultiDimensionalWorkspace` (`ConvertToMD`), 
     - `NormaliseByProtonCharge` (`NormaliseByCurrent`), `Correct3HeTubeEfficiency`(`He3TubeEfficiency`)
+
+---
+
 * mantid.neutrons.crystal
     - single crystal stuff. Will include `UnitCell`, `OrientedLattice`, `SymmetryOperation`
     - `SetUB`, `FindPeaksReciprocalSpace` (`FindPeaksMD`), `IndexPeaks`
@@ -64,6 +70,9 @@
     - `FindReflectometryLines`
 * mantid.neutrons.sans
     - `CalculateEfficiency`
+
+---
+
 * mantid.constants
     - no algorithms here
     - physical constants
