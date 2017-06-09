@@ -19,9 +19,9 @@ In addition to addressing algorithm name violations and inconsistencies, we have
 	#Spectrum Numbers
 	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceSpectra="1:33", TimeOffset=10)
 	#Workspace Indices
-	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceIndices="1:33", TimeOffset=10)
+	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceIndices="0:55,80,81", TimeOffset=10)
 	#Detector IDs
-	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceIDs="1:33", TimeOffset=10)
+	outWs = ChangePulsetime("BSS_11841_event", InputWorkspaceIDs="1002,1004:1009", TimeOffset=10)
 	```
 	- Users will be presented with the following when running the algorithm using the UI. Notice the user may select the desired index type based on the allowed input index types specified by the algorithm author:
 	
