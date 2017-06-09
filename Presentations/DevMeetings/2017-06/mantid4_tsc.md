@@ -1,4 +1,4 @@
-class: center
+class: center,middle
 
 # Technical direction of mantid
 
@@ -8,11 +8,14 @@ Highlights of information from the TSC
 
 # Long term goals
 
-* Mantid as a [SciPy](https://www.scipy.org/) styled library
+* Mantid as [SciPy](https://www.scipy.org/) styled libraries
 * Easy to encorporate into other software
 * Reliable and stable
+--
 
-**Mantid v4 is a stop on the way**
+.center[**Mantid v4 is a stop on the way**
+
+<img src="https://github.com/mantidproject/documents/raw/master/Images/icons/App%20Icons/mantidbuilder_256.png"/>]
 
 ---
 
@@ -28,3 +31,7 @@ Highlights of information from the TSC
 * Python2.7 is end of life in 2020
 * IPython stop supporting pyhon2 in 2019
 * matplotlib stops supporting python2 in 2018
+--
+
+* RHEL7 is python 2.7 only
+* RHEL8 release date has not been announced
