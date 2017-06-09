@@ -1,4 +1,8 @@
+class: center
+
 # Technical direction of mantid
+
+Highlights of information from the TSC
 
 ---
 
