@@ -55,7 +55,6 @@ Assigned
 
 1. Finish GSL2 compatibility work **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).(Roman)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
-13. Replace `new Progress` with `Kernel::make_unique<Progress>` in the ~~35~~ 40 files that do it [#17590](https://github.com/mantidproject/mantid/issues/17590) (Dimitar)
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar)
   1. [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
 1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
