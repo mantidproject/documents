@@ -100,7 +100,7 @@
 ### Simplifying Mantid<a id="sec-1-1-7" name="sec-1-1-7"></a>
 
 -   AJ No problems for us but some instrument-specific interfaces could be designed better (too fussy). In Mantid 4 could we go through all interfaces and identify what functionality is for edge cases (ND: out of scope to simplify all interfaces for Mantid 4.0).
--   SK We turn off icons for users. We need diagnostics but hide this for users. The logging tab on the SANS interface can be removed. 1D analysis tab can also probably go.
+-   SK We turn off icons for users. We need diagnostics but could hide this for users. The logging tab on the SANS interface can be removed. 1D analysis tab can also probably go.
 -   CS Things are ok but a basic mode would be good.
 -   SC A simple mode for new users would be good but switching to full mode once familier.
 -   ND Debug options on interfaces could also be off in simple mode (i.e. have one option to control this)
@@ -185,7 +185,7 @@
 
 ### File storage<a id="sec-1-2-8" name="sec-1-2-8"></a>
 
--   SK: Everything we have, reflectometry will need.
+-   SK: Everything we have, reflectometry will need, ie flat cell files, detector pixel efficiency files, pixel mask files, etc (things that the ISIS SANS user file slurps in unknowingly to users) . As reflectometry adds 2D detectors these things will become important.
 -   MS: Need some way of storing and datestamping this info. Changing and datestamping IDF or params file is a nightmare. ICat should allow us to upload files but doesn't seem to work. But that would allow users to download remotely - favoured solution would be a web interface. A good thing about ICat is that it limits access by user.
 -   SK/AJ: SANS stores on archive of instruments (on network). Separate folder for user files. Some stored locally for speed. Could store in nexus file and cart around with data.
 -   AJ: User needs to remember to take mask file away with the files it references. Also some issues with getting the path correct.
@@ -207,7 +207,7 @@
 ### Q resolution<a id="sec-1-2-9" name="sec-1-2-9"></a>
 
 -   MS: In reflectometry we are now starting to worry about Q resolutions. Need to chat to SANS(SK) about this. AJ would like to be kept in the loop.
--   AJ: Currently pretend final resolution is gaussian. Long term go to more complex description of resolution. Mentioned a paper published by David Milburn & Jack Hub in the 80's.
+-   AJ: Currently pretend final resolution is gaussian. Long term go to more complex description of resolution. Mentioned a paper published by David Mildner & Jack Carpenter in the 80's.
 -   AJ: Discussion has been for 1D data. For 2D data another kettle of fish.
 
 ### Misc<a id="sec-1-2-10" name="sec-1-2-10"></a>
