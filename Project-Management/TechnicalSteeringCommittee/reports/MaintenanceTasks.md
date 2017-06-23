@@ -31,8 +31,7 @@ Highest priority
 Pool
 ----
 
-1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h) [#19824](https://github.com/mantidproject/mantid/issues/19824)
-1. Replace `Boost.TypeTraits` with `<type_traits>`
+1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h) Done in: [#19824](https://github.com/mantidproject/mantid/issues/19824) ?
 11. Stop using classes and member function removed in C++17.
     1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/): `_HAS_AUTO_PTR_ETC`, `_HAS_OLD_IOSTREAMS_MEMBERS`, `_HAS_FUNCTION_ASSIGN`, `_HAS_TR1_NAMESPACE`, `_HAS_IDENTITY_STRUCT`
     2. See which ones we can turn off now.
@@ -55,8 +54,9 @@ Assigned
 
 1. Finish GSL2 compatibility work **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).(Roman)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
-12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar) Info: [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/)
+12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar) Info: [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/), [PR](https://github.com/mantidproject/mantid/pull/19917)
 1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
+1. Replace `Boost.TypeTraits` with `<type_traits>` [#19919](https://github.com/mantidproject/mantid/issues/19919) (Dimitar)
 
 Unassigned (not suitable for pool)
 ----------------------------------
