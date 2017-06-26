@@ -56,7 +56,7 @@ Assigned
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
 12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar) Info: [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/), [PR](https://github.com/mantidproject/mantid/pull/19917)
 1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
-1. Replace `Boost.TypeTraits` with `<type_traits>` [#19919](https://github.com/mantidproject/mantid/issues/19919) (Dimitar)
+1. Replace `Boost.TypeTraits` with `<type_traits>` [#19919](https://github.com/mantidproject/mantid/issues/19919) (Dimitar), [PR](https://github.com/mantidproject/mantid/pull/19928)
 
 Unassigned (not suitable for pool)
 ----------------------------------
