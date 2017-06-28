@@ -143,7 +143,9 @@ There should also be a collection of system tests to make sure that the function
 
 ### GUI
 
-The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used.
+The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used. 
+
+Simpler cases like the `load`/`save` dialogues do not need to use MVP, because they have very little, if any, logic.
 
 # Guidelines for ISIS Imaging CORE
 
