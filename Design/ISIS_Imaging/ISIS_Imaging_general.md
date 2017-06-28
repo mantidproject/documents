@@ -3,7 +3,7 @@
 - [Motivation](#motivation)
 - [User Requirements](#user-requirements)
 - [Development Requirements](#development-requirements)
-- [Terminology (add images?)](#terminology-add-images)
+- [Terminology](#terminology)
 - [Finalising name choice](#finalising-name-choice)
 - [Project setup](#project-setup)
     - [Continous Integration with Coverage](#continous-integration-with-coverage)
@@ -83,9 +83,13 @@ The current [Tomography Reconstruction](https://github.com/mantidproject/mantid/
 1. Continous Integration on Github
 1. Installation
 
-# Terminology (add images?)
+# Terminology
 
-Projection - Look towards the object from the side
+Projection - Look towards the object from the side, image with the histogram:
+![Projection image](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/projection.png)
+
+How a projection looks after pre-processing, image with the histogram:
+![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/pre_processed.png)
 
 Radiograms - Multiple projections for a _single_ angle
 
@@ -97,11 +101,12 @@ Processing a Tomography as volume of Projections - This is the data is loaded in
 - Each image's dimensions are described with X and Y.
 - The Z axis is used to traverse the images. Note: some packages may use the format `array[X, Y, Z]` for traversal
 
-Sinograms - same as volume of Projections, however the traversal is done on the X axis in `array[Z, X, Y]`, giving the horizontal movement of the object throughout the tomography for each row.
+Sinograms - same as volume of Projections, however the traversal is done on the X axis in `array[Z, X, Y]`, giving the horizontal movement of the object throughout the tomography for each row. An image of the sinogram with it's histogram:
+![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sinogram%2Bhistogram.png)
 
-Slices - usually referred to the sinograms, after they've been run through a reconstruction algorithms which produced the reconstruction slices.
+Slices - referrs to a reconstructed sinogram. ![Reconstructed slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/reconstruction.png)
 
-Attenuation - the result from performing a `-ln(image)`, which can be written as `numpy.negative(numpy.log(image))`
+Attenuation - the result from performing a `-ln(image)`, which can be written as `numpy.negative(numpy.log(image))`. Depending on the dataset adding the `-log` to pre-processing can _significantly_ improve the reconstruction results and help remove noise!
 
 # Finalising name choice
 
@@ -239,6 +244,13 @@ Stack Visualiser (Image Volume)
 - It allows the user to initiate contrast adjustment
 - It visualises the images
 - On destruction removes itself from the parent, and the list of unique IDs. It also removes any references to the data so it can be GC by Python
+
+![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/all_views.png)
+
+The Main Window allows us to place the stack in multiple different places:
+- As tabs (seen bottom left)
+- On the right of the tabs, inside the main window
+- Floating around
 
 ## .ui Compiling
 
