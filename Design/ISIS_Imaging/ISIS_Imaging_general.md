@@ -100,7 +100,7 @@ Attenuation - the result from performing a `-ln(image)`, which can be written as
 
 # Finalising name choice
 - MantidImaging
-- ISISImaging
+- ISIS_Imaging
 - Other suggestions?
 
 # Project setup
@@ -110,10 +110,14 @@ The package should have a continous integration flow on Pull Requests, which run
 After sphinx documentation is added, the contiguous integration could also check if it builds successfully.
 
 ## Installation
-The package should be installable using `python setup.py install`, making it available system wide.
+We can either work towards the package being installable using `python setup.py install`, making it available system wide. The alternative solution is to use it from the folder and provide global access like [the example here](https://mantidproject.github.io/isis_imaging/user_guide/setting_up.html#global-access-to-the-package)
 
 ## Testing
 Testing will use `nose` to run the tests and `coverage` to compute the tests' coverage. The actual unit tests should use the built-in `unittest`, and some might have to use `numpy.testing` for asserting equality for `numpy.ndarrays`.
+
+A module to run the tests has been provided and is called `run_tests.py`, in the root of the repository. It takes as an argument the names of different packages, and then runs the tests specifically for them. The possible arguments are listed via `-h` flag, or at the top of the file in the source.
+
+There is currently no integration with Mantid's testing.
 
 ### Core 
 Every module should have associated unit tests, unless there is good reason not to have one. 
