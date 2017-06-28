@@ -21,6 +21,7 @@
 - [Implementation for ISIS_Imaging GUI](#implementation-for-isis_imaging-gui)
     - [General Structure](#general-structure)
     - [.ui Compiling](#ui-compiling)
+    - [Using iPython](#using-ipython)
     - [Loading](#loading)
     - [Handling multiple stacks in dialogues](#handling-multiple-stacks-in-dialogues)
     - [Saving](#saving)
@@ -248,6 +249,7 @@ Stack Visualiser (Image Volume)
 ![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/all_views.png)
 
 The Main Window allows us to place the stack in multiple different places:
+
 - As tabs (seen bottom left)
 - On the right of the tabs, inside the main window
 - Floating around
@@ -255,6 +257,32 @@ The Main Window allows us to place the stack in multiple different places:
 ## .ui Compiling
 
 Currently the `.ui` is compiled dynamically while running. It might be better if this is changed to the mslice approach where all of the `.ui` files are compiled during 'build' and `.uic` files are created.
+
+## Using iPython
+
+The benefit of .ui compiling at runtime is that we can quickly run the `MainWindow` inside an `iPython` instance. A simple example of that:
+
+``` py
+In [1]: %load_ext autoreload
+In [2]: %autoreload 2
+
+In [3]: mw = isis_imaging.main_window.MainWindowView(None)
+
+In [4]: mw.show()
+
+# close the window manually, we get error if we try to show
+In [7]: mw.show()
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+<ipython-input-7-1b92a2253c98> in <module>()
+----> 1 mw.show()
+
+RuntimeError: wrapped C/C++ object of type MainWindowView has been deleted
+
+In [8]: mw = isis_imaging.main_window.MainWindowView(None)
+
+In [9]: mw.show() # works again
+```
 
 ## Loading
 
