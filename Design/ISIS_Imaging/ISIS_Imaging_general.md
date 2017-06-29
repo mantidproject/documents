@@ -421,30 +421,138 @@ A new configuration might have to be added in `core.configurations` to handle th
 
 ## Issues with Finding Center of Rotation and Reconstruction
 
-Normally the data volume will be loaded in as radiograms. During the pre-processing stage not all images need to be present for the filter results to be seen. 
+Normally the data volume will be loaded in as radiograms: 
+![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/pre_processed.png)
 
-Doing operations like finding the Center of Rotation requires the image to be Sinograms (the Z and X axis are flipped to give a top to down view/iteration of the images). This cannot be done with a simple `np.swapaxes(data, 0, 1)` because the memory needs to be in contiguous order, and swapaxes breaks that. `np.ascontiguousarray` solves that, but it increases the memory usage by about 30-50%. It also **requires** that the whole stack be loaded into the memory _at least_ at one point, otherwise we cannot get a full sinograms, if some of the projections are missing. 
+During the pre-processing stage we can process only a few images to see the results from the applied filter, the full stack _does not need_ to be processed, until we are happy with the effects.
 
-Currently this is handled by avoiding loading the whole stack for as long as possible:
+Doing operations like finding the Center of Rotation requires the image to be Sinograms:
+![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sinogram%2Bhistogram.png)
 
-- Do the whole pre-processing, until happy, pre-process the volume
-- ONLY THEN load the whole stack into memory, the pre-processing usually crops the dataset so this operation is also a lot faster, then immediatelly flip the axis and saves out the sinograms.
-- Following COR or reconstruction operations are done on the previously saved out sinograms.
+An example of how to do that with the package is `isis_imaging -i /your/data --convert --swap-axes -o /output/path`. In the end it boils down to a simple `np.swapaxes(data, 0, 1)`. 
 
-A feature that might help is the ROI load, meaning we do the ROI crop immediatelly on load. For example this will help us load only the first row from every projection, constructing the first sinogram. However this is complicated and error prone, and will require extensive changes to the load module.
+If `np.swapaxes` is done during processing, it breaks the contiguous order of the data. Attempting a reconstruction while the data is not in contiguous order will cause `tomopy` to manually copy the data inside the `tomopy.recon` function.
 
-<!-- Handle like a filter? -->
+We can manually make the array contiguous with `np.ascontiguousarray`, but it increases the memory usage by about 30-50%. 
+
+Currently we avoid loading the whole stack during the pre-processing, or until we want to work on the sinograms. This means we apply the pre-processing on the radiograms, and then when happy, convert to sinograms, and continue pre-processing or start looking for the center of rotation.
+
+A feature that might help is a Region of Interest (ROI) load, which would load the image, and save just the ROI we want. For example this will help us load only the first row from every projection, constructing the first sinogram. I am not aware of any package that lets you control what region to load, they usually load the whole image, thus it may be possible to:
+
+- Load the full image
+- Use it to construct the first row of _every_ sinogram of the stack
+- Repeat and keep adding a row from each image
+
 ### Automatic Center of Rotation (COR) with imopr cor
 
-Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
+Once we have the histograms into memory with contiguous order, we can proceed to find the Center of Rotation for each sinogram.
 
 Currently the automatic COR calculation is done on the sinograms and uses `core.imopr.cor`. Ideally we want to keep that behaviour. Slight change might be necessary to the `core.imopr.cor` module, as currently it does not return the CORs, but only prints them in the console.
 
+That usage can be accessed via `isis_imaging -i /some/sinograms/ --imopr cor --indices 0 1800 100`, this will automatically calculate the COR for every 100th image of all the 1800 images we have. The output looks like this:
+
+``` text
+➜  ~/temp/chadwick isis_imaging -i sinograms --imopr cor --indices 0 1800 100
+ >> WARNING: No output path specified, no output will be produced!
+Sample: [========================================]20 / 20
+Data shape (20, 1570, 1070)
+*********************************************
+*
+*     Running IMOPR with action COR. This works ONLY with sinograms
+*
+*********************************************
+ ---Importing tool tomopy
+ ---Tool loaded. Elapsed time: 9.70363616943e-05 sec.
+Calculating projection angles..
+Running COR for index 0 [ 1510.95703125]
+Running COR for index 100 [ 751.5078125]
+Running COR for index 200 [ 1157.7734375]
+Running COR for index 300 [ 753.1796875]
+Running COR for index 400 [ 723.50390625]
+Running COR for index 500 [ 677.9453125]
+Running COR for index 600 [ 676.2734375]
+Running COR for index 700 [ 674.18359375]
+Running COR for index 800 [ 673.765625]
+Running COR for index 900 [ 673.34765625]
+Running COR for index 1000 [ 673.765625]
+Running COR for index 1100 [ 681.2890625]
+Running COR for index 1200 [ 677.109375]
+Running COR for index 1300 [ 677.109375]
+Running COR for index 1400 [ 677.109375]
+Running COR for index 1500 [ 677.109375]
+Running COR for index 1600 [ 677.9453125]
+Running COR for index 1700 [ 676.2734375]
+Total execution time was 164.612098932 sec
+```
+
+As you can see the COR can get confused for some slices, for example slice 0, which is basically empty:
+![Sinogram 0](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sino0.png)
+
+But for the sinogram on position 200, it look okay, just the algorithm was wrong:
+![Sinogram 200](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sino200.png)
+
 ### Center of Rotation (COR) with imopr corwrite
 
-Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
+This is the manual way to determine the COR. It can be accessed with:
 
-The `core.imopr.corwrite` module works with sinograms. It saves out reconstructed slices with a range of CORs. We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
+`isis_imaging -i /some/sinograms/ --imopr 660 680 1 corwrite --indices 0 1800 100 -o /output/path/required` 
+
+This has output path required, and will not execute if not provided one. It saves out reconstructed slices with a range of CORs. The range is specified in `--imopr 660 680 1`, the format is `--imopr start_cor end_cor step`. An output from that command could be:
+
+```text
+➜  ~/temp/chadwick isis_imaging -i sinograms --imopr 660 680 1 corwrite --indices 0 1964 100 -o ./cors
+Sample: [========================================]20 / 20
+Data shape (20, 1570, 1070)
+*********************************************
+*
+*     Running IMOPR with action COR using tomopy write_center. This works ONLY with sinograms!
+*
+*********************************************
+ ---Importing tool tomopy
+ ---Tool loaded. Elapsed time: 4.50611114502e-05 sec.
+Calculating projection angles..
+[660, 680, 1]
+Starting writing CORs for slice 0 in ./cors/0
+Starting writing CORs for slice 100 in ./cors/100
+Starting writing CORs for slice 200 in ./cors/200
+Starting writing CORs for slice 300 in ./cors/300
+Starting writing CORs for slice 400 in ./cors/400
+Starting writing CORs for slice 500 in ./cors/500
+Starting writing CORs for slice 600 in ./cors/600
+Starting writing CORs for slice 700 in ./cors/700
+Starting writing CORs for slice 800 in ./cors/800
+Starting writing CORs for slice 900 in ./cors/900
+Starting writing CORs for slice 1000 in ./cors/1000
+Starting writing CORs for slice 1100 in ./cors/1100
+Starting writing CORs for slice 1200 in ./cors/1200
+Starting writing CORs for slice 1300 in ./cors/1300
+Starting writing CORs for slice 1400 in ./cors/1400
+Starting writing CORs for slice 1500 in ./cors/1500
+Starting writing CORs for slice 1600 in ./cors/1600
+Starting writing CORs for slice 1700 in ./cors/1700
+Finished writing CORs in ./cors
+Total execution time was 103.075942993 sec
+```
+
+In the output folder `./cors` we can see a structure like this:
+![CORs Folder](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/corsstruct.png). If we have a look at the COR slices that have been produced, slice 500 with COR 667:
+
+![Slice 667, bad recon slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslice.png). This was reconstructed with a COR of 667. Initially it is not quite clear if it's a good slice or not, but looking at this:
+
+![Slice 667, bad recon slice with text](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslicecircle.png)
+
+We can see the out 'shadow' is because we've missed the COR by quite a bit. Here is slice 500 with COR 530, which is closer to the correct COR:
+![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslice2.png)
+
+It still has that 'shadow' circle around the object, because we're not quite there yet, but close.
+
+The slice with the correct COR looks like this:
+
+![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/goodreconslice.png)
+
+The 'shadow' has now merged into the object in the middle. This is now correct.
+
+We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
 
 ### Tilt correction
 
