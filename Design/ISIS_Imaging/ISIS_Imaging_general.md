@@ -79,19 +79,14 @@ Confusing `System` tab to handle all possible paths, except the data paths, whic
 
 ![System tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/systemtab.png)
 
-The Region of Interest tab is the hardest one to fix, as we need to manually implement a lot of features:
+The Region of Interest tab:
 
 ![ROI tab 1](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab1.png)
 
 ![ROI tab 2](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab2.png)
 
-Usage of Matplotlib to replace the ROI tab comes with all the features we would need to manually implement otherwise, and is one of the biggest PROs for a GUI in Python.
 
-In Python we also get easier integration with the rest of the reconstruction scripts (the `isis_imaging.core` package), and any other reconstruction tools, as well as possible extension to C++ and CUDA for performance critical areas.
-
-Previously there was a lot of files that were just holding information like all of the available filters and their command line parameters, meaning a change in the `core` scripts would need to be _manually_ reflected into the GUI code, thus being very tedious and error prone.
-
-The `core` scripts were rewritten in January 2017, to fix previous problems they had with handling larger stacks and generally poor documentation/structure, making maintenance and testing impossible, and any extension with filters or reconstruction tools hard. This rewriting broke the ability to run a reconstruction from the old Tomography GUI, because the CLI changed, but the old CLI was hard-coded to the C++ interface.
+The Region of Interest tab is the hardest one to fix, as we need to manually implement automatic scaling to window size, correct region of interest translation that takes into account the scaling, zoom, moving the image after zoom, and other features that are expected to be present in an imaging program.
 
 Other functional problems with the GUI:
 
@@ -109,6 +104,12 @@ Drawbacks of switching to a Python GUI:
 - We cannot reuse the remote submission algorithm, unless we want to have dependency on the Mantid Framework for a single algorithm
 
 # 3. Addressing of old Tomography GUI problems with the new Python GUI
+
+Usage of Matplotlib to implement a new ROI tab comes with all the features we would need to manually implement otherwise, and is one of the biggest PROs for a GUI in Python.
+
+In Python we also get easier integration with the rest of the reconstruction scripts (the `isis_imaging.core` package), previously there were a lot of files that were just plain data structures that hold all of the available filters and their command line parameters. This means a change in the `core` scripts needs to be _manually_ reflected into the GUI code.
+
+The `core` scripts were rewritten in January 2017, to fix previous problems they had with handling larger stacks and generally poor documentation/structure, making maintenance and testing impossible, and any extension with filters or reconstruction tools hard. This rewriting broke the ability to run a reconstruction from the old Tomography GUI, because the CLI changed, but the old CLI was hard-coded to the C++ interface.
 
 - No flexible layout
 - Cannot load more than one image/image volume at any time
