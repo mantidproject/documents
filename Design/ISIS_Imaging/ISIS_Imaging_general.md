@@ -41,8 +41,10 @@
         - [Automatic Center of Rotation (COR) with imopr cor](#automatic-center-of-rotation-cor-with-imopr-cor)
         - [Center of Rotation (COR) with imopr corwrite](#center-of-rotation-cor-with-imopr-corwrite)
         - [Tilt correction](#tilt-correction)
+        - [Visualising the tilt](#visualising-the-tilt)
         - [Calculating the real tilt angle](#calculating-the-real-tilt-angle)
     - [Reconstruction](#reconstruction)
+    - [Tools and Algorithms](#tools-and-algorithms)
     - [Remote submission and MPI-like behaviour](#remote-submission-and-mpi-like-behaviour)
         - [Remote compute resource used at ISIS: SCARF](#remote-compute-resource-used-at-isis-scarf)
         - [MPI-like behaviour](#mpi-like-behaviour)
@@ -556,7 +558,7 @@ We want to keep that behaviour as is, with the addition that after the process o
 
 ### Tilt correction
 
-Sometimes the samples are tilted slightly. On the one above the difference in COR between the top and the bottom looks like this:
+Sometimes the samples are tilted slightly. On the one above, the difference in COR between the top and the bottom looks like this:
 
 | Slice |  COR  |
 | ----- | ----- |
@@ -570,17 +572,55 @@ As you can see there is a bit of a difference near the top (slice 422) and the b
 
 However it needs to be accounted for during the reconstruciton. This is currently done in `core.algorithms.cor_interpolate`, which requires the information above (slice and associated COR) and interpolates the rest of the CORs for the slices in between. This method has worked quite well so far, because Tomopy lets us specify a COR for each slice, by providing a list that is of the same length as the number of sinograms.
 
+We can supply the slice/cor information through the command line:
+
+`isis_imaging -i /some/data --cors (the cors from the table) --cor-slices (the slices from the table) ...`
+
+The number of cors and the slices is enforced to be equal. The only exception is that we can provide a single number to `--cors`, which will then be assigned to the whole stack. Some lucky samples happen to have the exact same COR for every slice.
+
+### Visualising the tilt
+
+Knowing the COR for each slice (or interpolating the approximation) gives us information that we could display back to the user. Every COR for a slice maps back to a pixel on the projection image. This means we can create a line that is slightly tilted and crosses the projection's center. An exaggerated visualisation looks like this (done by hand, not accurate to the actual COR, but converys the idea):
+
+![Exaggerated Tilt](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/exaggeratedtilt.png)
+
+This is something that has been expressed as a required feature by the scientists, anmd should not be too hard to implement. The rectangle selection class, also has an option to be a line. We could create it as a line and display it as a separate object on the visualisation.
+
 ### Calculating the real tilt angle
 
-TODO draw the triangle on the image
+This is a technique for calculating the angle of tilt, which hasn't been verified by the scientists so it might not be correct, but it doesn't hurt to document it. Having the tilt line (as in the exaggerated tilt above), we can add another line, which is straight and is the length of the image's width, like this:
+
+![Straight line and Tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/straightlinetilt.png)
+
+We can see there is an angle where they cross. That angle should be how far the sample is tilted from the perfect straigth line. If we move the line to end at the last COR, the calculation can be a bit easier:
+
+![Moved straight line and tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/straightlinetilt2text.png)
+
+Calculating the theta angle from the image above should give us the actual tilt. I am not sure if the technique is accurate or correct, and suggestions for improvements are welcome.
 
 ## Reconstruction
-
-Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
 
 The reconstruction works on sinograms and will be done via third party tools Tomopy, Astra Toolbox, MuhRec, etc.
 
 Specific dialogues might have to be created for each tool, to handle the different parameters each one has.
+
+The package has been expanded to require the `--reconstruction` flag to be specified, in order to run the actual reconstruction code. Currently there is a problem that the pre-processing and the reconstruction cannot be done in a single execution, because we cannot convert to sinograms without breaking the contiguous memory and increase the memory usage. The current solution is to convert to sinograms first, save out, and reload the data into a reconstruction run.
+
+A reconstruction submission requires CORs to be specified, and would look like this:
+
+Specifying a common COR for every slice:
+
+`isis_imaging -i /some/sinograms --cors 440 --reconstruction -o /some/output`
+
+Specifying CORs from which the rest will be interpolated:
+
+`isis_imaging -i /some/sinograms --cors 440 450 460 470 --cor-slices 100 200 300 400 --reconstruction -o /some/output`
+
+The reconstruction of a single slice is an atomic operation on the slice. The way it runs in parallel is that each thread/process gets a slice and reconstructs it.
+
+## Tools and Algorithms
+
+The tool and algorithm defaults are `tomopy` and the algorithm `gridrec`. The tool can be specified with `-t` or `--tool`, the algorithm with `-a` or `--algorithm`.
 
 ## Remote submission and MPI-like behaviour
 
