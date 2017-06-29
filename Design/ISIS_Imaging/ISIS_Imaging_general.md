@@ -40,6 +40,8 @@
     - [Issues with Finding Center of Rotation and Reconstruction](#issues-with-finding-center-of-rotation-and-reconstruction)
         - [Automatic Center of Rotation (COR) with imopr cor](#automatic-center-of-rotation-cor-with-imopr-cor)
         - [Center of Rotation (COR) with imopr corwrite](#center-of-rotation-cor-with-imopr-corwrite)
+        - [Tilt correction](#tilt-correction)
+        - [Calculating the real tilt angle](#calculating-the-real-tilt-angle)
     - [Reconstruction](#reconstruction)
     - [Remote submission and MPI-like behaviour](#remote-submission-and-mpi-like-behaviour)
         - [Remote compute resource used at ISIS: SCARF](#remote-compute-resource-used-at-isis-scarf)
@@ -443,6 +445,26 @@ Currently the automatic COR calculation is done on the sinograms and uses `core.
 Once the sinogram issue has been resolved, we will have the sinograms in contiguous memory. This section will assume we already have solved that.
 
 The `core.imopr.corwrite` module works with sinograms. It saves out reconstructed slices with a range of CORs. We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
+
+### Tilt correction
+
+Sometimes the samples are tilted slightly. On the one above the difference in COR between the top and the bottom looks like this:
+
+| Slice |  COR  |
+| ----- | ----- |
+|  422  |  542  |
+|  822  |  540  |
+| 1222  |  540  |
+| 1622  |  537  |
+| 1822  |  536  |
+
+As you can see there is a bit of a difference near the top (slice 422) and the bottom (slice 1822). In this case it's not a lot, only 6 pixels.
+
+However it needs to be accounted for during the reconstruciton. This is currently done in `core.algorithms.cor_interpolate`, which requires the information above (slice and associated COR) and interpolates the rest of the CORs for the slices in between. This method has worked quite well so far, because Tomopy lets us specify a COR for each slice, by providing a list that is of the same length as the number of sinograms.
+
+### Calculating the real tilt angle
+
+TODO draw the triangle on the image
 
 ## Reconstruction
 
