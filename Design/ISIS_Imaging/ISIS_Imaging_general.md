@@ -2,53 +2,54 @@
 
 - [1. Motivation](#1-motivation)
 - [2. Old Tomography GUI Design](#2-old-tomography-gui-design)
-- [3. User Requirements](#3-user-requirements)
-- [4. Development Requirements](#4-development-requirements)
-- [5. Terminology](#5-terminology)
-- [6. Finalising name choice](#6-finalising-name-choice)
-- [7. Project setup](#7-project-setup)
-    - [7.1. Continous Integration with Coverage](#71-continous-integration-with-coverage)
-    - [7.2. Installation](#72-installation)
-    - [7.3. Testing](#73-testing)
-        - [7.3.1. Core](#731-core)
-        - [7.3.2. GUI](#732-gui)
-- [8. Guidelines for ISIS Imaging CORE](#8-guidelines-for-isis-imaging-core)
-    - [8.1. CUDA filter expansion](#81-cuda-filter-expansion)
-        - [8.1.3. CuPy](#813-cupy)
-        - [8.1.4. OpenCV](#814-opencv)
-    - [8.2. Reconstruction tools expansion](#82-reconstruction-tools-expansion)
-    - [8.3. File Structure](#83-file-structure)
-    - [8.4. Filters - General implementation structure](#84-filters---general-implementation-structure)
-- [9. Implementation for ISIS_Imaging GUI](#9-implementation-for-isis_imaging-gui)
-    - [9.1. General Structure](#91-general-structure)
-    - [9.2. ui Compiling](#92-ui-compiling)
-    - [9.3. Using iPython](#93-using-ipython)
-    - [9.4. Loading](#94-loading)
-    - [9.5. Handling multiple stacks in dialogues](#95-handling-multiple-stacks-in-dialogues)
-    - [9.6. Saving](#96-saving)
-    - [9.7. Visualisation](#97-visualisation)
-    - [9.8. Histograms](#98-histograms)
-    - [9.9. Contrast normalisation](#99-contrast-normalisation)
-    - [9.10. Applying a filter](#910-applying-a-filter)
-        - [9.10.1. Dynamic dialogue building](#9101-dynamic-dialogue-building)
-        - [9.10.2. Transferring information from the dialogue (the parameters) to the execution](#9102-transferring-information-from-the-dialogue-the-parameters-to-the-execution)
-    - [9.11. Preview a result](#911-preview-a-result)
-    - [9.12. Undoing an operation](#912-undoing-an-operation)
-    - [9.13. Process List](#913-process-list)
-        - [9.13.1. Store image state as part of the History in the process list](#9131-store-image-state-as-part-of-the-history-in-the-process-list)
-        - [9.13.2. Exporting of Process List](#9132-exporting-of-process-list)
-    - [9.14. Processing a full volume](#914-processing-a-full-volume)
-    - [9.15. Issues with Finding Center of Rotation and Reconstruction](#915-issues-with-finding-center-of-rotation-and-reconstruction)
-        - [9.15.1. Automatic Center of Rotation (COR) with imopr cor](#9151-automatic-center-of-rotation-cor-with-imopr-cor)
-        - [9.15.2. Center of Rotation (COR) with imopr corwrite](#9152-center-of-rotation-cor-with-imopr-corwrite)
-        - [9.15.3. Tilt correction](#9153-tilt-correction)
-        - [9.15.4. Visualising the tilt](#9154-visualising-the-tilt)
-        - [9.15.5. Calculating the real tilt angle](#9155-calculating-the-real-tilt-angle)
-    - [9.16. Reconstruction](#916-reconstruction)
-    - [9.17. Tools and Algorithms](#917-tools-and-algorithms)
-    - [9.18. Remote submission and MPI-like behaviour](#918-remote-submission-and-mpi-like-behaviour)
-        - [9.18.1. Remote compute resource used at ISIS: SCARF](#9181-remote-compute-resource-used-at-isis-scarf)
-        - [9.18.2. MPI-like behaviour](#9182-mpi-like-behaviour)
+- [3. Addressing of old Tomography GUI problems with the new Python GUI](#3-addressing-of-old-tomography-gui-problems-with-the-new-python-gui)
+- [4. User Requirements](#4-user-requirements)
+- [5. Development Requirements](#5-development-requirements)
+- [6. Terminology](#6-terminology)
+- [7. Finalising name choice](#7-finalising-name-choice)
+- [8. Project setup](#8-project-setup)
+    - [8.1. Continous Integration with Coverage](#81-continous-integration-with-coverage)
+    - [8.2. Installation](#82-installation)
+    - [8.3. Testing](#83-testing)
+        - [8.3.1. Core](#831-core)
+        - [8.3.2. GUI](#832-gui)
+- [9. Guidelines for ISIS Imaging CORE](#9-guidelines-for-isis-imaging-core)
+    - [9.1. CUDA filter expansion](#91-cuda-filter-expansion)
+        - [9.1.3. CuPy](#913-cupy)
+        - [9.1.4. OpenCV](#914-opencv)
+    - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
+    - [9.3. File Structure](#93-file-structure)
+    - [9.4. Filters - General implementation structure](#94-filters---general-implementation-structure)
+- [10. Implementation for ISIS_Imaging GUI](#10-implementation-for-isis_imaging-gui)
+    - [10.1. General Structure](#101-general-structure)
+    - [10.2. ui Compiling](#102-ui-compiling)
+    - [10.3. Using iPython](#103-using-ipython)
+    - [10.4. Loading](#104-loading)
+    - [10.5. Handling multiple stacks in dialogues](#105-handling-multiple-stacks-in-dialogues)
+    - [10.6. Saving](#106-saving)
+    - [10.7. Visualisation](#107-visualisation)
+    - [10.8. Histograms](#108-histograms)
+    - [10.9. Contrast normalisation](#109-contrast-normalisation)
+    - [10.10. Applying a filter](#1010-applying-a-filter)
+        - [10.10.1. Dynamic dialogue building](#10101-dynamic-dialogue-building)
+        - [10.10.2. Transferring information from the dialogue (the parameters) to the execution](#10102-transferring-information-from-the-dialogue-the-parameters-to-the-execution)
+    - [10.11. Preview a result](#1011-preview-a-result)
+    - [10.12. Undoing an operation](#1012-undoing-an-operation)
+    - [10.13. Process List](#1013-process-list)
+        - [10.13.1. Store image state as part of the History in the process list](#10131-store-image-state-as-part-of-the-history-in-the-process-list)
+        - [10.13.2. Exporting of Process List](#10132-exporting-of-process-list)
+    - [10.14. Processing a full volume](#1014-processing-a-full-volume)
+    - [10.15. Issues with Finding Center of Rotation and Reconstruction](#1015-issues-with-finding-center-of-rotation-and-reconstruction)
+        - [10.15.1. Automatic Center of Rotation (COR) with imopr cor](#10151-automatic-center-of-rotation-cor-with-imopr-cor)
+        - [10.15.2. Center of Rotation (COR) with imopr corwrite](#10152-center-of-rotation-cor-with-imopr-corwrite)
+        - [10.15.3. Tilt correction](#10153-tilt-correction)
+        - [10.15.4. Visualising the tilt](#10154-visualising-the-tilt)
+        - [10.15.5. Calculating the real tilt angle](#10155-calculating-the-real-tilt-angle)
+    - [10.16. Reconstruction](#1016-reconstruction)
+    - [10.17. Tools and Algorithms](#1017-tools-and-algorithms)
+    - [10.18. Remote submission and MPI-like behaviour](#1018-remote-submission-and-mpi-like-behaviour)
+        - [10.18.1. Remote compute resource used at ISIS: SCARF](#10181-remote-compute-resource-used-at-isis-scarf)
+        - [10.18.2. MPI-like behaviour](#10182-mpi-like-behaviour)
 
 <!-- /TOC -->
 
@@ -99,6 +100,7 @@ Other functional problems with the GUI:
 - Cannot preview results from filters
 - Cannot easily handle and move data around. From Python Numpy arrays to C++ is possible, but when we add more reconstruction tools, CuPy(CUDA), OpenCV, etc, handling the data in C++ gets a lot harder than it is in Python.
 - Communication between different tabs was necessary, making the code _very_ convoluted when each tab is an MVP.
+- Tedious and error prone manual updating of any CLI changes
 
 Drawbacks of switching to a Python GUI:
 
@@ -106,7 +108,35 @@ Drawbacks of switching to a Python GUI:
 - We cannot reuse the existing mocking and testing
 - We cannot reuse the remote submission algorithm, unless we want to have dependency on the Mantid Framework for a single algorithm
 
-# 3. User Requirements
+# 3. Addressing of old Tomography GUI problems with the new Python GUI
+
+- No flexible layout
+- Cannot load more than one image/image volume at any time
+
+The Python GUI makes use of the `QDockWidget` class to provide a layout that is flexible and supports different ways to view and structure the visualisation. An example of that can be seen here:
+
+![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/all_views.png)
+
+This image shows off a few ways that loaded stacks can be positioned. It allows for any combination of any preferred positioning.
+
+- Cannot preview results from filters
+
+As seen in the image above, there is a `Filter` submenu. That menu lists all available filters, and they can be applied to a selected stack, visualising the results immediatelly. A preview option will be provided for each filter in order to be able to preview the result on the stack, without processing all of the images it contains.
+
+- Cannot easily handle and move data around. From Python Numpy arrays to C++ is possible, but when we add more reconstruction tools, CuPy(CUDA), OpenCV, etc, handling the data in C++ gets a lot harder than it is in Python.
+- Tedious and error prone manual updating of any CLI changes
+
+Because now we can easily interface with the `core` package, we can access all of its CLI directly, and we don't have to manually change it in another file. Filters are registered dynamically, and any future additions, from developers or users, can easily be added to extend the available functionality.
+
+- Communication between different tabs was necessary, making the code _very_ convoluted when each tab is an MVP.
+
+The new Python GUI structure currently uses the Main Window's model to only _track_ the existence of loaded stacks' windows, and call the necessary deletion when they are closed.
+
+There is no information that is shared between the stacks. Any operations on the actual images are forwarded to the stack window itself, which also stores any information related to the image volume its holding.
+
+It is still possible to globally share by storing the _shared_ information into the Main Window's Model, it will be available to every stack that has been loaded, in a more convenient and centralised way, but there has not been a use case for that functionality so far.
+
+# 4. User Requirements
 
 1. Visualisation of single or volume of images
     - Contrast adjustment on the visualised image
@@ -126,7 +156,7 @@ Drawbacks of switching to a Python GUI:
     - API documentation
     - Usage documentation/tutorial
 
-# 4. Development Requirements
+# 5. Development Requirements
 
 1. Unit testing for CORE
 1. GUIs use MVP pattern with mocking and unit testing for GUIs
@@ -135,7 +165,7 @@ Drawbacks of switching to a Python GUI:
 1. Continous Integration on Github
 1. Installation
 
-# 5. Terminology
+# 6. Terminology
 
 Projection - Look towards the object from the side, image with the histogram:
 ![Projection image](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/projection.png)
@@ -160,25 +190,25 @@ Slices - referrs to a reconstructed sinogram. ![Reconstructed slice](https://git
 
 Attenuation - the result from performing a `-ln(image)`, which can be written as `numpy.negative(numpy.log(image))`. Depending on the dataset adding the `-log` to pre-processing can _significantly_ improve the reconstruction results and help remove noise!
 
-# 6. Finalising name choice
+# 7. Finalising name choice
 
 - MantidImaging
 - ISIS_Imaging
 - Other suggestions?
 
-# 7. Project setup
+# 8. Project setup
 
-## 7.1. Continous Integration with Coverage
+## 8.1. Continous Integration with Coverage
 
 The package should have a continous integration flow on Pull Requests, which runs all of the CORE and GUI tests. This should also include coverage.
 
 After sphinx documentation is added, the contiguous integration could also check if it builds successfully.
 
-## 7.2. Installation
+## 8.2. Installation
 
 We can either work towards the package being installable using `python setup.py install`, making it available system wide. The alternative solution is to use it from the folder and provide global access like [the example here](https://mantidproject.github.io/isis_imaging/user_guide/setting_up.html#global-access-to-the-package)
 
-## 7.3. Testing
+## 8.3. Testing
 
 Testing will use `nose` to run the tests and `coverage` to compute the tests' coverage. The actual unit tests should use the built-in `unittest`, and some might have to use `numpy.testing` for asserting equality for `numpy.ndarrays`.
 
@@ -186,27 +216,27 @@ A module to run the tests has been provided and is called `run_tests.py`, in the
 
 There is currently no integration with Mantid's testing.
 
-### 7.3.1. Core
+### 8.3.1. Core
 
 Every module should have associated unit tests, unless there is good reason not to have one.
 
 There should also be a collection of system tests to make sure that the functionality works on a higher level than unit tests.
 
-### 7.3.2. GUI
+### 8.3.2. GUI
 
 The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used.
 
 Simpler cases like the `load`/`save` dialogues do not need to use MVP, because they have very little, if any, logic.
 
-# 8. Guidelines for ISIS Imaging CORE
+# 9. Guidelines for ISIS Imaging CORE
 
-## 8.1. CUDA filter expansion
+## 9.1. CUDA filter expansion
 
 Integrating a package that supports CUDA has potential for improvement and expansion of the imaging filters.
 
 A potential problem for CUDA is for machines with low VRAM, transferring the data multiple times might be slower that just doing it in a bulk in the CPU, if it has a lot of RAM.
 
-### 8.1.3. CuPy
+### 9.1.3. CuPy
 
 This package supports CUDA and nicely implements most of the `numpy` API, meaning it can make transition over to GPU processing easy, for filters that only use `numpy` functions (background correction, contrast normalisation, etc).
 
@@ -214,18 +244,18 @@ For filters requiring custom code, kernels for other filters like Median, Gaussi
 
 I would recommend asking on the [CuPy repository](https://github.com/cupy/cupy) for implementation (and performance wise) advice before finalising the implementation of any filter.
 
-### 8.1.4. OpenCV
+### 9.1.4. OpenCV
 
 This is a library for image processing and computer vision, it has a lot of features, but is also quite large. I have added it here as it should be considered if there is anything available that is needed. It is available on the SCARF/Emerald cluster, making it potentially usable.
 
 Something that might cause issues - I am not sure how well it integrates with `numpy` arrays, for C++ they use their own internal type `cv::Mat` and I have not used the Python bindings.
 
-## 8.2. Reconstruction tools expansion
+## 9.2. Reconstruction tools expansion
 
 - [Astra Toolbox](http://www.astra-toolbox.com/)
 - [MuhRec](http://www.imagingscience.ch/downloadsection/)
 
-## 8.3. File Structure
+## 9.3. File Structure
 
 The aim is to make use of Pyhton's modular structure as much as possible. There is very little actual Object Oriented Programming used within the files, and I would discourage its use, unless it makes sense, for example the `core.imgdata.saver.Saver` is a class that can store all necessary information about the saving, so that when used in `core.configurations.default_flow_handler` we don't have to repeatedly pass in arguments, however the `save` function is globally available without needing to create instance of the class, making it very convenient to use through command line.
 
@@ -269,7 +299,7 @@ It is not expected to have many changes of this top level structure. If any stru
 
 Having this structure also allows to expose a consistent Public API through the `__init__` files, making the suggestions in iPython only show what we have exposed to the Public API.
 
-## 8.4. Filters - General implementation structure
+## 9.4. Filters - General implementation structure
 
 - Filters should be inside a package that only exposes `execute`, `gui_register`, `cli_register`, and any other functions desired to be part of the public API. This will be enforced in the package's `__init__.py`
   - This allows to have a strict API regardless of the internal implementation inside the package, so that is left is up to the developer. They could be in a single `.py` module, or in a separate module for each large function -> `execute.py`, `gui.py`, `cli.py`, etc.
@@ -277,9 +307,9 @@ Having this structure also allows to expose a consistent Public API through the 
 - All filters must implement a parallel and sequential execution. How that is done is up to the developer.
 - Future extensions could be adding CUDA execution to some/all fitlers. This would ideally be handled as part of the checks for parallel inside the `execute` function, but if that is not possible or desirable, a new function might be added to the API specifically for CUDA execution.
 
-# 9. Implementation for ISIS_Imaging GUI
+# 10. Implementation for ISIS_Imaging GUI
 
-## 9.1. General Structure
+## 10.1. General Structure
 
 Main Window (top level)
 
@@ -307,11 +337,11 @@ The Main Window allows us to place the stack in multiple different places:
 - On the right of the tabs, inside the main window
 - Floating around
 
-## 9.2. ui Compiling
+## 10.2. ui Compiling
 
 Currently the `.ui` is compiled dynamically while running. It might be better if this is changed to the mslice approach where all of the `.ui` files are compiled during 'build' and `.uic` files are created.
 
-## 9.3. Using iPython
+## 10.3. Using iPython
 
 The benefit of .ui compiling at runtime is that we can quickly run the `MainWindow` inside an `iPython` instance. A simple example of that:
 
@@ -337,7 +367,7 @@ In [8]: mw = isis_imaging.main_window.MainWindowView(None)
 In [9]: mw.show() # works again
 ```
 
-## 9.4. Loading
+## 10.4. Loading
 
 Loading of the images must be done via the `core.imgdata` module, which already handles loading of any supported image types.
 
@@ -360,7 +390,7 @@ Initially, while browsing for a folder, the files will not be filtered out by fi
 
 After loading the paths should be cached inside the created image volume window, so that they can be accessed by the Process List or any filters that require the loading of flat/dakr images.
 
-## 9.5. Handling multiple stacks in dialogues
+## 10.5. Handling multiple stacks in dialogues
 
 It will be possible to have more than one stack loaded at a time. A unique ID will be generated for each new stack that is loaded. The ID is then stored with the folder name as a 'user friendly name', and a reference to the QObject containing the stack. The unique ID will be generated using python's `uuid` package.
 
@@ -368,11 +398,11 @@ On closing the image volume window we need to remove any references to the stack
 
 Building the selection for the user will be an iteration of the dict, sorted by key and displaying the user friendly name, but also store the uuid to be able to reference the data afterwards.
 
-## 9.6. Saving
+## 10.6. Saving
 
 The saving dialogue will have a drop down menu, kept up to date with what active stacks there are in the main window. The user can then select a stack, select the format (by default `.tiff`) and save it out to the path they point to. The supported formats dropdown menu will be populated at runtime by using the loader's available extensions function, which is already used when building the command line interface help (-h).
 
-## 9.7. Visualisation
+## 10.7. Visualisation
 
 The MainWindow will have a `QDockWidget`. Each image volume will be a child `QWidget` inside the main `QDockWidget`. This allows usage of the flexibility of `QDockWidget`, making it possible to have docked windows, docked tabs, floating windows, or any combination of those. The users will be able to arrange the visualised stacks in any way they want. The first stack visualised should be docked inside the MainWindow, be centered and take up all of the space. Any consecutive stacks that are loaded will be placed inside the MainWindow automatically by Qt.
 
@@ -384,7 +414,7 @@ The user must be able to go to any index from the volume. This will be done via 
 
 The visualisation should also have the toolbar that appears on plots in Matplotlib, the functionality that comes with the default toolbar works with the images.
 
-## 9.8. Histograms
+## 10.8. Histograms
 
 Computation of the histograms should be done only on the ROI, if no ROI is selected the whole image will be used. The computation itself should be implemented in the `core.algorithms` package. It might be necessary to do so asynchronously. The `matplotlib` histogram feature was found to be quite slow. An alternative could be `np.histogram`, but that has not been benchmarked.
 
@@ -399,11 +429,11 @@ For the histogram window an `mslice` approach could be taken where the user can 
 
 Keeping multiple histograms around shouldn't be a memory issue, and they be binned, reducing the memory usage further.
 
-## 9.9. Contrast normalisation
+## 10.9. Contrast normalisation
 
 Matplotlib provides a method to specify contrast range via `set_clim` method on the image. The values will be read from the histogram and the image will be changed when the user changes the selected range of values in the histogram.
 
-## 9.10. Applying a filter
+## 10.10. Applying a filter
 
 Applying a filter will bring up a dialogue in which the user has to select on which stack to apply the filter via a dropdown menu, and fill in the required parameters the filter has.
 
@@ -411,12 +441,12 @@ Any filters should be dynamically registered using the [registrator](https://git
 
 Current issues for this section:
 
-### 9.10.1. Dynamic dialogue building
+### 10.10.1. Dynamic dialogue building
 
 - Solution is to use an approach like the `cli_registrator`, but pass in the QObject in which the filters will register themselves in
 - Dialogue registration is a bit more complicated, because we have to connect the dropdown menu to the dialogue's `.show()` method.
 
-### 9.10.2. Transferring information from the dialogue (the parameters) to the execution
+### 10.10.2. Transferring information from the dialogue (the parameters) to the execution
 
 - The filter should be executed from inside the image visualiser. The main window does not have reference to any data, only the QWidgets that contain the visualisation.
 - Using a partial function, we can decorate with all of the parameters. No other function down the chain of execution will have to worry about the parameters that way.
@@ -428,11 +458,11 @@ Current issues for this section:
     - Background correction and contrast normalisation need to calculate values for scaling, do the filter execution, and then apply the scaling to the images.
     - Currently the solution is to apply a monad style approach.
 
-## 9.11. Preview a result
+## 10.11. Preview a result
 
 This can be an option in the filter dialogue. It will be passed as a parameter to the image visualiser. If preview is selected the data will be deepcopied and processed, resulting in a new stack with the processed data.
 
-## 9.12. Undoing an operation
+## 10.12. Undoing an operation
 
 Building the Undo operation may be complicated and turn out to consume too much memory, but provides better functionality. Initially should not be part of the implementation.
 
@@ -442,7 +472,7 @@ Some issues:
 - Serious memory implications for large volumes.
 - Can easily store a single undo (like imagej, only for single images), multiple undos can be hard to implement efficiently because of all the memory being copied
 
-## 9.13. Process List
+## 10.13. Process List
 
 Every operation on the image volume should be saved in a `ProcessList`, which can then be exported and re-used on another image volume. The process list acts like a `queue`, first-in first-out.
 
@@ -451,15 +481,15 @@ A problem that appears with that approach is that some images need more than one
 - Ask for flat and dark paths in image loading dialogue and cache them for the loaded stack, then the process list can reuse them
 - Ask for flat and dark paths when the filter is popped from the Process List queue
 
-### 9.13.1. Store image state as part of the History in the process list
+### 10.13.1. Store image state as part of the History in the process list
 
 This is not done in the current implementation of the `ProcessList`. This could be added as a replacement for [Undoing an operation](#undoing-an-operation), but it suffers from the same issues as undoing.
 
-### 9.13.2. Exporting of Process List
+### 10.13.2. Exporting of Process List
 
 This is something considered as part of the [remote submission](#remote-submission-and-mpi-like-behaviour) implementation. It will require implementing functions to export an exsiting process list to a format that later can be read back and construct a new Process List.
 
-## 9.14. Processing a full volume
+## 10.14. Processing a full volume
 
 A process list should provide the option to be applied to the whole stack locally. Details for the implementation need to be considerend alondside the [Undoing an operation](#undoing-an-operation) implementation.
 
@@ -467,7 +497,7 @@ The process list will store the operation(+params) that needs to be applied. Doi
 
 A new configuration might have to be added in `core.configurations` to handle this type of ordered filter application. A class that takes the name and dynamically imports/applies the operation might also be required.
 
-## 9.15. Issues with Finding Center of Rotation and Reconstruction
+## 10.15. Issues with Finding Center of Rotation and Reconstruction
 
 Normally the data volume will be loaded in as radiograms:
 ![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/pre_processed.png)
@@ -491,7 +521,7 @@ A feature that might help is a Region of Interest (ROI) load, which would load t
 - Use it to construct the first row of _every_ sinogram of the stack
 - Repeat and keep adding a row from each image
 
-### 9.15.1. Automatic Center of Rotation (COR) with imopr cor
+### 10.15.1. Automatic Center of Rotation (COR) with imopr cor
 
 Once we have the histograms into memory with contiguous order, we can proceed to find the Center of Rotation for each sinogram.
 
@@ -539,7 +569,7 @@ As you can see the COR can get confused for some slices, for example slice 0, wh
 But for the sinogram on position 200, it look okay, just the algorithm was wrong:
 ![Sinogram 200](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sino200.png)
 
-### 9.15.2. Center of Rotation (COR) with imopr corwrite
+### 10.15.2. Center of Rotation (COR) with imopr corwrite
 
 This is the manual way to determine the COR. It can be accessed with:
 
@@ -602,7 +632,7 @@ The 'shadow' has now merged into the object in the middle. This is now correct.
 
 We want to keep that behaviour as is, with the addition that after the process of saving out is finished, we visualise them back from the user, so they can select the best COR by seeing which is the best reconstructed slice.
 
-### 9.15.3. Tilt correction
+### 10.15.3. Tilt correction
 
 Sometimes the samples are tilted slightly. On the one above, the difference in COR between the top and the bottom looks like this:
 
@@ -624,7 +654,7 @@ We can supply the slice/cor information through the command line:
 
 The number of cors and the slices is enforced to be equal. The only exception is that we can provide a single number to `--cors`, which will then be assigned to the whole stack. Some lucky samples happen to have the exact same COR for every slice.
 
-### 9.15.4. Visualising the tilt
+### 10.15.4. Visualising the tilt
 
 Knowing the COR for each slice (or interpolating the approximation) gives us information that we could display back to the user. Every COR for a slice maps back to a pixel on the projection image. This means we can create a line that is slightly tilted and crosses the projection's center. An exaggerated visualisation looks like this (done by hand, not accurate to the actual COR, but converys the idea):
 
@@ -632,7 +662,7 @@ Knowing the COR for each slice (or interpolating the approximation) gives us inf
 
 This is something that has been expressed as a required feature by the scientists, anmd should not be too hard to implement. The rectangle selection class, also has an option to be a line. We could create it as a line and display it as a separate object on the visualisation.
 
-### 9.15.5. Calculating the real tilt angle
+### 10.15.5. Calculating the real tilt angle
 
 This is a technique for calculating the angle of tilt, which hasn't been verified by the scientists so it might not be correct, but it doesn't hurt to document it. Having the tilt line (as in the exaggerated tilt above), we can add another line, which is straight and is the length of the image's width, like this:
 
@@ -644,7 +674,7 @@ We can see there is an angle where they cross. That angle should be how far the 
 
 Calculating the theta angle from the image above should give us the actual tilt. I am not sure if the technique is accurate or correct, and suggestions for improvements are welcome.
 
-## 9.16. Reconstruction
+## 10.16. Reconstruction
 
 The reconstruction works on sinograms and will be done via third party tools Tomopy, Astra Toolbox, MuhRec, etc.
 
@@ -664,15 +694,15 @@ Specifying CORs from which the rest will be interpolated:
 
 The reconstruction of a single slice is an atomic operation on the slice. The way it runs in parallel is that each thread/process gets a slice and reconstructs it.
 
-## 9.17. Tools and Algorithms
+## 10.17. Tools and Algorithms
 
 The tool and algorithm defaults are `tomopy` and the algorithm `gridrec`. The tool can be specified with `-t` or `--tool`, the algorithm with `-a` or `--algorithm`.
 
-## 9.18. Remote submission and MPI-like behaviour
+## 10.18. Remote submission and MPI-like behaviour
 
 Remote submission needs to be supported, that means we need to be able to submit the reconstruction/processing parameters through the REST API they provide. Information about the reconstruction should be stored in a `ProcessList`, which can be serialised and then recreated anywhere with the `--process-list` flag.
 
-### 9.18.1. Remote compute resource used at ISIS: SCARF
+### 10.18.1. Remote compute resource used at ISIS: SCARF
 
 General information on the SCARF cluster, which uses the Platform LSF
 scheduler, can be found at http://www.scarf.rl.ac.uk. It can be used
@@ -687,7 +717,7 @@ LSF's Platform Application Center, as described here:
 https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
 (with Python client scripts).
 
-### 9.18.2. MPI-like behaviour
+### 10.18.2. MPI-like behaviour
 
 Integration of MPI into the scripts was considered, but the cost of having to transfer the large data over the network is too high.
 
