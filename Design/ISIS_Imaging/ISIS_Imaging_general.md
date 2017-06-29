@@ -136,6 +136,14 @@ There is no information that is shared between the stacks. Any operations on the
 
 It is still possible to globally share by storing the _shared_ information into the Main Window's Model, it will be available to every stack that has been loaded, in a more convenient and centralised way, but there has not been a use case for that functionality so far.
 
+- We cannot reuse the existing mocking and testing
+
+The new GUI will implement the MVP pattern, whenever sensible, to make sure that the testing is fully automated. Combined with the reduced complexity of the new GUI, the new testing coverage should be better than the old one.
+
+- We cannot reuse the remote submission algorithm, unless we want to have dependency on the Mantid Framework for a single algorithm
+
+There is an example provided, in Python, for communicating with the REST API of the SCARF cluster. Reimplementing such a connection will be much easier in Python than C++.
+
 # 4. User Requirements
 
 1. Visualisation of single or volume of images
