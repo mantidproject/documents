@@ -71,7 +71,7 @@ The `Run` tab handles the selected tool and it's parameters, the logging into th
 
 ---
 
-The `Filter` tab contains all available filters. They are not automatically generated, and need to be manually changed to reflect any additions or removals. The interface of this tab doesn't allow for an easy way to apply a filter to the visualised images and see the results. The option to apply a filter could be amended by adding buttons for each filter, but the user is still not able to see the results without switching to the `ROI etc` tab, which shows the visualised image.
+The `Filters` tab contains all available filters. They are not automatically generated, and need to be manually changed to reflect any additions or removals. The interface of this tab doesn't allow for an easy way to apply a filter to the visualised images and see the results. The option to apply a filter could be amended by adding buttons for each filter, but the user is still not able to see the results without switching to the `ROI etc` tab, which shows the visualised image.
 
 ![Filter Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/filtertab.png)
 
