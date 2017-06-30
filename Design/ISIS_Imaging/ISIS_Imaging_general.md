@@ -69,23 +69,33 @@ The `Run` tab handles the selected tool and it's parameters, the logging into th
 
 ![Run Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/runtab.png)
 
+---
+
 The `Filter` tab contains all available filters. They are not automatically generated, and need to be manually changed to reflect any additions or removals. The interface of this tab doesn't allow for an easy way to apply a filter to the visualised images and see the results. The option to apply a filter could be amended by adding buttons for each filter, but the user is still not able to see the results without switching to the `ROI etc` tab, which shows the visualised image.
 
 ![Filter Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/filtertab.png)
+
+---
 
 The `Convert` and `Energy bands` tabs don't need to be independent tabs, as their functionality can be provided through simpler File/Action menu options:
 
 ![Convert and Energy tabs](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/convertandenergytabs.png)
 
+---
+
 Confusing `System` tab to handle all possible paths, except the data paths, which are handled in the `Run` tab:
 
 ![System tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/systemtab.png)
+
+---
 
 The Region of Interest tab is the hardest one to fix, as we need to manually implement automatic scaling to window size, correct region of interest translation that takes into account the scaling, zoom, moving the image after zoom, and other features that are expected to be present in an imaging program:
 
 ![ROI tab 1](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab1.png)
 
 ![ROI tab 2](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab2.png)
+
+---
 
 Other functional problems with the GUI:
 
