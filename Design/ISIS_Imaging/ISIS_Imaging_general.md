@@ -73,7 +73,7 @@ The `Run` tab handles the selected tool and it's parameters, the logging into th
 
 The `Filters` tab contains all available filters. They are not automatically generated, and need to be manually changed to reflect any additions or removals.
 
-The interface of this tab does not allow for an easy way to apply a filter to the visualised images and see the results. The option to apply a filter could be provided by adding buttons for each filter and importing the Python module in C++, to run the actual processing.
+The interface of this tab does not allow for an easy way to apply a filter to the visualised images and see the results. The option to apply a filter could be provided by adding buttons for each filter, but that would also require to import the Python module in the C++ code to run the actual processing.
 
 The user will also not be able to see the results without switching to the `ROI etc` tab, which does the visualisation.
 
