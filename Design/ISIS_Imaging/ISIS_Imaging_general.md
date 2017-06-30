@@ -20,7 +20,7 @@
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
     - [9.3. File Structure](#93-file-structure)
     - [9.4. Filters - General implementation structure](#94-filters---general-implementation-structure)
-- [10. Implementation for ISIS_Imaging GUI](#10-implementation-for-isis_imaging-gui)
+- [10. Guidelines for ISIS Imaging GUI](#10-guidelines-for-isis-imaging-gui)
     - [10.1. General Structure](#101-general-structure)
     - [10.2. ui Compiling](#102-ui-compiling)
     - [10.3. Using iPython](#103-using-ipython)
@@ -239,6 +239,8 @@ Simpler cases like the `load`/`save` dialogues do not need to use MVP, because t
 
 # 9. Guidelines for ISIS Imaging CORE
 
+Issues related to the `core` package of ISIS Imaging have the `Component: Core` label, following the Mantid Repository issue structure. [Link to issues for core](https://github.com/mantidproject/isis_imaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+Core%22)
+
 ## 9.1. CUDA filter expansion
 
 Integrating a package that supports CUDA has potential for improvement and expansion of the imaging filters.
@@ -246,6 +248,8 @@ Integrating a package that supports CUDA has potential for improvement and expan
 A potential problem for CUDA is for machines with low VRAM, transferring the data multiple times might be slower that just doing it in a bulk in the CPU, if it has a lot of RAM.
 
 ### 9.1.3. CuPy
+
+- Note: [Supports Python 3](https://docs-cupy.chainer.org/en/stable/install.html)
 
 This package supports CUDA and nicely implements most of the `numpy` API, meaning it can make transition over to GPU processing easy, for filters that only use `numpy` functions (background correction, contrast normalisation, etc).
 
@@ -255,14 +259,16 @@ I would recommend asking on the [CuPy repository](https://github.com/cupy/cupy) 
 
 ### 9.1.4. OpenCV
 
+- Note: [Supports Python 3](https://pypi.python.org/pypi/opencv-python)
+
 This is a library for image processing and computer vision, it has a lot of features, but is also quite large. I have added it here as it should be considered if there is anything available that is needed. It is available on the SCARF/Emerald cluster, making it potentially usable.
 
 Something that might cause issues - I am not sure how well it integrates with `numpy` arrays, for C++ they use their own internal type `cv::Mat` and I have not used the Python bindings.
 
 ## 9.2. Reconstruction tools expansion
 
-- [Astra Toolbox](http://www.astra-toolbox.com/)
-- [MuhRec](http://www.imagingscience.ch/downloadsection/)
+- [Astra Toolbox](http://www.astra-toolbox.com/), [Supports Python 3](http://www.astra-toolbox.com/docs/install.html#for-python)
+- [MuhRec](http://www.imagingscience.ch/downloadsection/), No Python Bindings
 
 ## 9.3. File Structure
 
@@ -316,7 +322,9 @@ Having this structure also allows to expose a consistent Public API through the 
 - All filters must implement a parallel and sequential execution. How that is done is up to the developer.
 - Future extensions could be adding CUDA execution to some/all fitlers. This would ideally be handled as part of the checks for parallel inside the `execute` function, but if that is not possible or desirable, a new function might be added to the API specifically for CUDA execution.
 
-# 10. Implementation for ISIS_Imaging GUI
+# 10. Guidelines for ISIS Imaging GUI
+
+Issues related to the `GUI` package of ISIS Imaging have the `Component: GUI` label, following the Mantid Repository issue structure. [Link to issues for GUI](https://github.com/mantidproject/isis_imaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+GUI%22)
 
 ## 10.1. General Structure
 
@@ -338,7 +346,7 @@ Stack Visualiser (Image Volume)
 - It visualises the images
 - On destruction removes itself from the parent, and the list of unique IDs. It also removes any references to the data so it can be GC by Python
 
-![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/all_views.png)
+![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/. $/all_views.png)
 
 The Main Window allows us to place the stack in multiple different places:
 
