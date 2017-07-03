@@ -42,25 +42,24 @@ The points are taken from the original `IndexInfo` design document linked in the
 
 ### Basics
 
-- Extend the `WorkspaceProperty` type.
-- Own an `ArrayProperty` which can make use of `ListPropertyWidget` for capturing list data from the GUI.
+- Extend the `ArrayProperty<int>` to create an `IndexProperty` type which will accept user input for the indices of interest.
+- Extend `PropertyWithValue` to create an `IndexTypeProperty` type which accepts user input for the type of indices supplied (WorkspaceIndices/SpectrumNumbers/DetectorIDs).
 - Add a set of flags which control allowed index types (for use in the constructor).
-- Use a `PropertyWithValue<std::string>` to capture the selected index type.
+- Create a series of methods within Algorithm which manage the creation and handling of these properties.
 
 ### Details
 
-1. The `WorkspacePropertyWithIndex` type constructor will accept the following flags (or combinations of flags):
+1. The `IndexProperty` type constructor will accept the following flags (or combinations of flags which will be forwarded to `IndexTypeProperty`):
 	- `IndexType::SpectrumNumber` for list of global<sup>1</sup> spectrum numbers typically from 1-N.
 	- `IndexType::WorkspaceIndex` for list of global workspace indices typically from 0-N.
 	- `IndexType::DetectorID` for list of detector ids within the instrument.
 2. Users will be restricted to entering only one of the allowed index types at the GUI level. 
+3. The `IndexProperty` constructor will also take a reference to a `WorkspaceProperty` and an `IndexTypeProperty`. These will be used for validation and generation of the `SpectrumIndexSet`.
 3. Validation will occur in `IndexInfo::makeIndexSet`(which throws for bad indices), not in every algorithm.
-4. The `ArrayProperty` will be exposed e.g `WorkspacePropertyWithIndex::getArrayProperty` in order to make use of `ListPropertyWidget`.
-5. Overload function call operator to return `std::pair`.
-6. `IndexInfo` will be used to translate the indices at the point of access i.e. `WorkspacePropertyWithIndex::operator()()`.
-7. There must be a few modifications to the GUI generation code in order to support this type:
-	-  `PropertyWidgetFactory` may need to handle `WorkspacePropertyWithIndex` specifically.
-	-  May need to introduce a concept of a group of property widgets.
+4. A method `declareIndexProperty` will be defined in `Mantid::API::Algorithm` which creates and ties a `WorkspaceProperty`, `IndexTypeProperty` and `IndexPropery` together. The name of these properties will then be reserved. Users will be restricted from creating new properties for this algorithm using these names. 
+5. A method `setIndexProperty` will be defined in `Mantid::API::Algorithm` which will accept input for setting the all three properties simultaneously. Developers will be restricted to setting all three properties at once in client code. Attempts to set the properties individually will result in runtime errors.
+6. A method `getIndexProperty` will be defined in `Mantid::API::Algorithm` which will return a tuple of the selected workspace and `SpectrumIndexSet`. Users will be restricted to only accessing this data simultaneously. Attempts to use `getProperty` will result in runtime errors.
+6. `IndexInfo` will be used to translate the indices at the point of access i.e. `Algorithm::getIndexProperty()`.
 
 <sup>1</sup><sub>The distinction is made here between local (a subset of all data partitioned on an MPI Rank) and global (entire data set). This will not be visible at the GUI or client API level.</sub>
 
@@ -71,17 +70,10 @@ The points are taken from the original `IndexInfo` design document linked in the
 Declaring the property in C++:
 ```cpp
 //Property name may be fixed?
-declareProperty(WorkspacePropertyWithIndex("InputWorkspace", IndexType::SpectrumNumber|IndexType::WorkspaceIndex));
-//IndexType::WorkspaceIndex is the defaul
-declareProperty(WorkspacePropertyWithIndex("InputWorkspace"));
+declareIndexProperty("InputWorkspace", IndexType::SpectrumNumber|IndexType::WorkspaceIndex);
+//IndexType::WorkspaceIndex is the default
+declareIndexProperty("InputWorkspace");
 ```  
-In order to reduce typing we could include builder functions which allow for more concise property declaration:
-```cpp
-//Builder method returns a unique_ptr?
-declareProperty(CreateMatrixWorkspaceWithSpectrumNumber("InputWorkspaceWithIndex");
-//or alternatively
-declareProperty(CreateWithSpectrumNumber<MatrixWorkspace>("InputWorkspaceWithIndex");
-```
 
 **Algorithm Dialog Box (GUI)**:
 
@@ -96,9 +88,9 @@ declareProperty(CreateWithSpectrumNumber<MatrixWorkspace>("InputWorkspaceWithInd
 Setting the property manually (tuple is created internally):
 
 ```cpp
-setProperty("InputWorkspaceWithIndex", ws, std::vector<SpectrumNumber>{1, 2, 3, 4});
+setIndexProperty("InputWorkspace", ws, std::vector<SpectrumNumber>{1, 2, 3, 4});
 //or
-setProperty("InputWorkspaceWithIndex", ws, IndexType::SpectrumNumber, "1:33,42");
+setIndexProperty("InputWorkspace", "ws", IndexType::SpectrumNumber, "1:33,42");
 ```
 
 Accessing the property:
@@ -106,29 +98,22 @@ Accessing the property:
 ```cpp
 MatrixWorkspace_const_sptr inputWS;
 IndexSet indices;
-std::tie(inputWS, indices) = getProperty("InputWorkspaceWithIndex");//returns tuple
+std::tie(inputWS, indices) = getIndexProperty("InputWorkspace");//returns tuple
 ```
 
 *Python*:
 
+Algorithm function calls in Python would take the following form:
+```python
+# The index types could accept a range as a string or
+# a numpy array which contains the values.
+ChangePulseTime2(TimeOffset=10, InputWorkspace=ws, InputWorkspaceSet="1:33" )
+ChangePulseTime2(TimeOffset=10, InputWorkspace=ws, InputWorkspaceIndexType=IndexType::SpectrumNumber, InputWorkspaceSet=[1,3,5,7])
+```
 
-In order to reduce the load on script authors, we could split keyword arguments and create types which capture each index type. This expanding arguments allows users to understand the autocomplete in the scripting editor more easily.:
-```python
-# The index types could accept a range as a string or
-# a numpy array which contains the values.
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Spectra=("1:33") )
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, Indices=("0:32") )
-ChangePulseTime(TimeOffset=10, InputWorkspace=ws, IDs=("1001:1101") )
-```
-For multiple properties of this type in an algorithm, we could enforce a policy of pre-pending the property name on the extra keyword:
-```python
-# The index types could accept a range as a string or
-# a numpy array which contains the values.
-ChangePulseTime(TimeOffset=10, Workspace1=ws, Workspace2=ws, Workspace1Spectra=("1:33"), Workspace2Indices=("0:32"))
-```
 Property Access would then take the form:
 ```python
-inputWS, indices = getProperty("InputWorkspace")
+inputWS, indices = getIndexProperty("InputWorkspace")
 ```
 
 ### Development Stages and Roll-Out
