@@ -319,9 +319,11 @@ Dynamic task scheduling optimized for computation. This is similar to Airflow, L
 
 ## 9.3. File Structure
 
-The aim is to make use of Pyhton's modular structure as much as possible. There is very little actual Object Oriented Programming used within the files, and I would discourage its use, unless it makes sense, for example the `core.imgdata.saver.Saver` is a class that can store all necessary information about the saving, so that when used in `core.configurations.default_flow_handler` we don't have to repeatedly pass in arguments, however the `save` function is globally available without needing to create instance of the class, making it very convenient to use through command line.
+Using Python's modular structure is encouraged. Focus on having stateless free functions within modules.
 
-Another example is in the `core.tools` module, we want the tools to implement a common API, so that if we want to change the tool we can just import another one, and it _should_ work. This is done via having an `AbtractTool` that the other tools should inherit from, and should implement its interface.
+Custom objects should be used where state needs to be preserved, for example the `core.imgdata.saver.Saver` stores all necessary information about saving, so that further function calls are simplified. However, the actual `save` function is a module function that can be accessed without creating an instance of the class.
+
+Another example is in the `core.tools` module, we want to enforce a common interface. This is done via having an `AbtractTool` that the other tools should inherit from, and should implement its interface.
 
 ---
 
