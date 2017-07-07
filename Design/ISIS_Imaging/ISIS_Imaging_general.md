@@ -11,12 +11,15 @@
     - [8.1. Continous Integration with Coverage](#81-continous-integration-with-coverage)
     - [8.2. Installation](#82-installation)
     - [8.3. Testing](#83-testing)
-        - [8.3.1. Core](#831-core)
-        - [8.3.2. GUI](#832-gui)
+    - [8.4. Interfaces](#84-interfaces)
+        - [8.4.1. Core](#841-core)
+        - [8.4.2. GUI](#842-gui)
 - [9. Guidelines for ISIS Imaging CORE](#9-guidelines-for-isis-imaging-core)
-    - [9.1. CUDA filter expansion](#91-cuda-filter-expansion)
-        - [9.1.3. CuPy](#913-cupy)
+    - [9.1. Filter implementation expansion](#91-filter-implementation-expansion)
+        - [9.1.3. cupy](#913-cupy)
         - [9.1.4. OpenCV](#914-opencv)
+        - [9.1.5. numba](#915-numba)
+        - [9.1.6. dask](#916-dask)
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
     - [9.3. File Structure](#93-file-structure)
     - [9.4. Filters - General implementation structure](#94-filters---general-implementation-structure)
@@ -238,13 +241,25 @@ A module to run the tests has been provided and is called `run_tests.py`, in the
 
 There is currently no integration with Mantid's testing.
 
-### 8.3.1. Core
+## 8.4. Interfaces
+
+The project aims to have multiple interfaces:
+
+- Command Line Interface (CLI)
+- Graphical User Interface (GUI)
+- iPython interface (also helps development IDEs for suggestions)
+
+This is currently achieved by manually structuring the public API of each package. This can be seen in most `__init__.py` files. They import specific files, or only specific functions from the files, which are visible to the external caller.
+
+This also allows for a full separation of the GUI from any of the other interfaces. This is required because we do not want to install PyQt5 and other GUI packages on SCARF, and is also good practice.
+
+### 8.4.1. Core
 
 Every module should have associated unit tests, unless there is good reason not to have one.
 
 There should also be a collection of system tests to make sure that the functionality works on a higher level than unit tests.
 
-### 8.3.2. GUI
+### 8.4.2. GUI
 
 The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used.
 
@@ -254,15 +269,15 @@ Simpler cases like the `load`/`save` dialogues do not need to use MVP, because t
 
 Issues related to the `core` package of ISIS Imaging have the `Component: Core` label, following the Mantid Repository issue structure. [Link to issues for core](https://github.com/mantidproject/isis_imaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+Core%22)
 
-## 9.1. CUDA filter expansion
+## 9.1. Filter implementation expansion
 
 Integrating a package that supports CUDA has potential for improvement and expansion of the imaging filters.
 
 A potential problem for CUDA is for machines with low VRAM, transferring the data multiple times might be slower that just doing it in a bulk in the CPU, if it has a lot of RAM.
 
-### 9.1.3. CuPy
+### 9.1.3. cupy
 
-- Note: [Supports Python 3](https://docs-cupy.chainer.org/en/stable/install.html)
+- Note: [Link, Supports Python 3](https://docs-cupy.chainer.org/en/stable/install.html)
 
 This package supports CUDA and nicely implements most of the `numpy` API, meaning it can make transition over to GPU processing easy, for filters that only use `numpy` functions (background correction, contrast normalisation, etc).
 
@@ -272,11 +287,30 @@ I would recommend asking on the [CuPy repository](https://github.com/cupy/cupy) 
 
 ### 9.1.4. OpenCV
 
-- Note: [Supports Python 3](https://pypi.python.org/pypi/opencv-python)
+- Note: [Link, Supports Python 3](https://pypi.python.org/pypi/opencv-python)
 
 This is a library for image processing and computer vision, it has a lot of features, but is also quite large. I have added it here as it should be considered if there is anything available that is needed. It is available on the SCARF/Emerald cluster, making it potentially usable.
 
 Something that might cause issues - I am not sure how well it integrates with `numpy` arrays, for C++ they use their own internal type `cv::Mat` and I have not used the Python bindings.
+
+### 9.1.5. numba
+
+- Note: [Link, Supports Python 3](http://numba.pydata.org/numba-doc/latest/user/overview.html)
+
+Numba is a compiler for Python array and numerical functions that gives you the power to speed up your applications with high performance functions written directly in Python.
+
+Numba generates optimized machine code from pure Python code using the LLVM compiler infrastructure. With a few simple annotations, array-oriented and math-heavy Python code can be just-in-time optimized to performance similar as C, C++ and Fortran, without having to switch languages or Python interpreters.
+
+### 9.1.6. dask
+
+- Note: [Link, Supports Python 3](https://dask.pydata.org/en/latest/)
+
+Dask is a flexible parallel computing library for analytic computing.
+
+Dask is composed of two components:
+
+Dynamic task scheduling optimized for computation. This is similar to Airflow, Luigi, Celery, or Make, but optimized for interactive computational workloads.
+“Big Data” collections like parallel arrays, dataframes, and lists that extend common interfaces like NumPy, Pandas, or Python iterators to larger-than-memory or distributed environments. These parallel collections run on top of the dynamic task schedulers.
 
 ## 9.2. Reconstruction tools expansion
 
