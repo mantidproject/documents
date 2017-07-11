@@ -7,6 +7,8 @@ Agenda
   * Edward Brown
   * Brandon Hewer
 
+  * Thomas Lohnert
+
   * Michael Turner
   * James Tricker
   
