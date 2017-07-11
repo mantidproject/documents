@@ -14,4 +14,6 @@ Agenda
 Questions
 =========
 
+* Request for help/ideas: [FindPeaksMD](https://gist.github.com/AntonPiccardoSelg/51525628de53580f727dea7e582eee66)
+
 * Add your questions here
