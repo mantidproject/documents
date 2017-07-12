@@ -26,6 +26,9 @@ Must
 1. The documentation structure of Algroithms must match that of the sub packages to make it easier to locate the documents you need.
 1. The category structure in Mantid must match the python package structure, but use english language syntax rather than Python syntax.
    For example Neutron vs Mantid.Neutron.
+1. We must maintain backward compatability with the majority of users scripts, small changes are permissible if we are confident that this will not affect a significant number of users or scripts.  All breaking changes must be notified in advance of the release, ideally supporting deprecated aspects for at least one release.
+1. All documentation and training courses will need to be updated to match the new structures.
+
    
 
 
@@ -70,8 +73,9 @@ Python API
 
 ### Structure ###
 
-This is primarily about structuring the locations of Algorithm more sensibly, the `Mantid.simpleapi` will maintain backward compatibility by accumulating all of the algorithms into a single import so existing scripts should work as normal.  For this reason, and to prevent other problems elsewhere this will mean we have to keep Algorithms names unique as we currently do even when in seperate packages.
-The structure below if modified from that presented by [Andre Savici at the 2017 Users Workshop](../Presentations/DevMeetings/2017-06/Mantid4PythonLibrariesAndNames.md).  We will only create a library if we have at least one algorithm to include within it.
+This is primarily about structuring the locations of Algorithm and Fit functions more sensibly, the `Mantid.simpleapi` will maintain backward compatibility by accumulating all of the algorithms and Fit functions into a single import so existing scripts should work as normal.  For this reason, and to prevent other problems elsewhere this will mean we have to keep Algorithms names and Fit Function names unique as we currently do even when in seperate packages.
+
+The structure below if modified from that presented by [Andre Savici at the 2017 Users Workshop](../Presentations/DevMeetings/2017-06/Mantid4PythonLibrariesAndNames.md).  We will only create a library if we have at least one item to include within it.
 
 * Mantid.simpleapi
     - An accumulation libaray that will import all of the algorithms within Mantid as it currently does
@@ -93,25 +97,30 @@ The structure below if modified from that presented by [Andre Savici at the 2017
 * mantid.math.events
     - deals with events (technique agnostic)
     - `FilterEvents`, `RebinByPulseTime`
-* mantid.instrument 
-    - grouping, masking, etc
-    - e.g. `GroupDetectors`, `MaskBTP`, `SetGoniometer`, `MoveInstrumentComponent`
-
----
-
 * mantid.math.multidimensional
     - technique agnostic multidimensional workspace operations
     - does not include `ConvertToMD`
+* mantid.optimization
+    - Curve Fitting and Optimization
+    - e.g. Fit
+* mantid.instrument 
+    - grouping, masking, etc
+    - e.g. `GroupDetectors`, `MaskBTP`, `SetGoniometer`, `MoveInstrumentComponent`
+* mantid.workspace
+    - manipulate workspaces, history
+    - `RenameWorkspace`, `GroupWorkspaces`, `CompareWorkspaces`, `Comment`
 * mantid.metadata
     - logs, titles, but not history
-* mantid.muons
-    - muon related stuff
-* mantid.neutrons
-    - things that are related to neutrons (time of flight), but not specific to a certain subfield (like diffraction)
-    - e.g. `ConvertUnits`, `ConvertToMD`, `NormaliseByCurrent`, `He3TubeEfficiency`
 
 ---
 
+
+
+* mantid.muons
+    - muon related algorithms and Fit Functions
+* mantid.neutrons
+    - things that are related to neutrons (time of flight), but not specific to a certain subfield (like diffraction)
+    - e.g. `ConvertUnits`, `ConvertToMD`, `NormaliseByCurrent`, `He3TubeEfficiency`
 * mantid.neutrons.crystal
     - single crystal stuff. Will include `UnitCell`, `OrientedLattice`, `SymmetryOperation`
     - e.g. `SetUB`, `FindPeaksMD`, `IndexPeaks`
@@ -128,7 +137,10 @@ The structure below if modified from that presented by [Andre Savici at the 2017
     - e.g. `FindReflectometryLines`
 * mantid.neutrons.sans
     - e.g. `CalculateEfficiency`
-
+* mantid.simulations
+    - deal with outside simulation programs (CASTEP, SASSENA, ...)
+    - `CalculateInelasticScatteringFromAbInitioPhonon` (`Abins`)
+    
 ---
 
 * mantid.constants
@@ -137,12 +149,8 @@ The structure below if modified from that presented by [Andre Savici at the 2017
     - neutronic constants
 * mantid.remote
     - `SubmitRemoteJob`, `AbortRemoteJob`
-* mantid.simulations
-    - deal with outside simulation programs (CASTEP, SASSENA, ...)
-    - `CalculateInelasticScatteringFromAbInitioPhonon` (`Abins`)
-* mantid.workspace
-    - manipulate workspaces, history
-    - `RenameWorkspace`, `GroupWorkspaces`, `CompareWorkspaces`, `Comment`
+
+
     
 ---
 
@@ -182,7 +190,41 @@ The registration of Python Algorithms and creation of the run time API is curren
 Documentation Structure
 -----------------------
 
-The documentation of 
+### Top Level ###
+The documentation of Mantid will be rearranged to follow this structure:
+
+* Concepts
+* Simple scripting in Mantid (`mantid.simpleapi`)
+* Mathematical operations (`mantid.math`)
+* Instrument manipulations (`mantid.instrument`)
+* Workspace manipulations (`mantid.workspace`)
+* Experimental metadata (`mantid.metadata`)
+* Optimization and Curve Fitting (`mantid.optimization`)
+* File IO (`mantid.io`)
+
+* Common scientific Constants (`mantid.constants`)
+* Common neutron operations (`mantid.neutrons`)
+* Common Muon operations (`mantid.muons`)
+* Working with simulation codes (`mantid.simulations`)
+
+* Facility Specific Libaries (`mantid.sns` etc)
+
+* User Interfaces
+* Release Notes
+* API Reference
+    - Python 
+    - C++ <http://doxygen.mantidproject.org/>
+    - Full list of Algorithms
+    - Full list of Fit Functions
+    - Full list of Fit Minimizers
+
+### Module Page ###
+
+Each module page would not be auto generated as now, but would have sections within it that are autogenerated within sphinx as we currently do within the algorithm pages, this wold be done by new custom directives.
+
+An example module page would contain the following:
+
+
 
 C++ Library Structure
 ---------------------
@@ -198,5 +240,5 @@ Questions
 =========
 
 1. Mantid.IO should we split out NeXus, ISAW etc?
+1. Should mantid.simulations be mantid.neutron.simulations ?
 1. If you have imported a sub selection of packages of IO, what does that mean for Load?
-
