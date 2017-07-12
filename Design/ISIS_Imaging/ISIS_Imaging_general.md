@@ -20,6 +20,7 @@
         - [9.1.4. OpenCV](#914-opencv)
         - [9.1.5. numba](#915-numba)
         - [9.1.6. dask](#916-dask)
+        - [9.1.7. VTK Imaging](#917-vtk-imaging)
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
     - [9.3. File Structure](#93-file-structure)
     - [9.4. Filters - General implementation structure](#94-filters---general-implementation-structure)
@@ -311,6 +312,12 @@ Dask is composed of two components:
 
 Dynamic task scheduling optimized for computation. This is similar to Airflow, Luigi, Celery, or Make, but optimized for interactive computational workloads.
 “Big Data” collections like parallel arrays, dataframes, and lists that extend common interfaces like NumPy, Pandas, or Python iterators to larger-than-memory or distributed environments. These parallel collections run on top of the dynamic task schedulers.
+
+### 9.1.7. VTK Imaging
+
+- Note: [Doesn't seem to have a Python 3 version in Conda or Pip](http://www.vtk.org/features-imaging/)
+
+In the context of visualization, image processing is most often used to manipulate image content (either two- or three-dimensional images) and improve the results of subsequent processing and interpretation. VTK is quite capable at working with images. It has a large number of filters dedicated to the purpose, most of which are multi-threaded, and support for streamed processing of regions of interest is built into the pipeline.
 
 ## 9.2. Reconstruction tools expansion
 
