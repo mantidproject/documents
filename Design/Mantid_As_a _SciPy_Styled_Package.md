@@ -77,89 +77,78 @@ This is primarily about structuring the locations of Algorithm and Fit functions
 
 The structure below if modified from that presented by [Andre Savici at the 2017 Users Workshop](../Presentations/DevMeetings/2017-06/Mantid4PythonLibrariesAndNames.md).  We will only create a library if we have at least one item to include within it.
 
-> * Mantid.simpleapi
->     - An accumulation library that will import all of the algorithms within Mantid as it currently does
-> * mantid.api
->     - the current mantid.api (workspaces, validators, algorithm)
->     
-> ---
-> 
-> * mantid.io
->     - all loading and saving
->     - ?? should we split out NeXus, ISAW etc ??
-> * mantid.math 
->     - matrix workspace math (also include `V3D`, `VMD`, ...)
->     - `Plus`, `ExponentialCorrection`, `Rebin`, `Fit`
->     - add aliases `Add`=`Plus`, `Subtract`=`Minus`
-> * mantid.math.axes
->     - changing the axis of a matrix workspace (not the data), that is technique independent
->     - e.g. ScaleX`, `ConvertAxisByFormula`, `MedianBinWidth`
-> * mantid.math.events
->     - deals with events (technique agnostic)
->     - `FilterEvents`, `RebinByPulseTime`
-> * mantid.math.multidimensional
->     - technique agnostic multidimensional workspace operations
->     - does not include `ConvertToMD`
-> * mantid.optimization
->     - Curve Fitting and Optimization
->     - e.g. Fit
-> * mantid.instrument 
->     - grouping, masking, etc
->     - e.g. `GroupDetectors`, `MaskBTP`, `SetGoniometer`, `MoveInstrumentComponent`
-> * mantid.workspace
->     - manipulate workspaces, history
->     - `RenameWorkspace`, `GroupWorkspaces`, `CompareWorkspaces`, `Comment`
-> * mantid.metadata
->     - logs, titles, but not history
-> 
-> ---
-> 
-> * mantid.muons
->     - muon related algorithms and Fit Functions
-> * mantid.neutrons
->     - things that are related to neutrons (time of flight), but not specific to a certain subfield (like diffraction)
->     - e.g. `ConvertUnits`, `ConvertToMD`, `NormaliseByCurrent`, `He3TubeEfficiency`
-> * mantid.neutrons.crystal
->     - single crystal stuff. Will include `UnitCell`, `OrientedLattice`, `SymmetryOperation`
->     - e.g. `SetUB`, `FindPeaksMD`, `IndexPeaks`
-> * mantid.neutrons.diffraction
->     - powder/amorphous diffraction stuff
->     - e.g. `StripVanadiumPeaks`, `AlignAndFocusPowder`
-> * mantid.neutrons.inelastic
->     - algorithms related to both direct and indirect inelastic spectroscopy
->     - e.g. `GetEi`, `CorrectKiKf`, `SofQW`
-> * mantid.neutrons.reactor
->     - single wavelength algorithms
->     - right now most are facility specific
-> * mantid.neutrons.reflectometry
->     - e.g. `FindReflectometryLines`
-> * mantid.neutrons.sans
->     - e.g. `CalculateEfficiency`
-> * mantid.simulations
->     - deal with outside simulation programs (CASTEP, SASSENA, ...)
->     - `CalculateInelasticScatteringFromAbInitioPhonon` (`Abins`)
->     
-> ---
-> 
-> * mantid.constants
->     - no algorithms here
->     - physical constants
->     - neutronic constants
-> * mantid.remote
->     - `SubmitRemoteJob`, `AbortRemoteJob`
->     
-> ---
-> 
-> # Facility Specific Libraries
-> 
-> * mantid.ess
-> * mantid.hfir
-> * mantid.ill
-> * mantid.isis
-> * mantid.sns
-> * can add instrument or technique specific sublibraries
->     - `mantid.sns.corelli.CrossCorelation`
- 
+* Mantid.simpleapi
+    - An accumulation library that will import all of the algorithms within Mantid as it currently does
+* mantid.api
+    - the current mantid.api (workspaces, validators, algorithm)
+* mantid.io
+    - all loading and saving
+    - ?? should we split out NeXus, ISAW etc ??
+* mantid.math 
+    - matrix workspace math (also include `V3D`, `VMD`, ...)
+    - `Plus`, `ExponentialCorrection`, `Rebin`, `Fit`
+    - add aliases `Add`=`Plus`, `Subtract`=`Minus`
+* mantid.math.axes
+    - changing the axis of a matrix workspace (not the data), that is technique independent
+    - e.g. ScaleX`, `ConvertAxisByFormula`, `MedianBinWidth`
+* mantid.math.events
+    - deals with events (technique agnostic)
+    - `FilterEvents`, `RebinByPulseTime`
+* mantid.math.multidimensional
+    - technique agnostic multidimensional workspace operations
+    - does not include `ConvertToMD`
+* mantid.optimization
+    - Curve Fitting and Optimization
+    - e.g. Fit
+* mantid.instrument 
+    - grouping, masking, etc
+    - e.g. `GroupDetectors`, `MaskBTP`, `SetGoniometer`, `MoveInstrumentComponent`
+* mantid.workspace
+    - manipulate workspaces, history
+    - `RenameWorkspace`, `GroupWorkspaces`, `CompareWorkspaces`, `Comment`
+* mantid.metadata
+    - logs, titles, but not history
+* mantid.muons
+    - muon related algorithms and Fit Functions
+* mantid.neutrons
+    - things that are related to neutrons (time of flight), but not specific to a certain subfield (like diffraction)
+    - e.g. `ConvertUnits`, `ConvertToMD`, `NormaliseByCurrent`, `He3TubeEfficiency`
+* mantid.neutrons.crystal
+    - single crystal stuff. Will include `UnitCell`, `OrientedLattice`, `SymmetryOperation`
+    - e.g. `SetUB`, `FindPeaksMD`, `IndexPeaks`
+* mantid.neutrons.diffraction
+    - powder/amorphous diffraction stuff
+    - e.g. `StripVanadiumPeaks`, `AlignAndFocusPowder`
+* mantid.neutrons.inelastic
+    - algorithms related to both direct and indirect inelastic spectroscopy
+    - e.g. `GetEi`, `CorrectKiKf`, `SofQW`
+* mantid.neutrons.reactor
+    - single wavelength algorithms
+    - right now most are facility specific
+* mantid.neutrons.reflectometry
+    - e.g. `FindReflectometryLines`
+* mantid.neutrons.sans
+    - e.g. `CalculateEfficiency`
+* mantid.simulations
+    - deal with outside simulation programs (CASTEP, SASSENA, ...)
+    - `CalculateInelasticScatteringFromAbInitioPhonon` (`Abins`)
+* mantid.constants
+    - no algorithms here
+    - physical constants
+    - neutronic constants
+* mantid.remote
+    - `SubmitRemoteJob`, `AbortRemoteJob`
+
+# Facility Specific Libraries
+
+* mantid.ess
+* mantid.hfir
+* mantid.ill
+* mantid.isis
+* mantid.sns
+* can add instrument or technique specific sublibraries
+    - `mantid.sns.corelli.CrossCorelation`
+
 ### Generation ####
 
 The generation of the Mantid Python API for algorithms is currently done at run time on start-up, and has been found to take a large proportion of the time taken to start Mantid.  
@@ -188,43 +177,40 @@ Documentation Structure
 ### Top Level ###
 The documentation of Mantid will be rearranged to follow this structure:
 
-> * Concepts
-> * Simple scripting in Mantid (`mantid.simpleapi`)
-> * Mathematical operations (`mantid.math`)
-> * Instrument manipulations (`mantid.instrument`)
-> * Workspace manipulations (`mantid.workspace`)
-> * Experimental metadata (`mantid.metadata`)
-> * Optimization and Curve Fitting (`mantid.optimization`)
-> * File IO (`mantid.io`)
-> 
-> * Common scientific Constants (`mantid.constants`)
-> * Common neutron operations (`mantid.neutrons`)
-> * Common Muon operations (`mantid.muons`)
-> * Working with simulation codes (`mantid.simulations`)
-> 
-> * Facility Specific Libaries (`mantid.sns` etc)
-> 
-> * User Interfaces
-> * Release Notes
-> * API Reference
->     - Python 
->     - C++ <http://doxygen.mantidproject.org/>
->     - Full list of Algorithms
->     - Full list of Fit Functions
->     - Full list of Fit Minimizers
+* Concepts
+* Simple scripting in Mantid (`mantid.simpleapi`)
+* Mathematical operations (`mantid.math`)
+* Instrument manipulations (`mantid.instrument`)
+* Workspace manipulations (`mantid.workspace`)
+* Experimental metadata (`mantid.metadata`)
+* Optimization and Curve Fitting (`mantid.optimization`)
+* File IO (`mantid.io`)
+* Common scientific Constants (`mantid.constants`)
+* Common neutron operations (`mantid.neutrons`)
+* Common Muon operations (`mantid.muons`)
+* Working with simulation codes (`mantid.simulations`)
+* Facility Specific Libaries (`mantid.sns` etc)
+* User Interfaces
+* Release Notes
+* API Reference
+    - Python 
+    - C++ <http://doxygen.mantidproject.org/>
+    - Full list of Algorithms
+    - Full list of Fit Functions
+    - Full list of Fit Minimizers
 
 ### Module Page ###
 
 Each module page would not be auto generated as now, but would have sections within it that are auto generated within sphinx as we currently do within the algorithm pages, this wold be done by new custom directives.
 
 An example module page would contain the following:
-> * The Title
-> * A short description of the module and its purpose
-> * A list of sub modules
-> * A list of Algorithms within this module
-> * A list of Fit functions within this module
-> * Other objects
-> *  An example or two of things that are possible using this module with python examples that are doc tested
+* The Title
+* A short description of the module and its purpose
+* A list of sub modules
+* A list of Algorithms within this module
+* A list of Fit functions within this module
+* Other objects
+*  An example or two of things that are possible using this module with python examples that are doc tested
 
 Each of the lists will be generated by a directive, and should not appear at all if there is nothing in the list.
 ?? is it possible to extract the short module description from a docstring? ?? - If so all of the top can be replaced with a single directive.
