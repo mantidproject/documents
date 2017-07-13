@@ -139,7 +139,7 @@ The structure below if modified from that presented by [Andre Savici at the 2017
 * mantid.remote
     - `SubmitRemoteJob`, `AbortRemoteJob`
 
-# Facility Specific Libraries
+**Facility Specific Libraries**
 
 * mantid.ess
 * mantid.hfir
