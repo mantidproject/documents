@@ -12,19 +12,6 @@ will minimize the effect of merge conflicts on existing components that are goin
 
 The advantage here is that we can remove the existing MantidPlot on this branch and reuse the name for the new workbench.
 
-User Testing
-============
-
-During development we will require a small group of actively engaged users to test drive the new interface to ensure we are
-developing it as expected.
-
-As the development is occuring on a long-running feature branch we will need a separate set of packages to be able to give to users. It is proposed that we
-use the same suffix system that is currently used for the linux packages but for all environments. A package called `mantid-guibeta` can be generated
-that will install to different default locations on Windows/macOS and in `/opt/mantid-guibeta` for Linuxes. These packages will not alter the user environment
-in any way and will not create desktop shortcuts in case they are confused with the current C++ version.
-
-The beta-testers will have to run the program by navigating to a given directory and running a script/executable.
-
 
 Directory Structure
 ===================
@@ -68,19 +55,6 @@ mantid.git
    |   |   |   |-- sliceviewer
 ```
 
-Packaging
-=========
-
-Python
-------
-
-The framework package will remain separate and called `mantid`.
-
-The new ui package will be called `mantidui` and have the following submodules:
-
- - mantidui.pyplot: contain custom plotting code based on matplotlib, i.e keep/make current behaviour, custom toolbars, custom figure window
- - mantidui.widgets: contain these set of reusable widgets used to build the workbench & its components
-
 Technologies
 ============
 
@@ -108,6 +82,43 @@ of protection as it currently does between `PyQt4` & `PyQt5`.
 We could either write our own, use those provided by other dependencies: [matplotlib][matplotlib_qtcompat], [IPython][IPython] or
 use a separate package such as [qtpy][qtpy] provided by the [Spyder][Spyder] developers.
 
+Packaging & Deployment
+======================
+
+Python
+------
+
+The framework package will remain separate and called `mantid`.
+
+The new ui package will be called `mantidui` and have the following submodules:
+
+ - mantidui.plotting: contain custom plotting code based on matplotlib, i.e keep/make current behaviour, custom toolbars, custom figure window
+ - mantidui.widgets: contain these set of reusable widgets used to build the workbench & its components
+
+The workbench will be called `mantidplot` and depend on `mantudui` & `mantid`.
+
+Installation
+------------
+
+It is proposed that a new package be generated for shipping the new workbench. The reasons for this are:
+
+* it avoids disturbing the production package at all to provide maximal stability for existing users
+* Qt5/PyQt5 will need to be shipped on Windows/OSX and this would explode the current package size if we bundled it there
+* we may want to experiment with different versions of packages that we already ship and we don't want to disturb the current application
+* it can be a starting point for generating the separate packages on Linux (hand-written spec/debian files?).
+
+The current windows installer uses [NSIS][Nsis] to generate a binary package. This technology is very difficult to work with owing to its use of php & assembly-like
+language. Qt has an framework for generating binary packages called the [Qt Installer Framework][QtInstallerFramework] that offers a similar wizard-style installation process.
+It uses a combination of XML, Qt `ui` files & javascript to generate the installer and looks much easier to work with. It also has first class support for generating
+both network & offline installers. It has been commented on how large the packages are becoming and this could be a route to providing
+a more stream-lined installation mechanism. It could start with the offline mode but with the option of changing in the future. **Note:** This change is not a requirement
+as the NSIS mechanmism can still support what we need for now.
+
+Regardless of the technology the packages **must** be able to live alongside a current production or nightly version. The package names suggested are:
+
+* Windows/OSX: mantidpreview - A combined package bundling everthing, much as we currently do. Defaults to a different install location than current
+* Linux: mantidpreview-framework, mantidpreview-ui, mantidpreview-mantidplot: separate packages to allow just dependencies on widgets etc.
+
 
 <!-- Link Definitions -->
 
@@ -118,3 +129,5 @@ use a separate package such as [qtpy][qtpy] provided by the [Spyder][Spyder] dev
 [IPython]: https://ipython.org/
 [qtpy]: https://pypi.python.org/pypi/QtPy
 [Spyder]: https://github.com/spyder-ide/spyder
+[Nsis]: http://nsis.sourceforge.net/Main_Page
+[QtInstallerFramework]: http://doc.qt.io/qtinstallerframework/
