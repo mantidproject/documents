@@ -22,8 +22,9 @@
         - [9.1.6. dask](#916-dask)
         - [9.1.7. VTK Imaging](#917-vtk-imaging)
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
-    - [9.3. File Structure](#93-file-structure)
-    - [9.4. Filters - General implementation structure](#94-filters---general-implementation-structure)
+    - [9.3. Problems with moving to Python 3.5+](#93-problems-with-moving-to-python-35)
+    - [9.4. File Structure](#94-file-structure)
+    - [9.5. Filters - General implementation structure](#95-filters---general-implementation-structure)
 - [10. Guidelines for ISIS Imaging GUI](#10-guidelines-for-isis-imaging-gui)
     - [10.1. General Structure](#101-general-structure)
     - [10.2. ui Compiling](#102-ui-compiling)
@@ -324,7 +325,21 @@ In the context of visualization, image processing is most often used to manipula
 - [Astra Toolbox](http://www.astra-toolbox.com/), [Supports Python 3](http://www.astra-toolbox.com/docs/install.html#for-python)
 - [MuhRec](http://www.imagingscience.ch/downloadsection/), No Python Bindings
 
-## 9.3. File Structure
+## 9.3. Problems with moving to Python 3.5+
+
+In an attempt to move the Python version requirement to 3.5, I have come across an extreme slowdown in initial memory allocation and processing performance.
+
+The reason has been outlined in [http://bugs.python.org/issue30919](http://bugs.python.org/issue30919), and it seems to be a behaviour change in `multiprocessing`'s shared memory allocation on Unix systems between python 2.7 and 3.5.
+
+- In 2.7 the memory was actually allocated in memory, and then shared with subprocesses.
+- In 3.5 the memory is written out as a file, which is then used as the 'shared memory' between subprocesses. The reason for that is that Python 3.x supports more ways of creating subprocesses, so this was the only way to support all of them. This means that memory initialisation and processing are now IO bound.
+
+However, as I do not think any of the additional ways of creating subprocesses are useful for this package, this change makes moving to 3.x impossible, until a workaround is found. I have taken the following steps as possible solutions:
+
+- I've asked on the Python issue board if anyone has a way to force the python 2.7 behaviour in python 3.5, this would by far be the easiest solution, as no significant code change will be necessary. However it might require changes to the Python source code, which I am not happy about, as I want to use a standard python distribution
+- I am looking into packages that can be used instead of the built-in `multiprocessing`, to handle the parallel processing. Some have already been added to the design document, like `dusk` and `numba`. The problem with this approach is that neither `dask` nor `numba` are available on SCARF right now, but they can be requested and added.
+
+## 9.4. File Structure
 
 Using Python's modular structure is encouraged. Focus on having stateless free functions within modules.
 
@@ -370,7 +385,7 @@ It is not expected to have many changes of this top level structure. If any stru
 
 Having this structure also allows to expose a consistent Public API through the `__init__` files, making the suggestions in iPython only show what we have exposed to the Public API.
 
-## 9.4. Filters - General implementation structure
+## 9.5. Filters - General implementation structure
 
 - Filters should be inside a package that only exposes `execute`, `gui_register`, `cli_register`, and any other functions desired to be part of the public API. This will be enforced in the package's `__init__.py`
   - This allows to have a strict API regardless of the internal implementation inside the package, so that is left is up to the developer. They could be in a single `.py` module, or in a separate module for each large function -> `execute.py`, `gui.py`, `cli.py`, etc.
