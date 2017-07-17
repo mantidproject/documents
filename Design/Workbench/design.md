@@ -21,7 +21,7 @@ The following diagram indicates the proposed directory structure for the graphic
 ```
 mantid.git
    |-- Framework
-   |-- ui
+   |-- qt
    |   |-- applications
    |   |   |-- mantidplot
    |   |-- algorithm_dialogs
@@ -45,7 +45,7 @@ mantid.git
    |   |   |   |   |-- ISIS_Reflectometry.py
    |   |   |   |   |-- ISIS_Reflectometry
    |   |   |   |   |   |-- ...
-   |   |-- mantidui # will become the mantidui python module
+   |   |-- mantidqt # will become the mantidqt python module
    |   |   |-- pyplot
    |   |   |-- widgets
    |   |   |   |-- common
@@ -105,16 +105,9 @@ It is proposed that a new package be generated for shipping the new workbench. T
 * it avoids disturbing the production package at all to provide maximal stability for existing users
 * Qt5/PyQt5 will need to be shipped on Windows/OSX and this would explode the current package size if we bundled it there
 * we may want to experiment with different versions of packages that we already ship and we don't want to disturb the current application
-* it can be a starting point for generating the separate packages on Linux (hand-written spec/debian files?).
+* it can be a starting point for generating the separate packages on Linux (hand-written spec/debian files??).
 
-The current windows installer uses [NSIS][Nsis] to generate a binary package. This technology is very difficult to work with owing to its use of php & assembly-like
-language. Qt has an framework for generating binary packages called the [Qt Installer Framework][QtInstallerFramework] that offers a similar wizard-style installation process.
-It uses a combination of XML, Qt `ui` files & javascript to generate the installer and looks much easier to work with. It also has first class support for generating
-both network & offline installers. It has been commented on how large the packages are becoming and this could be a route to providing
-a more stream-lined installation mechanism. It could start with the offline mode but with the option of changing in the future. **Note:** This change is not a requirement
-as the NSIS mechanmism can still support what we need for now.
-
-Regardless of the technology the packages **must** be able to live alongside a current production or nightly version. The package names suggested are:
+For Windows/Mac we will use the same installer technology as we do currently. The packages **must** be able to live alongside a current production or nightly version. The package names suggested are:
 
 * Windows/OSX: mantidpreview - A combined package bundling everthing, much as we currently do. Defaults to a different install location than current
 * Linux: mantidpreview-framework, mantidpreview-ui, mantidpreview-mantidplot: separate packages to allow just dependencies on widgets etc.
