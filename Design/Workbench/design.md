@@ -24,6 +24,7 @@ mantid.git
    |-- qt
    |   |-- applications
    |   |   |-- mantidplot
+   |   |       |-- setup.py
    |   |-- algorithm_dialogs
    |   |-- paraview
    |   |-- scientific_interfaces
@@ -46,6 +47,7 @@ mantid.git
    |   |   |   |   |-- ISIS_Reflectometry
    |   |   |   |   |   |-- ...
    |   |-- mantidqt # will become the mantidqt python module
+   |   |   |-- setup.py
    |   |   |-- pyplot
    |   |   |-- widgets
    |   |   |   |-- common
