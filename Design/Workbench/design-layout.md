@@ -1,7 +1,7 @@
 Summary
 =======
 
-This document describes the design of the new matplotlib-based workbench that will replace MantidPlot.
+This document describes the layout and high-level details of the new matplotlib-based workbench that will replace MantidPlot.
 
 Workflow
 ========
