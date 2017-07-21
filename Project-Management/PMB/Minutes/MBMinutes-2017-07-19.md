@@ -26,10 +26,11 @@ Minutes
         The major need appears to be at the ILL for indirect geometry. To be completed.
     - Mantid core team and long term plan (Taylor)
         - Small teams will be formed at all the institutes to form a Core Team.
-        - The Core team will write a report that will be delivered to the PMB by September.
-        - The report shoud include what needs to be done (i.e. a specification for Mantid), resources and time scales.
+        - The Core team will begin with a startup meeting in September.
+        - The team should present a proposal on the first item considered to the next PMB.
+        - The proposal shoud include what needs to be done (e.g. for Mantid as a Scipy style library), benefits, risks, resources and time scales.
         - Some discussion involved:
-            - Core team should look into: Pyton core + `C++` when needed vs `C++` core with Python bindings
+            - Peter Peterson raised the question should the driection be Pyton core + `C++` vs `C++` core with Python bindings - this could be considered by the core team but no specific direction was decided.
             - Involve scientists that have used the Python API and have gone through some fustrations using it.
             - Scientist should review the first draft design
             - The new framework should be much easier to develop into.
@@ -41,6 +42,7 @@ Minutes
  
 4. PM Report (Nick Draper)
     - This involved an overview of the document previously shared.
+      [Link to the PM report](../PM report to the PMB 19 July 2017.doc)
     - The main points were the Users Workshop and the Progress on Mantid 4.0.
 
 5. TSC Report (Peterson)
@@ -64,10 +66,11 @@ Minutes
         - Users provide a different perspective
         - Need to decide what Mantid does: Reduction and Analysis vs just reduction?
         - It is necessary to have face to face conversations with external users.
+        - Organise a PMB meeting within that week.
         - Action:
             - Each facility need to come up with a list of users per area of expertise and share with the PMB by September.
         - Next User Metting:
-            - ILL is the best place for it to took place.
+            - SNS is the best place for it to took place, alothough the ILL might be a good location for 2019.
             - The best date is likelly to be January or February 2018
 
 12. Next Meeting
@@ -76,9 +79,10 @@ Minutes
 
 Summary of actions
 ------------------
-- Core team finishes the report by September
+- Core team finishes the first proposal for the next PMB meeting.
 - Face to Face review: share with the PMB a list of users per area of expertise by September.
-- Prepare Users meeting for January or February 2018 at ILL
+- Prepare Users & developer meeting for January or February 2018 at SNS
 - Leal will send a doodle for the next PMB meeting: October / November 2017
-
+- Nick to email User meeting attendees with Update on Mantid 4.0 plans
+- Nick To prepare a respone to review document ahd share with the PMB
 
