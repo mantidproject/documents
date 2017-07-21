@@ -22,8 +22,8 @@ Minutes
 3. Actions
     - Powder diffraction training material (Granroth)
         - The training material was swapped with direct geoometry spectometer and will be availble in the form of notebooks in August.
-    - New IDF:
-        The major need appears to be at the ILL for indirect geometry. To be completed.
+    - ILL Indirect Geometry:
+      - May be changes are needed to the geometry / IDF. Check again next PMB meeting.
     - Mantid core team and long term plan (Taylor)
         - Small teams will be formed at all the institutes to form a Core Team.
         - The Core team will begin with a startup meeting in September.
@@ -59,7 +59,7 @@ Minutes
 
 7. Facility updates / news 
     - SNS: Powergen is comming soon and will need a new IDF.
-    - ILL: has finished the developments for Back Scattering
+    - ILL: The ILL has finished developments for ToF Spectroscopy, as well as Back Scattering.
 
 10. Scientific steering committee discussion
     - The feedback from the users workshop:
