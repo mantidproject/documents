@@ -86,4 +86,4 @@ starting from a clean slate with the workbench it should not be an issue to keep
 [jupyter-qtconsole]: https://github.com/jupyter/qtconsole/blob/master/qtconsole/tests/test_console_widget.py
 [mantidwidgets]: https://github.com/mantidproject/mantid/tree/master/MantidQt/MantidWidgets
 [mslice]: https://github.com/mantidproject/mslice
-[ipython-style]: IPython style guide: https://github.com/ipython/ipython/wiki/Dev:-Coding-style
+[ipython-style]: https://github.com/ipython/ipython/wiki/Dev:-Coding-style
