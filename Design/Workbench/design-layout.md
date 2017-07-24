@@ -49,14 +49,16 @@ mantid.git
        |-- python
        |   |-- mantidqt # python mantidqt module
        |       |-- reduction_gui # Python reduction gui framework
+       |       |-- widgets # would contain combine qtwidgetscommon.dll with sip exports to give mantidqt.widgets python library
        |       |-- __init__.py
        |-- widgets
-           |-- common
+           |-- common # qtwidgetscommon.dll
            |-- plugins
-           |   |-- algorithm_dialogs
-           |-- instrumentview
-           |-- spectrumviewer
-           |-- sliceviewer
+           |   |-- algorithm_dialogs # qtwidgetspluginsalgorithm_dialogs.dll
+           |   |-- designer # qtwidgetspluginsdesigner.dll
+           |-- instrumentview # qtwidgetsinstrumentview.dll
+           |-- spectrumviewer # qtwidgetsspectrumviewer.dll
+           |-- sliceviewer # qtwidgetssliceviewer.dll
 ```
 
 Mapping of the current structure to this is is as follows:
@@ -74,6 +76,7 @@ Mapping of the current structure to this is is as follows:
  - Remove Factory directory as it seems unecessary
  - All resources, fonts, images etc, moved under qt/resources
 
+Shared libraries follow a naming structure that includes all of their parent directories.
 
 Technologies
 ============
