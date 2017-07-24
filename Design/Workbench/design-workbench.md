@@ -60,10 +60,9 @@ The initial propsosal is to borrow ideas from the [mslice][mslice] and have a co
 buttons `Hold/Active` or `Held/Active` (depending on its state). These buttons control what happens when a plotting function is called without explicit intent as to which figure it should affect.
 
 - Hold: This window should be *frozen* and left as it is. Further plotting should be done in a new window. The text of the button changes to *Held* and the background colour to *red*.
-- Active: This window is the *active* window for this plot type (separate lists maintained for 1D, 2D, 3D). Further plotting will **replace** the contents of this window. The  background colour to Active goes to  *green* and the `Held/Hold` button text is set back to *Hold* and it sbackground back to gray.
+- Active: This window is the *active* window for this plot type (separate lists maintained for 1D, 2D, 3D). Further plotting will **replace** the contents of this window. The  background colour of Active goes to  *green* and the `Held/Hold` button text is set back to *Hold* and its background back to gray.
 
 The default state for new windows, i.e. whether held or active will be user configurable.
-
 
 Coding Style
 ============
