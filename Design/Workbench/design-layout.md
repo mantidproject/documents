@@ -21,41 +21,59 @@ The following diagram indicates the proposed directory structure for the graphic
 ```
 mantid.git
    |-- Framework
+   |-- MantidPlot
    |-- qt
-   |   |-- applications
-   |   |   |-- mantidplot
-   |   |       |-- setup.py
-   |   |-- algorithm_dialogs
-   |   |-- paraview
-   |   |-- scientific_interfaces
-   |   |   |-- CMakeLists.txt
-   |   |   |-- Diffraction
-   |   |   |   |-- PowderDiffractionReduction
-   |   |   |   |   |-- Powder_Diffraction_Reduction.py
-   |   |   |   |   |-- Powder_Diffraction_Reduction
-   |   |   |   |   |   |-- ...
-   |   |   |-- Indirect
-   |   |   |   |-- Common
-   |   |   |   |-- Corrections
-   |   |   |   |-- DataAnalysis
-   |   |   |-- Muon
-   |   |   |   |-- ALC
-   |   |   |   |-- DataAnalysis
-   |   |   |-- Reflectometry
-   |   |   |   |-- ISISReflectometry
-   |   |   |   |   |-- ISIS_Reflectometry.py
-   |   |   |   |   |-- ISIS_Reflectometry
-   |   |   |   |   |   |-- ...
-   |   |-- mantidqt # will become the mantidqt python module
-   |   |   |-- setup.py
-   |   |   |-- pyplot
-   |   |   |-- widgets
-   |   |   |   |-- common
-   |   |   |   |-- reduction_gui # Python reduction gui framework
-   |   |   |   |-- instrumentviewer
-   |   |   |   |-- spectrumviewer
-   |   |   |   |-- sliceviewer
+       |-- applications
+       |   |-- mantidworkbench
+       |-- paraview_ext
+       |-- resources
+       |-- scientific_interfaces
+       |   |-- CMakeLists.txt
+       |   |-- Diffraction
+       |   |   |-- PowderDiffractionReduction
+       |   |       |-- Powder_Diffraction_Reduction.py
+       |   |       |-- Powder_Diffraction_Reduction
+       |   |       |   |-- ...
+       |   |-- Indirect
+       |   |   |-- Common
+       |   |   |-- Corrections
+       |   |   |-- DataAnalysis
+       |   |-- Muon
+       |   |   |-- ALC
+       |   |   |-- DataAnalysis
+       |   |-- Reflectometry
+       |   |   |-- ISISReflectometry
+       |   |       |-- ISIS_Reflectometry.py
+       |   |       |-- ISIS_Reflectometry
+       |   |       |   |-- ...
+       |-- python
+       |   |-- mantidqt # python mantidqt module
+       |       |-- reduction_gui # Python reduction gui framework
+       |       |-- __init__.py
+       |-- widgets
+           |-- common
+           |-- plugins
+           |   |-- algorithm_dialogs
+           |-- instrumentview
+           |-- spectrumviewer
+           |-- sliceviewer
 ```
+
+Mapping of the current structure to this is is as follows:
+
+ - `/MantidPlot`: NOT MOVED (will be deleted once replacement is up to scratch)
+ - `/Vates` --> `/qt/paraview_ext`
+ - `/MantidQt/API/` & `/MantidQt/MantidWidgets/` combined --> `/qt/widgets/common`
+ - `/MantidQt/MantidWidgets/InstrumentView` --> `qt/widgets/instrumentview`
+ - `/MantidQt/RefDetectorViewer` --> `/qt/widgets/refdetectorview`
+ - `/MantidQt/SpectrumViewer` --> `/qt/widgets/spectrumviewer`
+ - `/MantidQt/SliceViewer` --> `/qt/widgets/sliceviewer`
+ - `/MantidQt/CustomDialogs` --> `/qt/widgets/plugins/algorithm_dialogs`
+ - `/MantidQt/DesignerPlugins` --> `/qt/widgets/plugins/designer`
+ - `/MantidQt/Python` --> `/qt/python`
+ - Remove Factory directory as it seems unecessary
+ - All resources, fonts, images etc, moved under qt/resources
+
 
 Technologies
 ============
