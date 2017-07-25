@@ -134,10 +134,21 @@ This will contain the code related to executing scripts including a "runner" cla
 
 ## Plotting
 
-`matplotlib` will provide the plotting abilities within the new workbench. It exposes all classes as an object-oriented API but also provides a procedural, state-machine api, `pyplot`, that is particularly convenient for
-interactive programming. The OO api will be used internally by the workbench but users will be most likely want to interact with simpler the `pyplot` api more frequently.
+`matplotlib` will provide the plotting abilities within the new workbench. It exposes all classes as an object-oriented API but also provides a procedural, state-machine api, `pyplot` interactive programming.
 
-In `pyplot` matplotlib provides a default window/toolbar that provides basic tools. This will be inadequate for our users so we will develop a custom toolbar for our the 1D, 2D and 3D plot types.
+In `pyplot` matplotlib provides a default window/toolbar that provides basic tools. This will be inadequate for our users so we will develop a custom toolbar for our the 1D, 2D and 3D plot types. We will provide a `cli` module
+that mimics the `pyplot` api but uses our defaults (configurable) for toolbars/window etc. Matplotlib uses a [tool][mpl-boilerplate] to generate their `pyplot` api. We can do something similar.
+
+By providing an alternate `cli` module we can preserve access to the standard `matplotlib.pyplot` module should anyone want access to this. A snippet of code such as:
+
+```python
+try:
+    import mantiqt.plotting.cli as plt
+except ImportError:
+    import matplotlib.pyplot as plt
+```
+
+would allow a script to function either using our cli or the built-in matplotlib one.
 
 ### 1D Plots
 
@@ -163,6 +174,11 @@ buttons `Hold/Active` or `Held/Active` (depending on its state). These buttons c
 - Active: This window is the *active* window for this plot type (separate lists maintained for 1D, 2D, 3D). Further plotting will **replace** the contents of this window. The  background colour of Active goes to  *green* and the `Held/Hold` button text is set back to *Hold* and its background back to gray.
 
 The default state for new windows, i.e. whether held or active will be user configurable.
+
+### Templates
+
+Matplotlib provides a [stylesheet][mpl-stylesheets] mechanism that allows predefined styles to be applied to plots. This mechanism will be used to provide users with the ability to save a template of their plot configuration
+for future use.
 
 ### Utils
 
@@ -221,3 +237,5 @@ This package will also contain the first time setup dialog along with the handli
 [mantidwidgets]: https://github.com/mantidproject/mantid/tree/master/MantidQt/MantidWidgets
 [mslice]: https://github.com/mantidproject/mslice
 [hfir_startup_file]: https://github.com/mantidproject/mantid/blob/master/scripts/HFIR_Powder_Diffraction_Reduction.py
+[mpl-boilerplate]: https://github.com/matplotlib/matplotlib/blob/master/tools/boilerplate.py
+[mpl-stylesheets]: https://matplotlib.org/users/style_sheets.html
