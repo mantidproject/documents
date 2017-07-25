@@ -29,6 +29,7 @@ mantidqt
   |-- plotting
   |   |-- cli
   |-- reduction_gui
+  |-- scripting
   |-- tests # contains testing for the package
   |-- utils
   |   |-- __init__.py
@@ -65,6 +66,14 @@ This subpackage will contain plugins such as the algorithm dialogs. This will be
 These will be separate libraries so that for example another application could embed the instrument view widget. The DLLs internal to those subpackages will only be loaded when that subpackage is imported to reduce
 the loading overhead and to not make users pay for features they do not use.
 
+### Reduction Gui
+
+This will contain the `reduction_gui` framework currently used by many customized interfaces.
+
+### Scripting
+
+This will contain the code related to executing scripts including a "runner" class that can execute arbitrary code, a code editor plus an in-process Qt IPython console.
+
 ## Plotting
 
 `matplotlib` will provide the plotting abilities within the new workbench. It exposes all classes as an object-oriented API but also provides a procedural, state-machine api, `pyplot`, that is particularly convenient for
@@ -99,20 +108,52 @@ The default state for new windows, i.e. whether held or active will be user conf
 
 ### Utils
 
-This will be a subpackage for the inevitable utilityt-type code that will be required. One such example is the `mantidqt.utils.qt.py` that will define the shim from which allow PyQt imports are performed.
+This will be a subpackage for the inevitable utility-type code that will be required. One such example is the `mantidqt.utils.qt.py` that will define the shim from which allow PyQt imports are performed.
 
 # Mantid Workbench
 
-
+A high-level structure of the workbench package is:
 
 ```
 mantidworkbench
   |-- app
+  |   |-- __init__.py
   |   |-- start.py
   |   |-- mainwindow.py
+  |   |-- mainmenu.py
+  |   |-- splash.py
+  |-- config
+  |   |-- __init__.py
+  |   |-- defaults.py
+  |   |-- configdialog.py
+  |   |-- plotting.py
+  |   |-- firsttimesetup.py
+  |-- resources.qrc
   |--__init__.py
 
 ```
+
+## app
+
+This subpackage is concerned with the application as a whole such as initialisation, the main window layout, menus etc. It contains the splash screen.
+
+## config
+
+This subpackage will be concerned with configuration. It will be responsible for creating the main tabbed configuration dialog. Any configuration pages must be provided by the packages or widgets that are being configured. For example,
+the tabbed scripting interpreter will be a widget and it would be required to provide a widget that could inserted into the main configuration dialog as a complete page. For single widgets this could be done simply by requiring a `CONF_WIDGET` class attribute to point to a widget type to create:
+
+```python
+# imports...
+
+class TabbedScriptInterpreter(QWidget):
+
+    CONF_WIDGET = TabbedScriptInterpreterConfig
+
+```
+
+For other items such as plotting configuration the subpackage should provide a `CONF_WIDGET` attribute for the same affect.
+
+This package will also contain the first time setup dialog along with the handling of any default configuration values.
 
 
 <!-- Links -->
