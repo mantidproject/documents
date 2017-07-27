@@ -6,10 +6,7 @@ For reference the overall layout mockup is shown here:
 
 ![Overall Workbench Layout](main-layout.png)
 
-The central widget will be a tabbed-widget that will not be movable and 1 tab will be reserved for the embedded IPython console. It should be possible to drag an individual tab out of the window to be displayed on another monitor, for example.
-
-- **Question: Where should the controls for script execution go? I would suggest just on the main menu, with appropriate shortcuts set.**
-
+The central widget will be a tabbed-widget that will not be movable and 1 tab will be reserved for the embedded IPython console. It should be possible to drag an individual tab out of the window to be displayed on another monitor, for example. The controls for script execution will be in the main menu bar.
 
 # Automated Testing
 
@@ -20,11 +17,39 @@ For existing code and code that would possibly be rendered more difficult to wor
 unit testing of Qt applications and libraries. Particularly for our existing interface/widget code this would provide some sort of automated testing that is currently lacking. This seems to be used quite successfully within
 the [Jupyter Qt Console][jupyter-qtconsole], for example.
 
+# Existing Widget Reuse
+
+The proposal for the new workbench stated that this was not a complete rewrite of every interface/widget that we have. The following list of widgets will be "recycled" and used as is.
+
+ - All custom interfaces with the exceptions:
+ - All custom dialogs
+ - All widgets in `MantidWidgets` with the exceptions:
+   - fit property browser
+   - workspace browser
+
+## Qwt
+
+Some existing widget code uses Qwt for embedded plotting and will need to be ported to work both with Qwt5 & Qwt6 (for Qt5) during the phase where we share them between MantidPlot & the new workbench. These interfaces are:
+
+ - DataComparison Interface
+ - MultiDataSet Fitting
+ - Slice Viewer
+ - Indirect interfaces (the plotting code is in 1 place)
+ - Spectrum Viewer
+ - Instrument Viewer
+
+Over time these will migrate to `matplotlib` but not for the first release of the workbench.
+
+## Qt Help
+
+The Qt Help window relies on QtWebkit to be able to render the help content. This is deprecated in Qt5. The QtWebkit code will be preserved until the removal of MantidPlot/Qt4 and then ported
+to use QWebEngine.
+
 # User Interface Registration
 
 It is proposed that the current mechanism for interface registration in C++ be slightly refactored and extended to Python as described in the following diagram:
 
-![InterfaceDescription Class Diagram](InterfaceMetadata.png?raw=true)
+![InterfaceDescription Class Diagram](InterfaceMetadata.png)
 
 The `InterfaceMetadata` class separates the metadata describing a given user interface with the interface itself. Currently the `name`/`category` information
 is directly attached to main window of the C++ interfaces using static methods so that the classes do not need to be instantiated on registration. At runtime
@@ -46,8 +71,7 @@ standalone from the command line or from within MantidPlot.
 ```python
 import sys
 
-from HFIRPowderReduction import HfirPDReductionGUI
-from PyQt4 import QtGui
+from HFIRPowderReduction import HfirPDReductionGUI # this requires the reduction_gui framework from mantidqt
 
 def show():
     reducer = HfirPDReductionGUI.MainWindow() #the main ui class in this file is called MainWindow
@@ -55,7 +79,7 @@ def show():
 	return reducer
 
 if __name__ == "__main__":
-    from PyQt4 import QtGui
+    from mantidqt.utils.qt import QtGui
     qapp = QtGui.QApplication.instance() if QtGui.QApplication.instance() else QtGui.QApplication(sys.argv)
 	show()
 	qapp.exec_()
@@ -80,7 +104,7 @@ else:
 
 # `mantidqt` library
 
-This library will form the guts if the new application and will contain most of the components that will be pieced together to form the workbench. The details of the built/installed layout are:
+This library will form the guts of the new application and will contain most of the components that will be pieced together to form the workbench. The details of the built/installed layout are:
 
 ```
 mantidqt
@@ -91,7 +115,7 @@ mantidqt
   |-- tests # contains testing for the package
   |-- utils
   |   |-- __init__.py
-  |   |-- qt.py
+  |   |-- qt.py # shim layer wrapping PyQt imports
   |-- widgets
   |   |--common
   |   |  |-- _widgets.dll # sip wrapped library from C++ widgets, includes InterfaceMetaData class from above.
@@ -202,6 +226,7 @@ mantidworkbench
   |   |-- configdialog.py
   |   |-- plotting.py
   |   |-- firsttimesetup.py
+  |-- + *other subpackages/classes as required*
   |-- resources.qrc
   |--__init__.py
 

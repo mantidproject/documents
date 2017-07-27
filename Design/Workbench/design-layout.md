@@ -10,8 +10,11 @@ The new workbench will be developed on a long-running feature branch within the 
 structure described below for the graphical components. These changes will be made on the `master` branch prior to any work starting on the workbench. This
 will minimize the effect of merge conflicts on existing components that are going to be reused.
 
-The advantage here is that we can remove the existing MantidPlot on this branch and reuse the name for the new workbench.
+## Merging & Removal of MantidPlot
 
+There will become a point when the new workbench has enough features to be releasable to the general audience as a viable replacement for MantidPlot. MantidPlot would not be removed at
+this point until we can be satisfied that the new workbench serves our current users needs. See section in [architeture](design-arch) section regarding widget code shared between MantidPlot
+and the new workbench.
 
 Directory Structure
 ===================
@@ -61,7 +64,7 @@ mantid.git
            |-- sliceviewer # qtwidgetssliceviewer.dll
 ```
 
-Mapping of the current structure to this is is as follows:
+Mapping of the current structure to this is as follows:
 
  - `/MantidPlot`: NOT MOVED (will be deleted once replacement is up to scratch)
  - `/Vates` --> `/qt/paraview_ext`
@@ -76,7 +79,9 @@ Mapping of the current structure to this is is as follows:
  - Remove Factory directory as it seems unecessary
  - All resources, fonts, images etc, moved under qt/resources
 
-Shared libraries follow a naming structure that includes all of their parent directories.
+Shared libraries will follow a naming structure that includes all of their parent directories.
+
+`.ui` files should be kept with the header files of the corresponding classes.
 
 Technologies
 ============
@@ -87,13 +92,14 @@ The workbench will be written primarily in Python using:
  - [matplotlib][matplotlib_org]
  - [IPython][IPython]
 
-`sip` will be used for exporting any required C/C++ to Python.
+`sip` will be used for exporting any required C/C++ to Python. `boost.python` will be maintained for the framework exports.
+
+See a note in [architecture design](design-arch.md) about Qwt and existing interfaces/widgets.
 
 Python 2/3
 ----------
 
-Due to the requirement to support RedHat 7 we will continue to write Python 2/3 compatible
-code.
+Due to the requirement to support RedHat 7 we will continue to write Python 2/3 compatible code.
 
 PyQt shim
 ----------
@@ -113,12 +119,15 @@ Python
 
 The framework package will remain separate and called `mantid`.
 
-The new ui package will be called `mantidui` and have the following submodules:
+The new ui python package will be called `mantidqt` and have the following submodules:
 
- - mantidui.plotting: contain custom plotting code based on matplotlib, i.e keep/make current behaviour, custom toolbars, custom figure window
- - mantidui.widgets: contain these set of reusable widgets used to build the workbench & its components
+ - mantidqt.plotting: contain custom plotting code based on matplotlib, i.e keep/make current behaviour, custom toolbars, custom figure window
+ - mantidqt.widgets: contain these set of reusable widgets used to build the workbench & its components
 
-The workbench will be called `mantidplot` and depend on `mantudui` & `mantid`.
+The workbench will be called `mantidworkbench` and depend on `mantudqt` & `mantid`. In Anaconda We will have the following packages, in addition to the current `mantid-framework` package:
+
+ - `mantid-qt`: gives you `mantidqt` python package
+ - `mantid-workbench`: gives you the new workbench
 
 Installation
 ------------
@@ -133,7 +142,7 @@ It is proposed that a new package be generated for shipping the new workbench. T
 For Windows/Mac we will use the same installer technology as we do currently. The packages **must** be able to live alongside a current production or nightly version. The package names suggested are:
 
 * Windows/OSX: mantidpreview - A combined package bundling everthing, much as we currently do. Defaults to a different install location than current
-* Linux: mantidpreview-framework, mantidpreview-ui, mantidpreview-mantidplot: separate packages to allow just dependencies on widgets etc.
+* Linux: `mantidpreview-framework`, `mantidpreview-qt`, `mantidpreview-workbench`: separate packages to allow just dependencies on widgets etc.
 
 
 <!-- Link Definitions -->
