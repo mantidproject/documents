@@ -14,6 +14,3 @@ New Items
 
 Minutes
 -------
-Attendees: Draper, Gigg, Hahn, Moore, Peterson, Savici, Whitfield
-
-- yaml-cpp will be an additional dependency
