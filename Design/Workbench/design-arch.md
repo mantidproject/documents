@@ -42,8 +42,8 @@ Over time these will migrate to `matplotlib` but not for the first release of th
 
 ## Qt Help
 
-The Qt Help window relies on QtWebkit to be able to render the help content. This is deprecated in Qt5. The QtWebkit code will be preserved until the removal of MantidPlot/Qt4 and then ported
-to use QWebEngine.
+The Qt Help window relies on QtWebkit to be able to render the help content. This has been removed in Qt 5.6. The HelpWindow code is small and it should be possible to keep it building
+with both QtWebkit in Qt4 and QtWebEngine in Qt5 until we can remove MantidPlot.
 
 # User Interface Registration
 
