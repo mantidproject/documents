@@ -8,18 +8,9 @@ Pinned Topics
 
 New Items
 ---------
-- Request to include [yaml-cpp](https://github.com/jbeder/yaml-cpp) as a dependency:
-  * packages are available for Red Hat, Ubuntu.
-  * homebrew has a formula
-  * just needs building on Windows.
-- [Maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
-- [Mantid developer meeting](https://www.mantidproject.org/Category:Workshop2017)
-- [External Python Interfaces](https://github.com/mantidproject/documents/pull/40)
+- [Workbench Design](https://github.com/mantidproject/documents/pull/49) has superseded [External Python Interfaces](https://github.com/mantidproject/documents/pull/40). I would like to include `mslice` has an external project in the current codebase so we can ship it with MantidPlot. The new workbench will include the improved design for external interfaces. 
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
 - [Tomography GUI Design (in python)](https://github.com/mantidproject/documents/pull/43)
 
 Minutes
 -------
-Attendees: Draper, Gigg, Hahn, Moore, Peterson, Savici, Whitfield
-
-- yaml-cpp will be an additional dependency
