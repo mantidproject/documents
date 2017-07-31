@@ -16,8 +16,8 @@ There will become a point when the new workbench has enough features to be relea
 this point until we can be satisfied that the new workbench serves our current users needs. See section in [architeture](design-arch) section regarding widget code shared between MantidPlot
 and the new workbench.
 
-Directory Structure
-===================
+Source Code Directory Structure
+===============================
 
 The following diagram indicates the proposed directory structure for the graphical components.
 
@@ -143,6 +143,35 @@ For Windows/Mac we will use the same installer technology as we do currently. Th
 
 * Windows/OSX: mantidpreview - A combined package bundling everthing, much as we currently do. Defaults to a different install location than current
 * Linux: `mantidpreview-framework`, `mantidpreview-qt`, `mantidpreview-workbench`: separate packages to allow just dependencies on widgets etc.
+
+
+Windows Installed Layout
+========================
+
+Our windows installation structure is poorly layed out. For example the `bin` directory contains many files and it is difficult to navigate and also contains our Python bundle. A new layout, based on the
+[miniconda][miniconda] layout on Windows, is proposed. It is as follows:
+
+```
+C:\MantidInstall
+  |-- bin
+  |-- instrument # instrument definitions
+  |-- library
+  |   |-- bin # dependent DLLs: boost, poco, core mantid libraries, vtk etc
+  |   |-- plugins
+  |   |   |-- mantid # Our plugins
+  |   |   |   |-- python # python algorithms
+  |   |   |   |-- qt
+  |   |   |-- pvplugins
+  |   |   |-- qt # Qt plugins for image formats etc
+  |-- python2.7
+  |-- scripts # existing scripts directory
+  |-- share
+      |-- colormaps
+      |-- docs
+```
+
+This will require a small patch in `python2.7\Lib\site.py` to add the `library\bin` directory to the `PATH` on startup and also set the `MANTIDPATH` variable.
+Anaconda make a similar modification to the `PATH` in their bundled Python installation.
 
 
 <!-- Link Definitions -->
