@@ -45,63 +45,6 @@ Over time these will migrate to `matplotlib` but not for the first release of th
 The Qt Help window relies on QtWebkit to be able to render the help content. This has been removed in Qt 5.6. The HelpWindow code is small and it should be possible to keep it building
 with both QtWebkit in Qt4 and QtWebEngine in Qt5 until we can remove MantidPlot.
 
-# User Interface Registration
-
-It is proposed that the current mechanism for interface registration in C++ be slightly refactored and extended to Python as described in the following diagram:
-
-![InterfaceDescription Class Diagram](InterfaceMetadata.png)
-
-The `InterfaceMetadata` class separates the metadata describing a given user interface with the interface itself. Currently the `name`/`category` information
-is directly attached to main window of the C++ interfaces using static methods so that the classes do not need to be instantiated on registration. At runtime
-the base implementations throw an exception if they have not been overridden. In the new scheme the metadata classes are lightweight classes using pure-virtual
-methods allowing this kind of missing behaviour to be detected at compile time.
-
-The `showUI` method accepts an optional parent widget and is responsible for constructing & showing the UI itself.
-
-By exposing the `InterfaceMetadata` and `InterfaceFactory` classes to Python we can expand this registration mechanism to encompass the Python interfaces also. This will
-require minimal modification to the current startup files (see below). MantidPlot will then have single point, `InterfaceFactory` where it is able to query for
-information regarding the various customized interfaces. The `InterfaceFactory::populateMenu` method will fill a given `QMenu` instance with the known list of
-items without requiring external code to extract and parse stored list.
-
-### Sample Python Metadata File
-
-Below is an example of updating the current [HFIR powder GUI][hfir_startup_file] startup file to understand the new mechanism. It is written to be able to be started
-standalone from the command line or from within MantidPlot.
-
-```python
-import sys
-
-from HFIRPowderReduction import HfirPDReductionGUI # this requires the reduction_gui framework from mantidqt
-
-def show():
-    reducer = HfirPDReductionGUI.MainWindow() #the main ui class in this file is called MainWindow
-    reducer.show()
-	return reducer
-
-if __name__ == "__main__":
-    from mantidqt.utils.qt import QtGui
-    qapp = QtGui.QApplication.instance() if QtGui.QApplication.instance() else QtGui.QApplication(sys.argv)
-	show()
-	qapp.exec_()
-else:
-	import mantidqt
-
-	class HFIRPowderMetadata(mantidqt.InterfaceMetadata):
-
-	    def name(self):
-            return "HFIR Powder Diffraction Reduction"
-
-        def category(self):
-            return "Diffraction"
-
-        def showUI(self):
-            show()
-
-    mantidqt.InterfaceFactory.subscribe(HFIRPowderMetadata)
-```
-
-**Note: This obseletes the design in [this pull request](https://github.com/mantidproject/documents/pull/40).**
-
 # `mantidqt` library
 
 This library will form the guts of the new application and will contain most of the components that will be pieced together to form the workbench. The details of the built/installed layout are:
@@ -261,6 +204,5 @@ This package will also contain the first time setup dialog along with the handli
 [jupyter-qtconsole]: https://github.com/jupyter/qtconsole/blob/master/qtconsole/tests/test_console_widget.py
 [mantidwidgets]: https://github.com/mantidproject/mantid/tree/master/MantidQt/MantidWidgets
 [mslice]: https://github.com/mantidproject/mslice
-[hfir_startup_file]: https://github.com/mantidproject/mantid/blob/master/scripts/HFIR_Powder_Diffraction_Reduction.py
 [mpl-boilerplate]: https://github.com/matplotlib/matplotlib/blob/master/tools/boilerplate.py
 [mpl-stylesheets]: https://matplotlib.org/users/style_sheets.html

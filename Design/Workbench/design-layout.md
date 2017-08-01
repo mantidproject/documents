@@ -109,7 +109,7 @@ portability concerns in the future when its inevitable that a PyQt6 will come ou
 of protection as it currently does between `PyQt4` & `PyQt5`.
 
 We could either write our own, use those provided by other dependencies: [matplotlib][matplotlib_qtcompat], [IPython][IPython] or
-use a separate package such as [qtpy][qtpy] provided by the [Spyder][Spyder] developers.
+use a separate package such as [qtpy][qtpy] provided by the [Spyder][Spyder] developers. My suggestion would be using [qtpy][qtpy].
 
 Packaging & Deployment
 ======================
