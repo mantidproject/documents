@@ -79,12 +79,18 @@ widget itself. The widget will simply need a constructor or setters to be able t
 
 # `workbench.config` subpackage
 
-This package wil contain code related to user configuration.
+This package wil contain code related to user configuration. `QSettings` will be used serialize/deserialize the application settings. The scope will be set to `QSettings::UserScope` so multi-user machines can have
+independent settings.
+
+On Windows the `IniFormat` will be used rather than the native registry format. The registry locations make it more difficult to debug user configuration issues.
+
+This package will also contain code for retrieving fonts, icons & shortcuts consistently across the application.
 
 # `workbench.app` subpackage
 
-This package wil contain code related to the startup, main window layout etc. It will contain the `main()` entry point that will start the application.
+This package wil contain code related to the startup, main window layout etc. It will contain the `main()` entry point that will start the application. On OSX & Linux we will try out the new [Qt Fusion style][qt-fusion].
 
 <!-- Links -->
 
 [hfir_startup_file]: https://github.com/mantidproject/mantid/blob/master/scripts/HFIR_Powder_Diffraction_Reduction.py
+[qt-fusion]: http://doc.qt.io/qt-5/gallery-fusion.html
