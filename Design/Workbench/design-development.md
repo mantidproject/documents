@@ -8,7 +8,9 @@ follow these guidelines where applicable, including a template file for new code
 ## Static Analysis
 
 We will no longer be able to rely on a compiler to catch simply errors - it is therefore imperative that we use static analysis to its fullest extent. `flake8` will be run on the pull request jobs
-and `pylint` run on `master`. The tolerance levels & configuration for `pylint` should be reexamined and the job place on the critical Jenkins tab.
+and `pylint` run on `master`.
+
+The current crop of warnings will be reduced to `0` before commencing work. The configuration will be reviewed to see what other important warnings are required.
 
 ## Documentation
 

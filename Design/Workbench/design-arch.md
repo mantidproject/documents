@@ -29,16 +29,26 @@ The proposal for the new workbench stated that this was not a complete rewrite o
 
 ## Qwt
 
-Some existing widget code uses Qwt for embedded plotting and will need to be ported to work both with Qwt5 & Qwt6 (for Qt5) during the phase where we share them between MantidPlot & the new workbench. These interfaces are:
+Some existing widget code uses Qwt for embedded plotting and will need to be ported to work both with Qwt5 & Qwt6 (for Qt5) during the phase where we share them between MantidPlot & the new workbench. Some use it in a very
+basic manner and just use an embedded canvas with no toolbars etc while others use it in a much more complex manner. To mimimise the number of places with different code for plotting we will look to port as many as is feasible
+to `matplotlib` first. These will be:
 
  - DataComparison Interface
  - MultiDataSet Fitting
- - Slice Viewer
- - Indirect interfaces (the plotting code is in 1 place)
- - Spectrum Viewer
  - Instrument Viewer
+ - Indirect interfaces (the plotting code is in 1 place)
+
+The remaining interfaces will use ifdefs to compile with both Qwt5/6:
+
+ - Slice Viewer
+ - Spectrum Viewer
 
 Over time these will migrate to `matplotlib` but not for the first release of the workbench.
+
+### Qwt5/6
+
+On Ubuntu for example you cannot install the development package of Qwt5 & Qwt6 together as the headers clash. To circumvent this we will use an external project to pull in the Qwt6 code and build those interfaces
+against this as we migrate away. On Windows we need to build Qwt6 anyway and Homebrew is happy with the side-by-side install. Steve noted that we currently have a cmake issue with finding Qwt5 & Qw6: https://github.com/mantidproject/mantid/issues/16997
 
 ## Qt Help
 
@@ -56,9 +66,6 @@ mantidqt
   |-- reduction_gui
   |-- scripting
   |-- tests # contains testing for the package
-  |-- utils
-  |   |-- __init__.py
-  |   |-- qt.py # shim layer wrapping PyQt imports
   |-- widgets
   |   |--common
   |   |  |-- _widgets.dll # sip wrapped library from C++ widgets, includes InterfaceMetaData class from above.
@@ -146,10 +153,6 @@ The default state for new windows, i.e. whether held or active will be user conf
 
 Matplotlib provides a [stylesheet][mpl-stylesheets] mechanism that allows predefined styles to be applied to plots. This mechanism will be used to provide users with the ability to save a template of their plot configuration
 for future use.
-
-### Utils
-
-This will be a subpackage for the inevitable utility-type code that will be required. One such example is the `mantidqt.utils.qt.py` that will define the shim from which allow PyQt imports are performed.
 
 # Mantid Workbench
 

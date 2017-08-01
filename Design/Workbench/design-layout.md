@@ -132,17 +132,24 @@ The workbench will be called `mantidworkbench` and depend on `mantudqt` & `manti
 Installation
 ------------
 
-It is proposed that a new package be generated for shipping the new workbench. The reasons for this are:
-
-* it avoids disturbing the production package at all to provide maximal stability for existing users
-* Qt5/PyQt5 will need to be shipped on Windows/OSX and this would explode the current package size if we bundled it there
-* we may want to experiment with different versions of packages that we already ship and we don't want to disturb the current application
-* it can be a starting point for generating the separate packages on Linux (hand-written spec/debian files??).
-
-For Windows/Mac we will use the same installer technology as we do currently. The packages **must** be able to live alongside a current production or nightly version. The package names suggested are:
+Installation procedures will differ across platforms. During alpha testing, a separate installers will be available to give to friendly users to test. When we are confident that the workbench is ready for wider
+viewing we will want to ship to abilities wider audience. At this point the strategy on each platform will differ. The alpha packages will be called:
 
 * Windows/OSX: mantidpreview - A combined package bundling everthing, much as we currently do. Defaults to a different install location than current
 * Linux: `mantidpreview-framework`, `mantidpreview-qt`, `mantidpreview-workbench`: separate packages to allow just dependencies on widgets etc.
+
+### Windows
+
+The new package structure defined below will be put in place both applications shipped inside the main installer.
+
+### OSX
+
+The generated bundle will contain both applications and users can choose to drag over the new workbench if they want.
+
+
+### Linuxes
+
+The existing packages can add a dependency on the beta workbench packages to install these at the same time.
 
 
 Windows Installed Layout
@@ -185,3 +192,4 @@ Anaconda make a similar modification to the `PATH` in their bundled Python insta
 [Spyder]: https://github.com/spyder-ide/spyder
 [Nsis]: http://nsis.sourceforge.net/Main_Page
 [QtInstallerFramework]: http://doc.qt.io/qtinstallerframework/
+[miniconda][miniconda]: https://conda.io/miniconda.html
