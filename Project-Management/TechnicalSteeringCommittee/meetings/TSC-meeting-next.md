@@ -15,3 +15,10 @@ New Items
 
 Minutes
 -------
+Attendees: Gigg, Heybrock, Bilheux, Savici, Peterson, Whitfield, Hahn
+
+- Nominally approve the new workbench design pending minor changes
+  - Fix outstanding pylint warnings before increasing what pylint checks for
+  - Should move as much as possible (everything except SliceViewer and SpectrumViewer) to matplotlib instead of making Qwt5/Qwt6 compatible
+  - Investigate and estimate effort for adding compatibility to SliceViewer and SpectrumViewer
+  
