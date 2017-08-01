@@ -9,10 +9,10 @@ Minutes
 
 ## In Attendance
 
-    * ESS - Taylor
-    * ILL - Gonzalez, Mutti, Bush
-    * ORNL - Granroth, Peterson, Proffen, Leal
-    * ISIS - Draper, Greenfield, Pascal, Griffin, Cottrell
+* ESS - Taylor
+* ILL - Gonzalez, Mutti, Bush
+* ORNL - Granroth, Peterson, Proffen, Leal
+* ISIS - Draper, Greenfield, Pascal, Griffin, Cottrell
 
 ## Topics
 
