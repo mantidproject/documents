@@ -1,6 +1,7 @@
 Agenda
 ======
 
+* Update Mantid 4 (Martyn)
 * Add your links, etc. here
 
 Questions
