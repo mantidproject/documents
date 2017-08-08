@@ -3,6 +3,7 @@ Agenda
 
 * Update Mantid 4 (Martyn)
 * Position of `const` should be consistent, see [here](https://github.com/mantidproject/mantid/pull/20082)
+* Interactive Performance Test Graphs (Lamar)
 * Add your links, etc. here
 
 Questions
