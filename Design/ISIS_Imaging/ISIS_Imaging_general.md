@@ -10,13 +10,14 @@
     - [7.1. Package name](#71-package-name)
     - [7.2. Public name](#72-public-name)
 - [8. Project setup](#8-project-setup)
-    - [8.1. Continous Integration with Coverage](#81-continous-integration-with-coverage)
+    - [8.1. Continuos Integration with Coverage](#81-continuos-integration-with-coverage)
     - [8.2. Installation](#82-installation)
     - [8.3. Testing](#83-testing)
         - [8.3.1. GUI](#831-gui)
     - [8.4. Interfaces](#84-interfaces)
     - [8.5. Documentation](#85-documentation)
-    - [8.6. Development IDEs](#86-development-ides)
+    - [8.6. Development tools](#86-development-tools)
+    - [Jupyter Notebooks](#jupyter-notebooks)
 - [9. Guidelines for ISIS Imaging CORE](#9-guidelines-for-isis-imaging-core)
     - [9.1. Filter implementation expansion](#91-filter-implementation-expansion)
         - [9.1.1. cupy](#911-cupy)
@@ -117,7 +118,7 @@ Other functional problems with the GUI:
 - Cannot load more than one image/image volume at any time
 - Cannot preview results from filters
 - Cannot easily handle and move data around. From Python Numpy arrays to C++ is possible, but when we add more reconstruction tools, CuPy(CUDA), OpenCV, etc, handling the data in C++ gets a lot harder than it is in Python.
-- Communication between different tabs was necessary, making the code _very_ convoluted when each tab is an MVP.
+- Communication between different tabs was necessary, making the code convoluted when each tab is an MVP.
 - Tedious and error prone manual updating of any CLI changes
 
 Drawbacks of switching to a Python GUI:
@@ -145,7 +146,7 @@ This image shows off a few ways that loaded stacks can be positioned. It allows 
 
 - Cannot preview results from filters
 
-As seen in the image above, there is a `Filter` submenu. That menu lists all available filters, and they can be applied to a selected stack, visualising the results immediatelly. A preview option will be provided for each filter in order to be able to preview the result on the stack, without processing all of the images it contains.
+As seen in the image above, there is a `Filter` sub-menu. That menu lists all available filters, and they can be applied to a selected stack, visualising the results immediately. A preview option will be provided for each filter in order to be able to preview the result on the stack, without processing all of the images it contains.
 
 - Cannot easily handle and move data around. From Python Numpy arrays to C++ is possible, but when we add more reconstruction tools, CuPy(CUDA), OpenCV, etc, handling the data in C++ gets a lot harder than it is in Python.
 - Tedious and error prone manual updating of any CLI changes
@@ -166,7 +167,7 @@ The new GUI will implement the MVP pattern, whenever sensible, to make sure that
 
 - We cannot reuse the remote submission algorithm, unless we want to have dependency on the Mantid Framework for a single algorithm
 
-There is an example provided, in Python, for communicating with the REST API of the SCARF cluster. Reimplementing such a connection will be much easier in Python than C++.
+There is an example provided, in Python, for communicating with the REST API of the SCARF cluster. Re-implementing such a connection will be much easier in Python than C++.
 
 # 4. User Requirements
 
@@ -194,7 +195,7 @@ There is an example provided, in Python, for communicating with the REST API of 
 1. GUIs use MVP pattern with mocking and unit testing for GUIs
 1. System tests to ensure larger module functionality
 1. Maintain Documentation
-1. Continous Integration on Github
+1. Continuos Integration on Github
 1. Installation
 
 # 6. Terminology
@@ -234,7 +235,7 @@ The public name will be the one that is visible on the GUI and is shown to the u
 
 # 8. Project setup
 
-## 8.1. Continous Integration with Coverage
+## 8.1. Continuos Integration with Coverage
 
 The package should have a continous integration flow on Pull Requests, which runs all of the CORE and GUI tests. This should also include coverage.
 
@@ -280,15 +281,23 @@ For updating the documentation checkout the `gh-pages` branch. The source files 
 
 There is also a section for developer documentation, which currently contains information about how specific things are done within the package, but could be expanded in the future to contain the documentation for the API.
 
-## 8.6. Development IDEs
+## 8.6. Development tools
 
-Recommended IDEs for development are
+Some IDEs for development that I've found work well with the codebase are:
 
 - Visual Studio Code with Python extension
   - The Python extension will automatically pick up the tests and provides good
 
 - PyCharm
   - Picks up the tests and provides all around very good utilities for development
+
+Visualisation of the images and to compare results or do analysis I recommend [fiji](https://fiji.sc/).
+
+Visualisation of the reconstructed volume can be done with [Avizo](http://www.fei-software-center.com/avizo/packagedownload-ac2ae0df/).
+
+## Jupyter Notebooks
+
+There are 2 jupyter notebooks available as an introduction to the package and imaging steps. They can be found in the `notebooks` folder inside the repository. To run you have to have `jupyter` installed, go into the `notebooks` folder and type `jupyter notebook`. This will host a session and open a tab for the notebook in the default browser.
 
 # 9. Guidelines for ISIS Imaging CORE
 
@@ -626,11 +635,13 @@ We can manually make the array contiguous with `np.ascontiguousarray`, but it in
 
 Currently we avoid loading the whole stack during the pre-processing, or until we want to work on the sinograms. This means we apply the pre-processing on the radiograms, and then when happy, convert to sinograms, and continue pre-processing or start looking for the center of rotation.
 
-A feature that might help is a Region of Interest (ROI) load, which would load the image, and save just the ROI we want. For example this will help us load only the first row from every projection, constructing the first sinogram. I am not aware of any package that lets you control what region to load, they usually load the whole image, thus it may be possible to:
+A feature that might help is a Region of Interest (ROI) load, which would load the image, and save just the ROI we want. For example this will help us load only the first row from every projection, constructing the first sinogram. I am not aware of any package that lets you control what region to load, they usually load the whole image, thus we can do:
 
 - Load the full image
 - Use it to construct the first row of _every_ sinogram of the stack
 - Repeat and keep adding a row from each image
+
+This has been implemented in the `loader` package, and can be accessed with the `--construct-sinograms` command line flag. This will read the images as normal, but use each one as a row of the sinograms.
 
 ### 10.15.1. Automatic Center of Rotation (COR) with imopr cor
 
@@ -757,7 +768,7 @@ Sometimes the samples are tilted slightly. On the one above, the difference in C
 
 As you can see there is a bit of a difference near the top (slice 422) and the bottom (slice 1822). In this case it's not a lot, only 6 pixels.
 
-However it needs to be accounted for during the reconstruciton. This is currently done in `core.algorithms.cor_interpolate`, which requires the information above (slice and associated COR) and interpolates the rest of the CORs for the slices in between. This method has worked quite well so far, because Tomopy lets us specify a COR for each slice, by providing a list that is of the same length as the number of sinograms.
+However it needs to be accounted for during the reconstruction. This is currently done in `core.algorithms.cor_interpolate`, which requires the information above (slice and associated COR) and interpolates the rest of the CORs for the slices in between. This method has worked quite well so far, because Tomopy lets us specify a COR for each slice, by providing a list that is of the same length as the number of sinograms.
 
 We can supply the slice/cor information through the command line:
 
@@ -767,11 +778,11 @@ The number of cors and the slices is enforced to be equal. The only exception is
 
 ### 10.15.4. Visualising the tilt
 
-Knowing the COR for each slice (or interpolating the approximation) gives us information that we could display back to the user. Every COR for a slice maps back to a pixel on the projection image. This means we can create a line that is slightly tilted and crosses the projection's center. An exaggerated visualisation looks like this (done by hand, not accurate to the actual COR, but converys the idea):
+Knowing the COR for each slice (or interpolating the approximation) gives us information that we could display back to the user. Every COR for a slice maps back to a pixel on the projection image. This means we can create a line that is slightly tilted and crosses the projection's center. An exaggerated visualisation looks like this (done by hand, not accurate to the actual COR, but conveys the idea):
 
 ![Exaggerated Tilt](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/exaggeratedtilt.png)
 
-This is something that has been expressed as a required feature by the scientists, anmd should not be too hard to implement. The rectangle selection class, also has an option to be a line. We could create it as a line and display it as a separate object on the visualisation.
+This is something that has been expressed as a required feature by the scientists, and should not be too hard to implement. The rectangle selection class, also has an option to be a line. We could create it as a line and display it as a separate object on the visualisation.
 
 ### 10.15.5. Calculating the real tilt angle
 
@@ -840,8 +851,8 @@ For a connection to SCARF we can use either the `pacclient` provided by SCD, or 
 
 The pros of using the Mantid algorithm, are that SNS also have a job submission algorithm and they might use the remote submission for imaging too. The job submission algorithms are written in such a way that they are extendable.
 
-The cons are that we have to pull in the whole Mantid Framework to use one or two algortihms. This will not be a con when the interface is integrated back into Mantid.
+The cons are that we have to pull in the whole Mantid Framework to use one or two algorithms. This will not be a con when the interface is integrated back into Mantid.
 
 # 11. Future integration with Mantid
 
-This imaging package will process the Tomography data, in the future Mantid will process the diffraction data, and then it might be desired to merge this interface back into Mantid, and provide capability to process both types of data simultaneosly.
+This imaging package will process the Tomography data, in the future Mantid will process the diffraction data, and then it might be desired to merge this interface back into Mantid, and provide capability to process both types of data simultaneously.
