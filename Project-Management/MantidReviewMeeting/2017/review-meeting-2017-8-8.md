@@ -2,7 +2,7 @@ Agenda
 ======
 
 * Update Mantid 4 (Martyn)
-* Position of `const` see [here](https://github.com/mantidproject/mantid/pull/20082)
+* Position of `const` should be consistent, see [here](https://github.com/mantidproject/mantid/pull/20082)
 * Add your links, etc. here
 
 Questions
