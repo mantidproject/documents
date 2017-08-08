@@ -70,7 +70,7 @@ The current [Tomography Reconstruction](https://github.com/mantidproject/mantid/
 
 - Note: In the images all things in red rectangles do not work. All things in blue rectangles DO work.
 
-The `Run` tab handles the selected tool and it's parameters, the logging into the compute resource for remote reconstruciton, and the directories for input images. All of these things can be provided through a File/Action menu to not clutter the screen, as all of them need to only be performed once.
+The `Run` tab handles the selected tool and it's parameters, the logging into the compute resource for remote reconstruction, and the directories for input images. All of these things can be provided through a File/Action menu to not clutter the screen, as all of them need to only be performed once.
 
 ![Run Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/runtab.png)
 
