@@ -7,20 +7,23 @@
 - [5. Development Requirements](#5-development-requirements)
 - [6. Terminology](#6-terminology)
 - [7. Finalising name choice](#7-finalising-name-choice)
+    - [7.1. Package name](#71-package-name)
+    - [7.2. Public name](#72-public-name)
 - [8. Project setup](#8-project-setup)
     - [8.1. Continous Integration with Coverage](#81-continous-integration-with-coverage)
     - [8.2. Installation](#82-installation)
     - [8.3. Testing](#83-testing)
+        - [8.3.1. GUI](#831-gui)
     - [8.4. Interfaces](#84-interfaces)
-        - [8.4.1. Core](#841-core)
-        - [8.4.2. GUI](#842-gui)
+    - [8.5. Documentation](#85-documentation)
+    - [8.6. Development IDEs](#86-development-ides)
 - [9. Guidelines for ISIS Imaging CORE](#9-guidelines-for-isis-imaging-core)
     - [9.1. Filter implementation expansion](#91-filter-implementation-expansion)
-        - [9.1.3. cupy](#913-cupy)
-        - [9.1.4. OpenCV](#914-opencv)
-        - [9.1.5. numba](#915-numba)
-        - [9.1.6. dask](#916-dask)
-        - [9.1.7. VTK Imaging](#917-vtk-imaging)
+        - [9.1.1. cupy](#911-cupy)
+        - [9.1.2. OpenCV](#912-opencv)
+        - [9.1.3. numba](#913-numba)
+        - [9.1.4. dask](#914-dask)
+        - [9.1.5. VTK Imaging](#915-vtk-imaging)
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
     - [9.3. Problems with moving to Python 3.5+](#93-problems-with-moving-to-python-35)
     - [9.4. File Structure](#94-file-structure)
@@ -53,8 +56,10 @@
     - [10.16. Reconstruction](#1016-reconstruction)
     - [10.17. Tools and Algorithms](#1017-tools-and-algorithms)
     - [10.18. Remote submission and MPI-like behaviour](#1018-remote-submission-and-mpi-like-behaviour)
-        - [10.18.1. Remote compute resource used at ISIS: SCARF](#10181-remote-compute-resource-used-at-isis-scarf)
-        - [10.18.2. MPI-like behaviour](#10182-mpi-like-behaviour)
+        - [10.18.1. MPI-like behaviour](#10181-mpi-like-behaviour)
+        - [10.18.2. Remote compute resource used at ISIS: SCARF](#10182-remote-compute-resource-used-at-isis-scarf)
+        - [10.18.3. Using a generic compute resource](#10183-using-a-generic-compute-resource)
+- [11. Future integration with Mantid](#11-future-integration-with-mantid)
 
 <!-- /TOC -->
 
@@ -219,9 +224,13 @@ Attenuation - the result from performing a `-ln(image)`, which can be written as
 
 # 7. Finalising name choice
 
-- MantidImaging
-- ISIS_Imaging
-- Other suggestions?
+## 7.1. Package name
+
+The package name should be `imaging`, and when distributed with access it could be accessed through `mantid.imaging`
+
+## 7.2. Public name
+
+The public name will be the one that is visible on the GUI and is shown to the user. It should also be the name of the repository.
 
 # 8. Project setup
 
@@ -237,11 +246,19 @@ We can either work towards the package being installable using `python setup.py 
 
 ## 8.3. Testing
 
-Testing will use `nose` to run the tests and `coverage` to compute the tests' coverage. The actual unit tests should use the built-in `unittest`, and some might have to use `numpy.testing` for asserting equality for `numpy.ndarrays`.
+Testing uses `nosetest` to run the tests. The actual unit tests use the built-in `unittest`, and some have to use `numpy.testing` for asserting equality for `numpy.ndarrays`. GUI mocking will be done with the `mock` package.
 
-A module to run the tests has been provided and is called `run_tests.py`, in the root of the repository. It takes as an argument the names of different packages, and then runs the tests specifically for them. The possible arguments are listed via `-h` flag, or at the top of the file in the source.
+To run the tests simply type `nosetest` in the root directory of the. It will automatically find and run all of the unit tests.
 
-There is currently no integration with Mantid's testing.
+In the future `coverage` should be added to compute the tests' coverage.
+
+There is currently no integration with Mantid's testing, but since `unittest` is used for the unit tests, they are compatible.
+
+### 8.3.1. GUI
+
+The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used.
+
+Simpler cases like the `load`/`save` dialogues do not need to use MVP, because they have very little, if any, logic.
 
 ## 8.4. Interfaces
 
@@ -255,17 +272,23 @@ This is currently achieved by manually structuring the public API of each packag
 
 This also allows for a full separation of the GUI from any of the other interfaces. This is required because we do not want to install PyQt5 and other GUI packages on SCARF, and is also good practice.
 
-### 8.4.1. Core
+## 8.5. Documentation
 
-Every module should have associated unit tests, unless there is good reason not to have one.
+The user facing documentation is hosted using github pages. The files can be seen on the `gh-pages` branch. To access the files go on [https://mantidproject.github.io/isis_imaging/](https://mantidproject.github.io/isis_imaging/), if the repository name is changed the link will be `https://mantidproject.github.io/<repository_name>/`
 
-There should also be a collection of system tests to make sure that the functionality works on a higher level than unit tests.
+For updating the documentation checkout the `gh-pages` branch. The source files are `.rst`. They are not compiled automatically. A build has to be run manually using `make html` command where the `Makefile` is located. To update what is seen on the website the files from the `build/html` have to be moved to be in the root directory. After the branch is pushed to remote, the pages will update soon.
 
-### 8.4.2. GUI
+There is also a section for developer documentation, which currently contains information about how specific things are done within the package, but could be expanded in the future to contain the documentation for the API.
 
-The GUI should use the MVP pattern, making it easier to mock and unit test. Mocking should be done with the python built-in `mock`. There should be an associated mock and presenter unit testing for every MVP used.
+## 8.6. Development IDEs
 
-Simpler cases like the `load`/`save` dialogues do not need to use MVP, because they have very little, if any, logic.
+Recommended IDEs for development are
+
+- Visual Studio Code with Python extension
+  - The Python extension will automatically pick up the tests and provides good
+
+- PyCharm
+  - Picks up the tests and provides all around very good utilities for development
 
 # 9. Guidelines for ISIS Imaging CORE
 
@@ -277,7 +300,7 @@ Integrating a package that supports CUDA has potential for improvement and expan
 
 A potential problem for CUDA is for machines with low VRAM, transferring the data multiple times might be slower that just doing it in a bulk in the CPU, if it has a lot of RAM.
 
-### 9.1.3. cupy
+### 9.1.1. cupy
 
 - Note: [Link, Supports Python 3](https://docs-cupy.chainer.org/en/stable/install.html)
 
@@ -287,7 +310,7 @@ For filters requiring custom code, kernels for other filters like Median, Gaussi
 
 I would recommend asking on the [CuPy repository](https://github.com/cupy/cupy) for implementation (and performance wise) advice before finalising the implementation of any filter.
 
-### 9.1.4. OpenCV
+### 9.1.2. OpenCV
 
 - Note: [Link, Supports Python 3](https://pypi.python.org/pypi/opencv-python)
 
@@ -295,7 +318,7 @@ This is a library for image processing and computer vision, it has a lot of feat
 
 Something that might cause issues - I am not sure how well it integrates with `numpy` arrays, for C++ they use their own internal type `cv::Mat` and I have not used the Python bindings.
 
-### 9.1.5. numba
+### 9.1.3. numba
 
 - Note: [Link, Supports Python 3](http://numba.pydata.org/numba-doc/latest/user/overview.html)
 
@@ -303,7 +326,7 @@ Numba is a compiler for Python array and numerical functions that gives you the 
 
 Numba generates optimized machine code from pure Python code using the LLVM compiler infrastructure. With a few simple annotations, array-oriented and math-heavy Python code can be just-in-time optimized to performance similar as C, C++ and Fortran, without having to switch languages or Python interpreters.
 
-### 9.1.6. dask
+### 9.1.4. dask
 
 - Note: [Link, Supports Python 3](https://dask.pydata.org/en/latest/)
 
@@ -314,7 +337,7 @@ Dask is composed of two components:
 Dynamic task scheduling optimized for computation. This is similar to Airflow, Luigi, Celery, or Make, but optimized for interactive computational workloads.
 “Big Data” collections like parallel arrays, dataframes, and lists that extend common interfaces like NumPy, Pandas, or Python iterators to larger-than-memory or distributed environments. These parallel collections run on top of the dynamic task schedulers.
 
-### 9.1.7. VTK Imaging
+### 9.1.5. VTK Imaging
 
 - Note: [Doesn't seem to have a Python 3 version in Conda or Pip](http://www.vtk.org/features-imaging/)
 
@@ -790,7 +813,13 @@ The tool and algorithm defaults are `tomopy` and the algorithm `gridrec`. The to
 
 Remote submission needs to be supported, that means we need to be able to submit the reconstruction/processing parameters through the REST API they provide. Information about the reconstruction should be stored in a `ProcessList`, which can be serialised and then recreated anywhere with the `--process-list` flag.
 
-### 10.18.1. Remote compute resource used at ISIS: SCARF
+### 10.18.1. MPI-like behaviour
+
+Integration of MPI into the scripts was considered, but the cost of having to transfer the large data over the network is too high.
+
+An alternative approach will be taken - since we can specify indices that can be loaded, the 'MPI' can simply be wrapped in a bash script that launches multiple reconstruction jobs, each one with different indices. The indices are also taken into account when saving out so that no files will be overwritten.
+
+### 10.18.2. Remote compute resource used at ISIS: SCARF
 
 General information on the SCARF cluster, which uses the Platform LSF
 scheduler, can be found at http://www.scarf.rl.ac.uk. It can be used
@@ -805,8 +834,14 @@ LSF's Platform Application Center, as described here:
 https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
 (with Python client scripts).
 
-### 10.18.2. MPI-like behaviour
+### 10.18.3. Using a generic compute resource
 
-Integration of MPI into the scripts was considered, but the cost of having to transfer the large data over the network is too high.
+For a connection to SCARF we can use either the `pacclient` provided by SCD, or the [SCARFLSFJobManager](https://github.com/mantidproject/mantid/blob/master/Framework/RemoteJobManagers/src/SCARFLSFJobManager.cpp) in Mantid.
 
-An alternative approach will be taken - since we can specify indices that can be loaded, the 'MPI' can simply be wrapped in a bash script that launches multiple reconstruction jobs, each one with different indices. The indices are also taken into account when saving out so that no files will be overwritten.
+The pros of using the Mantid algorithm, are that SNS also have a job submission algorithm and they might use the remote submission for imaging too. The job submission algorithms are written in such a way that they are extendable.
+
+The cons are that we have to pull in the whole Mantid Framework to use one or two algortihms. This will not be a con when the interface is integrated back into Mantid.
+
+# 11. Future integration with Mantid
+
+This imaging package will process the Tomography data, in the future Mantid will process the diffraction data, and then it might be desired to merge this interface back into Mantid, and provide capability to process both types of data simultaneosly.
