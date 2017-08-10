@@ -17,8 +17,8 @@
     - [8.4. Interfaces](#84-interfaces)
     - [8.5. Documentation](#85-documentation)
     - [8.6. Development tools](#86-development-tools)
-    - [Jupyter Notebooks](#jupyter-notebooks)
-- [9. Guidelines for ISIS Imaging CORE](#9-guidelines-for-isis-imaging-core)
+    - [8.7. Jupyter Notebooks](#87-jupyter-notebooks)
+- [9. Guidelines for MantidImaging CORE](#9-guidelines-for-mantidimaging-core)
     - [9.1. Filter implementation expansion](#91-filter-implementation-expansion)
         - [9.1.1. cupy](#911-cupy)
         - [9.1.2. OpenCV](#912-opencv)
@@ -29,7 +29,7 @@
     - [9.3. Problems with moving to Python 3.5+](#93-problems-with-moving-to-python-35)
     - [9.4. File Structure](#94-file-structure)
     - [9.5. Filters - General implementation structure](#95-filters---general-implementation-structure)
-- [10. Guidelines for ISIS Imaging GUI](#10-guidelines-for-isis-imaging-gui)
+- [10. Guidelines for MantidImaging GUI](#10-guidelines-for-mantidimaging-gui)
     - [10.1. General Structure](#101-general-structure)
     - [10.2. ui Compiling](#102-ui-compiling)
     - [10.3. Using iPython](#103-using-ipython)
@@ -64,9 +64,9 @@
 
 <!-- /TOC -->
 
-The user requirements for the interface have been listed [here](https://github.com/mantidproject/isis_imaging/wiki/High-Level-User-Requirements-and-Use-Cases) and have been reviewed and confirmed by the imaging scientists.
+The user requirements for the interface have been listed [here](https://github.com/mantidproject/mantidimaging/wiki/High-Level-User-Requirements-and-Use-Cases) and have been reviewed and confirmed by the imaging scientists.
 
-The development requirements, following from the user requirements, are listed [here](https://github.com/mantidproject/isis_imaging/wiki/High-Level-Development-Requirements-and-Guidelines)
+The development requirements, following from the user requirements, are listed [here](https://github.com/mantidproject/mantidimaging/wiki/High-Level-Development-Requirements-and-Guidelines)
 
 # 1. Motivation
 
@@ -78,7 +78,7 @@ The current [Tomography Reconstruction](https://github.com/mantidproject/mantid/
 
 The `Run` tab handles the selected tool and it's parameters, the logging into the compute resource for remote reconstruction, and the directories for input images. All of these things can be provided through a File/Action menu to not clutter the screen, as all of them need to only be performed once.
 
-![Run Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/runtab.png)
+![Run Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/runtab.png)
 
 ---
 
@@ -88,27 +88,27 @@ The interface of this tab does not allow for an easy way to apply a filter to th
 
 The user will also not be able to see the results without switching to the `ROI etc` tab, which does the visualisation.
 
-![Filter Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/filtertab.png)
+![Filter Tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/filtertab.png)
 
 ---
 
 The `Convert` and `Energy bands` tabs don't need to be independent tabs, as their functionality can be provided through simpler File/Action menu options:
 
-![Convert and Energy tabs](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/convertandenergytabs.png)
+![Convert and Energy tabs](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/convertandenergytabs.png)
 
 ---
 
 Confusing `System` tab to handle all possible paths, except the data paths, which are handled in the `Run` tab:
 
-![System tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/systemtab.png)
+![System tab](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/systemtab.png)
 
 ---
 
 The Region of Interest tab is the hardest one to fix, as we need to manually implement automatic scaling to window size, correct region of interest translation that takes into account the scaling, zoom, moving the image after zoom, and other features that are expected to be present in an imaging program:
 
-![ROI tab 1](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab1.png)
+![ROI tab 1](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/roitab1.png)
 
-![ROI tab 2](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/roitab2.png)
+![ROI tab 2](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/roitab2.png)
 
 ---
 
@@ -131,7 +131,7 @@ Drawbacks of switching to a Python GUI:
 
 Usage of Matplotlib to implement a new ROI tab comes with all the features we would need to manually implement otherwise, and is one of the biggest PROs for a GUI in Python.
 
-In Python we also get easier integration with the rest of the reconstruction scripts (the `isis_imaging.core` package), previously there were a lot of files that were just plain data structures that hold all of the available filters and their command line parameters. This means a change in the `core` scripts needs to be _manually_ reflected into the GUI code.
+In Python we also get easier integration with the rest of the reconstruction scripts (the `mantidimaging.core` package), previously there were a lot of files that were just plain data structures that hold all of the available filters and their command line parameters. This means a change in the `core` scripts needs to be _manually_ reflected into the GUI code.
 
 The `core` scripts were rewritten in January 2017, to fix previous problems they had with handling larger stacks and generally poor documentation/structure, making maintenance and testing impossible, and any extension with filters or reconstruction tools hard. This rewriting broke the ability to run a reconstruction from the old Tomography GUI, because the CLI changed, but the old CLI was hard-coded to the C++ interface.
 
@@ -140,7 +140,7 @@ The `core` scripts were rewritten in January 2017, to fix previous problems they
 
 The Python GUI makes use of the `QDockWidget` class to provide a layout that is flexible and supports different ways to view and structure the visualisation. An example of that can be seen here:
 
-![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/all_views.png)
+![Main Window with all possible stack window positions](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/all_views.png)
 
 This image shows off a few ways that loaded stacks can be positioned. It allows for any combination of any preferred positioning.
 
@@ -201,10 +201,10 @@ There is an example provided, in Python, for communicating with the REST API of 
 # 6. Terminology
 
 Projection - Look towards the object from the side, image with the histogram:
-![Projection image](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/projection.png)
+![Projection image](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/projection.png)
 
 How a projection looks after pre-processing, image with the histogram:
-![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/pre_processed.png)
+![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/pre_processed.png)
 
 Radiograms - Multiple projections for a _single_ angle
 
@@ -217,9 +217,9 @@ Processing a Tomography as volume of Projections - This is the data is loaded in
 - The Z axis is used to traverse the images. Note: some packages may use the format `array[X, Y, Z]` for traversal
 
 Sinograms - same as volume of Projections, however the traversal is done on the X axis in `array[Z, X, Y]`, giving the horizontal movement of the object throughout the tomography for each row. An image of the sinogram with it's histogram:
-![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sinogram%2Bhistogram.png)
+![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/sinogram%2Bhistogram.png)
 
-Slices - referrs to a reconstructed sinogram. ![Reconstructed slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/reconstruction.png)
+Slices - referrs to a reconstructed sinogram. ![Reconstructed slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/reconstruction.png)
 
 Attenuation - the result from performing a `-ln(image)`, which can be written as `numpy.negative(numpy.log(image))`. Depending on the dataset adding the `-log` to pre-processing can _significantly_ improve the reconstruction results and help remove noise!
 
@@ -243,7 +243,7 @@ After sphinx documentation is added, the contiguous integration could also check
 
 ## 8.2. Installation
 
-We can either work towards the package being installable using `python setup.py install`, making it available system wide. The alternative solution is to use it from the folder and provide global access like [the example here](https://mantidproject.github.io/isis_imaging/user_guide/setting_up.html#global-access-to-the-package)
+We can either work towards the package being installable using `python setup.py install`, making it available system wide. The alternative solution is to use it from the folder and provide global access like [the example here](https://mantidproject.github.io/mantidimaging/user_guide/setting_up.html#global-access-to-the-package)
 
 ## 8.3. Testing
 
@@ -275,7 +275,7 @@ This also allows for a full separation of the GUI from any of the other interfac
 
 ## 8.5. Documentation
 
-The user facing documentation is hosted using github pages. The files can be seen on the `gh-pages` branch. To access the files go on [https://mantidproject.github.io/isis_imaging/](https://mantidproject.github.io/isis_imaging/), if the repository name is changed the link will be `https://mantidproject.github.io/<repository_name>/`
+The user facing documentation is hosted using github pages. The files can be seen on the `gh-pages` branch. To access the files go on [https://mantidproject.github.io/mantidimaging/](https://mantidproject.github.io/mantidimaging/), if the repository name is changed the link will be `https://mantidproject.github.io/<repository_name>/`
 
 For updating the documentation checkout the `gh-pages` branch. The source files are `.rst`. They are not compiled automatically. A build has to be run manually using `make html` command where the `Makefile` is located. To update what is seen on the website the files from the `build/html` have to be moved to be in the root directory. After the branch is pushed to remote, the pages will update soon.
 
@@ -295,13 +295,13 @@ Visualisation of the images and to compare results or do analysis I recommend [f
 
 Visualisation of the reconstructed volume can be done with [Avizo](http://www.fei-software-center.com/avizo/packagedownload-ac2ae0df/).
 
-## Jupyter Notebooks
+## 8.7. Jupyter Notebooks
 
 There are 2 jupyter notebooks available as an introduction to the package and imaging steps. They can be found in the `notebooks` folder inside the repository. To run you have to have `jupyter` installed, go into the `notebooks` folder and type `jupyter notebook`. This will host a session and open a tab for the notebook in the default browser.
 
-# 9. Guidelines for ISIS Imaging CORE
+# 9. Guidelines for MantidImaging CORE
 
-Issues related to the `core` package of ISIS Imaging have the `Component: Core` label, following the Mantid Repository issue structure. [Link to issues for core](https://github.com/mantidproject/isis_imaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+Core%22)
+Issues related to the `core` package of MantidImaging have the `Component: Core` label, following the Mantid Repository issue structure. [Link to issues for core](https://github.com/mantidproject/mantidimaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+Core%22)
 
 ## 9.1. Filter implementation expansion
 
@@ -315,7 +315,7 @@ A potential problem for CUDA is for machines with low VRAM, transferring the dat
 
 This package supports CUDA and nicely implements most of the `numpy` API, meaning it can make transition over to GPU processing easy, for filters that only use `numpy` functions (background correction, contrast normalisation, etc).
 
-For filters requiring custom code, kernels for other filters like Median, Gaussian, etc, can be written additionaly. [Related issue on repository.](https://github.com/mantidproject/isis_imaging/issues/50) This issue links to a response in the CuPy repository about how to write CUDA kernels in external files and then compile them inside during Python execution.
+For filters requiring custom code, kernels for other filters like Median, Gaussian, etc, can be written additionaly. [Related issue on repository.](https://github.com/mantidproject/mantidimaging/issues/50) This issue links to a response in the CuPy repository about how to write CUDA kernels in external files and then compile them inside during Python execution.
 
 I would recommend asking on the [CuPy repository](https://github.com/cupy/cupy) for implementation (and performance wise) advice before finalising the implementation of any filter.
 
@@ -385,7 +385,7 @@ Currently the scripts expect the folder structure to be:
 
 ``` text
 <repository_folder>/
-└── isis_imaging
+└── mantidimaging
     ├── core
     │   ├── aggregate
     │   ├── algorithms
@@ -408,7 +408,7 @@ It is not expected to have many changes of this top level structure. If any stru
 - Adding another level before the `core` package, so the structure would be:
 
 ``` text
-└── isis_imaging
+└── mantidimaging
     └── another_level_package
         └── core
 ```
@@ -425,9 +425,9 @@ Having this structure also allows to expose a consistent Public API through the 
 - All filters must implement a parallel and sequential execution. How that is done is up to the developer.
 - Future extensions could be adding CUDA execution to some/all fitlers. This would ideally be handled as part of the checks for parallel inside the `execute` function, but if that is not possible or desirable, a new function might be added to the API specifically for CUDA execution.
 
-# 10. Guidelines for ISIS Imaging GUI
+# 10. Guidelines for MantidImaging GUI
 
-Issues related to the `GUI` package of ISIS Imaging have the `Component: GUI` label, following the Mantid Repository issue structure. [Link to issues for GUI](https://github.com/mantidproject/isis_imaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+GUI%22)
+Issues related to the `GUI` package of MantidImaging have the `Component: GUI` label, following the Mantid Repository issue structure. [Link to issues for GUI](https://github.com/mantidproject/mantidimaging/issues?q=is%3Aopen+is%3Aissue+label%3A%22Component%3A+GUI%22)
 
 ## 10.1. General Structure
 
@@ -469,7 +469,7 @@ The benefit of .ui compiling at runtime is that we can quickly run the `MainWind
 In [1]: %load_ext autoreload
 In [2]: %autoreload 2
 
-In [3]: mw = isis_imaging.main_window.MainWindowView(None)
+In [3]: mw = mantidimaging.main_window.MainWindowView(None)
 
 In [4]: mw.show()
 
@@ -482,7 +482,7 @@ RuntimeError                              Traceback (most recent call last)
 
 RuntimeError: wrapped C/C++ object of type MainWindowView has been deleted
 
-In [8]: mw = isis_imaging.main_window.MainWindowView(None)
+In [8]: mw = mantidimaging.main_window.MainWindowView(None)
 
 In [9]: mw.show() # works again
 ```
@@ -557,7 +557,7 @@ Matplotlib provides a method to specify contrast range via `set_clim` method on 
 
 Applying a filter will bring up a dialogue in which the user has to select on which stack to apply the filter via a dropdown menu, and fill in the required parameters the filter has.
 
-Any filters should be dynamically registered using the [registrator](https://github.com/mantidproject/isis_imaging/blob/master/isis_imaging/core/algorithms/registrator.py) style approach. Filters will have to implement `cli_register` and `gui_register` functions that register them with the command line and graphical interface, respectively, in order to be visible on each of the interfaces.
+Any filters should be dynamically registered using the [registrator](https://github.com/mantidproject/mantidimaging/blob/master/mantidimaging/core/algorithms/registrator/registrator.py) style approach. Filters will have to implement `cli_register` and `gui_register` functions that register them with the command line and graphical interface, respectively, in order to be visible on each of the interfaces.
 
 Current issues for this section:
 
@@ -620,14 +620,14 @@ A new configuration might have to be added in `core.configurations` to handle th
 ## 10.15. Issues with Finding Center of Rotation and Reconstruction
 
 Normally the data volume will be loaded in as radiograms:
-![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/pre_processed.png)
+![Pre-processed](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/pre_processed.png)
 
 During the pre-processing stage we can process only a few images to see the results from the applied filter, the full stack _does not need_ to be processed, until we are happy with the effects.
 
 Doing operations like finding the Center of Rotation requires the image to be Sinograms:
-![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sinogram%2Bhistogram.png)
+![Sinogram](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/sinogram%2Bhistogram.png)
 
-An example of how to do that with the package is `isis_imaging -i /your/data --convert --swap-axes -o /output/path`. In the end it boils down to a simple `np.swapaxes(data, 0, 1)`.
+An example of how to do that with the package is `mantidimaging -i /your/data --convert --swap-axes -o /output/path`. In the end it boils down to a simple `np.swapaxes(data, 0, 1)`.
 
 If `np.swapaxes` is done during processing, it breaks the contiguous order of the data. Attempting a reconstruction while the data is not in contiguous order will cause `tomopy` to manually copy the data inside the `tomopy.recon` function.
 
@@ -649,10 +649,10 @@ Once we have the histograms into memory with contiguous order, we can proceed to
 
 Currently the automatic COR calculation is done on the sinograms and uses `core.imopr.cor`. Ideally we want to keep that behaviour. Slight change might be necessary to the `core.imopr.cor` module, as currently it does not return the CORs, but only prints them in the console.
 
-That usage can be accessed via `isis_imaging -i /some/sinograms/ --imopr cor --indices 0 1800 100`, this will automatically calculate the COR for every 100th image of all the 1800 images we have. The output looks like this:
+That usage can be accessed via `mantidimaging -i /some/sinograms/ --imopr cor --indices 0 1800 100`, this will automatically calculate the COR for every 100th image of all the 1800 images we have. The output looks like this:
 
 ``` text
-➜  ~/temp/chadwick isis_imaging -i sinograms --imopr cor --indices 0 1800 100
+➜  ~/temp/chadwick mantidimaging -i sinograms --imopr cor --indices 0 1800 100
  >> WARNING: No output path specified, no output will be produced!
 Sample: [========================================]20 / 20
 Data shape (20, 1570, 1070)
@@ -686,21 +686,21 @@ Total execution time was 164.612098932 sec
 ```
 
 As you can see the COR can get confused for some slices, for example slice 0, which is basically empty:
-![Sinogram 0](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sino0.png)
+![Sinogram 0](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/sino0.png)
 
 But for the sinogram on position 200, it look okay, just the algorithm was wrong:
-![Sinogram 200](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/sino200.png)
+![Sinogram 200](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/sino200.png)
 
 ### 10.15.2. Center of Rotation (COR) with imopr corwrite
 
 This is the manual way to determine the COR. It can be accessed with:
 
-`isis_imaging -i /some/sinograms/ --imopr 660 680 1 corwrite --indices 0 1800 100 -o /output/path/required`
+`mantidimaging -i /some/sinograms/ --imopr 660 680 1 corwrite --indices 0 1800 100 -o /output/path/required`
 
 This has output path required, and will not execute if not provided one. It saves out reconstructed slices with a range of CORs. The range is specified in `--imopr 660 680 1`, the format is `--imopr start_cor end_cor step`. An output from that command could be:
 
 ```text
-➜  ~/temp/chadwick isis_imaging -i sinograms --imopr 660 680 1 corwrite --indices 0 1964 100 -o ./cors
+➜  ~/temp/chadwick mantidimaging -i sinograms --imopr 660 680 1 corwrite --indices 0 1964 100 -o ./cors
 Sample: [========================================]20 / 20
 Data shape (20, 1570, 1070)
 *********************************************
@@ -735,20 +735,20 @@ Total execution time was 103.075942993 sec
 ```
 
 In the output folder `./cors` we can see a structure like this:
-![CORs Folder](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/corsstruct.png). If we have a look at the COR slices that have been produced, slice 500 with COR 667:
+![CORs Folder](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/corsstruct.png). If we have a look at the COR slices that have been produced, slice 500 with COR 667:
 
-![Slice 667, bad recon slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslice.png). This was reconstructed with a COR of 667. Initially it is not quite clear if it's a good slice or not, but looking at this:
+![Slice 667, bad recon slice](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/badreconslice.png). This was reconstructed with a COR of 667. Initially it is not quite clear if it's a good slice or not, but looking at this:
 
-![Slice 667, bad recon slice with text](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslicecircle.png)
+![Slice 667, bad recon slice with text](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/badreconslicecircle.png)
 
 We can see the out 'shadow' is because we've missed the COR by quite a bit. Here is slice 500 with COR 530, which is closer to the correct COR:
-![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/badreconslice2.png)
+![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/badreconslice2.png)
 
 It still has that 'shadow' circle around the object, because we're not quite there yet, but close.
 
 The slice with the correct COR looks like this:
 
-![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/goodreconslice.png)
+![Slice 667, bad recon slice, closer COR](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/goodreconslice.png)
 
 The 'shadow' has now merged into the object in the middle. This is now correct.
 
@@ -772,7 +772,7 @@ However it needs to be accounted for during the reconstruction. This is currentl
 
 We can supply the slice/cor information through the command line:
 
-`isis_imaging -i /some/data --cors (the cors from the table) --cor-slices (the slices from the table) ...`
+`mantidimaging -i /some/data --cors (the cors from the table) --cor-slices (the slices from the table) ...`
 
 The number of cors and the slices is enforced to be equal. The only exception is that we can provide a single number to `--cors`, which will then be assigned to the whole stack. Some lucky samples happen to have the exact same COR for every slice.
 
@@ -780,7 +780,7 @@ The number of cors and the slices is enforced to be equal. The only exception is
 
 Knowing the COR for each slice (or interpolating the approximation) gives us information that we could display back to the user. Every COR for a slice maps back to a pixel on the projection image. This means we can create a line that is slightly tilted and crosses the projection's center. An exaggerated visualisation looks like this (done by hand, not accurate to the actual COR, but conveys the idea):
 
-![Exaggerated Tilt](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/exaggeratedtilt.png)
+![Exaggerated Tilt](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/exaggeratedtilt.png)
 
 This is something that has been expressed as a required feature by the scientists, and should not be too hard to implement. The rectangle selection class, also has an option to be a line. We could create it as a line and display it as a separate object on the visualisation.
 
@@ -788,11 +788,11 @@ This is something that has been expressed as a required feature by the scientist
 
 This is a technique for calculating the angle of tilt, which hasn't been verified by the scientists so it might not be correct, but it doesn't hurt to document it. Having the tilt line (as in the exaggerated tilt above), we can add another line, which is straight and is the length of the image's width, like this:
 
-![Straight line and Tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/straightlinetilt.png)
+![Straight line and Tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/straightlinetilt.png)
 
 We can see there is an angle where they cross. That angle should be how far the sample is tilted from the perfect straigth line. If we move the line to end at the last COR, the calculation can be a bit easier:
 
-![Moved straight line and tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/ISIS_Imaging/straightlinetilt2text.png)
+![Moved straight line and tilt line](https://github.com/mantidproject/documents/blob/tomography_gui/Design/MantidImaging/straightlinetilt2text.png)
 
 Calculating the theta angle from the image above should give us the actual tilt. I am not sure if the technique is accurate or correct, and suggestions for improvements are welcome.
 
@@ -808,11 +808,11 @@ A reconstruction submission requires CORs to be specified, and would look like t
 
 Specifying a common COR for every slice:
 
-`isis_imaging -i /some/sinograms --cors 440 --reconstruction -o /some/output`
+`mantidimaging -i /some/sinograms --cors 440 --reconstruction -o /some/output`
 
 Specifying CORs from which the rest will be interpolated:
 
-`isis_imaging -i /some/sinograms --cors 440 450 460 470 --cor-slices 100 200 300 400 --reconstruction -o /some/output`
+`mantidimaging -i /some/sinograms --cors 440 450 460 470 --cor-slices 100 200 300 400 --reconstruction -o /some/output`
 
 The reconstruction of a single slice is an atomic operation on the slice. The way it runs in parallel is that each thread/process gets a slice and reconstructs it.
 
