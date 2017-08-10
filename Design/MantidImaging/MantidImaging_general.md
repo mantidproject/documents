@@ -291,6 +291,8 @@ Some IDEs for development that I've found work well with the codebase are:
 - PyCharm
   - Picks up the tests and provides all around very good utilities for development
 
+For creating the GUI `.ui` files with pre-made layouts QtDesigner 5 should be used.
+
 Visualisation of the images and to compare results or do analysis I recommend [fiji](https://fiji.sc/).
 
 Visualisation of the reconstructed volume can be done with [Avizo](http://www.fei-software-center.com/avizo/packagedownload-ac2ae0df/).
