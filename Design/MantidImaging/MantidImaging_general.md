@@ -59,8 +59,9 @@
     - [10.18. Remote submission and MPI-like behaviour](#1018-remote-submission-and-mpi-like-behaviour)
         - [10.18.1. MPI-like behaviour](#10181-mpi-like-behaviour)
         - [10.18.2. Remote compute resource used at ISIS: SCARF](#10182-remote-compute-resource-used-at-isis-scarf)
-        - [10.18.3. Acquiring the certificates to successfully log into SCARF using PAC Client](#10183-acquiring-the-certificates-to-successfully-log-into-scarf-using-pac-client)
-        - [10.18.4. Using a generic compute resource](#10184-using-a-generic-compute-resource)
+        - [10.18.3. Registering for SCARF access](#10183-registering-for-scarf-access)
+        - [10.18.4. Acquiring the certificates to successfully log into SCARF using PAC Client](#10184-acquiring-the-certificates-to-successfully-log-into-scarf-using-pac-client)
+        - [10.18.5. Using a generic compute resource](#10185-using-a-generic-compute-resource)
 - [11. Future integration with Mantid](#11-future-integration-with-mantid)
 
 <!-- /TOC -->
@@ -849,9 +850,13 @@ LSF's Platform Application Center, as described here:
 https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
 (with Python client scripts).
 
-### 10.18.3. Acquiring the certificates to successfully log into SCARF using PAC Client
+### 10.18.3. Registering for SCARF access
 
-The scripts can be found in `core/remote` directory.
+The link for registering is [http://www.scarf.rl.ac.uk/access](http://www.scarf.rl.ac.uk/access).
+
+### 10.18.4. Acquiring the certificates to successfully log into SCARF using PAC Client
+
+The scripts can be found in `core/remote` directory. To log onto SCARF go into the `pac-web-api` folder and call `python logon -u <SCARF_USER_ID>`
 
 If getting the error `urllib2.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:661)>` follow the instructions bellow.
 
@@ -863,7 +868,7 @@ The certificate files can be downloaded from [http://www.ngs.ac.uk/ukca/certific
 
 If using anaconda python, the SSL certificate files need to be symlinked with `ln -s /etc/ssl/certs ~/anaconda2/ssl`. For more information about why this is necessary see this [Anaconda issue](https://github.com/ContinuumIO/anaconda-issues/issues/137#issuecomment-67084150)
 
-### 10.18.4. Using a generic compute resource
+### 10.18.5. Using a generic compute resource
 
 For a connection to SCARF we can use either the `pacclient` provided by SCD, or the [SCARFLSFJobManager](https://github.com/mantidproject/mantid/blob/master/Framework/RemoteJobManagers/src/SCARFLSFJobManager.cpp) in Mantid.
 
