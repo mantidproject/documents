@@ -59,7 +59,8 @@
     - [10.18. Remote submission and MPI-like behaviour](#1018-remote-submission-and-mpi-like-behaviour)
         - [10.18.1. MPI-like behaviour](#10181-mpi-like-behaviour)
         - [10.18.2. Remote compute resource used at ISIS: SCARF](#10182-remote-compute-resource-used-at-isis-scarf)
-        - [10.18.3. Using a generic compute resource](#10183-using-a-generic-compute-resource)
+        - [10.18.3. Acquiring the certificates to successfully log into SCARF using PAC Client](#10183-acquiring-the-certificates-to-successfully-log-into-scarf-using-pac-client)
+        - [10.18.4. Using a generic compute resource](#10184-using-a-generic-compute-resource)
 - [11. Future integration with Mantid](#11-future-integration-with-mantid)
 
 <!-- /TOC -->
@@ -826,6 +827,7 @@ The tool and algorithm defaults are `tomopy` and the algorithm `gridrec`. The to
 
 Remote submission needs to be supported, that means we need to be able to submit the reconstruction/processing parameters through the REST API they provide. Information about the reconstruction should be stored in a `ProcessList`, which can be serialised and then recreated anywhere with the `--process-list` flag.
 
+
 ### 10.18.1. MPI-like behaviour
 
 Integration of MPI into the scripts was considered, but the cost of having to transfer the large data over the network is too high.
@@ -847,7 +849,21 @@ LSF's Platform Application Center, as described here:
 https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
 (with Python client scripts).
 
-### 10.18.3. Using a generic compute resource
+### 10.18.3. Acquiring the certificates to successfully log into SCARF using PAC Client
+
+The scripts can be found in `core/remote` directory.
+
+If getting the error `urllib2.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:661)>` follow the instructions bellow.
+
+The certificate files can be downloaded from [http://www.ngs.ac.uk/ukca/certificates/cacerts.html](http://www.ngs.ac.uk/ukca/certificates/cacerts.html). For Ubuntu they need to be placed into `/etc/ssl/certs/` if using with system Python. The necessary certificate files are:
+
+- 98ef0ee5.0
+- ffc3d59b.0
+- 1b6f5ede.0
+
+If using anaconda python, the SSL certificate files need to be symlinked with `ln -s /etc/ssl/certs ~/anaconda2/ssl`. For more information about why this is necessary see this [Anaconda issue](https://github.com/ContinuumIO/anaconda-issues/issues/137#issuecomment-67084150)
+
+### 10.18.4. Using a generic compute resource
 
 For a connection to SCARF we can use either the `pacclient` provided by SCD, or the [SCARFLSFJobManager](https://github.com/mantidproject/mantid/blob/master/Framework/RemoteJobManagers/src/SCARFLSFJobManager.cpp) in Mantid.
 
