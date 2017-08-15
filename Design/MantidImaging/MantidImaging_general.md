@@ -26,7 +26,7 @@
         - [9.1.4. dask](#914-dask)
         - [9.1.5. VTK Imaging](#915-vtk-imaging)
     - [9.2. Reconstruction tools expansion](#92-reconstruction-tools-expansion)
-    - [9.3. Problems with moving to Python 3.5+](#93-problems-with-moving-to-python-35)
+    - [9.3. SAVU integration](#93-savu-integration)
     - [9.4. File Structure](#94-file-structure)
     - [9.5. Filters - General implementation structure](#95-filters---general-implementation-structure)
 - [10. Guidelines for MantidImaging GUI](#10-guidelines-for-mantidimaging-gui)
@@ -361,19 +361,13 @@ In the context of visualization, image processing is most often used to manipula
 - [Astra Toolbox](http://www.astra-toolbox.com/), [Supports Python 3](http://www.astra-toolbox.com/docs/install.html#for-python)
 - [MuhRec](http://www.imagingscience.ch/downloadsection/), No Python Bindings
 
-## 9.3. Problems with moving to Python 3.5+
+## 9.3. SAVU integration
 
-In an attempt to move the Python version requirement to 3.5, I have come across an extreme slowdown in initial memory allocation and processing performance.
+SAVU can be found [here](https://github.com/DiamondLightSource/Savu). SAVU is used at Diamond for processing imaging data. It should be integrated and used as a separate back-end for processing the data. SAVU already provides a wrapper around Tomopy and Astra Toolbox's GPU algorithms
 
-The reason has been outlined in [http://bugs.python.org/issue30919](http://bugs.python.org/issue30919), and it seems to be a behaviour change in `multiprocessing`'s shared memory allocation on Unix systems between python 2.7 and 3.5.
+It doesn't provide an API for integration, so the only way to use it directly would be creating a [process list](http://savu.readthedocs.io/en/latest/user_guides/user_training/#process-lists).
 
-- In 2.7 the memory was actually allocated in memory, and then shared with subprocesses.
-- In 3.5 the memory is written out as a file, which is then used as the 'shared memory' between subprocesses. The reason for that is that Python 3.x supports more ways of creating subprocesses, so this was the only way to support all of them. This means that memory initialisation and processing are now IO bound.
-
-However, as I do not think any of the additional ways of creating subprocesses are useful for this package, this change makes moving to 3.x impossible, until a workaround is found. I have taken the following steps as possible solutions:
-
-- I've asked on the Python issue board if anyone has a way to force the python 2.7 behaviour in python 3.5, this would by far be the easiest solution, as no significant code change will be necessary. However it might require changes to the Python source code, which I am not happy about, as I want to use a standard python distribution
-- I am looking into packages that can be used instead of the built-in `multiprocessing`, to handle the parallel processing. Some have already been added to the design document, like `dusk` and `numba`. The problem with this approach is that neither `dask` nor `numba` are available on SCARF right now, but they can be requested and added.
+For the integration, the role of the GUI would be to provide a graphical front-end to SAVU, creating the process list and submitting the job to a cluster.
 
 ## 9.4. File Structure
 
@@ -828,7 +822,6 @@ The tool and algorithm defaults are `tomopy` and the algorithm `gridrec`. The to
 
 Remote submission needs to be supported, that means we need to be able to submit the reconstruction/processing parameters through the REST API they provide. Information about the reconstruction should be stored in a `ProcessList`, which can be serialised and then recreated anywhere with the `--process-list` flag.
 
-
 ### 10.18.1. MPI-like behaviour
 
 Integration of MPI into the scripts was considered, but the cost of having to transfer the large data over the network is too high.
@@ -837,16 +830,13 @@ An alternative approach will be taken - since we can specify indices that can be
 
 ### 10.18.2. Remote compute resource used at ISIS: SCARF
 
-General information on the SCARF cluster, which uses the Platform LSF
-scheduler, can be found at http://www.scarf.rl.ac.uk. It can be used
-via:
+General information on the SCARF cluster, which uses the Platform LSF scheduler, can be found at http://www.scarf.rl.ac.uk. It can be used via:
 
 - remote login
-- a web portal: https://portal.scarf.rl.ac.uk
+- a web portal: [https://portal.scarf.rl.ac.uk](https://portal.scarf.rl.ac.uk)
 - a web service
 
-The IMAT GUI utilizes a RESTFul web service provided by Platforms
-LSF's Platform Application Center, as described here:
+The IMAT GUI utilizes a RESTFul web service provided by Platforms LSF's Platform Application Center, as described here:
 https://github.com/mantidproject/documents/tree/master/Design/Imaging_IMAT/SCARF_Platform_LSF/
 (with Python client scripts).
 
