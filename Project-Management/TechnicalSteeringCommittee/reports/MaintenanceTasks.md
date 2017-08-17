@@ -27,6 +27,7 @@ Highest priority
 3. Reducing static analysis issues that are on every pull request
    1. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/) ([#19773](https://github.com/mantidproject/mantid/issues/19773))
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/) ([#19770](https://github.com/mantidproject/mantid/issues/19770))
+ 1. Extract performance tests build configuration into a script in the repository
 
 Pool
 ----
