@@ -28,6 +28,7 @@ Highest priority
    1. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/) ([#19773](https://github.com/mantidproject/mantid/issues/19773))
    294742. [flake8](http://builds.mantidproject.org/job/master_flake8/) ([#19770](https://github.com/mantidproject/mantid/issues/19770))
  1. Extract performance tests build configuration into a script in the repository
+ 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Martyn).
 
 Pool
 ----
