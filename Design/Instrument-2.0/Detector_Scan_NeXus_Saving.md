@@ -15,15 +15,15 @@ Two types of scan are now supported, normal scans where every detector can scan 
 
 #### DetectorInfo
 
- * The position of each detector for each scan interval
+* The position of each detector for each scan interval
   * Stored in `DetectorInfo` as a 3-vector containing the absolute position
- * The rotation of each detector at each scan interval
+* The rotation of each detector at each scan interval
   * Stored in `DetectorInfo` as a quaternion containing the absolute rotation
- * The mask flag for each detector for each scan interval
- * For each detector position & rotation a mapping to the detector and scan interval that it refers to
+* The mask flag for each detector for each scan interval
+* For each detector position & rotation a mapping to the detector and scan interval that it refers to
   * The detector ID for each entry
   * The time index for each entry
- * Scan intervals - a set of start and end times need to be stored:
+* Scan intervals - a set of start and end times need to be stored:
   * Synchronous scan - a single set of scan intervals for every point in the detector scan
   * Asynchronous scan - **not necessarily required for now** - an independent set of scan intervals for every detector
 
