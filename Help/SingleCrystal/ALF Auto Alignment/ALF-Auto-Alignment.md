@@ -11,25 +11,24 @@ Following are instructions on how to set up and run the auto alignment script.
 
 There are a number of parameters that will differ from run to run and need to be set in the script (eventually by GUI)
 
-### Data collection parameters
-`rotation_initial`: what sample rotation the scan should start at
-`rotation_step`: how many degrees to rotate between runs
-`run_length`: data collection duration for each run in s
+#### Data collection parameters
+- `rotation_initial`: what sample rotation the scan should start at
+- `rotation_step`: how many degrees to rotate between runs
+- `run_length`: data collection duration for each run in s
 
 
-### Data analysis parameters
-
-`mask_dspace_min`/ `mask_dspace_max`: Ignore peaks in this dspacing range - used to filter out noise from the sample holder. Depends on the material of the sample holder.
+#### Data analysis parameters
 
 Peakfinding parameters (passed to FindSXPeaks):
-`background_intensity`: threshold above which a signal is considered a peak. 
-`resolution_tof`: time of flight resolution - minimum distance in time of flight between two peaks for them to be considered distinct
-`resolution_phi`: phi resolution - minimum horizontal angle between two peaks for them to be considered distinct
-`resolution_phi`: two theta resolution - minimum vertical angle between two peaks for them to be considered distinct
+- `mask_dspace_min`/ `mask_dspace_max`: Ignore peaks in this dspacing range - used to filter out noise from the sample holder. Depends on the material of the sample holder.
+- `background_intensity`: threshold above which a signal is considered a peak. 
+- `resolution_tof`: time of flight resolution - minimum distance in time of flight between two peaks for them to be considered distinct
+- `resolution_phi`: phi resolution - minimum horizontal angle between two peaks for them to be considered distinct
+- `resolution_phi`: two theta resolution - minimum vertical angle between two peaks for them to be considered distinct
+- `merge_tolerance`: minimum distance in Q for two peaks to be considered distinct. Removes duplicates when merging peaks from different (overlapping) runs.
 
-`merge_tolerance`: minimum distance in Q for two peaks to be considered distinct. Removes duplicates when merging peaks from different (overlapping) runs.
-
-Lattice parameters of the sample (the users should know the values for these) - `a`, `b`, `c`, `alpha`, `beta`, `gamma`. These values are passed to the `FindUBUsingLatticeParameters` algorithm.
+Lattice parameters of the sample 
+- `a`, `b`, `c`, `alpha`, `beta`, `gamma`. These values are passed to the `FindUBUsingLatticeParameters` algorithm. Generally, the users should know these values for their sample.
 
 
 ## Setup
