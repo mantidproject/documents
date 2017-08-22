@@ -2,7 +2,7 @@
 
 The `IndexProperty` is a new property type in Mantid which can be used in general for accessing all of, or a subset of, workspace spectra. The property uses an underlying `IndexInfo` object to create a `SpectrumIndexSet` from a set of user defined input indices (or spectrum numbers).
 
-See [here](https://github.com/mantidproject/mantid/blob/844c63680f7530217fa093a00c0ea278b7721a7d/docs/source/concepts/IndexProperty.rst) for more details.
+See [here](https://github.com/mantidproject/mantid/blob/b623edb03ae604aaaed4dc225fbb080642031d41/docs/source/concepts/IndexProperty.rst) for more details.
 
 
 Refactor example `ChangePulsetime`. Original implementation:
