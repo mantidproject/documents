@@ -50,6 +50,24 @@ After this is done, you should be able to run the alignment script by calling it
 `> C:\Mantid-install\bin\mantidpython.bat --classic .\scripts\ALF_auto_alignment\alf_auto_alignment.py`
 
 
+## Example
+
+The data set this has been tested with throughout development is comprised of ALF runs `75243` - `75264`.
+You can test the script by running it with the following parameters:
+- `simulate = True`
+- `lattice_a = 3.82`
+- `lattice_b = 3.82`
+- `lattice_c = 6.28`
+- `mask_dspace_min = 0`
+- `mask_dspace_max = 2.6`
+- `background = 50`
+- `resolution_tof = 5000`
+- `resolution_phi = 10`
+- `resolution_th2 = 10`
+- `merge_tolerance = 1`
+
+Then just copy the run data files into the watched directory while the script is running. You can drop them one by one after each "collection" cycle to simulate what would happen in a live scenario, or all at once to just check the result.
+
 ## TODO LIST:
 The script is a work in progress and possibly not very useful in its current form. Here is a To-Do list of essential tasks:
 - Produce some kind of output (save WS?)
