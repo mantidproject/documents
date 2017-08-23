@@ -5,9 +5,9 @@ This is done by way of [this Python application](linky) comprising the following
 
 ![Structure of the alignment application](resources/structure.jpg)
 
-Following are instructions on how to set up and run the auto alignment script.
+As of the moment, the script returns a UB matrix for the input dataset, but does not yet use this information to align the sample. As such, this is more of a starting point than a finished product. It has only been tested with a simulated instrument (i.e. not using an actual goniometer or collecting any data), thus the `genie_python` portion of the application will probably need some tweaking.
 
-NOTE: As of the moment, this has only been tested with a simulated instrument (i.e. not using an actual goniometer or collecting any data).
+Following are instructions on how to set up and run the auto alignment script.
 
 ## Parameters
 
@@ -66,16 +66,15 @@ You can test the script by running it with the following parameters:
 - `resolution_th2 = 10`
 - `merge_tolerance = 1`
 
-Then just copy the run data files into the watched directory while the script is running. You can drop them one by one after each "collection" cycle to simulate what would happen in a live scenario, or all at once to just check the result.
+Then just copy the run data files into the watched directory while the script is running. You can drop them one by one after each "collection" cycle to simulate what would happen in a live scenario, or all at once to just check the result. The UB matrix will be saved in `[watched directory]\log\UB_[last processed run].txt`
 
 ## TODO LIST:
 The script is a work in progress and possibly not very useful in its current form. Here is a To-Do list of essential tasks:
-- Produce some kind of output (save WS?)
-- Translate the UB matrix into instructions to actually align the sample (manually or via goniometer?)
+- Translate the UB matrix into instructions on how to actually align the sample
 - Implement functionality for predicting the positions of further peaks once two have been found. By jumping to the predicted position for the next scan, we can both cut the time the script takes to complete, and confirm (or refute) the UB matrix derived from the first two peaks.
-- Confidence metrics for UB matrix
-- Set actual log folder (ez)
-- last angle thing (ez)
-- dspacing presets (ez)
-- add timeout after run (try again if no new data after x)
-- Test extensively with different datasets
+- Script robustness: At the moment it is difficult to diagnose the quality of the results the script is delivering while it is running. As it is easy to screw up the results with parameters that are subtly wrong, this could turn the script into a big waste of time for the users. To mitigate this: 
+  - There should be a way to assess the correctness of the results while it is running, e.g. using confidence metrics for the UB matrix such as error, number of indexed peaks, level of change between iterations... 
+   - Think of ways to guide the setup, e.g. presets for the d-spacing mask based on the material of the sample holder
+   This should be tested extensively with different datasets. 
+ 
+Regardless, it is probably also a good idea for the users to perform a run before running the script to get an idea of the background intensity.
