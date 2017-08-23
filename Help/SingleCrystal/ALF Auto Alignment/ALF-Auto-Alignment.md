@@ -7,17 +7,17 @@ This is done by way of [this Python application](linky) comprising the following
 
 Following are instructions on how to set up and run the auto alignment script.
 
-NOTE: As of the moment, this has only been tested with a simulated instrument, not using an actual goniometer.
+NOTE: As of the moment, this has only been tested with a simulated instrument (i.e. not using an actual goniometer or collecting any data).
 
 ## Parameters
 
-There are a number of parameters that will differ from run to run and need to be set in the script (eventually by GUI)
+There are a number of parameters that will differ from run to run and need to be set in the top level script (eventually this should be done via GUI)
 
 #### Data collection parameters
+- `simulate`: Sets whether you are using a real or simulated instrument. If set to `True`, the rotation value will just be written to an arbitrary pv and no actual data collection is performed. You can simulate the writing of run data by copying pre-existing runs into the directory watched by the file watcher. If set to `False`, the script will attempt to rotate the sample and collect data on ALF. **(THIS HAS NOT YET BEEN TESTED)**
 - `rotation_initial`: The initial sample rotation where the scan should start.
 - `rotation_step`: How many degrees to rotate the sample between runs.
 - `run_length`: Duration of data collection for each run.
-
 
 #### Data analysis parameters
 
