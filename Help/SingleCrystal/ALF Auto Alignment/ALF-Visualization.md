@@ -1,6 +1,6 @@
 # Merged Data Visualization
 
-This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through [this example script](resource/ALF_Visualise.py).
+This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through [this example script](resources/ALF_Visualise.py).
 
 To perform this, you will need data from a vanadium calibration run. Vanadium scatters uniformly and thus such a run provides baseline data on the detectors used for normalisation later in the process.
 
@@ -23,7 +23,7 @@ Then in a loop over all runs:
 
 ## Example
 
-This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](resource/ALF_Visualise.py)
+This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](resources/ALF_Visualise.py)
 
 ```
 folder_path = "C:\Some\Log\Folder\"
