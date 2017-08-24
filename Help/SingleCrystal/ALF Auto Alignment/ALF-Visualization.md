@@ -25,9 +25,6 @@ Then in a loop over all runs:
 This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. You can download the script here **(LINK)**
 
 ```
-range_min = 75243
-range_max = 75264
-
 folder_path = "C:\Some\Log\Folder\"
 
 xmin='0'
@@ -37,7 +34,8 @@ ymax='10'
 zmin='-10'
 zmax='10'
 ```
-These are just simple variables used throughout the script - the lower and upper bound of the run numbers we want to visualize, the folder where they live and the range of Qx, Qy, Qz I want to plot.
+These are just some variables used throughout the script - the folder where your experiment data lives and the range of Qx, Qy, Qz we want to plot. These are hardcoded here, so you might have to see which values work for your data.
+
 #### Step 1
 ```
 print "Loading vanadium run..."
@@ -78,33 +76,42 @@ upper = len(ys) - ys[::-1].searchsorted(threshold)
 
 kmin = ws_van_max.readX(0)[lower]
 kmax = ws_van_max.readX(0)[upper]
-
 DeleteWorkspace(ws_van_max)
 
+```
+We want to crop the momentum range so the normalization and measurements correspond to the same incident flux. Here we are setting the range from the lowest to the highest momentum above the threshold, which we define as at least 10% of the counts at the peak.
+```
 # Create Solid Angle Workspace
-
 Rebin(InputWorkspace = ws_van, Params = str(kmin) + "," + str(kmax-kmin) + "," + str(kmax), OutputWorkspace = ws_van_sa)
 
 # Create Flux Workspace
 Rebin(InputWorkspace = ws_van, Params = str(kmin)+',0.005,'+str(kmax), OutputWorkspace = ws_van_flux)
 SumSpectra(InputWorkspace = ws_van_flux, OutputWorkspace = ws_van_flux)
 IntegrateFlux(InputWorkspace = ws_van_flux, OutputWorkspace = ws_van_flux)
-
 print "- - - - - - - - - - - - - - - - - - - -"
+```
+Here we are creating the Solid Angle & Flux workspaces needed for the normalization later on. The solid angle workspace is created by rebinning all events within the previously defined momentum range into a single bin (i.e. the total count in that range for that spectrum). The flux workspace is created by summing and integrating all spectra. You may want to tweak the bin size (0.005 in this case) depending on your momentum range.
 
-# Step 2 - Load & normalise scan data
-# ##########################################################
+#### Step 2
+```
 
 if mtd.doesExist('MDnorm_acc'):
     DeleteWorkspace('MDnorm_acc')
 if mtd.doesExist('MDdata_acc'):
     DeleteWorkspace('MDdata_acc')
     
+range_min = 75243
+range_max = 75264
+```
+Here we are deciding which runs to include in the visualization, with `range_min` and `range_max` setting the lower and upper bound of the run numbers we want to visualize. We are deleting the accumulated workspaces (which are the result of the following loop) to ensure the result only contains runs from the current script execution. Skipping this step allows you to add extra runs to an already existing normalization result from previously processed runs
+```
 # For each sample rotation
 for i in range(range_min, range_max+1):
     # Prepare dataset
     current_ws = "ALF" + str(i)
-    mom_ws = "Momentum_" + current_ws
+    current_md = "MD_" + current_ws
+    current_mom = "Momentum_" + current_ws
+    
     print "Loading Run " + str(i) + "..." 
     Load(Filename= folder_path + "ALF" + str(i) + ".raw",OutputWorkspace=current_ws)
     MaskDetectors(current_ws, MaskedWorkspace=ws_mask)
@@ -114,9 +121,13 @@ for i in range(range_min, range_max+1):
     SetGoniometer(Workspace=current_ws, Axis0="rrot, 0, 1, 0, 1")
     
     # Convert & Crop
-    ConvertUnits(InputWorkspace=current_ws, Target='Momentum',OutputWorkspace=mom_ws)
-    Rebin(InputWorkspace = mom_ws, Params = str(kmin)+',0.005,'+str(kmax),OutputWorkspace=mom_ws)
-    
+    ConvertUnits(InputWorkspace=current_ws, Target='Momentum',OutputWorkspace=current_mom)
+    Rebin(InputWorkspace = current_mom, Params = str(kmin)+',0.005,'+str(kmax),OutputWorkspace=current_mom)
+```
+We are now looping over all the runs we want to include in the visualization. At the end of this loop, we will have two workspaces with the accumulated counts and accumulated normalisation data for all processed runs. First, we are loading the workspace and processing it in the same way as the vanadium workspace above (masking & cropping). 
+
+NOTE: I am loading the `.raw` files, as some of the nexus files in this dataset returned the error `Error in execution of algorithm LoadISISNexus: There seems to be an inconsistency in the spectrum numbers.` Hence the goniometer angle explicitly needs to be set (this is already done in the `.nxs` file). `rrot` is the name of the property containing the sample rotation in our case, this may differ for other instruments - you can look this up in the workspace sample logs.
+```
     # Convert to MD
     print "Converting to MDWorkspace..."
     pars=dict()
@@ -129,13 +140,13 @@ for i in range(range_min, range_max+1):
     pars['SplitInto']=100
     pars['MaxRecursionDepth']=1
     pars['MinRecursionDepth']=1
-    pars['InputWorkspace']=mom_ws
-    current_md = "MD_" + current_ws
+    pars['InputWorkspace']=current_mom
     pars['OutputWorkspace']=current_md
     ConvertToMD(**pars)
 ```
-    
-These are parameters used for converting to MD
+Here we are converting the current run to an MD workspace. You can potentially simplify this step by using `ConvertToDiffractionMD` instead, however on `.raw` files, the Q ranges of the resulting MD workspace were ridiculously large (at least for the dataset I used).
+
+#### Step 3
 ```
     # Normalise
     print "Normalise MD Workspace..."
@@ -157,9 +168,13 @@ These are parameters used for converting to MD
         MDnorm_acc = CloneMDWorkspace(MDnorm)
         
     print "Finished processing " + current_md
+    DeleteWorkspace(current_mom)
     print "- - - - - - - - - - - - - - - - - - - -"
-    
-    DeleteWorkspace(mom_ws)
+```
+This is where the normalization happens. We are passing our MD workspace as well as the previously created solid angle and flux workspaces into MDNormSCD, and produce a data and normalization workspace in return. These are then added to the accumulation workspaces which we need in the final step.
+
+#### Step 4
+```
 
 # Step 3 - Create workspace merging all normalized data
 # ##########################################################
@@ -169,3 +184,6 @@ MD_merged_normalised = MDdata_acc/MDnorm_acc
 
 print "Done."
 ```
+Here we simply divide the accumulated data by the normalization workspace. The result is a workspace containing all the merged and normalised data for all processed runs. With my dataset, visualizing the result looks like this:
+
+**(IMAGE)**
