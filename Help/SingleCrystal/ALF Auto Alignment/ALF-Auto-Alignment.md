@@ -43,7 +43,7 @@ To run the data collection / data analysis control loop, the application needs b
   This moves genie_python and its dependencies to the mantid-install folder. (Check that the paths in the script are correct)
 3. Install the `watchdog` module. (Instructions [here](http://pythonhosted.org/watchdog/installation.html)).
   This is used to monitor the file system for new data to be analyzed after a run has been conducted.
-4. Move the [Script](linky) to `\scripts\ALF_auto_alignment\`
+4. Move the [auto alignment script](linky) to `\scripts\ALF_auto_alignment\`
   
 After this is done, you should be able to run the alignment script by calling it with the `mantidpython.bat` in the Mantid-install folder, i.e.:
 
@@ -58,6 +58,7 @@ You can test the script by running it with the following parameters:
 - `lattice_a = 3.82`
 - `lattice_b = 3.82`
 - `lattice_c = 6.28`
+- `lattice_alpha, beta, gamma = 90`
 - `mask_dspace_min = 0`
 - `mask_dspace_max = 2.6`
 - `background = 50`
@@ -73,8 +74,5 @@ The script is a work in progress and possibly not very useful in its current for
 - Translate the UB matrix into instructions on how to actually align the sample
 - Implement functionality for predicting the positions of further peaks once two have been found. By jumping to the predicted position for the next scan, we can both cut the time the script takes to complete, and confirm (or refute) the UB matrix derived from the first two peaks.
 - Script robustness: At the moment it is difficult to diagnose the quality of the results the script is delivering while it is running. As it is easy to screw up the results with parameters that are subtly wrong, this could turn the script into a big waste of time for the users. To mitigate this: 
-  - There should be a way to assess the correctness of the results while it is running, e.g. using confidence metrics for the UB matrix such as error, number of indexed peaks, level of change between iterations... 
-   - Think of ways to guide the setup, e.g. presets for the d-spacing mask based on the material of the sample holder
-   This should be tested extensively with different datasets. 
- 
-Regardless, it is probably also a good idea for the users to perform a run before running the script to get an idea of the background intensity.
+  - There should be a way to assess the correctness of the results while it is running, e.g. using confidence metrics for the UB matrix such as error, number of indexed peaks, level of change between iterations. Another option is to save the peaks workspace and look at it with the help of this visualization script (TODO)
+   - Think of ways to guide the setup, e.g. presets for the d-spacing mask based on the material of the sample holder. Testing the script with different datasets will give us a better idea which parameters are largely the same and which ones vary and in what way (e.g. background intensity, distance between peaks etc.)
