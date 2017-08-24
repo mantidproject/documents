@@ -1,6 +1,6 @@
 # Merged Data Visualization
 
-This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through this example script **(LINK)**.
+This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through [this example script](/resource/ALF_Visualise.py).
 
 To perform this, you will need data from a vanadium calibration run. Vanadium scatters uniformly and thus such a run provides baseline data on the detectors used for normalisation later in the process.
 
@@ -18,16 +18,17 @@ Then in a loop over all runs:
 
 4. Create the merged, normalised workspace by dividing the accumulated detector data by the accumulated normalization data from step 3.
 
-**(IMAGE)**
+![The Vanadium workspace pre-mask](/resources/van_pre_mask.jpg)
+![The Vanadium workspace post-mask](/resources/van_post_mask.jpg)
 
 ## Example
 
-This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. You can download the script here **(LINK)**
+This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](/resource/ALF_Visualise.py)
 
 ```
 folder_path = "C:\Some\Log\Folder\"
 
-xmin='0'
+xmin='-10'
 xmax='10'
 ymin='-10'
 ymax='10'
@@ -55,6 +56,7 @@ MaskDetectors(ws_van, ','.join(['{0}-{1},{2}-{3}'.format(i*tube_size+1, i*tube_s
 # Mask first and last tube
 MaskDetectors(ws_van, '1-65, 1472-1535')
 ExtractMask(ws_van, OutputWorkspace=ws_mask)
+
 # Crop undefined detectors
 CropWorkspace(InputWorkspace=ws_van, StartWorkspaceIndex=0, EndWorkspaceIndex=1535, OutputWorkspace = ws_van)
 
@@ -77,7 +79,6 @@ upper = len(ys) - ys[::-1].searchsorted(threshold)
 kmin = ws_van_max.readX(0)[lower]
 kmax = ws_van_max.readX(0)[upper]
 DeleteWorkspace(ws_van_max)
-
 ```
 We want to crop the momentum range so the normalization and measurements correspond to the same incident flux. Here we are setting the range from the lowest to the highest momentum above the threshold, which we define as at least 10% of the counts at the peak.
 ```
@@ -186,4 +187,6 @@ print "Done."
 ```
 Here we simply divide the accumulated data by the normalization workspace. The result is a workspace containing all the merged and normalised data for all processed runs. With my dataset, visualizing the result looks like this:
 
-**(IMAGE)**
+![Visualization of the final merged and normalized workspace](/resources/merged_norm.jpg)
+
+This result is also very useful for assessing the quality of the UB Matrix obtained with the [auto alignment script](ALF-Auto-Alignment.md). Load the peaks workspace containing the UB matrix obtained with said script, then overlay them on the merged & normalised workspace in the slice viewer.
