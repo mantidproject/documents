@@ -1,6 +1,6 @@
 # Merged Data Visualization
 
-[(Link to Script)](/resource/ALF_Visualise.py)
+[(Link to Script)](resource/ALF_Visualise.py)
 
 This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through the above script.
 
@@ -20,12 +20,12 @@ Then in a loop over all runs:
 
 4. Create the merged, normalised workspace by dividing the accumulated detector data by the accumulated normalization data from step 3.
 
-![The Vanadium workspace pre-mask](/resources/van_pre_mask.jpg)
-![The Vanadium workspace post-mask](/resources/van_post_mask.jpg)
+![The Vanadium workspace pre-mask](resources/van_pre_mask.jpg)
+![The Vanadium workspace post-mask](resources/van_post_mask.jpg)
 
 ## Example
 
-This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](/resource/ALF_Visualise.py)
+This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](resources/ALF_Visualise.py)
 
 ```
 folder_path = "C:\Some\Log\Folder\"
@@ -189,6 +189,6 @@ print "Done."
 ```
 Here we simply divide the accumulated data by the normalization workspace. The result is a workspace containing all the merged and normalised data for all processed runs. With my dataset, visualizing the result looks like this:
 
-![Visualization of the final merged and normalized workspace](/resources/merged_norm.jpg)
+![Visualization of the final merged and normalized workspace](resources/merged_norm.jpg)
 
-This result is also very useful for assessing the quality of the UB Matrix obtained with the [auto alignment script](ALF-Auto-Alignment.md). Load the peaks workspace containing the UB matrix obtained with said script, then overlay them on the merged & normalised workspace in the slice viewer.
+This result is also very useful for assessing the quality of the UB Matrix obtained with the [auto alignment script](ALF-Auto-Alignment.md). Load the peaks workspace containing the UB matrix obtained with said script, then overlay them on the merged & normalised workspace of the same runs in the slice viewer.
