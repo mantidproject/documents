@@ -1,6 +1,6 @@
 # Automated Alignment on ALF
 
-[(Link to Script)](TODO)
+[(Link to Script)](https://github.com/mantidproject/scripts/tree/master/development/ALF%20automation%20project/alignment)
 
 This document contains information on the automated alignment project for ALF. The idea is to have a script that runs a data collection / data analysis loop, that automatically collects and analyses scans of a sample at different rotations until there is enough information to calculate a UB matrix, which informs the correct alignment of the sample.
 This is done by way of the above Python application comprising the following elements:
@@ -45,7 +45,7 @@ To run the data collection / data analysis control loop, the application needs b
   This moves genie_python and its dependencies to the mantid-install folder. (Check that the paths in the script are correct)
 3. Install the `watchdog` module. (Instructions [here](http://pythonhosted.org/watchdog/installation.html)).
   This is used to monitor the file system for new data to be analyzed after a run has been conducted.
-4. Move the [auto alignment script](linky) to `\scripts\ALF_auto_alignment\`
+4. Move the [auto alignment script files](https://github.com/mantidproject/scripts/tree/master/development/ALF%20automation%20project/alignment) to `\scripts\ALF_auto_alignment\`
   
 After this is done, you should be able to run the alignment script by calling it with the `mantidpython.bat` in the Mantid-install folder, i.e.:
 

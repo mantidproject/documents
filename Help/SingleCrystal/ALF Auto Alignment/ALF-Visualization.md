@@ -1,6 +1,6 @@
 # Merged Data Visualization
 
-[(Link to Script)](resource/ALF_Visualise.py)
+[(Link to Script)](https://github.com/mantidproject/scripts/blob/master/development/ALF%20automation%20project/visualization/ALF_VisualizeMerged.py)
 
 This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through the above script.
 
@@ -25,7 +25,7 @@ Then in a loop over all runs:
 
 ## Example
 
-This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](resources/ALF_Visualise.py)
+This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](https://github.com/mantidproject/scripts/blob/master/development/ALF%20automation%20project/visualization/ALF_VisualizeMerged.py)
 
 ```
 folder_path = "C:\Some\Log\Folder\"
