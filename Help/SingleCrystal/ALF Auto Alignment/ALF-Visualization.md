@@ -1,6 +1,8 @@
 # Merged Data Visualization
 
-This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through [this example script](/resource/ALF_Visualise.py).
+[(Link to Script)](/resource/ALF_Visualise.py)
+
+This document contains information on how to create a merged visualization of data from multiple runs and at different rotations. I will first lay out the process and then walk through the above script.
 
 To perform this, you will need data from a vanadium calibration run. Vanadium scatters uniformly and thus such a run provides baseline data on the detectors used for normalisation later in the process.
 

@@ -1,7 +1,9 @@
 # Automated Alignment on ALF
 
+[(Link to Script)](TODO)
+
 This document contains information on the automated alignment project for ALF. The idea is to have a script that runs a data collection / data analysis loop, that automatically collects and analyses scans of a sample at different rotations until there is enough information to calculate a UB matrix, which informs the correct alignment of the sample.
-This is done by way of [this Python application](linky) comprising the following elements:
+This is done by way of the above Python application comprising the following elements:
 
 ![Structure of the alignment application](resources/structure.jpg)
 
@@ -49,7 +51,6 @@ After this is done, you should be able to run the alignment script by calling it
 
 `> C:\Mantid-install\bin\mantidpython.bat --classic .\scripts\ALF_auto_alignment\alf_auto_alignment.py`
 
-
 ## Example
 
 The data set this has been tested with throughout development is comprised of ALF runs `75243` - `75264`.
@@ -67,12 +68,17 @@ You can test the script by running it with the following parameters:
 - `resolution_th2 = 10`
 - `merge_tolerance = 1`
 
-Then just copy the run data files into the watched directory while the script is running. You can drop them one by one after each "collection" cycle to simulate what would happen in a live scenario, or all at once to just check the result. The UB matrix will be saved in `[watched directory]\log\UB_[last processed run].txt`
+Then just copy the run data files into the watched directory while the script is running. You can drop them one by one after each "collection" cycle to simulate what would happen in a live scenario, or all at once to just check the result. The peaks workspace with UB matrix will be saved in `[script directory]\Out\Peaks_[last processed run].txt`
+To check the result: 
+1. Open MantidPlot 
+1. Use the above result as input for the PredictPeaks algorithm
+1. [Visualize the input dataset](ALF-Visualization.md)
+1. Overlay the predicted peaks in the slice viewer
 
 ## TODO LIST:
 The script is a work in progress and possibly not very useful in its current form. Here is a To-Do list of essential tasks:
 - Translate the UB matrix into instructions on how to actually align the sample
 - Implement functionality for predicting the positions of further peaks once two have been found. By jumping to the predicted position for the next scan, we can both cut the time the script takes to complete, and confirm (or refute) the UB matrix derived from the first two peaks.
 - Script robustness: At the moment it is difficult to diagnose the quality of the results the script is delivering while it is running. As it is easy to screw up the results with parameters that are subtly wrong, this could turn the script into a big waste of time for the users. To mitigate this: 
-  - There should be a way to assess the correctness of the results while it is running, e.g. using confidence metrics for the UB matrix such as error, number of indexed peaks, level of change between iterations. Another option is to save the peaks workspace and look at it with the help of this visualization script (TODO)
+  - There should be a way to assess the correctness of the results while it is running, e.g. using confidence metrics for the UB matrix such as error, number of indexed peaks, level of change between iterations. Another option is to save the peaks workspace and look at it with the help of this [visualization script](ALF-Visualization.md) 
    - Think of ways to guide the setup, e.g. presets for the d-spacing mask based on the material of the sample holder. Testing the script with different datasets will give us a better idea which parameters are largely the same and which ones vary and in what way (e.g. background intensity, distance between peaks etc.)
