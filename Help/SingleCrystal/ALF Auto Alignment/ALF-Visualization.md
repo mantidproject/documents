@@ -20,15 +20,18 @@ Then in a loop over all runs:
 
 4. Create the merged, normalised workspace by dividing the accumulated detector data by the accumulated normalization data from step 3.
 
-![The Vanadium workspace pre-mask](resources/van_pre_mask.jpg)
-![The Vanadium workspace post-mask](resources/van_post_mask.jpg)
-
 ## Example
 
 This script is specifically written for ALF Data, with a few hardcoded values (e.g. the detector mask), however it should be adaptable without major issues. This example script assumes that all runs contains goniometer information and are present in the folder specified at the beginning of the file. You can download the script [here.](https://github.com/mantidproject/scripts/blob/master/development/ALF%20automation%20project/visualization/ALF_VisualizeMerged.py)
 
 ```
 folder_path = "C:\Some\Log\Folder\"
+
+ws_van = "ALF_Vanadium"
+ws_van_max = "ALF_Vanadium_FindMax"
+ws_van_sa = "ALF_Vanadium_SolidAngle"
+ws_van_flux = "ALF_Vanadium_Flux"
+ws_mask = "ALF_Mask"
 
 xmin='-10'
 xmax='10'
@@ -37,17 +40,11 @@ ymax='10'
 zmin='-10'
 zmax='10'
 ```
-These are just some variables used throughout the script - the folder where your experiment data lives and the range of Qx, Qy, Qz we want to plot. These are hardcoded here, so you might have to see which values work for your data.
+These are just some variables used throughout the script - the folder where your experiment data lives, the names of various auxiliary workspaces, and the range of Qx, Qy, Qz we want to plot. These are hardcoded for this example, so you might have to see which values work for your data.
 
 #### Step 1
 ```
 print "Loading vanadium run..."
-ws_van = "ALF_Vanadium"
-ws_van_max = "ALF_Vanadium_FindMax"
-ws_van_sa = "ALF_Vanadium_SolidAngle"
-ws_van_flux = "ALF_Vanadium_Flux"
-ws_mask = "ALF_Mask"
-
 Load(Filename= folder_path + "ALF68014.raw", OutputWorkspace = ws_van)
 ConvertUnits(InputWorkspace=ws_van, Target='Momentum', OutputWorkspace = ws_van)
 
@@ -64,6 +61,10 @@ CropWorkspace(InputWorkspace=ws_van, StartWorkspaceIndex=0, EndWorkspaceIndex=15
 
 ```
 Here we are loading the vanadium run and processing it by cropping detectors that are not defined in the instrument definition, and masking the detectors around the edges which distort the counts. (The below images show the instrument before and after masking). We are extracting the mask so we can apply it to all runs we subsequently want to visualize, as they share the same detector geometry.
+
+![The Vanadium workspace pre-mask](resources/van_pre_mask.jpg)
+![The Vanadium workspace post-mask](resources/van_post_mask.jpg)
+
 ```
 # Find bounds for momentum range
 ws_van_max = Rebin(InputWorkspace=ws_van, Params="0,0.05,20")
@@ -93,7 +94,7 @@ SumSpectra(InputWorkspace = ws_van_flux, OutputWorkspace = ws_van_flux)
 IntegrateFlux(InputWorkspace = ws_van_flux, OutputWorkspace = ws_van_flux)
 print "- - - - - - - - - - - - - - - - - - - -"
 ```
-Here we are creating the Solid Angle & Flux workspaces needed for the normalization later on. The solid angle workspace is created by rebinning all events within the previously defined momentum range into a single bin (i.e. the total count in that range for that spectrum). The flux workspace is created by summing and integrating all spectra. You may want to tweak the bin size (0.005 in this case) depending on your momentum range.
+Here we are creating the Solid Angle & Flux workspaces needed for the normalization later on. The solid angle workspace is created by rebinning all events within the previously defined momentum range into a single bin (i.e. the total count in that range for that spectrum). The flux workspace is created by summing and integrating all spectra per momentum range. You may want to tweak the bin size (0.005 in this case) depending on your min / max momentum.
 
 #### Step 2
 ```
@@ -187,8 +188,8 @@ MD_merged_normalised = MDdata_acc/MDnorm_acc
 
 print "Done."
 ```
-Here we simply divide the accumulated data by the normalization workspace. The result is a workspace containing all the merged and normalised data for all processed runs. With my dataset, visualizing the result looks like this:
+Here we simply divide the accumulated data by the normalization workspace. The result is a workspace containing all the merged and normalised data for all processed runs. Since both the data and normalization workspaces are accumulated from all runs, this also normalizes the counts in areas where two runs overlap. With my dataset, visualizing the result looks like this:
 
 ![Visualization of the final merged and normalized workspace](resources/merged_norm.jpg)
 
-This result is also very useful for assessing the quality of the UB Matrix obtained with the [auto alignment script](ALF-Auto-Alignment.md). Load the peaks workspace containing the UB matrix obtained with said script, then overlay them on the merged & normalised workspace of the same runs in the slice viewer.
+The merged workspace is also very useful for assessing the quality of the result obtained with the [auto alignment script](ALF-Auto-Alignment.md) for the same dataset, by using it to predict peaks and then overlaying those in the slice viewer.
