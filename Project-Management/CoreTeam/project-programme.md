@@ -9,7 +9,16 @@ Core team projects must align with the [core team](https://github.com/mantidproj
 *	Product stability
 *	Runtime performance
 *	Improved collaboration between facilities
-*	Cleaner interfaces and structure allowing faster development  
+*	Cleaner interfaces and structure allowing faster development
+* Refactoring mantid to allow developers to better contribute scattering software rather than developing system software
+
+Guiding principles
+
+1. Mantid is a python project with C/C++ as needed
+1. Prefer language standards, then community accepted libraries, then develop solutions
+1. Interoperability with existing scientific python ecosystem
+1. Make choices to empower users to contribute code
+1. Data structures should represent science
 
 # Core Programme
 
@@ -253,5 +262,74 @@ TODO
 #### Approval Date 
 #### Comments
 
-  
+## Convert Mantid to be a python project extended with C/C++
+### Motivation
+TODO
+### Blocking Projects
+TODO
+### Specialist Skills Required
+TODO
+### Resource and Profile Estimate
+TODO
+### Risks if Not Addressed
+TODO
+### PMB Approval and Comments
+TODO
+#### Approval Date 
+TODO
+#### Comments
+TODO
 
+## Lazy loading NeXus files
+### Motivation
+TODO
+### Blocking Projects
+TODO
+### Specialist Skills Required
+TODO
+### Resource and Profile Estimate
+TODO
+### Risks if Not Addressed
+TODO
+### PMB Approval and Comments
+TODO
+#### Approval Date 
+TODO
+#### Comments
+TODO
+
+## Uniform approach to interacting with NeXus (or just HDF5)
+### Motivation
+TODO
+### Blocking Projects
+TODO
+### Specialist Skills Required
+TODO
+### Resource and Profile Estimate
+TODO
+### Risks if Not Addressed
+TODO
+### PMB Approval and Comments
+TODO
+#### Approval Date 
+TODO
+#### Comments
+TODO
+
+## Replace MD with appropriate VTK data structure
+### Motivation
+Provides a distributed AMR data structure
+### Blocking Projects
+TODO
+### Specialist Skills Required
+TODO
+### Resource and Profile Estimate
+TODO
+### Risks if Not Addressed
+TODO
+### PMB Approval and Comments
+TODO
+#### Approval Date 
+TODO
+#### Comments
+TODO
