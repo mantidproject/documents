@@ -6,15 +6,7 @@ This document describes the layout and high-level details of the new matplotlib-
 Workflow
 ========
 
-The new workbench will be developed on a long-running feature branch within the main [`mantid`][mantidrepo] repository. The exception to this is the new directory
-structure described below for the graphical components. These changes will be made on the `master` branch prior to any work starting on the workbench. This
-will minimize the effect of merge conflicts on existing components that are going to be reused.
-
-## Merging & Removal of MantidPlot
-
-There will become a point when the new workbench has enough features to be releasable to the general audience as a viable replacement for MantidPlot. MantidPlot would not be removed at
-this point until we can be satisfied that the new workbench serves our current users needs. See section in [architeture](design-arch) section regarding widget code shared between MantidPlot
-and the new workbench.
+The new workbench will be developed and shipped alongside the current code and shipped as a preview for users.
 
 Source Code Directory Structure
 ===============================
