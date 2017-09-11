@@ -36,7 +36,7 @@ Guiding principles
 1. [units](#units)
 1. [workspaces](#workspaces)
 1. [distributed data reduction MD](#distributed-data-reduction-md)
-1. [Convert Mantid to be a python project extended with C/C++] (#Python-vs-C++)
+1. [Project Structure: Python vs C++ with extensions] (#Project-Structure:-Python-vs-C++-with-extensions)
 1. [Lazy loading NeXus files](#lazy-loading-nexus-files)
 1. [Uniform approach to interacting with NeXus (or just HDF5)](#Uniform-approach-to-interacting-with-NeXus)
 1. [Replace MD with appropriate VTK data structure](#Replace-MD-with-appropriate-VTK-data-structure)
@@ -267,9 +267,13 @@ TODO
 #### Approval Date 
 #### Comments
 
-## Convert Mantid to be a python project extended with C/C++
+## Project Structure: Python vs C++ with extensions
 ### Motivation
-TODO
+Mantid is currently a C++ project that has a python interface, with this original design Python could be one of many API's or interface languages, however it makes it harder to integrate as well with some aspects of Python.
+The project could be restructured as a Python project with some C++ extensions where necessary.
+
+This work package should include an evaluation of he advantages and disadvantages of each approach.
+Whichever approach is taken it should also include work to harmonize the code structure within C++, Python and algorithm categories within Python, and improvements to the python API to make getting data to and from workspaces and python easier and more efficient. 
 ### Blocking Projects
 TODO
 ### Specialist Skills Required
