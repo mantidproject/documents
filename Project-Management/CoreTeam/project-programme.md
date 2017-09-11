@@ -14,7 +14,8 @@ Core team projects must align with the [core team](https://github.com/mantidproj
 
 Guiding principles
 
-1. Mantid is a python project with C/C++ as needed
+1. Stability is vital, including stability of the user experience
+1. Mantid is a python project with C/C++ as needed  (Note this is yet to be agreed by all parties!)
 1. Prefer language standards, then community accepted libraries, then develop solutions
 1. Interoperability with existing scientific python ecosystem
 1. Make choices to empower users to contribute code
@@ -35,6 +36,10 @@ Guiding principles
 1. [units](#units)
 1. [workspaces](#workspaces)
 1. [distributed data reduction MD](#distributed-data-reduction-md)
+1. [Convert Mantid to be a python project extended with C/C++] (#Python-vs-C++)
+1. [Lazy loading NeXus files](#lazy-loading-nexus-files)
+1. [Uniform approach to interacting with NeXus (or just HDF5)](#Uniform-approach-to-interacting-with-NeXus)
+1. [Replace MD with appropriate VTK data structure](#Replace-MD-with-appropriate-VTK-data-structure)
 
 ## Histogram Library
 ### Motivation
