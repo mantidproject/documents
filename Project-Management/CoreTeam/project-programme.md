@@ -36,7 +36,7 @@ Guiding principles
 1. [units](#units)
 1. [workspaces](#workspaces)
 1. [distributed data reduction MD](#distributed-data-reduction-md)
-1. [Project Structure: Python vs C++ with extensions] (#Project-Structure:-Python-vs-C++-with-extensions)
+1. [Project Structure: Python vs C++ with extensions](#Project-Structure:-Python-vs-C++-with-extensions)
 1. [Lazy loading NeXus files](#lazy-loading-nexus-files)
 1. [Uniform approach to interacting with NeXus (or just HDF5)](#Uniform-approach-to-interacting-with-NeXus)
 1. [Replace MD with appropriate VTK data structure](#Replace-MD-with-appropriate-VTK-data-structure)
