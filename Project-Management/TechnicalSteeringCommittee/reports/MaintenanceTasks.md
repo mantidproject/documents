@@ -14,31 +14,28 @@ Maintenance tasks for 3.11
 Highest priority
 ----------------
 
-1. **Look over tickets (assigned and created by you) and close invalid ones (everybody)**
+1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
+1. Deploy stale PR detector (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
-1. Adding Python 3 compatability (`.py` files in mantid converted) (Whitfield lead) Issue [#18550](https://github.com/mantidproject/mantid/issues/18550)
-   1. Will cover `scripts` folder and systemtests
-   3. Start adding `from __future__ import absolute_import, division, print_function` to these files and fix any errors ([general docs](http://python-future.org/compatible_idioms.html)).
-   4. use [2to3 code translation](https://docs.python.org/2/library/2to3.html)?
-   4. Require the above statement in all new work.
-14. move to gcc >= 5.3
-    1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 6 & 7
+1. Adding Python 3 compatability to usage examples (Whitfield lead) Issue #???
+   1. User doc for python2/3
+   2. Strategy for `print` to avoid `from __future__`
+   2. Umbrella ticket to organize work
+   1. Update training courses
+14. move to gcc >= 5.3 (or gcc 6)
+    1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
     2. [Ubuntu 14.04](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test?field.series_filter=trusty) (Whitfield/Bush)
 3. Reducing static analysis issues that are on every pull request
-   1. [cppcheck 1.79](http://builds.mantidproject.org/job/master_cppcheck/) ([#19773](https://github.com/mantidproject/mantid/issues/19773))
-   294742. [flake8](http://builds.mantidproject.org/job/master_flake8/) ([#19770](https://github.com/mantidproject/mantid/issues/19770))
- 1. Extract performance tests build configuration into a script in the repository
- 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Martyn).
+   1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/) ([#???]())
+   2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues
+1. Extract performance tests build configuration into a script in the repository (Nixon)
+1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
+1. Move to El Capitan and drop support Yosemitte (Hahn)
+9. MSVS 2017 support (Moore)
 
 Pool
 ----
 
-1. Since all of our compilers support `= delete`, we should use that directly and remove [ClassMacros.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/ClassMacros.h) Done in: [#19824](https://github.com/mantidproject/mantid/issues/19824) ?
-11. Stop using classes and member function removed in C++17.
-    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/): `_HAS_AUTO_PTR_ETC`, `_HAS_OLD_IOSTREAMS_MEMBERS`, `_HAS_FUNCTION_ASSIGN`, `_HAS_TR1_NAMESPACE`, `_HAS_IDENTITY_STRUCT`
-    2. See which ones we can turn off now.
-    3. Identify functions and classes with deprecated code.
-    4. example: we currently use `std::auto_ptr` with `boost::python`.
 1. Reducing static analysis issues (discus stewards and soft limits)
     1. [coverity](https://scan.coverity.com/projects/335)
     3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
@@ -49,16 +46,13 @@ Pool
    1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
    1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
-
+1. Remove finders that exist in standard cmake 3.5
 
 Assigned
 --------
 
-1. Finish GSL2 compatibility work **needs follow-on?** Tests that fail: [#16680](https://github.com/mantidproject/mantid/issues/16680).(Roman)
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
-12. Fix GCC 6 compiler warnings [#17593](https://github.com/mantidproject/mantid/issues/17593) (Dimitar) Info: [master_clean-fedora24](http://builds.mantidproject.org/job/master_clean-fedora24/), [PR](https://github.com/mantidproject/mantid/pull/19917)
-1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
-1. Replace `Boost.TypeTraits` with `<type_traits>` [#19919](https://github.com/mantidproject/mantid/issues/19919) (Dimitar), [PR](https://github.com/mantidproject/mantid/pull/19928)
+12. Fix GCC 7 compiler warnings (Peterson)
 
 Unassigned (not suitable for pool)
 ----------------------------------
@@ -93,6 +87,13 @@ Unsorted
 
 For another release
 -------------------
+
+1. Remove workarounds for RHEL5/6 scattered around the code (mainly PythonInterface layer). (Martyn)
+11. Stop using classes and member function removed in C++17.
+    1. MSVC update 3 introduces [macros for fine-grained control](https://blogs.msdn.microsoft.com/vcblog/2016/08/12/stl-fixes-in-vs-2015-update-3/): `_HAS_AUTO_PTR_ETC`, `_HAS_OLD_IOSTREAMS_MEMBERS`, `_HAS_FUNCTION_ASSIGN`, `_HAS_TR1_NAMESPACE`, `_HAS_IDENTITY_STRUCT`
+    2. See which ones we can turn off now.
+    3. Identify functions and classes with deprecated code.
+    4. example: we currently use `std::auto_ptr` with `boost::python`.
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
 2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
 3. Rework/clean up cmake as a whole
@@ -110,7 +111,6 @@ For another release
 10. Clang/C2 working on Windows
     1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
     2. alternative, try building on Windows with clang 4.0.1
-9. MSVS 2017 support
 10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/).
 
 Converted to actual tickets during a release
