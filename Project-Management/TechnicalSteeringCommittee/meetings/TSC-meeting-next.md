@@ -8,6 +8,7 @@ Pinned Topics
 
 New Items
 ---------
+- Python 3
 - [Tasks for maintenance period](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 - [WorkspacePropertyWithIndex Design](https://github.com/mantidproject/documents/pull/42)
 - [Tomography GUI Design (in python)](https://github.com/mantidproject/documents/pull/43)
