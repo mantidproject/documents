@@ -32,6 +32,8 @@ Highest priority
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
 9. MSVS 2017 support (Moore)
+   1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
+
 
 Pool
 ----
@@ -48,6 +50,7 @@ Pool
    1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
 1. Remove finders that exist in standard cmake 3.5
+15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 
 Assigned
 --------
@@ -92,19 +95,16 @@ For another release
     3. Identify functions and classes with deprecated code.
     4. example: we currently use `std::auto_ptr` with `boost::python`.
 1. Investigate and distribute rewrite/refactor nexus algorithms - [#12591](http://github.com/mantidproject/mantid/issues/12591)  (Martyn)
-2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete/Michael W)
+2. Harmonizing external contributions with the rest of mantid (e.g. PSI subpackage) [#12630](https://github.com/mantidproject/mantid/issues/12630) (Pete)
 3. Rework/clean up cmake as a whole
 4. Making ANN an ExternalProject
 1. [Boost 1.63](http://www.boost.org/users/history/version_1_63_0.html) has some nice improvements to `boost::python` - not available everywhere
    1. Added (basic) support for C++11 (std::shared_ptr, std::unique_ptr)
    2. Incorporated an extension API to wrap NumPy
    3. Would require building packages for Linux distributions with older version.
-1. header analysis (e.g. [include what you use](http://www.mantidproject.org/IWYU) and CLion) - Limited to 2 man days [#12627](https://github.com/mantidproject/mantid/issues/12627) (Stuart)
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
-15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
-17. [Use erase-remove idiom instead of PeaksWorkspace::removePeak(...)](https://github.com/mantidproject/mantid/issues/19472)
 10. Clang/C2 working on Windows
     1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
     2. alternative, try building on Windows with clang 4.0.1
@@ -118,4 +118,3 @@ Converted to actual tickets during a release
 1. Clang working on linux
    1. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
    1. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
-1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
