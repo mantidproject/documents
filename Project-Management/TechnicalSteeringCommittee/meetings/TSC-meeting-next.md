@@ -15,3 +15,8 @@ New Items
 
 Minutes
 -------
+
+Attendees: Draper, Gigg, Moore, Savici, Peterson, Whitfield, Hahn
+
+* WorkspacePropertyWithIndex Design - approved
+* Tomography GUI Design (in python) - approved
