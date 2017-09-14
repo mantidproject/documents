@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+
+\begin{document}
+\title{Q Resolution Calculation in Neutron Reflectometry}
+\author{Gemma Guest}
+\maketitle
+
+\textbf{\color{red} Note that this document is a work in progress}
+
+\section{Introduction}
+Reflectometry scientists at ISIS are trying to come with some standards based on specific samples which should give consistent results across different reflectometry instruments. However, all instruments differ. We need to know what the resolution in Q is so that we can make realistic comparisons.
+
+The key part of the reflectometry reduction is to find the \emph{critical edge}, $Q_c$ or $\theta_c$ (or possibly $\lambda_c$ on some setups). A higher resolution means the critical edge drops off more steeply. The position of the critical edge differs across instruments by a small fraction.
+
+\section{Contributing errors}
+The following sections describe the errors that need to be taken into account.
+
+\subsection{Error in wavelength}
+
+The following errors contribute to the error in wavelength ($\lambda$):
+
+\subsubsection{Time-of-flight}
+The error in time-of-flight ($TOF$) is simply half the bin width in $TOF$, e.g. for $20\mu s$ bins, $\Delta_{TOF}=10\mu s$.
+
+The time bins depend on the monitor (which can change).
+
+\subsubsection{Beamline length}
+In theory the beamline length should be measurable to around $1mm$, but in practice it can be difficult to measure to within $10$ to $15cm$. This is because it needs to include erros from the choppers, clock, moderator etc. e.g. we don't know where in the moderator the interaction happens and therefore where the neutron originates. All of this affects the length of the beamline.
+
+We should work out which are the most significant errors in the length so that we can ignore errors which don't have a significant contribution.
+
+SANS instruments at ISIS already do most of this so far.
+
+\subsection{Error in angle}
+The error in the angle $\theta$ is:
+$$\Delta\theta^2 = \Delta\theta_S^2 + \Delta\theta_D^2 + \Delta\theta_{slits}^2$$
+where $\theta_S$ is the sample angle, $\theta_D$ is the detector angle and $\theta_{slits}$ is the divergence of the beam.
+
+$\theta_{slits}$ is the only random error in this calculation. The slit resolution is calculated by the \texttt{NRCalculateSlitResolution} algorithm. Note that this is referred to as the \emph{collimation length} $L_1$ in the documentation for \texttt{TOFSANSResolutionByPixel}.
+
+$\theta_S$ and $\theta_D$ are systematic errors which need to be taken into account but are quite small.
+
+\subsection{Stitching}
+Runs at different angles are stitched together with a small region of overlap in the ranges of $\lambda$. The high-$\lambda$ part of one run therefore overlaps the low-$\lambda$ part of the next run. Errors are large at small $\lambda$ and vice versa, meaning that small errors are added to large errors in the overlap region.
+
+If the angles are misaligned slightly when stitching, the errors would expand greatly. An error bar display could be used as a feedback tool so that the stitching can be done to reduce the error bar size.
+
+Note that workspaces must have the same bin step size in order to stitch. Therefore a rebin in $Q$ is necessary. The errors should be summed in quadrature. However, we are dealing with histogram data - is a direct sum here appropriate?
+
+\subsection{Gravity}
+Drop due to gravity is a function of $\lambda$ and is not applicable for very short wavelengths i.e. fast neutrons travel at practically line of sight. However, gravity is significant for long wavelengths. There is also more spread for long wavelengths. This causes smoothing of the critical edge.
+
+Error bars would help with fitting here - we could weight $Q$ summing statistically rather than evenly.
+
+A multi detector can detect the drop due to gravity but it is only as good as its pixel height. A point detector cannot know where in the pixel the neutron arrived.
+
+\subsection{Implementation notes}
+We need to do the error calculation at the end of the reduction, but we need to keep track of all the data required.
+
+Could $L_1$ and $L_2$ errors be added to the instrument parameter file?
+
+We should start by implementing the $TOF$ errors so that scientists can see how useful this is initially.
+
+\end{document}
+
