@@ -28,18 +28,19 @@ Guiding principles
 1. [Crystallography Library](#crystallography-library)
 1. [Curve Fitting Library](#curve-fitting-library)
 1. [Metadata Library](#metadata-library)
-1. [Other Libraries](#other-libraries-for-_neutron-_physics-related-concepts)
-1. [Workspace-2.0](#workspace-2_0)
+1. [Other Libraries for (Neutron-)Physics Related Concepts](#other-libraries-for-neutron-physics-related-concepts)
+1. [Workspace-2.0](#workspace-20)
 1. [read write standard nexus files](#read-write-standard-nexus-files)
 1. [leverage beamline](#leverage-beamline)
 1. [distributed data reduction 2D](#distributed-data-reduction)
 1. [units](#units)
 1. [workspaces](#workspaces)
 1. [distributed data reduction MD](#distributed-data-reduction-md)
-1. [Project Structure: Python vs C++ with extensions](#Project-Structure:-Python-vs-C++-with-extensions)
+1. [Project Structure: Python vs C++ with extensions](#project-structure-python-vs-c-with-extensions)
 1. [Lazy loading NeXus files](#lazy-loading-nexus-files)
-1. [Uniform approach to interacting with NeXus (or just HDF5)](#Uniform-approach-to-interacting-with-NeXus)
-1. [Replace MD with appropriate VTK data structure](#Replace-MD-with-appropriate-VTK-data-structure)
+1. [Uniform approach to interacting with NeXus (or just HDF5)](#uniform-approach-to-interacting-with-nexus-or-just-hdf5)
+1. [Replace MD with appropriate VTK data structure](#replace-md-with-appropriate-vtk-data-structure)
+1. [Crash Reporting](#crash-reporting)
 
 ## Histogram Library
 ### Motivation
@@ -125,7 +126,7 @@ None
 #### Approval Date 
 #### Comments
 
-## Workspaces-2.0
+## Workspace-2.0
 ### Motivation
 The current workspace hierarchy is an inflexible, bloated, and frequently abused construct that most developers do not fully understand.
 Based on many of the low-level libraries above, a more versatile and complete set of workspace types would be developed.
@@ -336,6 +337,24 @@ TODO
 TODO
 ### Risks if Not Addressed
 TODO
+### PMB Approval and Comments
+TODO
+#### Approval Date 
+TODO
+#### Comments
+TODO
+
+## Crash Reporting
+### Motivation
+Stability has been identified as an important factor for the ILL. Improvements can be expected with the new Mantid workbench and other tasks in this list. Having crash reporting, for both use through the GUI and Python would help track the stability of Mantid, and help focus efforts for improvements.
+### Blocking Projects
+None
+### Specialist Skills Required
+Working out how to do this technically, while covering all crash types, may be challenging.
+### Resource and Profile Estimate
+TODO
+### Risks if Not Addressed
+Bad perception of Mantid.
 ### PMB Approval and Comments
 TODO
 #### Approval Date 
