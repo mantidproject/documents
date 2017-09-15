@@ -88,7 +88,7 @@ For another release
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
-10. Clang working more places (windows [#20492](https://github.com/mantidproject/mantid/issues/20492))
+10. Clang working more places (windows [#20492](https://github.com/mantidproject/mantid/issues/20492), neutronatom [#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670), and a singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293))
 10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/)
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
@@ -99,6 +99,3 @@ Converted to actual tickets during a release
 
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages (without cpack)
-1. Clang working on linux
-   1. Related to NeutronAtom ([#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670))  (requires gcc < 5 because not api compatible)
-   1. A singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293)
