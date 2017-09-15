@@ -38,6 +38,8 @@ Highest priority
 Pool
 ----
 
+Start from the top of the list
+
 1. Check for slow unit tests
 1. Reducing static analysis issues (discus stewards and soft limits)
     1. [coverity](https://scan.coverity.com/projects/335)
@@ -49,33 +51,14 @@ Pool
    1. [-Wdouble-promotion](https://gist.github.com/quantumsteve/38c7be4a5606edecb223) (GCC only)
    1. [-Wfloat-equal](https://gist.github.com/quantumsteve/05b55c0743030b8c439d) (GCC and clang)
    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
-1. Remove finders that exist in standard cmake 3.5
-15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
-
-Assigned
---------
-
-7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
-12. Fix GCC 7 compiler warnings (Peterson)
-
-Unassigned (not suitable for pool)
-----------------------------------
-
 2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need
-
-Unsorted
---------
-
-1. Investigate overhead from logging. Specifically
-   1. Would we benefit from checking the logging level before constructing a string?
-   1. When we have a single string literal, ensure it is passed directly to the appropriate Logger method.
-   1. Investigate why it is faster to construct a string with std::stringstream and pass that string to the logger instead of directly using the logger's insertion operator. Can this be easily fixed upstream?
-   1. Can we minimize flushing the stream inside the [thread-safe log stream](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/src/ThreadSafeLogStream.cpp)?
-1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
-   1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
+7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
+1. Remove finders that exist in standard cmake 3.5
+12. Fix GCC 7 compiler warnings (Peterson)
+15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
+1. Investigate overhead from logging [#20493](https://github.com/mantidproject/mantid/issues/20493)
 1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
 1. Investigate breaking issues with updated dependencies: iPython 5.0 on mac
-1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1084. Compilation times of components of the [pipeline build for master nightly](http://builds.mantidproject.org/view/Master%20Pipeline/) in static analysis tab (Ross)
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
@@ -106,7 +89,10 @@ For another release
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
 10. Clang working more places (windows [#20492](https://github.com/mantidproject/mantid/issues/20492))
-10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/).
+10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/)
+1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
+1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
+   1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
 
 Converted to actual tickets during a release
 --------------------------------------------
