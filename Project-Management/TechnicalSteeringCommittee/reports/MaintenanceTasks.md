@@ -105,9 +105,8 @@ For another release
 13. [Add Labels to unit tests](https://github.com/mantidproject/mantid/issues/17453)
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
-10. Clang/C2 working on Windows
-    1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
-    2. alternative, try building on Windows with clang 4.0.1
+10. Clang working more places (windows [#20492](https://github.com/mantidproject/mantid/issues/20492))
+10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/).
 
 Converted to actual tickets during a release
 --------------------------------------------
