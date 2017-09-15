@@ -108,7 +108,6 @@ For another release
 10. Clang/C2 working on Windows
     1. Add the CMake 3.6 flag `-T v140_clang_3_7` to configure
     2. alternative, try building on Windows with clang 4.0.1
-10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/).
 
 Converted to actual tickets during a release
 --------------------------------------------
