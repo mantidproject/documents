@@ -27,7 +27,7 @@ Highest priority
     2. [Ubuntu 14.04](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test?field.series_filter=trusty) (Whitfield/Bush)
 3. Reducing static analysis issues that are on every pull request
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/)
-   2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues
+   2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
