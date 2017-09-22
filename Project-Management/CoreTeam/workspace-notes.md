@@ -11,7 +11,9 @@ Focussing mainly on `MatrixWorkspace`.
    - Detector IDs can be set arbitrarily on `ISpectrum`, no check if this is in the instrument.
 1. `MatrixWorkspace` is meant to store histograms, but is used for many other purposes:
    - Single values.
-   - Single data points in each histogram. Leads to performance problems due to massive overhead from using histograms for this purpose, e.g., at ILL.
+   - Single data points in each histogram.
+     - Leads to performance problems due to massive overhead from using histograms for this purpose, e.g., at ILL.
+     - Need to use `Transpose` algorithm too often for processing/plotting, cutting connection to instrument.
    - Masking.
    - Grouping.
    - HKL values.
@@ -39,5 +41,14 @@ Focussing mainly on `MatrixWorkspace`.
 1. Bloated interface with an abundance of methods for different purposes, but lacking other essentials.
    - Different set of methods in each base class and derived classes.
    - No iterator support.
+     - Should be usable with something like `std::transform` together with a good set of mid-level operations.
+   - No proper definition of equality.
 1. Composite pattern provided by `WorkspaceGroup` is maybe too cumbersome and not flexible enough.
+   - Horribly tied into the Analysis Data Service, i.e., cannot be used without.
+   - Wasteful for multi-period workrpsaces since mcu hof the information is duplicated.
 1. Provides few invariants that client code can rely on.
+1. No way to pickle/serialize a workspace in python.
+   - Increasingly required for experiment control / data reduction interop.
+1. No way of defining a region of interest and inconsistent handling of masking.
+   - Masking or bin masking may or may not be respected by algorithms.
+   - Generalized 'selection' object attachable to workspace?
