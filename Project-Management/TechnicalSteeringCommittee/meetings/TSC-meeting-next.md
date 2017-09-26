@@ -8,7 +8,10 @@ Pinned Topics
 
 New Items
 ---------
-* CMake GenerateExportHeader (Martyn/Lamar)
+
+* CMake - [GenerateExportMacro](https://cmake.org/cmake/help/v3.7/module/GenerateExportHeader.html): Would like to use this to replace hand-coded [System.h](https://github.com/mantidproject/mantid/blob/master/Framework/Kernel/inc/MantidKernel/System.h) to be able to create completely low-level standalone modules. Problem: An additional argument that we need to the function only came in with cmake 3.7.2. Should we:
+  - rebuild cmake on Linuxes
+  - drag in these files to our CMake directory until we require cmake >= 3.7 (Moore/Gigg)
 
 Minutes
 -------
