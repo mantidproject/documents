@@ -20,3 +20,9 @@ New Items
 
 Minutes
 -------
+
+Attendees: Bush, Draper, Gigg, Moore, Peterson, Savici
+
+* Release 3.11
+  - testing has not revealed anything that will hold up the release
+  - Draper and Savici will go over the release notes
