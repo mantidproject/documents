@@ -9,5 +9,6 @@ Pinned Topics
 New Items
 ---------
 * CMake GenerateExportHeader (Martyn/Lamar)
+
 Minutes
 -------
