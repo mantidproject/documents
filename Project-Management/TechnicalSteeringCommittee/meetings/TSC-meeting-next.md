@@ -26,3 +26,6 @@ Attendees: Bush, Draper, Gigg, Moore, Peterson, Savici
 * Release 3.11
   - testing has not revealed anything that will hold up the release
   - Draper and Savici will go over the release notes
+* `GenerateExportMacro` - Moore will drag in appropriate files into our cmake directory for now
+* Ubuntu 17.04 has a bug with NeXus package - NIAC has been informed
+
