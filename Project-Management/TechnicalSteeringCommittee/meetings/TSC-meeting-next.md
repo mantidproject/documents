@@ -28,4 +28,5 @@ Attendees: Bush, Draper, Gigg, Moore, Peterson, Savici
   - Draper and Savici will go over the release notes
 * `GenerateExportMacro` - Moore will drag in appropriate files into our cmake directory for now
 * Ubuntu 17.04 has a bug with NeXus package - NIAC has been informed
-
+* Peterson will move http://reports.mantidproject.org to a container on linode
+* Gigg will put together the start of a wiki page with various web endpoints and circulate to TSC for additional information
