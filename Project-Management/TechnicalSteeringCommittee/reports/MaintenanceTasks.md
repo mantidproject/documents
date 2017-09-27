@@ -17,7 +17,7 @@ Highest priority
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
 1. Deploy stale PR detector (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
-1. Adding Python 3 compatability to usage examples (Whitfield lead)
+1. Adding Python 3 compatability to usage examples (Whitfield lead) issue [here](https://github.com/mantidproject/mantid/issues/20672)
    1. User doc for python2/3
    2. Strategy for `print` to avoid `from __future__`
    2. Umbrella ticket to organize work
