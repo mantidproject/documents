@@ -92,13 +92,31 @@ raw_data_1
 ├───sample
 ```
 
-An open question here, especially when considering conversion from the old IDFs, is how to define the components that would be written as a NeXus detector. Technically this could be anything from the whole instrument to individual pixels, but logically it should be something like a tube. The only requirement is that a NeXus detector has pixels with a fixed offset at all times.
+An open question here, especially when considering conversion from the old IDFs, is how to define the components that would be written as a NeXus detector. Technically this could be anything from the whole instrument to individual pixels, but logically it should be something like a tube.
+
+Scanning individual detectors/pixels would also be possible, by using an [`NXlog`](http://download.nexusformat.org/sphinx/classes/base_classes/NXlog.html) entry for the changing pixel offsets, as shown in the example below.
+
+```
+raw_data_1
+├───instrument
+│   ├───detector_1
+│   │   ├───detector_number
+│   │   ├───x_pixel_offset (`NXlog` entry)
+│   │       ├───time (contains the time for each entry in value)
+│   │       ├───value (2D array, x offset for each pixel at each scan point)
+│   │   ├───y_pixel_offset (offset for each pixel)
+│   │   ├───z_pixel_offset (offset for each pixel)
+│   │   ├───...
+│   ├───detector_2
+│   ├───...
+├───sample
+```
 
 #### Differences Between NeXus and Mantid Approach
 
 In the `DetectorInfo` representation in Mantid each position, rotation and mask flag of each pixel at each time index is stored separately. The scans are done on a pixel-by-pixel basis, and the components can not currently do any scanning. Different pixels are allowed to be given different scan intervals even within a component.
 
-The NeXus instrument proposal would not support scanning at the pixel level. `NXtransformations` can only be applied to an entire NeXus detector; the pixel offsets can not change during a scan. The offset entries would be the same for each time index, with the position entries giving the scan for a component. In other words you cannot scale a bank via a scan - the pixel gap is constant in time. Scanning something like a monitor would still be possible, but if this is done for all pixels there would be a large overhead in the NeXus file with the above proposal.
+The NeXus instrument proposal would require a difference for saving at the detector/pixel level or the component level. `NXtransformations` can only be applied to an entire NeXus detector; the pixel offsets can not change during a scan in this way.In other words you cannot scale a bank via the `NXtransformations` - the pixel gap is constant in time. Scanning something like a monitor would still be possible, but if this is done for all pixels there would be a large overhead in the NeXus file with the above proposal. Using an `NXlog` for the pixel offsets would allow the offset entries to change for each time index, achieving a detector/pixel scan. 
 
 In the case of writing raw NeXus files from the instrument it is likely you would only need a subset of the offset, position scan and rotation entries based on physical knowledge of the instrument. After processing with Mantid this might not be so easy to achieve, as detectors/pixels can be moved around in an arbitrary way, e.g. for calibration.
 
@@ -108,7 +126,7 @@ The NeXus proposal for scanning allows the start and end positions and rotations
 
 _Based on discussion with Simon Heybrock._
 
-To resolve the differences between the NeXus proposal and Mantid one option is to allow components to scan. This is similar to how `RectangularDetector` works. The changes required would be:
+To make the NeXus saving more efficient one option is to allow components to scan. This is similar to how `RectangularDetector` works. The changes required would be:
 
 * Add the scan interface in `DetectorInfo` to `ComponentInfo`
   * E.g. in addition to `ComponentInfo::setPosition(detIndex)` we have `ComponentInfo::setPosition({detIndex, timeIndex})`
@@ -127,10 +145,10 @@ An alternative approach is to have something similar to `RectangularDetectors`. 
 
 * Should pixels be allowed to scan, given that the parenting is not scanning?
   * Possible use cases for this would be tubes that might change in time, for example temperature, during a scan. The calibration might then be time dependent.
-  * If the answer to this is that we do need per-pixel scans then how can we support this in the NeXus file? A different proposal may be required.
   * Do we then need a mechanism in Mantid to define which components can scan, and which can not?
+  * Should we implement both methods of saving the NeXus files - allowing detector/pixels to scan or the whole component to scan without pixel positions changing?
 
-This is the key question to answer - if we restrict the scans in this way we should be able to use the NeXus Instrument proposal as it stands. If we do not impose this restriction we will likely need something to allow the values in `x_pixel_offset` and similar to be set per time interval.
+This is the key question to answer - if we restrict the scans in this way we should be able to use the NeXus Instrument proposal as it stands. If we do not impose this restriction we will need something to allow the values in `x_pixel_offset` and similar to be created as `NXlog`s to change over time.
 
 ## Early Implementation of Scan Saving
 
