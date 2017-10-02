@@ -1,17 +1,17 @@
 
 ~~~~
-  class AnyAlgo(PythonAlgorithm):
+  class AnyAlgorithm(PythonAlgorithm):
   ...
-    ws = CreateSampleWorkspace(......, StoreInADS=False)
+    ws = AnyOtherAlgorithm(......, StoreInADS=False)
   ...
 ~~~~
 
 instead of
 
 ~~~~
-  class AnyAlgo(PythonAlgorithm):
+  class AnyAlgorithm(PythonAlgorithm):
   ...
-    self.createChildAlgorithm(CreateSampleWorkspace)
+    self.createChildAlgorithm(AnyOtherAlgorithm)
     self.initialize()
     self.setProperty(...)
     ...
