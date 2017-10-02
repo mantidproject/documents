@@ -1,14 +1,14 @@
 
-'''
+~~~~
   class AnyAlgo(PythonAlgorithm):
   ...
     ws = CreateSampleWorkspace(......, StoreInADS=False)
   ...
-'''
+~~~~
 
 instead of
 
-'''
+~~~~
   class AnyAlgo(PythonAlgorithm):
   ...
     self.createChildAlgorithm(CreateSampleWorkspace)
@@ -18,4 +18,4 @@ instead of
     self.execute()
     ws = self.getProperty(...)
   ...
-'''
+~~~~
