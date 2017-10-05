@@ -11,6 +11,7 @@ Generally the criteria should be:
 ## Tasks Awaiting Staff [Suggested by]
 - Improvements to the Fit minimizer benchmarking (multidataset fitting etc) [Anders]
 - A better PR build dashboard for the offce wall display [Nick]
+- More/Better IBEX - Mantid integration. [Sam]
 
 ## Tasks Assigned to Staff
 
