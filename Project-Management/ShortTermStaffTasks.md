@@ -12,6 +12,7 @@ Generally the criteria should be:
 - Improvements to the Fit minimizer benchmarking (multidataset fitting etc) [Anders]
 - A better PR build dashboard for the offce wall display [Nick]
 - More/Better IBEX - Mantid integration. [Sam]
+- Improve clang-format integration with git hooks [Martyn]
 
 ## Tasks Assigned to Staff
 
