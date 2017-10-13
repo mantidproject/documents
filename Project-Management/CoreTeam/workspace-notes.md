@@ -45,7 +45,7 @@ Focussing mainly on `MatrixWorkspace`.
    - No proper definition of equality.
 1. Composite pattern provided by `WorkspaceGroup` is maybe too cumbersome and not flexible enough.
    - Horribly tied into the Analysis Data Service, i.e., cannot be used without.
-   - Wasteful for multi-period workrpsaces since mcu hof the information is duplicated.
+   - Wasteful for multi-period workspaces since most of the information is duplicated. 
 1. Provides few invariants that client code can rely on.
 1. No way to pickle/serialize a workspace in python.
    - Increasingly required for experiment control / data reduction interop.
