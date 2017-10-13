@@ -52,3 +52,4 @@ Focussing mainly on `MatrixWorkspace`.
 1. No way of defining a region of interest and inconsistent handling of masking.
    - Masking or bin masking may or may not be respected by algorithms.
    - Generalized 'selection' object attachable to workspace?
+1. No design for associating workspaces. i.e. This Workspace is the transmission run associated with this sample run Workspace. Potentially, this would not need to be solved at the Workspace level, but we definitely need better functionality at the user level.
