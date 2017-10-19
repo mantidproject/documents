@@ -14,3 +14,5 @@ New Items
   * https://opensource.googleblog.com/2017/09/introducing-abseil-new-common-libraries.html
   * https://github.com/abseil/abseil-cpp
   * https://youtu.be/tISy7EJQPzI
+  * https://youtu.be/xu7q8dGvuwk
+  * http://cppcast.com/2017/10/titus-winters/
