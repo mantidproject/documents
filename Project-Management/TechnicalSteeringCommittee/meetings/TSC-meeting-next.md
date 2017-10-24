@@ -17,3 +17,9 @@ New Items
   * https://youtu.be/xu7q8dGvuwk
   * http://cppcast.com/2017/10/titus-winters/
 * Add Python exports for `TestHelpers`?
+
+Minutes
+-------
+Attendees: Heybrock, Bush, Moore, Draper, Gigg, Whitfield, Savici, Peterson
+
+* TSC agrees to exposing more of `TestHelpers` to python
