@@ -23,3 +23,6 @@ Minutes
 Attendees: Heybrock, Bush, Moore, Draper, Gigg, Whitfield, Savici, Peterson
 
 * TSC agrees to exposing more of `TestHelpers` to python
+* Gigg will create a wiki page for what libraries/packages we use and what developers should prefer for various tasks in C++ and python
+* Abseil will be added as an `ExternalProject`. This will wait for [this pull request](https://github.com/abseil/abseil-cpp/pull/8) to get merged.
+* Paying for next portion of linode is coming up. ILL will look into paying for the next two years. This needs to be sorted by January 1st.
