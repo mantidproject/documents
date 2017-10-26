@@ -1,36 +1,8 @@
-import json
-import requests
+import sys
+from github import Github
+import pandas as pd
+# also needs xlrd
 
-# Authentication for user filing issue (must have read/write access to
-# repository to add issue to)
-# will be loaded from login.txt
-USERNAME = 'CHANGEME'
-PASSWORD = 'CHANGEME'
-
-# The repository to add this issue to
-REPO_OWNER = 'mantidproject'
-REPO_NAME = 'mantid'
-
-def make_github_issue(title, body=None, assignee=None, milestone=None, labels=None):
-    '''Create an issue on github.com using the given parameters.'''
-    # Our url to create issues via POST
-    url = 'https://api.github.com/repos/%s/%s/issues' % (REPO_OWNER, REPO_NAME)
-    # Create an authenticated session to create the issue
-    session = requests.session()
-    session.auth=(USERNAME, PASSWORD)
-    # Create our issue
-    issue = {'title': title,
-             'body': body,
-             'assignee': assignee,
-             'milestone': milestone,
-             'labels': labels}
-    # Add the issue to our repository
-    r = session.post(url, json.dumps(issue))
-    if r.status_code == 201:
-        print 'Successfully created Issue "%s"' % title
-    else:
-        print 'Could not create Issue "%s"' % title
-        print 'Response:', r.content
 
 
 def load_login_details(filename):
@@ -53,10 +25,41 @@ def load_login_details(filename):
         file.close()
     return user, pswd
 
-
+# Authentication for user filing issue (must have read/write access to
+# repository to add issue to)
+# will be loaded from login.txt
 USERNAME, PASSWORD = load_login_details("login.txt")
-#could do with a find milestone number for name at some point
-milestone = 5
+
+# The repository to add this issue to
+REPO_OWNER = 'mantidproject'
+REPO_NAME = 'mantid'
+
+gh = Github(USERNAME, PASSWORD)
+repo = gh.get_user(REPO_OWNER).get_repo(REPO_NAME)
+assingnees = repo.get_assignees()
+
+#Lookup milestone sting to get number
+milestone = "Release 3.11"
+gh_milestone = None
+for loop_milestone in repo.get_milestones():
+	if loop_milestone.title == milestone:
+		gh_milestone = loop_milestone
+if gh_milestone is None:
+	print "could not find milestone " + milestone
+	sys.exit(0)
+print "Milestone", gh_milestone.number, gh_milestone.title
+
+labels = ['Quality: Manual Tests']
+#translate the label strings into gh objects
+gh_labels = []
+for label in labels:
+	gh_label = repo.get_label(label)
+	if gh_label is not None:
+		gh_labels.append(gh_label)
+
+print "Labels", gh_labels
+
+
 body_text = '''1. Read http://www.mantidproject.org/Unscripted_Manual_Testing
 1. Comment against this ticket the OS environment you are testing against.
 1. Don't spend more than a few hours on the testing as fatigue will kick in.
@@ -69,55 +72,29 @@ If you find bugs:
  * Urgent bugs or crashes should by against the current release, and assigned to a developer, then go and talk to the developer if possible.
  * Less urgent bugs should be against a subsequent release, and assigned if the correct developer is known.
 '''
-assignee = None
-labels = ['Quality: Manual Tests']
 
-issue_dict = {
-    'Unscripted Testing Mantidplot Group 1' : None,
-    'Unscripted Testing Mantidplot Group 2' : None,
-    'Unscripted Testing Mantidplot Group 3' : None,
-    'Unscripted Testing Mantidplot Group 4' : None,
-    'Unscripted Testing Live Data ISIS' : None,
-    'Unscripted Testing Live Data ORNL' : None,
-    'Unscripted Testing Workspace Groups' : 'Ensure MantidPlot displays Group Workspaces correctly in the workspace tree',
-    'Unscripted Testing Documentation' : '''Qt Assistant offline documentation
-* Algorithm, fit, concept and api pages should be generated
-* Algorithm dialog snapshots should appear on algorithm pages in offline help
-* Math formulae should appear on algorithm pages in offline help
-* workflow diagrams should appear on algorithm pages in offline help''',
-    'Unscripted Testing ORNL SANS' : None,
-    'Unscripted Testing ORNL HFIR diffraction & 4Circle' : None,
-    'Unscripted Testing ORNL Powder Diffraction' : 'See http://www.mantidproject.org/PowderDiffractionReduction',
-    'Unscripted Testing ISIS SANS' : 'See http://www.mantidproject.org/SANS_Data_Analysis_at_ISIS',
-    'Unscripted Testing Muon' : '''As a minimum test http://www.mantidproject.org/Unscripted_Manual_Testing_MuonAnalysis.
-For more info see http://www.mantidproject.org/Muon''',
-    'Unscripted Testing DGSReduction' : '''See http://www.mantidproject.org/Direct:DgsReduction
-     and http://www.mantidproject.org/Create_MD_Workspace_GUI#Direct_Inelastic_Mod_Q''',
-    'Unscripted Testing DGSPlanner' : None,
-    'Unscripted Testing DynamicPDF' : None,
-    'Unscripted Testing Multi dataset fitting' : None,
-    'Unscripted Testing Sample Transmission calculator' : None,
-    'Unscripted Testing Step scan analysis' : 'See http://www.mantidproject.org/Step_Scan_Interface',
-    'Unscripted Testing ISIS Indirect interfaces' : '''See
-* http://www.mantidproject.org/Indirect:ConvertToEnergy
-* http://www.mantidproject.org/Indirect:Indirect_Data_Analysis
-* http://www.mantidproject.org/UsingElwin
-* http://www.mantidproject.org/UsingFury
-    ''',
-    'Unscripted Testing SCD event data reduction' : None,
-    'Unscripted Testing Engineering Diffraction' : None,
-    'Unscripted Testing ISIS Reflectometry' : 'For testing procedures see http://www.mantidproject.org/Testing_ISIS_Reflectometry_GUI',
-    'Unscripted Testing ORNL reflectometry interfaces, REFL reduction, Refl SF Calculator, REFM reduction' : None,
-    'Unscripted Testing FilterEvents' : None,
-    'Unscripted Testing QECoverage' : None,
-    'Unscripted Testing TofConverter' : None,
-    'Unscripted Testing Vates' : 'Including data loading in Vates via ParaView. For help see [[Testing_Notes_2.5.0|here]]'
-}
+#df = pd.DataFrame(list(issue_dict.iteritems()), columns=["Title","Additional Body Text"])
+#df.to_csv("issue_template.csv")
+print "\nLoading Issues"
+df = pd.read_excel("issue_template.xlsx","issues")
 
-for title, additional_body in issue_dict.iteritems():
+print "\nCreating Issues"
+for index, row in df.iterrows():
+    title =  row['Title']
+    additional_body = row['Additional Body Text'] 
+    assignee =  row['Assignee']
+    gh_assignee = None
+    if pd.notnull(assignee):
+        for loop_assignee in assingnees:
+            if loop_assignee.login == assignee:
+                gh_assignee = assignee
+        if gh_assignee is None:
+        	print "could not find gh assignee for ", assignee, ". Continuing without assignment."
+
     my_body = body_text
-    if additional_body is not None:
+    if pd.notnull(additional_body):
         my_body += "\n\n### Specific Notes:\n\n" + additional_body
-    print "\n\n" + title
-    print  my_body
-    make_github_issue(title, my_body, assignee, milestone, labels)
+    #print title,gh_assignee,gh_milestone,gh_labels
+    issue = repo.create_issue(title,my_body,gh_assignee,gh_milestone,gh_labels)
+    print issue.number, issue.title
+
