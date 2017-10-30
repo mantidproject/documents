@@ -177,10 +177,12 @@ Here we are converting the current run to an MD workspace. You can potentially s
 ```
 This is where the normalization happens. We are passing our MD workspace as well as the previously created solid angle and flux workspaces into MDNormSCD, and produce a data and normalization workspace in return. These are then added to the accumulation workspaces which we need in the final step.
 
+MDNormSCD also allows you to use temporary accumulation workspaces via its parameters instead of manually creating/checking for them. I have opted for the latter option here to improve code clarity, however if you run into performance issues with larger datasets, using the temporary workspace parameters may help alleviate those.
+
 #### Step 4
 ```
 
-# Step 3 - Create workspace merging all normalized data
+# Create workspace merging all normalized data
 # ##########################################################
 print "Creating merged normalised workspace..."
 
