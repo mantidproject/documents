@@ -13,6 +13,7 @@ Generally the criteria should be:
 - A better PR build dashboard for the offce wall display [Nick]
 - More/Better IBEX - Mantid integration. [Sam]
 - Improve clang-format integration with git hooks [Martyn]
+- Allow the GetNegMuMuonicXRD to allow for multiple data sets [Anthony]
 
 ## Tasks Assigned to Staff
 
