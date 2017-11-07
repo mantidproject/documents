@@ -27,3 +27,4 @@ There are a several questions that need to be addressed here:
     - What about the case when a user creates a workspace and does not specify a Y unit?
 - The above code with yield a workspace that is a distribution but as has bin edges. Is this correct?
 - Should data that is of raw counts be marked as dimensionless on load?
+- Do we need to differentiate between reversible distribtuion data (that is always data/bin width) and distribution data that has been normalised by another value we no longer have (so irreversible distribution)?
