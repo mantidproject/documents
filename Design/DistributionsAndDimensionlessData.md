@@ -25,6 +25,6 @@ There are a several questions that need to be addressed here:
 - Should we stop marking dimensionless workspaces created though `Divide` as distributions?
 - Is the use of the empty Y unit name enough to indicate the a workspace is dimensionless?
     - What about the case when a user creates a workspace and does not specify a Y unit?
-- The above code with yield a workspace that is a distribution but as has bin edges. Is this correct?
+- The above code will yield a workspace that is a distribution but as has bin edges. Is this correct?
 - Should data that is of raw counts be marked as dimensionless on load?
 - Do we need to differentiate between reversible distribution data (that is always data/bin width) and distribution data that has been normalised by another value we no longer have (so irreversible distribution)?
