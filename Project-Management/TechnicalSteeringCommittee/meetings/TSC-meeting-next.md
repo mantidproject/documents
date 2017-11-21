@@ -15,5 +15,5 @@ Minutes
 -------
  In Attendance: Draper, Gigg, Hahn, Moore, Peterson, Savici, Whitfield
  
- * The approach suggested appears to be reasonable. It needs to be discussed again at the next TSC meeting.
+ * The approach suggested for Histograms appears to be reasonable. It needs to be discussed again at the next TSC meeting.
  
