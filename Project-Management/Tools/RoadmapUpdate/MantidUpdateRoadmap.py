@@ -11,7 +11,7 @@ requests.packages.urllib3.disable_warnings()
 #Control variables
 sheet_name = "Mantid Roadmap"
 tab_name = "All Tasks"
-dry_run = True
+dry_run = False
 
 # Package requirements
 # pip install pyOpenSSL
