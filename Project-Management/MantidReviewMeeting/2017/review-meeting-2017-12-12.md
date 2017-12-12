@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add your links, etc. here
+* Update on progress with new workbench (Martyn)
 
 Questions
 =========
