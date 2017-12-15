@@ -1,4 +1,5 @@
-**Performance optimization --- Tales from the trenches**
+Performance optimization --- Tales from the trenches
+===============
 
 This is meant to be a session with lightning talks, demos, or discussions. Did you recently find a nice way to optimize something or remove an inefficiency? Please tell us about it!
 
