@@ -14,3 +14,7 @@ New Items
 
 Minutes
 -------
+
+* Pete will rebuild 3.10.1 and publish them on github and sourceforge
+  * add to release notes that you need mantid copr and that the rebuild is moved qscintilla version, requires removing pyqt4-webkit
+  
