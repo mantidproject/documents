@@ -83,6 +83,7 @@ This will be detected in a similar way to the Mantid unresponsive case in that a
 The Mantid Launcher should be lightweight and invisible to the user. On Windows and Linux Mantid is already launched via a batch and bash script respectively which can be extended upon to fulfill this purpose. 
 
 Preliminary testing on windows shows Mantid obeying the following exit code structure.
+
 Situation  | Exit Code   |  
 |--------|----------------|
 | Exited without error  | 0 | 
