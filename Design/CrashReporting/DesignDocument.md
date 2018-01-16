@@ -93,7 +93,7 @@ Situation  | Exit Code   |
 It should therefore be feasible to check the exit status of mantidplot and if necessary call the crash reporting implementation from within these scripts. A difficultly to keep in mind here however is that the crash reporting implementation in this instance needs to be called from outside Mantid.
 
 ### Crash Reporting
-Once a crash has been detected it needs to be reported  there are several requirements and design constraints which this reporting system needs to meet. 
+Once a crash has been detected it needs to be reported. There are several requirements and design constraints which this reporting system needs to meet. 
 
 The most important of these is R.1.4 which requires that the crash reports are written out to a database. This can be achieved in a similar way to the method currently used to report on usage in UsageService.cpp. They can be stored in the same database as the existing usage reports but go to a different url to allow some flexibility in how the crash reports are handled. The suggested url is "http://reports.mantidproject.org/api/crash". The api on the mantidproject website will need to be modified to accommodate this but this should be feasible. 
 
