@@ -60,7 +60,7 @@ Label  | Requirement    |   Necessity |
 
 ### Overview
 
-The two major segments that need to be implemented in order to report crashes are a method to detect when Mantid has crashed and an implementation to then report these crashes. 
+The three major segments that need to be implemented in order to report crashes are a method to detect when Mantid has crashed, an interface to ask the user for additional information on these crashes and an implementation to then report these crashes. 
 
 ### Crash detection
 There are three major sorts of crashes which we wish to report with the handler.  
@@ -95,9 +95,19 @@ It should therefore be feasible to check the exit status of mantidplot and if ne
 ### Crash Reporting
 Once a crash has been detected it needs to be reported. There are several requirements and design constraints which this reporting system needs to meet. 
 
-The most important of these is R.1.4 which requires that the crash reports are written out to a database. This can be achieved in a similar way to the method currently used to report on usage in UsageService.cpp. They can be stored in the same database as the existing usage reports but go to a different url to allow some flexibility in how the crash reports are handled. The suggested url is "http://reports.mantidproject.org/api/crash". The api on the mantidproject website will need to be modified to accommodate this but this should be feasible. 
+The most important of these is **R.1.4** which requires that the crash reports are written out to a database. This can be achieved in a similar way to the method currently used to report on usage in UsageService.cpp. They can be stored in the same database as the existing usage reports but go to a different url to allow some flexibility in how the crash reports are handled. The suggested url is "http://reports.mantidproject.org/api/crash". The api on the mantidproject website will need to be modified to accommodate this but this should be feasible. 
+
+This reporter should also if possible access the local Mantid logs to send along with the crash report **R.1.5** but only with the users permission **R.3.1**.
 
 The largest design constraint upon this system is that it has to be callable from outside Mantid. The easiest way to achieve this is to expose it to mantidpython which can then be called from within the launcher scripts without relaunching mantidplot. 
 
 ![alt text](crashdesign.png "Simple design layout")
+
+### User feedback
+
+A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occured. The layout and userbility of this interface is disscussed in section ???. 
+
+As their is no guarantee that mantidplot will still be running at this point this interface needs to be independent of mantidplot and launchable on it's own. It will ideally be launched from within the crash reporting service as this is a common point of between all the different crash cases. 
+
+
 
