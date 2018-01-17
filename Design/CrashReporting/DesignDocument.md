@@ -48,6 +48,7 @@ provided.
 | R.1.4  | Stores crash reports in an SQL database | M|
 | R.1.5  | Where possible asks the user for further information about crash | D|
 | R.1.5  | Sends the textdump of the log file along with the crash report | D|
+| R.1.6  | If mantid is still running obtains additional information about the crash | D|
 
 
 #### Non-functional requirments 
@@ -92,14 +93,18 @@ Situation  | Exit Code   |
 
 It should therefore be feasible to check the exit status of mantidplot and if necessary call the crash reporting implementation from within these scripts. A difficultly to keep in mind here however is that the crash reporting implementation in this instance needs to be called from outside Mantid.
 
+* Q This appears from preliminary testing to be feasible but needs to be checked on other possible configurastions as well.
+
 ### Crash Reporting
 Once a crash has been detected it needs to be reported. There are several requirements and design constraints which this reporting system needs to meet. 
 
 The most important of these is **R.1.4** which requires that the crash reports are written out to a database. This can be achieved in a similar way to the method currently used to report on usage in UsageService.cpp. They can be stored in the same database as the existing usage reports but go to a different url to allow some flexibility in how the crash reports are handled. The suggested url is "http://reports.mantidproject.org/api/crash". The api on the mantidproject website will need to be modified to accommodate this but this should be feasible. 
 
-This reporter should also if possible access the local Mantid logs to send along with the crash report **R.1.5** but only with the users permission **R.3.1**.
+With the users permission the reporter should also if possible access the local Mantid logs to send along with the crash report **R.1.5**. If the crash was of the uncaught exception type it should also attempt to access the execution history from within mantid **R.1.6**.
 
 The largest design constraint upon this system is that it has to be callable from outside Mantid. The easiest way to achieve this is to expose it to mantidpython which can then be called from within the launcher scripts without relaunching mantidplot. 
+
+* Q Is launching the crash reporter with mantid python from outside mantidplot feasible. If not an executable to be run could be created instead.
 
 ![alt text](crashdesign.png "Simple design layout")
 
