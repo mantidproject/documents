@@ -57,11 +57,14 @@ Label  | Requirement    |   Necessity |
 | R.3.1  | Must comply with mantids stated privacy policy | M |
 | R.3.2  | Must be forward compatible with the mantid workbench | M |
 
-## Design
+## Backend Design
 
 ### Overview
 
-The three major segments that need to be implemented in order to report crashes are a method to detect when Mantid has crashed, an interface to ask the user for additional information on these crashes and an implementation to then report these crashes. 
+The three major segments that need to be implemented in order to report crashes are: 
+* A method to detect when Mantid has crashed
+* An interface to ask the user for additional information on these crashes 
+* An implementation to then report these crashes. 
 
 ![alt text](crashdesign.png "Simple design layout")
 ### Crash detection
