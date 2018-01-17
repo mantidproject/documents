@@ -105,9 +105,56 @@ The largest design constraint upon this system is that it has to be callable fro
 
 ### User feedback
 
-A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occured. The layout and userbility of this interface is disscussed in section ???. 
+A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occured. The layout and userbility of this interface is disscussed below. 
 
 As their is no guarantee that mantidplot will still be running at this point this interface needs to be independent of mantidplot and launchable on it's own. It will ideally be launched from within the crash reporting service as this is a common point of between all the different crash cases. 
+
+## User Interface Design
+
+### First screen
+
+Seeks the users permissions
+
+![Figure1](Screen1.png)
+
+* Q is it too verbose?
+* Q is it too informal?
+* Q does it have everything we need?
+
+### Second screen
+
+Identifies the type of crash
+
+![Figure2](Screen2.png)
+
+* Q is this required? Will the reporter catch this automatically?
+
+### Third screen
+
+Identifies the action that preceded the crash
+
+![Figure3](Screen3.png)
+
+### Fourth screen
+
+Establishes the instrument that the data was from
+
+![Figure4](Screen4.png)
+
+### Fifth screen
+
+Gathers additional information about actions proceeding the crash (depends on third screen)
+
+![Figure5a](Screen5a.png)
+
+### Final screen
+
+Thank the user for their effort
+
+![FigureFinal](FinalScreen.png)
+
+* Q is there any way that we can incentivise reporting?
+
 
 
 
