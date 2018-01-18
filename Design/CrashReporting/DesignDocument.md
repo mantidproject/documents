@@ -23,7 +23,7 @@ Concerns that we need to bear in mind are:
 
 We would like to have an initial version of the "Crash Reporter" in the next release of Mantid. Although it is unlikely to be possible to include all desired functionality by this time, we are confident that a level of crash reporting will be possible which should allow us to assess certain metrics, such as crash frequency. Further details are outlined in the 'Requirements' section.
 
-## Requirments
+## Requirements
 
 #### Necessity
 
@@ -35,9 +35,9 @@ The "Desirable" necessity is something which might not get addressed in the
 the very first iteration of the the implementation, but should eventually be
 provided.
 
-### High Level Requirments
+### High Level Requirements
 
-#### Functional requirments
+#### Functional requirements
 
  Label  | Requirement    |   Necessity |
 |--------|----------------|-------------|
@@ -50,7 +50,7 @@ provided.
 | R.1.6  | Obtains additional information about the crash and sends it along with crash report | D|
 
 
-#### Non-functional requirments 
+#### Non-functional requirements 
 Label  | Requirement    |   Necessity |
 |--------|----------------|-------------|
 | R.3.1  | Must comply with mantids stated privacy policy | M |
@@ -85,7 +85,7 @@ This will be detected in a similar way to the Mantid unresponsive case in that a
 
 ##### Mantid Launcher
 
-The Mantid Launcher should be lightweight and invisible to the user. On Windows and Linux Mantid is already launched via a batch and bash script respectively which can be extended upon to fulfill this purpose. 
+The Mantid Launcher should be lightweight and invisible to the user. On Windows and Linux Mantid is already launched via a batch and bash script respectively which can be extended upon to fulfil this purpose. 
 
 Preliminary testing on windows shows Mantid obeying the following exit code structure.
 
@@ -97,10 +97,10 @@ Situation  | Exit Code   |
 
 It should therefore be feasible to check the exit status of mantidplot and if necessary call the crash reporting implementation from within these scripts. A difficultly to keep in mind here however is that the crash reporting implementation in this instance needs to be called from outside Mantid.
 
-* Q This appears from preliminary testing to be feasible but needs to be checked on other possible configurastions as well.
+* Q This appears from preliminary testing to be feasible but needs to be checked on other possible configurations as well.
 
 ### Crash Reporting
-The crash reporting will be implimented in the kernel in a similar way to the existing Usage service. This should allow it to be launchable from outside mantiplot. ConfigService may need to be modified to allow a skinny version to be launched here that does not launch all the algorithms. 
+The crash reporting will be implemented in the kernel in a similar way to the existing Usage service. This should allow it to be launchable from outside mantiplot. ConfigService may need to be modified to allow a skinny version to be launched here that does not launch all the algorithms. 
 
 This service can be exposed to the launcher either through mantidpython or an executable.
 
@@ -113,7 +113,7 @@ The main things that this service needs to do are:
 #### Information to gather
 
 ##### Minimal information
-This is what will be gathered and sent if the mantiplot instance is not accesible and the user has opted to send no additional information.
+This is what will be gathered and sent if the mantiplot instance is not accessible and the user has opted to send no additional information.
 
 * Crash Type
 * Crash Time
@@ -138,13 +138,13 @@ This is what will be gathered and sent if the mantiplot instance is not accesibl
 * MessageDialog text dump
 
 ### Web service and Database
-We are initially planning to use the same web service and database for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we mantain the flexibility to change this in the future if required.
+We are initially planning to use the same web service and database for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we maintain the flexibility to change this in the future if required.
 
 The data base for the crash reporting will be split into a table for the minimal data which is always provided and a table of extra data which will sometimes be provided. The minimal data will be that described above in the crash reporting section. Entries spanning these two tables can then be linked by a Crash ID.
 
 ### User feedback
 
-A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occured. The layout and userbility of this interface is disscussed below. 
+A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occurred. The layout and usability of this interface is discussed below. 
 
 As their is no guarantee that mantidplot will still be running at this point this interface needs to be independent of mantidplot and launchable on it's own. It will ideally be launched from within the crash reporting service, via  as this is a common point of between all the different crash cases. 
 
@@ -152,13 +152,13 @@ As their is no guarantee that mantidplot will still be running at this point thi
 
 ### First screen
 
-Apologises and seeks the users' permissions for reporting levels
+Apologises and seeks the users' permissions for reporting levels.
 
 ![Figure1](CrashScreen.png)
 
 ### Final screen
 
-Thank the user for their effort
+Thank the user for their effort.
 
 ![FigureFinal](FinalScreen.png)
 
