@@ -44,10 +44,10 @@ provided.
 | R.1.1  | Uncaught exceptions are reported back as crashes  | M |
 | R.1.2  | User hard terminations i.e. via task manager are reported as crashes | M |
 | R.1.3  | Catastrophic failures are reported back as crashes | M |
-| R.1.4  | Stores crash reports in an SQL database | M|
+| R.1.4  | Stores crash reports in a queryable database | M|
 | R.1.5  | Where possible asks the user for further information about crash | D|
-| R.1.5  | Sends the textdump of the log file along with the crash report | D|
-| R.1.6  | If mantid is still running obtains additional information about the crash | D|
+| R.1.5  | Sends a textdump of the end of the log file along with the crash report | D|
+| R.1.6  | Obtains additional information about the crash and sends it along with crash report | D|
 
 
 #### Non-functional requirments 
@@ -60,10 +60,11 @@ Label  | Requirement    |   Necessity |
 
 ### Overview
 
-The three major segments that need to be implemented in order to report crashes are: 
-* A method to detect when Mantid has crashed
-* An interface to ask the user for additional information on these crashes 
-* An implementation to then report these crashes. 
+The major segments that need to be implemented in order to report crashes are: 
+* A method to detect when Mantid has crashed, it is proposed this is done within the launcher scripts.
+* A service to gather further information and then send these crashes to the web service. 
+* An interface to ask the user for additional information on these crashes. 
+* A webservice and database.  
 
 ![alt text](crashdesign.png "Simple design layout")
 ### Crash detection
@@ -112,6 +113,33 @@ With the users permission the reporter should also if possible access the local 
 * How long mantid has been running.
 * Execution history
 * Message dialog Cache
+
+#### Information to gather and send
+
+##### Minimal information
+This is what will be gathered and sent if the mantiplot instance is not accesible and the user has opted to send no additional information.
+
+* Crash Type
+* Crash Time
+* Facility
+* Instrument
+* Mantid Version
+* Encrypted user ID
+* Encrypted host ID
+
+##### If mantidplot is open
+* List of open Interfaces
+* Number of open graphs
+* Number of loaded workspaces
+
+##### If additional information is provided by user
+* User provided information
+* Last x characters of logfile
+* Unencrypted user ID
+* Unencrypted host ID
+
+##### If additional information is provided by user and mantidplot is open
+* MessageDialog text dump
 
 The largest design constraint upon this system is that it has to be callable from outside Mantid. The easiest way to achieve this is to expose it to mantidpython which can then be called from within the launcher scripts without relaunching mantidplot. 
 
