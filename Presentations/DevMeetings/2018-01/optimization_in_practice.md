@@ -5,3 +5,4 @@ This is meant to be a session with lightning talks, demos, or discussions. Did y
 
 Topics [Presenter]
 - Virtual function calls are not *that* slow, but... [Simon Heybrock]
+- Finding bottlenecks with [gperftools](https://github.com/gperftools/gperftools)... ***LIVE!*** [Ian Bush]
