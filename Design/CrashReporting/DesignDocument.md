@@ -53,8 +53,8 @@ provided.
 #### Non-functional requirements 
 Label  | Requirement    |   Necessity |
 |--------|----------------|-------------|
-| R.3.1  | Must comply with mantids stated privacy policy | M |
-| R.3.2  | Must be forward compatible with the mantid workbench | M |
+| R.3.1  | Must comply with Mantid's stated privacy policy | M |
+| R.3.2  | Must be forward compatible with the Mantid workbench | M |
 
 ## Backend Design
 
@@ -77,7 +77,7 @@ Detecting this sort of crash is already done as they are caught by the last chan
 
 ##### 2. Mantid unresponsive 
 
-It has been assumed that when Mantid is unresponsive it will be manually terminated by the user. In windows for example they might use task manager. This cannot be detected from within Mantid so it has been decided to implement an external launcher which can check how Mantid exits and if necessary call the crash reporting. This may lead to some false positives as users terminate Mantid unnecessarily but this level of noise in the reporting has been deemed acceptable.
+It has been assumed that when Mantid is unresponsive it will be manually terminated by the user. In Windows for example they might use task manager. This cannot be detected from within Mantid so it has been decided to implement an external launcher which can check how Mantid exits and if necessary call the crash reporting. This may lead to some false positives as users terminate Mantid unnecessarily but this level of noise in the reporting has been deemed acceptable.
 
 ##### 3. Crash to desktop
 
@@ -87,7 +87,7 @@ This will be detected in a similar way to the Mantid unresponsive case in that a
 
 The Mantid Launcher should be lightweight and invisible to the user. On Windows and Linux Mantid is already launched via a batch and bash script respectively which can be extended upon to fulfil this purpose. 
 
-Preliminary testing on windows shows Mantid obeying the following exit code structure.
+Preliminary testing on Windows shows Mantid obeying the following exit code structure.
 
 Situation  | Exit Code   |  
 |--------|----------------|
