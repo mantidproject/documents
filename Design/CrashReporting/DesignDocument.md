@@ -17,8 +17,7 @@ The key information that we want to capture is:
 Concerns that we need to bear in mind are:
 
 * Data security/privacy
-* B
-* C
+* Reducing the reporting burden on the user
 
 ## Timescales
 
