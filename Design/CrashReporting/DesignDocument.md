@@ -64,7 +64,7 @@ The major segments that need to be implemented in order to report crashes are:
 * A method to detect when Mantid has crashed, it is proposed this is done within the launcher scripts.
 * A service to gather further information and then send these crashes to the web service. 
 * An interface to ask the user for additional information on these crashes. 
-* A webservice and database.  
+* A webservice and database, initially these will be the same as used for the usage reporting.  
 
 ![alt text](crashdesign.png "Simple design layout")
 ### Crash detection
@@ -100,21 +100,16 @@ It should therefore be feasible to check the exit status of mantidplot and if ne
 * Q This appears from preliminary testing to be feasible but needs to be checked on other possible configurastions as well.
 
 ### Crash Reporting
-Once a crash has been detected it needs to be reported. There are several requirements and design constraints which this reporting system needs to meet. 
+The crash reporting will be implimented in the kernel in a similar way to the existing Usage service. This should allow it to be launchable from outside mantiplot. ConfigService may need to be modified to allow a skinny version to be launched here that does not launch all the algorithms. 
 
-The most important of these is **R.1.4** which requires that the crash reports are written out to a database. This can be achieved in a similar way to the method currently used to report on usage in UsageService.cpp. They can be stored in the same database as the existing usage reports but go to a different url to allow some flexibility in how the crash reports are handled. The suggested url is "http://reports.mantidproject.org/api/crash". The api on the mantidproject website will need to be modified to accommodate this but this should be feasible. Information to send includes:
-* Encrypted user ID
-* Encrypted Host ID
-* Time of crash
-* Type of crash
-* Version of Mantid
+This service can be exposed to the launcher either through an mantidpython or an executable.
 
-With the users permission the reporter should also if possible access the local Mantid logs to send along with the crash report **R.1.5**. If the crash was of the uncaught exception type it should also attempt to access additional information from within mantid **R.1.6**. Information which would be useful includes:
-* How long mantid has been running.
-* Execution history
-* Message dialog Cache
+The main things that this service needs to do are:
+* Launch the user interface, via either the python wrapper or mantidplot.
+* Gather information on the crash
+* Send crash report to web service
 
-#### Information to gather and send
+#### Information to gather
 
 ##### Minimal information
 This is what will be gathered and sent if the mantiplot instance is not accesible and the user has opted to send no additional information.
@@ -141,17 +136,18 @@ This is what will be gathered and sent if the mantiplot instance is not accesibl
 ##### If additional information is provided by user and mantidplot is open
 * MessageDialog text dump
 
-The largest design constraint upon this system is that it has to be callable from outside Mantid. The easiest way to achieve this is to expose it to mantidpython which can then be called from within the launcher scripts without relaunching mantidplot. 
-
-* Q Is launching the crash reporter with mantid python from outside mantidplot feasible. If not an executable to be run could be created instead.
-
 ![alt text](CrashReporter.png "Crash Reporting Flowchart")
+
+### Web service and Database
+We are initially planning to use the same web service and database for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we mantain the flexibility to change this in the future if required.
+
+The data base for the crash reporting will be split into a table for the minimal data which is always provided and a table of extra data which will sometimes be provided. The minimal data will be that described above in the crash reporting section. Entries spanning these two tables can then be linked by a Crash ID.
 
 ### User feedback
 
 A further requirement **R.1.5** is to ask the user for additional feedback. This requires designing an interface which will be displayed to the user when a crash has occured. The layout and userbility of this interface is disscussed below. 
 
-As their is no guarantee that mantidplot will still be running at this point this interface needs to be independent of mantidplot and launchable on it's own. It will ideally be launched from within the crash reporting service as this is a common point of between all the different crash cases. 
+As their is no guarantee that mantidplot will still be running at this point this interface needs to be independent of mantidplot and launchable on it's own. It will ideally be launched from within the crash reporting service, via  as this is a common point of between all the different crash cases. 
 
 ## User Interface Design
 
