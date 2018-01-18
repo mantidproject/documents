@@ -135,6 +135,7 @@ Field  | Data Type   |
 ##### If additional information is provided by user
 Field  | Data Type   |  
 |--------|----------------|
+| User name (if provided)  | TINYTEXT |
 | User email address (if provided)  | TINYTEXT | 
 | User phone number (if provided) | TINYTEXT |
 | User feedback (if provided)  | TEXT|
