@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="764.12976mm"
+   width="1001.457mm"
    height="369.11417mm"
-   viewBox="0 0 764.12979 369.11416"
+   viewBox="0 0 1001.4571 369.11416"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
@@ -163,6 +163,22 @@
          transform="matrix(1.1,0,0,1.1,1.1,0)"
          inkscape:connector-curvature="0" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5312-7"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path5310-0"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -172,8 +188,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1332.9739"
-     inkscape:cy="872.97731"
+     inkscape:cx="-231.00508"
+     inkscape:cy="872.97729"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -322,17 +338,6 @@
        d="m 195.03571,223.67262 h 71.81547"
        id="path5302"
        inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="229.05357"
-       y="209.30952"
-       id="text5412"><tspan
-         sodipodi:role="line"
-         id="tspan5410"
-         x="229.05357"
-         y="209.30952"
-         style="stroke-width:0.26458332">Report Crash to Database</tspan></text>
     <rect
        style="fill:#ffffff;stroke:#000000;stroke-width:1.13499999;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5414"
@@ -419,14 +424,60 @@
          style="stroke-width:0.26458332"
          id="tspan5802"> Interface</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5814)"
+       style="fill:none;stroke:#000000;stroke-width:1.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.165, 1.165;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker5814)"
        d="m 54.397649,261.28366 v 41.57736"
        id="path5804"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5940)"
+       style="fill:none;stroke:#000000;stroke-width:1.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.165, 1.165;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker5940)"
        d="M 146.62386,302.86102 V 260.5277"
        id="path5930"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.16499996;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect941"
+       width="152.70239"
+       height="82.398804"
+       x="268.33218"
+       y="181.74904" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="300.8381"
+       y="219.54666"
+       id="text945"><tspan
+         sodipodi:role="line"
+         id="tspan943"
+         x="300.8381"
+         y="219.54666"
+         style="stroke-width:0.26458332">Crash Report </tspan><tspan
+         sodipodi:role="line"
+         x="300.8381"
+         y="235.42166"
+         style="stroke-width:0.26458332"
+         id="tspan947">Web Service</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.14350462;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect949"
+       width="147.44318"
+       height="78.640579"
+       x="482.25046"
+       y="182.49969" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="526.11194"
+       y="226.35023"
+       id="text953"><tspan
+         sodipodi:role="line"
+         id="tspan951"
+         x="526.11194"
+         y="226.35023"
+         style="stroke-width:0.26458332">Database</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.14267111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5312-7)"
+       d="m 420.3552,221.8368 h 58.59755"
+       id="path5302-6"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
