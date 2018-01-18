@@ -152,47 +152,16 @@ As their is no guarantee that mantidplot will still be running at this point thi
 
 ### First screen
 
-Seeks the users permissions
+Apologises and seeks the users' permissions for reporting levels
 
-![Figure1](Screen1.png)
+![Figure1](InitialScreen.png)
 
-* Q is it too verbose?
-* Q is it too informal?
-* Q does it have everything we need?
-
-### Second screen
-
-Identifies the type of crash
-
-![Figure2](Screen2.png)
-
-* Q is this required? Will the reporter catch this automatically?
-
-### Third screen
-
-Identifies the action that preceded the crash
-
-![Figure3](Screen3.png)
-
-### Fourth screen
-
-Establishes the instrument that the data was from
-
-![Figure4](Screen4.png)
-
-### Fifth screen
-
-Gathers additional information about actions proceeding the crash (depends on third screen)
-
-![Figure5a](Screen5a.png)
-
-### Final screen
+### Final screen
 
 Thank the user for their effort
 
 ![FigureFinal](FinalScreen.png)
 
-* Q is there any way that we can incentivise reporting?
 
 
 
