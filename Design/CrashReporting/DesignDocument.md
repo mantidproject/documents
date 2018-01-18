@@ -105,6 +105,7 @@ The crash reporting will be implimented in the kernel in a similar way to the ex
 This service can be exposed to the launcher either through mantidpython or an executable.
 
 The main things that this service needs to do are:
+* Check whether usage reporting is enabled and if not exit having done nothing.
 * Launch the user interface, via either the python wrapper or mantidplot.
 * Gather information on the crash
 * Send crash report to web service
@@ -135,8 +136,6 @@ This is what will be gathered and sent if the mantiplot instance is not accesibl
 
 ##### If additional information is provided by user and mantidplot is open
 * MessageDialog text dump
-
-![alt text](CrashReporter.png "Crash Reporting Flowchart")
 
 ### Web service and Database
 We are initially planning to use the same web service and database for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we mantain the flexibility to change this in the future if required.
