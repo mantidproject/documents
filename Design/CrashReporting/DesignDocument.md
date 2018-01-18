@@ -154,7 +154,7 @@ As their is no guarantee that mantidplot will still be running at this point thi
 
 Apologises and seeks the users' permissions for reporting levels
 
-![Figure1](InitialScreen.png)
+![Figure1](CrashScreen.png)
 
 ### Final screen
 
