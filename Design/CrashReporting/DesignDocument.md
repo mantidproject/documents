@@ -102,7 +102,7 @@ It should therefore be feasible to check the exit status of mantidplot and if ne
 ### Crash Reporting
 The crash reporting will be implimented in the kernel in a similar way to the existing Usage service. This should allow it to be launchable from outside mantiplot. ConfigService may need to be modified to allow a skinny version to be launched here that does not launch all the algorithms. 
 
-This service can be exposed to the launcher either through an mantidpython or an executable.
+This service can be exposed to the launcher either through mantidpython or an executable.
 
 The main things that this service needs to do are:
 * Launch the user interface, via either the python wrapper or mantidplot.
