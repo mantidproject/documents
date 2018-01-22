@@ -61,7 +61,7 @@ Label  | Requirement    |   Necessity |
 ### Overview
 
 The major segments that need to be implemented in order to report crashes are: 
-* A method to detect when Mantid has crashed, it is proposed this is done within the launcher scripts.
+* A method to detect when Mantid has crashed, it is proposed this is done within the launcher scripts. The scripts being disccused here are those used to launch mantidplot and not the mantidpython wrapper script.
 * A service to gather further information and then send these crashes to the web service. 
 * An interface to ask the user for additional information on these crashes. 
 * A webservice and database.  
@@ -81,7 +81,7 @@ It has been assumed that when Mantid is unresponsive it will be manually termina
 
 ##### 3. Crash to desktop
 
-This will be detected in a similar way to the Mantid unresponsive case in that an external launcher will make note of how Mantid exits and if necessary call the crash reporter.  
+This will be detected in a similar way to the Mantid unresponsive case in that an external launcher will make note of how Mantid exits and if necessary call the crash reporter. This behaviour can be tested using the [Segfault](https://github.com/mantidproject/mantid/blob/master/Framework/Algorithms/src/Segfault.cpp) algorithm   
 
 ##### Mantid Launcher
 
@@ -98,6 +98,7 @@ Situation  | Exit Code   |
 It should therefore be feasible to check the exit status of mantidplot and if necessary call the crash reporting implementation from within these scripts. A difficultly to keep in mind here however is that the crash reporting implementation in this instance needs to be called from outside Mantid.
 
 * Q This appears from preliminary testing to be feasible but needs to be checked on other possible configurations as well.
+* Linux utilizes [return codes](http://www.tldp.org/LDP/abs/html/exitcodes.html) and [signals](http://man7.org/linux/man-pages/man7/signal.7.html) which are independent mechanisms that this will need to deal with.
 
 ### Crash Reporting
 The crash reporting will be implemented in the kernel in a similar way to the existing Usage service. This should allow it to be launchable from outside mantiplot. ConfigService may need to be modified to allow a skinny version to be launched here that does not launch all the algorithms. 
@@ -122,8 +123,8 @@ Field  | Data Type   |
 | Facility  | TINYTEXT|
 | Instrument  | TINYTEXT|
 | Mantid Version  | TINYTEXT|
-| Encrypted user ID  | TINYTEXT|
-| Encrypted host ID  | TINYTEXT|
+| Hashed user ID  | TINYTEXT|
+| Hashed host ID  | TINYTEXT|
 
 ##### If mantidplot is open
 Field  | Data Type   |  
@@ -140,16 +141,14 @@ Field  | Data Type   |
 | User phone number (if provided) | TINYTEXT |
 | User feedback (if provided)  | TEXT|
 | Last x characters of logfile  | TEXT|
-| Unencrypted user ID  | TINYTEXT|
-| Unencrypted host ID  | TINYTEXT|
 
 ##### If additional information is provided by user and mantidplot is open
 Field  | Data Type   |  
 |--------|----------------|
-| MessageDialog text dump  | TEXT | 
+| MessageDisplay text dump  | TEXT | 
 
 ### Web service and Database
-We are initially planning to use the same web service and database for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we maintain the flexibility to change this in the future if required.
+We are initially planning to use the same web service and database technology for the crash reporting that we do for the usage reporting. The crash reports will go to a different url however so that we maintain the flexibility to change this in the future if required.
 
 The data base for the crash reporting will be split into a table for the minimal data which is always provided and a table of extra data which will sometimes be provided. The minimal data will be that described above in the crash reporting section. Entries spanning these two tables can then be linked by a Crash ID.
 
