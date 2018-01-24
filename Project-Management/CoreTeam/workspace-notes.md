@@ -1,8 +1,8 @@
-# Workspace
+# Matrix Workspace
 
 ## Issues with the current workspace
 
-Focussing mainly on `MatrixWorkspace`. At present numbering below is not an indication of seriousness or priority. 
+Focussing on `MatrixWorkspace`. At present numbering below is not an indication of seriousness or priority. 
 
 1. Constructed iteratively, i.e., workspaces start their life in an incomplete and dysfunctional state, vital information is added only later (size, instrument, spectrum to detector mapping).
 1. No encapsulation for data it contains, thus violating invariants:
