@@ -17,6 +17,7 @@ Focussing on `MatrixWorkspace`. At present numbering below is not an indication 
      - Not much that a base Workspace actually gives you, and it has lead to the widespread usage of down-casting.
    - Base class `MatrixWorkspace` for `Workspace2D` and `EventWorkspace` was meant to unify handling of the latter two workspaces in algorithms. In reality many algorithms simply have two big blocks for handling them individually.
    - The base class of `MatrixWorkspace`, `ExperimentInfo` is a complicated and holds a lot of complexity related to setting the instrument and loading parameter maps.
+   - A `MatrixWorkspace` is also an `IMDWorkspace` so has a dimension api as well as axes. Confusing. Should not have made a `MatrixWorkspace` and `IMDWorkspace`.
      - Provides a detector grouping mechanism based on externally set grouping (i.e., *not* the grouping used by `MatrixWorkspace`), used by `MDWorkspace`.
    - Performance as highlighted by Steve [here](https://github.com/mantidproject/documents/files/1383875/2017-03-18-Highlights.pdf)
 1. False concept that a Workspace subtypes are a pluggable thing. They really aren't and that has lead to `MatrixWorkspace` having to support very possible usage you might want for a data structure
