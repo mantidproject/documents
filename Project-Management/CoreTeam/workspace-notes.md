@@ -43,7 +43,7 @@ Focussing on `MatrixWorkspace`. At present numbering below is not an indication 
    - In general, there may be other workspaces containing histograms that do not map to detectors of an instrument.
 1. Data in base classes, extended in child class.
    - Data both in base classes and child classes makes design brittle.
-   - Should as par as possible use composition rather than inheritance
+   - Should, as far as possible, use composition rather than inheritance
 1. Bloated interface with an abundance of methods for different purposes, but lacking other essentials.
    - Different set of methods in each base class and derived classes.
    - No iterator support.
