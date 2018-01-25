@@ -172,7 +172,11 @@ Thank the user for their effort.
 
 ![FigureFinal](FinalScreen.png)
 
-
+## Discussion Points
+The following is a list of points which have been raised which need to be discussed or looked into further.
+* Investigating the feasbility of inserting the crash reporting into the linux launch script.
+* The schema of the database.
+* A testing plan for the mantid unresponsive case.
 
 
 
