@@ -59,3 +59,34 @@ Focussing on `MatrixWorkspace`. At present numbering below is not an indication 
    - Generalized 'selection' object attachable to workspace?
 1. No design for associating workspaces. i.e. This Workspace is the transmission run associated with this sample run Workspace. Potentially, this would not need to be solved at the Workspace level, but we definitely need better functionality at the user level.
 1. Efficient mechanism needed for serializing/deserializing workspaces.
+
+# Table Workspace
+
+1. No iterator support in C++ over columns and rows
+1. Constructing from Python could be easier e.g. from a dictionary
+1. Would be good if they played nice with `pandas`.
+1. Inserting a row is somewhat complicated. Need to append a row, then iterate and `setCell` on each column.
+1. Row extraction via stream can cause an unhandled crash if you go off the end. Difficult when you have a variable number of columns. Throw an exception instead?
+1. Support for common statistical operations (at the column/row level)? e.g. min, max, mean, std, variance...
+1. Support for common data frame like operations? e.g. sort, map, join, filter...
+1. There's no way of saving it to a simple CSV format
+1. Plotting support from python api (e.g. plotTable as well as plotSpectrum)
+
+# Peaks Workspace
+1. No support for distinct types of HKL. Although a [solution](https://github.com/mantidproject/mantid/pull/15914) has been proposed. 
+1. No support for indexed fractional/superstructure peaks with variable numbers of columns
+1. Only one UB can be attached to a single peaks workspace, but nothing stops multiple peaks from different lattices from being added.
+   - Is a peaks workspace a collection of peaks from the same lattice?
+   - Or can the same workspace have multiple UBs?
+1. Peaks may be in different states in the same workspace. Some may be indexed, some may be integrated. Integration methods may also vary between peaks.
+1. Not all columns are relevant to all instruments. row, col means nothing to a tube based instrument
+1. Should be easier to create peaks workspaces of theoretical peaks where there may be no instrument attached
+
+## Peak Objects
+1. Creating a peak without passing a detector ID causes an implicit ray trace.
+1. Peak objects recalculate data contained within everytime `get` methods are called. Ideally peaks should be immutable objects.
+1. Creating peaks often requires computing the same information that then gets calculated inside the peak just so that it can be constructed. This chicken & egg problem leads to duplication of essentially the same code across the code base.
+1. Peak object suffer from the telescoping constructor anti-pattern
+1. Cannot create peaks objects easily from python
+1. No support for peaks of different kinds
+    - e.g. is this a theoretical peak output from PredictPeaks? An experimental peak?
