@@ -1,4 +1,10 @@
 ## The "this has always bugged me" therapy session
 
-A place to discuss things that have always bugged you in Mantid, but that we've never got round to fixing.
+A place to discuss things that bug you in Mantid.
+ - What makes your day to day development hard?
+ - Not just code:
+   - Build configuration?
+   - Documentation?
+   - Workflow?
+
 
