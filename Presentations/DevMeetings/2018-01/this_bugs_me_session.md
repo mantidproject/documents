@@ -20,4 +20,5 @@ Notes:
  - On visual studio debug build, dealing with `QString` can be difficult
  - Interpreting `Mantid.user.properties` is everywhere
  - Mantid overwrites user properties automatically
+ - An overall plan for documentation
  
