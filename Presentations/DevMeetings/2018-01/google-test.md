@@ -19,3 +19,15 @@
 
 - More advanced features such as parametrized tests feel slightly complicated to use, but would probably be ok once we have a couple of examples or a little experience.
 - There does not seem to be a built-in for replacing `TS_ASSERT_THROWS_EQUALS`, would need to provide a replacement ourselves?
+
+## Integration in Mantid
+
+- Setting up `cmake` and `ctest` loks straightforward:
+   ```
+  add_executable(example example.cpp)
+ target_link_libraries(example gtest_main)
+  add_test(NAME example_test COMMAND example)
+  ```
+
+- If we were to use `google-test`, replacing existing test code is probably not worthwhile. A viable strategy could be to use it for new modules, or use it in a couple of new (still very small) modules.
+- Different test frameworks should not be used within the same module.
