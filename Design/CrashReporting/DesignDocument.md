@@ -131,9 +131,10 @@ Field  | Data Type   |
 ##### If mantidplot is open
 Field  | Data Type   |  
 |--------|----------------|
-| List of open Interfaces  | ENUM | 
-| Number of open graphs  | SMALLINT |
-| Number of loaded workspaces  | SMALLINT|
+| List of open scientific interfaces  | ENUM | 
+|Number of open windows|SMALLINT|
+| Memory Usage | SMALLINT|
+|System Memory| SMALLINT|
 
 ##### If additional information is provided by user
 Field  | Data Type   |  
