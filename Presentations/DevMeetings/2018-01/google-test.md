@@ -31,3 +31,7 @@
 
 - If we were to use `google-test`, replacing existing test code is probably not worthwhile. A viable strategy could be to use it for new modules, or use it in a couple of new (still very small) modules.
 - Different test frameworks should not be used within the same module.
+
+Relevant links:
+- https://github.com/google/googletest/issues/916
+- https://cmake.org/cmake/help/v3.9/module/GoogleTest.html
