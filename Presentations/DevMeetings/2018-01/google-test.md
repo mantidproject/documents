@@ -14,6 +14,7 @@
 - Shuffling of tests helps to avoid dependencies between tests.
 - `SCOPED_TRACE` can help to tell where an failing `ASSERT` in a helper function originated, if there are multiple tests calling the same helper function.
 - `operator<<` for asserts makes annotating easy, for example with a loop variable (more flexible than `TSM_ASSERT(const char *, ...)`.
+- Predicate assertions and custom assertion functions provide flexibility for specialised assertions.
 
 ## Disadvantages of google-test
 
