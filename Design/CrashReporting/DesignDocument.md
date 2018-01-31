@@ -118,8 +118,10 @@ This is what will be gathered and sent if the mantiplot instance is not accessib
 
 Field  | Data Type   |  
 |--------|----------------|
-| Crash Type  | TINYTEXT | 
+| Error Code  | INT | 
+|Operating System|TINYTEXT|
 | Crash Time  | DATETIME |
+|Uptime|TIME|
 | Facility  | TINYTEXT|
 | Instrument  | TINYTEXT|
 | Mantid Version  | TINYTEXT|
