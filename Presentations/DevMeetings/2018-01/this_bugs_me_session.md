@@ -10,3 +10,7 @@ A place to discuss things that bug you in Mantid.
 Notes:
  - `clang-format` on windows
  - Reloading fit function with a different workspace name will crash mantid
+ - `CompareWorkspaces` can't compare identical workspaces
+ - Restarting builds that have failed - unreliable tests
+ - Builds that hang
+ 
