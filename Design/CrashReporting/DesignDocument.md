@@ -144,6 +144,7 @@ Field  | Data Type   |
 | User phone number (if provided) | TINYTEXT |
 | User feedback (if provided)  | TEXT|
 | Last x characters of logfile  | TEXT|
+|Stack Trace|TEXT|
 
 ##### If additional information is provided by user and mantidplot is open
 Field  | Data Type   |  
