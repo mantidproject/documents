@@ -13,4 +13,6 @@ Notes:
  - `CompareWorkspaces` can't compare identical workspaces
  - Restarting builds that have failed - unreliable tests
  - Builds that hang
+ - `cmake` occaisionally fails on external projects on download stage
+ - default facility on build servers shouldn't be ISIS
  
