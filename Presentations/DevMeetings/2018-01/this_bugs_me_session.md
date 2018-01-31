@@ -10,4 +10,3 @@ A place to discuss things that bug you in Mantid.
 Notes:
  - `clang-format` on windows
  - Reloading fit function with a different workspace name will crash mantid
-
