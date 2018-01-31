@@ -18,3 +18,4 @@
 ## Disadvantages of google-test
 
 - More advanced features such as parametrized tests feel slightly complicated to use, but would probably be ok once we have a couple of examples or a little experience.
+- There does not seem to be a built-in for replacing `TS_ASSERT_THROWS_EQUALS`, would need to provide a replacement ourselves?
