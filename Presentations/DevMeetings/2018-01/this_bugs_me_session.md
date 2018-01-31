@@ -16,3 +16,5 @@ Notes:
  - `cmake` occaisionally fails on external projects on download stage
  - default facility on build servers shouldn't be ISIS
  - time to startup mantidplot or first time to `import mantid` in vanilla python
+ - The number of branches on `mantidproject/mantid`. Ross wants forks!
+ 
