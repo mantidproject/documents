@@ -87,6 +87,7 @@ Focussing on `MatrixWorkspace`. At present numbering below is not an indication 
 1. Peak objects recalculate data contained within everytime `get` methods are called. Ideally peaks should be immutable objects.
 1. Creating peaks often requires computing the same information that then gets calculated inside the peak just so that it can be constructed. This chicken & egg problem leads to duplication of essentially the same code across the code base.
 1. Peak object suffer from the telescoping constructor anti-pattern
+1. Relating to the above point. Many of the Peak class constructors are "incomplete" (see same issue with `MatrixWorkspace`). This requires setters, internal consitency checks, and on-the-fly computations in order to try to "fix" the Peak object. Aiming for an immutable Peak, should cause many of these issues to be fixed.
 1. Cannot create peaks objects easily from python
 1. No support for peaks of different kinds
     - e.g. is this a theoretical peak output from PredictPeaks? An experimental peak?
