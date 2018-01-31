@@ -18,4 +18,6 @@ Notes:
  - time to startup mantidplot or first time to `import mantid` in vanilla python
  - The number of branches on `mantidproject/mantid`. Ross wants forks!
  - On visual studio debug build, dealing with `QString` can be difficult
+ - Interpreting `Mantid.user.properties` is everywhere
+ - Mantid overwrites user properties automatically
  
