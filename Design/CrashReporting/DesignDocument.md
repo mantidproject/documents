@@ -168,7 +168,7 @@ The layout and usability of this interface is discussed below.
 
 Apologises and seeks the users' permissions for reporting levels.
 
-![Figure1](CrashScreen.png)
+![Figure1](CrashScreen2.png)
 
 ### Final screen
 
