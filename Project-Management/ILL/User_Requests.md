@@ -1,4 +1,5 @@
 Collection of user requests/remakrs.
+====================================
 
 Mantid Training ILL, 8/9 Feb, 2018
 ----------------------------------
