@@ -16,6 +16,7 @@ General
 * Mac package signing (check with Samuel Jackson)
 * IN4LNX - hangs on shutdown, to investigate
 * D20 and IN16B are unstable on Ian's Windows PC for nightly and unstable buidls
+* Windows fails to show results log when more than one copy of MantidPlot is open
 
 Powder Diffraction Session:
 
@@ -25,6 +26,7 @@ Powder Diffraction Session:
 
 Backscattering:
 
+* Easy way to set X sections (method shown by Antti in ToF part)
 * Calibration scaling in FWS
 * What about BATS mode?
 
