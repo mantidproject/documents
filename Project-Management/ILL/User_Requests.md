@@ -1,4 +1,4 @@
-Collection of user requests/remakrs.
+Collection of user requests/remarks.
 ====================================
 
 Mantid Training ILL, 8/9 Feb, 2018
