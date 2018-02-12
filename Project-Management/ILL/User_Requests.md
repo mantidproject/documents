@@ -22,7 +22,7 @@ Powder Diffraction Session:
 
 * Fullprof buffer file
 * Numor names in Fullprof exports
-* Easily mutable spectrum axis in python
+* ~~Easily mutable spectrum axis in python~~
 
 Backscattering:
 
