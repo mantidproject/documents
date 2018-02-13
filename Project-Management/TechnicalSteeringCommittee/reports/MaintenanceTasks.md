@@ -33,8 +33,6 @@ Highest priority
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
-9. MSVS 2017 support (Moore)
-   1. Move to boost 1.60 on Windows. It allows classes marked final to be exposed to Python. We chave currently applied [this patch](https://github.com/boostorg/type_traits/commit/04a8a9ecc2b02b7334a4b3f0459a5f62b855cc68) to the 1.58 headers. 1.60.0 has been compiled [here](https://github.com/mantidproject/thirdparty-msvc2015/tree/boost-160) but there are warnings to fix with it.
 
 
 Pool
