@@ -26,7 +26,7 @@ Highest priority
 14. move to gcc >= 5.3 (or gcc 6)
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
 3. Reducing static analysis issues that are on every pull request
-   1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/)
+   1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
