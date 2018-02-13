@@ -22,6 +22,7 @@ Powder Diffraction Session:
 
 * Fullprof buffer file
 * Numor names in Fullprof exports
+* SortXAxis support also descending
 * ~~Easily mutable spectrum axis in python~~
 
 Backscattering:
