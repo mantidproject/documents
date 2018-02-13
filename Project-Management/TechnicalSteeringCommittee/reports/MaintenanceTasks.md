@@ -8,13 +8,17 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.11
+Maintenance tasks for 3.12
 ==========================
 
 Highest priority
 ----------------
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
+29384. Documentation
+    999. Move from wiki to developer `.rst`
+    999. Change citations to new plugin
+    999. Move all training to user `.rst`
 1. Deploy stale PR detector (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Update training courses for Python 3 compatability
