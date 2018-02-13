@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add your items, links, etc. here
+* Quick introduction to ISIS SANS interface.
 
 Questions
 =========
