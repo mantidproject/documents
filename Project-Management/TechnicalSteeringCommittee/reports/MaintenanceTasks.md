@@ -17,17 +17,14 @@ Highest priority
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
 1. Deploy stale PR detector (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
-1. Adding Python 3 compatability to usage examples (Whitfield lead) issue [here](https://github.com/mantidproject/mantid/issues/20672)
-   1. User doc for python2/3
-   2. Strategy for `print` to avoid `from __future__`
-   2. Umbrella ticket to organize work
-   1. Update training courses
+1. Update training courses for Python 3 compatability
+93821. Parallell python3 release for ubuntu
 14. move to gcc >= 5.3 (or gcc 6)
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
-    2. [Ubuntu 14.04](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test?field.series_filter=trusty) (Whitfield/Bush)
 3. Reducing static analysis issues that are on every pull request
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/)
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
+   3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
