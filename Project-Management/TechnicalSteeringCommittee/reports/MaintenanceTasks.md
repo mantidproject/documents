@@ -25,6 +25,7 @@ Highest priority
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/)
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
+   3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
