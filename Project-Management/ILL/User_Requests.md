@@ -27,6 +27,7 @@ Powder Diffraction Session:
 
 Backscattering:
 
+* Manually specify the integration range for IFWS
 * Easy way to set X sections (method shown by Antti in ToF part)
 * Calibration scaling in FWS
 * What about BATS mode?
