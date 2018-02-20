@@ -20,7 +20,7 @@ Highest priority
    1. Move from wiki to developer `.rst`
    1. Change citations to new plugin
    1. Move all training to user `.rst`
-1. Deploy stale PR detector (Draper)
+1. Schedule stale PR detector (Nixon)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Update training courses for Python 3 compatability
 93821. Parallell python3 release for ubuntu
