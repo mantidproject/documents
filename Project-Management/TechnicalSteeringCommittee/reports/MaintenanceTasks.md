@@ -27,8 +27,9 @@ Highest priority
 1. More installers
     1. Parallel python3 release for ubuntu 16.04 and 18.04
     2. Install workbench in `nightly` for rhel7
-14. move to gcc >= 5.3 (or gcc 6)
+14. Move to gcc >= 5.3 (or gcc 6)
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
+3. Move to MSVS17
 3. Reducing static analysis issues that are on every pull request
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
