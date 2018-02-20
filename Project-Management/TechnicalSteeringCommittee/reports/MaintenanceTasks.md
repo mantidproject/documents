@@ -16,20 +16,17 @@ Highest priority
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
 1. Documentation
-   1. Work left from dev meeting
-   1. Move from wiki to developer `.rst`
-   1. Change citations to new plugin
-   1. Move all training to user `.rst`
-   1. Add document for migrating scripts to python2/3 compatible
+   1. Work left from dev meeting (Butler)
+   1. Move from wiki to developer `.rst` (Gigg)
+   1. Change citations to new plugin (Peterson)
+   1. Move training to user `.rst` and update for Python 3 compatability(Savici)
+   1. Add document for migrating scripts to python2/3 compatible (Whitfield)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Schedule stale PR detector (Nixon)
-1. Update training courses for Python 3 compatability
 1. More installers
-    1. Parallel python3 release for ubuntu 16.04 and 18.04
-    2. Install workbench in `nightly` for rhel7
-14. Move to gcc >= 5.3 (or gcc 6)
-    1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
-3. Move to MSVS17
+    1. Parallel python3 release for ubuntu 16.04 and 18.04 (Whitfield)
+    2. Install workbench in `nightly` for rhel7 (Peterson)
+3. Move to MSVS17 (Moore)
 3. Reducing static analysis issues that are on every pull request
    1. Document how to turn things on in `cmake` (Hahn)
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
@@ -39,7 +36,8 @@ Highest priority
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
-
+14. Move to gcc >= 5.3 (or gcc 6)
+    1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7 wanted for pybind11
 
 Pool
 ----
