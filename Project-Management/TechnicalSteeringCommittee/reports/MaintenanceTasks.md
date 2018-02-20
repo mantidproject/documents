@@ -20,10 +20,13 @@ Highest priority
    1. Move from wiki to developer `.rst`
    1. Change citations to new plugin
    1. Move all training to user `.rst`
-1. Schedule stale PR detector (Nixon)
+   1. Add document for migrating scripts to python2/3 compatible
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
+1. Schedule stale PR detector (Nixon)
 1. Update training courses for Python 3 compatability
-93821. Parallell python3 release for ubuntu
+1. More installers
+    1. Parallel python3 release for ubuntu 16.04 and 18.04
+    2. Install workbench in `nightly` for rhel7
 14. move to gcc >= 5.3 (or gcc 6)
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
 3. Reducing static analysis issues that are on every pull request
