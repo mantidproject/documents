@@ -16,6 +16,7 @@ Highest priority
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
 1. Documentation
+   1. Work left from dev meeting
    1. Move from wiki to developer `.rst`
    1. Change citations to new plugin
    1. Move all training to user `.rst`
