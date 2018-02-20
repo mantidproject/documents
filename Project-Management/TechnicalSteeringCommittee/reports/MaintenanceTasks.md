@@ -21,6 +21,7 @@ Highest priority
    1. Change citations to new plugin (Peterson)
    1. Move training to user `.rst` and update for Python 3 compatability(Savici)
    1. Add document for migrating scripts to python2/3 compatible (Whitfield)
+   1. "See Also" section on algorithms (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
 1. Schedule stale PR detector (Nixon)
 1. More installers
