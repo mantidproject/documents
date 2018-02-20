@@ -103,4 +103,4 @@ Converted to actual tickets during a release
 --------------------------------------------
 
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
-1. Proper rpm and deb packages (without cpack)
+1. Proper rpm and deb packages without cpack ([rpm and cmake](https://fedoraproject.org/wiki/Packaging:Cmake))
