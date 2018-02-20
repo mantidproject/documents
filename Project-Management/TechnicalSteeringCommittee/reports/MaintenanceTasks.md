@@ -31,6 +31,7 @@ Highest priority
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7
 3. Move to MSVS17
 3. Reducing static analysis issues that are on every pull request
+   1. Document how to turn things on in `cmake` (Hahn)
    1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
