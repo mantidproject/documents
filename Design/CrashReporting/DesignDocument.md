@@ -127,6 +127,7 @@ Field  | Data Type   |
 | Mantid Version  | TINYTEXT|
 | Hashed user ID  | TINYTEXT|
 | Hashed host ID  | TINYTEXT|
+| Number of Mantid processes running | INT |
 
 ##### If mantidplot is open
 Field  | Data Type   |  
