@@ -9,6 +9,7 @@ Pinned Topics
 New Items
 ---------
 * [Maintenance Tasks](../reports/MaintenanceTasks.md)
+* PyCifRW is now required. Should this be optional?
 * Adding [sphinxcontrib-bibtex](https://sphinxcontrib-bibtex.readthedocs.io) to the list of dependencies
 * Nexus reference frame vs IDFs. Do we do anything about this? (Lamar)
 * Major [changes](https://github.com/mantidproject/mantid/pull/21881) to Instrument View code imminent. (Lamar)
