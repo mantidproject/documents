@@ -20,9 +20,12 @@ New Items
 Minutes
 -------
 
-Attendance: Moore, Gigg, Whitfield, Savici, Hahn, Vardanyan
+Attendance: Moore, Gigg, Whitfield, Savici, Hahn, Vardanyan, Peterson
 
 * PyCifRW should be a hard dependency (Gigg)
   * Add to developer package
   * Fail at unit test level if not present
-
+* Nexus IDF should be a documentation issue.
+* Instrument refactor branch will be merged after release branch has been created
+* Try out `devtoolset-6` on RHEL 7 (Lynch)
+  * If successful then set C++14 as minimum
