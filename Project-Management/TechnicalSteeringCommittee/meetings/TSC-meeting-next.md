@@ -29,3 +29,4 @@ Attendance: Moore, Gigg, Whitfield, Savici, Hahn, Vardanyan, Peterson
 * Instrument refactor branch will be merged after release branch has been created
 * Try out `devtoolset-6` on RHEL 7 (Lynch)
   * If successful then set C++14 as minimum
+* Histogram will start to use GTest
