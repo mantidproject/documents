@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add agenda items here
+* Introduction to [MantidImaging](https://github.com/mantidproject/mantidimaging)
 
 Questions
 =========
