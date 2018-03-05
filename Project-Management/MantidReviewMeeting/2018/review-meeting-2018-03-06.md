@@ -1,8 +1,7 @@
 Agenda
 ======
 
-* Quick introduction to ISIS SANS interface.
-* [Maintenance Tasks](/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
+* Add agenda items here
 
 Questions
 =========
