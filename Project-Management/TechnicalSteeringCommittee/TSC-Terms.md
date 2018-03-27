@@ -28,3 +28,8 @@ The Mantid Technical Steering Committee operates on the following basis:
  * The members of the committee should have to an deep technical knowledge and experience over a wide range of programming, best practices and infrastructure areas.
  * Acts as an arbitration/triage point for old, controversial and large issues.
  * If the committee cannot come to a majority consensus, then the issue will be raised at the PMB.
+
+Members
+-------
+
+See [here](TSC-members.md) for the list of current members.
