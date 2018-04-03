@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add your items, links, etc. here
+* Overview of Engineering Diffraction
 
 Questions
 =========
