@@ -19,3 +19,4 @@ Minutes
 Attendees: Dan, Draper, Gigg, Hahn, Peterson, Soininen, Whitfield
 
 * [Patch release milestone](https://github.com/mantidproject/mantid/pulls?utf8=%E2%9C%93&q=is%3Apr+milestone%3A%22Release+3.12.1%22+) was created
+* The release branch will have a fixed name: `release-next`
