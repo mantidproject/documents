@@ -6,7 +6,7 @@ Agenda
    * [Test repo](https://github.com/dannixon/test)
 * Algorithm SeeAlso Links (Nick)
   * RST Doc guildelines http://developer.mantidproject.org/Standards/DocumentationGuideForDevs.html
-* [Developer site](http://developer.mantidproject.org/)
+* [Developer site](http://developer.mantidproject.org/) (Pete)
 
 Questions
 =========
