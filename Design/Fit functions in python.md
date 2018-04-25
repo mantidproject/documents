@@ -46,13 +46,13 @@ In both ways of constructing composites the functions passed as arguments should
 
 A [`MultiDomainFunction`](https://github.com/mantidproject/mantid/blob/master/Framework/API/inc/MantidAPI/MultiDomainFunction.h) is a kind of a `CompositeFunction` that can do calculations on multiple domains (e.g. multiple spectra) that are numbered and can be identified by *domain indices*. Each member function is applied to one or more domains and can have one or more domain indices associated with it. Therefore `MultiDomainFunction` needs a custom constructor to sets domain indices to its members.
 
-The only type of mapping that has been used in Mantid is one-to-one: one function - one domain. 'Global' fitting is achieved by tying some of the parameters together. Here it is proposed to restrict (to start with) the python interface to this use case only.
+The only type of mapping that has been used in Mantid is one-to-one: one function - one domain. Global tying is achieved by tying parameters from different functions together. Here it is proposed to restrict (to start with) the python interface to this use case only.
 
 So a construction of a `MultiDomainFunction` should be like this:
 ```
   md_fun = MultiDomainFunction(Gaussian(PeakCentre=1, Sigma=0.1), Gaussian(PeakCentre=1, Sigma=0.2), ..., global=['Height'])
 ```
-Each function passed to the constructor will be applied to its own domain making the number of domains equal to the number of member functions. All `Height` parameters will be tied and therefore global and all the others will be local to each domain.
+Each function passed to the constructor will be applied to its own domain making the number of domains equal to the number of member functions. In the example abaove all `Height` parameters are tied, and in that sense globally tied, whereas all the others are local to each domain and allowed to vary independently.
 
 To implement the constructor the methods of C++ class `MultiDomainFunction` need to be exported to python. In particular the `setDomainIndex` method. Here is a (very simplified) way to implement the constructor:
 ```
