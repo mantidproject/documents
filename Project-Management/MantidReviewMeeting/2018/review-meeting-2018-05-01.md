@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add any agenda items here
+* Brief overview of ISIS autoreduction and upcoming improvements (Elliot Oram)
 
 Questions
 =========
