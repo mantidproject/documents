@@ -29,3 +29,4 @@ Attendees: Anti, Lamar, Martyn, Savici, Peterson, Whitfield, Hahn
 * Developer site update
   * Pete will fix build
   * Martyn will add server side redirects
+  * Steve will move github wiki pages and disable the wiki
