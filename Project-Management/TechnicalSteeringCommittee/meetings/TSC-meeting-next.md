@@ -26,3 +26,6 @@ Attendees: Anti, Lamar, Martyn, Savici, Peterson, Whitfield, Hahn
   * Pete will email the dev list about the change
 * Pete will rebuild `mantid-developer` on copr for fc28
 * Mantid 3.13 will be the last release to support osx 10.10. After that, the minimum version required will be osx 10.13
+* Developer site update
+  * Pete will fix build
+  * Martyn will add server side redirects
