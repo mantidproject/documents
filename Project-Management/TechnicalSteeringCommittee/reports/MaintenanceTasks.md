@@ -8,7 +8,7 @@ The maintenance period starts as soon as the Beta test period for the current re
 3. Encouraging and working with scientists on Beta testing
 
 
-Maintenance tasks for 3.12
+Maintenance tasks for 3.13
 ==========================
 
 Highest priority
@@ -16,14 +16,11 @@ Highest priority
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
 1. Documentation
-   1. Work left from dev meeting (Butler)
-   1. Move from wiki to developer `.rst` (Gigg)
    1. Change citations to new plugin (Peterson)
    1. Move training to user `.rst` and update for Python 3 compatability(Savici)
    1. Add document for migrating scripts to python2/3 compatible (Whitfield)
-   1. "See Also" section on algorithms (Draper)
 1. Address [unreliable tests](https://docs.google.com/spreadsheets/d/1qs81x3ZDDxvEu3H5Zg1KN8Qfu54dIVWKI2f3-zxFaFg/edit#gid=0) on build servers (Martyn to organise)
-1. Schedule stale PR detector (Nixon)
+1. Fit function wrapper bugs and improvements (Roman)
 1. More installers
     1. Parallel python3 release for ubuntu 16.04 and 18.04 (Whitfield)
     2. Install workbench in `nightly` for rhel7 (Peterson)
