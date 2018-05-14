@@ -1,3 +1,5 @@
+The following table majorly lists the remote machines (Host) by their name and installed MantidPlot versions (Stable and eventually Unstable).
+
 | Host       | Stable | Unstable | Location | Ubuntu         |
 |------------|--------|----------|----------|----------------|
 | mantidtest | 3.11.0 |          | CS-lab   | 16.04.4 LTS    |
