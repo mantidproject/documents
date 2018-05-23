@@ -18,7 +18,7 @@ We used a google form as a questionaire during a meeting as a way to capture whi
 The results of the questionaire are linked [here](https://docs.google.com/forms/d/1l4CLQXWHC03E2hKzADrRf96ZiTGCqfz0AW9VIB6ImsE/edit#responses).  
 The questionaire is owned by the Mantidproject google account.
 
-I've also included an [excel file of the responses](ISIS Usage of Sliceviewer.xlsx)  formatted to make it easier to read.
+I've also included an [excel file of the responses]("ISIS Usage of Sliceviewer.xlsx")  formatted to make it easier to read.
 
 #### Summary
 
