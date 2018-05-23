@@ -40,6 +40,8 @@ The SANS group would love to be able to perform slices of two new forms
 1. a full elipse (this could be through of as a special case of the above)
 1. Sectors of both of the above
 
+[New slicing options](NewSlices.png)
+
 The results of this slicing would be a plot of intesity, against the angle from the centre of the elipse. 
 We already have a siliar algoithm [RingProfile](http://docs.mantidproject.org/nightly/algorithms/RingProfile-v1.html), 
 but that only supports rings as opposed to elipses at present, and cuttenrly calcuates the answer for the full ring 
