@@ -15,10 +15,10 @@ We used a google form as a questionaire during a meeting as a way to capture whi
 
 #### Responses
 
-The results of the questionaire are linked [here] (https://docs.google.com/forms/d/1l4CLQXWHC03E2hKzADrRf96ZiTGCqfz0AW9VIB6ImsE/edit#responses).  
+The results of the questionaire are linked [here](https://docs.google.com/forms/d/1l4CLQXWHC03E2hKzADrRf96ZiTGCqfz0AW9VIB6ImsE/edit#responses).  
 The questionaire is owned by the Mantidproject google account.
 
-I've also included an [excel file of the responses] (ISIS Usage of Sliceviewer.xlsx)  formatted to make it easier to read.
+I've also included an [excel file of the responses](ISIS Usage of Sliceviewer.xlsx)  formatted to make it easier to read.
 
 #### Summary
 
@@ -41,6 +41,6 @@ The SANS group would love to be able to perform slices of two new forms
 1. Sectors of both of the above
 
 The results of this slicing would be a plot of intesity, against the angle from the centre of the elipse. 
-We already have a siliar algoithm [RingProfile] (http://docs.mantidproject.org/nightly/algorithms/RingProfile-v1.html), 
+We already have a siliar algoithm [RingProfile](http://docs.mantidproject.org/nightly/algorithms/RingProfile-v1.html), 
 but that only supports rings as opposed to elipses at present, and cuttenrly calcuates the answer for the full ring 
 rather then sectors of it.
