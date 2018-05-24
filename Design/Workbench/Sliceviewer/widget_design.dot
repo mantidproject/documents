@@ -1,0 +1,38 @@
+digraph DiagramName{
+subgraph Apps{
+node [shape="box"color="forestgreen",style="rounded,filled"]
+Spec_view [label="Spectrum Viewer"]
+Slice_view [label="Slice Viewer"]
+Peaks_view [label="Peaks Viewer"]
+}
+Subgraph Widgets{
+node [shape="box"color="blue",style="rounded,filled"]
+mpl_wid
+color_bar_wid [label="Color Bar Widget"]
+XY_cut_wid [label="XY Plot widget"]
+line_cut_wid [label="Line Cut widget"]
+peaks_list_widget [label="Peaks List Widget"]
+}
+Subgraph Main_Facade{
+node [shape="box" color="red" style="filled"]
+Facade_App [label = "Facade Application"]
+}
+Subgraph Util{
+node [shape="box"]
+resample_util [label="Resample Utility"]
+Data_conv [label="Represent Data as 2D\n numpy array"]
+}
+
+subgraph cluster_plot_2d{
+label="2D Plot"
+ resample_util
+ mpl_wid [label="2D plot widget"]
+}
+
+
+{Spec_view,Slice_view,Peaks_view,Data} ->Facade_App ->{Data_conv,XY_cut_wid,line_cut_wid,peaks_list_widget}
+Data_conv->resample_util
+{XY_cut_wid,resample_util,line_cut_wid}->mpl_wid
+color_bar_wid ->mpl_wid
+
+}
