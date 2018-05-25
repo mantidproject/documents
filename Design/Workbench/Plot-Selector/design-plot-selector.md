@@ -47,11 +47,11 @@ Nice to have:
 * Option to sort by either name or last accessed plot, ascending or descending
 * Export to export plots a useful subset of supported types
 * Right-click menu to export plot
-* New option to create a plot from the plot selector
 * Arrange option to tile or cascade the current open plots (this could be investigated further to see if anything nicer can be done here to arrange the plots)
 
 Ideas for the future:
 
+* New option to create a plot from the plot selector with advanced plotting options
 * Mini-plot next to the plot name (a la LAMP)
 * Plot preview when hovering over the plot name
 * Details of the plot as for the workspace selector
