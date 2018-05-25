@@ -6,14 +6,14 @@ Slice_view [label="Slice Viewer"]
 Peaks_view [label="Peaks Viewer"]
 }
 Subgraph Widgets{
-node [shape="box"color="blue",style="rounded,filled"]
+node [shape="box"color="lightblue",style="rounded,filled"]
 
 color_bar_wid [label="Color Bar\nWidget"]
-XY_cut_wid [label="XY Plot Widget"]
+XY_cut_wid [label="XY Plot\n Widget"]
 line_cut_wid [label="Line Cut\n Widget"]
 peaks_list_widget [label="Peaks List\n Widget"]
-dim_slide_widget [label="View Dimension, slider\n and binning widget"]
-change_norm_wid [label="Change Normalization\n Widget"]
+dim_slide_widget [label="View Dimension, \nslider and \nbinning widget"]
+change_norm_wid [label="Change\n Normalization\n Widget"]
 }
 Subgraph Main_Facade{
 node [shape="box" color="red" style="filled"]
@@ -23,8 +23,8 @@ Facade_App [label = "Facade Application"]
 Subgraph Util{
 node [shape="box"]
 resample_util [label="Resample\n Utility"]
-Data_conv [label="Represent Data as 2D\n numpy array"]
-Data_conv1 [label="Represent Data as 1D\n numpy array"]
+Data_conv [label="Represent Data as\n 2D numpy array"]
+Data_conv1 [label="Represent Data as\n 1D numpy array"]
 plot_peaks [label="Plot Peaks\n utility"]
 mpl_wid [label="2D plot "]
 OneD_Plot[label="1D plot"]
@@ -35,7 +35,10 @@ subgraph level_group{
 rank=same
 integration
 peaks_list_widget
+line_cut_wid
+data_type
 }
+
 subgraph cluster_plot_2d{
 label="2D Plot View"
  resample_util
@@ -47,6 +50,13 @@ label="1D Plot view"
   OneD_Plot
 }
 
+subgraph info{
+node [color="yellow"style="filled"]
+Data [label="Data"]
+Screen_res [label="Screen\nResolution"]
+}
+
+
 {Spec_view,Slice_view,Peaks_view,Data} ->Facade_App ->{data_type,XY_cut_wid,
   line_cut_wid,peaks_list_widget,dim_slide_widget,change_norm_wid}
   integration->{Data_conv,Data_conv1}
@@ -54,6 +64,7 @@ label="1D Plot view"
 peaks_list_widget -> plot_peaks->mpl_wid
 Data_conv->resample_util
 dim_slide_widget ->integration
+Screen_res->resample_util
 {XY_cut_wid,resample_util,line_cut_wid}->mpl_wid
 color_bar_wid ->mpl_wid
 {line_cut_wid,XY_cut_wid}->data_type->integration
