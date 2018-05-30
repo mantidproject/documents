@@ -23,7 +23,7 @@ Currently the preferred option is to have a script that can amalgamate the works
 
 * How much overlap would this functionality have with Project Saving? 
 * Should the functionality be in MantidPlot or Framework?
-** It probably make sense to have the workspace recovery fn available within the framework, while the ui elements can only be in the ui.  We would need to be able to diable it in the properties file for developers, automated tests and auto reduction.
+  * It probably make sense to have the workspace recovery fn available within the framework, while the ui elements can only be in the ui.  We would need to be able to diable it in the properties file for developers, automated tests and auto reduction.
 
 ## Actions
 
