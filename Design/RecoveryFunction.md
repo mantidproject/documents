@@ -1,4 +1,4 @@
-# Introducing a Recovery function
+# Introducing a recovery function
 
 ## Motivation
 
