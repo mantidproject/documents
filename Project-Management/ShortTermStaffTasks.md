@@ -9,12 +9,12 @@ Generally the criteria should be:
 1. Some benefit or possibility of some benefit
 
 ## Tasks Awaiting Staff [Suggested by]
-- Improvements to the Fit minimizer benchmarking (multidataset fitting etc) [Anders]
 - A better PR build dashboard for the offce wall display [Nick]
 - More/Better IBEX - Mantid integration. [Sam]
 - Improve clang-format integration with git hooks [Martyn]
-- Allow the GetNegMuMuonicXRD to allow for multiple data sets [Anthony]
+- Docker containers for linux builds [Martyn]
+- Vagrant scripts for local dev vm's [Martyn]
 
 ## Tasks Assigned to Staff
-
-
+- Allow the GetNegMuMuonicXRD to allow for multiple data sets [Anthony] Summer Student Ewan Cook
+- Improvements to the Fit minimizer benchmarking (multidataset fitting etc) [Anders] Summer Student
