@@ -19,6 +19,10 @@ The recovery function should generate a script, this should:
 
 Currently the preferred option is to have a script that can amalgamate the workspace histories in the current instance of Mantid and generate a single script. This can be done by comparing time/date-stamps, algorithm names and input parameters.
 
+### Notes/considerations
+
+In sequential fitting algoritms may run with the same timestamp, but have different outputs. This suggests that string comparison as well as timestamp comparison will be necessary.
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
