@@ -25,7 +25,18 @@ In sequential fitting algoritms may run with the same timestamp, but have differ
 
 Workspace history will not delete workspaces that might have been deleted during the uptime. This could become an issue if there are a lot of these.
 
-If a workspace is a memeber of a grouped workspace and another member of that group has been deleted, the original group workspace command will fail, as there is no record of all workspaces in the group. This is realted to `ADSValidator`
+If a workspace is a memeber of a grouped workspace and another member of that group has been deleted, the original group workspace command will fail, as there is no record of all workspaces in the group. This is realted to `ADSValidator`.
+
+Places where `ADSValidator` occurs:
+* `Framework/Algorithms/src/DeleteWorkspaces.cpp`
+* `Framework/Algorithms/src/GroupWorkspaces.cpp`
+* `Framework/Muon/src/ConvertFitFunctionForMuonTFAsymmetry.cpp`
+* `Framework/Algorithms/src/Stitch1DMany.cpp`
+* `Framework/Algorithms/src/SumOverlappingTubes.cpp`
+* `Framework/Algorithms/src/ConjoinXRuns.cpp`
+* `Framework/WorkflowAlgorithms/src/ExtractQENSMembers.cpp`
+* `Framework/Algorithms/src/MergeRuns.cpp`
+* `Framework/Algorithms/src/PolarizationEfficiencyCor.cpp`
 
 ## Open questions
 
