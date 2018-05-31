@@ -28,16 +28,17 @@ Data_conv1 [label="Represent Data as\n 1D numpy array"]
 plot_peaks [label="Plot Peaks\n utility"]
 mpl_wid [label="2D plot "]
 OneD_Plot[label="1D plot"]
-data_type [label="Determine\nData Type"]
-integration [label="Perform\n Integration"]
+#data_type [label="Determine\nData Type"]
+#integration [label="Perform\n Integration"]
+
 }
-subgraph level_group{
+/* subgraph level_group{
 rank=same
 integration
 peaks_list_widget
 line_cut_wid
 data_type
-}
+} */
 
 subgraph cluster_plot_2d{
 label="2D Plot View"
@@ -57,16 +58,16 @@ Screen_res [label="Screen\nResolution"]
 }
 
 
-{Spec_view,Slice_view,Peaks_view,Data} ->Facade_App ->{data_type,XY_cut_wid,
+{Spec_view,Slice_view,Peaks_view,Data} ->Facade_App ->{XY_cut_wid,
   line_cut_wid,peaks_list_widget,dim_slide_widget,change_norm_wid}
-  integration->{Data_conv,Data_conv1}
-  change_norm_wid->integration
+  change_norm_wid->{Data_conv,Data_conv1}
 peaks_list_widget -> plot_peaks->mpl_wid
 Data_conv->resample_util
-dim_slide_widget ->integration
+dim_slide_widget ->Data_conv
 Screen_res->resample_util
 {XY_cut_wid,resample_util,line_cut_wid}->mpl_wid
 color_bar_wid ->mpl_wid
-{line_cut_wid,XY_cut_wid}->data_type->integration
+{line_cut_wid}->Data_conv1
 Data_conv1->OneD_Plot
+XY_cut_wid->Data_conv1
 }
