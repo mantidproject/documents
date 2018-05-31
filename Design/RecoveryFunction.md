@@ -38,6 +38,8 @@ Places where `ADSValidator` occurs:
 * `Framework/Algorithms/src/MergeRuns.cpp`
 * `Framework/Algorithms/src/PolarizationEfficiencyCor.cpp`
 
+Check how `ConjoinWorkspaces` deals with history.
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
