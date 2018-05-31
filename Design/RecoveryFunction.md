@@ -25,6 +25,8 @@ In sequential fitting algoritms may run with the same timestamp, but have differ
 
 Workspace history will not delete workspaces that might have been deleted during the uptime. This could become an issue if there are a lot of these.
 
+If a workspace is a memeber of a grouped workspace and another member of that group has been deleted, the original group workspace command will fail, as there is no record of all workspaces in the group. This is realted to `ADSValidator`
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
