@@ -23,6 +23,8 @@ Currently the preferred option is to have a script that can amalgamate the works
 
 In sequential fitting algoritms may run with the same timestamp, but have different outputs. This suggests that string comparison as well as timestamp comparison will be necessary.
 
+Workspace history will not delete workspaces that might have been deleted during the uptime. This could become an issue if there are a lot of these.
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
