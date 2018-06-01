@@ -40,12 +40,16 @@ Places where `ADSValidator` occurs:
 
 Check how `ConjoinWorkspaces` deals with history.
 
+Certain actions performed in instrument view require a new workspace to be created before the algorithm can be executed. An example of this is `AddPeak`, in instrument view this creates a new peak workspace behind the scnenes, but this is not captured in the workspace history. As a result the script does not work properly when re-run. This can be re-created by running the unscripted diffraction test number 1 (ask Keith about this test if unsure).
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
 * Should the functionality be in MantidPlot or Framework?
-  * It probably make sense to have the workspace recovery fn available within the framework, while the ui elements can only be in the ui.  We would need to be able to diable it in the properties file for developers, automated tests and auto reduction.
+  * It probably makes sense to have the workspace recovery fn available within the framework, while the ui elements can only be in the ui.  We would need to be able to disable it in the properties file for developers, automated tests and auto reduction.
 
 ## Actions
 
 Keith to work on prototyping and testing the proposed implementation. (30 May 2018)
+
+David to look at the separation of workspace and plotting states in `Save Project`. (June 2018)
