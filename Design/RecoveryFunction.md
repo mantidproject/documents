@@ -21,6 +21,8 @@ Currently the preferred option is to have a script that can amalgamate the works
 
 ### Notes/considerations
 
+The algorithm timestamp is going to have to go to shorter denominations - in the `Muon-esque` example there is a case where two algorithms are run at the "same" time, then end up in different workspace history files and as a result are re-assembled in the wrong order.
+
 In sequential fitting algoritms may run with the same timestamp, but have different outputs. This suggests that string comparison as well as timestamp comparison will be necessary.
 
 Workspace history will not delete workspaces that might have been deleted during the uptime. This could become an issue if there are a lot of these.
