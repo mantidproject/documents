@@ -55,3 +55,20 @@ Certain actions performed in instrument view require a new workspace to be creat
 Keith to work on prototyping and testing the proposed implementation. (30 May 2018)
 
 David to look at the separation of workspace and plotting states in `Save Project`. (June 2018)
+
+
+## Implementation steps
+
+1. POC
+   1. POC Saving: Script to generate history, and graph and window saving
+   2. POC recovery: Recovery to previous state using script manually in the script editor
+   3. Performance evaulation
+2. Early integration
+   1. Automatic svaing of workspace script and window saving (seperate thread every n minutes)
+   2. Detection of recovery script on startup, option to ignore or send to script editor.  Script complete including creating windows & plots.
+   3. Stability evaulation
+   4. Fix already identified holes in history (workspace list porpoerties, etc.)
+3. Improve integration
+   1. Keep workspace script more up to date using signals from the ADS and timestamps from the hitory and script to incrementally keep workspace script current
+   2. Add option to automatically recover, including a progress bar of some sort, and abort option.
+   3. Usability testing
