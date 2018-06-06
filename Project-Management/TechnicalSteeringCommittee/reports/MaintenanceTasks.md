@@ -36,7 +36,7 @@ Highest priority
 1. Move to El Capitan and drop support Yosemitte (Hahn)
 14. Move to gcc >= 5.3 (or gcc 6)
     1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7 wanted for pybind11
-1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` for Clang as well as GCC. (Jackson)
+1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)
 
 Pool
 ----
