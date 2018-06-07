@@ -44,6 +44,8 @@ Check how `ConjoinWorkspaces` deals with history.
 
 Certain actions performed in instrument view require a new workspace to be created before the algorithm can be executed. An example of this is `AddPeak`, in instrument view this creates a new peak workspace behind the scnenes, but this is not captured in the workspace history. As a result the script does not work properly when re-run. This can be re-created by running the unscripted diffraction test number 1 (ask Keith about this test if unsure).
 
+Group/ungroup workspaces is not captured in the WS history
+
 ## Open questions
 
 * How much overlap would this functionality have with Project Saving? 
