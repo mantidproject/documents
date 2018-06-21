@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add agenda items here
+* Introduction to new FitPeaks (WZ)
 
 Questions
 =========
