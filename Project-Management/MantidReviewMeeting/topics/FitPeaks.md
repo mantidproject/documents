@@ -2,10 +2,19 @@
 
 ## The algorithms to do peak fitting in Mantid
 
-* [Fit]()
-* [FindPeaks](http://docs.mantidproject.org/nightly/algorithms/FindPeaks-v1.html)
+* [Fit](http://docs.mantidproject.org/nightly/algorithms/Fit-v1.html)
 * [FitPeak](http://docs.mantidproject.org/nightly/algorithms/FitPeak-v1.html)
-* 
+* [FindPeaks](http://docs.mantidproject.org/nightly/algorithms/FindPeaks-v1.html)
+* MantidPlot fitting UI
+
+### A brief history
+
+* Long long time ago...
+** Fit
+** FindPeaks
+*** Finding peaks by fitting peaks in the given location;
+*** Using Mariscotti algorithm to *observe* peaks; Fitting peaks that are *observed*
+
 
 ## First place to look: [Concept Pages](http://docs.mantidproject.org/nightly/concepts/WorkspaceGroup.html).
 
