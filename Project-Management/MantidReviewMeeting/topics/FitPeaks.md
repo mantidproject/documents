@@ -15,13 +15,16 @@
    * Finding peaks by fitting peaks in the given location;
    * Using Mariscotti algorithm to *observe* peaks; Fitting peaks that are *observed*
 * Required to improve for
- * fitting some vanadium peaks
- * fitting for tens of thousands Gaussian peaks
+
+  * fitting some vanadium peaks
+  * fitting for tens of thousands Gaussian peaks
 * FindPeaks got more and more complicated and hard to read and improve
- * FitPeak was split from FindPeaks for better maintanence
+
+  * FitPeak was split from FindPeaks for better maintanence
 * Eventually in 2017, it failed on several applications
- * Vulcan's diamond data
- * Powgen's low angle data
+
+  * Vulcan's diamond data
+  * Powgen's low angle data
  
 ### What we want in FitPeaks
 
