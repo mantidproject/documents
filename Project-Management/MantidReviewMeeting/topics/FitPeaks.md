@@ -10,10 +10,13 @@
 ### A brief history
 
 * Long long time ago...
- * Fit
- * FindPeaks -- call Fit as a child algorithm
-   * Finding peaks by fitting peaks in the given location;
-   * Using Mariscotti algorithm to *observe* peaks; Fitting peaks that are *observed*
+
+  * Fit
+  * FindPeaks -- call Fit as a child algorithm
+  
+    * Finding peaks by fitting peaks in the given location;
+    * Using Mariscotti algorithm to *observe* peaks; Fitting peaks that are *observed*
+    
 * Required to improve for
 
   * fitting some vanadium peaks
