@@ -32,13 +32,18 @@
 ### What we want in FitPeaks
 
 * Be able to fit all the peaks present FindPeaks can fit,
- * i.e., replace peak fitting in FindPeaks
+
+  * i.e., replace peak fitting in FindPeaks
+
 * Easy to set up
+
 * Be able to tackle the complicated use cases
+
 * More on non-functional requirements
- * Output fitted data
- * Detailed list of fitted parameters' value
- * and etc.
+
+  * Output fitted data
+  * Detailed list of fitted parameters' value
+  * and etc.
 
 ## First place to look: [Concept Pages](http://docs.mantidproject.org/nightly/concepts/WorkspaceGroup.html).
 
