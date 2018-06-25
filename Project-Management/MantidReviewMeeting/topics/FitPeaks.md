@@ -42,44 +42,39 @@
   * Detailed list of fitted parameters' value
   * and etc.
 
-## First place to look: [Concept Pages](http://docs.mantidproject.org/nightly/concepts/WorkspaceGroup.html).
+## FitPeaks
 
-Documentation says:
-> A WorkspaceGroup is a group of workspaces.
+### First place to look: [FitPeaks](http://docs.mantidproject.org/nightly/algorithms/FitPeaks-v1.html).
 
-Gives information on:
-* grouping
-* un-grouping
-* expected behaviour in algorihtms
+### Core algorithm
 
+Find out the correct starting value of all the peak profile parameters for [Fit](http://docs.mantidproject.org/nightly/algorithms/Fit-v1.html) to fit the function usually by Levenberg-Markardt.
 
+### Starting value of peak parameters
 
-## Using WorkspaceGroups in Algorithms
-* Algorithms which accept Workspaces properties which are not groups may in some cases still run with WorkspaceGroups. The result will be the algorithm being executed on each workspace in the group in turn.
-```python
-dataX = [0, 2, 4, 6, 8, 10, 12, 14]
-dataY = [98, 30, 10, 2, 1, 1, 1]
+FitPeaks is taking care of starting value of peak parameters for multiple peaks in multiple spectra.
 
-ws1 = CreateWorkspace(dataX, dataY)
-ws2 = CloneWorkspace(ws1)
+* Observable parameters: height, center, **width**
+* Parameters hard to have valued guessed from observation:
+  * Example: A, B and S from back to back exponential convoluted with Gaussian
+  
+#### Estimating peak width
 
-group = GroupWorkspaces([ws1, ws2])
+ * Percentage of TOF or dSpacing (instrument resolution)
+ * 2nd moment (only 1 peak in the fit window)
+ * Using the neighboring peak's fitted width
+ 
+#### In order to get a good starting value of peak width
 
+ * Peak positions
+ * Peak range or instrument resolution
+ 
+## Next step
 
-ouput = Rebin(group, 1)
-
-
-print type(ouput)
-```
-* Algorithms which accept WorkspaceGroup specifically will not work if the wrong workspace type is passed e.g PolarizationCorrection.
-```python
-dataX = [0, 2, 4, 6, 8, 10, 12, 14]
-dataY = [98, 30, 10, 2, 1, 1, 1]
-
-ws = CreateWorkspace(dataX, dataY)
-
-output = PolarizationCorrection(ws) #ValueError
-```
+* Replace peak fitting algorithm in FindPeaks
+* Replace peak fitting algorithm in StripPeaks and thus StripVanadiumPeaks
+* Refactor the single peak fitting part in FitPeaks to FitPeak, while remove original FitPeak
+  
 
 
 
