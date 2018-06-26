@@ -20,6 +20,7 @@ Highest priority
    1. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
       1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
+      1. Fix GCC 7 compiler warnings
    1. Update developer documentation
 1. Enable auto deployment of developer docs (Gigg/Peterson)
 1. More installers
@@ -54,7 +55,6 @@ Start from the top of the list
    1. create a common `almost_equals` function in Kernel [see this](http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon).
 7. Change tests of `CurveFitting` "functions" to be actual unit tests [#16267](https://github.com/mantidproject/mantid/issues/16267) (Gemma)
 1. Remove finders that exist in standard cmake 3.5
-12. Fix GCC 7 compiler warnings (Peterson) *isn't this done?*
 15. Remove uses of strcpy, sprintf, etc. [See ParaView-developers thread ](http://public.kitware.com/pipermail/paraview-developers/2017-April/005276.html)
 1. Investigate overhead from logging [#20493](https://github.com/mantidproject/mantid/issues/20493)
 1. Editing actual variable and class names - investigate the discrepancy of our code with that in [C++ coding standards](http://www.mantidproject.org/C%2B%2B_Coding_Standards) and not covered by `clang-format`, max 1 days effort
