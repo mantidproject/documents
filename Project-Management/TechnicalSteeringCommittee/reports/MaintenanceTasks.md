@@ -28,7 +28,7 @@ Highest priority
 3. Reducing static analysis issues that are on every pull request
    1. Move `clang-format` to version 5 (Moore)
    1. [cppcheck 1.84](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
-   2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
+   2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues (issue [here](https://github.com/mantidproject/mantid/issues/20508))
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
 1. Extract performance tests build configuration into a script in the repository (Nixon)
