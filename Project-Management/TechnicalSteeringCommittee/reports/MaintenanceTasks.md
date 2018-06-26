@@ -17,26 +17,22 @@ Highest priority
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
     2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need *moved from below*
 1. C++14 on all platforms *top priority?*
-   3. Move to MSVS17 (Moore)
+   1. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
       1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
-1. Documentation
-   1. Enable auto deployment of developer docs
-   1. Change citations to new plugin (Peterson)
-   1. Move training to user `.rst` and update for Python 3 compatability(Savici)
-   1. Add document for migrating scripts to python2/3 compatible (Whitfield)
-1. Fit function wrapper bugs and improvements (Roman) *is this finished?*
+   1. Update developer documentation
+1. Enable auto deployment of developer docs (Gigg/Peterson)
 1. More installers
     1. Parallel python3 release for ubuntu 16.04 and 18.04 (Whitfield)
     2. Install workbench in `nightly` for rhel7 (Peterson) *actual work for next release*
 3. Reducing static analysis issues that are on every pull request
-   1. *clang-format update*
-   1. Document how to turn things on in `cmake` (Hahn)
-   1. [cppcheck 1.80](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
+   1. Move `clang-format` to version 5 (Moore)
+   1. [cppcheck 1.84](http://builds.mantidproject.org/job/master_cppcheck/), upgrade version, move from jenkins into git
    2. [python3-flake8](http://builds.mantidproject.org/job/master_flake8_python3/) prioritizing complexity issues - Joe (issue [here](https://github.com/mantidproject/mantid/issues/20508))
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
 1. Extract performance tests build configuration into a script in the repository (Nixon)
+1. Update list of supported os on [download site](http://download.mantidproject.org/)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
 1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)
 
@@ -98,9 +94,14 @@ For another release
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete
+1. Document how to [turn things on in `cmake`](https://blog.kitware.com/static-checks-with-cmake-cdash-iwyu-clang-tidy-lwyu-cpplint-and-cppcheck/) (Hahn)
 
 Converted to actual tickets during a release
 --------------------------------------------
 
+1. Documentation
+   1. Change citations to new plugin (Peterson)
+   1. Move training to user `.rst` and update for Python 3 compatability(Savici)
+   1. Add document for migrating scripts to python2/3 compatible (Whitfield)
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
 1. Proper rpm and deb packages without cpack ([rpm and cmake](https://fedoraproject.org/wiki/Packaging:Cmake))
