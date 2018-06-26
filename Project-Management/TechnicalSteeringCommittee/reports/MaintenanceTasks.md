@@ -100,7 +100,7 @@ Converted to actual tickets during a release
 --------------------------------------------
 
 1. Documentation
-   1. Change citations to new plugin (Peterson)
+   1. Change citations to new plugin [#21750](https://github.com/mantidproject/mantid/pull/21750)(Peterson)
    1. Move training to user `.rst` and update for Python 3 compatability(Savici)
    1. Add document for migrating scripts to python2/3 compatible (Whitfield)
 1. Add `f2py` code to the builds - this is an ongoing process, only complex items remain (translating fortran to python and effectively support as python)
