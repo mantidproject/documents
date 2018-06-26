@@ -15,8 +15,7 @@ Highest priority
 ----------------
 
 1. **Look over tickets (assigned and created by you) and close invalid ones (everybody) and [stale branches](https://github.com/mantidproject/mantid/branches/stale)**
-    2. Remove [stale branches](https://github.com/mantidproject/mantid/branches/stale) after checking with developers which ones they still need *moved from below*
-1. C++14 on all platforms *top priority?*
+1. C++14 on all platforms
    1. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
       1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
