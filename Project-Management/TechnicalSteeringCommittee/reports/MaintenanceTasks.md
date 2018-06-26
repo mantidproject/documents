@@ -36,7 +36,6 @@ Highest priority
    3. [pylint](http://builds.mantidproject.org/view/Static%20Analysis/job/master_pylint/) - need to review scope
    3. [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy/)
 1. Extract performance tests build configuration into a script in the repository (Nixon)
-1. Decouple scientific interface interdependencies. The recent restructure revealed some hidden dependencies (Gigg)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
 1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)
 
