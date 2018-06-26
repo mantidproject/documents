@@ -19,9 +19,7 @@ Highest priority
 1. C++14 on all platforms *top priority?*
    3. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
-      14. Move to gcc >= 5.3 (or gcc 6)
-      1. [devtoolset-4](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-4/) on RHEL 7 wanted for pybind11
-   1. *ubuntu?*
+      1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
 1. Documentation
    1. Change citations to new plugin (Peterson)
    1. Move training to user `.rst` and update for Python 3 compatability(Savici)
