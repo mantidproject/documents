@@ -9,6 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* Sataus of release and [maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 * Status of new workbench on RHEL7
 * Status of SliceViewer replacement (Hahn)
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
