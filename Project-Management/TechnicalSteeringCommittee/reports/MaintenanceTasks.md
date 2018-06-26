@@ -21,6 +21,7 @@ Highest priority
    1. SCL on rhel7 (Peterson)
       1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
 1. Documentation
+   1. Enable auto deployment of developer docs
    1. Change citations to new plugin (Peterson)
    1. Move training to user `.rst` and update for Python 3 compatability(Savici)
    1. Add document for migrating scripts to python2/3 compatible (Whitfield)
