@@ -19,5 +19,8 @@ def randomFile(instrument, years, basePath=os.path.join('/' 'net', 'serdon', 'il
     expDir = random.choice(expDirs)
     dataDir = os.path.join(expDir, 'rawdata')
     files = glob.glob(os.path.join(dataDir, '*.nxs'))
-    return random.choice(files)
+    try:
+      return random.choice(files)
+    except IndexError:
+      pass
 
