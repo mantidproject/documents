@@ -9,7 +9,7 @@ Pinned Topics
 
 New Items
 ---------
-* Status of release and [maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
+* Status of [release](http://developer.mantidproject.org/ReleaseChecklist.html) and [maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md)
 * OSX discussion
 * Status of new workbench on RHEL7
 * Status of SliceViewer replacement (Hahn)
