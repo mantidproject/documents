@@ -1,6 +1,6 @@
 # 2. Move to ClangFormat 5
 
-Date: 2018-07-05
+Date: 2018-06-26
 
 ## Status
 
