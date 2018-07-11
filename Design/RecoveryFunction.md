@@ -69,7 +69,7 @@ these running PIDs from the original recovery list. If more than 1 recovery opti
 
 #### Note for v3.13
 
-Due to time constraints a more limited system that simply checks if any other `MantidPlot` process is running and disables project recovery will be implmented.
+Due to time constraints a more limited system that simply checks if any other `MantidPlot` process is running and disables project recovery will be considered, and implemented if the full implementation is not possible in time.
 
 
 ## Open questions
