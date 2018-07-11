@@ -18,8 +18,8 @@ Highest priority
 1. C++14 on all platforms
    1. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
-      1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
-      1. Fix GCC 7 compiler warnings
+      1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants [PR22864](https://github.com/mantidproject/mantid/pull/22864)
+      1. ~~Fix GCC 7 compiler warnings~~
    1. Update developer documentation
 1. Enable auto deployment of developer docs (Gigg/Peterson)
 1. More installers
