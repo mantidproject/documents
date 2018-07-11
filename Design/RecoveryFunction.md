@@ -62,7 +62,9 @@ RECOVERY_ROOT
           |-- timestamp-3
 ```
 
-where *hostname* is the machine name and *pid* is the process ID of the running process. On a clean exit of MantidPlot only the *pid* folder would be removed.
+where *hostname* is the machine name and *pid* is the process ID of the running process. On a clean exit of MantidPlot only the *pid* folder would be removed for the current machine.
+
+Each timestamped folder will contain a marker file whilst the checkpoint is being written, which is removed after the write has completed. Any time stamped folders containing this file, indicating a partial save point, will not be offered for recovery.
 
 On starting a new session of MantidPlot the recovery function would generated a list of recovery directories for its hostname. It would then get a list of all PIDs of the currently running MantidPlot processes and remove any of
 these running PIDs from the original recovery list. If more than 1 recovery option is available then a selection will be offered to the user.
