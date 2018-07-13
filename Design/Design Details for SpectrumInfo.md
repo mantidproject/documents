@@ -1,4 +1,4 @@
-`# Exposing SpectrumInfo
+# Exposing SpectrumInfo
 
 ## Introduction
 This document outlines which methods will be exposed from [`SpectrumInfo.cpp`](https://github.com/mantidproject/mantid/blob/43fc616926a32863f37e37f4a107413a0de6dee6/Framework/API/src/SpectrumInfo.cpp) to the Python side via the export file [`SpectrumInfo.cpp`](https://github.com/mantidproject/mantid/blob/dead50f2dbcf307f89ad63b69c2f51caccc9ade5/Framework/PythonInterface/mantid/api/src/Exports/SpectrumInfo.cpp).
