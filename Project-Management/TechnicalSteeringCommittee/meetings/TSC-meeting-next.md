@@ -17,6 +17,7 @@ New Items
   * Ideas:
     * is macports/fink an option? - it allows setting the deployment target as a configuration option
     * take the same approach as Windows and build libraries - time consuming, hard to update things
+    * linux `clang` on pull requests and osx nightly
 
 * Status of new workbench on RHEL7
 * Status of SliceViewer replacement (Hahn)
