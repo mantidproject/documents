@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Add Agenda items here
+* Karl is retiring.
 
 Questions
 =========
