@@ -10,8 +10,8 @@ There are plans to expose [`DetectorInfo`](https://github.com/mantidproject/mant
 Method Signature in SpectrumInfo.cpp | Method Usage in Python
 --------------------------------|--------------------------------------
 `size_t size() const` | `int len(SpectrumInfo obj)`
-c`size_t size() const` | `int size()`
-p`bool isMonitor(const size_t index) const` | `bool isMonitor(int index)`
+`size_t size() const` | `int size()`
+`bool isMonitor(const size_t index) const` | `bool isMonitor(int index)`
 `bool isMasked(const size_t index) const` | `bool isMasked(int index)`
 `void setMasked(const size_t index, bool masked)` | `void setMasked(int index, bool masked)`
 `double twoTheta(const size_t index) const` | `double twoTheta(int index)`
@@ -20,7 +20,7 @@ p`bool isMonitor(const size_t index) const` | `bool isMonitor(int index)`
 `double l2(const size_t index) const` | `double l2(int index)`
 `bool hasDetectors(const size_t index) const` | `bool hasDetectors()`
 `bool hasUniqueDetector(const size_t index) const` | `bool hasUniqueDetector(int index)`
-p`Kernel::V3D position(const size_t index) const` | `V3D position(int index)`
+`Kernel::V3D position(const size_t index) const` | `V3D position(int index)`
 `Kernel::V3D sourcePosition() const` | `V3D sourcePosition()``Kernel::V3D samplePosition() const` | `V3D samplePosition()`
 -- | `list<SpectrumDefinition> getAllSpectrumDefinitions()`
 
