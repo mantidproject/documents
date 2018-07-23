@@ -10,7 +10,7 @@ The base class for holding event data (or list data) in a NeXus file is [`NXeven
 
 ## File Structure
 
-The event NeXus files are generally identical to the non-event NeXus files, with additional entries for the event data, but all other information recorded as for histogram only NeXus files. Hence they can be loaded either with LoadEventNeXus or the usual loader for the files. At the SNS event files are denoted by ending in `_event.nxs`.
+The event NeXus files are generally identical to the non-event NeXus files, with additional entries for the event data, but all other information, including histograms, is recorded as for standard NeXus files. Hence they can be loaded either with LoadEventNeXus or the usual loader for the files. At the SNS event files are denoted by ending in `_event.nxs`.
 
 The `NXevent_data` class needs to be created within the NeXus file, this can be created alongside the normal histogram data. For example the SNS `/entry/bankN` is used for the `NXdata` class and `/entry/bankN_events` is used, where N is the bank number. ISIS have a single `NXevent_data` class in their NeXus files, which is always written to `/raw_data_1/detector_1_events`, while SNS write one `NXevent_data` class per bank.
 
@@ -21,11 +21,11 @@ If an `NXevent_data` class is present then the loader in Mantid will default to 
 The following needs to be contained in the `NXevent_data` class:
 
  * `event_id` (size `NEvents`) - provides a way of mapping the event to the detector. This could be a detector ID, see below for further discussion.
- * `event_time_offset` (size `NEvents`) - a list of timestamps for each event. These are relative to the `event_time_zero` entry. In Mantid these are currently need to be in units of microsecond and of type Float32.
+ * `event_time_offset` (size `NEvents`) - a list of timestamps for each event. These are relative to the `event_time_zero` entry. In Mantid these are currently assumed to be in units of microsecond and of type Float32.
  * `event_time_zero` (size `NPulses`) - the start time of each pulse. This is given as an offset from an offset attribute on the entry, which is an ISO 8601 timestamp (e.g. `2018-03-25T12:08:37+02:00`). The units should be given, but Mantid currently assumes seconds (stored as 64-bit floating point).
  * `event_index` (size `NPulses`) - this gives an index into `event_id` and `event_time_offset` for when the current pulse started. For example if the first values are 0, 39, 89... then the first pulse corresponds to events 0 - 38 in `event_id` and `event_time_offset`, the second pulse 39 - 88 etc.
 
-Here `NEvents` it the number of neutron events, and NPulses is the number of pulses (could be chopper pulses, or just number of times a new `event_time_zero` is required to be written).
+Here `NEvents` it the number of neutron events, and `NPulses` is the number of pulses (could be chopper pulses, or just number of times a new `event_time_zero` is required to be written).
 
 The following is useful to have in the file, but not essential:
 
@@ -37,7 +37,7 @@ The SNS files `CNCS_7860_event.nxs` and `LARMOR00013065.nxs` provide good exampl
 
 The SNS event NeXus files write event IDs as detector IDs (TBC if this is correct), ISIS write a mapping from spectra to detector IDs in the `isis_vms_compat` entry.
 
-The event ID could be written as the detector ID used in Mantid for the ILL instruments. For counts or histogram data a mapping is used to associate the counts or histograms to a detector ID in Mantid, defined by the loader for the ILL data and the Mantid Instrument Definition file. The mapping used in Mantid for the ILL instrument can vary depending on the technique or instrument, but generally starts at 1 and goes along tubes from bottom to top, and then can go in either increasing or decreasing scattering angle.
+For counts or histogram data a mapping is used to associate to a detector ID in Mantid, defined by the loader for the ILL data and the Mantid instrument definition. The mapping used in Mantid for the ILL instrument can vary depending on the technique or instrument, but generally starts at 1 and goes along tubes from bottom to top, and then can go in either increasing or decreasing scattering angle.
 
 Ideally in the event NeXus files we will be able to write the detector IDs, as used in Mantid, as the event IDs. These will need to be set correctly for each technique (and possibly instrument).
 
@@ -45,7 +45,7 @@ Alternatively an arbitrary event ID could be written, and a mapping to the corre
 
 ## Time Series Logs for Metadata
 
-To record meta-data that varies with time the [NXlog class](http://download.nexusformat.org/sphinx/classes/base_classes/NXlog.html) can be used in the NeXus file. These logs can be used whether working with histogram data or event data. They are used at ISIS and SNS and are well supported in Mantid, giving quick access to the statistics for the log - see [TimeSeriesProperty](http://docs.mantidproject.org/nightly/api/python/mantid/kernel/TimeSeriesProperty.html).
+To record metadata that varies with time the [`NXlog` class](http://download.nexusformat.org/sphinx/classes/base_classes/NXlog.html) can be used in the NeXus file. These logs can be used whether working with histogram data or event data. They are used at ISIS and SNS and are well supported in Mantid, giving quick access to the statistics for the log - see [TimeSeriesProperty](http://docs.mantidproject.org/nightly/api/python/mantid/kernel/TimeSeriesProperty.html).
 
 To write the times series log the following is needed:
 
