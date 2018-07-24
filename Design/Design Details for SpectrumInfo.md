@@ -26,7 +26,6 @@ Method Signature in SpectrumInfo.cpp | Method Usage in Python
 
 ### Further Information
 As can be seen from the above table, the majority of the exported methods retain their name and arguments on the Python side.
-`const std::pair<size_t, size_t> &operator[](const size_t index)` | `__getitem__(int index)`
 It was also decided that any methods involving `position` or `rotation` would need to have their documentation updated such that the prefix "absolute" is used when referring to those methods. The purpose of this being so that we can distinguish between `Instrument 1.0` and `Instrument 2.0`.
 
 The last change is with regards to the method `getAllSpectrumDefinitions()`. This method is not actually implemented in the C++ `SpectrumInfo` class but it is exported as it was thought that a list of all the `SpectrumDefinition`s would be more natural to users.
