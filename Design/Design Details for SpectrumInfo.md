@@ -18,10 +18,11 @@ Method Signature in SpectrumInfo.cpp | Method Usage in Python
 `double signedTwoTheta(const size_t index) const` | `double signedTwoTheta(int index)`
 `double l1() const` | `double l1()`
 `double l2(const size_t index) const` | `double l2(int index)`
-`bool hasDetectors(const size_t index) const` | `bool hasDetectors()`
+`bool hasDetectors(const size_t index) const` | `bool hasDetectors(int index)`
 `bool hasUniqueDetector(const size_t index) const` | `bool hasUniqueDetector(int index)`
 `Kernel::V3D position(const size_t index) const` | `V3D position(int index)`
-`Kernel::V3D sourcePosition() const` | `V3D sourcePosition()``Kernel::V3D samplePosition() const` | `V3D samplePosition()`
+`Kernel::V3D sourcePosition() const` | `V3D sourcePosition()`
+`Kernel::V3D samplePosition() const` | `V3D samplePosition()`
 -- | `list<SpectrumDefinition> getAllSpectrumDefinitions()`
 
 ### Further Information
