@@ -45,4 +45,13 @@ The newly exposed `ComponentInfo` layer is accessible from a workspace - example
  * `componentInfo.getSample()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
 
 ## Rolling out the Changes
+Before rolling out any changes, it is probably a good idea to develop a new set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations. 
 
+#### Figuring out a Possible API
+Once the `InstrumentRayTracer 2.0` class is actually implemented, it might be worth creating a separate design document (as done for `ComponentInfo`, `DetectorInfo` and `SpectrumInfo`) to breifly outline which methods would be best to expose to the Python side.
+
+#### Changes to the Code Base
+The best way to completely move away from using `InstrumentRayTracer` (and not completely break everything) would be to start with a selection of "testing files" that currently use the `InstrumentRayTracer` e.g `Peak` and begin to change them one by one. Once all of those files are in working order it would provide enough confidence in the new implementation and all the other files can then be updated.
+
+#### Performance Issues
+To ensure that the new implementation performs just as well as the existing version, benchmarking tools could be used to record the current performance and this can be used as a target for the new implementation.
