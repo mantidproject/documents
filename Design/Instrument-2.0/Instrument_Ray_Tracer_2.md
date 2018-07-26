@@ -22,6 +22,7 @@ The goal of this document is to outline a plan for the new `InstrumentRayTracer`
    * How to ensure that performance is good enough
  
 ## Implementation Details of `InstrumentRayTracer 2.0`
+
 #### Reuse of Original Code
 One idea for the implementation of `InstrumentRayTracer 2.0` is to have many of the old methods from `InstrumentRayTracer` carried over. This is would be a good way to proceed as it would hopefully mean that there will not be as many breaking changes to worry about. The methods to be replaced would be where the legacy API calls are made - i.e. anything that uses `Instrument` could be modified so that the new `Geometry` and `Beamline` layers are used instead. Methods headers that could be kept the same include:
 
@@ -39,10 +40,16 @@ If all goes well with the plan to use `ComponentInfo` where possible, it is very
 
 ## Using the Functionality of `ComponentInfo`
 It seems that using the functionality of `ComponentInfo` is very much possible and might well be the best way to proceed.
-The newly exposed `ComponentInfo` layer is accessible from a workspace - examples of usage can be found [here](). Possible methods that could be used in `InstrumentRayTracer 2.0` might include:
+The newly exposed `ComponentInfo` layer is accessible from a workspace - examples of usage can be found [here](). 
+
+#### Useful Code
+Possible methods that could be used in `InstrumentRayTracer 2.0` might include:
 
  * `componentInfo.getSource()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
  * `componentInfo.getSample()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
+
+#### Incorporating Code
+It should not be too difficult to reuse the code from `ComponentInfo`. It should just be a case of making sure the `ComponentInfo` class is accessible from `InstrumentRayTracer 2.0`.
 
 ## Rolling out the Changes
 Before rolling out any changes, it is probably a good idea to develop a new set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations. 
