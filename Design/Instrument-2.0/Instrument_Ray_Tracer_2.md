@@ -24,6 +24,7 @@ Although the headers do not explicity have anything to do with `Instrument`, man
 ## The Constructor
 To rewrite the constructor it may be enough to pass in a `const` reference to a `ComponentInfo` object. This would ensure that the `InstrumentRayTracer` works as intended but there is a chance that undefined behaviour could arise if scoping is used.
 
+
 ```c++
 // This example would work as intended
 InstrumentRayTracer2* ptr;
@@ -41,17 +42,16 @@ InstrumentRayTracer2* ptr;
 ptr.trace(V3D(0,0,0));
 
 ```
-
 #### `ComponentInfo` Copy Implementation 
 One other possible implementation could be that a copy of a `ComponentInfo` object is passed to the constructor. `ComponentInfo` is also cheap to copy because in this [copy constructor](https://github.com/mantidproject/mantid/blob/bc136744a7edd8306c86e5176e5625d337852994/Framework/Beamline/src/ComponentInfo.cpp#L28) shared pointers are created to the orginal copy's data. This should also ensure that the undefined behaviour mentioned above should not happen.
-#### Classless Implementation
 
+#### Classless Implementation
 Another idea could be to make the methods of `InstrumentRayTracer 2.0` a set of free functions. Each of the functions would need to take in a `ComponentInfo` and any other variables required to carry out the correct procedure. This approach would definitely eliminate the passing around of the `InstrumentRayTracer` object that currently happens. Also, there are not many variables that would need to be passed to each of the methods meaning calls to the functions would remain largely the same.
 
 ## Usage of `ComponentInfo`
 If all goes well with the plan to use `ComponentInfo` where possible, it is very likely that the code to use `InstrumentRayTracer 2.0` will be very similar to the current method of using it. Possible methods from `ComponentInfo` that could be used in `InstrumentRayTracer 2.0` might include:
 
- * `componentInfo.getSource()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
+  * `componentInfo.getSource()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
  * `componentInfo.getSample()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
  * `bool isDetector(const size_t componentIndex) const in IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
  
@@ -67,6 +67,9 @@ Before rolling out any changes, it is probably a good idea to develop a set of t
 
 #### Changes to the Code Base
 The best way to completely move away from using `InstrumentRayTracer` (and not completely break everything) would be to start with a selection of "testing files" that currently use the `InstrumentRayTracer` e.g `Peak` and begin to change them one by one. Once all of those files are in working order it would provide enough confidence in the new implementation and all the other files can then be updated.
+
+#### Changes to Peak
+`Peak.h` has a member variable called `m_inst`. This is the kind of thing we would like to get away from using. By using `ComponentInfo` we can replace almost all the calls made using the `m_inst` variable. However, passing in a `const ComponentInfo` reference may end up being a bit expensive due to the copying of the shared pointers that a `ComponentInfo` holds. One way to avoid this extra expense is to pass in an `ExperimentInfo` object which has access to the `ComponentInfo` object required to make the necessary calls. This method should be cheaper and just as effective. If the classless implementation option is chosen, there would be no need to even store the `m_inst` variable.
 
 #### Performance Issues
 To ensure that the new implementation performs just as well as the existing version, benchmarking tools could be used to record the current performance and this can be used as a target for the new implementation. It does not seem that there would be any major changes to performance since much of the code should remain somewhat similar. If anything, using `ComponentInfo` should reduce the number of function calls being made. 
