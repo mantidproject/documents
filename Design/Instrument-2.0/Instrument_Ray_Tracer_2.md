@@ -41,16 +41,14 @@ ptr.trace(V3D(0,0,0));
 
 ```
 
-#### ComponentInfo Copy Implementation 
+#### `ComponentInfo` Copy Implementation 
 One other possible implementation could be that a copy of a `ComponentInfo` object is passed to the constructor. ComponentInfo is also cheap to copy because in the [copy constructor](https://github.com/mantidproject/mantid/blob/8ec802f56c5db2261a0f9502f30f67fe42530d62/Framework/Geometry/src/Instrument/ComponentInfo.cpp#L88) shared pointers are created to the orginal copy's data. This should also ensure that the undefined behaviour mentioned above should not happen.
 
 #### Classless Implementation
-Another idea could be to make the methods of `InstrumentRayTracer 2.0` a set of free functions. Each of the functions would need to take in a `ComponentInfo` and any other variables required to carry out the correct procedure. This approach would definitely eliminate the passing around of the `InstrumentRayTracer` object that currently happens. Also, there are not many variables that would need to be passed to each of the methods meaning calls to the methods would remain largely the same. 
+Another idea could be to make the methods of `InstrumentRayTracer 2.0` a set of free functions. Each of the functions would need to take in a `ComponentInfo` and any other variables required to carry out the correct procedure. This approach would definitely eliminate the passing around of the `InstrumentRayTracer` object that currently happens. Also, there are not many variables that would need to be passed to each of the methods meaning calls to the functions would remain largely the same.
 
 ## Usage of `ComponentInfo`
-If all goes well with the plan to use `ComponentInfo` where possible, it is very likely that the code to use `InstrumentRayTracer 2.0` will be very similar to the current method of using it. It seems that using the functionality of `ComponentInfo` is very much possible and might well be the best way to proceed.
-
-Possible methods from `ComponentInfo` that could be used in `InstrumentRayTracer 2.0` might include:
+If all goes well with the plan to use `ComponentInfo` where possible, it is very likely that the code to use `InstrumentRayTracer 2.0` will be very similar to the current method of using it. Possible methods from `ComponentInfo` that could be used in `InstrumentRayTracer 2.0` might include:
 
  * `componentInfo.getSource()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
  * `componentInfo.getSample()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
@@ -58,7 +56,7 @@ Possible methods from `ComponentInfo` that could be used in `InstrumentRayTracer
 It should not be too difficult to reuse the code from `ComponentInfo` as it should just be a case of making sure the `ComponentInfo` class is accessible from `InstrumentRayTracer 2.0`.
 
 ## Rolling out the Changes
-Before rolling out any changes, it is probably a good idea to develop a new set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations. 
+Before rolling out any changes, it is probably a good idea to develop a set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations. 
 
 #### Changes to the Code Base
 The best way to completely move away from using `InstrumentRayTracer` (and not completely break everything) would be to start with a selection of "testing files" that currently use the `InstrumentRayTracer` e.g `Peak` and begin to change them one by one. Once all of those files are in working order it would provide enough confidence in the new implementation and all the other files can then be updated.
