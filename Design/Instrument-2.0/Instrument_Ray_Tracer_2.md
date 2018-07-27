@@ -2,7 +2,9 @@
 ## Design Document
 
 ## Introduction
-The current implementation of [`InstrumentRayTracer`](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h#L56) works off the orginal `Instrument` API and not the `Instrument 2.0` layers, such as `ComponentInfo`, `DetectorInfo` and `SpectrumInfo`. Due to this, there is a dependency on `Instrument` in [`Peak`](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/inc/MantidDataObjects/Peak.h#L182) and as such it is currently not possible to move away from using this legacy API. The intention is to stop developers needing access to the `Instrument` API and instead steer them towards using the new `Geometry` and `Beamline` layers as mentioned above.
+The current implementation of [`InstrumentRayTracer`](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h#L56) works off the orginal `Instrument` API and not the `Instrument 2.0` layers, such as `ComponentInfo`, `DetectorInfo` and `SpectrumInfo`. Due to this, there is a dependency on `Instrument` in [`Peak`](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/inc/MantidDataObjects/Peak.h#L182) and as such it is currently not possible to move away from using this legacy API. 
+
+The intention is to stop developers needing access to the `Instrument` API and instead steer them towards using the new `Geometry` and `Beamline` layers as mentioned above. The layers provided by `Instrument 2.0` are much more efficient and the read performance is much better. It makes sense to start re-implementing code to make full use of the new layers and this move can help to optimise much of the code base. Also the `ComponentInfo` layer has been designed in such a way that the majority (if not all) of the functionality provided by `Instrument` is readily available via `ComponentInfo`.
 
 The goal of this document is to outline a plan for `InstrumentRayTracer 2.0` and to figure out how to move away from making any calls to the legacy API.
  
@@ -33,7 +35,7 @@ ptr.trace(V3D(0,0,0));
 
 // With the following scoping, there would be undefined behaviour
 InstrumentRayTracer2* ptr;
-{ 
+{
   auto ws = CreateWorkspace();
   ptr = new InstrumentRayTracer2(ws.componentInfo);
 }
@@ -42,7 +44,7 @@ ptr.trace(V3D(0,0,0));
 ```
 
 #### `ComponentInfo` Copy Implementation 
-One other possible implementation could be that a copy of a `ComponentInfo` object is passed to the constructor. ComponentInfo is also cheap to copy because in the [copy constructor](https://github.com/mantidproject/mantid/blob/8ec802f56c5db2261a0f9502f30f67fe42530d62/Framework/Geometry/src/Instrument/ComponentInfo.cpp#L88) shared pointers are created to the orginal copy's data. This should also ensure that the undefined behaviour mentioned above should not happen.
+One other possible implementation could be that a copy of a `ComponentInfo` object is passed to the constructor. `ComponentInfo` is also cheap to copy because in the [copy constructor](https://github.com/mantidproject/mantid/blob/8ec802f56c5db2261a0f9502f30f67fe42530d62/Framework/Geometry/src/Instrument/ComponentInfo.cpp#L88) shared pointers are created to the orginal copy's data. This should also ensure that the undefined behaviour mentioned above should not happen.
 
 #### Classless Implementation
 Another idea could be to make the methods of `InstrumentRayTracer 2.0` a set of free functions. Each of the functions would need to take in a `ComponentInfo` and any other variables required to carry out the correct procedure. This approach would definitely eliminate the passing around of the `InstrumentRayTracer` object that currently happens. Also, there are not many variables that would need to be passed to each of the methods meaning calls to the functions would remain largely the same.
