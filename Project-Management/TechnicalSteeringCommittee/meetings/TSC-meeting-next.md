@@ -10,6 +10,7 @@ Pinned Topics
 New Items
 ---------
 * Status of [maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md) ([release is done](https://github.com/mantidproject/mantid/releases))
+* Unit/doc/system test should work at non ISIS facility (Savici)
 * OSX dependencies discussion
   * Homebrew does not allow setting the deployment target -> can only build for macOS version you have
   * Apple hardware does not allow installing previous versions of macOS on newer hardware
