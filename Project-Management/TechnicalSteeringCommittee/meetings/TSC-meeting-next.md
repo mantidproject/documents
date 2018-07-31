@@ -25,3 +25,7 @@ New Items
 * Status of SliceViewer replacement (Hahn)
 * Update on move to clang-format `v5.0`
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
+
+Minutes
+-------
+Attendees: Savici, Peterson, Whitfield, Gigg, Draper, Moore, Heybrock
