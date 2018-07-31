@@ -10,8 +10,8 @@ Pinned Topics
 New Items
 ---------
 * Status of [maintenance tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md) ([release is done](https://github.com/mantidproject/mantid/releases))
-* Unit/doc/system test should work at non ISIS facility (Savici)
-* OSX dependencies discussion
+* Unit/doc/system test should work at non-ISIS facility (Savici)
+* Mac dependencies discussion
   * Homebrew does not allow setting the deployment target -> can only build for macOS version you have
   * Apple hardware does not allow installing previous versions of macOS on newer hardware
   * Potentially risky situation if hardware fails that we can't support the version of macOS that we need
@@ -30,3 +30,12 @@ Minutes
 -------
 Attendees: Savici, Peterson, Whitfield, Gigg, Draper, Moore, Heybrock
 * Suggested mantid review meeting topic: engineering interface bake-off
+* Status of move to C++14
+  * RHEL7 there is an issue with TBB in VATES - Pete will try more
+  * MSVS15 has is an issue specifically with singleton and threadsafety - clang on linux also has issue which may be related
+* Update on move to clang-format `v5.0` - ready to try it again
+* Unit/doc/system test should work at non-ISIS facility - change the development properties file to have `TEST_LIVE` as the default facility
+* Mac dependencies discussion - need to invite Ganeva and Gagik to meeting to help discussion
+* Status of new workbench on RHEL7
+  * current plan for linux packaging is to put everything in `.../bin`
+  * a new person was identified for the instrument view fixes
