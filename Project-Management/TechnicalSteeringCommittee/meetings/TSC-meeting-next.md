@@ -20,6 +20,7 @@ New Items
     * take the same approach as Windows and build libraries - time consuming, hard to update things
     * linux `clang` on pull requests and osx nightly
 
+* Status of move to C++14
 * Status of new workbench on RHEL7
 * Status of SliceViewer replacement (Hahn)
 * Update on move to clang-format `v5.0`
