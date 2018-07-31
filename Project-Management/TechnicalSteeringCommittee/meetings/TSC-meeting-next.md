@@ -29,3 +29,4 @@ New Items
 Minutes
 -------
 Attendees: Savici, Peterson, Whitfield, Gigg, Draper, Moore, Heybrock
+* Suggested mantid review meeting topic: engineering interface bake-off
