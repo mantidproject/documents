@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* Engineering GUI bake-off (Zhou and ???)
+* Engineering GUI bake-off (Zhou, Jackson, Jenkins)
 
 Questions
 =========
