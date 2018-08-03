@@ -56,7 +56,7 @@ Find out the correct starting value of all the peak profile parameters for [Fit]
 
 FitPeaks is taking care of starting value of peak parameters for multiple peaks in multiple spectra.
 
-<img src="group.PNG" width=270 height=200/>
+<img src="vdrive_live.png" width=270 height=200/>
 
 ## Next step
 
