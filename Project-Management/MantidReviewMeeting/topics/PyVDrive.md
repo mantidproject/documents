@@ -75,6 +75,10 @@ It can be seen as advanced data reduction too.
   * Reduction result visualization
   * Single peak fitting
   
+  <img src="pyvdrive_reduce.png" width=540 height=400/>
+  <img src="pyvdrive_chop.png" width=540 height=400/>
+  <img src="pyvdrive_peak_fit.png" width=540 height=400/>
+  
 * Matplotlib is the backend for 1D and 2D plotting
 
 ### IPython console
@@ -83,7 +87,7 @@ It can be seen as advanced data reduction too.
 
 * Recognize and process all VDRIVE IDL-command
 
-<img src="vdrive_live.png" width=540 height=400/>
+<img src="pyvdrive_terminal.png" width=540 height=400/>
 
 ### Live-view
 
