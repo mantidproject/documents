@@ -54,7 +54,15 @@
 
 * Compare diffraction patterns from various runs, various scans and etc
 * Visualize the sample log values
-* Pole figure
+* Pole figure (To be implemented soon)
+
+### Simple analysis
+
+It can be seen as advanced data reduction too.
+
+* Single peak fitting
+* Strain/stress calculation
+* Pole figure calculation
 
 ## User interface
 
@@ -75,11 +83,13 @@
 
 * Recognize and process all VDRIVE IDL-command
 
+<img src="vdrive_live.png" width=540 height=400/>
+
 ### Live-view
 
 PyVDrive-Live-View is a standalone application inside PyDrive package for user to view the focused diffraction in realtime.
 
-<img src="vdrive_live.png" width=270 height=200/>
+<img src="vdrive_live.png" width=540 height=400/>
 
 Features:
 * Show the focused diffraction incrementally for each bank
