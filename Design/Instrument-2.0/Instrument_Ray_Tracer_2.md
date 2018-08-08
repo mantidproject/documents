@@ -51,13 +51,11 @@ Another idea could be to make the methods of `InstrumentRayTracer 2.0` a set of 
 ## Usage of `ComponentInfo`
 If all goes well with the plan to use `ComponentInfo` where possible, it is very likely that the code to use `InstrumentRayTracer 2.0` will be very similar to the current method of using it. Possible methods from `ComponentInfo` that could be used in `InstrumentRayTracer 2.0` might include:
 
-  * `componentInfo.getSource()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
- * `componentInfo.getSample()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
- * `bool isDetector(const size_t componentIndex) const in IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
- 
+ * `componentInfo.sourcePosition()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
+ * `componentInfo.samplePosition()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
 
 Missing methods:
- * `getComponentByIndex()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
+ * `getComponentByID()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
  * `isMonitor()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
 
 It should not be too difficult to reuse the code from `ComponentInfo` as it should just be a case of making sure the `ComponentInfo` class is accessible from `InstrumentRayTracer 2.0`.
