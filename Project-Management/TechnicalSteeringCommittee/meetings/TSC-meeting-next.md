@@ -22,3 +22,4 @@ New Items
     * take the same approach as Windows and build libraries - time consuming, hard to update things
     * linux `clang` on pull requests and osx nightly
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
+* [Loss of events in MD Workspaces](https://github.com/mantidproject/mantid/issues/23224)
