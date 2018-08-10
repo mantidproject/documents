@@ -23,13 +23,11 @@ Method Signature in SpectrumInfo.cpp | Method Usage in Python
 `Kernel::V3D position(const size_t index) const` | `V3D position(int index)`
 `Kernel::V3D sourcePosition() const` | `V3D sourcePosition()`
 `Kernel::V3D samplePosition() const` | `V3D samplePosition()`
--- | `list<SpectrumDefinition> getAllSpectrumDefinitions()`
+-- | `SpectrumDefinition getSpectrumDefinition(int index)`
 
 ### Further Information
 As can be seen from the above table, the majority of the exported methods retain their name and arguments on the Python side.
 It was also decided that any methods involving `position` or `rotation` would need to have their documentation updated such that the prefix "absolute" is used when referring to those methods. The purpose of this being so that we can distinguish between `Instrument 1.0` and `Instrument 2.0`.
-
-The last change is with regards to the method `getAllSpectrumDefinitions()`. This method is not actually implemented in the C++ `SpectrumInfo` class but it is exported as it was thought that a list of all the `SpectrumDefinition`s would be more natural to users.
 
 To gain access to the `SpectrumInfo` object and run the above methods the user must do something similar to:
 
@@ -42,7 +40,7 @@ The user receives a `SpectrumInfo` object on which they can call the methods lis
 
 ## Exposing SpectrumDefinition 
 The methods to be exposed in `SpectrumDefinition` can be found at [`SpectrumDefinition.h`](https://github.com/mantidproject/mantid/blob/7c099518cd4351da37474e96cdc005678bebf753/Framework/Types/inc/MantidTypes/SpectrumDefinition.h)
-Since the method `getAllSpectrumDefinitions()` returns a list of type `SpectrumDefinition`, a new class called `SpectrumDefinition` was exposed as well. This object allows the user access to the following methods:
+Since the method `getSpectrumDefinition()` returns an object of type `SpectrumDefinition`, a new class called `SpectrumDefinition` was exposed as well. This object allows the user access to the following methods:
 
 Method Signature in SpectrumDefinition.h | Method Usage in Python
 --------------------------------|--------------------------------------
@@ -54,18 +52,18 @@ Method Signature in SpectrumDefinition.h | Method Usage in Python
 ### Further Information
 The `__getitem__` method would actually need to call an another intermediate method called `toTuple()`. This intermediate method is required as the return type of `operator[]` is a `std::pair<size_t, size_t>` and it does not really make sense to expose this type to Python when the `tuple` type already exists! The `toTuple()` method extracts out the pair details and creates and returns a `boost::python::tuple`.
 
-To gain access to the `SpectrumDefinition` objects the user must do something similar to:
+To gain access to the `SpectrumDefinition` object the user must do something similar to:
 
 ```python
 
 info = workspace.spectrumInfo()
-spectrumDefinitionList = info.getAllSpectrumDefinitions()
+spectrumDefinitionObject = info.getSpectrumDefinition(0)
 ```
 
-They can then call the above methods by indexing into `spectrumDefinitionList` - e.g.
+They can then call the above methods like so:
 
 ```python
 
-spectrumDefinitionList[0].size()
+spectrumDefinitionObject.size()
 
 ```
