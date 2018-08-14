@@ -23,3 +23,4 @@ New Items
     * linux `clang` on pull requests and osx nightly
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
 * [Loss of events in MD Workspaces](https://github.com/mantidproject/mantid/issues/23224)
+* [CTests and threading](https://github.com/DMSC-Instrument-Data/documents/blob/eef67316a6c88d66cc1873ce2431c5646045a2d2/investigations/Ctest_and_threads/using_threads_with_ctest.md)
