@@ -35,7 +35,7 @@ ptr.trace(V3D(0,0,0));
 // With the following scoping, there would be undefined behaviour
 InstrumentRayTracer2* ptr;
 {
-  auto ws = CreateWorkspace();
+  auto ws = CreateWorkspace();  
   ptr = new InstrumentRayTracer2(ws.componentInfo);
 }
 
@@ -53,7 +53,7 @@ If all goes well with the plan to use `ComponentInfo` where possible, it is very
 
  * `componentInfo.sourcePosition()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
  * `componentInfo.samplePosition()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
-
+ 
 Missing methods:
  * `getComponentByID()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
  * `isMonitor()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
@@ -81,6 +81,9 @@ Based on the options outlined above, it seems that the best approach may be to m
  * No need to pass around `InstrumentRayTracer` objects
  
 Much of the core code should remain the same, so efficiency and performance should not be negatively affected in any way.
+
+## Survey of Peak Creation
+As requested, a survey of everywhere that a `Peak` instance is created has been carried out. The findings from this feasibility study suggests that in most code files an `ExperimentInfo` item should be available to use via a `PeaksWorkspace` object. This should be possible because `PeaksWorkspace` inherits from `IPeaksWorkspace` which inherits from `ExperimentInfo`. The only real issues seem to come from test files where for example a `ComponentCreationHelper` is used to set the instrument. One idea is to refactor these test classes to use a manufactured `ExperimentInfo` object which has the instrument set by some other means. Generally the actual code files should all be able to cope with a refactored `Peak` object which takes an `ExpermentInfo` object instead of the instrument itself. There are 5 files which need to be reviewed. The full feasibility study can be found [here](https://github.com/BhuvanBezawada/documents/blob/23005_new_instrument_ray_tracer/Design/Instrument-2.0/Usage%20of%20Peak.xlsx).
 
 ## Relevant Files
 [InstrumentRayTracer.h](https://github.com/mantidproject/mantid/blob/f60045bd5ed646dbb4f203d21f2cd17420e0d705/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h)
