@@ -2,12 +2,12 @@
 ## Design Document
 
 ## Introduction
-The current implementation of [`InstrumentRayTracer`](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h#L56) works off the orginal `Instrument` API and not the `Instrument 2.0` layers, such as `ComponentInfo`, `DetectorInfo` and `SpectrumInfo`. Due to this, there is a dependency on `Instrument` in [`Peak`](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/inc/MantidDataObjects/Peak.h#L182) and as such it is currently not possible to move away from using this legacy API. 
+The current implementation of [`InstrumentRayTracer`](https://github.com/mantidproject/mantid/blob/master/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h#L56) works off the orginal `Instrument` API and not the `Instrument 2.0` layers, such as `ComponentInfo`, `DetectorInfo` and `SpectrumInfo`. Due to this, there is a dependency on `Instrument` in [`Peak`](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/inc/MantidDataObjects/Peak.h#L182) and as such it is currently not possible to move away from using this legacy API.
 
 The intention is to stop developers needing access to the `Instrument` API and instead steer them towards using the new `Geometry` and `Beamline` layers as mentioned above. The layers provided by `Instrument 2.0` are much more efficient and the read performance is much better. It makes sense to start re-implementing code to make full use of the new layers and this move can help to optimise much of the code base. Also the `ComponentInfo` layer has been designed in such a way that the majority (if not all) of the functionality provided by `Instrument` is readily available via `ComponentInfo`.
 
 The goal of this document is to outline a plan for `InstrumentRayTracer 2.0` and to figure out how to move away from making any calls to the legacy API.
- 
+
 ## `InstrumentRayTracer 2.0` Methods
 
 #### Reuse of Original Code
@@ -19,7 +19,7 @@ One idea for the implementation of `InstrumentRayTracer 2.0` is to have many of 
  * `void fireRay(Track &testRay) const`
 
 #### Possible New Methods
-Although the headers do not explicity have anything to do with `Instrument`, many of the method bodies make use of the member variable `m_instrument` to carry out various tasks. This variable is created and initialised in the constructor. From looking at the implementation in [`InstrumentRayTracer.cpp`](https://github.com/BhuvanBezawada/mantid/blob/master/Framework/Geometry/src/Objects/InstrumentRayTracer.cpp), it seems that the constructor is the one place where there is a dependence on `Instrument` and this is probably the one area that needs to be fully rewritten. 
+Although the headers do not explicity have anything to do with `Instrument`, many of the method bodies make use of the member variable `m_instrument` to carry out various tasks. This variable is created and initialised in the constructor. From looking at the implementation in [`InstrumentRayTracer.cpp`](https://github.com/BhuvanBezawada/mantid/blob/master/Framework/Geometry/src/Objects/InstrumentRayTracer.cpp), it seems that the constructor is the one place where there is a dependence on `Instrument` and this is probably the one area that needs to be fully rewritten.
 
 ## The Constructor
 To rewrite the constructor it may be enough to pass in a `const` reference to a `ComponentInfo` object. This would ensure that the `InstrumentRayTracer` works as intended but there is a chance that undefined behaviour could arise if scoping is used.
@@ -42,7 +42,7 @@ InstrumentRayTracer2* ptr;
 ptr.trace(V3D(0,0,0));
 
 ```
-#### `ComponentInfo` Copy Implementation 
+#### `ComponentInfo` Copy Implementation
 One other possible implementation could be that a copy of a `ComponentInfo` object is passed to the constructor. `ComponentInfo` is also cheap to copy because in this [copy constructor](https://github.com/mantidproject/mantid/blob/bc136744a7edd8306c86e5176e5625d337852994/Framework/Beamline/src/ComponentInfo.cpp#L28) shared pointers are created to the orginal copy's data. This should also ensure that the undefined behaviour mentioned above should not happen.
 
 #### Classless Implementation
@@ -53,7 +53,7 @@ If all goes well with the plan to use `ComponentInfo` where possible, it is very
 
  * `componentInfo.sourcePosition()` in `void InstrumentRayTracer::trace(const V3D &dir) const`
  * `componentInfo.samplePosition()` in `void InstrumentRayTracer::traceFromSample(const V3D &dir) const`
- 
+
 Missing methods:
  * `getComponentByID()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
  * `isMonitor()` for `IDetector_const_sptr InstrumentRayTracer::getDetectorResult() const`
@@ -61,7 +61,7 @@ Missing methods:
 It should not be too difficult to reuse the code from `ComponentInfo` as it should just be a case of making sure the `ComponentInfo` class is accessible from `InstrumentRayTracer 2.0`.
 
 ## Rolling out the Changes
-Before rolling out any changes, it is probably a good idea to develop a set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations. 
+Before rolling out any changes, it is probably a good idea to develop a set of tests exclusively for this new class. Some tests (especially for methods that do not make calls to the legacy API) could probably be based on the existing tests with a few alterations.
 
 #### Changes to the Code Base
 The best way to completely move away from using `InstrumentRayTracer` (and not completely break everything) would be to start with a selection of "testing files" that currently use the `InstrumentRayTracer` e.g `Peak` and begin to change them one by one. Once all of those files are in working order it would provide enough confidence in the new implementation and all the other files can then be updated.
@@ -70,22 +70,22 @@ The best way to completely move away from using `InstrumentRayTracer` (and not c
 `Peak.h` has a member variable called `m_inst`. This is the kind of thing we would like to get away from using. By using `ComponentInfo` we can replace almost all the calls made using the `m_inst` variable. However, passing in a `const ComponentInfo` reference may end up being a bit expensive due to the copying of the shared pointers that a `ComponentInfo` holds. One way to avoid this extra expense is to pass in a `const ExperimentInfo` shared pointer object which has access to the `ComponentInfo` object required to make the necessary calls. This method should be cheaper and just as effective. If the classless implementation option is chosen, there would be no need to even store the `m_inst` variable.
 
 #### Performance Issues
-To ensure that the new implementation performs just as well as the existing version, benchmarking tools could be used to record the current performance and this can be used as a target for the new implementation. It does not seem that there would be any major changes to performance since much of the code should remain somewhat similar. If anything, using `ComponentInfo` should reduce the number of function calls being made. 
+To ensure that the new implementation performs just as well as the existing version, benchmarking tools could be used to record the current performance and this can be used as a target for the new implementation. It does not seem that there would be any major changes to performance since much of the code should remain somewhat similar. If anything, using `ComponentInfo` should reduce the number of function calls being made.
 
 ## Conclusion
-Based on the options outlined above, it seems that the best approach may be to make `InstrumentRayTracer 2.0` a classless implementation. There are a number of reasons for this choice: 
- 
+Based on the options outlined above, it seems that the best approach may be to make `InstrumentRayTracer 2.0` a classless implementation. There are a number of reasons for this choice:
+
  * The same operations can be achieved in far fewer lines of code.
  * There is no need to worry about copying `ComponentInfo`
  * The internal code will be just as efficient
  * No need to pass around `InstrumentRayTracer` objects
- 
+
 Much of the core code should remain the same, so efficiency and performance should not be negatively affected in any way.
 
 ## Survey of Peak Creation
 As requested, a survey of everywhere that a `Peak` instance is created has been carried out. The findings from this feasibility study suggests that in most code files an `ExperimentInfo` item should be available to use via a `PeaksWorkspace` object. This should be possible because `PeaksWorkspace` inherits from `IPeaksWorkspace` which inherits from `ExperimentInfo`. The only real issues seem to come from test files where for example a `ComponentCreationHelper` is used to set the instrument. One idea is to refactor these test classes to use a manufactured `ExperimentInfo` object which has the instrument set by some other means. Generally the actual code files should all be able to cope with a refactored `Peak` object which takes an `ExpermentInfo` object instead of the instrument itself. There are 5 files which need to be reviewed. The full feasibility study can be found [here](https://github.com/BhuvanBezawada/documents/blob/23005_new_instrument_ray_tracer/Design/Instrument-2.0/Usage%20of%20Peak.xlsx).
 
-## Relevant Files
+## Relevant Files for `InstrumentRayTracer`
 [InstrumentRayTracer.h](https://github.com/mantidproject/mantid/blob/f60045bd5ed646dbb4f203d21f2cd17420e0d705/Framework/Geometry/inc/MantidGeometry/Objects/InstrumentRayTracer.h)
 
 [InstrumentRayTracer.cpp](https://github.com/mantidproject/mantid/blob/98a6c146c2e58d943d48deb1c2b996a023808f49/Framework/Geometry/src/Objects/InstrumentRayTracer.cpp)
@@ -125,3 +125,90 @@ As requested, a survey of everywhere that a `Peak` instance is created has been 
 [RectangularDetector.cpp](https://github.com/mantidproject/mantid/blob/bc136744a7edd8306c86e5176e5625d337852994/Framework/Geometry/src/Instrument/RectangularDetector.cpp)
 
 [CMakeLists.txt](https://github.com/mantidproject/mantid/blob/8a5ddb4937b7486ce01480149dbffe1c3925647f/Framework/Geometry/CMakeLists.txt)
+
+## Relevant Files for `Peak`
+[CalculateUMatrixTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/CalculateUMatrixTest.h)
+
+[CentroidPeaksMD2Test.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/CentroidPeaksMD2Test.h)
+
+[CentroidPeaksMDTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/CentroidPeaksMDTest.h)
+
+[CentroidPeaksTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/CentroidPeaksTest.h)
+
+[CloneWorkspaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Algorithms/test/CloneWorkspaceTest.h)
+
+[ClusterIntegrationBaseTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/ClusterIntegrationBaseTest.h)
+
+[CountReflections.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/CountReflections.cpp)
+
+[CreatePeaksWorkspace.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Algorithms/src/CreatePeaksWorkspace.cpp)
+
+[FindClusterFacesTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/FindClusterFacesTest.h)
+
+[IntegratePeaksCWSD.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/src/IntegratePeaksCWSD.cpp)
+
+[IntegratePeaksCWSDTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/IntegratePeaksCWSDTest.h)
+
+[IntegratePeaksMD.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/src/IntegratePeaksMD.cpp)
+
+[IntegratePeaksMD2Test.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/IntegratePeaksMD2Test.h)
+
+[IntegratePeaksMDHKLTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/IntegratePeaksMDHKLTest.h)
+
+[IntegratePeaksMDTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/MDAlgorithms/test/IntegratePeaksMDTest.h)
+
+[IntegratePeakTimeSlicesTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/IntegratePeakTimeSlicesTest.h)
+
+[LoadHKL.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/LoadHKL.cpp)
+
+[LoadHKLTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/LoadHKLTest.h)
+
+[LoadIsawPeaks.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/LoadIsawPeaks.cpp)
+
+[LoadNexusProcessed.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/DataHandling/src/LoadNexusProcessed.cpp)
+
+[MaskPeaksWorkspaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/MaskPeaksWorkspaceTest.h)
+
+[PeakBackgroundTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeakBackgroundTest.h)
+
+[PeakClusterProjectionTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeakClusterProjectionTest.h)
+
+[PeakColumnTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/test/PeakColumnTest.h)
+
+[PeakHKLErrors.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/PeakHKLErrors.cpp)
+
+[PeakIntegrationTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeakIntegrationTest.h)
+
+[PeakIntensityVsRadiusTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeakIntensityVsRadiusTest.h)
+
+[PeaksInRegionTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeaksInRegionTest.h)
+
+[PeaksOnSurfaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeaksOnSurfaceTest.h)
+
+[PeakStatisticsToolsTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PeakStatisticsToolsTest.h)
+
+[PeaksWorkspace.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/src/PeaksWorkspace.cpp)
+
+[PeaksWorkspaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/test/PeaksWorkspaceTest.h)
+
+[PeakTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/DataObjects/test/PeakTest.h)
+
+[PredictPeaksTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/PredictPeaksTest.h)
+
+[SaveHKLTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/SaveHKLTest.h)
+
+[SaveIsawPeaksTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/SaveIsawPeaksTest.h)
+
+[SaveLauenormTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/SaveLauenormTest.h)
+
+[SCDCalibratePanels.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/SCDCalibratePanels.cpp)
+
+[SCDPanelErrors.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/src/SCDPanelErrors.cpp)
+
+[SortHKLTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/SortHKLTest.h)
+
+[SortPeaksWorkspaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/SortPeaksWorkspaceTest.h)
+
+[StatisticsOfPeaksWorkspaceTest.h](https://github.com/mantidproject/mantid/blob/master/Framework/Crystal/test/StatisticsOfPeaksWorkspaceTest.h)
+
+[WorkspaceCreationHelper.cpp](https://github.com/mantidproject/mantid/blob/master/Framework/TestHelpers/src/WorkspaceCreationHelper.cpp)
