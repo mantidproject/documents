@@ -34,7 +34,9 @@ Highest priority
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Update list of supported os on [download site](http://download.mantidproject.org/)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
-1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)
+1. ~~Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)~~
+1. `Kernel::make_unique` -> `std::make_unique` and remove former.
+
 
 Pool
 ----
