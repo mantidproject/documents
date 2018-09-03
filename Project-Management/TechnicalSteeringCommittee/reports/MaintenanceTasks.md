@@ -18,10 +18,10 @@ Highest priority
 1. C++14 on all platforms
    1. Move to MSVS17 (Moore)
    1. SCL on rhel7 (Peterson)
-      1. [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants
-      1. Fix GCC 7 compiler warnings
+      1. ~~[devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) on RHEL 7 and other variants [PR22864](https://github.com/mantidproject/mantid/pull/22864)~~
+      1. ~~Fix GCC 7 compiler warnings~~
    1. Update developer documentation
-1. Enable auto deployment of developer docs (Gigg/Peterson)
+1. ~~Enable auto deployment of developer docs (Gigg/Peterson)~~ [done](http://builds.mantidproject.org/view/All/job/developer_site/5668/)
 1. More installers
     1. Parallel python3 release for ubuntu 16.04 and 18.04 (Whitfield)
     2. Install workbench in `nightly` for rhel7 (Peterson) *actual work for next release*
@@ -34,7 +34,9 @@ Highest priority
 1. Extract performance tests build configuration into a script in the repository (Nixon)
 1. Update list of supported os on [download site](http://download.mantidproject.org/)
 1. Move to El Capitan and drop support Yosemitte (Hahn)
-1. Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)
+1. ~~Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)~~
+1. `Kernel::make_unique` -> `std::make_unique` and remove former.
+
 
 Pool
 ----
@@ -62,9 +64,6 @@ Start from the top of the list
 1. Look at addressing issues shown up by [clang-tidy](http://builds.mantidproject.org/view/Static%20Analysis/job/clang_tidy). Someone needs to look through the issues and first prioritize what we look at, potentially see what the `autofix` can do for us. (Steve)
    1.  Split [performance-unnecessary-value-param](https://github.com/mantidproject/mantid/tree/performance-unnecessary-value-param) branch into smaller pieces and assign to pool
    1. Check whether it's acceptable to pass a pointer (nullable) or a reference (not null) instead of a `shared_ptr`.
-   1. While I prefer the modern syntax, these clang-tidy checks suggest A LOT of changes. If we make these changes, divide them up between multiple people over several cycles.
-         1. [modernize-use-using](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-use-using.rst) in llvm 3.9?
-         2. [modernize-raw-string-literal](https://github.com/llvm-mirror/clang-tools-extra/blob/73313677032e42e218e72a4e388bbdc179c52da0/docs/clang-tidy/checks/modernize-raw-string-literal.rst) in llvm 3.9?
    2. Smaller checks that could be updated in a single PR.
 1. Change developer rpm to follow [packaging guidelines](https://fedoraproject.org/wiki/Packaging:PkgConfigBuildRequires)
 
@@ -89,7 +88,7 @@ For another release
 14. [Improve ctest support with multi-configuration generators](https://github.com/mantidproject/mantid/issues/19303)
 16. [Update gSOAP by using the system package or making it an external project](https://github.com/mantidproject/mantid/issues/19433)
 10. Clang working more places (windows [#20492](https://github.com/mantidproject/mantid/issues/20492), neutronatom [#11542](https://github.com/mantidproject/mantid/issues/11542), [#9267](https://github.com/mantidproject/mantid/issues/9267), [#7565](https://github.com/mantidproject/mantid/issues/7565), [#5670](https://github.com/mantidproject/mantid/issues/5670), and a singleton stopping initializing python [#15293](https://github.com/mantidproject/mantid/issues/15293))
-10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/)
+10. Remove uses of the deprecated [Q_FOREACH macro](https://www.kdab.com/goodbye-q_foreach/) (and `foreach`)
 1. Restructuring `Framework` (and whole package structure) to make building and exporting classes easier
 1. all systemtests at least work on one platform [skipped system tests](http://developer.mantidproject.org/systemtests/) [#12615](https://github.com/mantidproject/mantid/issues/12615) (Pete)
    1. Design document for next iteration of testing (splitting small and big system tests, select where they run) - Pete

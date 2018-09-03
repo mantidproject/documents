@@ -84,7 +84,28 @@ independent settings.
 
 On Windows the `IniFormat` will be used rather than the native registry format. The registry locations make it more difficult to debug user configuration issues.
 
-This package will also contain code for retrieving fonts, icons & shortcuts consistently across the application.
+It is proposed that a new interface, `Configurable`, be implemented in C++ and exported to Python. It will have the following layout:
+
+```c++
+
+class Configurable {
+
+virtual void readSettings(const QSettings&) = 0;
+virtual void writeSettings(QSettings *) = 0;
+};
+```
+
+Any type wishing to persistently store settings between sessions should implement this interface and provide definitions of both methods. In both cases the caller is responsible for passing the appropriate `QSettings` object
+to each function. Requiring the caller to pass in the `QSettings` object has several advantages:
+
+* easier unit testing as a mock can be used to test the types
+* easier to follow the dataflow rather than relying on global objects
+* it should allow us to implement a "restore to default settings" by passing a default settings object to each type,
+
+Ultimately the workbench code will need to be responsible for orchestrating the calls to read/writeSettings at the
+appropriate time. The mainwindow will maintain a list of top-level widgets/objects that can be used to orchestrate
+these calls.
+
 
 # `workbench.app` subpackage
 

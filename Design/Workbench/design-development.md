@@ -16,7 +16,7 @@ The current crop of warnings will be reduced to `0` before commencing work. The 
 
 User documentation for the workbench will be added to the standard `docs` build and organised into a navigible structure appropriately.
 
-**Question: Where does developer documentation for this belong?**
+Developer documentation will be added to the `dev-docs` section.
 
 
 <!-- Links -->
