@@ -10,6 +10,7 @@ Pinned Topics
 New Items
 ---------
 * [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
+* Changing how license is specified in headers ([abbreviations](https://spdx.org/licenses/))
 * Status of move to C++14 - MSVS
 * Status of new workbench
 * Status of SliceViewer replacement (Hahn)
