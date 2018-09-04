@@ -9,6 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* Conda-forge uses GCC 4.8 (Lin), no C++14 support.
 * [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
 * Changing how license is specified in headers ([abbreviations](https://spdx.org/licenses/))
 * Status of move to C++14 - MSVS
