@@ -36,7 +36,7 @@ Highest priority
 1. Move to El Capitan and drop support Yosemitte (Hahn)
 1. ~~Common solution for ignoring `parentheses-equality` and `inconsistent-missing-override` warnings for Clang as well as GCC. (Jackson)~~
 1. `Kernel::make_unique` -> `std::make_unique` and remove former.
-
+1. Explore possibility of compilation tests, e.g. can we test for things like [ref-qualified member functions](https://github.com/mantidproject/mantid/blob/7986bfbaa27d908f07e5aee1a139db84fae75783/Framework/HistogramData/inc/MantidHistogramData/Histogram.h#L195)
 
 Pool
 ----
