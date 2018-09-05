@@ -6,27 +6,28 @@ In the current GUI, the only way to get this information is to reverse-engineer 
 
 ### Proposed sample log structure for every muon workspace
 
-We create a new group in the NeXuS style called "MuonAnalysis" and store all the parameters in there. There is a rough split between "pre-process" parameters and "group" or "pair" parameters; roughly following the earlier proposal for the sub-algorithms of `MuonProcess`;
+We use a unique string (e.g. "analysis") prepended to the name of each log to distinguish them from the rest of the logs. There is a split between "pre-process" parameters and "group" or "pair" parameters; roughly following the earlier proposal for the sub-algorithms of `MuonProcess`;
 
 ```python
-MuonAnalysis/
-    periods = 2
-    rebin_args = 5
-    crop_x_min = 0.1
-    crop_x_max = 10.0
-    time_offset = 0.1
+analysis_periods = 2
+analysis_rebin_args = 5
+analysis_crop_x_min = 0.1
+analysis_crop_x_max = 10.0
+analysis_time_offset = 0.1
 
-    period_combination = "1+2"
+analysis_period_combination = "1+2"
 
-    # for groups
-    group_name = "fwd"
-    group_detectors = 1-5
+# for groups
+analysis_group_name = "fwd"
+analysis_group_detectors = "1-5"
 
-    # for pairs
-    pair_name = "long"
-    group_1 = 1-5
-    group_2 = 6-10
-    alpha = 1.0
+# for pairs
+analysis_pair_name = "long"
+analysis_group1 = "1-5"
+analysis_group2 = "6-10"
+analysis_group1_name = "fwd"
+analysis_group1_names = "bwd"
+analysis_alpha = 1.0
 ```
 
 This allows us to do the following things (which we cannot do otherwise);
@@ -46,8 +47,8 @@ Setting for example "EMU" as the instrument :
 - The GUI handles only one file at a time, the raw data is held in `MuonAnalysis` which is either a `MatrixWorkspace` (if single period) or `GroupWorkspace` if multi-period. Then the workspaces within the group are named with trailing integers beginning at 1.
 - Each time a group or pair is calculated, the results appear in the relevant run folder. There are four workspaces, the "Raw" and "unNorm" versions are without rebinning and without normalization respectively.
 - The groups and pairs are placed together, despite being conceptually different objects.
-- I have no idea what `MuonAnalysisTFNormalizations` is.
-- I have no idea what `MuonAnalysisGrouped` is.
+- `MuonAnalysisTFNormalizations` is a global table which stores information from each of the runs.
+- `MuonAnalysisGrouped` is the same as `MuonAnalysis` but grouped across all detectors (i.e. just the sum of all the spectra), this is always a group workspace, the workspaces in it are the periods of the data.
 
 The "folder" structure is shown below (where a folder represents a `GroupWorkspace`)
 
@@ -113,43 +114,65 @@ Modifications to the current structure are :
 
 - A raw data folder in each run folder, to prevent re-loading. This does away with the odd `MuonAnalysis` workspace or workspace group. Single period data is then represented by just one workspace in the raw folder, this suggests thinking about single period data as a limiting case of multi-period data which makes much cleaner analyses.
 
-- Hide the extra workspaces (raw, unNorm, raw_unNorm). The user can still access the data if they want to.
+- Place the intermediate data which is of no interest to the user in its own folder called "cached_data".
 
 - Each set of period combinations has its own folder; this way we don't mix different periods combinations in the same folder. There is never a scenario where this is a good idea as the names are so similar that on a quick glance they look identical and it is so easy to accidentally select the wrong one.
+
+- The grouped version of MuonAnalysis (the old "MuonAnalysisGrouped") are placed alongside the raw data, with modified names.
 
 
 ```python
 EMU0001234/
 
+    # Holds the old MuonAnalysis and MuonAnalysisGrouped
     EMU0001234_raw_data/
         EMU0001234_period_1  # first period
         EMU0001234_period_2  # second period
         ...
         EMU0001234_period_n  # nth and last period
+        EMU0001234_grouped_period_1 # first period, grouped across all detectors
+        ...
+        EMU0001234_grouped_period_n # last period, grouped across all detectors
 
+    # All the unNorm files go in here
+    EMU0001234_cached_data/
+        EMU0001235; Group fwd; 1; #1_unNorm
+        EMU0001235; Group fwd; 1; #1_Raw_UnNorm
+
+    # both group counts and group asym
     EMU0001234_groups/
-        EMU0001234; Group fwd; ...; #1
-        EMU0001234; Group bwd; ...; #1
-        EMU0001235; Group fwd; 1; #1_Raw # Hidden
-        EMU0001235; Group fwd; 1; #1_unNorm # Hidden
-        EMU0001235; Group fwd; 1; #1_Raw_UnNorm # Hidden
 
-    EMU0001234_pairs/
-        EMU0001234; Pair long1; ...; #1
-        EMU0001234; Pair long2; ...; #1
+        # normal grouped counts, with non-rebinned data visible
+        EMU0001234; Group; fwd; Counts; #1
+        EMU0001235; Group; fwd; Counts; #1_noRebin
+        EMU0001234; Group; bwd; Counts; #1
+        EMU0001235; Group; bwd; Counts; #1_noRebin
+
+        # also group asymmetries, with non-rebinned data visible
+        EMU0001234; Group; fwd; Asym; #1
+        EMU0001234; Group; fwd; Asym; #1_noRebin
         
+    # the results of pair asymmetry calculations
+    EMU0001234_pairs/
 
-    EMU0001234_group_asym/
-        EMU0001234; Group Asym ; .. #1
+        EMU0001234; Pair long1; Asym; #1
+        EMU0001234; Pair long2; Asym; #1
+        
 
 # multiple period combinations are held completely separately
 EMU0001235; Periods 1+2/
 
     EMU0001235_raw_data/
-        EMU0001235_1  # first period
-        EMU0001235_2  # second period
+        EMU0001235_period_1  # first period
+        EMU0001235_period_2  # second period
+        ...
 
     EMU0001235_groups/...
+
+    ...
+
+# As before, this stays outside of the rest of the structure
+MuonAnalysisTFNormalizations
 ```
 
 # Current ADS Data Structure : All the fitting stuff
@@ -196,14 +219,14 @@ MuonSeqFit_Label1/
 
 # Simultaneous mode in multiple-fitting
 MuonSimulFit_1234-1240/
-    MuonSimulFit_1234-1240_NormalizedCovarianceMatrix
-    MuonSimulFit_1234-1234_EMU0001234_long_Parameters
-    MuonSimulFit_1234-1235_EMU0001234_long_Parameters
-    MuonSimulFit_1234-1236_EMU0001234_long_Parameters
+    MuonSimulFit_1234_1240_NormalizedCovarianceMatrix
+    MuonSimulFit_1234_1234_EMU0001234_long_Parameters
+    MuonSimulFit_1234_1235_EMU0001234_long_Parameters
+    MuonSimulFit_1234_1236_EMU0001234_long_Parameters
     ...
-    MuonSimulFit_1234-1234_EMU0001234_long_Workspace
-    MuonSimulFit_1234-1235_EMU0001234_long_Workspace
-    MuonSimulFit_1234-1236_EMU0001234_long_Workspace
+    MuonSimulFit_1234_1234_EMU0001234_long_Workspace
+    MuonSimulFit_1234_1235_EMU0001234_long_Workspace
+    MuonSimulFit_1234_1236_EMU0001234_long_Workspace
 ```
 
 ## Issues with this current structure
