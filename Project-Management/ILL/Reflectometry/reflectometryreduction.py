@@ -203,7 +203,7 @@ class Setup:
 
     def updatePolarizedWorkspaces(self):
         polCorGroup = mtd['reflected-polcor-{}'.format(self.label)]
-        self._workspaceNamesForQConversion = plCorGroup.getNames()
+        self._workspaceNamesForQConversion = polCorGroup.getNames()
 
 
 class Reduction:
