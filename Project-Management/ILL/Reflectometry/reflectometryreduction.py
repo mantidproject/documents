@@ -1,10 +1,9 @@
 import collections
-import copy
+import time
 from mantid import mtd
-from mantid.simpleapi import (CropWorkspace, ReflectometryILLConvertToQ, ReflectometryILLPolarizationCor,
+from mantid.simpleapi import (ReflectometryILLConvertToQ, ReflectometryILLPolarizationCor,
                               ReflectometryILLPreprocess, ReflectometryILLSumForeground, RenameWorkspace, Scale,
                               Stitch1DMany)
-import time
 
 
 class _SumType:
