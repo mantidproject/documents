@@ -27,4 +27,13 @@ New Items
     * take the same approach as Windows and build libraries - time consuming, hard to update things
     * linux `clang` on pull requests and osx nightly
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
-* [Loss of events in MD Workspaces](https://github.com/mantidproject/mantid/issues/23224)
+
+Minutes
+-------
+Attendees: Draper, Hahn, Lin, Moore, Peterson, Savici, Whitfield
+
+* conda - Lin will continue trying to use the newer ananconda gcc with and extra `cmake` directive to use the old string interface.
+* Draper will work on [changing license/copyright](https://github.com/mantidproject/mantid/issues/23488) in source files
+* MSVS is still waiting on a bugfix from the compiler
+* The new workbench has not made reportable progress
+* Hahn is working on a new pcolormesh which will only supply enough points for the screen resolution
