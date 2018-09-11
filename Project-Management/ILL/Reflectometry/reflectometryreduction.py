@@ -161,14 +161,13 @@ class Setup:
                 'SlitNormalisation': 'Slit Normalisation ON',
                 'SubalgorithmLogging': 'Logging ON'
             }
-            beamPosition = self._foreground.reflectedCentre
-            if beamPosition is not None:
-                props['BeamPosition'] = beamPosition
+            beamCentre = self._foreground.reflectedCentre
+            if beamCentre is not None:
+                props['BeamCentre'] = beamCentre            
             twoTheta = self._twoTheta
             if twoTheta is not None:
-                props['TwoTheta'] = twoTheta
+                props['BraggAngle'] = twoTheta
             else:
-                props['DirectBeamWorkspace'] = 'direct-{}-{}'.format(self._direct, self.label)
                 props['DirectBeamPositionWorkspace'] = 'direct-{}-beam-position-{}'.format(self._direct, self.label)
             bkgLowAngle = self._lowAngleBkg
             if bkgLowAngle is not None:
