@@ -14,7 +14,7 @@ New Items
   * It appears that conda-forge is moving to RHEL7 as the [linux-anvil2 Dockerfile](https://github.com/conda-forge/docker-images/blob/master/linux-anvil2/Dockerfile) suggests. This only moves gcc from 4.8.2 (with `devtoolset-2`) to 4.8.5 (with stock RHEL7)
   * [Migration to anaconda compilers?](https://github.com/mantidproject/conda-recipes/issues/26)
 * [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
-* Changing how license is specified in headers ([abbreviations](https://spdx.org/licenses/))
+* Changing how license is specified in headers ([abbreviations](https://spdx.org/licenses/) and [examples](https://spdx.org/sites/cpstandard/files/pages/files/using_spdx_license_list_short_identifiers.pdf))
 * Status of move to C++14 - MSVS
 * Status of new workbench
 * Status of SliceViewer replacement (Hahn)
