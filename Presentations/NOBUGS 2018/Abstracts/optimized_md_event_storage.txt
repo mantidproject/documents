@@ -1,0 +1,31 @@
+Optimized multi-dimensional event storage with space filling curves
+Daniel Nixon
+ISIS Neutron and Muon Source, STFC, UK
+Author Email: daniel.nixon@stfc.ac.uk
+
+Multi-dimensional datasets are fundamental to the processing of scattered
+neutron data, where the full momentum transfer coordinates, dE, and additional
+dimensions, such as temperature and pressure are required to understand material
+behaviour. Since scattering is often anisotropic from materials of interest, a
+sparse multi-dimensional data structure is critical to allow storage of
+observations at the required resolution. Indeed, storing and processing of
+sparse multi-dimensional datasets is a common practice.
+
+An effective sparse multi-dimensional data model requires three key traits;
+efficiency in creating the structure (both in time and memory cost), memory
+efficiency of maintaining the structure for the duration of
+analysis/visualisation and ability to access or query the structure as the use
+case sees fit.
+
+Space filling curves are a method of distributing spatial data such that both
+spatial locality and memory locality are preserved, allowing for optimized
+access and searching. In the case of the Z-order space filling curve, as chosen
+for the implementation covered in this talk, creation of the data structure sees
+a significant improvement.
+
+This presentation discusses the application of space filling curves to storing
+reduced multi-dimensional neutron scattering data and its advantages and
+limitations in comparison to what is already offered by Mantid, but covers many
+features that are general to working with sparse, multi-dimensional data
+including the requirements for leveraging such data structures and design of
+efficient data access methods.
