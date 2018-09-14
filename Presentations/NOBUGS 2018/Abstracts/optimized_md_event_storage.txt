@@ -25,7 +25,7 @@ a significant improvement.
 
 This presentation discusses the application of space filling curves to storing
 reduced multi-dimensional neutron scattering data and its advantages and
-limitations in comparison to what is already offered by Mantid, but covers many
-features that are general to working with sparse, multi-dimensional data
-including the requirements for leveraging such data structures and design of
-efficient data access methods.
+limitations in comparison to what is already offered by existing neutronic data
+reduction software. It also covers many features that are general to working
+with sparse, multi-dimensional data including the requirements for leveraging
+such data structures and design of efficient data access methods.
