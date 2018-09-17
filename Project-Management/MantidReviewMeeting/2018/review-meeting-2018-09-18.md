@@ -1,7 +1,7 @@
 Agenda
 ======
 
-* The current state of Mantid 4
+* The current state of the new Mantid Workbench
 
 Questions
 =========
