@@ -1,7 +1,8 @@
 Agenda
 ======
 
-* The current state of the new Mantid Workbench
+* The current state of the new Mantid Workbench (Martyn)
+* Update from the PMB (Nick)
 
 Questions
 =========
