@@ -2,7 +2,7 @@ Agenda
 ======
 
 * The current state of the new Mantid Workbench (Martyn)
-* Update from the PMB (Nick)
+* [Update from the PMB](../topics/PMBUpdate18-9-2018.md) (Nick)
 
 Questions
 =========
