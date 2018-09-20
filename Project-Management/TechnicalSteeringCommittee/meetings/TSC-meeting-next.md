@@ -11,7 +11,7 @@ New Items
 ---------
 * [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
 * Status of move to C++14 - MSVS
-* Status of new workbench
+* [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * Mac dependencies discussion
   * Homebrew does not allow setting the deployment target -> can only build for macOS version you have
