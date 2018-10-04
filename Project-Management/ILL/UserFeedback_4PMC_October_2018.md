@@ -76,6 +76,10 @@ There are issues in the existing algorithm. New method should be implemented to 
 
 A new GUI is envisaged for data reductions at the ILL.
 
+* #### Unable to visualize S(2Theta, TOF) for IN5
+
+* #### Bugs related to the C++ libraries are not clear. It is hard to find user related bugs.
+
 ### Powder diffraction – D2B
 
 * #### A problem in normalisation for 1D output
