@@ -54,6 +54,10 @@ The default value, which is 1000 for ILL, will be increased to 10000. In any cas
 
 The dialogs can be undocked from MantidPlot main window and managed as free floating windows.
 
+* #### GUI crashing during fixed window scans reduction
+
+There was a race condition in the workspace widget occuring when there is a large amount of workspace creation/deletion/grouping/renaming happening. This is the case for fixed window scans reduction. The bug is fixed now.
+
 ### TOF – IN4, IN5, IN5
 
 * #### S(Q,E) does not fulfill detailed balance
