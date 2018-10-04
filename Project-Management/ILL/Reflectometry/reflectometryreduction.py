@@ -52,7 +52,7 @@ class Foreground:
 
 class Setup:
     def __init__(self, label, direct, reflecteds, foreground, twoTheta, lowAngleBkg, highAngleBkg,
-                 wavelengthRange, groupingQFraction, flatSample, commonSettings):
+                 wavelengthRange, groupingQFraction, commonSettings):
         self.label = label
         self._commonSettings = commonSettings
         self._direct = direct
@@ -67,7 +67,6 @@ class Setup:
         self._highAngleBkg = highAngleBkg
         self._wavelengthRange = wavelengthRange
         self._groupingQFraction = groupingQFraction
-        self._flatSample = flatSample
 
     def directPreprocessProperties(self):
         props = {
@@ -124,12 +123,8 @@ class Setup:
             props = {
                 'InputWorkspace': wsName,
                 'OutputWorkspace': outputWSName,
-                'ReflectedBeamWorkspace': '{}-{}'.format(self._reflecteds[0], self.label),
-                'DirectBeamWorkspace': 'direct-{}-{}'.format(self._direct, self.label),
-                'Polarized': self._commonSettings.polarized,
+                'DirectForegroundWorkspace': 'direct-{}-foreground-{}'.format(self._direct, self.label),
             }
-            if self._commonSettings.sumType.inLambda():
-                props['DirectForegroundWorkspace'] = 'direct-{}-foreground-{}'.format(self._direct, self.label)
             groupingQ = self._groupingQFraction
             if groupingQ is not None:
                 props['GroupingQFraction'] = groupingQ
@@ -186,14 +181,13 @@ class Setup:
                 'InputWorkspace': '{}-{}'.format(r, self.label),
                 'OutputWorkspace': 'reflected-{}-foreground-{}'.format(r, self.label),
                 'SummationType': str(self._commonSettings.sumType),
-                'DirectForegroundWorkspace': 'direct-{}-foreground-{}'.format(self._direct, self.label)
+                'DirectForegroundWorkspace': 'direct-{}-foreground-{}'.format(self._direct, self.label),
+                'DirectBeamWorkspace':'direct-{}-{}'.format(self._direct, self.label),
             }
             wavelengthRange = self._wavelengthRange
             if wavelengthRange is not None:
                 props['WavelengthRange'] = wavelengthRange
             propertyList.append(props)
-            if self._commonSettings.sumType.inQ():
-                props['FlatSample'] = 'Flat Sample' if self._flatSample else 'Bent Sample'
         return propertyList
 
     def stitchableWorkspaceNames(self):
@@ -212,14 +206,14 @@ class Reduction:
         self._commonSettings = _CommonSettings(sumType, polarizationEffFile, finalScaling)
 
     def add(self, direct, reflected, foreground, twoTheta=None, lowAngleBkg=None, highAngleBkg=None, 
-            wavelengthRange=None, groupingQFraction=None, flatSample=True, label=None):
+            wavelengthRange=None, groupingQFraction=None, label=None):
         if label is None:
             if twoTheta is None or isinstance(twoTheta, str):
                 label = len(self.setups) + 1
             else:
                 label = twoTheta
         setup = Setup(label, direct, reflected, foreground, twoTheta, lowAngleBkg, highAngleBkg,
-                      wavelengthRange, groupingQFraction, flatSample, self._commonSettings)
+                      wavelengthRange, groupingQFraction, self._commonSettings)
         self.setups.append(setup)
 
     def finalScalingProperties(self):
