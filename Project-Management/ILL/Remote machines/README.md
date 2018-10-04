@@ -15,7 +15,7 @@ The following table majorly lists the remote machines (Host) by their name and i
 
 **Updating the machines**
 
-There is a special user `mantid` which should be used to perform the updates. To switch users,
+There is a special user `mantid` which should be used to perform the updates. To switch users in Linux,
 
 ```
 su mantid
@@ -41,7 +41,7 @@ To update the nightlies,
 ./update.sh mantidnightly.sh
 ```
 
-`update.sh` connects to each remote server running the argument script there. The machines are listed in `update.sh` so when new machines are added the script need to be updated.
+`update.sh` connects to each remote server running the argument script there. The machines are listed in `update.sh` so when new machines are added the script need to be updated. *Note, that the scripts are version controlled by git. Remember to commit your changes.*
 
 The files `mantid.sh.done` and `mantidnightly.sh.done` contain a list of servers where the last update was succesfull. It is a good idea to remove these files before performing an update.
 
