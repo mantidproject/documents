@@ -36,7 +36,7 @@ Python 3 builds are available for Ubuntu 16.04 only.
 
 * #### Absorption corrections not evident
 
-There has been a large effor by ISIS to refactor the absorption corrections, which is now finished. While hiding the internals, this lead to only two algorithms to be exposed to the user: one for calculating the corrections (CalculateMonteCarloAbsorption) and one for applying those (ApplyPaalmanPingsCorrections). A template script will be provided with an example of how to use them in the worfklow.
+There has been a large effort by ISIS to refactor the absorption corrections, which is now finished. While hiding the internals, this lead to only two algorithms to be exposed to the user: one for calculating the corrections (CalculateMonteCarloAbsorption) and one for applying those (ApplyPaalmanPingsCorrections). A template script will be provided with an example of how to use them in the worfklow.
 
 * #### Functionality like superplot in LAMP is missing
 
