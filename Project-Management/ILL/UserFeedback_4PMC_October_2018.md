@@ -58,7 +58,7 @@ The dialogs can be undocked from MantidPlot main window and managed as free floa
 
 There was a race condition in the workspace widget occuring when there is a large amount of workspace creation/deletion/grouping/renaming happening. This is the case for fixed window scans reduction. The bug is fixed now.
 
-### TOF – IN4, IN5, IN5
+### TOF – IN4, IN5, IN6
 
 * #### S(Q,E) does not fulfill detailed balance
 
