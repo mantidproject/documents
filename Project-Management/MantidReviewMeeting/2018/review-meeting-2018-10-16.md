@@ -2,7 +2,7 @@ Agenda
 ======
 
 * Copyright Update - Nick
-* `mantidworkbench` demo of sample logs and adding custom guis
+* `mantidworkbench` demo of sample logs, adding custom guis, and preview of instrument view
 
 Questions
 =========
