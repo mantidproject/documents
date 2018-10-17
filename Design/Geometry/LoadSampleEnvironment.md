@@ -40,16 +40,15 @@ The majority of the changes to the code will be in LoadStl and MeshObject, both 
 ## Relevant Files for `LoadSampleEnvironment`
   [LoadSampleEnvironment.h]
   [LoadSampleEnvironment.cpp]
-  [LoadSampleShape.h]
-  [LoadSampleShape.cpp]
-  [MeshObject.h]
-  [MeshObject.cpp]
-  [Container.h]
-  [Container.cpp]
+  [LoadSampleShape.h](https://github.com/mantidproject/mantid/blob/ef3ccb58e40735781011335e6b447a9ddd4d6e74/Framework/DataHandling/inc/MantidDataHandling/LoadSampleShape.h)
+  [LoadSampleShape.cpp](https://github.com/mantidproject/mantid/blob/c17af71170b86e9ed4739364537d25e9e8ea49cb/Framework/DataHandling/src/LoadSampleShape.cpp)
+  [MeshObject.h](https://github.com/mantidproject/mantid/blob/ef3ccb58e40735781011335e6b447a9ddd4d6e74/Framework/Geometry/inc/MantidGeometry/Objects/MeshObject.h)
+  [MeshObject.cpp](https://github.com/mantidproject/mantid/blob/ef3ccb58e40735781011335e6b447a9ddd4d6e74/Framework/Geometry/src/Objects/MeshObject.cpp)
+  [Container.h](https://github.com/mantidproject/mantid/blob/ef3ccb58e40735781011335e6b447a9ddd4d6e74/Framework/Geometry/inc/MantidGeometry/Instrument/Container.h)
+  [Container.cpp](https://github.com/mantidproject/mantid/blob/ef3ccb58e40735781011335e6b447a9ddd4d6e74/Framework/Geometry/src/Instrument/Container.cpp)
   [LoadStl.h]
   [LoadBinaryStl.h]
   [LoadBinarySt;.cpp]
   [LoadAsciiStl.h]
   [LoadAsciiStl.cpp]
-  [CMakeLists.txt]
   
