@@ -8,10 +8,16 @@ Agenda
   * most python based guis have been converted over
   * algorithm list searches in middle of name
   * sample log viewer can overplot values
+  
 Coming next:
 * help system
 * the rest of the python based guis
 * faster rendering of 2d plotting (Tom helped a lot)
+
+Notably missing:
+* slice view
+* VSI
+* data view/tables
 
 Questions
 =========
