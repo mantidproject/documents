@@ -7,6 +7,8 @@ Agenda
 
 - Merge runs with care... http://docs.mantidproject.org/nightly/algorithms/LoadAndMerge-v1.html
 
+- Mask is a first class citizen... https://github.com/mantidproject/mantid/pull/23878
+
 Questions
 =========
 
