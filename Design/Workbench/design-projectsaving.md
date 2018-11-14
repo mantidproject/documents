@@ -2,7 +2,7 @@
 Project Saving for Mantid Workbench
 ==============================
 Motivation
---------------
+----------
 In MantidPlot it was possible to save all currently open windows and all workspaces, and then be able to load then back in the exact(-ish) state that they were in previously. To achieve this goal again in Mantid Workbench, the problem will be split into two where window serialization and saving and therefore reopening will be separate in implementation, from saving workspaces.
 
 The reason for the split is so that it can be handled in a more abstract manor. Instead of thinking of the task as one great big issue it can be split into the two smaller problems and then split further from there, later on in design.
@@ -10,14 +10,18 @@ The reason for the split is so that it can be handled in a more abstract manor. 
 This document exists because Project Saving is a non-trivial challenge to tackle when it comes to ideas with saving and loading interfaces created in both Python and C++ as well as saving and loading of workspaces. This issue should be fairly simple to understand, simply users should be able to save their projects and load them back in, to at least the standard that MantidPlot was able to achieve.
 
 Changes to MantidWorkbench needed
------------------------------------------------
+---------------------------------
 - MainWindow should track all of the open windows (as well as if they are serializable or not) similar to MantidPlot
 - File->Save Project needs to be added
 - File->Load Project needs to be added
 - A GUI for picking where to Save
 
+GUI and integration initial ideas
+---------------------------------
+It is true that this document is mostly focused on the actual implementation of saving the project and they intricacies of how that would work. However, it is important that this is discussed to some extent before hand. The intial thought process is that you would be able to do both a basic SaveAll and Save Advanced. SaveAll will run through a pretty simple Save everything as long as it's not overwriting workspaces. Save Advanced would allow the users to Select workspaces and windows individually, also adding an option as to whether or not they want to overwrite the workspaces that may or may be saved which is so at worst case users can save everything from scratch.
+
 Options for Implementation of Workspace Saving
---------------------------------------------------------
+----------------------------------------------
 **Python:**
 - Pickling
 	- Pros: Built in library of Python
@@ -41,7 +45,7 @@ Options for Implementation of Workspace Saving
 
 
 Implementation of save window, the recommended Method
--------------------------------------------------------------------------
+-----------------------------------------------------
 Utilizing the serializing method with a JSON back-end, will likely be best as not only will it use a standard file type, it should be easy to change the file type by changing a few functions inside the serializer. Each UI that is serializable should have an X and Y function where X would create a Dictionary with a string as the key and the value set to whatever object you would need to save. Y would use the string key to get back X's value and emplace the original value again, and update the GUI to represent these values.
 
 An Example X:
@@ -83,7 +87,7 @@ One potential implementation is to force usage of serialization for current and 
 For the implementation of X and Y, we need to have a copy of the variables that needs to be serialized on the GUI, so for example if a value needs to be serialized then save it just grab the value and load it back in, in the methods, X and Y.
 
 Options for Implementation of Workspace Saving
---------------------------------------------------------
+----------------------------------------------
 **Python and C++**
 - Use save algorithms on all of the workspaces
 	- Pros: We can optimize WorkspaceGroup/Multi-period workspaces like in MantidPlot, Can save only given workspaces, Uses already in place features, have a good idea of what to do from previous MantidPlot implementation.
@@ -95,7 +99,7 @@ Options for Implementation of Workspace Saving
 	- Cons: Sizeable extra code added to already bloated Workspace and requires more coding effort than calling SaveNexus.
 
 Implementation of save workspaces, the recommended Method
-------------------------------------------------------------------------------
+---------------------------------------------------------
 Utilizing the already implemented SaveNexusProcessed and SaveMD algorithms, the suggestion is to implement a python version of how MantidPlot currently implements saving workspaces. This seems like a better option than utilizing the libraries because they are only really available to C++, whilst feasible it makes more sense to move to python/cross language support which is similar to how MantidPlot implements it already.
 
 Call SaveNexusProcessed for most workspaces and SaveMD for EventWorkspaces. Saving a copy of the names of the saved workspace .nxs files in a JSON format in the same file as the output from the serialization of the windows, it may look like this:
@@ -109,7 +113,7 @@ The way this will work alongside the Serialization is that it will all be saved 
 A workspace should only save over an already saved version of that workspace if it has changed since last save. This can be done by checking the last modified of any files with the same name as a workspace's name and then comparing it to that workspace's history for it's most recent entry.
 
 Diagram to display functionality
-----------------------------------------
+--------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
 ![Project Flow](./project-saveflow.png)
 
