@@ -111,5 +111,5 @@ A workspace should only save over an already saved version of that workspace if 
 Diagram to display functionality
 ----------------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
-![Project Flow](file:project-saveflow.png)
+![Project Flow](./project-saveflow.png)
 
