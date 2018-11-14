@@ -9,6 +9,10 @@ The reason for the split is so that it can be handled in a more abstract manor. 
 
 This document exists because Project Saving is a non-trivial challenge to tackle when it comes to ideas with saving and loading interfaces created in both Python and C++ as well as saving and loading of workspaces. This issue should be fairly simple to understand, simply users should be able to save their projects and load them back in, to at least the standard that MantidPlot was able to achieve.
 
+It should as a requirement allow people to share projects across platforms and seamlessly by zipping and emailing or transferring by different methods. This however should not come in the way of pure functionality.
+
+The Saver/Serializer should take from interfaces it's dictionary from the output and if possible turn it into JSON and then also be able to transfer it back in the exact same form it was recieved when loading the data back in, the rest should be handled by indidual developers implementing and maintaining interfaces. This has the added benefit of allowing someone in the future to rip out the JSON parts and replace it with whatever saver they would like to use.
+
 Changes to MantidWorkbench needed
 ---------------------------------
 - MainWindow should track all of the open windows (as well as if they are serializable or not) similar to MantidPlot
@@ -28,7 +32,7 @@ Options for Implementation of Workspace Saving
 	- Cons: Need to add _ _ getstate_ _ and _ _ setstate_ _ functions to every UI class which must return a pickle-able type (dict, list, int, string etc). Then setstate function. Unconfirmed if possible or not.
 - JSON Encoding
 	- Pros: Built in library of Python, "faster" than Pickling: https://www.benfrederickson.com/dont-pickle-your-data/, Potential to be integrated with C++ as it's universal
-	- Cons: Needs methods in every class
+	- Cons: Needs methods in every class, doesn't integrate fully with C++ (It won't translate a C++ class into a JSON file/string without an extra library)
 
 **C++**
 - Serialization with boost 
@@ -86,6 +90,51 @@ One potential implementation is to force usage of serialization for current and 
 
 For the implementation of X and Y, we need to have a copy of the variables that needs to be serialized on the GUI, so for example if a value needs to be serialized then save it just grab the value and load it back in, in the methods, X and Y.
 
+The current plan is to integrate JSON into the serializer and so it would be helpful to talk about custom objects/types. It should be easy enough to write a custom encoder. A custom encoder should be as easy as taking inheriting from json.JSONEncoder on a class and defining default(self, obj). For example [1]:
+```python
+class ObjectEncoder(json.JSONEncoder):
+  def default(self, object):
+    if isinstance(object, object_type):
+      # Return an already serializable type e.g.
+      return str(object_type)
+    return json.JSONEncoder.default(self,object)
+```
+
+Then this leaves Decoding from JSON to be tackled, a custom decoder is a little harder as it relies on the key name when decoding being something unique to that type so would need to be on a type requirement by requirement basis. So in the JSON a programmer would need to add a _object_type_ or some other unique string to show that a type like that is there, but it's really on a per type basis. For example [1]: 
+```python
+def object_type(dict):
+  # __object_type__ being a key that is unique to that type
+  if "__object_type__" in dict:
+    # Return an object of the original object type
+    return object(dict["object_part1"], dict["object_part2"], dict["object_part3"])
+  return dict
+```
+
+Similarly with the C++ section of window serialization it would return a boost::python::dict so that it interacts well and will transition well into the python method. An example of how this may interact and look like is:
+```C++
+boost::python::dict X(){
+  boost::python::dict return_list;
+  return_list["name"] = "TestUI"; 
+  return_list["spinBox"] = ui->spinBox.value()  
+  return_list["lineEdit"] = ui->lineEdit.text()  
+  return_list["dateEdit"] = ui->dateEdit.text()  
+  return_list["radioButton"] = ui->radioButton.isChecked()      
+  return_list["checkBox"] = ui->checkBox.isChecked()  
+  return_list["label_7Visible"] = ui->label_7.isVisible()  
+  return return_list;
+}
+
+void Y(boost::python::dict dict){
+  ui->spinBox.setValue(dict["spinBox"]) 
+  ui->lineEdit.setValue(dict["lineEdit"]) 
+  ui->dateEdit.setValue(dict["dateEdit"]) 
+  ui->radioButton.setValue(dict["radioButton"]) 
+  ui->checkBox.setValue(dict["checkBox"])
+  ui->label_7.setVisible(dict["label_7Visible"])
+}
+```
+The nice thing about utilising the boost::python::dict object to transfer from the C++ code to the Python code is that it will translate very easier than say a std::map. This can all be handled by boost::python similarly to how interface objects and other things originally wrote in C++ are being integrated with the new workbench. Overall the actual JSON back-end/writer will be on the Python side of the code so this is nessercary.
+
 Options for Implementation of Workspace Saving
 ----------------------------------------------
 **Python and C++**
@@ -116,4 +165,9 @@ Diagram to display functionality
 --------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
 ![Project Flow](./project-saveflow.png)
+
+Bibliography
+------------
+
+[1] Docs.python.org. (2018). json — JSON encoder and decoder — Python 3.7.1 documentation. [online] Available at: https://docs.python.org/3/library/json.html [Accessed 14 Nov. 2018].
 
