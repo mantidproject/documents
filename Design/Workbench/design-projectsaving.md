@@ -20,9 +20,6 @@ Functional Requirements
 - Ability to partially save a project as well as save it's entirity
 - Be able to save and load, plots, interfaces, workspaces, workspaces interfaces and scripts.
   - Scripts only lightly and not transferrable across machines/operating systems
-It should as a requirement allow people to share projects across platforms and seamlessly by zipping and emailing or transferring by different methods. This however should not come in the way of pure functionality.
-
-The Saver/Serializer should take from interfaces it's dictionary from the output and if possible turn it into JSON and then also be able to transfer it back in the exact same form it was recieved when loading the data back in, the rest should be handled by indidual developers implementing and maintaining interfaces. This has the added benefit of allowing someone in the future to rip out the JSON parts and replace it with whatever saver they would like to use.
 
 Changes to MantidWorkbench needed
 ---------------------------------
