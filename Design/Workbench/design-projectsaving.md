@@ -88,6 +88,7 @@ class exampleEncoder():
 The Encoder is then given the object and the resulting "middle-man" data stored as a key-value pair object will then be "clumped together" or combined and then given to the ProjectWriter which will write out that data. The way in which the ProjectWriter will do this can change depending on how the file is supposed to be written out initially it should support JSON only. This can be achieved utilizing the built in JSON module.
 
 One problem is how the Python JSON module will represent these QTypes. Inside Qt and PyQt there is a type called QVariant which allows for constructions from the majority of Qt types and normal types, which then allows you to convert them to many formats including string and QJsonArray. However the usage of QVariant is not necessary as long as you are mostly requiring string, bool, and int. Then the JSON module will be able to convert the dictionary into a JSON string, by using json.JSONEncoder which will use this table:
+
 ![JSON Encoding table](./json-encoding-table.png) "*(Docs.python.org, 2018)*"
 
 A basic example of how a line of JSON that may be generated from an object that uses the X function's output, the output is passed as the variable dict. Using indent=4 makes it a more human readable form when actually written out than with no indent as it would be on a single line:
@@ -114,6 +115,7 @@ Once again utilizing the same type of structure as the encoder so the symmetry b
 Tackling reading the file should be relatively easy as reading it in should be handled by the JSON module that is built into python. It has a basic load all and load line, likely better if load line is utilized similarly to how json.dumps is used. That way the key-value pair object can be reconstructed in a similar way to how it was constructed before encoding it. Then the library allows decoding for both native types and custom types.
 
 To decode a normal type it would be a simple call to json.JSONDecoder which will utilise the following table for translating back to python objects:
+
 ![JSON Decoding Table](./json-decoding-table.png) "*(Docs.python.org, 2018)*"
 
 With these recreated key-value pairs the whole point of this is to recreate the interfaces and display them to the user, this will be handled partially by the middle-man "Loader" which will take each object recreated by the ProjectReader and find it's relevant decoder. This will be achieved by asking the DecoderFactory for the correct Decoder this will be done by passing a string that represents the name loaded in from the file, this name should be present in one of the Decoder's tag list (Very similar to the encoder tag list and should be the same value actual implementation is undefined). When the DecoderFactory finds the tag it is looking for it will pass the Decoder back to the "Loader"
@@ -174,7 +176,7 @@ A workspace should only save over an already saved version of that workspace if 
 
 Alongside workspaces it should also carry a path to any saved scripts however when loading back in, if these scripts do not exist then fail silently as it is not overly crucial to transfer these across platforms.
 
-Diagram to display functionality
+Diagrams to display functionality
 --------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
 
@@ -198,7 +200,7 @@ ProjecyWriter->ProjectSaver: Done
 ProjectSaver->Workbench: Done
 -->
 
-To illustrate the Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
+To illustrate the interface Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
 ![Encoder Seqeunce](./projectsave-encoder.svg)
 
 <!--
@@ -217,7 +219,7 @@ InterfaceXDecoder->ProjectLoader: Done
 ProjectLoader->Workbench: Done
 -->
 
-To illustrate the Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
+To illustrate the interface Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
 ![Decode Sequence](./projectsave-decoder.svg)
 
 Bibliography
