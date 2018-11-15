@@ -164,7 +164,47 @@ A workspace should only save over an already saved version of that workspace if 
 Diagram to display functionality
 --------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
-![Project Flow](./project-saveflow.png)
+![Project Flow](Design/Workbench/project-saveflow.png)
+
+<!---
+The Sequence Diagram in the Encoder Sequence below
+
+Title: Sequence of Saving
+Workbench->ProjectSaver: Save these
+ProjectSaver->MantidQtModule: Get list of interfaces
+MantidQtModule->ProjectSaver: List of interfaces
+ProjectSaver->EncoderFactory: Get Encoder for interface X
+EncoderFactory->ProjectSaver: Encoder for interface X
+ProjectSaver->InterfaceXEncoder: Encode interface X
+InterfaceXEncoder->InterfaceXAttributes: Get Interface X tags
+InterfaceXAttributes->InterfaceXEncoder: List of tags
+InterfaceXEncoder->ProjectSaver: Encoded Key value pair
+ProjectSaver->ProjectWriter: Write out these encoded key value pairs
+ProjecyWriter->ProjectSaver: Done
+ProjectSaver->Workbench: Done
+-->
+
+To illustrate the Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
+![Encoder Seqeunce](Design/Workbench/projectsave-encoder.svg)
+
+<!--
+Title: Decoder Sequence Diagram
+Workbench->ProjectLoader: Load this file
+ProjectLoader->ProjectReader: Get the key value pairs back from this file
+ProjectReader->ProjectLoader: Key value pairs
+ProjectLoader->DecoderFactory: Get Decoder for Interface X
+DecoderFactory->InterfaceXDecoder: Check if possible to decode this interface
+InterfaceXDecoder->DecoderFactory: True
+DecoderFactory->ProjectLoader: InterfaceXDecoder
+ProjectLoader->InterfaceXDecoder: Recreate the InterfaceX object
+InterfaceXDecoder->MantidQt: Create InterfaceX
+MantidQt->InterfaceXDecoder: Alias to interface
+InterfaceXDecoder->ProjectLoader: Done
+ProjectLoader->Workbench: Done
+-->
+
+To illustrate the Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
+![Decode Sequence](Design/Workbench/projectsave-decoder.svg)
 
 Bibliography
 ------------
