@@ -9,6 +9,17 @@ The reason for the split is so that it can be handled in a more abstract manor. 
 
 This document exists because Project Saving is a non-trivial challenge to tackle when it comes to ideas with saving and loading interfaces created in both Python and C++ as well as saving and loading of workspaces. This issue should be fairly simple to understand, simply users should be able to save their projects and load them back in, to at least the standard that MantidPlot was able to achieve.
 
+
+Functional Requirements
+-----------------------
+- Graceful handling of other versions that have been saved previously
+- Support for both Python and C++ interfaces
+- Portable across OS's
+  - However gracefully handle missing files such as scripts or removed workspaces etc
+- Independant File reading and writing implementation from the rest of this section of code so it can be removed and replaced without changing much else
+- Ability to partially save a project as well as save it's entirity
+- Be able to save and load, plots, interfaces, workspaces, workspaces interfaces and scripts.
+  - Scripts only lightly and not transferrable across machines/operating systems
 It should as a requirement allow people to share projects across platforms and seamlessly by zipping and emailing or transferring by different methods. This however should not come in the way of pure functionality.
 
 The Saver/Serializer should take from interfaces it's dictionary from the output and if possible turn it into JSON and then also be able to transfer it back in the exact same form it was recieved when loading the data back in, the rest should be handled by indidual developers implementing and maintaining interfaces. This has the added benefit of allowing someone in the future to rip out the JSON parts and replace it with whatever saver they would like to use.
@@ -50,34 +61,34 @@ Options for Implementation of Workspace Saving
 
 Implementation of save window, the recommended Method
 -----------------------------------------------------
-Utilizing the serializing method with a JSON back-end, will likely be best as not only will it use a standard file type, it should be easy to change the file type by changing a few functions inside the serializer. Each UI that is serializable should have an X and Y function where X would create a Dictionary with a string as the key and the value set to whatever object you would need to save. Y would use the string key to get back X's value and emplace the original value again, and update the GUI to represent these values.
+Utilizing the serializing method with a JSON back-end, will likely be best as not only will it use a standard file type, it should be easy to change the file type by changing a few functions inside the serializer. Each UI that is serializable should have a encode and decode ability where encode would create a dictionary with a string as the key and the value set to whatever object you would need to save. Decode would use the string key to get back encoder's value and emplace the original value again, and update the GUI to represent these values.
 
-An Example X:
+**Saving:**
+Utlizing an abstraction and encapsulation method we have a few major sections to tackle with a middle man "Saver Class". To save we would have the section which encompasses encoding. These sections are encoding, clumping encoded pieces together ("Saver") and writing, similar to how MVP works with GUIs. This way the encoding and writing parts will not need to touch eachother and can be swapped out independently as well as tested seperately with mocking and unit tests.
+
+For encoding, largely this will be left up to interface implementers and will be fairly simple to do, either by hand or a more automatic approach (a more automatic approach has the unintended consequence of not allowing backwards compaitibility easily when changing variable or widget names). The proposed idea is for developers to create a InterfaceXEncoder Class where InterfaceX is the name of the Interface. This InterfaceXEncoder will be availible to the EncoderFactory which will allow developers to refactor code and be able to still load older data.
+
+The EncoderFactory has a list of potential encoders to use and will attempt to contact each of them so that it can retrieve a availble in all encoders, list of tags that the encoder will respond to, similar to how the Load algorithm currently works. If the tag given by the EncoderFactory is present in that list of tags (The list of tags is basically a list of all names that interface has and will go by) then return that Encoder to the object that requested it.
+
+A very basic encoder that is manually wrote may look like this:
 ```python
-def X(self):  
+class exampleEncoder():
+  def encode(self, obj):
     return_list = {}  
     return_list["name"] = "TestUI"  
-    return_list["spinBox"] = self.ui.spinBox.value()  
-    return_list["lineEdit"] = self.ui.lineEdit.text()  
-    return_list["dateEdit"] = self.ui.dateEdit.text()  
-    return_list["radioButton"] = self.ui.radioButton.isChecked()      
-    return_list["checkBox"] = self.ui.checkBox.isChecked()  
-    return_list["label_7Visible"] = self.ui.label_7.isVisible()  
+    return_list["spinBox"] = obj.ui.spinBox.value()  
+    return_list["lineEdit"] = obj.ui.lineEdit.text()  
+    return_list["dateEdit"] = obj.ui.dateEdit.text()  
+    return_list["radioButton"] = obj.ui.radioButton.isChecked()      
+    return_list["checkBox"] = obj.ui.checkBox.isChecked()  
+    return_list["label_7Visible"] = obj.ui.label_7.isVisible()  
     return return_list
 ```
-An Example Y:
-```python
-def Y(self, dict):  
-    self.ui.spinBox.setValue(dict["spinBox"]) 
-    self.ui.lineEdit.setValue(dict["lineEdit"]) 
-    self.ui.dateEdit.setValue(dict["dateEdit"]) 
-    self.ui.radioButton.setValue(dict["radioButton"]) 
-    self.ui.checkBox.setValue(dict["checkBox"])
-    self.ui.label_7.setVisible(dict["label_7Visible"])
-```
-One problem is how the Python JSON module will represent these QStrings, QStringList and other types that are necessary to save. Inside Qt and PyQt there is a type called QVariant which allows for constructions from the majority of Qt types and normal types, which then allows you to convert them to many formats including string and QJsonArray.
 
-However the usage of QVariant is not necessary as long as you are mostly requiring QString, bool, and int, as it will just be converted to a string by the dictionary creation. Then the JSON module will be able to convert the dictionary into a JSON string.
+The Encoder is then given the object and the resulting "middle-man" data stored as a key-value pair object will then be "clumped together" or combined and then given to the ProjectWriter which will write out that data. The way in which the ProjectWriter will do this can change depending on how the file is supposed to be written out initially it should support JSON only. This can be achieved utilizing the built in JSON module.
+
+One problem is how the Python JSON module will represent these QTypes. Inside Qt and PyQt there is a type called QVariant which allows for constructions from the majority of Qt types and normal types, which then allows you to convert them to many formats including string and QJsonArray. However the usage of QVariant is not necessary as long as you are mostly requiring string, bool, and int. Then the JSON module will be able to convert the dictionary into a JSON string, by using json.JSONEncoder which will use this table:
+![JSON Encoding table](./json-encoding-table.png) "*(Docs.python.org, 2018)*"
 
 A basic example of how a line of JSON that may be generated from an object that uses the X function's output, the output is passed as the variable dict. Using indent=4 makes it a more human readable form when actually written out than with no indent as it would be on a single line:
 ```python
@@ -86,12 +97,9 @@ def json_line_from_dict(dict):
     return json.dumps(dict, indent=4) 
  ```
 
-One potential implementation is to force usage of serialization for current and new GUIs, create a class which inherits from QWidget/QMainWindow (depending on how PyQt/Mantid Workbench implements a window), which includes a basic copy of X and Y from which windows must inherit/must implement the methods of X and Y. That was a simple list of windows can be held by the main application and a call to X and Y made on them, for saving and loading respectively. This implementation will allow for not only other methods to be forced upon GUI designers that may be required but will also guarantee there is a method for project saving.
-
-For the implementation of X and Y, we need to have a copy of the variables that needs to be serialized on the GUI, so for example if a value needs to be serialized then save it just grab the value and load it back in, in the methods, X and Y.
-
-The current plan is to integrate JSON into the serializer and so it would be helpful to talk about custom objects/types. It should be easy enough to write a custom encoder. A custom encoder should be as easy as taking inheriting from json.JSONEncoder on a class and defining default(self, obj). For example [1]:
+The current plan is to integrate JSON into the serializer and so it would be helpful to talk about custom objects/types. It should be easy enough to write a custom encoder. A custom encoder should be as easy as taking inheriting from json.JSONEncoder on a class and defining default(self, obj). For example:
 ```python
+# (Docs.python.org, 2018)
 class ObjectEncoder(json.JSONEncoder):
   def default(self, object):
     if isinstance(object, object_type):
@@ -100,8 +108,33 @@ class ObjectEncoder(json.JSONEncoder):
     return json.JSONEncoder.default(self,object)
 ```
 
-Then this leaves Decoding from JSON to be tackled, a custom decoder is a little harder as it relies on the key name when decoding being something unique to that type so would need to be on a type requirement by requirement basis. So in the JSON a programmer would need to add a _object_type_ or some other unique string to show that a type like that is there, but it's really on a per type basis. For example [1]: 
+**Loading:**
+Once again utilizing the same type of structure as the encoder so the symmetry between the systems allows developers to easily understand both of the systems, a 3 major part system should be used for abstraction and encapsulation, the file reading, the middle-man "Loader", and the decoding that is reproducing the objects and displaying them. Once again this allows testing and mocking of data to be easier and echoes MVP.
+
+Tackling reading the file should be relatively easy as reading it in should be handled by the JSON module that is built into python. It has a basic load all and load line, likely better if load line is utilized similarly to how json.dumps is used. That way the key-value pair object can be reconstructed in a similar way to how it was constructed before encoding it. Then the library allows decoding for both native types and custom types.
+
+To decode a normal type it would be a simple call to json.JSONDecoder which will utilise the following table for translating back to python objects:
+![JSON Decoding Table](./json-decoding-table.png) "*(Docs.python.org, 2018)*"
+
+With these recreated key-value pairs the whole point of this is to recreate the interfaces and display them to the user, this will be handled partially by the middle-man "Loader" which will take each object recreated by the ProjectReader and find it's relevant decoder. This will be achieved by asking the DecoderFactory for the correct Decoder this will be done by passing a string that represents the name loaded in from the file, this name should be present in one of the Decoder's tag list (Very similar to the encoder tag list and should be the same value actual implementation is undefined). When the DecoderFactory finds the tag it is looking for it will pass the Decoder back to the "Loader"
+
+Then the Loader will pass to the decoder the key-value pair object of state that is required to recreate the object and restore it's state. The best way to show this even though it will largely be left up to interface implementers to do this, is with an example:
 ```python
+class exampleDecoder():
+  def decode(self, dict):
+    TestUI(dict["arg1"], dict["args2"])
+    TestUI.ui.spinBox.setValue(dict["spinBox"]) 
+    TestUI.ui.lineEdit.setValue(dict["lineEdit"]) 
+    TestUI.ui.dateEdit.setValue(dict["dateEdit"]) 
+    TestUI.ui.radioButton.setValue(dict["radioButton"]) 
+    TestUI.ui.checkBox.setValue(dict["checkBox"])
+    TestUI.ui.label_7.setVisible(dict["label_7Visible"])
+    TestUI.show()
+```
+
+Then this leaves custom Decoding from JSON to be tackled, a custom decoder is a little harder, than an encoder, as it relies on the key name when decoding being something unique to that type so would need to be on a type requirement by requirement basis. So in the JSON a programmer would need to add a _object_type_ or some other unique string to show that a type like that is there, but it's really on a per type basis. For example: 
+```python
+# (Docs.python.org, 2018)
 def object_type(dict):
   # __object_type__ being a key that is unique to that type
   if "__object_type__" in dict:
@@ -110,30 +143,8 @@ def object_type(dict):
   return dict
 ```
 
-Similarly with the C++ section of window serialization it would return a boost::python::dict so that it interacts well and will transition well into the python method. An example of how this may interact and look like is:
-```C++
-boost::python::dict X(){
-  boost::python::dict return_list;
-  return_list["name"] = "TestUI"; 
-  return_list["spinBox"] = ui->spinBox.value()  
-  return_list["lineEdit"] = ui->lineEdit.text()  
-  return_list["dateEdit"] = ui->dateEdit.text()  
-  return_list["radioButton"] = ui->radioButton.isChecked()      
-  return_list["checkBox"] = ui->checkBox.isChecked()  
-  return_list["label_7Visible"] = ui->label_7.isVisible()  
-  return return_list;
-}
-
-void Y(boost::python::dict dict){
-  ui->spinBox.setValue(dict["spinBox"]) 
-  ui->lineEdit.setValue(dict["lineEdit"]) 
-  ui->dateEdit.setValue(dict["dateEdit"]) 
-  ui->radioButton.setValue(dict["radioButton"]) 
-  ui->checkBox.setValue(dict["checkBox"])
-  ui->label_7.setVisible(dict["label_7Visible"])
-}
-```
-The nice thing about utilising the boost::python::dict object to transfer from the C++ code to the Python code is that it will translate very easier than say a std::map. This can all be handled by boost::python similarly to how interface objects and other things originally wrote in C++ are being integrated with the new workbench. Overall the actual JSON back-end/writer will be on the Python side of the code so this is nessercary.
+**C++**
+Similarly with the C++ area of serialisation exposing most of the required details to python will be the hardest part, however if most of the interface's details are exposed properly then the decoder and encoders should be able to work exactly the same on these interfaces if only with a little extra implementation on the UI porter/maintainer's part.
 
 Options for Implementation of Workspace Saving
 ----------------------------------------------
@@ -160,6 +171,8 @@ Call SaveNexusProcessed for most workspaces and SaveMD for EventWorkspaces. Savi
 The way this will work alongside the Serialization is that it will all be saved in the same folder, this is the same as the previous implementation (in MantidPlot), for saving and loading workspaces. However a key differences are that this will be produced in Python as that is what Workbench has been produced in, and the output folder will consist of .nxs workspaces and a .json file with the details of the windows.
 
 A workspace should only save over an already saved version of that workspace if it has changed since last save. This can be done by checking the last modified of any files with the same name as a workspace's name and then comparing it to that workspace's history for it's most recent entry.
+
+Alongside workspaces it should also carry a path to any saved scripts however when loading back in, if these scripts do not exist then fail silently as it is not overly crucial to transfer these across platforms.
 
 Diagram to display functionality
 --------------------------------
@@ -212,3 +225,6 @@ Bibliography
 
 [1] Docs.python.org. (2018). json — JSON encoder and decoder — Python 3.7.1 documentation. [online] Available at: https://docs.python.org/3/library/json.html [Accessed 14 Nov. 2018].
 
+[2] Bramp.github.io. (2018). js-sequence-diagrams by bramp. [online] Available at: https://bramp.github.io/js-sequence-diagrams/ [Accessed 15 Nov. 2018].
+
+[3] Docs.python.org. (2018). 18.2. json — JSON encoder and decoder — Python 2.7.15 documentation. [online] Available at: https://docs.python.org/2/library/json.html [Accessed 15 Nov. 2018].
