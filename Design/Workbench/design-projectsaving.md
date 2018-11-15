@@ -187,7 +187,6 @@ ProjectSaver->Workbench: Done
 
 To illustrate the Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
 ![Encoder Seqeunce](./projectsave-encoder.svg)
-<img src="./projectsave-encoder.svg">
 
 <!--
 Title: Decoder Sequence Diagram
@@ -207,7 +206,6 @@ ProjectLoader->Workbench: Done
 
 To illustrate the Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
 ![Decode Sequence](./projectsave-decoder.svg)
-<img src="./projectsave-decoder.svg">
 
 Bibliography
 ------------
