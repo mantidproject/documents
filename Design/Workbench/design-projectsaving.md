@@ -63,10 +63,38 @@ Implementation of save window, the recommended Method
 -----------------------------------------------------
 Utilizing the serializing method with a JSON back-end, will likely be best as not only will it use a standard file type, it should be easy to change the file type by changing a few functions inside the serializer. Each UI that is serializable should have a encode and decode ability where encode would create a dictionary with a string as the key and the value set to whatever object you would need to save. Decode would use the string key to get back encoder's value and emplace the original value again, and update the GUI to represent these values.
 
+**Key points of implementation:**
+- There will be an intermediary format for both save and loading, which will seperate the major sections of the code. That way each window does not have to know about JSON. A python dictionary is the most convenient type for this.
+- For the types that will be saved to a project a pair of classes needs to be created: Encoder and Decoder
+  - The Encoder is responsible for creating a dict of the stored settings for the type
+  - The Decoder is responsible for creating the type from the dict of settings
+  - Both the Encoder and Decoder can have a shared set of attributes such as shared tags
+- Seperate types for encoding and decoding rather than methods on each saveable type gives multiple advantages
+  - We can't have additional methods on matplotlib plots so seperate classes is actually the only way to achieve this there
+  - We can write all project saving in python and expose C++ widgets to python for C++ widgets
+  - Unit testing of the seperate independant peices will be more effective and less coupled together.
+
+**Diagrams to explain Implementation operation:**
+To illustrate the interface Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
+![Encoder Seqeunce](./projectsave-encoder.svg)
+
+The ProjectSaver class depicted should be the main class called by Workbench to perform the task of Saving. The EncoderFactory should be able to determine which Encoder's can work on what types based on passed names from the ProjectSaver which should be reciveved from the MantidQtModule.
+
+The InterfaceXEncoder represents the Encoder that was found to encode the data from the EncoderFactory. It performs the encoding by producing a dictionary and returning it to the ProjectSaver. The InterfaceXEncoder has access to shared Attributes which are shared between the Encoder and Decoders in the form of the InterfaceXAttributes Class which can be created alongside the original two classes (Encoder and Decoder) by the implementer.
+
+Once all the interfaces have been encoded by the found encoders, ProjectWriter is called and outputs all of the encoded information to the actual file.
+
+To illustrate the interface Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
+![Decode Sequence](./projectsave-decoder.svg)
+
+The ProjectLoader class depicted should be the main class called by Workbench to perform the task of Loading. The DecoderFactory should be able to determine which Decoder's can work on what types based on passed names from the ProjectLoader which it recieves from the ProjectReader. The ProjectReader is the class that handles the reading of the file and creates the dictionary objects from the saved files. With these objects the ProjectLoader would Call the correct interface decoder from the DecoderFactory for each dictionary object, this is picked the same way encoders are picked from the EncoderFactory.
+
+The InterfaceXDecoder represents the chosen Decoder from the DecoderFactory. The InterfaceXDecoder should decode the interface called InterfaceX. MantidQt is not nessercarily the way to create the interfaces.
+
 **Saving:**
 Utlizing an abstraction and encapsulation method we have a few major sections to tackle with a middle man "Saver Class". To save we would have the section which encompasses encoding. These sections are encoding, clumping encoded pieces together ("Saver") and writing, similar to how MVP works with GUIs. This way the encoding and writing parts will not need to touch eachother and can be swapped out independently as well as tested seperately with mocking and unit tests.
 
-For encoding, largely this will be left up to interface implementers and will be fairly simple to do, either by hand or a more automatic approach (a more automatic approach has the unintended consequence of not allowing backwards compaitibility easily when changing variable or widget names). The proposed idea is for developers to create a InterfaceXEncoder Class where InterfaceX is the name of the Interface. This InterfaceXEncoder will be availible to the EncoderFactory which will allow developers to refactor code and be able to still load older data.
+For encoding, largely this will be left up to interface implementers to prpduce the encoder and decoder classes and then register it with the factories. This will be fairly simple to do, either by hand or a more automatic approach (a more automatic approach has the unintended consequence of not allowing backwards compaitibility easily when changing variable or widget names). The proposed idea is for developers to create a InterfaceXEncoder Class where InterfaceX is the name of the Interface. This InterfaceXEncoder will be availible to the EncoderFactory which will allow developers to refactor code and be able to still load older data.
 
 The EncoderFactory has a list of potential encoders to use and will attempt to contact each of them so that it can retrieve a availble in all encoders, list of tags that the encoder will respond to, similar to how the Load algorithm currently works. If the tag given by the EncoderFactory is present in that list of tags (The list of tags is basically a list of all names that interface has and will go by) then return that Encoder to the object that requested it.
 
@@ -124,14 +152,14 @@ Then the Loader will pass to the decoder the key-value pair object of state that
 ```python
 class exampleDecoder():
   def decode(self, dict):
-    TestUI(dict["arg1"], dict["args2"])
-    TestUI.ui.spinBox.setValue(dict["spinBox"]) 
-    TestUI.ui.lineEdit.setValue(dict["lineEdit"]) 
-    TestUI.ui.dateEdit.setValue(dict["dateEdit"]) 
-    TestUI.ui.radioButton.setValue(dict["radioButton"]) 
-    TestUI.ui.checkBox.setValue(dict["checkBox"])
-    TestUI.ui.label_7.setVisible(dict["label_7Visible"])
-    TestUI.show()
+    testui = TestUI(dict["arg1"], dict["args2"])
+    testui.ui.spinBox.setValue(dict["spinBox"]) 
+    testui.ui.lineEdit.setValue(dict["lineEdit"]) 
+    testui.ui.dateEdit.setValue(dict["dateEdit"]) 
+    testui.ui.radioButton.setValue(dict["radioButton"]) 
+    testui.ui.checkBox.setValue(dict["checkBox"])
+    testui.ui.label_7.setVisible(dict["label_7Visible"])
+    return testui
 ```
 
 Then this leaves custom Decoding from JSON to be tackled, a custom decoder is a little harder, than an encoder, as it relies on the key name when decoding being something unique to that type so would need to be on a type requirement by requirement basis. So in the JSON a programmer would need to add a _object_type_ or some other unique string to show that a type like that is there, but it's really on a per type basis. For example: 
@@ -145,82 +173,28 @@ def object_type(dict):
   return dict
 ```
 
-**C++**
+**C++ Saving and Loading Integration:**
 Similarly with the C++ area of serialisation exposing most of the required details to python will be the hardest part, however if most of the interface's details are exposed properly then the decoder and encoders should be able to work exactly the same on these interfaces if only with a little extra implementation on the UI porter/maintainer's part.
 
-Options for Implementation of Workspace Saving
-----------------------------------------------
-**Python and C++**
-- Use save algorithms on all of the workspaces
-	- Pros: We can optimize WorkspaceGroup/Multi-period workspaces like in MantidPlot, Can save only given workspaces, Uses already in place features, have a good idea of what to do from previous MantidPlot implementation.
-	- Cons: Can be slower than other implementations
-
-**C++ Only**
-- Use boost::serialize or cereal libraries
-	- Pros: Faster than old implementation, already made libraries that should be well maintained
-	- Cons: Sizeable extra code added to already bloated Workspace and requires more coding effort than calling SaveNexus.
-
-Implementation of save workspaces, the recommended Method
----------------------------------------------------------
-Utilizing the already implemented SaveNexusProcessed and SaveMD algorithms, the suggestion is to implement a python version of how MantidPlot currently implements saving workspaces. This seems like a better option than utilizing the libraries because they are only really available to C++, whilst feasible it makes more sense to move to python/cross language support which is similar to how MantidPlot implements it already.
-
-Call SaveNexusProcessed for most workspaces and SaveMD for EventWorkspaces. Saving a copy of the names of the saved workspace .nxs files in a JSON format in the same file as the output from the serialization of the windows, it may look like this:
+Implementation of save workspaces and linking to saved scripts
+--------------------------------------------------------------
+Utilizing the already implemented SaveNexusProcessed and SaveMD algorithms, the suggestion is to implement a python version of how MantidPlot currently implements saving workspaces. Call SaveNexusProcessed for most workspaces and SaveMD for EventWorkspaces. Saving a copy of the names of the saved workspace .nxs files in a JSON format in the same file as the output from the serialization of the windows, it may look like this:
 ```JSON
 {
 	workspacenames : ["workspace1", "workspace2", "workspace3", "workspace4"]
 }
 ```
-The way this will work alongside the Serialization is that it will all be saved in the same folder, this is the same as the previous implementation (in MantidPlot), for saving and loading workspaces. However a key differences are that this will be produced in Python as that is what Workbench has been produced in, and the output folder will consist of .nxs workspaces and a .json file with the details of the windows.
-
-A workspace should only save over an already saved version of that workspace if it has changed since last save. This can be done by checking the last modified of any files with the same name as a workspace's name and then comparing it to that workspace's history for it's most recent entry.
-
 Alongside workspaces it should also carry a path to any saved scripts however when loading back in, if these scripts do not exist then fail silently as it is not overly crucial to transfer these across platforms.
 
-Diagrams to display functionality
+Future potential optimizations
+------------------------------
+A workspace should only save over an already saved version of that workspace if it has changed since last save. This can be done by checking the last modified of any files with the same name as a workspace's name and then comparing it to that workspace's history for it's most recent entry. This has the caveat that no history is stored when changed manually via python.
+
+Diagram to display overall functionality
 --------------------------------
 Saving starts from the GUI, and from there it passes on the selected options to the Project Saver which will in turn delegate tasks to saving workspaces and windows. The output of workspace saver and window saver are both put into the output folder.
 
 ![Project Flow](./project-saveflow.png)
-
-<!---
-The Sequence Diagram in the Encoder Sequence below
-
-Title: Sequence of Saving
-Workbench->ProjectSaver: Save these
-ProjectSaver->MantidQtModule: Get list of interfaces
-MantidQtModule->ProjectSaver: List of interfaces
-ProjectSaver->EncoderFactory: Get Encoder for interface X
-EncoderFactory->ProjectSaver: Encoder for interface X
-ProjectSaver->InterfaceXEncoder: Encode interface X
-InterfaceXEncoder->InterfaceXAttributes: Get Interface X tags
-InterfaceXAttributes->InterfaceXEncoder: List of tags
-InterfaceXEncoder->ProjectSaver: Encoded Key value pair
-ProjectSaver->ProjectWriter: Write out these encoded key value pairs
-ProjecyWriter->ProjectSaver: Done
-ProjectSaver->Workbench: Done
--->
-
-To illustrate the interface Encoder interactions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should produce saved files.
-![Encoder Seqeunce](./projectsave-encoder.svg)
-
-<!--
-Title: Decoder Sequence Diagram
-Workbench->ProjectLoader: Load this file
-ProjectLoader->ProjectReader: Get the key value pairs back from this file
-ProjectReader->ProjectLoader: Key value pairs
-ProjectLoader->DecoderFactory: Get Decoder for Interface X
-DecoderFactory->InterfaceXDecoder: Check if possible to decode this interface
-InterfaceXDecoder->DecoderFactory: True
-DecoderFactory->ProjectLoader: InterfaceXDecoder
-ProjectLoader->InterfaceXDecoder: Recreate the InterfaceX object
-InterfaceXDecoder->MantidQt: Create InterfaceX
-MantidQt->InterfaceXDecoder: Alias to interface
-InterfaceXDecoder->ProjectLoader: Done
-ProjectLoader->Workbench: Done
--->
-
-To illustrate the interface Decoder intractions I have produced this rather basic Sequence diagram to attempt to emphasise how the program should utilise saved files.
-![Decode Sequence](./projectsave-decoder.svg)
 
 Bibliography
 ------------
