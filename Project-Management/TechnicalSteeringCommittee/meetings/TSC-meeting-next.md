@@ -9,6 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* Tracking [Maintenance Tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md) and modernization
 * [Dataset design document](https://github.com/mantidproject/dataset/pull/2) discussion.
 * [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
 * Status of move to C++14 - MSVS
