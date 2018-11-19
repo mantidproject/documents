@@ -175,7 +175,7 @@ Similarly with the C++ area of serialisation exposing most of the required detai
 
 Implementation of save workspaces and linking to saved scripts
 --------------------------------------------------------------
-Utilizing the already implemented SaveNexusProcessed, SaveMD, and SaveMask algorithms, the suggestion is to implement a python version of how MantidPlot currently implements saving workspaces. Call SaveNexusProcessed for most workspaces, SaveMD for EventWorkspaces, and SaveMask for MaskedWorkspaces. Saving a copy of the names of the saved workspace .nxs files in a JSON format in the same file as the output from the serialization of the windows, it may look like this:
+Utilizing the already implemented SaveNexusProcessed, SaveMD, and SaveMask algorithms, the suggestion is to implement a python version of how MantidPlot currently implements saving workspaces. Call SaveNexusProcessed for most workspaces, SaveMD for MDWorkspaces, and SaveMask for MaskedWorkspaces. Saving a copy of the names of the saved workspace .nxs files in a JSON format in the same file as the output from the serialization of the windows, it may look like this:
 ```JSON
 {
 	workspacenames : ["workspace1", "workspace2", "workspace3", "workspace4"]
