@@ -11,7 +11,6 @@ New Items
 ---------
 * Tracking [Maintenance Tasks](https://github.com/mantidproject/documents/blob/master/Project-Management/TechnicalSteeringCommittee/reports/MaintenanceTasks.md) and modernization
 * [Dataset design document](https://github.com/mantidproject/dataset/pull/2) discussion.
-* [git hook](https://github.com/mantidproject/mantid/tree/master/.githooks) review ([suggestion on messages](https://chris.beams.io/posts/git-commit/))
 * Status of move to C++14 - MSVS
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
@@ -24,3 +23,8 @@ New Items
     * take the same approach as Windows and build libraries - time consuming, hard to update things
     * linux `clang` on pull requests and osx nightly
 * [An issue with distributions and dimensionless units](https://github.com/mantidproject/documents/blob/fix-divide-distribution/Design/DistributionsAndDimensionlessData.md) and [Multiplication and division rules for histograms](https://github.com/mantidproject/documents/pull/25)
+
+Minutes
+-------
+
+* Design documents will be reorganized into folders per year and a "rejected" folder (Martyn)
