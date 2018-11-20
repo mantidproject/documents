@@ -29,3 +29,4 @@ Minutes
 
 * Design documents will be reorganized into folders per year and a "rejected" folder (Martyn)
 * Maintenance tasks are finish moving to MSVS2017 and finish off the oldest open PRs
+* Maintenance tasks will be moved to a project board similar to workbench (Pete)
