@@ -1,0 +1,47 @@
+Default Q binning
+-----------------
+
+- Q binning can be specified by the user, but what is the preferred default? And for TOF?
+
+Parallax correction (gondola effect) and detector efficiencies
+--------------------------------------------------------------
+
+- How to properly decouple the flight-path (2theta) dependence from actual efficiency through attenuation?
+
+- [TOF] What about wavelength dependence of attenuation?
+
+Beam stop masking
+-----------------
+
+- This can be done manually, but one can automatize by either finding the shadow on the detector, or using the shape and the position of the beam stop.
+
+Resolution
+----------
+
+- Mildner-Carpenter? What about TOF resolution?
+
+[TOF] Wavelength axis
+---------------------
+
+- Wavelength axes are adjusted for each pixel individually based on L2 distance.
+
+Dead time correction
+--------------------
+
+- How to model flux and wavelength dependence?
+
+Stitching
+---------
+
+- Which kind of stitching is desired? Is stitched data used only for visualisation, or actually in the analysis?
+
+Beam center (gravity)
+---------------------
+
+- Currently center of mass of the direct beam is calculated, then the detector is moved in vertical axis such that the beam center is at z=0.
+
+- Is this a good approximation?
+
+- [TOF] Beam center can be calculated for each wavelength bin. Cannot move the detector, but can move the counts correspondingly
+
+- Is this a good approximation? Would analytical correction for gravity (essentially z+=gtˆ2/2) be applicable?
