@@ -30,10 +30,8 @@
 
 ## Beam center (gravity)
 
-* Currently center of mass of the direct beam is calculated, then the detector is moved in vertical axis such that the beam center is at z=0.
+* Currently center of mass of the direct beam is calculated, then the detector is moved in vertical axis such that the beam center is at z=0. Is this a good approximation?
 
-* Is this a good approximation?
-
-* [TOF] Beam center can be calculated for each wavelength bin. Cannot move the detector, but can move the counts correspondingly
+* [TOF] Beam center can be calculated for each wavelength bin. Cannot move the detector, but can move the counts correspondingly.
 
 * Is this a good approximation? Would analytical correction for gravity (essentially z+=gtˆ2/2) be applicable?
