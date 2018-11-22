@@ -36,4 +36,4 @@
 
 * Is this a good approximation? Would analytical correction for gravity (essentially y+=gtˆ2/2) be applicable?
 
-For L2=5 m, TOF=70 msec, gravity drop = 24 mm, less than one pixel size.
+For L2=5 m, TOF=70 msec, gravity drop ~ 25 mm, so about 5 pixels.
