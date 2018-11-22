@@ -35,3 +35,5 @@
 * [TOF] Beam center can be calculated for each wavelength bin. Cannot move the detector, but can move the counts correspondingly.
 
 * Is this a good approximation? Would analytical correction for gravity (essentially y+=gtˆ2/2) be applicable?
+
+For L2=5 m, TOF=70 msec, gravity drop = 24 mm, less than one pixel size.
