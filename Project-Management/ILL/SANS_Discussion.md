@@ -61,3 +61,15 @@
 For L2=5 m, TOF=70 msec, gravity drop ~ 25 mm, so about 5 pixels.
 
 * beam center per wavelength - good approximation, just pity of losing some data from the upmost stripes
+
+## Actions
+
+* Empirical formula for parallax corrections for D33 
+
+* Dead time corrections for D11, D22, D33
+
+* Beam center per wavelength for D33 TOF
+
+* Error and resolution aware mixing in I(Q) in TOF mode
+
+* Resolution by convoluted numerical kernels
