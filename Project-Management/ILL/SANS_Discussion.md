@@ -10,7 +10,7 @@
 
 ## Beam stop masking
 
-* This can be done manually, but one can automatize by either finding the shadow on the detector, or using the shape and the position of the beam stop.
+* This can be done graphically, but one can automatize by either finding the shadow on the detector, or using the shape and the position of the beam stop.
 
 ## Resolution
 
