@@ -10,7 +10,7 @@ The Mantid TSC is currently made up of the following people:
   * Gagik Vardanyan
 * ISIS:
   * Martyn Gigg
-  * Lamar Moore
+  * Dan Nixon
 * SNS:
   * Peter Peterson
   * Steven Hahn
