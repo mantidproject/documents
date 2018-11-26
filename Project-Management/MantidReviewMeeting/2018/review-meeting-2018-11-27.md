@@ -1,7 +1,7 @@
 Agenda
 ======
 
-1. Project Save Interfacing with Interfaces, Encoders and Decoders.
+~~1. Project Save Interfacing with Interfaces, Encoders and Decoders.~~
 
 Questions
 =========
