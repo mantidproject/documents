@@ -9,6 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* Linux builds / [Xvfb](https://github.com/mantidproject/mantid/pull/24057) / [docker](https://github.com/mantidproject/dockerfiles)
 * [Dataset design document](https://github.com/mantidproject/dataset/pull/2) discussion.
 * Status of move to C++14 - MSVS
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
