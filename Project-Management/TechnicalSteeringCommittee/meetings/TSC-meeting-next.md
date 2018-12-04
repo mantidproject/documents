@@ -25,3 +25,4 @@ Attendees: Whitfield, Hahn, Savici, Peterson, Heybrock, Gigg, Nixon, Arnold, Dra
 
 * Linux builds have moved to using Xvfb already
 * Setting up to use docker images for builds is not trivial. Dan will investigate options.
+* Dan will work on moving from leroy to pipeline builds
