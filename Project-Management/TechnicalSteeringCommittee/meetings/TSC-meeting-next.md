@@ -15,3 +15,4 @@ New Items
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * add scikit-image as a Mantid dependency?
+* [MD Changes](https://github.com/mantidproject/documents/blob/008e06f2d98622285e63abe541b75cc674fa58df/Design/MDWorkspace/MDSpaceDesign.md)
