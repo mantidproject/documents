@@ -14,3 +14,4 @@ New Items
 * Status of move to C++14 - MSVS
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
+* add scikit-image as a Mantid dependency?
