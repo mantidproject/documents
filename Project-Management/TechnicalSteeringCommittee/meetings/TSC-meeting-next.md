@@ -27,4 +27,4 @@ Attendees: Whitfield, Hahn, Savici, Peterson, Heybrock, Gigg, Nixon, Arnold, Dra
 * Setting up to use docker images for builds is not trivial. Dan will investigate options.
 * Dan will work on moving from leroy to pipeline builds
 * Change to `MDEventWorkspace` design was approved and work is starting
-* MSVS upgrade is the primary maintenance task. Martyn is working on it "soon"
+* MSVS upgrade is the primary maintenance task. Martyn is working on upgrading build servers "soon"
