@@ -18,3 +18,10 @@ New Items
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * add scikit-image as a Mantid dependency?
+
+Minutes
+-------
+Attendees: Whitfield, Hahn, Savici, Peterson, Heybrock, Gigg, Nixon, Arnold, Draper
+
+* Linux builds have moved to using Xvfb already
+* Setting up to use docker images for builds is not trivial. Dan will investigate options.
