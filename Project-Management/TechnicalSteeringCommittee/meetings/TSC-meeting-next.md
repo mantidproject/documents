@@ -13,3 +13,16 @@ New Items
 * Status of move to C++14 - MSVS
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
+
+Minutes
+-------
+Attendees: Draper, Gigg, Hahn, Peterson, Savici, Soinonen
+
+* Removing the dataset design document from the agenda. It will be added when we are ready to discus it again.
+* MSVS/C++14 move is done
+* Workbench
+  * `TableWorkspace` PR is almost ready
+  * Fitting is in progress
+  * ISIS indirect custom C++ guis are in progress
+  * color-fill-plot for constant bins is "done"
+  
