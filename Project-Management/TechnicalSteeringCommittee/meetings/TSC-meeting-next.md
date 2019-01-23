@@ -11,3 +11,4 @@ New Items
 ---------
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
+* Dataset: https://github.com/mantidproject/dataset/pull/10
