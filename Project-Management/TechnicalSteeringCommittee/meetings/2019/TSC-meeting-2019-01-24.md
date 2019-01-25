@@ -11,3 +11,17 @@ New Items
 ---------
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
+* Dataset: https://github.com/mantidproject/dataset/pull/10
+
+Minutes
+-------
+
+Attendees: Arnold, Draper, Gigg, Hahn, Heybrock, Nixon, Peterson, Savici, Soininen, Vardanyan, Whitfield
+
+The design of
+[Dataset](https://github.com/mantidproject/dataset/pull/10) was
+approved and merged by a vote of 6 yes and 1 no.  There was a fair
+amount of discussion surrounding the implementation/roll-out of the
+design. The decision was that as the implementation progresses, the
+TSC should continue to be involved as there were various parts of the
+design which are expected to change.
