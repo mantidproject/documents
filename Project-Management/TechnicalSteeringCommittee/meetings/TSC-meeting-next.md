@@ -12,3 +12,4 @@ New Items
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * Dependency management. As per slack discussion. We have a need now to get newer versions of our dependencies on all platforms. Current problems are HDF5 1.8 and Boost 1.5x. Need to get a better mechanism in place as we cannot quickly respond at present. (Owen)
+* Planning [developer meeting agenda](https://www.mantidproject.org/Category:Developer_Workshop_2019)
