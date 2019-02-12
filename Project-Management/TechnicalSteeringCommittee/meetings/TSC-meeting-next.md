@@ -24,5 +24,5 @@ Attendees: Draper, Gigg, Hahn, Nixon, Peterson, Savici, Whitfield
 * Workbench - lots of small fixes
   * Connecting the ADS to all of the views
   * Table view for `Workspace2D` and `TableWorkspace`
-* Pre-planning for spectrum view/slice view replacement is about to start
+* Pre-planning for spectrum view/slice view replacement code camp is about to start. Timeline has not been decided.
 * Add [MVP tutorial](http://developer.mantidproject.org/MVPTutorial/index.html) to the developer meeting and update it include links to existing code in the workbench
