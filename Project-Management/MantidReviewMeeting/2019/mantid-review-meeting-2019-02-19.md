@@ -2,7 +2,8 @@
 Agenda
 ======
 
-* Add your agenda items here
+* Make ConvertToMD faster mantidproject/mantid/#24436 - Igor
+* Chopping up simple geometries refactor - Peterson
 
 Questions
 =========
