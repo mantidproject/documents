@@ -13,3 +13,4 @@ New Items
 * Status of SliceViewer replacement (Hahn)
 * Planning [developer meeting agenda](https://www.mantidproject.org/Category:Developer_Workshop_2019)
 * Framework only build on PR's (Pete)
+* [Developer workshop planning](https://www.mantidproject.org/Category:Developer_Workshop_2019#Lightning_talks)
