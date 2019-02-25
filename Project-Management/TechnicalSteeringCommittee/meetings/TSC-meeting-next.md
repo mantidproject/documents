@@ -12,3 +12,4 @@ New Items
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * Planning [developer meeting agenda](https://www.mantidproject.org/Category:Developer_Workshop_2019)
+* Framework only build on PR's (Pete)
