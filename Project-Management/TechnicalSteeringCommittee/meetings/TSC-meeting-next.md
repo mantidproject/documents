@@ -10,6 +10,7 @@ Pinned Topics
 New Items
 ---------
 * [Maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
+* [Status of 4.0 release](https://github.com/mantidproject/mantid/projects/17)
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * Status of SliceViewer replacement (Hahn)
 * Planning [developer meeting agenda](https://www.mantidproject.org/Category:Developer_Workshop_2019)
