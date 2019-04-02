@@ -1,0 +1,47 @@
+Some open source tools...
+
+most of which you'll probably never use
+
+i3wm
+(window manager)
+
+Polybar
+(desktop status bar)
+
+fish
+(shell)
+
+rofi
+(generic menu)
+
+feh
+(image viewer)
+
+mpv
+(media player)
+
+mpc
+(music player)
+
+youtube-dl
+(generic video downloader)
+
+Syncthing
+(file synchronisation)
+
+tomb
+(mountable encrypted volumes)
+
+gpg
+(sign/encrypt/authenticate)
+
+pass
+(password manager)
+
+qrencode
+(QR code generator)
+
+sent
+(presentation tool)
+
+

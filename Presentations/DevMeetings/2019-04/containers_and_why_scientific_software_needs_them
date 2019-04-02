@@ -1,0 +1,35 @@
+Software Containers
+
+Why?
+
+Increased portability
+
+Wide infrastructure support
+
+How?
+
+(right now, for this use case)
+
+Singularity
+
+Easy installation
+
+Containers run as end user
+
+Simple image format
+
+Better MPI and networking than Docker
+
+Wide user base and active development
+
+Examples?
+
+Savu @ not DLS
+
+Shared software @ DLS
+
+Mantid development
+
+Continuous integration
+
+
