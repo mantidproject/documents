@@ -24,6 +24,8 @@ ORNL is asking for visualizing 3D volumes of reciprocal space with
 - responsive interaction
 - feedback on what the user is looking at
 - ideally in the workbench
+SXD doesn't use mantid
+HRPD is using "old" mantid
 
 Engineering
 -----------
@@ -34,3 +36,23 @@ VSI/Paraview
 Neither ISIS nor ORNL use VSI - would like to know when/if it gets moved into VSI
 The default view after having added data does not give the user a good idea where the data is
 The responsiveness is bad - giving less data to the tool may be a better solution
+
+Generic/Question
+----------------
+How is workbench
+- looks ready for powder
+- want a library of ways to do plots
+- would like setting for plotting lines or points by default
+What do you like about workbench
+- sorting of plots
+- maybe a single plot window with a list of all the plots to look at that is selectable
+Missing/obstacles from workbench
+- advanced plots are needed for powders
+- definitely need the slice viewer
+- custom interfaces
+Random notes
+- something in mantid that warns if too much memory is being used, maybe attached to algorithm cancellation
+- all ISIS diffraction users are using mantid
+- adding workflow diagrams to workflow algorithms would be useful
+- determining workflow for how a workspace was generated would be useful as well
+- user documentation would benefit from assumption/applicability section
