@@ -26,6 +26,7 @@ ORNL is asking for visualizing 3D volumes of reciprocal space with
 - ideally in the workbench
 SXD doesn't use mantid
 HRPD is using "old" mantid
+Need structures for handing multiple UB matrices for twinned crystals - not easy - maybe done by creating a copy of the data and determining which peaks are found by the two UB
 
 Engineering
 -----------
@@ -52,7 +53,8 @@ Missing/obstacles from workbench
 - custom interfaces
 Random notes
 - something in mantid that warns if too much memory is being used, maybe attached to algorithm cancellation
-- all ISIS diffraction users are using mantid
+- all ISIS powder diffraction users are using mantid
+- all SNS instruments, WAND, POWDER is ready but beam went down before acceptance testing
 - adding workflow diagrams to workflow algorithms would be useful
 - determining workflow for how a workspace was generated would be useful as well
 - user documentation would benefit from assumption/applicability section
