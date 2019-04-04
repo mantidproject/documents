@@ -1,6 +1,7 @@
 No engineering diffraction people were present
 ORNL is not doing imaging in mantid
 ISIS moved their imaging out of mantid
+Total scattering/PDF wasn't represented, but they want effort on sample corrections.
 
 Powder diffraction/PDF
 ----------------------
