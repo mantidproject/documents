@@ -39,7 +39,7 @@ repo = gh.get_user(REPO_OWNER).get_repo(REPO_NAME)
 assingnees = repo.get_assignees()
 
 #Lookup milestone sting to get number
-milestone = "Release 3.11"
+milestone = "Release 4.0"
 gh_milestone = None
 for loop_milestone in repo.get_milestones():
 	if loop_milestone.title == milestone:
