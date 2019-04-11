@@ -1,33 +1,33 @@
-No engineering diffraction people were present
-ORNL is not doing imaging in mantid
-ISIS moved their imaging out of mantid
-Total scattering/PDF wasn't represented, but they want effort on sample corrections.
+- No engineering diffraction people were present
+- ORNL is not doing imaging in mantid
+- ISIS moved their imaging out of mantid
+- Total scattering/PDF wasn't represented, but they want effort on sample corrections.
 
 Powder diffraction/PDF
 ----------------------
-ILL is using D2B for tradional powder diffraction (with calibration) and writing to FullProf
-ILL doesn't have PDF cabilities yet
-ISIS diffraction is mostly small issues
-- any shape absorption, can read in the mesh, but haven't tried to use the result
-- would like to try first on PEARL
-- powder is using absorption corrections for simple shapes when then see issues in the data
-ISIS pdf liquids is not currently using mantid
-ISIS engeneering just needs a gui worked out
-POLARIS is having some issues comparing to GURUN - they may be using `ConvertUnits` rather than `AlignDetectors`
+- ILL is using D2B for tradional powder diffraction (with calibration) and writing to FullProf
+- ILL doesn't have PDF cabilities yet
+- ISIS diffraction is mostly small issues
+  - any shape absorption, can read in the mesh, but haven't tried to use the result
+  - would like to try first on PEARL
+  - powder is using absorption corrections for simple shapes when then see issues in the data
+- ISIS pdf liquids is not currently using mantid
+- ISIS engeneering just needs a gui worked out
+- POLARIS is having some issues comparing to GURUN - they may be using `ConvertUnits` rather than `AlignDetectors`
  
 Single crystal diffraction
 --------------------------
-Single crystal extension path length added to Jana output format
-ISIS would like to start testing incomensurate and modulated structures
-ISIS complex shape absorption again
-ORNL would like interactive interface for finding peaks in modulated structures
-ORNL is asking for visualizing 3D volumes of reciprocal space with
-- responsive interaction
-- feedback on what the user is looking at
-- ideally in the workbench
-SXD doesn't use mantid
-HRPD is using "old" mantid
-Need structures for handing multiple UB matrices for twinned crystals - not easy - maybe done by creating a copy of the data and determining which peaks are found by the two UB
+- Single crystal extension path length added to Jana output format
+- ISIS would like to start testing incomensurate and modulated structures
+- ISIS complex shape absorption again
+- ORNL would like interactive interface for finding peaks in modulated structures
+- ORNL is asking for visualizing 3D volumes of reciprocal space with
+  - responsive interaction
+  - feedback on what the user is looking at
+  - ideally in the workbench
+- SXD doesn't use mantid
+- HRPD is using "old" mantid
+- Need structures for handing multiple UB matrices for twinned crystals - not easy - maybe done by creating a copy of the data and determining which peaks are found by the two UB
 
 Engineering
 -----------
