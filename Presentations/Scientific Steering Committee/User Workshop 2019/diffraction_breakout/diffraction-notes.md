@@ -18,6 +18,8 @@ Powder diffraction/PDF
 Single crystal diffraction
 --------------------------
 - Single crystal extension path length added to Jana output format
+- ISIS needs to test work on satellite peak integration and 3D profile fitting works for them.
+The latter needs to use fitted profile and not just McStas input
 - ISIS would like to start testing incomensurate and modulated structures
 - ISIS complex shape absorption again
 - ORNL would like interactive interface for finding peaks in modulated structures
