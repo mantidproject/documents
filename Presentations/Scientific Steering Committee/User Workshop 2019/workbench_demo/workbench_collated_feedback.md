@@ -10,7 +10,7 @@ They have been transferred to issues on [GitHub](https://github.com/mantidprojec
   - Also filter python output from separate tabs
 - Workspaces associated with plots???
   - Query with James/Reflectometers
-Sample logs viewer:
+- Sample logs viewer:
   - Exporting logs to table workspace (for plotting too)
   - Drag and drop logs to existing plots
   - Hide plot when not a time series
