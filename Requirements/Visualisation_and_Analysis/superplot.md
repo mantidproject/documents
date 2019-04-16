@@ -6,13 +6,13 @@ Superplot (LAMP) is a data comparison tool which offers convenient overplotting 
 
 ### Tools in Mantid
 
-The tools mantid offers currently are mostly suited for inspection of single workspaces. This makes comparison of several workspaces not so convenient. This applies not only to curves and overplotting, but to other tools as well. For example, for a visual comparison of instrument views of two workspaces one has to open two individual instances of the instrument viewer over the two workspaces. However, particularly for SANS, one might want to quickly scroll through different samples having a fixed perspective in the instrument view. For data overplotting, there is a DataComparison GUI (Interfaces->General) which however offers very limited functionality. Moreover, one has to add the workspaces to compare manually one by one. 
+The tools mantid offers currently are mostly suited for inspection of single workspaces. This makes comparison of several workspaces not so convenient. This applies not only to curves and overplotting, but to other tools as well. For example, for a visual comparison of instrument views of two workspaces one has to open two individual instances of the instrument viewer over the two workspaces. However, particularly for SANS, one might want to quickly scroll through different samples having a fixed perspective in the instrument view. For data overplotting, there is a DataComparison GUI (Interfaces->General) which offers very limited functionality. Moreover, one has to add the workspaces manually one by one. 
 
 ### Proposed solution
 
 A general solution could be to extend all the visualisation tools to handle multiple workspaces. When opening a tool over a selection of workspaces or a WorkspaceGroup, the tools can start with the view of the first workspace in the list and have a slider over the workspaces in the selection. This will allow to browse over workspaces without changing the perspective/slice/zoom or other configurations of the visualisation. This will also avoid having multiple instances of the tools which are hard to manage for a large number of workspaces. 
 
-For overplotting of multiple 1D curves, a hold button next to the slider will also be required. The hold button must have a binary state Hold/Unhold that should be cached for each workspace in the list. When clicking on Hold, the widget can auto-assign a color, and put the curve in the legend correspondingly.
+For overplotting of multiple 1D curves, a hold button next to the slider will also be required. The hold button must have a binary state Hold/Unhold that should be cached for each workspace index in the list. When clicking on Hold, the widget can auto-assign a color, and put the curve in the legend correspondingly.
 
 When plotting a spectrum from a WorkspaceGroup, all the curves are overplotted by default. In this case also the plot window can host the slider and the button to offer more flexible overplotting.
 
