@@ -2,7 +2,7 @@
 
 ### Superplot
 
-Superplot (LAMP) is a data comparison tool which offers convenient overplotting of multiple 1D curves originating from one or more workspaces. These can be spectra, data in single bin (i.e. vs vertical axis) or, without loss of generality, 1D slices of arbitrary MD data. The key elements are the sliders (scrollbars): one to switch the spectrum index and another one to switch the index of the workspace itself. The sliders are accompanied with a hold button to keep the current 1D curve on the plot. Without holding it will simply plot the current spectrum of the current workspace. Once a curve is held, changing either of the sliders will overplot the current curve over the held one. You can see it in action [here](https://mailout.ill.eu/attach/download.php?uoy=NDZlNWJkOTg1NGMyMDY2Mzg5N2EwZTA1NjVmNDJjYWU=). 
+Superplot (LAMP) is a data comparison tool which offers convenient overplotting of multiple 1D curves originating from one or more workspaces. These can be spectra, data in single bin (i.e. vs vertical axis) or, without loss of generality, 1D slices of arbitrary MD data. The key elements are the sliders (scrollbars): one to switch the spectrum index and another one to switch the index of the workspace itself. The sliders are accompanied with a hold button to keep the current 1D curve on the plot. Without holding it will simply plot the current spectrum of the current workspace. Once a curve is held, changing either of the sliders will overplot the current curve over the held one. You can see the original tool in action [here](https://mailout.ill.eu/attach/download.php?uoy=NDZlNWJkOTg1NGMyMDY2Mzg5N2EwZTA1NjVmNDJjYWU=). 
 
 ### Tools in Mantid
 
@@ -26,4 +26,5 @@ The widged should contain a slider over the workspaces in the selected set (Work
 - InstrumentViewer
 - SliceViewer
 - Regular plot
+- Color fill plot
 - Others?
