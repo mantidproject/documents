@@ -27,4 +27,5 @@ The widged should contain a slider over the workspaces in the selected set (Work
 - SliceViewer
 - Regular plot
 - Color fill plot
+- Data Comparison GUI
 - Others?
