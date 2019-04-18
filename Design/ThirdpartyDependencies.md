@@ -5,7 +5,7 @@ the current issues surrounding the use of third-party libraries
 within the mantid codebase,
 along with proposals for solutions to the current problems.
 
-# Motivation
+## Motivation
 
 The ESS will be using features from HDF5 such as variable-length strings,
 [single writer multiple reader](https://support.hdfgroup.org/HDF5/docNewFeatures/NewFeaturesSwmrDocs.html)
@@ -17,7 +17,7 @@ is not a good idea as it could lead to a mess of package conflicts.
 Furthermore, while this is an issue with a single package it points to
 a more systemic issue with how we handle our dependencies across the project.
 
-# Current Situation
+## Current Situation
 
 Mantid uses several third-party libraries
 in order to avoid reinventing the wheel,
@@ -29,7 +29,7 @@ Please note that during all discussions below ParaView is to be treated,
 effectively, as our source code as we build and ship our own version
 on all platforms.
 
-## Linux
+### Linux
 
 Linux-based platforms use OS-provided system packages from distro repositories
 or custom builds of libraries where distro versions are
@@ -62,7 +62,7 @@ Cons:
 * New dependencies have to be installed by hand on developers and builders machines.
 
  
-## Windows
+### Windows
 
 Windows uses a collection of custom-built libraries managed
 by a homegrown set of [scripts](https://github.com/mantidproject/thirdparty-msvc2015).
@@ -89,7 +89,7 @@ Cons:
 * Complete bundling of dependencies gives a much larger user installer package.
 
 
-## MacOS
+### MacOS
 
 MacOS uses the [Homebrew](https://brew.sh/) package manager along with a custom
 set of [formula](https://github.com/mantidproject/homebrew-mantid) for obselete
@@ -128,3 +128,49 @@ there are also general issues with the current approach:
 3. Three different methods requires much additional overhead
    in understanding how things are managed.
 
+## Requirements
+
+The following is a list of requirements that must be met any possible solution:
+
+1. allow mantid to select a given version of a given dependency
+2. version definition for a given library is in a central place
+3. use the same version of a given dependency across all platforms
+4. provide users a single "package" to install mantid
+5. must be able to install versions side-by-side
+   including nightly and unstable versions.
+
+The following is a list of non-essential but desirable features that any solution could have:
+
+1. common system on all platforms
+
+## Solutions
+
+Here we describe possible solutions to the problems outlined above. 
+The solutions considered are:
+
+* [Conan](#Conan)
+* Conda
+* Flatpak/Snap
+* Singularity
+* Docker
+
+### Conan
+
+[Conan](https://docs.conan.io/en/latest/introduction.html)
+is a decentralized package manager for C/C++.
+It aims to be cross-platform and build system agnostic.
+The servers store packages that can be downloaded directly
+if the required config matches the prebuilt versions.
+Otherwise conan will build packages locally if the requested binaries
+are not available to match the required configuration.
+
+Conan allows for the conan server to be hosted "privately" to facilitate
+sharing binaries across developers on the same project and avoids the overhead
+of each developer rebuilding the dependency set.
+
+Conan would satisfy the first 3 requirements through the
+[conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html).
+
+For user packaging purposes the dependencies would be bundled in with each of
+the user packages on all of the platforms, much like is done on Windows. As long
+as the `RPATH` settings are correct this should not be a problem on Linux.
