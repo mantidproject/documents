@@ -24,3 +24,4 @@ Attendees: Gagik, Draper, Gigg, Hahn, Peterson, Savici, Whitfield
   * Currently is designed around MDHisto. MDEvent should be straightforward to add
   * Separate work is occuring for faster rendering of MatrixWorkspace
   * All of the 2d plots should use `imshow`
+* Framework only build will be put together by ORNL. This is to support conda `mantid-framework` builds
