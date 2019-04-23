@@ -10,5 +10,12 @@ Pinned Topics
 New Items
 ---------
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
-* Status of SliceViewer replacement (Hahn)
+* [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * Framework only build on PR's (Pete)
+
+Minutes
+-------
+Attendees: Gagik, Draper, Gigg, Hahn, Peterson, Savici, Whitfield
+
+* Will likely schedule push to get open PRs to zero at the "end of the month" (i.e. next week) for two days
+* 
