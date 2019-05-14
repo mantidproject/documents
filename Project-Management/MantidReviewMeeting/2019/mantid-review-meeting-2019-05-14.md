@@ -8,7 +8,7 @@ Agenda
 * Now using [Material Design](https://material.io/tools/icons/?style=baseline) icons in workbench. (Martyn)
   - Dropped `qtawesome`
   - Wrapped icons directly our own very thin C++ shared library that converts glyphs to QIcon objects.
-  - (mantid.qt.icons.get_icon)[https://github.com/mantidproject/mantid/blob/master/qt/python/mantidqt/icons/__init__.py#L14] gives access in Python
+  - [mantid.qt.icons.get_icon](https://github.com/mantidproject/mantid/blob/master/qt/python/mantidqt/icons/__init__.py#L14) gives access in Python
   - `MantidQtIcons` gives access in C++
 
 Questions
