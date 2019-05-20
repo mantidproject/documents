@@ -11,17 +11,4 @@ New Items
 ---------
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
-* Framework only build on PR's (Pete)
-
-Minutes
--------
-Attendees: Gagik, Draper, Gigg, Hahn, Peterson, Savici, Whitfield
-
-* Will likely schedule push to get open PRs to zero at the "end of the month" (i.e. next week) for two days
-* Workbench is continuing to progress, but the "big push" is slowing down. People should help with issues in the [next](https://github.com/mantidproject/mantid/projects/9) column of the project board
-* Sliceviewer
-  * Main application has a prototype that should be ready for developers next week
-  * Currently is designed around MDHisto. MDEvent should be straightforward to add
-  * Separate work is occuring for faster rendering of MatrixWorkspace
-  * All of the 2d plots should use `imshow`
-* Framework only build will be put together by ORNL. This is to support conda `mantid-framework` builds
+* `python-qt5` now available on RHEL7 via EPEL
