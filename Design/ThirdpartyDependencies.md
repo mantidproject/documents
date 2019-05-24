@@ -9,13 +9,17 @@ along with proposals for solutions to the current problems.
 
 The ESS will be using features from HDF5 such as variable-length strings,
 [single writer multiple reader](https://support.hdfgroup.org/HDF5/docNewFeatures/NewFeaturesSwmrDocs.html)
-that are not yet available on some of our platforms. These features are available in HDF5 1.10
+that are not yet available on some of our platforms.
+These features are available in HDF5 1.10
 but RHEL 7 (and variants) and Ubuntu 16.04 ony have HDF5 1.8 available.
 
 Upgrading a library such as HDF5 that is used by many other system packages
 is not a good idea as it could lead to a mess of package conflicts.
 Furthermore, while this is an issue with a single package it points to
 a more systemic issue with how we handle our dependencies across the project.
+Other examples of issues on Linux are on RHEL 7 where we have rebuilt a newer
+version of the ``sip`` package that conflicts with other packages such as
+Octave and causes users troubles when installing these packages.
 
 ## Current Situation
 
@@ -142,17 +146,20 @@ The following is a list of requirements that must be met any possible solution:
 The following is a list of non-essential but desirable features that any solution could have:
 
 1. common system on all platforms
+2. solves or makes simpler the move to Python 3 for the project.
 
 ## Solutions
 
 Here we describe possible solutions to the problems outlined above. 
-The solutions considered are:
+The solutions considered in detail are:
 
 * [Conan](#Conan)
-* Conda
-* Flatpak/Snap
-* Singularity
-* Docker
+* [Conda](#Conda)
+
+Other solutions not considered:
+
+* Flatpak/Snap - would only work for Linux and still be a large effort.
+* Singularity/Docker
 
 ### Conan
 
@@ -172,5 +179,59 @@ Conan would satisfy the first 3 requirements through the
 [conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html).
 
 For user packaging purposes the dependencies would be bundled in with each of
-the user packages on all of the platforms, much like is done on Windows. As long
-as the `RPATH` settings are correct this should not be a problem on Linux.
+the user packages on all of the platforms, much like is done on Windows.
+As long as the `RPATH` settings are correct this should not be a problem on Linux.
+As each package would ship with its own dependencies then the final requirement of
+side-by-side installs will be taken care of automatically.
+QtCreator does this and is able to ship a standalone version with the latest
+Qt version regardless of the system version of Qt.
+
+### CMake
+
+Conan has built in support for [CMake](https://docs.conan.io/en/latest/integrations/cmake.html),
+requiring minimal modification to our current CMake configuration to build against
+libraries installed by Conan.
+
+#### Conan and Python
+
+Conan knows nothing of Python but `mantid` depends on Python packages
+that would be built on libraries that Conan would provide.
+One key library is `h5py` that requires building on top of the `hdf5` version
+that Conan would provide.
+In order for users of `mantid` to be able to use `mantid` and `h5py`
+in the same Python code `mantid` would need to ship these dependencies.
+
+One option is the use of [virtual environments](https://virtualenv.pypa.io/en/latest/)
+inside our distributed packages.
+Our startup scripts could activate the internal virtual environment but still
+give access to the system packages directory. Any packages we deploy would be
+taken in preference but users could still interact with system packages as they
+would now.
+
+The interoptability of `mantid` with other Python libraries would be the cause
+of the most concern if we adopted the Conan approach.
+
+### Conda
+
+[Conda](https://docs.conda.io/en/latest/)
+is another cross-platform package manager but with support for a
+variety of languages including Python and C++.
+Alongside pip many popular Python packages support distribution through Conda.
+
+*"A conda package is a binary tarball containing
+system-level libraries,
+Python modules,
+executable programs,
+or other components"*.
+[Anaconda](https://repo.continuum.io/pkgs/) hosts many prebuilt packages for
+various combinations of compilers and operating systems.
+[Conda build](https://conda.io/projects/conda-build/en/latest/resources/commands/conda-build.html)
+is provided to enable building custom packages. 
+
+The [meta.yaml](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#requirements-section)
+file provides a central place to define dependencies and would satisfy requirements 1-3.
+The requirements file allows builds tools such as CMake to be used. It is unclear how
+the build process would fit into current tools such as IDEs.
+
+
+
