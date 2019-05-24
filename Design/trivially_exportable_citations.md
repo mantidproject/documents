@@ -14,6 +14,10 @@ The ideal scenario is that given a workspace containing the data a user intends 
 - If the processing of a workspace spans multiple Mantid versions then the citations shall include every version of Mantid that has touched the workspace.
 - Citations for algorithms are static and cannot depend on algorithm properties.
 
+It should be programatically possible to add a citation to the workspace history given the workspace.
+This allows parts of Mantid that are not algorithms but still citable to be cited.
+An example of this are the Muon and Indirect GUIs.
+
 Any algorithms that currently contain a citation in their user documentation will have this removed and added in code.
 Documentation tooling should be produced to automatically populate citations on documentation pages.
 
