@@ -29,8 +29,8 @@ where an approved solution already exists in the wild.
 The dependencies are managed in very different ways
 on the three platforms that are supported.
 
-Please note that during all discussions below ParaView is to be treated,
-effectively, as our source code as we build and ship our own version
+Please note that during all discussions below we ignore ParaView, as
+effectively, we treat it as our source code and ship our own version
 on all platforms.
 
 ### Linux
@@ -148,6 +148,11 @@ The following is a list of non-essential but desirable features that any solutio
 1. common system on all platforms
 2. solves or makes simpler the move to Python 3 for the project.
 
+## Use Cases
+
+1. A new version of `hdf5` is required that conflicts with system installed versions on Linux.
+2. A user wishes to write a Python script using `mantid` and a package we do not ship, e.g. Pandas.
+
 ## Solutions
 
 Here we describe possible solutions to the problems outlined above. 
@@ -159,7 +164,8 @@ The solutions considered in detail are:
 Other solutions not considered:
 
 * Flatpak/Snap - would only work for Linux and still be a large effort.
-* Singularity/Docker
+* Singularity/Docker - would only work for Linux.
+
 
 ### Conan
 
@@ -186,13 +192,15 @@ side-by-side installs will be taken care of automatically.
 QtCreator does this and is able to ship a standalone version with the latest
 Qt version regardless of the system version of Qt.
 
-### CMake
+#### CMake
 
 Conan has built in support for [CMake](https://docs.conan.io/en/latest/integrations/cmake.html),
 requiring minimal modification to our current CMake configuration to build against
 libraries installed by Conan.
 
-#### Conan and Python
+Developers would continue to work as they do now with their favourite IDEs and tools.
+
+#### Python Packages
 
 Conan knows nothing of Python but `mantid` depends on Python packages
 that would be built on libraries that Conan would provide.
@@ -211,18 +219,31 @@ would now.
 The interoptability of `mantid` with other Python libraries would be the cause
 of the most concern if we adopted the Conan approach.
 
-### Conda
+#### Use Case 1
 
-[Conda](https://docs.conda.io/en/latest/)
-is another cross-platform package manager but with support for a
-variety of languages including Python and C++.
-Alongside pip many popular Python packages support distribution through Conda.
+1. First check if a package exists in existing public repositories:
+   1. If so then move to step 2.
+   1. If not create a package, build required binaries and push to "private" repository.
+1. Update `conanfile.txt` in the code repository with the new package versions and
+   create a pull request. All developers local copies will update once the pull
+   request is merged.
+
+
+### Conda
 
 *"A conda package is a binary tarball containing
 system-level libraries,
 Python modules,
 executable programs,
 or other components"*.
+
+[Conda](https://docs.conda.io/en/latest/)
+is another cross-platform package manager but with support for a
+variety of languages including Python and C++.
+Alongside `pip` many popular Python packages support distribution through Conda.
+In fact `mantid` already has [Conda packages](https://anaconda.org/mantid/repo)
+for workbench and the framework for Linux and Mac.
+
 [Anaconda](https://repo.continuum.io/pkgs/) hosts many prebuilt packages for
 various combinations of compilers and operating systems.
 [Conda build](https://conda.io/projects/conda-build/en/latest/resources/commands/conda-build.html)
@@ -230,8 +251,10 @@ is provided to enable building custom packages.
 
 The [meta.yaml](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#requirements-section)
 file provides a central place to define dependencies and would satisfy requirements 1-3.
-The requirements file allows builds tools such as CMake to be used. It is unclear how
-the build process would fit into current tools such as IDEs.
+The requirements file allows builds tools such as CMake to be used.
+
+It is unclear how the build process would fit into current tools such as IDEs. The current
+CLI workflow is documented [here](https://github.com/mantidproject/conda-recipes/blob/master/Developer.md).
 
 
 
