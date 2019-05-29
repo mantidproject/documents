@@ -21,6 +21,9 @@ An example of this are the Muon and Indirect GUIs.
 Any algorithms that currently contain a citation in their user documentation will have this removed and added in code.
 Documentation tooling should be produced to automatically populate citations on documentation pages.
 
+The instructions of what to cite thet are shown when you launch Mantid will be removed.
+They will be replaced with instructions of how to export the citations from a workspace.
+
 ## Design
 
 This is largely based on what Savu does to solve the same problem.
