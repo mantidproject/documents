@@ -85,7 +85,14 @@ The Algorithm History GUI may be extended to provide this functionality in a sim
 
 ### Documentation
 
-TODO: look at existing documentation tooling and determine how this should be done.
+There are two main requirements for documentation integration:
+  - Listing the citations in the algorithm documentation page
+  - Allowing the documentation writer (developer) to cite the citations at specific points in the documentation
+
+The first point is trivial as we already do similar things for properties, related algorithms, etc.
+
+The second will involve more work.
+I don't have enough Sphinx know-how to suggest how this may be implemented.
 
 ## Design considerations
 
@@ -109,6 +116,12 @@ What happens when loading old workspaces with no citations in the NeXus file?
 
 Is it worth using `char *` as the string format to be able to `constexpr` the `Citation` structure?
 
-### Citing in algorithm documentation
+## Follow on work
 
-How would a developer cite one of the algorithm citations in the algorithm documentation?
+Work that should be looked into in the future.
+Not to be considered for an initial implementation.
+
+### Data citations
+
+Facilities that mint DOIs for data collections could have this added to the workspace citations during the loading step.
+Such citations should ideally be provided as `NXcite` in the raw data.
