@@ -5,6 +5,14 @@
 Both us (Mantid developers) and users want to ensure correct citations on publications that make use of Mantid.
 Currently this is an issue for two main reasons; non-obvious citations for the Mantid project and difficulty in citing any methods used.
 
+The proposal to do this now is prompted by discussions regarding reproducability of data at SINE2020 WP10.
+
+This aims to provide the following benefits:
+  - Method developers receieve correct citations
+  - Mantid recieves correct citations
+  - Mantid dependencies receieve correct citations
+  - Processed data can outlive Mantid
+
 ## Solution
 
 The ideal scenario is that given a workspace containing the data a user intends to publish, there is a utility that will take this workspace and generate a list of citations.
