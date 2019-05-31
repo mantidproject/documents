@@ -2,8 +2,8 @@ Mantid Technical Steering Committee Report to PMB
 =================================================
 
 * [Membership](https://github.com/mantidproject/documents/blob/713dd9c6a927c30f7c5bb8baffcc0e01ab760249/Project-Management/TechnicalSteeringCommittee/TSC-members.md)
-  * ESS Heybrock
-  * ISIS Gigg, Nixon
+  * ESS Heybrock, Nixon
+  * ISIS Gigg
   * ORNL Hahn, Peterson, Savici
   * ILL Vardanyan
 * [Developer workshop highlights](https://www.mantidproject.org/Category:Developer_Workshop_2019)
