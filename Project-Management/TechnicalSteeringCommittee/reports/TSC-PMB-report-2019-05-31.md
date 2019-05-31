@@ -18,7 +18,7 @@ Mantid Technical Steering Committee Report to PMB
 * [Supported platforms](http://download.mantidproject.org/)
   * Conda build of framework for linux and osx python2 and python3 - osx not being updated
   * Docker images based on rhel7, ubuntu 16.04 (python 2 and 3), and ubuntu 18.04
-  * MacOS 10.10 (current release is 10.13)
+  * MacOS 10.10 (current release is 10.14)
   * RHEL7 - issues have arisen now that python36-qt5 is supported in EPEL
   * Ubunutu 16.04 and 18.04
   * Windows 7/8/10
