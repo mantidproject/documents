@@ -1,7 +1,8 @@
 Agenda
 ======
 
-* Add Agenda items here
+* FitBrowser - Roman
+* Slice viewer update - Ross
 
 Questions
 =========
