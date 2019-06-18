@@ -69,7 +69,7 @@ Some helper "toString" methods may be beneficial.
 
 ### Algorithm citations
 
-An additional `static` method will be added to `IAlgorithm` that returns a `std::vector<Citation const> const`.
+An additional `virtual` method will be added to `IAlgorithm` that returns a `std::vector<Citation const> const`.
 The developer has the option to overload this if the algorithm has relevant citations.
 By default the implementation in `IAlgorithm` will return an empty vector.
 
