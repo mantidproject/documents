@@ -20,4 +20,8 @@ Minutes
 
 Attendees: Draper, Gigg, Lim, Nixon, Peterson, Whitfield
 
+* Code freeze is in two weeks
 * Citations design was largely approved. Nixon will be sorting out what the specific tasks are and it will be worked on during the next maintenance period.
+* Docker images and conda installs - these are not officially supported, but they are being built as part of the master and release pipeline and tested. Should add documentation to download.mantidproject.org.
+* Workbench continues to progress slowly
+* SliceViewer is close to a minimum viable product. Developers should start testing it.
