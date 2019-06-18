@@ -14,3 +14,10 @@ New Items
 * `python-qt5` now available on RHEL7 via EPEL ([koji](https://koji.fedoraproject.org/koji/buildinfo?buildID=1254008))
 * [Trivially Exportable Citations](https://github.com/mantidproject/documents/pull/67)
 * How official are the Docker images?
+
+Minutes
+-------
+
+Attendees: Draper, Gigg, Lim, Nixon, Peterson, Whitfield
+
+* Citations design was largely approved. Nixon will be sorting out what the specific tasks are and it will be worked on during the next maintenance period.
