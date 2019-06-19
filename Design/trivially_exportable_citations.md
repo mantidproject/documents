@@ -45,8 +45,10 @@ As conversion between citation formats is non trivial, the algorithm developer i
 
 The bare minimum for this type will be something similar to the following:
 ```cpp
-struct Citation
+class Citation
 {
+  Citation();
+
   std::string description;
   std::string url;
   std::string doi;
@@ -54,7 +56,7 @@ struct Citation
   std::string endnote;
 
   void loadNexus(...);
-  void saveNexus(...);
+  void saveNexus(...) const;
 };
 ```
 
@@ -66,6 +68,49 @@ The following restrictions apply to ensure that in all cases somehting citable i
   - if none of `doi`, `bibtex` or `endnote` are provided, `url` must be provided (there must be something there, even if this isn't citable a URL is better than nothing)
 
 Some helper "toString" methods may be beneficial.
+
+### Constructing a citation
+
+Citations themselves will store the same data as `NXcite` however some helper functionality will be implemented to make creating them easier.
+
+`Citation` could have several constructors that take `struct`s that define information required for each citation type.
+Such `struct`s may look something like (by no means complete, just to give an idea):
+```cpp
+
+struct OnlineCitation
+{
+  std::string url;
+  std::string whenAccessed;
+};
+
+struct BookCitation
+{
+  std::vector<std::string> authors;
+  std::string title;
+  std::string publisher;
+  std::string pages;
+};
+
+struct PaperCitation
+{
+  std::vector<std::string> authors;
+  std::string title;
+  std::string journal;
+  int year;
+  std::string doi;
+};
+
+```
+
+In the constructor for the relevant `struct`, `Citation` would then call `to_bibtex` and `to_endmode` functions to obtain citations in the required formats.
+DOI and URL fields can be directly extracted where possible.
+
+As an example, creating a citation could be done like so:
+```cpp
+auto const savu = Citation(PaperCitation{
+  {"Wadeson, N", "Basham, M"}, "Savu: A Python-based, MPI Framework for Simultaneous Processing of Multiple, N-dimensional, Large Tomography Datasets", "", 2016, ""}
+);
+```
 
 ### Algorithm citations
 
