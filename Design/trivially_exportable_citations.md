@@ -5,12 +5,12 @@
 Both us (Mantid developers) and users want to ensure correct citations on publications that make use of Mantid.
 Currently this is an issue for two main reasons; non-obvious citations for the Mantid project and difficulty in citing any methods used.
 
-The proposal to do this now is prompted by discussions regarding reproducability of data at SINE2020 WP10.
+The proposal to do this now is prompted by discussions regarding reproducibility of data at SINE2020 WP10.
 
 This aims to provide the following benefits:
-  - Method developers receieve correct citations
-  - Mantid recieves correct citations
-  - Mantid dependencies receieve correct citations
+  - Method developers receive correct citations
+  - Mantid receives correct citations
+  - Mantid dependencies receive correct citations
   - Processed data can outlive Mantid
 
 ## Solution
@@ -29,7 +29,7 @@ An example of this are the Muon and Indirect GUIs.
 Any algorithms that currently contain a citation in their user documentation will have this removed and added in code.
 Documentation tooling should be produced to automatically populate citations on documentation pages.
 
-The instructions of what to cite thet are shown when you launch Mantid will be removed.
+The instructions of what to cite that are shown when you launch Mantid will be removed.
 They will be replaced with instructions of how to export the citations from a workspace.
 
 ## Design
@@ -60,8 +60,10 @@ class Citation
 };
 ```
 
+`std::string` may be replaced with `std::string_view` if compiler support is sufficient to do so at the time of implementation.
+
 The fields here mirror those of [`NXcite`](http://download.nexusformat.org/doc/html/classes/base_classes/NXcite.html#nxcite).
-The following restrictions apply to ensure that in all cases somehting citable is allowed to exist:
+The following restrictions apply to ensure that in all cases something citable is allowed to exist:
   - `description` is always optional (this isn't needed for citation, but gives insight as to why this citation is relevant)
   - if `bibtex` is provided `endnote` must also be provided, and vice-versa (BibTex and Endnote contain essentially the same information, they can both be created if one can be. BibTex and Endnote do not imply a DOI is minted)
   - if `doi` is provided, `url`, `bibtex` and `endnote` must all be provided (BibTex and Endnote can be generated from DOIs)
@@ -114,14 +116,14 @@ auto const savu = Citation(PaperCitation{
 
 ### Algorithm citations
 
-An additional `virtual` method will be added to `IAlgorithm` that returns a `std::vector<Citation const> const`.
+An additional `virtual` method will be added to `IAlgorithm` that returns a `std::set<Citation const> const`.
 The developer has the option to overload this if the algorithm has relevant citations.
 By default the implementation in `IAlgorithm` will return an empty vector.
 
 ### Citation recording
 
 - `WorkspaceHistory` and `AlgorithmHistory` shall be extended to include storage for framework and algorithm level citations respectively
-  - a `std::vector<Citation>` is likely sufficient
+  - a `std::set<Citation>` is likely sufficient
 - The requisite IO methods will be extended to handle loading and saving these citations to NeXus
   - `WorkspaceHistory::loadNexus`
   - `WorkspaceHistory::saveNexus`
@@ -168,9 +170,9 @@ It was chosen not to go down this route for the following reasons:
 
 What happens when loading old workspaces with no citations in the NeXus file?
 
-### `constexpr`
+Such workspaces will simply contain no citations.
 
-Is it worth using `char *` as the string format to be able to `constexpr` the `Citation` structure?
+It is possible to inspect the algorithm history and populate a history based on this, however this adds complexity and fragility.
 
 ## Follow on work
 
