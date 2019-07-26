@@ -9,7 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* Review [design for moving instrument 2 forward](https://github.com/mantidproject/documents/pull/68/files)
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * `python-qt5` now available on RHEL7 via EPEL ([koji](https://koji.fedoraproject.org/koji/buildinfo?buildID=1254008))
-* [Decision needed](https://github.com/mantidproject/documents/pull/68/files)
