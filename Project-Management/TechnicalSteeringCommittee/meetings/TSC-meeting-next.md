@@ -20,3 +20,4 @@ Minutes
 Attendees: Arnold, Gigg, Peterson, Savici, Whitfield
 
 * Instrument geometry in processed nexus files was approved with small modifications
+* Maintenance period is over. Maintenance tasks that have been started should be finishing up
