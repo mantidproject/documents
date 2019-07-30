@@ -72,3 +72,16 @@ Refactor such that the common code of SaveNexusProcessed (most of it) is in a sh
 ## Notes on the Instrument Service 
 
 The instrument service allows Mantid to cache instruments and prevent reload. Both the `InstrumentDefinitionParser` and the `NexusGeometryParser` have hash mechanism to compare instruments based on content and therefore prevent uncessary reload.
+
+## Decision
+
+Discussed at the TSC 30th July 2019. Martyn's greatest concern with (1) was that newer Mantid being used to save Nexus files which were then opened with old Mantid versions prior to `LoadInstrument` changes in 4.0 for Nexus Geometry, and therefore unable to use the processed files at all. The suggestion is that we write out both the xml string and the nexus information. 
+
+**Follow up**
+
+* We will need to be absolutely sure that the serialized and deserialized geometry is identical to the IDF route particuarly since `LoadInstrument` loads the Nexus Geometry as a priority.
+* Given current timescales, I suggest the introduction of an `ESSSaveNexus` until the time that we are certain that the functionality can be safely relied on as a `SaveNexus` modification, at which point `ESSSaveNexus` can be deprecated.
+
+
+
+
