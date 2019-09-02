@@ -13,3 +13,4 @@ New Items
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * WTF are [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
 * Do we *really* want CI on Draft PRs?
+* Thread scheduling issues
