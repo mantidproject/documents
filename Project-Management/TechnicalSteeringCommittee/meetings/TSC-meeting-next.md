@@ -14,3 +14,4 @@ New Items
 * WTF are [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
 * Do we *really* want CI on Draft PRs?
 * Thread scheduling issues
+* Documentation screenshots
