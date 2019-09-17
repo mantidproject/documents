@@ -9,10 +9,15 @@ Pinned Topics
 
 New Items
 ---------
+* Review [design for moving instrument 2 forward](https://github.com/mantidproject/documents/pull/68/files)
+* Review of [maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
-* WTF are [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
-* Do we *really* want CI on Draft PRs?
-* Thread scheduling issues
-* Documentation screenshots
-* Dependency management/packaging update/options
+* `python-qt5` now available on RHEL7 via EPEL ([koji](https://koji.fedoraproject.org/koji/buildinfo?buildID=1254008))
+
+Minutes
+-------
+Attendees: Arnold, Gigg, Hahn, Peterson, Savici, Whitfield
+
+* Instrument geometry in processed nexus files was approved with small modifications
+* Maintenance period is over. Maintenance tasks that have been started should be finishing up

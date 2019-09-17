@@ -7,7 +7,6 @@ The Mantid TSC is currently made up of the following people:
   * Simon Heybrock
   * Dan Nixon
 * ILL:
-  * Antti Soininen
   * Gagik Vardanyan
 * ISIS:
   * Martyn Gigg
