@@ -15,3 +15,4 @@ New Items
 * Do we *really* want CI on Draft PRs?
 * Thread scheduling issues
 * Documentation screenshots
+* Dependency management/packaging update/options
