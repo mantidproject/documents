@@ -16,3 +16,4 @@ New Items
 * Thread scheduling issues
 * Documentation screenshots
 * Dependency management/packaging update/options
+* Static link everything we can?
