@@ -9,6 +9,7 @@ Pinned Topics
 
 New Items
 ---------
+* RHEL7/workbench/qt5/python3
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * WTF are [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
