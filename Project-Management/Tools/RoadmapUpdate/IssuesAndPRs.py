@@ -61,9 +61,9 @@ def parse_priority(label_list):
     '''
     priority = "2-Medium"
     for label in label_list:
-        if label["name"] == "Priority: High":
+        if label["name"] == "High Priority":
             priority = "1-High"
-        if label["name"] == "Priority: Low":
+        if label["name"] == "Low Priority":
             priority = "3-Low"
     return priority
 
