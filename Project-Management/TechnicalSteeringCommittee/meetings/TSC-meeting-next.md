@@ -12,9 +12,9 @@ New Items
 * RHEL7/workbench/qt5/python3 status
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
+* Rewrite graphical parts of instrument view
 * Should clean up [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
 * Do we *really* want CI on Draft PRs?
-* Thread scheduling issues
 * Documentation screenshots
-* Dependency management/packaging update/options
 * Static link everything we can?
+* Thread scheduling issues
