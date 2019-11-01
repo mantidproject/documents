@@ -10,6 +10,8 @@ Pinned Topics
 New Items
 ---------
 * RHEL7/workbench/qt5/python3 status
+* [Release status](https://github.com/mantidproject/mantid/milestone/71)
+* [Maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * Rewrite graphical parts of instrument view
