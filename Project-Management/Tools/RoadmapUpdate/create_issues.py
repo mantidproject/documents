@@ -1,8 +1,9 @@
 import sys
 from github import Github
 import pandas as pd
-# also needs xlrd
+import xlrd
 
+#pip install xlrd, pip install pandas, pip install PyGithub if not already
 
 
 def load_login_details(filename):
@@ -40,7 +41,7 @@ repo = gh.get_user(REPO_OWNER).get_repo(REPO_NAME)
 assignees = repo.get_assignees()
 
 #Lookup milestone sting to get number
-milestone = "Release 3.14 (4.0?)"
+milestone = "Release 4.2"
 gh_milestone = None
 for loop_milestone in repo.get_milestones():
     if loop_milestone.title == milestone:
@@ -50,7 +51,7 @@ if gh_milestone is None:
     sys.exit(0)
 print( "Milestone", gh_milestone.number, gh_milestone.title)
 
-labels = ['Quality: Manual Tests']
+labels = ['Manual Tests']
 #translate the label strings into gh objects
 gh_labels = []
 for label in labels:
@@ -97,6 +98,6 @@ for index, row in df.iterrows():
     my_body = body_text
     if pd.notnull(additional_body):
         my_body += "\n\n### Specific Notes:\n\n" + additional_body
-    #print title,gh_assignee,gh_milestone,gh_labels
-    issue = repo.create_issue(title, my_body, gh_assignee, gh_milestone, gh_labels)
+    print (title,gh_assignee,gh_milestone,gh_labels)
+    issue = repo.create_issue(title, my_body, gh_assignee, gh_milestone, gh_labels) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
     print(issue.number, issue.title)
