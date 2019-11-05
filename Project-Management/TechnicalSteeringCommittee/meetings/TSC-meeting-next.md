@@ -20,3 +20,13 @@ New Items
 * Documentation screenshots
 * Static link everything we can?
 * Thread scheduling issues
+
+Minutes
+-------
+Attendees: Draper, Gigg, Heybrock, Peterson, Hahn, Savici, Gagik
+* RHEL7 python-qt5 packages have been rebuilt. Rebuilding mantid v4.0 and v4.1
+* Planning on mantid v4.2 being the last one to support python2 - Nick will add this to the release notes
+* Reviewed release - only one week of beta testing left
+* Reviewed maintenance tasks - main themes this time:
+  * python2/3 compatibility everywhere in preparation of python3 only v4.3
+  * move to C++17
