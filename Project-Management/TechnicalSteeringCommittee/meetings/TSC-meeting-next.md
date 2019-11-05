@@ -23,7 +23,7 @@ New Items
 
 Minutes
 -------
-Attendees: Draper, Gigg, Heybrock, Peterson, Hahn, Savici, Gagik
+Attendees: Draper, Gigg, Hahn, Heybrock, Peterson, Savici, Vardanyan
 * RHEL7 python-qt5 packages have been rebuilt. Rebuilding mantid v4.0 and v4.1
 * Planning on mantid v4.2 being the last one to support python2 - Nick will add this to the release notes
 * Reviewed release - only one week of beta testing left
