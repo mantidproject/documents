@@ -16,5 +16,4 @@ Generally the criteria should be:
 - Vagrant scripts for local dev vm's [Martyn]
 
 ## Tasks Assigned to Staff
-- Allow the GetNegMuMuonicXRD to allow for multiple data sets [Anthony] Summer Student Ewan Cook
-- Improvements to the Fit minimizer benchmarking (multidataset fitting etc) [Anders] Summer Student
+
