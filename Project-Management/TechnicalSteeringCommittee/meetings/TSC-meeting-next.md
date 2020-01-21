@@ -31,5 +31,8 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
 * Python 3:
   - RHEL: Pete testing RHEL rpms. Building newer matplotlib to 2.2.4 to be able to drop 1.5 workarounds.
           Tested installing mantid42 with mantidunstable-python3. All good.
-  - macOS/Windows: Small collections of tests to fix
-
+  - macOS/Windows: Small collections of tests to fix.
+  - Will wait a few days for ORNL to collect external packages requiring updating to Python 3 and fix final tests.
+  - Boost minimum updated to 1.65. New boost.python numpy module available for future.
+* v4.3 will become 5.0 to indicate drop of Python 2 support
+  - Will **NOT** drop MantidPlot.
