@@ -16,11 +16,6 @@ New Items
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * Rewrite graphical parts of instrument view
-* Should clean up [all these Jenkins jobs](https://builds.mantidproject.org/view/All/)?
-* Do we *really* want CI on Draft PRs?
-* Documentation screenshots
-* Static link everything we can?
-* Thread scheduling issues
 
 Minutes
 -------
@@ -41,3 +36,4 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
   - Hold up for dropping MantidPlot is sliceviewer replacement/advance plotting.
   - ORNL has 2 GUIs that don't work in workbench. Considering rewrite of DynamicPDF.
   - Target v5.1 for sliceviewer complete replacement.
+* Dropped very old agenda items no longer relevant
