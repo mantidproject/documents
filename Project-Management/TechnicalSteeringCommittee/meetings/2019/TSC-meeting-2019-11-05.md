@@ -9,10 +9,9 @@ Pinned Topics
 
 New Items
 ---------
-* Python 3 status
-  - macOS/Windows: A few failing tests.
-  - RHEL: Packages built in sandox copr. Needs a test build and then packages install on builders
-  - Ubuntu - good to go
+* RHEL7/workbench/qt5/python3 status
+* [Release status](https://github.com/mantidproject/mantid/milestone/71)
+* [Maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
 * [Status of new workbench](https://github.com/mantidproject/mantid/projects/9)
 * [Status of SliceViewer replacement](https://github.com/mantidproject/mantid/projects/19)
 * Rewrite graphical parts of instrument view
@@ -22,3 +21,12 @@ New Items
 * Static link everything we can?
 * Thread scheduling issues
 
+Minutes
+-------
+Attendees: Draper, Gigg, Hahn, Heybrock, Peterson, Savici, Vardanyan
+* RHEL7 python-qt5 packages have been rebuilt. Rebuilding mantid v4.0 and v4.1
+* Planning on mantid v4.2 being the last one to support python2 - Nick will add this to the release notes
+* Reviewed release - only one week of beta testing left
+* Reviewed maintenance tasks - main themes this time:
+  * python2/3 compatibility everywhere in preparation of python3 only v4.3
+  * move to C++17
