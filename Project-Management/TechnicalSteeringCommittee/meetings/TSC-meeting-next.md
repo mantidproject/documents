@@ -37,3 +37,7 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
 * v4.3 will become 5.0 to indicate drop of Python 2 support
   - Will **NOT** drop MantidPlot.
 * ISIS to consider how not autoupdate instrument PCs/IDAaaS.
+* Workbench:
+  - Hold up for dropping MantidPlot is sliceviewer replacement/advance plotting.
+  - ORNL has 2 GUIs that don't work in workbench. Considering rewrite of DynamicPDF.
+  - Target v5.1 for sliceviewer complete replacement.
