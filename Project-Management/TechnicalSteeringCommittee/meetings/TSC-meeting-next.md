@@ -40,3 +40,5 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
 * Instrument View:
   - Long term: macOS is dropping OpenGL support. Need to consider what we do with our OpenGL code.
                Some package with a wrapper to transform to platform-specific apis.
+* Documentation:
+  - A task to improve speed of documentation build. Consider developer switches to cut out a lot of plot manipulation etc.
