@@ -36,3 +36,4 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
   - Boost minimum updated to 1.65. New boost.python numpy module available for future.
 * v4.3 will become 5.0 to indicate drop of Python 2 support
   - Will **NOT** drop MantidPlot.
+* ISIS to consider how not autoupdate instrument PCs/IDAaaS.
