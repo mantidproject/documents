@@ -37,3 +37,6 @@ Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfi
   - ORNL has 2 GUIs that don't work in workbench. Considering rewrite of DynamicPDF.
   - Target v5.1 for sliceviewer complete replacement.
 * Dropped very old agenda items no longer relevant
+* Instrument View:
+  - Long term: macOS is dropping OpenGL support. Need to consider what we do with our OpenGL code.
+               Some package with a wrapper to transform to platform-specific apis.
