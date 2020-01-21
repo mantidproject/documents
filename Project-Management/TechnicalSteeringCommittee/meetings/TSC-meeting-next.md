@@ -22,3 +22,14 @@ New Items
 * Static link everything we can?
 * Thread scheduling issues
 
+Minutes
+-------
+Attendees: Gigg, Nixon, Draper, Fairbrother, Vardanyan, Peterson, Savici, Whitfield, Hahn
+* Welcome to David and Gemma.
+* Picking up meetings for 2020. Agreed to drop frequency to once a month.
+* Facilities are mostly aware of Python 3 changes.
+* Python 3:
+  - RHEL: Pete testing RHEL rpms. Building newer matplotlib to 2.2.4 to be able to drop 1.5 workarounds.
+          Tested installing mantid42 with mantidunstable-python3. All good.
+  - macOS/Windows: Small collections of tests to fix
+
