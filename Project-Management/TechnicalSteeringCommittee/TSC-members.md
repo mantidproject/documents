@@ -9,7 +9,9 @@ The Mantid TSC is currently made up of the following people:
 * ILL:
   * Gagik Vardanyan
 * ISIS:
+  * David Fairbrother
   * Martyn Gigg
+  * Gemma Guest
 * SNS:
   * Peter Peterson
   * Steven Hahn
