@@ -3,14 +3,20 @@
 ## Motivation
 
 The reflectometry instrument scientists do not currently use an IDF and are heavily reliant on their own scripts.
-If the IDF could properly describe their setup then it would solve existing issues and improve their workflow.
+If the IDF could properly describe their setup then it would solve some existing issues and improve their workflow.
+
+Existing problems that a design needs to address include:
+  - An efficient way to describe the relative location of detector pixels, in relation to a 'specular pixel'
+  - Mantid incorrectly calculating angles from IDF due to multiple bounce points and constraints on L-distances
+  - Flexible description and use of multiple modes of configuration
+  - Support for 2D detectors
 
 Potential benefits include, but are not limited to:
   - Correct geometric description of detector components and calculation of angles to be fed into [algorithms](https://github.com/mantidproject/mantid/issues/26971)
-  - Complex beam paths to allow for accurate description of mirror action, with a view to accurately describe the effect of gravity
+  - Complex beam paths which allow for accurate description of mirror action, with a view to accurately describe the effect of gravity
   - Saving time by having multiple modes of configuration described within one file
   - Reduce known sources of error due to problems with Q error bars, incorrect angles, gravity corrections, etc.
-  - Facilitate new equipment over multiple instruments/facilities, such as 2D detectors
+  - Facilitate new equipment over multiple instruments/facilities, such as 2D detectors and triple-axis spectrometers
 
 ## Solution
 
@@ -18,14 +24,22 @@ This task should be thought of in terms of four main sub-tasks:
 
   ### 1. POLREF IDF support for relative pixel map
   
-  Andrew currently has a scan of the POLREF detector which he uses in a script to move each detector pixel into place every time 
-  they run a reduction. This appears to be something which can be supported in an IDF by obtaining the relative pixel positions 
-  from the scan and hard-coding them. The actual specular pixel position could then be obtained from the logs and used to do this 
-  rotation into place from within the IDF.
+  As with other linear detectors, Mantid models the OSMOND detector pixels as regular and uniform, however in reality this is not the case. The reflectometry scientists 
+  have a calibration scan of the detector, mapping each pixel to its relative angle, which could be used with an algorithm such as `ApplyCalibration` to correct the 
+  simplified description. The relative nature of this pixel map means that summing errors in quadrature when calculating pixel offset could be greatly reduced to 
+  include only the two pixels of interest, rather than every pixel in between as per standard Mantid workflow, resulting in uncertainty that would no longer be of the 
+  same order of magnitude as the measured value. This also solves the issue that the detector is slightly curved, meaning small angle approximations are not necessary.
+  Note that the calibration solution agreed upon for POLREF should be extended to work with [#4](#4. Facilitate the use of 2D detectors).
+  
+  The relative pixel map is currently used in a script to move each detector pixel into place every time the scientists run a reduction. This appears to be something 
+  which could be supported as outlined above, using a similar solution to the SANS group with mask files. The scientists also use the concept of a 'specular pixel' which 
+  is derived from the fact that positions are relative. This means that while their chosen specular pixel is pixel 280, any arbitrary pixel could be chosen by shifting 
+  the position of every other pixel by the same offset.  The IDF would therefore represent a basic geometric description of the instrument before manipulation of the 
+  precise pixel locations. The position of the specified specular pixel could then be obtained, say from the logs, and used to do this rotation into place from within the IDF.
   
   ### 2. Support multiple L-distances through a complex beam-path
   
-  Current workarounds include the following:
+  Current workarounds used by some other istruments include:
     - Separate 'neutronic' and 'physical instrument' IDFs
 	- Dynamic modification of positions via `MoveInstrumentComponent`
 	- Storage of the L1 & L2 distances in a separate table, which `ConvertUnits` can be made to 'understand'
