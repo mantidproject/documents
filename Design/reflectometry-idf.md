@@ -39,13 +39,19 @@ This task should be thought of in terms of four main sub-tasks:
   
   ### 2. Support multiple L-distances through a complex beam-path
   
+  Mantid currently only supports L1 (source-to-sample) and L2 (sample-to-detector) distances. Some instruments, such as the reflectometers, have components such as supermirrors
+  which manipulate the beam path. Since this behaviour is not modeled in Mantid, it is necessary to rotate both the sample and detector in order to account for the mirror 
+  action, however this then introduces complications when calculating angles used in Mantid algorithms.
+  
   Current workarounds used by some other istruments include:
     - Separate 'neutronic' and 'physical instrument' IDFs
 	- Dynamic modification of positions via `MoveInstrumentComponent`
 	- Storage of the L1 & L2 distances in a separate table, which `ConvertUnits` can be made to 'understand'
 	
-  The ideal solution to this task would be to create a new `beam-path` tag for description within the IDF. This can then can be used 
-  with Owen’s [Instrument 2.0 prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype) which specifically deals with 
+  ... however none of these seem like good long-term solutions, especially in the case of [#3](#3. Describe multiple modes of configuration). 
+	
+  One solution to this task would be to create a new `beam-path` tag for description within the IDF. This could then can be used 
+  with something similar to Owen’s [Instrument 2.0 prototype](https://github.com/DMSC-Instrument-Data/instrument-prototype) which specifically deals with 
   the in-memory side of this task. He has mentioned that ray tracing will not be possible, and even with the prototype discussed above 
   only one flight path per component has been considered, so additional thought will need to be given to multiple flight paths as this 
   is required by the reflectometers in some configurations.
@@ -53,6 +59,9 @@ This task should be thought of in terms of four main sub-tasks:
   >That is to say, that if you have a mirror, the prototype discussed does not treat different areas of the surface as yielding a 
   >different flight path (even though that is reality). There may also be wavelength dependence on the flight path to consider. 
   >The other thing to consider will be what precision of flight path is needed.
+  
+  The current workaround used by the instrument scientists to model the transmitted portion of a beam 
+  hitting a mirror is to invert their relative pixel map.
   
   ### 3. Describe multiple modes of configuration
   
