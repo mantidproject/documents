@@ -65,7 +65,7 @@ This task should be thought of in terms of four main sub-tasks:
   
   ### 3. Describe multiple modes of configuration
   
-  The instrument scientists would like to describe multiple modes of configuration (NR, PNR liquids, etc.) within a single IDF. 
+  The instrument scientists would like to describe multiple modes of configuration (NR, PNR, liquids, etc.) within a single IDF. 
   This will require a sensible way to describe multiple degrees of freedom and, if done accurately, will help in solving an issue they 
   are having with Q error bars and some other possible source of systematic error. It will also allow them to update their workflow in 
   real time as the report often having to change configurations with some users which ultimately takes a lot of time.
@@ -75,9 +75,17 @@ This task should be thought of in terms of four main sub-tasks:
   moving the relevant components into place. No such log currently exists and so if this solution is decided upon it will require
   collaboration with the IBEX team.
   
+  >Other solutions based on delivering the geometry with the data:
+  >
+  >1. The IDF could potentially be written into the raw nexus file. I believe since LoadInstrument is used, it would automatically process that. 
+  >   This would be a change on the ECP side (SECI) but I prefer it to adding logs as that's just one additional step that could break along the way.
+  >
+  >2. Move to use the NexusGeometry Format in the nexus files. This would be a larger change on the SECI /IBEX side but would automatically solve these problems. 
+  >   This should be discussed in conjunction with the NexusConstructor with [@matthew-d-jones](https://github.com/matthew-d-jones).
+  
   ### 4. Facilitate the use of 2D detectors
   
-  Needs further investigation.
+  Needs further investigation, but may be solved by [#1](#1. POLREF IDF support for relative pixel map).
   Becky and Max have some data for 2D detectors, so we should talk to them regarding IDF support.
 
 ## Design
