@@ -10,5 +10,7 @@ Pinned Topics
 New Items
 ---------
 
+* The setting of **algorithms.retained**
+
 Minutes
 -------
