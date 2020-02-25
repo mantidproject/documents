@@ -12,6 +12,7 @@ New Items
 
 * The setting of **algorithms.retained**
 * Prioritise [maintenance](https://github.com/mantidproject/mantid/projects/15) tasks list
+* Possibility of switching some builders from RHEL to Centos
 
 Minutes
 -------
