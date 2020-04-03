@@ -1,7 +1,7 @@
 Mantid Technical Steering Committee Report to PMB
 =================================================
  
-* [Membership](https://github.com/mantidproject/documents/blob/713dd9c6a927c30f7c5bb8baffcc0e01ab760249/Project-Man agement/TechnicalSteeringCommittee/TSC-members.md)
+* [Membership](https://github.com/mantidproject/documents/blob/713dd9c6a927c30f7c5bb8baffcc0e01ab760249/Project-Management/TechnicalSteeringCommittee/TSC-members.md)
   * CSNS no current member
   * ESS Heybrock, Nixon
   * ILL Vardanyan
@@ -13,6 +13,7 @@ Mantid Technical Steering Committee Report to PMB
   * maintenance period focused on removing python2 support and moving to C++17
 * [Supported platforms](http://download.mantidproject.org/)
   * Conda build of framework for linux - new work in progress
-  * MacOS 10.13+ (current release is 10.15)   
+  * MacOS 10.13+ (current release is 10.15)
+  * RHEL7
   * Ubunutu 18.04
   * Windows 10
