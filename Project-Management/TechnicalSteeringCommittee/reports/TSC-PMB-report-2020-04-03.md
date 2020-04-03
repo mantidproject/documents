@@ -13,7 +13,7 @@ Mantid Technical Steering Committee Report to PMB
   * maintenance period focused on removing python2 support and moving to C++17
 * [Supported platforms](http://download.mantidproject.org/)
   * Conda build of framework for linux - new work in progress
-  * Docker images based on rhel7, ubuntu 16.04, and ubuntu 18.04
-  * MacOS 10.10 (current release is 10.14)   
-  * Ubunutu 16.04 and 18.04
-  * Windows 7/8/10
+  * Docker images based on rhel7 and ubuntu 18.04
+  * MacOS 10.13+ (current release is 10.15)   
+  * Ubunutu 18.04
+  * Windows 10
