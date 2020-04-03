@@ -1,7 +1,7 @@
 Mantid Technical Steering Committee Report to PMB
 =================================================
  
-* [Membership](https://github.com/mantidproject/documents/blob/713dd9c6a927c30f7c5bb8baffcc0e01ab760249/Project-Man agement/TechnicalSteeringCommittee/TSC-members.md)
+* [Membership](https://github.com/mantidproject/documents/blob/713dd9c6a927c30f7c5bb8baffcc0e01ab760249/Project-Management/TechnicalSteeringCommittee/TSC-members.md)
   * CSNS no current member
   * ESS Heybrock, Nixon
   * ILL Vardanyan
