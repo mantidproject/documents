@@ -15,3 +15,4 @@ New Items
 * Start using the Git pre-commit hooks provided by https://pre-commit.com/. (Martyn)
   * Attempt to catch as many style/static-analysis errors before commit
   * Adding other hooks is fairly simple, e.g. [pre-commit-clang-format](https://github.com/martyngigg/pre-commit-clang-format)
+* Raw data explorer widget in workbench (Gagik)
