@@ -16,11 +16,11 @@ New Items
   * Attempt to catch as many style/static-analysis errors before commit
   * Adding other hooks is fairly simple, e.g. [pre-commit-clang-format](https://github.com/martyngigg/pre-commit-clang-format)
 * Raw data explorer widget in workbench (Gagik)
-* Moving interfaces out of scripts/
+* Moving interfaces out of `scripts/`
 
 Minutes
 -------
-Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici
+Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici, Gagik
 
 * Scheduled maintenance was mostly done. Exceptions are cppcheck did not get moved to 1.9.2, and not all python2 compatibility was removed yet
 * Separating GUI
@@ -29,4 +29,8 @@ Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici
   * Keeps coming into system tests
   * opengl is hiding in rendering code inside `Framework`. Need an abstraction layer
 * TSC agrees to add mypy to list of static analysis tools. Martyn will get it into the flake8 static analysis image for build servers
-* 
+* Start with clang-format in pre-commit to see how that works for developers
+* Begin a design of a super-plot like thing to add as a preview to the file browser
+  * [example from ESS](https://github.com/nvaytet/visens)
+  * need way to decide which preview to use from a given file
+  * need way to see if the individual "previewer" can look at a file
