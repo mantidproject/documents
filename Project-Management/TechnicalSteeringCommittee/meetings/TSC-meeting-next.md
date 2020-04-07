@@ -34,3 +34,4 @@ Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici, G
   * [example from ESS](https://github.com/nvaytet/visens)
   * need way to decide which preview to use from a given file
   * need way to see if the individual "previewer" can look at a file
+  * Gagik will put together a design document
