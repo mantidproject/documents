@@ -17,3 +17,16 @@ New Items
   * Adding other hooks is fairly simple, e.g. [pre-commit-clang-format](https://github.com/martyngigg/pre-commit-clang-format)
 * Raw data explorer widget in workbench (Gagik)
 * Moving interfaces out of scripts/
+
+Minutes
+-------
+Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici
+
+* Scheduled maintenance was mostly done. Exceptions are cppcheck did not get moved to 1.9.2, and not all python2 compatibility was removed yet
+* Separating GUI
+  * Needed for Framework only conda build
+  * In `mantid.plots.__init__.py` python bindings
+  * Keeps coming into system tests
+  * opengl is hiding in rendering code inside `Framework`. Need an abstraction layer
+* TSC agrees to add mypy to list of static analysis tools. Martyn will get it into the flake8 static analysis image for build servers
+* 
