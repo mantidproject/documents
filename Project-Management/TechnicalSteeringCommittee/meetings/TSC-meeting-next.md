@@ -20,7 +20,7 @@ New Items
 
 Minutes
 -------
-Attendees: Draper, Gigg, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici, Vardanyan
+Attendees: Draper, Gigg, Guest, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Savici, Vardanyan
 
 * Scheduled maintenance was mostly done. Exceptions are cppcheck did not get moved to 1.9.2, and not all python2 compatibility was removed yet
 * Separating GUI
