@@ -28,6 +28,7 @@ Attendees: Draper, Gigg, Guest, Fairbrother, Hahn, Heybrock, Nixon, Peterson, Sa
   * In `mantid.plots.__init__.py` python bindings
   * Keeps coming into system tests
   * opengl is hiding in rendering code inside `Framework`. Need an abstraction layer
+  * [28493](https://github.com/mantidproject/mantid/issues/28493) is a maintenance task
 * TSC agrees to add mypy to list of static analysis tools. Martyn will get it into the flake8 static analysis image for build servers
 * Start with clang-format in pre-commit to see how that works for developers
 * Begin a design of a super-plot like thing to add as a preview to the file browser
