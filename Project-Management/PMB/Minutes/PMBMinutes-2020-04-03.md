@@ -93,7 +93,7 @@ The Acting Chair raised the fact that the Mantid governance document is overdue 
 
 -    [ ] Nick Draper and Martyn Gigg will work with SNS to get estimates for Sliceviewer and getting Workbench feature complete.
 -    [ ] Nick will coordinate an assessment of a MantidPlot deprecation date.
--    [ ] Nick will estimate the extra effort required to follow implementation Plan 2 rather than Plan 2.
+-    [ ] Nick will estimate the extra effort required to follow implementation Plan 1 rather than Plan 2.
 -    [ ] Nick to set a date 6-8 weeks from this meeting date (3 April) to hold an extraordinary PMB meeting about implementation of MantidPlot deprecation and full move to Workbench.
 
 -    [ ] Junrong to provide a CSNS member for TSC.
