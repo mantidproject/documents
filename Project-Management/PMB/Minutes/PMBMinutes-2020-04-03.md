@@ -77,7 +77,7 @@ Getting user input has been hard. Getting small feedback through forms has been 
 
 There was agreement that Mantid needs the gsl license for a long list of dependencies.
 
-The current license has the potential to be restrictive to downstream users of the Mantid framework (for example, Scipp has to be gpl compliant as Mantid is). People may not choose to use Mantid due to this gpl license. This has nothing to do with European FAIR use.
+The current license has the potential to be restrictive to downstream users of the Mantid framework, but only in the case that Mantid is an essential part of an external project (although Scipp does NOT have to be gpl compliant, as it is an aggregate). People may not choose to use Mantid due to this gpl license. This has nothing to do with European FAIR use.
 
 If we did change license scheme, then (i) we would need to have all the facilities agree, including any past contributors, and (ii) there could be significant effort to rework some code. We need specific examples and strong intent if we are to alter our license. However, the full list of license dependencies of Mantid needs to be documented in any case.
 
