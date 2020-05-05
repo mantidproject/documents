@@ -9,3 +9,5 @@ Pinned Topics
 
 New Items
 ---------
+
+* Update on Workbench status/deprecation and removal of MantidPlot.
