@@ -22,4 +22,5 @@ Gagik, Gemma, Fairbrother, Nixon, Draper, Savici, Peterson, Hahn
   * working through list on [epic ticket](https://github.com/mantidproject/mantid/issues/27475)
   * trying to get as much as possible ready for 5.1 release
   * ORNL GUIs will be done by ORNL
+  * May consider pushing 5.1 release back to get the rest of required features in
   
