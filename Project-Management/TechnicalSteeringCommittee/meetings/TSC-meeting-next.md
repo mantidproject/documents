@@ -16,7 +16,7 @@ New Items
 
 Minutes
 -------
-Gagik, Gemma, Fairbrother, Nixon, Draper, Savici, Peterson, Hahn
+Gagik, Gigg, Guest, Fairbrother, Nixon, Draper, Savici, Peterson, Hahn
 
 * Workbench status
   * working through list on [epic ticket](https://github.com/mantidproject/mantid/issues/27475)
