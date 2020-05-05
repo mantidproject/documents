@@ -23,4 +23,10 @@ Gagik, Gemma, Fairbrother, Nixon, Draper, Savici, Peterson, Hahn
   * trying to get as much as possible ready for 5.1 release
   * ORNL GUIs will be done by ORNL
   * May consider pushing 5.1 release back to get the rest of required features in
+* Developer meeting
+  * Start pre-planning for virtual meeting
+  * TSC preferred holding the meeting in smaller time-slots across more days
+  * Peterson will look for topcs/themes from past two developer meetings
+  * Pefer topics that get small groups working together
+  * Preliminary dates are October 14-16, 2020
   
