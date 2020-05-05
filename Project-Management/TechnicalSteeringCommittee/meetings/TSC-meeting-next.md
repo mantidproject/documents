@@ -12,3 +12,4 @@ New Items
 
 * Update on Workbench status/deprecation and removal of MantidPlot.
 * How can we best plan / adjust the developer workshop to work remotely?
+  * including considering the time zones of attendees, and trying to involve as many people as possible.
