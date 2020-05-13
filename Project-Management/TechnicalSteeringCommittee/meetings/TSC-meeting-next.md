@@ -10,23 +10,21 @@ Pinned Topics
 New Items
 ---------
 
-* Update on Workbench status/deprecation and removal of MantidPlot.
-* How can we best plan / adjust the developer workshop to work remotely?
-  * including considering the time zones of attendees, and trying to involve as many people as possible.
+ACTION ALL, please come to the meeting with an understanding of how masking is used at your facility.
+
+* Masking and Reversible detector masking
+  * We have Masking implemented in two ways at the moment
+  * "Traditional" masking - Mask flag is set and data is cleared
+    * MaskDetectors, MaskDetectorsInShape, InstrumentView "Apply To Data"
+    * most algorithms and tools expect this and do not check the mask flag
+  * reversible masking - Only the mask flag is flipped and the data left in place
+    * most algorithms will not handle this properly
+    * Algorithms that do this: MaskDetectorsIf, ClearMaskedSpectrum, MaskInstrument
+  * This has already caused confusion in the development team, and must be worse for users
+    * We should agree a single way forward
+  
 
 Minutes
 -------
-Draper, Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici, Vardanyan
 
-* Workbench status
-  * working through list on [epic ticket](https://github.com/mantidproject/mantid/issues/27475)
-  * trying to get as much as possible ready for 5.1 release
-  * ORNL GUIs will be done by ORNL
-  * May consider pushing 5.1 release back to get the rest of required features in
-* Developer meeting
-  * Start pre-planning for virtual meeting
-  * TSC preferred holding the meeting in smaller time-slots across more days
-  * Peterson will look for topcs/themes from past two developer meetings
-  * Pefer topics that get small groups working together
-  * Preliminary dates are October 14-16, 2020
   
