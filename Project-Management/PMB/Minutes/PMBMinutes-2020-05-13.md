@@ -25,17 +25,17 @@
 ## 2. PM Report / Planning for MantidPlot deprecation:
 **Nick Draper talked through the main points of the report.**
 
-- Proposed and agreed to delay version 5.1 by 2 months until 28th Sep 2020 and then the version 6.0 by one month until 6.0. MantidPlot should be removed in an early nightly of 5.1.
+- Proposed and agreed to delay version 5.1 by 2 months until 28th Sep 2020 and then the version 6.0 by one month. MantidPlot should be removed in an early nightly of 5.1.
 - Do not announce the date of version 6, but mention that 5.1 will be the last with Plot.
 
-- 5.1 will be as feature complete as possible and 6.0 will be the first without MantidPlot.
+- 5.1 will be as feature complete (i.e. to include all required features that are currently pending) and 6.0 will be the first without MantidPlot.
 - It was discussed as important to determine how "feature complete" 5.1 is and this should be evaluated through collaboration with scientists before and after the release of 5.1, such as getting key individuals to test and signoff (SciSteeringCommittee)
 - Pas noted the testing for Martyn on IDAaaS development
 
 - There should be a feature comparison of Workbench and MantidPlot. Is release notes enough for this?
 - We aim to get all requirements need for "feature complete" 5.1 Workbench, but user experience and feel issues may come up between 5.1 and 6.0. Some of the delay time is to allow for scientists to test Workbench.
 
-- Hannah proposed that ISIS and maybe other facilities could put full development effort on getting workbench feature complete. More non-core developers may be utilised, but using all may not be appropriate for instance when working in similar parts of code (sliceviewer)
+- Hannah proposed that ISIS could put full development effort on getting workbench feature complete. More non-core developers may be utilised, but using all may not be appropriate for instance when working in similar parts of code (sliceviewer).
 
 ## 3. Dates for User Meetings
 
