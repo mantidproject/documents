@@ -23,6 +23,19 @@ ACTION ALL, please come to the meeting with an understanding of how masking is u
   * This has already caused confusion in the development team, and must be worse for users
     * We should agree a single way forward
   
+* Reducing the number of open issues
+  * Number of issues has crept up from ~800 to ~2000 over the last 3 years
+  * Mantid Plot tagged issues accounts for ~500, leaving us with 1500
+  * Asking devs to close older issues isn't working fully
+    * Typically bug still exists so they can't close, but equally they won't ever get round to fixing
+    * Some are duplicates that are fixed, but finding these is a challenge with the other 1499 issues
+   * Other large open source projects have automated policies for dealing with this:
+     * Some will close all issues after n months whilst moving all features to a separate long-term list
+     * Some will automatically close inactive issues (no comments) after n months
+     * Something else?
+   * Discussion:
+     * Is this worth comitting resources to resolving?
+     * If so, how should we do this and when?
 
 Minutes
 -------
