@@ -40,5 +40,11 @@ ACTION ALL, please come to the meeting with an understanding of how masking is u
 
 Minutes
 -------
+Attendees: Draper, Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici
 
-  
+* Many of the open issues are quite stale. The number of open issues will be reduced in 2 steps:
+  * Closing existing issues tagged with `MantidPlot` with a comment of "won't fix" (needs person)
+  * Configuring the [stalebot](https://probot.github.io/apps/stale/) to mark issues as stale then eventually close them. Fairbrother will create a PR for the TSC to comment on
+* TSC agreed that masking should not be reversible and Draper will create issues to fix the few algorithms that currently allow it. This will provide a consistent behavior.
+* It was pointed out that download speeds from sourceforge are degrading. Gigg will put together a suggestion of how to host installers differently.
+
