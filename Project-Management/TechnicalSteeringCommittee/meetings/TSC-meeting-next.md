@@ -32,6 +32,7 @@ ACTION ALL, please come to the meeting with an understanding of how masking is u
    * Other large open source projects have automated policies for dealing with this:
      * Some will close all issues after n months whilst moving all features to a separate long-term list
      * Some will automatically close inactive issues (no comments) after n months
+     * Some close anything the aren't planning on doing this in x months or cannot afford dev time to do it within y months
      * Something else?
    * Discussion:
      * Is this worth comitting resources to resolving?
