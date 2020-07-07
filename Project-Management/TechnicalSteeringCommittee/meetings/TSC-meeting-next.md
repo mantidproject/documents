@@ -7,9 +7,7 @@ Pinned Topics
 New Items
 ---------
 
-- CII Best Practices
-- Code owners
-- Support Windows via WSL only
+- Decision on CII Best Practices
 
 Minutes
 -------
