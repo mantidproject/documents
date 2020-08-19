@@ -1,6 +1,6 @@
 In issue_template.xlsx update assingment for the next release and make sure to add new starters to the assignee sheet.
 
-Create a local file in the RoadmapUpdate directory called 'login.txt' simply with your federal
+Create a local file in the RoadmapUpdate directory called 'login.txt' simply with your Github
 Username and Password on seperate lines.
 eg.
 abc12345
