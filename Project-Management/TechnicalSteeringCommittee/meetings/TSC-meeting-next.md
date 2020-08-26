@@ -25,3 +25,4 @@ Attendees: Gigg, Nixon, Savici, Hahn, Peterson, Guest, Fairbrother
 
 * Nixon will add CII to the mantid project repository
 * PVS studio will be evaluated as a maintenance task to see if it is useful
+* Plan on changing to Let's Encrypt on 2020-08-27 (evening UK/lunchtime US). Servers will be down. The fallback is to restore from backup taken just before the switch
