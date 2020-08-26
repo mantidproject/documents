@@ -21,4 +21,6 @@ New Items
 
 Minutes
 -------
-Attendees:
+Attendees: Gigg, Nixon, Savici, Hahn, Peterson, Guest, Fairbrother
+
+* Nixon will add CII to the mantid project repository
