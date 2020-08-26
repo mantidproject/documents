@@ -24,3 +24,4 @@ Minutes
 Attendees: Gigg, Nixon, Savici, Hahn, Peterson, Guest, Fairbrother
 
 * Nixon will add CII to the mantid project repository
+* PVS studio will be evaluated as a maintenance task to see if it is useful
