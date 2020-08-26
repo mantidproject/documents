@@ -1,77 +1,76 @@
 # Third Party Dependencies
 
-This document aims to describe
-the current issues surrounding the use of third-party libraries
-within the mantid codebase,
-along with proposals for solutions to the current problems.
+This document aims to describe the current issues surrounding the use of 
+third-party libraries within the mantid codebase,
+along with proposals for solutions to these problems.
 
 ## Motivation
 
-The ESS will be using features from HDF5 such as variable-length strings,
-[single writer multiple reader](https://support.hdfgroup.org/HDF5/docNewFeatures/NewFeaturesSwmrDocs.html)
-that are not yet available on some of our platforms.
-These features are available in HDF5 1.10
-but RHEL 7 (and variants) and Ubuntu 16.04 ony have HDF5 1.8 available.
+Mantid uses a wide variety of third-party libraries
+and takes different approaches for managing them on each operating system - 
+this vastly increases the management overhead for any library used. 
+Furthermore each OS uses a different version of given package
+making it impossible to define a single version across the whole project.
 
-Upgrading a library such as HDF5 that is used by many other system packages
-is not a good idea as it could lead to a mess of package conflicts.
-Furthermore, while this is an issue with a single package it points to
-a more systemic issue with how we handle our dependencies across the project.
-Other examples of issues on Linux are on RHEL 7 where we have rebuilt a newer
-version of the ``sip`` package that conflicts with other packages such as
-Octave and causes users troubles when installing these packages.
+The motivation behind this work is to vastly reduce the dependency management
+overhead across the project.
 
 ## Current Situation
 
-Mantid uses several third-party libraries
-in order to avoid reinventing the wheel,
-where an approved solution already exists in the wild.
-The dependencies are managed in very different ways
-on the three platforms that are supported.
+The following sections describe the current state of play for 
+3rd-party library management for each of our supported operating systems.
 
-Please note that during all discussions below we ignore ParaView, as
-effectively, we treat it as our source code and ship our own version
-on all platforms.
-
-### Linux
+### Linux (RHEL 7 & Ubuntu)
 
 Linux-based platforms use OS-provided system packages from distro repositories
-or custom builds of libraries where distro versions are
-too old. See [copr for RPM](https://copr.fedorainfracloud.org/coprs/mantid/mantid/)
-and [launchpad PPA for Ubuntu](https://launchpad.net/~mantid/+archive/ubuntu/mantid).
+or custom builds of libraries where distro-provided versions are
+too old.
+See 
+[copr for RPM](https://copr.fedorainfracloud.org/coprs/mantid/mantid/)
+and 
+[launchpad PPA for Ubuntu](https://launchpad.net/~mantid/+archive/ubuntu/mantid).
 [Developer packages](https://github.com/mantidproject/mantid/tree/master/buildconfig/dev-packages)
 are provided for developers to easily install the required dependencies.
+
+Upgrading libraries is possible by placing newer versions in the above locations.
+For some libraries, such as HDF5 or sip, 
+this is not advised due to conflicts with other applications requiring
+different versions.
+A real example is with the rebuilt `sip` package for RHEL7,
+which conflicts with other packages such as `Octave` and causes users troubles
+when installing these packages alongside Mantid.
 
 The package provided for users depends on the system libraries leaving the
 mantid package to just ship the mantid libraries.
 
-In addition, for RHEL 7 (and its variants CentOS, Scientfic Linux) a
+In addition, 
+for RHEL 7 (and its variants CentOS, Scientfic Linux) a
 [Software Collection](https://www.softwarecollections.org/en/) is used to provide
-a gcc-7 allowing C++14-enabled builds.
+a gcc-7 allowing C++17-enabled builds.
 
 Pros:
-* Easy developer setup.
+* Easier developer setup.
 * Smaller user packages. The system libraries are shared for all packages resulting
   in a much smaller package to install.
 * (Mostly) managed for us.
-* Simply commands to install packages
+* Simply commands to install packages (apt/yum)
 
 
 Cons:
+* Dependencies not versioned with the main code. Hard to track versions used.
 * Versions become outdated very quickly. Facilities tend to use
   older distributions that do not have up to date versions of packages.
 * Upgrading/rebuilding package versions can cause conflicts with other packages
   not related to mantid and even old mantid versions.
-* Python 3 on RHEL 7 will require a fair amount of effort.
-* New dependencies have to be installed by hand on developers and builders machines.
+* New dependencies have to be installed manually on developers and builders machines.
 
- 
+
 ### Windows
 
 Windows uses a collection of custom-built libraries managed
 by a homegrown set of [scripts](https://github.com/mantidproject/thirdparty-msvc2015).
-The binaries are stored using the [git lfs](https://git-lfs.github.com/) extension for
-managing large binaries with git.
+The binaries are stored using the [git lfs](https://git-lfs.github.com/)
+extension for managing large binaries with git.
 For developers, all of the libraries are pulled down by
 the [cmake configure step](https://github.com/mantidproject/mantid/blob/master/buildconfig/CMake/Bootstrap.cmake#L13)
 thereby minimizing the effort required for developers to get up and running.
@@ -88,35 +87,34 @@ Pros:
 * Self-contained user package.
 
 Cons:
-* Homegrown set of scripts are clunky.
-* Maintenance of build scripts adds overhead
+* Dependencies not versioned with the main code. Hard to track versions used.
+* Homegrown set of scripts are very clunky.
+* Maintenance of build scripts adds overhead.
 * Complete bundling of dependencies gives a much larger user installer package.
 
 
 ### MacOS
 
 MacOS uses the [Homebrew](https://brew.sh/) package manager along with a custom
-set of [formula](https://github.com/mantidproject/homebrew-mantid) for obselete
-dependencies. Homebrew downloads the formulae and builds the libraries locally.
-There is no single developer formula, instead there is a set of build instructions
-for a new developer to follow to get there system setup.
+set of [formulae](https://github.com/mantidproject/homebrew-mantid) for obselete
+dependencies.
+Homebrew either downloads a prebuilt binary or builds it locally from the formula.
+A developer formula is provided to easily install the required dependencies.
 
 The package provided for users contains all required dependencies
-with the exception of Python. The system python interpreter
-along with libraries such as `numpy`, `scipy` are presumed
-to be present on the system. 
+much like Windows.
 
 Pros:
 * Build formula (mostly) maintained for us.
 * Simply commands to install packages
 
 Cons:
-* No way to set deployment target therefore we have to build on the earliest OS we intend
+* Dependencies not versioned with the main code. Hard to track versions used.
+* No way to set deployment. We have to build on the earliest OS we intend
   to support causing issues with hardware availability.
-* Mix up between Homebrew Python and system Python can get messy.
-* Lack of bundling Python for users can lead to verion mixups and application crashes
-  for users.
-* New dependencies have to be installed by hand on developers and builders machines.
+* New dependencies have to be installed by hand on developers
+  and builders machines.
+* Versions can be pinned but Homebrew really likes to have everything at HEAD
 
 ## General Concerns
 
@@ -126,36 +124,38 @@ there are also general issues with the current approach:
 1. It is not possible to define a version of a given
    library as the version used across the whole project.
    This can cause confusion for developers
-   where their platform might have a newer api yet
-   their code does not work on other platforms. 
-2. Using new third party libraries is quite time consuming.
+   where their platform might have a newer api
+   yet their code does not work on other platforms.
+   This slows down development.
+2. Using a new library takes a lot of overhead and
+   in some cases is basically impossible
 3. Three different methods requires much additional overhead
    in understanding how things are managed.
 
 ## Requirements
 
-The following is a list of requirements that must be met any possible solution:
+The following is a list of requirements that must be met by any solution:
 
-1. allow mantid to select a given version of a given dependency
-2. version definition for a given library is in a central place
-3. use the same version of a given dependency across all platforms
-4. provide users a single "package" to install mantid
-5. must be able to install versions side-by-side
+1. Supports C++ & Python packages
+2. allow mantid to select any version of a given dependency
+3. version definitions alongside the code in the repository
+4. use the same version of a dependency across all platforms
+5. provide users a single "package" to install self-contained Workbench
+   application along with all required libraries. 
+6. must be able to install versions side-by-side
    including nightly and unstable versions.
-
-The following is a list of non-essential but desirable features that any solution could have:
-
-1. common system on all platforms
-2. solves or makes simpler the move to Python 3 for the project.
 
 ## Use Cases
 
-1. A new version of `hdf5` is required that conflicts with system installed versions on Linux.
-2. A user wishes to write a Python script using `mantid` and a package we do not ship, e.g. Pandas.
+1. Ship a self-contained desktop application
+   with the latest versions of required libraries,
+   also allowing users to install their own Python packages
+2. Provide a `mantid` framework library for users to use in
+   their own projects, e.g mslice, PyRS + other SNS GUIs
 
 ## Solutions
 
-Here we describe possible solutions to the problems outlined above. 
+Here we describe possible solutions to the problems outlined above.
 The solutions considered in detail are:
 
 * [Conan](#Conan)
@@ -164,7 +164,7 @@ The solutions considered in detail are:
 Other solutions not considered:
 
 * Flatpak/Snap - would only work for Linux and still be a large effort.
-* Singularity/Docker - would only work for Linux.
+* Singularity/Docker - unsure about desktop applications & would not work for macOS.
 
 
 ### Conan
@@ -181,52 +181,70 @@ Conan allows for the conan server to be hosted "privately" to facilitate
 sharing binaries across developers on the same project and avoids the overhead
 of each developer rebuilding the dependency set.
 
-Conan would satisfy the first 3 requirements through the
-[conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html).
+Conan would satisfy the requirements 2-4 through the
+[conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html)
+or [conanfile.py](https://docs.conan.io/en/latest/reference/conanfile.html).
 
 For user packaging purposes the dependencies would be bundled in with each of
-the user packages on all of the platforms, much like is done on Windows.
-As long as the `RPATH` settings are correct this should not be a problem on Linux.
-As each package would ship with its own dependencies then the final requirement of
+the user packages on all of the platforms, much like the current approach
+for Windows/macOS.
+User packages would still be created in the appropriate format for that
+platform, e.g. rpm for RHEL/CentOS etc.
+Each package would ship with its own dependencies then the final requirement of
 side-by-side installs will be taken care of automatically.
 QtCreator does this and is able to ship a standalone version with the latest
 Qt version regardless of the system version of Qt.
 
+Another option to consider would be static linking but this may well
+be worth considering separately after the dependency management issue
+is settled.
+
+On Linux this would also have the advantage of supporting additional Linux
+distributions or newer versions of existing distributions almost trivially.
+
 #### CMake
 
-Conan has built in support for [CMake](https://docs.conan.io/en/latest/integrations/cmake.html),
-requiring minimal modification to our current CMake configuration to build against
-libraries installed by Conan.
+Conan has built in support for
+[CMake](https://docs.conan.io/en/latest/integrations/cmake.html)
+along with a [CMake Wrapper](https://github.com/conan-io/cmake-conan/)
+to enable configuring dependencies completely in CMake.
 
-Developers would continue to work as they do now with their favourite IDEs and tools.
+Developers would continue to work as they do now with their favourite IDEs
+and tools but would need to install Conan first.
+Release packages are [provided](https://github.com/conan-io/conan)
+that have no other dependencies and are easy to install.
 
 #### Python Packages
 
-Conan knows nothing of Python but `mantid` depends on Python packages
-that would be built on libraries that Conan would provide.
-One key library is `h5py` that requires building on top of the `hdf5` version
-that Conan would provide.
-In order for users of `mantid` to be able to use `mantid` and `h5py`
-in the same Python code `mantid` would need to ship these dependencies.
+Conan was designed as a framework to package C/C++ dependencies.
+While it is written in Python itself it does not possess the capability
+to manage Python dependencies. Windows/macOS already ship a bundled Python
+distribution so maintaining a separate site-packages is already supported here.
+It is proposed that the same be done for the desktop application bundle
+on Linux so that it is fully self-contained.
 
-One option is the use of [virtual environments](https://virtualenv.pypa.io/en/latest/)
-inside our distributed packages.
-Our startup scripts could activate the internal virtual environment but still
-give access to the system packages directory. Any packages we deploy would be
-taken in preference but users could still interact with system packages as they
-would now.
+The Windows/macOS Python-bundling solution is clunky.
+Another option is creating our own Python Conan package
+that can be used like any other dependency for the desktop
+application bundle.
+This has been [prototyped](https://github.com/martyngigg/conan-python3)
+and seems to work well.
+It would require some patching of `site.py` or using `sitecustomize.py`
+to ensure packaging doesn't interfere with system versions
+but this is something supported by Python
+and done by other systems like `Conda`.
+Python requirements could be easily supported by a requirements file
+or some newer system like
+[pipenv](https://packaging.python.org/key_projects/#pipenv) to properly
+define a frozen set of dependencies.
+Some packages such as `PyQt` do not provide the headers and link
+libraries required for the C++ build.
+The easiest solution would be a Conan package for `PyQt` much like macOS
+Homebrew does. 
 
-The interoptability of `mantid` with other Python libraries would be the cause
-of the most concern if we adopted the Conan approach.
-
-#### Use Case 1
-
-1. First check if a package exists in existing public repositories:
-   1. If so then move to step 2.
-   1. If not create a package, build required binaries and push to "private" repository.
-1. Update `conanfile.txt` in the code repository with the new package versions and
-   create a pull request. All developers local copies will update once the pull
-   request is merged.
+The availability of `mantid` to other Python libraries would be the cause
+of the most concern if we adopted the Conan approach as it is
+about creating a self-contained package.
 
 
 ### Conda
@@ -247,14 +265,36 @@ for workbench and the framework for Linux and Mac.
 [Anaconda](https://repo.continuum.io/pkgs/) hosts many prebuilt packages for
 various combinations of compilers and operating systems.
 [Conda build](https://conda.io/projects/conda-build/en/latest/resources/commands/conda-build.html)
-is provided to enable building custom packages. 
+is provided to enable building custom packages.
 
 The [meta.yaml](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#requirements-section)
-file provides a central place to define dependencies and would satisfy requirements 1-3.
+file provides a central place to define dependencies and would satisfy requirements 2-4.
 The requirements file allows builds tools such as CMake to be used.
 
-It is unclear how the build process would fit into current tools such as IDEs. The current
-CLI workflow is documented [here](https://github.com/mantidproject/conda-recipes/blob/master/Developer.md).
+It is unclear how the build process would fit into current tools such as IDEs.
+The current CLI workflow is documented [here](https://github.com/mantidproject/conda-recipes/blob/master/Developer.md).
 
+Conda would possibly a better solution for providing just the `mantid` framework
+as a library for other users to import and not considering this as a solution
+for providing the full desktop application bundle. We also already have a
+working conda build of the framework so this is low overhead. This needs
+proper support though.
 
+## Summary + Questions
 
+After consideration I would suggest be that we adopt both options for supporting
+the two use cases presented. Both cases have different needs so there is no
+reason to expect one system to support both.
+
+Questions: 
+
+1. Do we need to still support a build against system libraries on Linux?
+
+   * Would SNS need an RPM framework build for their GUIs linked to system Python?
+
+2. Is it sensible to consider maintaining Conan packages as suggested?
+
+  * Where would we store binary artifacts? Or just store recipes?
+  * Bintray has been considered but its price could be prohibitive.
+
+3. Other things not considered here?
