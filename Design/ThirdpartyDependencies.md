@@ -53,7 +53,7 @@ Pros:
 * Smaller user packages. The system libraries are shared for all packages resulting
   in a much smaller package to install.
 * (Mostly) managed for us.
-* Simply commands to install packages (apt/yum)
+* Simple, well-known commands to install packages (apt/yum)
 
 
 Cons:
@@ -91,13 +91,18 @@ Cons:
 * Homegrown set of scripts are very clunky.
 * Maintenance of build scripts adds overhead.
 * Complete bundling of dependencies gives a much larger user installer package.
+* ABI changes require a complete rebuild
+* Initial download (~5GB) takes quite some time
 
 
 ### MacOS
 
-MacOS uses the [Homebrew](https://brew.sh/) package manager along with a custom
-set of [formulae](https://github.com/mantidproject/homebrew-mantid) for obselete
-dependencies.
+MacOS uses the [Homebrew](https://brew.sh/) package manager for C++ dependencies.
+A custom [tap](https://github.com/mantidproject/homebrew-mantid) provides a
+[mantid-developer](https://github.com/mantidproject/homebrew-mantid/blob/master/mantid-developer.rb)
+meta-formula to install all of the dependencies in one shot. 
+Python dependencies are installed with `pip` and a 
+[requirements file](https://github.com/mantidproject/homebrew-mantid/blob/master/requirements.txt).
 Homebrew either downloads a prebuilt binary or builds it locally from the formula.
 A developer formula is provided to easily install the required dependencies.
 
@@ -105,16 +110,20 @@ The package provided for users contains all required dependencies
 much like Windows.
 
 Pros:
-* Build formula (mostly) maintained for us.
-* Simply commands to install packages
+* Formula for dependencies (mostly) maintained for us.
+* Simple commands to install packages
 
 Cons:
 * Dependencies not versioned with the main code. Hard to track versions used.
-* No way to set deployment. We have to build on the earliest OS we intend
+* No way to set deployment target. We have to build on the earliest OS we intend
   to support causing issues with hardware availability.
 * New dependencies have to be installed by hand on developers
   and builders machines.
-* Versions can be pinned but Homebrew really likes to have everything at HEAD
+* Versions can be pinned but Homebrew really likes to have everything at HEAD.
+  This has recently caused issues when Python-based formula, like PyQt, were migrated
+  to Python 3.9 but many other Python dependencies such as matplotlib were
+  not yet available for 3.9. Homebrew has to be pinned to we receive no more updates
+  in this case.
 
 ## General Concerns
 
@@ -126,11 +135,14 @@ there are also general issues with the current approach:
    This can cause confusion for developers
    where their platform might have a newer api
    yet their code does not work on other platforms.
-   This slows down development.
+   This slows down development and ties us to the oldest
+   LTS for years.
 2. Using a new library takes a lot of overhead and
    in some cases is basically impossible
 3. Three different methods requires much additional overhead
    in understanding how things are managed.
+4. Pushing new dependencies to build servers requires
+   co-ordination and potential downtime.
 
 ## Requirements
 
@@ -163,9 +175,15 @@ The solutions considered in detail are:
 
 Other solutions not considered:
 
-* Flatpak/Snap - would only work for Linux and still be a large effort.
-* Singularity/Docker - unsure about desktop applications & would not work for macOS.
-
+* Flatpak/Snap:
+  * Would only work for Linux and still be a large effort.
+* Singularity/Docker:
+  * Unsure about desktop applications & would not work for macOS.
+  * Docker on Windows requires the Hyper-V role, so users would
+    have to get admin access and have a processor capable of 
+    exposing the required instructions - so it's not universally compatible
+* WSL:
+  * Needs to be installed separately. Barrier to high for non-technical users.
 
 ### Conan
 
@@ -218,13 +236,23 @@ that have no other dependencies and are easy to install.
 
 Conan was designed as a framework to package C/C++ dependencies.
 While it is written in Python itself it does not possess the capability
-to manage Python dependencies. Windows/macOS already ship a bundled Python
-distribution so maintaining a separate site-packages is already supported here.
-It is proposed that the same be done for the desktop application bundle
-on Linux so that it is fully self-contained.
+to manage Python dependencies.
+In our current solution on Windows/macOS we already ship a bundled Python
+distribution to users and the proposal is to do the same for linux
+for the workbench application bundle.
 
-The Windows/macOS Python-bundling solution is clunky.
-Another option is creating our own Python Conan package
+Bundling of Python is managed differently for Windows/macOS:
+
+* Windows: The [third party](https://github.com/mantidproject/thirdparty-msvc2015/)
+  repository contains a Python version installed by hand along with 
+  [scripts](https://github.com/mantidproject/thirdparty-msvc2015/blob/master/build-scripts/fixup-python3.bat)
+  to fix up links so the bundle is relocatable.
+  CMake scripts copy the bundle to the Mantid user package.
+* macOS: Homebrew is used to install Python to a dev machine as part
+  of the developer package. A [ruby script](https://github.com/mantidproject/mantid/blob/master/installers/MacInstaller/make_package.rb)
+  copies the bundle to the user package.
+
+Here it is proposed that we create our own Python Conan package
 that can be used like any other dependency for the desktop
 application bundle.
 This has been [prototyped](https://github.com/martyngigg/conan-python3)
@@ -260,12 +288,15 @@ is another cross-platform package manager but with support for a
 variety of languages including Python and C++.
 Alongside `pip` many popular Python packages support distribution through Conda.
 In fact `mantid` already has [Conda packages](https://anaconda.org/mantid/repo)
-for workbench and the framework for Linux and Mac.
+for workbench and the framework for Linux.
+Mac packages are currently effectively abandoned.
 
 [Anaconda](https://repo.continuum.io/pkgs/) hosts many prebuilt packages for
 various combinations of compilers and operating systems.
 [Conda build](https://conda.io/projects/conda-build/en/latest/resources/commands/conda-build.html)
 is provided to enable building custom packages.
+Compilers are somewhat limited., getting latest versions of compilers on all platforms is
+problematic/hacky at best.
 
 The [meta.yaml](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#requirements-section)
 file provides a central place to define dependencies and would satisfy requirements 2-4.
@@ -296,5 +327,9 @@ Questions:
 
   * Where would we store binary artifacts? Or just store recipes?
   * Bintray has been considered but its price could be prohibitive.
+  * What would be the rough time to build locally per machine as an estimate?
+    * If it's an hour per developer per say 6-12 months, configuring remote
+      artefacts / storage / retention vs building locally would become a factor
+
 
 3. Other things not considered here?
