@@ -12,8 +12,8 @@ New Items
     I put together to summarise the current state and look at solutions. Needs a bit of tidying then I'll open a pull request and we can discuss next time?
     
 - Nexus API might be deprecated. Do we:
-  - take ownership of it
-  - get rid of it, and replace by plain HDF5 CPP
+  - take ownership of it https://github.com/nexusformat/code  
+  - get rid of it, and replace by plain HDF5 CPP https://portal.hdfgroup.org/pages/viewpage.action?pageId=50073884 
   - adopt the API from ESS https://github.com/ess-dmsc/h5cpp
     
 - Discussion on hosting binaries:
