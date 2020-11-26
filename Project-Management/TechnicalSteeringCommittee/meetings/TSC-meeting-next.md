@@ -11,6 +11,11 @@ New Items
   - As agreed previously we said once we dropped MantidPlot we would get to work on sorting out the dependency management issues. Above is something
     I put together to summarise the current state and look at solutions. Needs a bit of tidying then I'll open a pull request and we can discuss next time?
     
+- Nexus API might be deprecated. Do we:
+  - take ownership of it
+  - get rid of it, and replace by plain HDF5 CPP
+  - adopt the API from ESS
+    
 - Discussion on hosting binaries:
   - Sourceforge continues to give us problems including timeouts on developer packages, and slow downloads for recent versions.
   - Bintray appears to be quite expensive for our needs (TBC with Martyn?)
