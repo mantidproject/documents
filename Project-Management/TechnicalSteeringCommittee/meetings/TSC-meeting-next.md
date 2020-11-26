@@ -14,7 +14,7 @@ New Items
 - Nexus API might be deprecated. Do we:
   - take ownership of it
   - get rid of it, and replace by plain HDF5 CPP
-  - adopt the API from ESS
+  - adopt the API from ESS https://github.com/ess-dmsc/h5cpp
     
 - Discussion on hosting binaries:
   - Sourceforge continues to give us problems including timeouts on developer packages, and slow downloads for recent versions.
