@@ -9,11 +9,18 @@ The ISIS powder diffraction scientists have identified a problem with their powd
 * convert data back to TOF ([ConvertUnits](https://docs.mantidproject.org/nightly/algorithms/ConvertUnits-v1.html))
 * Save data to file for downstream processing ([SaveGSS](https://docs.mantidproject.org/nightly/algorithms/SaveGSS-v1.html))
 
-I believe there is a similar workflow followed at SNS using the [AlignAndFocusPowder](https://docs.mantidproject.org/nightly/algorithms/AlignAndFocusPowder-v1.html) workflow algorithm. ISIS use some python scripts to chain together the different steps but it achieves a similar process to AlignAndFocusPowder
+ISIS use some python scripts to chain together these steps.
 
-The problem is that the final ConvertUnits step to convert from d spacing to TOF doesn't use the diffractometer constants. Following the focussing the data isn't "per detector" any more but it should still be possible to use a "per bank" DIFC\DIFA\TZERO to convert the data back to TOF
+The problem is that the final ConvertUnits step to convert from d spacing to TOF doesn't use the calibrated diffractometer constants. Following the focussing the data isn't "per detector" any more but it should still be possible to use a "per bank" calibrated DIFC\DIFA\TZERO to convert the data back to TOF
 
 There is also a more minor problem that the SaveGSS algorithm recalculates a per bank DIFC value and writes it into a header for each bank in the .gss file. This calculation also ignores the calibration output. It seems that GSAS isn't reading this header though so this problem just creates potential confusion for anyone reading the file rather than incorrect figures in GSAS.
+
+Other facilities
+================
+
+There is a similar workflow followed at SNS using the [AlignAndFocusPowder](https://docs.mantidproject.org/nightly/algorithms/AlignAndFocusPowder-v1.html) workflow algorithm. This algorithm accepts some optional parameters that specify the "bank" positions (L2, Polar, Azimuthal) and these are applied to the focussed dataset using EditInstrumentGeometry prior to the final call to ConvertUnits(Target=TOF). If calibrated L2\Polar\Azimuthal are supplied then this avoids the problem. ISIS don't have this kind of position data available in their workflow though.
+
+The ILL don't do any TOF diffraction so this change won't impact their work
 
 Possible solutions
 ==================
@@ -27,7 +34,7 @@ So on balance we prefer to put the new functionality in the ConvertUnits algorit
 Proposed Solution
 =================
 
-Modify ConvertUnits so it can incorporate diffractometer constants in its unit conversion from TOF to d spacing and vice versa.
+Modify ConvertUnits so it can incorporate calibrated diffractometer constants in its unit conversion from TOF to d spacing and vice versa.
 
 Store the "per detector" diffractometer constants in the instrument parameter map once they are applied to a workspace. A similar approach is already used to store the efixed values for indirect instruments (see ConvertUnits::getDetectorValues). This would mean that if a workspace is saved to a Nexus file, the diffractometer constants would also be saved.
 
@@ -38,13 +45,12 @@ Create a new algorithm to load and store the diffractometer constants in the wor
 
 When ConvertUnits does a conversion between TOF and d spacing check if the instrument map contains diffractometer constants. Use them if they're found. If none found use existing logic
 
-For unit conversions applied to spectra with multiple detectors, just use average of diffractometer constants
+For unit conversions applied to spectra with multiple detectors, just use average of diffractometer constants. Note - for the DIFC constant, this will give a slightly different answer to averaging the inputs to the DIFC calculation (theta, L2, offset) and doing a single DIFC calculation on those averages. This is the approach I've agreed with my instrument scientist contact at ISIS (Helen Playford)
 
 Label the AlignDetectors algorithm as deprecated.
 
 Add some way of viewing the diffractometer data that is stored in a workspace:
-* Show the diffractometer constants in the "Show Detectors" screen?
-* Perhaps provide an algorithm to output the data to a separate table workspace eg CreateDiffCal. Although I note this would make the list of xxxDiffCal algorithms even longer
+* Show the diffractometer constants in the "Show Detectors" screen. Possibly also show the "nominal" DIFC value for detectors without a calibration but this would probably mean adding a further yes\no column to indicate whether the values are calibrated or "nominal"
 
 Clear the diffractometer constants from the instrument parameter map if any of the detector positions in the workspace are modified (eg by running ApplyCalibration which applies an x,y,z offset to each detector). This provides a basic way of ensuring the diffractometer constants and the detector positions are in sync
 
