@@ -19,14 +19,22 @@ New Items
 - Discussion on hosting binaries:
   - Sourceforge continues to give us problems including timeouts on developer packages, and slow downloads for recent versions.
   - Bintray appears to be quite expensive for our needs (TBC with Martyn?)
-  - Approx 2-3Tb unused outbound available, but our current bin size would quickly eat away at that.
-  - CDNs do not guarentee caching for such large objects, so we should assume worst case direct-downloads.
-  - Possible options: Shrink package down enough to host on Linode / Decentralise `download.mantidproject.org` across facilities with free outbound / Something else?
+  - Approx 2-3Tb unused outbound available on Linode server.
+  - Looking at SourceForge data December was our largest no. downloads at ~1100. At 400MB (Windows) this would use 4TB alone
+  - CDNs do not guarantee caching for such large objects, so we should assume worst case direct-downloads.
+  - Possible options: Shrink package down enough to host on Linode / Point to Github Assets instead for releases / Decentralise `download.mantidproject.org` across facilities with free outbound / Something else?
 
 - Add MSVC Debug System Test jobs
   - Additional validators present in debug mode have caught various undefined behaviours and bugs (e.g. TBB thread local issues / invalid iterator usage)
   - Few developers run all system tests in debug mode, so tend to linger
   - This job is quite slow / intensive so could only run nightly to avoid slowing down our PRs
+
+- Shinking installer size (Low priority):
+  (Results from Windows)
+  - QtWebEngine shrinks to 75MB compressed, this is one of the largest files in our bin
+  - Could we use a local browser of shipping Chromium for our help pages?
+  - SciPy / NumPy take another 50MB compressed, if the dep. management changes ship these separate we could easily shrink Mantid down to ~100MB.
+  - Lighter packages help with users putting off trialing nightlies / beta versions, as they take a significant time to installer on HDDs
 
 
 Minutes
