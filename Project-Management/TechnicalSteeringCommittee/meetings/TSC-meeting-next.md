@@ -24,11 +24,6 @@ New Items
   - CDNs do not guarantee caching for such large objects, so we should assume worst case direct-downloads.
   - Possible options: Shrink package down enough to host on Linode / Point to Github Assets instead for releases / Decentralise `download.mantidproject.org` across facilities with free outbound / Something else?
 
-- Add MSVC Debug System Test jobs
-  - Additional validators present in debug mode have caught various undefined behaviours and bugs (e.g. TBB thread local issues / invalid iterator usage)
-  - Few developers run all system tests in debug mode, so tend to linger
-  - This job is quite slow / intensive so could only run nightly to avoid slowing down our PRs
-
 - Shinking installer size (Low priority):
   (Results from Windows)
   - QtWebEngine shrinks to 75MB compressed, this is one of the largest files in our bin
