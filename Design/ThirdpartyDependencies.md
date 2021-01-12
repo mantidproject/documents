@@ -114,6 +114,7 @@ Pros:
 * Simple commands to install packages
 
 Cons:
+* Some formulae needed to be maintained by us, e.g. nexusformat, pyqt@4 
 * Dependencies not versioned with the main code. Hard to track versions used.
 * No way to set deployment target. We have to build on the earliest OS we intend
   to support causing issues with hardware availability.
@@ -124,6 +125,7 @@ Cons:
   to Python 3.9 but many other Python dependencies such as matplotlib were
   not yet available for 3.9. Homebrew has to be pinned to we receive no more updates
   in this case.
+* Large bundle size ~500MB for Workbench alone.
 
 ## General Concerns
 
@@ -252,28 +254,10 @@ Bundling of Python is managed differently for Windows/macOS:
   of the developer package. A [ruby script](https://github.com/mantidproject/mantid/blob/master/installers/MacInstaller/make_package.rb)
   copies the bundle to the user package.
 
-Here it is proposed that we create our own Python Conan package
-that can be used like any other dependency for the desktop
-application bundle.
-This has been [prototyped](https://github.com/martyngigg/conan-python3)
-and seems to work well.
-It would require some patching of `site.py` or using `sitecustomize.py`
-to ensure packaging doesn't interfere with system versions
-but this is something supported by Python
-and done by other systems like `Conda`.
-Python requirements could be easily supported by a requirements file
-or some newer system like
-[pipenv](https://packaging.python.org/key_projects/#pipenv) to properly
-define a frozen set of dependencies.
-Some packages such as `PyQt` do not provide the headers and link
-libraries required for the C++ build.
-The easiest solution would be a Conan package for `PyQt` much like macOS
-Homebrew does. 
-
-The availability of `mantid` to other Python libraries would be the cause
-of the most concern if we adopted the Conan approach as it is
-about creating a self-contained package.
-
+It is possible to create a [Python Conan package](https://github.com/martyngigg/conan-python3)
+and this worked well in isolation but troubles arose when trying to connect with other
+packages such as boost-python that expected Python to be provided by the system and
+not another conan package.
 
 ### Conda
 
@@ -302,34 +286,37 @@ The [meta.yaml](https://docs.conda.io/projects/conda-build/en/latest/resources/d
 file provides a central place to define dependencies and would satisfy requirements 2-4.
 The requirements file allows builds tools such as CMake to be used.
 
-It is unclear how the build process would fit into current tools such as IDEs.
-The current CLI workflow is documented [here](https://github.com/mantidproject/conda-recipes/blob/master/Developer.md).
+As long as a conda environment is activated then other IDEs and tools should function as expected.
+One major concern is the availability of debug build libraries for Windows.
+They are not provided for most solutions but in Visual Studio they do provide
+a clear benefit when debugging code. One option would be for developers to use
+`RelWithDebInfo` builds and we could drop the optimization level to `O1`.
 
-Conda would possibly a better solution for providing just the `mantid` framework
-as a library for other users to import and not considering this as a solution
-for providing the full desktop application bundle. We also already have a
-working conda build of the framework so this is low overhead. This needs
-proper support though.
+Conda provides a good solution for releasing the 3 packages:
+
+* mantid-framework
+* mantidqt
+* workbench
+
+## Workbench Bundle
+
+A single bundled application is still required for a large fraction of the
+userbase. We will want to ship an installer that will install the workbench
+along with all of its dependencies & desktop shortcuts where applicable.
+
+[Spyder IDE](https://github.com/spyder-ide/spyder/tree/master/installers) has
+examples of using Python libraries to create NSIS installers & App bundles.
+We could also just use the built-in capabilities of cmake to produce such
+artefacts.
 
 ## Summary + Questions
 
-After consideration I would suggest be that we adopt both options for supporting
-the two use cases presented. Both cases have different needs so there is no
-reason to expect one system to support both.
+After consideration I would suggest we adopt Conda as the primary provider
+of our dependencies as it satifies our requirements of moving away from
+system libraries or homegrown solutions and covers both C++ & Python in
+better manner than Conan.
 
 Questions: 
 
 1. Do we need to still support a build against system libraries on Linux?
-
-   * Would SNS need an RPM framework build for their GUIs linked to system Python?
-
-2. Is it sensible to consider maintaining Conan packages as suggested?
-
-  * Where would we store binary artifacts? Or just store recipes?
-  * Bintray has been considered but its price could be prohibitive.
-  * What would be the rough time to build locally per machine as an estimate?
-    * If it's an hour per developer per say 6-12 months, configuring remote
-      artefacts / storage / retention vs building locally would become a factor
-
-
-3. Other things not considered here?
+2. Does RelWithDebInfo on Windows give enough debugging support?
