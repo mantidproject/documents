@@ -38,4 +38,6 @@ New Items
 
 Minutes
 -------
-Attendees:
+Attendees: Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici, Tillet, Vardanyan
+
+* Overview of new governance. Current document (subject to change) will be shared with the TSC
