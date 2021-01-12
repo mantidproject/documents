@@ -40,4 +40,8 @@ Minutes
 -------
 Attendees: Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici, Tillet, Vardanyan
 
-* Overview of new governance. Current document (subject to change) will be shared with the TSC
+- Overview of new governance. Current document (subject to change) will be shared with the TSC
+- Moving to "conda first" as method of dependence management
+  - need to announce this intention on the mantid forum
+  - need instructions for development inside of conda
+  - conda packages need to be "first class citizens" on the build servers
