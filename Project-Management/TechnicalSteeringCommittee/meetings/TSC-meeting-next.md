@@ -28,7 +28,7 @@ New Items
   - CDNs do not guarantee caching for such large objects, so we should assume worst case direct-downloads.
   - Possible options: Shrink package down enough to host on Linode / Point to Github Assets instead for releases / Decentralise `download.mantidproject.org` across facilities with free outbound / Something else?
 
-- Shinking installer size (Low priority):
+- Shrinking installer size (Low priority):
   (Results from Windows)
   - QtWebEngine shrinks to 75MB compressed, this is one of the largest files in our bin
   - Could we use a local browser of shipping Chromium for our help pages?
@@ -46,3 +46,5 @@ Attendees: Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici, Tillet, Vard
   - need instructions for development inside of conda
   - conda packages need to be "first class citizens" on the build servers
   - need to figure out "double click installers" 
+- Hosting binaries and shrinking installers has been pushed out b/c they may be mitigated by a move to conda
+- Brief discussion of NeXus API. Continue next time
