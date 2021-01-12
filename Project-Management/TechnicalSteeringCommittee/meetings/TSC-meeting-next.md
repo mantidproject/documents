@@ -45,3 +45,4 @@ Attendees: Fairbrother, Gigg, Guest, Hahn, Nixon, Peterson, Savici, Tillet, Vard
   - need to announce this intention on the mantid forum
   - need instructions for development inside of conda
   - conda packages need to be "first class citizens" on the build servers
+  - need to figure out "double click installers" 
