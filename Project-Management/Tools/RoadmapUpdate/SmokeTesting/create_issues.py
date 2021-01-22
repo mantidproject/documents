@@ -40,7 +40,7 @@ gh = Github(USERNAME, PASSWORD)
 repo = gh.get_user(REPO_OWNER).get_repo(REPO_NAME)
 assignees = repo.get_assignees()
 
-milestone = "Release 4.3"
+milestone = "Release 5.1"
 gh_milestone = None
 for loop_milestone in repo.get_milestones():
     if loop_milestone.title == milestone:
@@ -86,8 +86,8 @@ for index, row in df.iterrows():
     my_body = body_text
     if pd.notnull(additional_body):
         my_body += "\n\n## Checklist/directions\n\n" + additional_body
-    #print (title,gh_milestone,gh_labels)
-    issue = repo.create_issue(title, body = my_body, milestone = gh_milestone, labels = gh_labels) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
+    print (title,gh_milestone,gh_labels)
+    #issue = repo.create_issue(title, body = my_body, milestone = gh_milestone, labels = gh_labels) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
     print(issue.number, issue.title)
     issue_numbers[index] = issue.number
 
@@ -101,6 +101,6 @@ for index, row in um.iterrows():
         my_body += "\n"
 my_body += "\n **Manually make this Umbrella into an Epic!** "       
 title = 'Smoke Testing Umbrella Issue'
-#print (title,gh_milestone,gh_labels)
-issue = repo.create_issue(title, body = my_body, milestone = gh_milestone, labels = gh_labels) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
+print (title,gh_milestone,gh_labels)
+#issue = repo.create_issue(title, body = my_body, milestone = gh_milestone, labels = gh_labels) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
 print(issue.number, issue.title)
