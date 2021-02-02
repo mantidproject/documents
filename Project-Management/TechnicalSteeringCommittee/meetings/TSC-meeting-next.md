@@ -7,6 +7,8 @@ Pinned Topics
 New Items
 ---------
 
+- Set a date for renaming `master`->`main`?
+
 - Brief update on new mantid governance
 - Brief update on [dependency handling](https://github.com/mantidproject/documents/blob/thirdparty-dependencies/Design/ThirdpartyDependencies.md)
 - Review of [maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
