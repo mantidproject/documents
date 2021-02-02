@@ -37,3 +37,13 @@ New Items
   - Could we use a local browser of shipping Chromium for our help pages?
   - SciPy / NumPy take another 50MB compressed, if the dep. management changes ship these separate we could easily shrink Mantid down to ~100MB.
   - Lighter packages help with users putting off trialing nightlies / beta versions, as they take a significant time to installer on HDDs
+
+Minutes
+-------
+Attendees:
+
+- Brief discussion of release. Things that would stop release (all are in progress)
+  - DownloadInstrument bug
+  - OSX installer suffix
+  - Muon gui
+  
