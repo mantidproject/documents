@@ -56,3 +56,5 @@ Attendees: Fairbrother, Gigg, Hahn, Nixon, Peterson, Savici
   - Consensus is that we still want an abstraction on top of whatever underlying API we use
   - Step one is to take an inventory of all of the current abstractions mantid contains for accessing NeXus and where they are used
   - Underlying HDF5 library used is a separate decision because of the abstraction layer
+- Sourceforge Hosting Binaries 
+  - Discussion shelved, as it's likely to be resolved as a side-effect of switching our dependency handling
