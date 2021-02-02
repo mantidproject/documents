@@ -48,3 +48,6 @@ Attendees: Fairbrother, Gigg, Hahn, Nixon, Peterson, Savici
   - Muon gui
 - Rename `master` to `main` on the first Monday after the release is announced. Currently, 2021-02-15
 - When we move to a new version of `clang-format`, change the maximum line length to 119. We should also look into reducing the line length for python to 119 as well. This should wait until [`pre-commit`](https://github.com/mantidproject/mantid/issues/30265) has been configured for developers.
+- Mantid governance - review is writing up the results
+- Dependency managment - plan is still "conda first"
+- Maintenance - removing mantidplot went fine. Cleanup continues
