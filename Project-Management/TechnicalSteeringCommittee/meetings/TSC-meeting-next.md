@@ -40,10 +40,10 @@ New Items
 
 Minutes
 -------
-Attendees:
+Attendees: Fairbrother, Gigg, Hahn, Nixon, Peterson, Savici
 
 - Brief discussion of release. Things that would stop release (all are in progress)
   - DownloadInstrument bug
   - OSX installer suffix
   - Muon gui
-  
+- Rename `master` to `main` on the first Monday after the release is announced. Currently, 2021-02-15
