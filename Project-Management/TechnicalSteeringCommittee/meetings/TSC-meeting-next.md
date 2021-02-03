@@ -7,12 +7,10 @@ Pinned Topics
 New Items
 ---------
 
-- Set a date for renaming `master`->`main`?
-
 - Brief update on new mantid governance
 - Brief update on [dependency handling](https://github.com/mantidproject/documents/blob/thirdparty-dependencies/Design/ThirdpartyDependencies.md)
 - Review of [maintenance tasks](https://github.com/mantidproject/mantid/projects/15)
-- Nexus API might be deprecated. Do we:
+- Nexus API might be deprecated (need update on plans). Do we:
   - take ownership of it https://github.com/nexusformat/code
   - write our own API on top of HDF5
   - get rid of it, and replace by plain [HDF5 CPP](https://portal.hdfgroup.org/pages/viewpage.action?pageId=50073884)
@@ -37,24 +35,3 @@ New Items
   - Could we use a local browser of shipping Chromium for our help pages?
   - SciPy / NumPy take another 50MB compressed, if the dep. management changes ship these separate we could easily shrink Mantid down to ~100MB.
   - Lighter packages help with users putting off trialing nightlies / beta versions, as they take a significant time to installer on HDDs
-
-Minutes
--------
-Attendees: Fairbrother, Gigg, Hahn, Nixon, Peterson, Savici
-
-- Brief discussion of release. Things that would stop release (all are in progress)
-  - DownloadInstrument bug
-  - OSX installer suffix
-  - Muon gui
-- Rename `master` to `main` on the first Monday after the release is announced. Currently, 2021-02-15
-- When we move to a new version of `clang-format`, change the maximum line length to 119. We should also look into reducing the line length for python to 119 as well. This should wait until [`pre-commit`](https://github.com/mantidproject/mantid/issues/30265) has been configured for developers.
-- Mantid governance - review is writing up the results
-- Dependency managment - plan is still "conda first"
-- Maintenance - removing mantidplot went fine. Cleanup continues
-- NeXus API discussion
-  - Should start with requirements/design
-  - Consensus is that we still want an abstraction on top of whatever underlying API we use
-  - Step one is to take an inventory of all of the current abstractions mantid contains for accessing NeXus and where they are used
-  - Underlying HDF5 library used is a separate decision because of the abstraction layer
-- Sourceforge Hosting Binaries 
-  - Discussion shelved, as it's likely to be resolved as a side-effect of switching our dependency handling
