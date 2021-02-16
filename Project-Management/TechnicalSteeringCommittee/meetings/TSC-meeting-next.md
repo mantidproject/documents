@@ -1,11 +1,14 @@
 Agenda
 ======
 
-Pinned Topics
--------------
 
 New Items
 ---------
+
+- Apple have dropped support for macOS High Sierra. What do we move our minimum supported version of macOS to?
+
+Last Meeting
+------------
 
 - Brief update on new mantid governance
 - Brief update on [dependency handling](https://github.com/mantidproject/documents/blob/thirdparty-dependencies/Design/ThirdpartyDependencies.md)
