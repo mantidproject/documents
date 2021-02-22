@@ -28,6 +28,8 @@ Pre-Commit Implementation detail and developer install
     - Clang-format - In place fixes
     - Flake8
 
+An initial implementation has been made here: https://github.com/mantidproject/mantid/pull/30740
+
 **Potential future feature plans**
 
 - Any newly added feature will be ran on the whole repo at the same time to avoid random things being added to new PRs and ideally should be enforced by Jenkins, but many suggested features won't require jenkins enforcement.
