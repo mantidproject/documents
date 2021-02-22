@@ -6,6 +6,12 @@ New Items
 ---------
 
 - Apple have dropped support for macOS High Sierra. What do we move our minimum supported version of macOS to?
+- Ubuntu 16.04 EOL - April 30th
+  - Plan to migrate to LTS 20.04, move remaining non-docker services into containers to make upgrades / maintenance easier
+  - Should use a new VM instead of upgrading existing; allows us to quickly back out to old VM and starts with a "clean-slate" to (hopefully) fix TCP speed issues
+  - Wiki is a problem component: The theme used (with our own extra CSS on top) is EOL and does not work with newer versions
+  - Options include: - Pick another theme and get someone to throw CSS on top again, - Migrate to our own or Github static pages, - Something Else?
+    
 
 Last Meeting
 ------------
