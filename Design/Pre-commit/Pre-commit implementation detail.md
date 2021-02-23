@@ -33,7 +33,7 @@ This section will discuss the implementation detail of how the pre-commit framew
     - Cppcheck will only be present if the suppression of warnings is possible to implement simply, if not it will need to be added at a later date. 
     - We will be maintaining this hook as we can then control the cppcheck version 
  
-####Pre-commit run order 
+#### Pre-commit run order 
 - Check XML/YAML 
 - Yapf - In place fixes 
 - Clang-format - In place fixes 
@@ -42,7 +42,7 @@ This section will discuss the implementation detail of how the pre-commit framew
  
 An initial implementation has been made here: https://github.com/mantidproject/mantid/pull/30740 
  
-##Installation instructions 
+## Installation instructions 
  
 We will be installing pre-commit and setting it up with the git hooks so that it runs before each time you commit. 
  
