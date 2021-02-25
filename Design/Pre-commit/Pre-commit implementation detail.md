@@ -108,3 +108,4 @@ Future development will be easy and not require significant updates to CMake for
     - License insertion and detection, automatically updating licenses in files that have been edited. 
     - Cmake-format
     - Doxygen
+    - detect-private-key - Ensure private API keys are not leaked to public facing repositorys
