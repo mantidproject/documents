@@ -67,3 +67,4 @@ Attendees: Peterson, Gigg, Jones, Nixon, Hahn, Savici, Fairbrother
   * Will add a "Roadmap" label for the steering committee
   * Remove the "Never Stale" as it does not communicate the intended use
   * Fairbrother will modify the email to better communicate the intention
+* pre-commit will be implemented along the lines of the [design document](https://github.com/mantidproject/documents/pull/88)
