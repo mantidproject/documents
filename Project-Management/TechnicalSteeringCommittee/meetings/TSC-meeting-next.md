@@ -24,6 +24,7 @@ New Items
   - Wiki is a problem component: The theme used (with our own extra CSS on top) is EOL and does not work with newer versions
   - Options include: - Pick another theme and get someone to throw CSS on top again, - Migrate to our own or Github static pages, - Something Else?
 - Implementation plan for pre-commit hooks. See [pull request](https://github.com/mantidproject/documents/pull/88) (Sam)
+- GH/forum/Slack/other? user account audit
     
 
 Last Meeting
