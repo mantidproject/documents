@@ -48,7 +48,7 @@ We will be installing pre-commit and setting it up with the git hooks so that it
  
 #### CentOS/RHEL Installation 
  
-To install snap for CentOS and RHEL to support the use of pre-commit, without using pip. Navigate to your repo and run: 
+To install using snap for CentOS and RHEL to support the use of pre-commit, without using pip. Navigate to your repo and use the Ubuntu 18.04 commands, otherwise use pip: 
 ```shell 
 pip install pre-commit 
 pre-commit install 
