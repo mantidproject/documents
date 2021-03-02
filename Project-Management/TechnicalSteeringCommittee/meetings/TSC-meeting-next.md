@@ -5,17 +5,6 @@ Agenda
 New Items
 ---------
 
-- Keeping an eye on the stale issue detector it appears to be working well, however `Never Stale` isn't really doing what it should (David)
-  - (This is verbose as I may be in an exam when the TSC meeting starts, but I'd like the discussion to happen this meeting, as the number of issues it affects will grow)
-  - The label is being applied to bugs that exist and need fixing at "some point", but have lingered for years without any new activity or plans to fix soon.
-  - The comment approach requires effort (intentionally) so people end up label setting-and-forgetting. Ultimately, we'll end up coming full circle to a large number of issues that are never stale and rot.
-  - Fundamentally, the mistake is mine (David) picking "Never Stale", rather than actually asking the TSC what types of issues we want to keep long term. We should instead explicitly choose types of issues we want to keep and let the rest close with no interest. My questions are:
-  - What labels do we add as exceptions as a type of issue that can linger for years, e.g. "Planning" or "Meta-issue"? Alternatively, should these long-term roadmaps (12-36+ months) be moved somewhere else and we all inactive issues can be marked marked as stale?
-  - Should we write-up and enforce a issue life-time policy before we have a large number of issues in the "grey-zone" - possible suggestions:
-  - What metric(s) do we apply to un-labelling a "Never Stale" issue. E.g. a bug can always be made stale, because if they're not important enough to fix in 6 months...
-  - What period of time can a "Never Stale" issue be bumped for. E.g. if it's 3+ years and there's no progress or interest on a feature beyond pings to keep it alive do we close it?
-  - Any others thoughts or feedback?
-
 - Apple have dropped support for macOS High Sierra. What do we move our minimum supported version of macOS to? (Martyn)
 
 - Ubuntu 16.04 EOL - April 30th (David)
@@ -23,12 +12,7 @@ New Items
   - Should use a new VM instead of upgrading existing; allows us to quickly back out to old VM and starts with a "clean-slate" to (hopefully) fix TCP speed issues
   - Wiki is a problem component: The theme used (with our own extra CSS on top) is EOL and does not work with newer versions
   - Options include: - Pick another theme and get someone to throw CSS on top again, - Migrate to our own or Github static pages, - Something Else?
-- Implementation plan for pre-commit hooks. See [pull request](https://github.com/mantidproject/documents/pull/88) (Sam)
 - GH/forum/Slack/other? user account audit
-    
-
-Last Meeting
-------------
 
 - Brief update on new mantid governance
 - Brief update on [dependency handling](https://github.com/mantidproject/documents/blob/thirdparty-dependencies/Design/ThirdpartyDependencies.md)
@@ -58,13 +42,3 @@ Last Meeting
   - Could we use a local browser of shipping Chromium for our help pages?
   - SciPy / NumPy take another 50MB compressed, if the dep. management changes ship these separate we could easily shrink Mantid down to ~100MB.
   - Lighter packages help with users putting off trialing nightlies / beta versions, as they take a significant time to installer on HDDs
-
-Minutes
--------
-Attendees: Peterson, Gigg, Jones, Nixon, Hahn, Savici, Fairbrother
-
-* stale-bot configuration
-  * Will add a "Roadmap" label for the steering committee
-  * Remove the "Never Stale" as it does not communicate the intended use
-  * Fairbrother will modify the email to better communicate the intention
-* pre-commit will be implemented along the lines of the [design document](https://github.com/mantidproject/documents/pull/88)
