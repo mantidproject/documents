@@ -9,6 +9,9 @@ Further, from the already stated benefits we can retire the static analysis indi
 ## The implementation of pre-commit framework 
 This section will discuss the implementation detail of how the pre-commit framework is intended to run, and some pre-requisites required for it to fit into our workflow.
 
+#### All Hooks
+When any hook is being addressed in the pre-commit framework we want to use the sha of the commit we are pointing at, this ensures backwards and forwards compatibility.
+
 #### Yapf 
 - Integration of Yapf with pre-commit means moving forward with integrating Yapf in our developer workflows. 
 - Jenkins job including yapf static analysis 
@@ -23,7 +26,8 @@ This section will discuss the implementation detail of how the pre-commit framew
  
 #### Clang-format 
 - Informs developers where an issue has arisen in code and then fixes it based on the settings of the repo ensuring that for example it adheres to our repo specific settings including future changes such as 120 characters per line. 
-- We will be maintaining this hook as we can then control the clang-format version, this will be in a separate repo. 
+- We will be maintaining this hook as we can then control the clang-format version, this will be in a separate repo.
+
  
 #### XML and YAML checking 
 - Should catch yaml and xml violations in commits before they become a problem, on the build servers. 
@@ -83,8 +87,8 @@ On Windows this is installed and initialised for them via CMake, just pull the l
  
 ### Final Migration Steps (TBD) 
 All final tasks should be completed in one day on to minimise potential disruption to developers in the team 
-- Update and apply clang-format and Yapf versions to the whole codebase, using the pre-commit hooks 
-- Replace Jenkins static analysis jobs with the already made pre-commit CI job 
+- Update and apply clang-format, update clang-format line length and Yapf versions to the whole codebase, using the pre-commit hooks 
+- Replace Jenkins static analysis jobs with the already made pre-commit CI job, that only runs on the diff between the PR and the head of the branch being merged into.
 - Inform developers
 
 ## Potential future feature plans
