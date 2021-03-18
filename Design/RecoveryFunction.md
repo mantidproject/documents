@@ -27,7 +27,7 @@ In sequential fitting algoritms may run with the same timestamp, but have differ
 
 Workspace history will not delete workspaces that might have been deleted during the uptime. This could become an issue if there are a lot of these.
 
-If a workspace is a memeber of a grouped workspace and another member of that group has been deleted, the original group workspace command will fail, as there is no record of all workspaces in the group. This is realted to `ADSValidator`.
+If a workspace is a member of a grouped workspace and another member of that group has been deleted, the original group workspace command will fail, as there is no record of all workspaces in the group. This is realted to `ADSValidator`.
 
 Places where `ADSValidator` occurs:
 * `Framework/Algorithms/src/DeleteWorkspaces.cpp`
@@ -46,9 +46,37 @@ Certain actions performed in instrument view require a new workspace to be creat
 
 Group/ungroup workspaces is not captured in the WS history
 
+We must be able to deal with multiple instances of mantid running on either the same machine or different machines that share a home directory on a mounted network drive.
+
+### Recovery Folder Structure
+
+The recovery information will be written into a `recovery` subdirectory of the Mantid user config area (`%APPDATA%\mantidproject\mantid` on Windows or `$HOME/.mantid` on Linux/MacOS),
+referred to as `RECOVERY_ROOT` from now on. This will then have additional subdirectories of the form:
+
+```
+RECOVERY_ROOT
+  |-- *hostname*
+      |-- *pid*
+          |-- timestamp-1
+          |-- timestamp-2
+          |-- timestamp-3
+```
+
+where *hostname* is the machine name and *pid* is the process ID of the running process. On a clean exit of MantidPlot only the *pid* folder would be removed for the current machine.
+
+Each timestamped folder will contain a marker file whilst the checkpoint is being written, which is removed after the write has completed. Any time stamped folders containing this file, indicating a partial save point, will not be offered for recovery.
+
+On starting a new session of MantidPlot the recovery function would generated a list of recovery directories for its hostname. It would then get a list of all PIDs of the currently running MantidPlot processes and remove any of
+these running PIDs from the original recovery list. If more than 1 recovery option is available then a selection will be offered to the user.
+
+#### Note for v3.13
+
+Due to time constraints a more limited system that simply checks if any other `MantidPlot` process is running and disables project recovery will be considered, and implemented if the full implementation is not possible in time.
+
+
 ## Open questions
 
-* How much overlap would this functionality have with Project Saving? 
+* How much overlap would this functionality have with Project Saving?
 * Should the functionality be in MantidPlot or Framework?
   * It probably makes sense to have the workspace recovery fn available within the framework, while the ui elements can only be in the ui.  We would need to be able to disable it in the properties file for developers, automated tests and auto reduction.
 
