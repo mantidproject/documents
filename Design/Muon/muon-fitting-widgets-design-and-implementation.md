@@ -43,14 +43,18 @@ The **Basic Fitting Widget** is not used on its own in any of the Muon interface
 it acts as an initial ‘building block’ for the other fitting widgets. It consists of two 
 separate widgets, the *Fit Controls* widget, and the *Fit Function Options* widget.
 
-![Basic Fitting Widget](basic-fitting-widget.PNG)
+<p align="center">
+  <img src="basic-fitting-widget.PNG">
+</p>
 
 The following diagram details the file organisation for the **Basic Fitting Widget**. The 
 *Fit Controls* widget and *Fit Function Options* widget is added to the fitting layout within 
 the constructor of the Basic Fitting View. The dotted arrow means ‘has a’ and the full arrow 
 means ‘is a’ (i.e. inherits from).
 
-![Basic Fitting Widget Files](basic-fitting-widget-files.PNG)
+<p align="center">
+  <img src="basic-fitting-widget-files.PNG">
+</p>
 
 ## General Fitting Widget
 
@@ -58,14 +62,18 @@ The **General Fitting Widget** is used on the fitting tab of Frequency Domain An
 inherits the widgets found in the **Basic Fitting Widget**, and it also has a *General Fitting 
 Options* widget which allows you to perform simultaneous fits over specific Runs and Group/Pairs.
 
-![General Fitting Widget](general-fitting-widget.PNG)
+<p align="center">
+  <img src="general-fitting-widget.PNG">
+</p>
 
 The following diagram details the file organisation for the **General Fitting Widget**. The 
 *General Fitting Options* widget is added to the fitting layout within the constructor of the 
 General Fitting View. The dotted arrow means ‘has a’ and the full arrow means ‘is a’ 
 (i.e. inherits from).
 
-![General Fitting Widget Files](general-fitting-widget-files.PNG)
+<p align="center">
+  <img src="general-fitting-widget-files.PNG">
+</p>
 
 ## TF Asymmetry Fitting Widget
 
@@ -74,14 +82,18 @@ the widgets found in the **General Fitting Widget**, and it also has a *TFA Asym
 Switcher* widget and a *TF Asymmetry Fitting Options* widget which allows you to perform a 
 TF Asymmetry fit with a normalisation.
 
-![TF Asymmetry Fitting Widget](tf-asymmetry-fitting-widget.PNG)
+<p align="center">
+  <img src="tf-asymmetry-fitting-widget.PNG">
+</p>
 
 The following diagram details the file organisation for the **TF Asymmetry Fitting Widget**. 
 The *TF Asymmetry Fitting Options* widget is added to the fitting layout within the constructor 
 of the TF Asymmetry Fitting View. The dotted arrow means ‘has a’ and the full arrow means ‘is a’ 
 (i.e. inherits from).
 
-![TF Asymmetry Fitting Widget Files](tf-asymmetry-fitting-widget-files.PNG)
+<p align="center">
+  <img src="tf-asymmetry-fitting-widget-files.PNG">
+</p>
 
 ## Notes
 
