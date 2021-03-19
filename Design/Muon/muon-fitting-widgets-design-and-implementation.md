@@ -13,17 +13,17 @@ MVP style:
 
  1. The **Basic Fitting Widget** is the most basic of the fitting widgets. It allows you to 
     perform a fit, undo a fit, plot a guess, and open the Fit Script Generator. The fit 
-	can be a single or double pulse fit. It also provides the ability to choose fit functions 
-	and other fit options.
+    can be a single or double pulse fit. It also provides the ability to choose fit functions 
+    and other fit options.
 	
  2. The **General Fitting Widget** has all the capabilities of the **Basic Fitting Widget**, 
     plus it allows you to perform simultaneous fits over specific Runs and Group/Pairs. It 
-	also allows you to cycle through the different datasets which are loaded into the fitting 
-	widget.
+    also allows you to cycle through the different datasets which are loaded into the fitting 
+    widget.
 
- 3.	The **TF Asymmetry Fitting Widget** has all the capabilities of the **General Fitting 
-    Widget**, plus it has a TF Asymmetry fitting mode where you can enter a normalisation 
-	parameter and perform a TF Asymmetry fit.
+ 3. The **TF Asymmetry Fitting Widget** has all the capabilities of the **General Fitting Widget**, 
+    plus it has a TF Asymmetry fitting mode where you can enter a normalisation parameter and 
+    perform a TF Asymmetry fit.
 
 ## Where is each widget used?
 
@@ -33,7 +33,9 @@ the widgets comprising the **Basic Fitting Widget** (for example) do not have to
 each other. Instead, each sub-widget is added to specific area within a vertical layout as 
 illustrated by this image.
 
-![Fitting Tab Layout](fitting-tab-layout.PNG)
+<p align="center">
+  <img src="fitting-tab-layout.PNG">
+</p>
 
 ## Basic Fitting Widget
 
