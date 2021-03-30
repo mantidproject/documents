@@ -59,3 +59,4 @@ Attendees: Fairbrother, Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, T
   * main hold-up is the wiki
   * need a wiki migration plan (move content off of the wiki)
   * need a plan for upgrading the server
+* Brief update on new mantid governance
