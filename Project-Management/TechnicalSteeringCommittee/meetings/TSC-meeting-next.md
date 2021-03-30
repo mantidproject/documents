@@ -55,3 +55,7 @@ Attendees: Fairbrother, Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, T
   * `cppcheck` is very far off
 * Apple have dropped support for macOS High Sierra
   * check xcode and qt5 (v5.15) version upgrade
+* Ubuntu 16.04 EOL
+  * main hold-up is the wiki
+  * need a wiki migration plan (move content off of the wiki)
+  * need a plan for upgrading the server
