@@ -49,7 +49,7 @@ Mintues
 Attendees: Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, Tillet
 
 * `pre-commit` status
-  * `clang-format` is essentially ready
+  * `clang-format` is essentially ready - will be merged 2020-03-31 morning UK time
   * `flake8` and `yapf` have some minor interaction issues
   * developers can start running `yapf` on files they are changing already
   * `cppcheck` is very far off
