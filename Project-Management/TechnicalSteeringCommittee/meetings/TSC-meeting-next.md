@@ -43,3 +43,9 @@ Agenda
   - Lighter packages help with users putting off trialing nightlies / beta versions, as they take a significant time to installer on HDDs
 
 - https://github.com/DanNixon/vtk_instrument_view_demo
+
+Mintues
+-------
+Attendees: Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, Tillet
+
+* `pre-commit` status
