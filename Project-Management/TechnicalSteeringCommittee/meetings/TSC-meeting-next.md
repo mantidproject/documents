@@ -12,7 +12,6 @@ Agenda
   - Should use a new VM instead of upgrading existing; allows us to quickly back out to old VM and starts with a "clean-slate" to (hopefully) fix TCP speed issues
   - Wiki is a problem component: The theme used (with our own extra CSS on top) is EOL and does not work with newer versions
   - Options include: - Pick another theme and get someone to throw CSS on top again, - Migrate to our own or Github static pages, - Something Else?
-- GH/forum/Slack/other? user account audit
 
 - Brief update on new mantid governance
 - Brief update on [dependency handling](https://github.com/mantidproject/documents/blob/thirdparty-dependencies/Design/ThirdpartyDependencies.md)
