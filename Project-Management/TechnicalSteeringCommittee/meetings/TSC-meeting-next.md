@@ -53,3 +53,5 @@ Attendees: Fairbrother, Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, T
   * `flake8` and `yapf` have some minor interaction issues
   * developers can start running `yapf` on files they are changing already
   * `cppcheck` is very far off
+* Apple have dropped support for macOS High Sierra
+  * check xcode and qt5 (v5.15) version upgrade
