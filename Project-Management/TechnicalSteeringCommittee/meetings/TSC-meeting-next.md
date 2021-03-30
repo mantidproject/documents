@@ -27,14 +27,6 @@ Agenda
     Pull request: https://github.com/mantidproject/documents/pull/78
     Conda + some bundling solution is current suggestion.
 
-- Discussion on hosting binaries:
-  - Sourceforge continues to give us problems including timeouts on developer packages, and slow downloads for recent versions.
-  - Bintray appears to be quite expensive for our needs (TBC with Martyn?)
-  - Approx 2-3Tb unused outbound available on Linode server.
-  - Looking at SourceForge data December was our largest no. downloads at ~1100. At 400MB (Windows) this would use 4TB alone
-  - CDNs do not guarantee caching for such large objects, so we should assume worst case direct-downloads.
-  - Possible options: Shrink package down enough to host on Linode / Point to Github Assets instead for releases / Decentralise `download.mantidproject.org` across facilities with free outbound / Something else?
-
 - Shrinking installer size (Low priority):
   (Results from Windows)
   - QtWebEngine shrinks to 75MB compressed, this is one of the largest files in our bin
