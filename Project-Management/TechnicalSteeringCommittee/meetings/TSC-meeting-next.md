@@ -52,3 +52,4 @@ Attendees: Fairbrother, Peterson, Nixon, Vardanyan, Hahn, Savici, Jones, Gigg, T
   * need a wiki migration plan (move content off of the wiki)
   * need a plan for upgrading the server
 * Brief update on new mantid governance
+* Brief introduction on the [vtk instrument demo](https://github.com/DanNixon/vtk_instrument_view_demo)
