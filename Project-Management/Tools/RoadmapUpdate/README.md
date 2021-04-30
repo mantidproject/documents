@@ -10,7 +10,7 @@ ff34885a86faketoken24460a8555...
 ```
  **Do not commit login.txt to the remote repo!**
 
-- Firstly, comment out the penultimate line in `create_issues.py` to test the script runs successsfully, assigning Manual Testing to recognised Mantid developers on GitHub:
+- Firstly, comment out the penultimate line in `create_issues.py` to test the script runs successsfully, assigning Manual Testing to recognised Mantid developers on GitHub. Note that you might need to pip install xlrd==1.2.0, pandas and PyGithub.
 ```
 # issue = repo.create_issue(title, my_body, gh_assignee, gh_milestone, gh_labels)
 ```
