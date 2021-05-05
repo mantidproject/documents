@@ -13,13 +13,12 @@ MVP style:
 
  1. The **Basic Fitting Widget** is the most basic of the fitting widgets. It allows you to 
     perform a fit, undo a fit, plot a guess, and open the Fit Script Generator. The fit 
-    can be a single or double pulse fit. It also provides the ability to choose fit functions 
-    and other fit options.
-	
+    can be a single or double pulse fit. It also allows you to cycle through the different 
+    datasets which are loaded into the fitting widget, and provides the ability to choose 
+    fit functions and other fit options.
+
  2. The **General Fitting Widget** has all the capabilities of the **Basic Fitting Widget**, 
-    plus it allows you to perform simultaneous fits over specific Runs and Group/Pairs. It 
-    also allows you to cycle through the different datasets which are loaded into the fitting 
-    widget.
+    plus it allows you to perform simultaneous fits over specific Runs and Group/Pairs.
 
  3. The **TF Asymmetry Fitting Widget** has all the capabilities of the **General Fitting Widget**, 
     plus it has a TF Asymmetry fitting mode where you can enter a normalisation parameter and 
@@ -40,17 +39,18 @@ illustrated by this image.
 ## Basic Fitting Widget
 
 The **Basic Fitting Widget** is not used on its own in any of the Muon interfaces, instead 
-it acts as an initial ‘building block’ for the other fitting widgets. It consists of two 
-separate widgets, the *Fit Controls* widget, and the *Fit Function Options* widget.
+it acts as an initial ‘building block’ for the other fitting widgets. It consists of three 
+separate widgets, the *Fit Controls* widget, the *Fit Function Options* widget, and the 
+*Workspace Selector* widget.
 
 <p align="center">
   <img src="basic-fitting-widget.PNG">
 </p>
 
 The following diagram details the file organisation for the **Basic Fitting Widget**. The 
-*Fit Controls* widget and *Fit Function Options* widget is added to the fitting layout within 
-the constructor of the Basic Fitting View. The dotted arrow means ‘has a’ and the full arrow 
-means ‘is a’ (i.e. inherits from).
+*Fit Controls* widget, *Workspace Selector* widget and *Fit Function Options* widget are 
+added to the fitting layout within the constructor of the Basic Fitting View. The dotted 
+arrow means ‘has a’ and the full arrow means ‘is a’ (i.e. inherits from).
 
 <p align="center">
   <img src="basic-fitting-widget-files.PNG">
