@@ -29,7 +29,7 @@ MVP style:
 This section describes where the widgets are used, and how they are each separated into 
 sub-widgets. This separation allows the order of the sub-widgets to be changed so that all 
 the widgets comprising the **Basic Fitting Widget** (for example) do not have to be next to 
-each other. Instead, each sub-widget is added to specific area within a vertical layout as 
+each other. Instead, each sub-widget is added to a specific area within a vertical layout as 
 illustrated by this image.
 
 <p align="center">
@@ -38,8 +38,8 @@ illustrated by this image.
 
 ## Basic Fitting Widget
 
-The **Basic Fitting Widget** is not used on its own in any of the Muon interfaces, instead 
-it acts as an initial ‘building block’ for the other fitting widgets. It consists of three 
+The **Basic Fitting Widget** is used on the fitting tab of Frequency Domain Analysis, and can be 
+used as an initial ‘building block’ for the other fitting widgets. It consists of three 
 separate widgets, the *Fit Controls* widget, the *Fit Function Options* widget, and the 
 *Workspace Selector* widget.
 
