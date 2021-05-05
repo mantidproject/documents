@@ -58,9 +58,9 @@ arrow means ‘has a’ and the full arrow means ‘is a’ (i.e. inherits from)
 
 ## General Fitting Widget
 
-The **General Fitting Widget** is used on the fitting tab of Frequency Domain Analysis. It 
-inherits the widgets found in the **Basic Fitting Widget**, and it also has a *General Fitting 
-Options* widget which allows you to perform simultaneous fits over specific Runs and Group/Pairs.
+The **General Fitting Widget** inherits the widgets found in the **Basic Fitting Widget**, 
+and it also has a *General Fitting Options* widget which allows you to perform simultaneous 
+fits over specific Runs and Group/Pairs.
 
 <p align="center">
   <img src="general-fitting-widget.PNG">
