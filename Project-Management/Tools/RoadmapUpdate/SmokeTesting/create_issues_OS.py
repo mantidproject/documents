@@ -28,7 +28,7 @@ def load_login_details(filename):
 
 # Authentication for user filing issue (must have read/write access to
 # repository to add issue to)
-USERNAME, PASSWORD = load_login_details("login.txt")
+USERNAME, PASSWORD = load_login_details("../login.txt")
 # will be loaded from login.txt:
 # USERNAME = 'DanielMurphy22'
 # PASSWORD = '******'
@@ -40,7 +40,7 @@ gh = Github(USERNAME, PASSWORD)
 repo = gh.get_user(REPO_OWNER).get_repo(REPO_NAME)
 assignees = repo.get_assignees()
 
-milestone = "Release 6.0"
+milestone = "Release 6.1"
 gh_milestone = None
 for loop_milestone in repo.get_milestones():
     if loop_milestone.title == milestone:
@@ -78,12 +78,12 @@ If you have any questions please contact the creator of this issue.
 
 body_text_master = '''
 
-Before testing:
+**Before testing**:
 - Check this master issue relates to the OS you will test on.
 - Find an unassigned testing issue below and assign yourself.
 - Please run these tests on the release package of Mantid; **not a locally built version**.
 
-Afterwards:
+**Afterwards**:
 - Comment on the testing issue with any issues you came across.
 - If no issues were found, or they are now all resolved, please close the testing issue.
 
@@ -91,32 +91,29 @@ If you have any questions please contact the creator of this issue.
 
 '''
 
-print( "\nLoading Issues")
-df = pd.read_excel("issue_template.xlsx","issues")
-print( "\nCreating Issues")
+print("\nLoading Issues")
+OS_instructions = pd.read_excel("issue_template.xlsx", "OS instructions")
+issues = pd.read_excel("issue_template.xlsx", "issues")
+print("\nCreating Issues")
 
-OS_to_test = ['Windows', 'MacOS', 'Redhat', 'Ubuntu']
-
-for num, OS in enumerate(OS_to_test):
-    body_text_master_OS = ""
-    if OS == 'Redhat':
-        body_text_master_OS += "## If at ISIS, please test on IDAaaS\n\n"
+for num, OS_row in OS_instructions.iterrows():
+    operating_system = OS_row["Operating System"]
+    additional_instructions = OS_row["Additional Instructions"]
+    body_text_master_OS = additional_instructions + "\n"
     body_text_master_OS += body_text_master
 
-    for index, row in df.iterrows():
-        test_title =  OS + " " + row['Title']
-        test_instructions = ""
-        if OS == 'Redhat':
-            test_instructions += "## If at ISIS, please test on IDAaaS\n\n"
-        test_instructions += body_text_test + row['Emoji'] + "\n\n" + row['Additional Body Text'] 
+    for index, issue_row in issues.iterrows():
+        test_title = operating_system + " " + issue_row['Title']
+        test_instructions = additional_instructions + "\n"
+        test_instructions += body_text_test + issue_row['Emoji'] + "\n\n" + issue_row['Additional Body Text']
 
-        issue = repo.create_issue(test_title, body = test_instructions, milestone = gh_milestone, labels = [gh_labels[0],gh_labels[num+1]]) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
+        issue = repo.create_issue(test_title, body=test_instructions, milestone=gh_milestone, labels=[gh_labels[0], gh_labels[num+1]]) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
         print(issue.number, issue.title)
 
-        body_text_master_OS += "\n\n## "+ str(index+1) + ". " + test_title + row['Emoji']
+        body_text_master_OS += "\n\n## " + str(index + 1) + ". " + test_title + issue_row['Emoji']
         body_text_master_OS += ' #' + str(int(issue.number))
 
-    master_title = OS + " Smoke Tests: " + milestone  
-    print (master_title,gh_milestone,[gh_labels[0],gh_labels[num+1]])
-    issue = repo.create_issue(master_title, body = body_text_master_OS, milestone = gh_milestone, labels = [gh_labels[0],gh_labels[num+1]]) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
-    print("Master issue for ", OS, issue.number, issue.title)
+    master_title = operating_system + " Smoke Tests: " + milestone
+    print(master_title, gh_milestone, [gh_labels[0], gh_labels[num+1]])
+    issue = repo.create_issue(master_title, body=body_text_master_OS, milestone=gh_milestone, labels=[gh_labels[0], gh_labels[num+1]]) #COMMENT THIS OUT TO TEST BEFORE MAKING ISSUES
+    print("Master issue for ", operating_system, issue.number, issue.title)
