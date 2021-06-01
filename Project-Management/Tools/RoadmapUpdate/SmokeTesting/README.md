@@ -12,8 +12,7 @@ ff34885a86faketoken24460a8555...
 ```
  **Do not commit login.txt to the remote repo!**
 
--`create_issues.py` creates an umbrella issue with 6 sub-issues describing each test.
--`create_issues_OS.py` does something similar, but creates separate issues for each OS to better track assignment.
+-`create_issues_OS.py` creates an umbrella issue for each operating system (MacOS, Ubuntu, Redhat and Windows). Each of these have 6 sub-issues for testing.
 - Firstly, comment out the two `repo.create()` lines in either create_issues script to test the script runs successsfully, assigning Manual Testing to recognised Mantid developers on GitHub:
 ```
 # issue = repo.create_issue(title, my_body, gh_assignee, gh_milestone, gh_labels)
