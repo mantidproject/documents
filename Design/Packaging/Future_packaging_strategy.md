@@ -19,6 +19,17 @@ The aim at this time is to create similar packages to what we have now on MacOSX
 
 ### Conda build
 
+We intend to distribute a conda package using the conda-build system, which will allow advanced users to install Mantid using conda. Users will be able to install this packaged version with, 
+```bash
+conda install -c mantid-channel mantid
+```
+The user will then be able to interact with the package in a manner familar to any users of other conda packages, e.g. Spyder, Numpy,
+```bash
+conda install -c mantid-channel mantid // Install conda package
+python -c "import mantid"  // Import mantid
+MantidWorkbench // Launch workbench
+```
+The runtime requirement specified by the conda build package will be used to produce our offline installers, as described below. 
 
 ### Producing Offline (None-Conda) packages
 
