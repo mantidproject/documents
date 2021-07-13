@@ -58,5 +58,8 @@ Into the future, it would be possible to support many different packages of diff
 
 In order to support multiple versions of Mantid a greater level of granularity will need to be achieved in the code base. The ability to actively seperate interfaces, algorithms, etc are all things that are possible given this proposed conda packaging implementation, given some tweaking and development time.
 
-Proposed structure:
-[DIAGRAM TO BE MADE]
+Potential structure given the proposed workflow for packaging, project fragmentation, and further integration with the anaconda cloud:
+![Potential_strategy_diagram](potential_conda_strategy.png)
+This is by no means a finished or polished design.
+
+It is possible to include further levels of break down including independent shipment of parts of the Mantid Framework, atleast for use on the Anaconda Cloud for other projects to build of from Mantid.
