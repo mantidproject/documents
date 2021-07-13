@@ -21,11 +21,11 @@ The aim at this time is to create similar packages to what we have now on MacOSX
 
 We intend to distribute a conda package using the conda-build system, which will allow advanced users to install Mantid using conda. Users will be able to install this packaged version with, 
 ```bash
-conda install -c mantid-channel mantid
+conda install -c mantid mantid-workbench
 ```
-The user will then be able to interact with the package in a manner familar to any users of other conda packages, e.g. Spyder, Numpy,
+The user will then be able to interact with the package in a manner familiar to any users of other conda packages, e.g. Spyder, Numpy,
 ```bash
-conda install -c mantid-channel mantid // Install conda package
+conda install -c mantid mantid-workbench // Install conda package
 python -c "import mantid"  // Import mantid
 MantidWorkbench // Launch workbench
 ```
@@ -35,7 +35,7 @@ The runtime requirement specified by the conda build package will be used to pro
 
 On all operating systems we will need to create the directory from which the package will be made, the command to do this will look something like this:
 ```bash
-conda create -p package_dir mantid-workbench --copy -c mantid -c conda-forge-y
+conda create -p package_dir mantid-workbench --copy -c mantid -c conda-forge -y
 ```
 For Linux operating systems I suggest using FPM (`Effin Package Management - https://github.com/jordansissel/fpm) due to it's simplicity and ease of creating .deb and .rpm installers, from one machine, therefore in the future it should be possible to create all Linux distribution packages from one machine. At present it is not planned to use FPM for MacOSX as it doesn't support .dmg app bundles, and the support it does provide for .pkg files on MacOSX is less than ideal for the same reasons we already migrated away from .pkg files in the first place.
 
@@ -45,11 +45,11 @@ For Windows, we intend to use Wix to produce a .exe installer. [IMPROVE WINDOWS 
 
 ## Alternatives
 
-Linux
+The various Linux distributions have their built in .deb and .rpm creation tools, as well as the abstraction layer that comes from CPack enabling building and linking to system packages. We do not want to link to the system packages, whilst conda-build will get all the required packages for us whilst CPack is not capable of this.
 
-MacOSX
+MacOSX currently uses CPack, it has a custom ruby script and would likely work for our current purposes, however it is frustrating to maintain, we would be able to unite the script for package creation for MacOSX and POSIX systems and a lot of the details should allow for easier packaging scripts. 
 
-Windows
+Windows at present uses CPack and NSIS to create the packaging. NSIS support and documentation seems to be lacking. At present we just put in the required dependency .dll by installing them into the bin of the package, Conda will handle this for us.
 
 ## Looking to the future
 Considering Mantid workbench is now becoming a bit of a behemoth like Mantid Plot was, it may be prudent to look at potential future project deliverables that don't include all parts of workbench.
