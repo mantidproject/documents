@@ -1,5 +1,5 @@
+<!-- This document's diagrams are produced using the .plantuml documents in this file's directory and plantuml -->
 # Future packaging with conda
-
 ## Current methodology
 At present we have bespoke methodologies for packaging on each different OS we support (Windows, MacOSX, Ubuntu, and CentOS/RHEL7).
 
@@ -37,11 +37,22 @@ On all operating systems we will need to create the directory from which the pac
 ```bash
 conda create -p package_dir mantid-workbench --copy -c mantid -c conda-forge -y
 ```
+
+In the case of a package that was not uploaded to the Anaconda Cloud like the previous command expects, you can do this from a locally constructed package and achieve the same result using this command:
+```bash
+conda create -p package_dir --use-local mantid-workbench --copy -c conda-forge -y
+```
+
 For Linux operating systems I suggest using FPM (`Effin Package Management - https://github.com/jordansissel/fpm) due to it's simplicity and ease of creating .deb and .rpm installers, from one machine, therefore in the future it should be possible to create all Linux distribution packages from one machine. At present it is not planned to use FPM for MacOSX as it doesn't support .dmg app bundles, and the support it does provide for .pkg files on MacOSX is less than ideal for the same reasons we already migrated away from .pkg files in the first place.
 
 For MacOSX, we need to make .dmg files, we can use a very similar strategy to linux here but with hdiutil (Disk Utility built into MacOS used similarly to how FreeCAD has: https://github.com/FreeCAD/FreeCAD-Bundle/blob/master/conda/osx/create_bundle.sh)
 
 For Windows, we intend to use Wix to produce a .exe installer. [IMPROVE WINDOWS BIT]
+
+
+## An overall look at the process
+Everything will be achieved from a single script that can be worked into CMake or some other method of calling. The packaging script should return either a locally built Conda-build that is then uploaded or not uploaded, depending on this upload status we then create the environment by either downloading the dependencies and mantid workbench, or just the dependencies using a local mantid workbench constructed with Conda-build. I have produced a Sequence Diagram to better explain the suggested process:
+![packaging_plan_diagram](packaging_plan_diagram.png)
 
 ## Alternatives
 

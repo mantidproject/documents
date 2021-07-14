@@ -1,0 +1,71 @@
+@startuml packaging_plan_diagram
+
+' Source -> "Anaconda Cloud Package": Conda-build recipe successfully ran
+' "Anaconda Cloud Package" -> "Offline Package": Install package from AnacondaCloud, alongside all dependencies, then package this directory into offline installer.
+actor Developer
+participant "Packaging Script"
+participant "Conda Build"
+database "Anaconda Cloud"
+participant "WIX"
+participant "hdiutil"
+participant "FPM"
+
+Developer -> "Packaging Script": Run packaging script
+activate "Packaging Script"
+
+"Packaging Script" -> "Conda Build": Start conda package building
+activate "Conda Build"
+
+group Conda Build
+"Conda Build" -> "Conda Build": Clone the source
+"Conda Build" -> "Conda Build": Create a build environment from the recipe
+activate "Conda Build"
+"Conda Build" -> "Anaconda Cloud": Request all build packages
+"Anaconda Cloud" -> "Conda Build": Build packages installed into conda build directory
+deactivate "Conda Build"
+"Conda Build" -> "Conda Build": Run CMake and compile the source code
+"Conda Build" -> "Conda Build": Install compiled source into a directory
+"Conda Build" -> "Conda Build": Package the installed directory along with the runtime requirements
+"Conda Build" -> "Anaconda Cloud": Upload package
+end
+
+deactivate "Conda Build"
+"Conda Build" -> "Packaging Script"
+
+group Offline Installer
+"Packaging Script" -> "Packaging Script": Create packaging directory
+
+    alt Release build
+        "Packaging Script" -> "Anaconda Cloud": Request Mantid Workbench and runtime dependencies
+        "Anaconda Cloud" -> "Packaging Script": Download Mantid Workbench and runtime dependencies into packaging directory
+    else Local Build
+        "Packaging Script" -> "Packaging Script": Install Mantid workbench from local copy into packaging directory
+        activate "Packaging Script"
+        "Packaging Script" -> "Anaconda Cloud": Request runtime dependencies
+        "Anaconda Cloud" -> "Packaging Script": Download runtime dependencies into packaging directory
+        deactivate "Packaging Script"
+    end
+
+"Packaging Script" -> "Packaging Script": Remove unused files from packaging directory
+    alt Windows packaging
+        "Packaging Script" -> WIX: Package directory as a .exe installer
+        activate WIX
+        WIX -> "Packaging Script": Offline package
+        deactivate WIX
+    else MacOS bundling
+        "Packaging Script" -> hdiutil: Bundle directory into a .dpm AppBundle
+        activate hdiutil
+        hdiutil -> "Packaging Script": Offline bundle
+        deactivate hdiutil
+    else Linux packaging
+        "Packaging Script" -> FPM: Package directory in .rpm and .deb
+        activate FPM
+        FPM -> "Packaging Script": Offline packages
+        deactivate FPM
+    end
+end
+
+"Packaging Script" -> Developer: Return location of contructed packages
+deactivate "Packaging Script"
+
+@enduml
