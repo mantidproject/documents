@@ -6,7 +6,7 @@ actor Developer
 participant "Packaging Script"
 participant "Conda Build"
 database "Anaconda Cloud"
-participant "WIX"
+participant "NSIS"
 participant "hdiutil"
 participant "FPM"
 
@@ -48,10 +48,10 @@ group Offline Installer
 
 "Packaging Script" -> "Packaging Script": Remove unused files from packaging directory
     alt Windows packaging
-        "Packaging Script" -> WIX: Package directory as a .exe installer
-        activate WIX
-        WIX -> "Packaging Script": Offline package
-        deactivate WIX
+        "Packaging Script" -> NSIS: Package directory as a .exe installer
+        activate NSIS
+        NSIS -> "Packaging Script": Offline package
+        deactivate NSIS
     else MacOS bundling
         "Packaging Script" -> hdiutil: Bundle directory into a .dpm AppBundle
         activate hdiutil

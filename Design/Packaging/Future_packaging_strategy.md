@@ -47,7 +47,7 @@ For Linux operating systems I suggest using FPM (`Effin Package Management - htt
 
 For MacOSX, we need to make .dmg files, we can use a very similar strategy to linux here but with hdiutil (Disk Utility built into MacOS used similarly to how FreeCAD has: https://github.com/FreeCAD/FreeCAD-Bundle/blob/master/conda/osx/create_bundle.sh)
 
-For Windows, we intend to use Wix to produce a .exe installer. [IMPROVE WINDOWS BIT]
+For Windows, we intend to continue using NSIS to produce a .exe installer. We evaluated WIX unfortunately the amount of time it would take to not only switch but to learn how to switch from NSIS is not worth the benefits, this isn't out of the question long term. 
 
 
 ## An overall look at the process
@@ -60,7 +60,7 @@ The various Linux distributions have their built in .deb and .rpm creation tools
 
 MacOSX currently uses CPack, it has a custom ruby script and would likely work for our current purposes, however it is frustrating to maintain, we would be able to unite the script for package creation for MacOSX and POSIX systems and a lot of the details should allow for easier packaging scripts. 
 
-Windows at present uses CPack and NSIS to create the packaging. NSIS support and documentation seems to be lacking. At present we just put in the required dependency .dll by installing them into the bin of the package, Conda will handle this for us.
+Windows at present uses CPack and NSIS to create the packaging. With CPack being rolled back, we intend to stick with NSIS via the larger packaging script. At present we just put in the required dependency .dll by installing them into the bin of the package, Conda will handle this for us.
 
 ## Looking to the future
 Considering Mantid workbench is now becoming a bit of a behemoth like Mantid Plot was, it may be prudent to look at potential future project deliverables that don't include all parts of workbench.
