@@ -13,7 +13,7 @@ At present we have bespoke methodologies for packaging on each different OS we s
 
 ## Intended move forward
 
-All operating systems should have a fully built and deployable conda-build implementation, where a use can in theory run a simple command in conda and it will install Mantid with all it's runtime dependencies, which with some small tweaks we can then package on all Operating Systems assuming that the conda-build recipe has been created and ran successfully.
+All operating systems should have a fully built and deployable conda-build implementation, where a user can in theory run a simple command in conda and it will install Mantid with all it's runtime dependencies, which with some small tweaks we can then package on all Operating Systems assuming that the conda-build recipe has been created and ran successfully.
 
 The aim at this time is to create similar packages to what we have now on MacOSX and Windows, whilst shipping all dependencies in our Ubuntu and CentOS/RHEL7 which is a change. We will make a .exe for Windows, .dmg for MacOSX, .deb for Ubuntu, and a .rpm for CentOS/RHEL7 much like we do now on all operating systems.
 
