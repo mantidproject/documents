@@ -17,6 +17,8 @@ All operating systems should have a fully built and deployable conda-build imple
 
 The aim at this time is to create similar packages to what we have now on MacOSX and Windows, whilst shipping all dependencies in our Ubuntu and CentOS/RHEL7 which is a change. We will make a .exe for Windows, .dmg for MacOSX, .deb for Ubuntu, and a .rpm for CentOS/RHEL7 much like we do now on all operating systems.
 
+In order to provide 2 lines of packages, a stable release, and a nightly release, using 2 labels for each package stable labelled as `main` and nightly builds labelled as `nightly`. A user will be able to get either via conda build and as an offline package on our website. We have an option of producing limited unstable/developer builds should the scenario for testing or prototyping with users, the Anaconda cloud could be a good method to distribute these with a `dev` label.
+
 ### Conda build
 
 We intend to distribute a conda package using the conda-build system, which will allow advanced users to install Mantid using conda. Users will be able to install this packaged version with, 
