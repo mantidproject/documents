@@ -45,7 +45,9 @@ In the case of a package that was not uploaded to the Anaconda Cloud like the pr
 conda create -p package_dir --use-local mantid-workbench --copy -c conda-forge -y
 ```
 
-For Linux operating systems I suggest using FPM (Effin Package Management - https://github.com/jordansissel/fpm) due to it's simplicity and ease of creating .deb and .rpm installers, from one machine, therefore in the future it should be possible to create all Linux distribution packages from one machine. At present it is not planned to use FPM for MacOSX as it doesn't support .dmg app bundles, and the support it does provide for .pkg files on MacOSX is less than ideal for the same reasons we already migrated away from .pkg files in the first place.
+For Linux operating systems I suggest using FPM (Effin Package Management - https://github.com/jordansissel/fpm) due to it's simplicity and ease of creating .deb and .rpm installers, from one machine and one script, therefore in the future it should be possible to create all Linux distribution packages from one machine, using one script. 
+
+At present it is not planned to use FPM for MacOSX as it doesn't support .dmg app bundles, we aim to continue providing a .dmg app bundle as users are used to it, we migrated away from .pkg originally as Apple deprecated the method CPack was using for packaging at the time.
 
 For MacOSX, we need to make .dmg files, we can use a very similar strategy to linux here but with hdiutil (Disk Utility built into MacOS used similarly to how FreeCAD has: https://github.com/FreeCAD/FreeCAD-Bundle/blob/master/conda/osx/create_bundle.sh)
 
