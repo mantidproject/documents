@@ -19,6 +19,8 @@ The aim at this time is to create similar packages to what we have now on MacOSX
 
 In order to provide 2 lines of packages, a stable release, and a nightly release, using 2 labels for each package stable labelled as `main` and nightly builds labelled as `nightly`. A user will be able to get either via conda build and as an offline package on our website. We have an option of producing limited unstable/developer builds should the scenario for testing or prototyping with users, the Anaconda cloud could be a good method to distribute these with a `dev` label.
 
+A requirement to better support other packages dependent on Mantid Framework or Mantid Qt is providing a built version of both on the Anaconda Cloud, the intention is to build Mantid Framework, then Mantid Qt which is directly dependent on the Framework and contains most of our interfaces, plugins, and extra widgets. On top of both packages Mantid Workbench will be distributed as directly dependent on Qt and Framework. Some work on the Framework package already present will be required to allow other packages to build from it.
+
 ### Conda build
 
 We intend to distribute a conda package using the conda-build system, which will allow advanced users to install Mantid using conda. Users will be able to install this packaged version with, 
