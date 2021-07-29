@@ -65,7 +65,7 @@ MacOSX currently uses CPack, it has a custom ruby script and would likely work f
 Windows at present uses CPack and NSIS to create the packaging. With CPack being rolled back, we intend to stick with NSIS via the larger packaging script. At present we just put in the required dependency .dll by installing them into the bin of the package, Conda will handle this for us.
 
 ## Looking to the future
-Considering Mantid workbench is now approaching behemouth status like Mantid Plot, it may be prudent to look at potential future project deliverables that don't include all parts of workbench that are included now.
+Considering Mantid Workbench is large and all-encompassing, it may be prudent to look at potential future project deliverables that don't include all parts of workbench that are included now.
 
 Into the future, it would be possible to support many different packages of differing levels of support. It would be possible to have different levels of workbench specialisation utilising conda-build packages that incorporate different dependencies. For example, in the future different groups at ISIS would like to include python libraries that would only be useful for their respective fields and not to the project as a whole.
 
