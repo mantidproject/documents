@@ -1,4 +1,4 @@
-<!-- This document's diagrams are produced using the .plantuml documents in this file's directory and plantuml -->
+<!-- This document's diagrams are produced using the .plantuml documents in this file's directory and plantuml software -->
 # Future packaging with conda
 ## Current methodology
 At present we have bespoke methodologies for packaging on each different OS we support (Windows, MacOSX, Ubuntu, and CentOS/RHEL7).
@@ -15,7 +15,7 @@ At present we have bespoke methodologies for packaging on each different OS we s
 
 All operating systems should have a fully built and deployable conda-build implementation, where a user can in theory run a simple command in conda and it will install Mantid with all it's runtime dependencies, which with some small tweaks we can then package on all Operating Systems assuming that the conda-build recipe has been created and ran successfully.
 
-The aim at this time is to create similar packages to what we have now on MacOSX and Windows, whilst shipping all dependencies in our Ubuntu and CentOS/RHEL7 which is a change. We will make a .exe for Windows, .dmg for MacOSX, .deb for Ubuntu, and a .rpm for CentOS/RHEL7 much like we do now on all operating systems.
+The aim at this time is to create similar packages to what we have now on MacOSX and Windows, whilst shipping all dependencies in our Ubuntu and CentOS/RHEL7 which is a change. We will make a .exe for Windows, .dmg for MacOSX, .deb for Ubuntu, and a .rpm for CentOS/RHEL7 much like we do now on all operating systems, whilst also providing support for Mantid Workbench in Conda via Anaconda Cloud.
 
 In order to provide 2 lines of packages, a stable release, and a nightly release, using 2 labels for each package stable labelled as `main` and nightly builds labelled as `nightly`. A user will be able to get either via conda build and as an offline package on our website. We have an option of producing limited unstable/developer builds should the scenario for testing or prototyping with users, the Anaconda cloud could be a good method to distribute these with a `dev` label.
 
