@@ -1,0 +1,23 @@
+
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 60
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 14
+# Issues with these labels will never be considered stale
+exemptLabels:
+# Label to use when marking an issue as stale
+staleLabel: Stale
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: >
+  This PR has been automatically marked as stale because it has not had
+  activity in 2 months. It will be closed in 7 days if no further activity occurs.
+  We prefer merging in documents after initial feedback, then using follow up Pull Requests
+  if anything needs altered, rather than letting them go stale.
+
+  All PRs closed by stale bot act like normal pull requests; they can be searched for, commented on or reopened at any point.
+  Feel free to either re-open the PR directly or contact a developer.
+  To extend the lifetime of a PR please comment below why it's not ready for merging and what work is outstanding.
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: >
+  This PR has been closed automatically. If this work is still active
+  re-open this PR with a comment about what work is outstanding.
