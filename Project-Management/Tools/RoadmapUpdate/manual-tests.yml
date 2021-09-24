@@ -1,0 +1,11 @@
+# conda environment definition for creating manual test issues
+name: manual-tests
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.8.*
+  - pandas=1.3.*
+  - openpyxl=3.0.*
+  - PyGithub=1.55.*
