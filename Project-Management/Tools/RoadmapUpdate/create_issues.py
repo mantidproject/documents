@@ -41,7 +41,7 @@ def main() -> int:
 
     gh = Github(github_oauth_token())
     repo = gh.get_repo(cmd_args.repository)
-    assignees = repo.get_assignees()
+    possible_assignees = repo.get_assignees()
 
     # Lookup milestone string to get number
     milestone_title = cmd_args.milestone
@@ -73,27 +73,35 @@ def main() -> int:
         title = str(row['Title']).strip()
         additional_body = str(row['Additional Body Text']).strip()
         gh_labels = [repo.get_label('Manual Tests')]
-        assignee = row['Assignee']
-        gh_assignee = None
-        if pd.notnull(assignee):
-            for loop_assignee in assignees:
-                if loop_assignee.login == assignee:
-                    gh_assignee = assignee
-            if gh_assignee is None:
-                print("could not find gh assignee for ", assignee,
-                      ". Continuing without assignment.")
+        proposed_assignees = str(row['Assignee']).split(", ")
+        gh_assignees = []
+        if pd.notnull(row['Assignee']):
+            for loop_proposed_assignee in proposed_assignees:
+                for loop_possible_assignee in possible_assignees:
+                    if loop_possible_assignee.login == loop_proposed_assignee:
+                        gh_assignees.append(loop_proposed_assignee)
+                if not gh_assignees:
+                    print("could not find gh assignee for ", loop_assignee,
+                          ". Continuing without assignment.")
 
         my_body = BODY_TEXT
         if pd.notnull(additional_body):
             my_body += "\n\n### Specific Notes:\n\n" + additional_body
-        print(title, gh_milestone, gh_labels, gh_assignee)
+        print(title, gh_milestone, gh_labels, gh_assignees)
         if not cmd_args.dry_run:
+            # create issue with first assignee
+            first_gh_assignee = gh_assignees[0]
             issue = repo.create_issue(title,
                                       body=str(my_body).strip(),
                                       milestone=gh_milestone,
                                       labels=gh_labels,
-                                      assignee=gh_assignee)
-            print(issue.number, issue.title)
+                                      assignee=first_gh_assignee)
+            if gh_assignees:
+                # Then add other assignees to the issue
+                gh_assignees.remove(first_gh_assignee)
+                for gh_assignee in gh_assignees:
+                    issue.add_to_assignees(gh_assignee)
+            print(issue.number, issue.title, issue.assignees)
 
     return 0
 
