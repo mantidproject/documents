@@ -1,22 +1,31 @@
-# SmokeTests
-To create and update a script for Smoke Test issue creation
+# Smoke Testing Issue Creation
 
-- In `issue_template.xlsx` update any links or text for each testing issue.
+This directory contains a script and accompanying files to create and assign the Smoke testing issues, by operating system for a Mantid release.
 
-- Create a Personal Access Token for PyGithub: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token This token then is used in place of a password
-- Create a local file in the RoadmapUpdate directory called `login.txt` simply with your Github 
-Username and PAToken on seperate lines. e.g.
-```
-abc12345
-ff34885a86faketoken24460a8555...
-```
- **Do not commit login.txt to the remote repo!**
+# Usage
 
--`create_issues_OS.py` creates an umbrella issue for each operating system (MacOS, Ubuntu, Redhat and Windows). Each of these have 6 sub-issues for testing.
-- Firstly, comment out the two `repo.create()` lines in either create_issues script to test the script runs successsfully, assigning Manual Testing to recognised Mantid developers on GitHub:
+- Create a Personal Access Token for GitHub if you do not already have one: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+
+- In `issue_template.xlsx` make sure to assign testers to each main OS issue.
+
+- Create and activate a conda environment for running the script. Use the ``.yml`` file in the parent directory ``RoadmapUpdate``.
+
 ```
-# issue = repo.create_issue(title, my_body, gh_assignee, gh_milestone, gh_labels)
+cd here/..
+conda env create -f manual-tests.yml
+conda activate manual-tests
 ```
 
-- Then uncomment to run and create the issues!
-- Check your handiwork!
+- Remember to ``cd`` back into the ``SmokeTesting`` directory. Run the script with the appropriate arguments:
+
+```
+./create_smoke_issues_OS.py milestone spreadsheet --dry-run
+```
+
+.e.g
+
+```
+./create_smoke_issues_OS.py "Release 6.2" issue_template.xlsx --dry-run
+```
+
+- Check the output with the `--dry-run` flag and if it looks okay then rerun the same command but remove `--dry-run`.

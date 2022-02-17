@@ -81,7 +81,7 @@ def main() -> int:
                     if loop_possible_assignee.login == loop_proposed_assignee:
                         gh_assignees.append(loop_proposed_assignee)
                 if not gh_assignees:
-                    print("could not find gh assignee for ", loop_assignee,
+                    print("could not find gh assignee for ", loop_proposed_assignee,
                           ". Continuing without assignment.")
 
         my_body = BODY_TEXT
@@ -89,16 +89,11 @@ def main() -> int:
             my_body += "\n\n### Specific Notes:\n\n" + additional_body
         print(title, gh_milestone, gh_labels, gh_assignees)
         if not cmd_args.dry_run:
-            # create issue with first assignee
-            first_gh_assignee = gh_assignees[0]
             issue = repo.create_issue(title,
                                       body=str(my_body).strip(),
                                       milestone=gh_milestone,
-                                      labels=gh_labels,
-                                      assignee=first_gh_assignee)
+                                      labels=gh_labels)
             if gh_assignees:
-                # Then add other assignees to the issue
-                gh_assignees.remove(first_gh_assignee)
                 for gh_assignee in gh_assignees:
                     issue.add_to_assignees(gh_assignee)
             print(issue.number, issue.title, issue.assignees)
