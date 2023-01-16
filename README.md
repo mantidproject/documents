@@ -7,3 +7,7 @@ The main repository for documents relating to the [Mantid](www.mantidproject.org
 * [review meeting minutes](Project-Management/MantidReviewMeeting)
 * [collections of presentations on Mantid](Presentations)
 * [sources for Mantid paper](MantidPaper)
+
+Links to Manual Testing creation files:
+* [Manual Testing](Project-Management/Tools/RoadmapUpdate)
+* [Smoke Testing](Project-Management/Tools/RoadmapUpdate/SmokeTesting)
