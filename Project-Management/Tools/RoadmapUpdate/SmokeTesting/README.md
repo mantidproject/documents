@@ -29,3 +29,14 @@ conda activate manual-tests
 ```
 
 - Check the output with the `--dry-run` flag and if it looks okay then rerun the same command but remove `--dry-run`.
+
+Please note:
+
+If you are using Windows it is recommended that you ``cd`` back into the ``SmokeTesting`` directory using the Command Prompt rather than any other CLI e.g. Git Bash. 
+You will also need to prepend python to the command above and remove ./ from the ``create_smoke_issues_OS.py`` part of the command
+
+.e.g
+
+```
+python create_smoke_issues_OS.py "Release 6.2" issue_template.xlsx --dry-run
+```

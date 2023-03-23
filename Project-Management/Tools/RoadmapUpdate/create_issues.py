@@ -28,7 +28,9 @@ releases.
 * Don't spend more than a few hours on the testing as fatigue will kick in.
 * If you find errors in the documentation, please correct them.
 * Comment against this ticket the OS environment you are testing against.
+* Disable Usage reporting before you start testing
 * Close the this issue once you are done.
+* Time how long this manual test takes for you to do and leave a comment about it in this issue.
 '''
 ISSUE_LABELS = ["Manual Tests"]
 
