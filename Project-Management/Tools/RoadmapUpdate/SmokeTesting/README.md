@@ -6,7 +6,7 @@ This directory contains a script and accompanying files to create and assign the
 
 - Create a Personal Access Token for GitHub if you do not already have one: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
-- In `issue_template.xlsx` make sure to assign testers to each main OS issue.
+- In `issue_template.xlsx` make sure to assign testers to each main OS issue and update the version number of Mantid in the ``Additional Instructions`` column .
 
 - Create and activate a conda environment for running the script. Use the ``.yml`` file in the parent directory ``RoadmapUpdate``.
 
