@@ -62,7 +62,7 @@ IV2 will be developed entirely in Python, and make use of Python 3D plotting mod
 
 ### Dependencies
 
-Initial investigations are using `pyvista` for the 3D drawing, along with `pyvistaqt` for the Qt wrapper. This is because `pyvista` is already being used for other `mantid` developments, so ideally we would not want multiple Python 3D drawing modules as dependencies, one should suffice.
+Initial investigations are using `pyvista` for the 3D drawing, along with `pyvistaqt` for the Qt wrapper. This is because `pyvista` is already being used for at least one other `mantid` development, [NeuXtalViz](https://github.com/zjmorgan/NeuXtalViz), so ideally we would not want multiple Python 3D drawing modules as dependencies, one should suffice.
 
 IV2 will depend on `mantid`, or more likely `mantidqt`, depending on requirements.
 
