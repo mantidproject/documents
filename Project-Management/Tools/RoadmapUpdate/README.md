@@ -5,6 +5,7 @@ This directory contains a script and accompanying files to create and assign the
 # Usage
 
 - Create a Personal Access Token for GitHub if you do not already have one: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+- *Note*: You need to use a classic token, as fine-grained tokens are not currently supported in the Mantid Project organization.
 
 - In `issue_template____.xlsx` update assignments for the upcoming release and make sure to add new starters to the assignee sheet. Make sure to raise issues for ISIS and Non-ISIS manual tests.
 - For Ensemble Testing, look at `Ensemble Manual Testing.pptx` for advice allocating people to testing teams.
