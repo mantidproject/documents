@@ -16,7 +16,7 @@ import pandas as pd
 WAIT_TIME = 2 # Work around Github Secondary Rate Limits
 DEFAULT_REPOSITORY = "mantidproject/mantid"
 TOKEN_ENV_NAME = "CREATE_ISSUES_TOKEN"
-ISSUE_LABELS = ['Manual Tests', 'Windows Only', 'macOS Only', 'Linux Only', 'IDAaaS Only']
+ISSUE_LABELS = ['Smoke Tests', 'Windows Only', 'macOS Only', 'Linux Only', 'IDAaaS Only', 'macOS ARM Only']
 body_text_test = '''
 
 **Before testing**:
