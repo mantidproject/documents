@@ -96,8 +96,7 @@ def main() -> int:
                                       milestone=gh_milestone,
                                       labels=gh_labels)
             if gh_assignees:
-                for gh_assignee in gh_assignees:
-                    issue.add_to_assignees(gh_assignee)
+                issue.add_to_assignees(*gh_assignees)
             print(issue.number, issue.title, issue.assignees)
 
     return 0
