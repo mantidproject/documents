@@ -1,0 +1,45 @@
+assignees:
+- &task1 peterfpeterson
+- &task2 peterfpeterson
+- &task3 koshchii
+- &task4 peterfpeterson
+- &task5 peterfpeterson
+- &task6 peterfpeterson
+- &task7 peterfpeterson
+- &task8 peterfpeterson
+
+# Note, you should not need to edit below this
+
+issues:
+- title: Manual Testing Live Data ORNL
+  body: ~
+  assignee: *task1
+
+- title: Manual Testing SCD event data reduction
+  body: ~
+  assignee: *task2
+
+- title: Manual Testing DGSReduction
+  body: |
+    Follow:  https://developer.mantidproject.org/Testing/Direct/DGSReductionTests.html
+  assignee: *task3
+
+- title: Manual Testing QECoverage
+  body: ~
+  assignee: *task4
+
+- title: Manual Testing ORNL HFIR diffraction & 4Circle
+  body: ~
+  assignee: *task5
+
+- title: Manual Testing ORNL SANS
+  body: ~
+  assignee: *task6
+
+- title: Manual Testing Step scan analysis
+  body: See http://www.mantidproject.org/Step_Scan_Interface
+  assignee: *task7
+
+- title: Manual Testing ORNL Powder Diffraction
+  body: See http://www.mantidproject.org/PowderDiffractionReduction
+  assignee: *task8

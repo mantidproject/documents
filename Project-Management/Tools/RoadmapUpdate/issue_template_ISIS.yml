@@ -1,0 +1,121 @@
+groups:
+  - &group1 jhaigh0, MialLewis, thomashampson, andy-bridger
+  - &group2 MohamedAlmaki, cailafinn, GuiMacielPereira, RichardWaiteSTFC
+  - &group3 jclarkeSTFC, warunawickramasingha, SilkeSchomann, adriazalvarez
+
+# Note, you should not need to edit below this
+
+issues:
+- title: Manual Testing Sliceviewer
+  body: https://developer.mantidproject.org/Testing/SliceViewer/SliceViewer.html
+  assignee: *group1
+
+- title: Manual Testing Engineering Diffraction
+  body: https://developer.mantidproject.org/Testing/EngineeringDiffraction/EngineeringDiffractionTestGuide.html
+  assignee: *group2
+
+- title: Manual Testing Muon
+  body: |
+    See instructions at: https://developer.mantidproject.org/Testing/MuonAnalysis_test_guides/index.html
+  assignee: *group3
+
+- title: Manual Testing Workbench Core
+  body: https://developer.mantidproject.org/Testing/Core/Core.html
+  assignee: *group3
+
+- title: Manual Testing ISIS Reflectometry
+  body: http://developer.mantidproject.org/Testing/ReflectometryGUI/ReflectometryGUITests.html
+  assignee: *group2
+
+- title: Manual Testing Inelastic interfaces
+  body: |
+    Follow the directions at:
+
+    * https://developer.mantidproject.org/Testing/Inelastic/BayesFittingTests.html
+    * https://developer.mantidproject.org/Testing/Inelastic/CorrectionsTests.html
+    * https://developer.mantidproject.org/Testing/Inelastic/QENSFittingTests.html 
+    * https://developer.mantidproject.org/Testing/Inelastic/DataProcessorTests.html
+  assignee: *group1
+
+- title: Manual Testing ISIS SANS
+  body: https://developer.mantidproject.org/Testing/SANSGUI/ISISSANSGUITests.html
+  assignee: *group1
+
+- title: Manual Testing M-slice
+  body: https://developer.mantidproject.org/Testing/Direct/MSliceTestGuide.html
+  assignee: *group2
+
+- title: Manual Testing Mantid Basics Course
+  body: |
+    * Check the Qt-help docs, built into Workbench, against the online documentation 
+    * Open up the basi c course: http://docs.mantidproject.org/tutorials/mantid_basic_course/index.html#mantid-basic-course
+    * Check that the information and exercises are up to date and work in the Workbench release candidate
+  assignee: *group3
+
+- title: Manual Testing Project Recovery
+  body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ProjectRecoveryTesting.html
+  assignee: *group3
+
+- title: Manual Testing Live Data ISIS
+  body: https://developer.mantidproject.org/Testing/LiveData/LiveDataTests.html
+  assignee: *group2
+
+- title: Manual Testing Error Reporter
+  body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ErrorReporterTesting.html
+  assignee: *group2
+
+- title: Manual Testing Indirect interfaces
+  body: |
+    Follow the directions at: 
+
+    * https://developer.mantidproject.org/Testing/Indirect/DiffractionTests.html
+    * https://developer.mantidproject.org/Testing/Indirect/DataReductionTests.html
+  assignee: *group1
+
+- title: Manual Testing Documentation
+  body: |
+    Check Online Docs and the Qt-help docs built into MantidWorkbench (from the help droppdown menu)
+
+    * Algorithm, fit, concept and api pages should be generated
+    * Algorithm dialog snapshots should appear on algorithm pages in offline help
+    * Math formulae should appear on algorithm pages in offline help
+    * workflow diagrams should appear on algorithm pages in offline help
+
+    You may wish to use this script ( [OpenMostDocumentationForTesting.py](https://github.com/mantidproject/mantid/blob/master/tools/scripts/OpenMostDocumentationForTesting.py) ) to open all the online docs pages!
+  assignee: *group2
+
+- title: Manual Testing Sample Transmission calculator
+  body: |
+    Make sure that inputs and outputs work sensibly, stress test with some bad inputs (e.g. letters in a numeric input)
+    See https://developer.mantidproject.org/Testing/General/SampleTransmissionCalculatorTestGuide.html
+  assignee: *group3
+
+- title: Manual Testing FilterEvents
+  body: https://developer.mantidproject.org/Testing/Utility/FilterEventsInterfaceTest.html
+  assignee: *group3
+
+- title: Manual Testing ALF
+  body: https://developer.mantidproject.org/Testing/Direct/ALFViewTests.html
+  assignee: *group2
+
+- title: Manual Testing Fit Script Generator
+  body: https://docs.mantidproject.org/nightly/interfaces/general/Fit%20Script%20Generator.html
+  assignee: *group1
+
+- title: Manual Testing TOFConverter
+  body: |
+    Make sure that inputs and outputs work sensibly, stress test with some bad inputs (e.g. letters in a numeric input)
+    https://docs.mantidproject.org/interfaces/utility/TOF%20Converter.html
+  assignee: *group1
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group1
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group2
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group3
