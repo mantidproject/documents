@@ -16,12 +16,12 @@ Issue Description:\n{body}\n
 class DryRunIssue:
     number: int = 0
 
-    def __init__(self, title, body, milestone, labels, assignees = []):
+    def __init__(self, title, body, milestone, labels, assignees = None):
         self.title = title
         self.body = body
         self.milestone = milestone
         self.labels = labels
-        self.assignees = assignees
+        self.assignees = assignees if assignees is not None else []
         self.number = DryRunIssue.number
         DryRunIssue.number += 1
 
@@ -55,7 +55,7 @@ class DryRunRepo:
         except:
             print("Bad token for GitHub.  Using defaults for dry run values")
             self.assignees = {"Bob", "Steve"}
-            self.milestones = set()
+            self.milestones = {}
         else:
             self.assignees = {user.login for user in gh_repo.get_assignees()}
             self.milestones = {milestone.title: milestone for milestone in gh_repo.get_milestones()}

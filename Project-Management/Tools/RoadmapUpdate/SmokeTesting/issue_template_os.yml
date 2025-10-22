@@ -34,6 +34,7 @@ instructions:
     mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
     mamba activate mantid_rc1
     workbench # to launch
+    ```
   assignee: *macos_intel_assignee
 
 - os: Linux
@@ -46,7 +47,7 @@ instructions:
     mamba activate mantid_rc1
     workbench # to launch
     ```
-  Assignee: *linux_assignee
+  assignee: *linux_assignee
 
 - os: IDAaaS
   text: |

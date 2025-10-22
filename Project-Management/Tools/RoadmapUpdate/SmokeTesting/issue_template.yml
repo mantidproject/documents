@@ -17,21 +17,21 @@ issues:
     **On Windows**:
     * Uninstall the program
     * Clear shortcuts from desktop
-    * Remove the mantid  files in %APPDATA%
+    * Remove the mantid files in %APPDATA%
 
-    **On macOS** :
+    **On macOS**:
     * Remove the application
     * Remove the `~/.mantid directory`
-    * Remove (or rename) `~/Library/Preferences/org.python.python.Python.plist`  and `~/Library/Preferences/org.python.python.plist` 
+    * Remove (or rename) `~/Library/Preferences/org.python.python.Python.plist` and `~/Library/Preferences/org.python.python.plist` 
 
-    **On Linux** :
+    **On Linux**:
     * Remove the package: `/opt/Mantid`
     * Remove `~/.config/Mantid`
     * Remove `~/.mantid/`
 
     Re-install the new release candidate of Mantid
 
-    - [ ] Check that Mantid boots up correctly"
+    - [ ] Check that Mantid boots up correctly
 
 - title: Fitting Smoke Tests
   emoji: ":muscle: :runner:"
@@ -63,7 +63,7 @@ issues:
     - [ ] Saving/loading projects works 
     - [ ] Alter preferences in [File > Settings](https://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/useful/01_save_settings.html#settings) and check they are obeyed
 
-- title : Plotting Smoke Tests
+- title: Plotting Smoke Tests
   emoji: ":chart_with_upwards_trend:"
   body: |
     * 1D plotting:[instructions](http://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/loading_and_displaying_data/03_displaying_1D_data.html#displaying-1d-data)

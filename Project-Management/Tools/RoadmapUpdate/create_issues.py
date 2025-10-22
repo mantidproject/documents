@@ -72,16 +72,18 @@ def main() -> int:
     print(f"\nCreating {len(issues)} issues")
     for row in issues:
         title = str(row['title']).strip()
-        additional_body = str(row.get('body')).strip()
-        proposed_assignees = str(row['assignee']).split(", ")
+        additional_body = row.get('body')
+        if additional_body is not None:
+            additional_body = str(additional_body).strip()
+        assignee_str = row.get('assignee')
+        proposed_assignees = str(assignee_str).split(", ") if assignee_str else []
         gh_assignees = []
-        if row.get('assignee') is not None:
-            for proposed_assignee in proposed_assignees:
-                if proposed_assignee in possible_assignees:
-                    gh_assignees.append(proposed_assignee)
-                if not gh_assignees:
-                    print("could not find gh assignee for ", proposed_assignee,
-                          ". Continuing without assignment.")
+        for proposed_assignee in proposed_assignees:
+            if proposed_assignee in possible_assignees:
+                gh_assignees.append(proposed_assignee)
+            if not gh_assignees:
+                print("could not find gh assignee for ", proposed_assignee,
+                        ". Continuing without assignment.")
 
         my_body = BODY_TEXT
         if additional_body is not None:
