@@ -126,7 +126,8 @@ def main() -> int:
             issue = repo.create_issue(test_title,
                                          body=test_instructions,
                                          milestone=gh_milestone,
-                                         labels=os_labels)
+                                         labels=os_labels,
+                                         assignees=gh_assignees)
             print(issue.number, issue.title)
             body_text_main_OS += "\n\n- [ ] #" + str(int(issue.number))
 
@@ -135,10 +136,9 @@ def main() -> int:
         OS_issue = repo.create_issue(main_title,
                                      body=body_text_main_OS,
                                      milestone=gh_milestone,
-                                     labels=os_labels)
-        if gh_assignees:
-            OS_issue.add_to_assignees(*gh_assignees)
-
+                                     labels=os_labels,
+                                     assignees=gh_assignees)
+        print(OS_issue.number, OS_issue.title)
     return 0
 
 

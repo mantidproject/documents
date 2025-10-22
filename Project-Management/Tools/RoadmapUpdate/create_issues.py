@@ -90,9 +90,8 @@ def main() -> int:
         issue = repo.create_issue(title,
                                     body=str(my_body).strip(),
                                     milestone=gh_milestone,
-                                    labels=gh_labels)
-        if gh_assignees:
-            issue.add_to_assignees(*gh_assignees)
+                                    labels=gh_labels,
+                                    assignees=gh_assignees)
         print(issue.number, issue.title, issue.assignees)
 
     return 0

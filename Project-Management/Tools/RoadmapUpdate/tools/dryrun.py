@@ -74,7 +74,7 @@ class DryRunRepo:
     def get_matching_labels(self, issue_labels: dict[str, str]):
         return issue_labels
         
-    def create_issue(self, title, *, body, milestone, labels):
-        issue = DryRunIssue(title, body, milestone, labels)
+    def create_issue(self, title, *, body, milestone, labels, assignees):
+        issue = DryRunIssue(title, body, milestone, labels, assignees)
         print(issue)
         return issue

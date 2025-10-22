@@ -55,6 +55,8 @@ class GitHubRepo:
                 gh_labels[key] = gh_label
         return gh_labels
     
-    def create_issue(self, title, *, body, milestone, labels):
+    def create_issue(self, title, *, body, milestone, labels, assignees):
         time.sleep(WAIT_TIME)
-        return self.repo.create_issue(title, body=body, milestone=milestone, labels=labels)
+        issue = self.repo.create_issue(title, body=body, milestone=milestone, labels=labels)
+        if len(assignees) > 0:
+            issue.add_to_assignees(*assignees)
