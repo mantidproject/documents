@@ -81,9 +81,8 @@ def main() -> int:
         for proposed_assignee in proposed_assignees:
             if proposed_assignee in possible_assignees:
                 gh_assignees.append(proposed_assignee)
-            if not gh_assignees:
-                print("could not find gh assignee for ", proposed_assignee,
-                        ". Continuing without assignment.")
+        if not gh_assignees:
+            print(f"Warning: No valid assignees found for issue {title}. Continuing without assignment.")
 
         my_body = BODY_TEXT
         if additional_body is not None:
