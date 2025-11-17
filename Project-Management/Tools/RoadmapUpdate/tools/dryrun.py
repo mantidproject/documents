@@ -13,6 +13,49 @@ Issue Description:\n{body}\n
 """
 
 
+def print_group_utilization(file):
+    import yaml
+    assignee_counts = dict()
+    with open(file, 'r') as f:
+        issues = yaml.safe_load(f)["issues"]
+    for row in issues:
+        # get the assignees from the string
+        assignee_str = row.get('assignee')
+        proposed_assignees = str(assignee_str).split(", ") if assignee_str else []
+        if not proposed_assignees:
+            title = str(row['title']).strip()
+            print(f"Warning: No valid assignees found for issue {title}.")
+        # now update counts
+        for assignee in proposed_assignees:
+            assignee_counts[assignee] = assignee_counts.get(assignee, 0) + 1
+
+    namesize = max(assignee_counts.values())
+    
+    for assignee, count in assignee_counts.items():
+        print(f"{assignee.ljust(2 * namesize)}\t\tassigned to\t{count} of {len(issues)}")
+
+
+def print_smoketest_utilization(osfile, taskfile):
+    import yaml
+    assignee_counts = dict()
+
+    with open(taskfile, 'r') as f:
+        issues = yaml.safe_load(f)["issues"]
+    tasks_per_os = len(issues)
+
+    with open(osfile, 'r') as f:
+        yaml_file = yaml.safe_load(f)
+
+    instructions = yaml_file["instructions"]
+    for instruction in instructions:
+        assignee = instruction["assignee"]
+        assignee_counts[assignee] = assignee_counts.get(assignee, 0) + tasks_per_os
+            
+    namesize = max(assignee_counts.values())    
+    for assignee, count in assignee_counts.items():
+        print(f"{assignee.ljust(2 * namesize)}\t\tassigned to\t{count} of {len(issues) * len(instructions)}")
+
+
 class DryRunIssue:
     number: int = 0
 

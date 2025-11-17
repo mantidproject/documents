@@ -42,6 +42,9 @@ def main() -> int:
     # if checking token, make sure it is valid and then stop
     if cmd_args.check_token:
         return github_helper.check_token(cmd_args.repository)
+    
+    if cmd_args.group_utilization:
+        return dryrun.print_group_utilization(cmd_args.assignment_spreadsheet)
 
     # setup the repo
     if cmd_args.dry_run:
@@ -134,6 +137,12 @@ def parse_args() -> argparse.Namespace:
         default=False,
         help=
         "Print entire task description")
+    parser.add_argument(
+        "--group-utilization",
+        action="store_true",
+        default=False,
+        help=
+        "Output distribution of assignees across tasks")
 
     return parser.parse_args()
 

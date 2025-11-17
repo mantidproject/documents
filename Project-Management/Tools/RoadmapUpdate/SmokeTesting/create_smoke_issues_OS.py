@@ -15,6 +15,8 @@ from tools import dryrun, github_helper
 
 # Constants
 WAIT_TIME = 2 # Work around Github Secondary Rate Limits
+OS_SPREADSHEET = "issue_template_os.yml"
+TASK_SPREADSHEET = "issue_template.yml"
 DEFAULT_REPOSITORY = "mantidproject/mantid"
 ISSUE_LABELS = {
     "smoke": 'Smoke Tests',
@@ -66,6 +68,9 @@ def main() -> int:
     if cmd_args.check_token:
         return github_helper.check_token(cmd_args.repository)
 
+    if cmd_args.group_utilization:
+        return dryrun.print_smoketest_utilization(OS_SPREADSHEET, TASK_SPREADSHEET)
+
     # setup the repo
     if cmd_args.dry_run:
         repo = dryrun.DryRunRepo(cmd_args.repository)
@@ -90,11 +95,11 @@ def main() -> int:
 
     print("\nLabels: ", gh_labels)
     print("\nLoading Issues")
-    with open('issue_template_os.yml', 'r') as f:
+    with open(OS_SPREADSHEET, 'r') as f:
         yaml_file = yaml.safe_load(f)
         release = yaml_file["release"]
         OS_instructions = yaml_file["instructions"]
-    with open('issue_template.yml', 'r') as f:
+    with open(TASK_SPREADSHEET, 'r') as f:
         issues = yaml.safe_load(f)["issues"]
     print(f"\nCreating Issues...with {WAIT_TIME} seconds intervals... go make a cup of tea |_|¬\n\n")
 
@@ -176,6 +181,12 @@ def parse_args() -> argparse.Namespace:
         default=False,
         help=
         "If passed, print what would happen but do not perform issue creation")
+    parser.add_argument(
+        "--group-utilization",
+        action="store_true",
+        default=False,
+        help=
+        "Output distribution of assignees across tasks")
 
     return parser.parse_args()
 

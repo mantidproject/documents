@@ -41,6 +41,10 @@ You can test that your token works with
 
 - Check the output with the `--dry-run` flag and if it looks okay then rerun the same command but remove `--dry-run`.
 
+- The `--verbose` flag will print the entire task, including the body description; otherwise, only issue number and title are printed.
+
+- Check the assignee distribution with the `--group-utilization` flag; this will print the number of tasks each tester was assigned.
+
 Please note:
 
 If you are using Windows it is recommended that you ``cd`` back into the ``SmokeTesting`` directory using the Command Prompt rather than any other CLI e.g. Git Bash. 
