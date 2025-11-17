@@ -76,5 +76,4 @@ class DryRunRepo:
         
     def create_issue(self, title, *, body, milestone, labels, assignees):
         issue = DryRunIssue(title, body, milestone, labels, assignees)
-        print(issue)
         return issue

@@ -128,7 +128,10 @@ def main() -> int:
                                          milestone=gh_milestone,
                                          labels=os_labels,
                                          assignees=gh_assignees)
-            print(issue.number, issue.title)
+            if cmd_args.verbose:
+                print(issue)
+            else:
+                print(f"{issue.number:<6}\t{issue.milestone}\t{issue.title} {issue.labels}")
             body_text_main_OS += "\n\n- [ ] #" + str(int(issue.number))
 
         # make the main OS issue for tracking all side issues
@@ -161,6 +164,12 @@ def parse_args() -> argparse.Namespace:
         default=False,
         help=
         "If passed, only verify that the token can reach the repository")
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        default=False,
+        help=
+        "Print entire task description")
     parser.add_argument(
         "--dry-run",
         action="store_true",

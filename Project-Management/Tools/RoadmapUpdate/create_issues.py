@@ -93,7 +93,10 @@ def main() -> int:
                                     milestone=gh_milestone,
                                     labels=gh_labels,
                                     assignees=gh_assignees)
-        print(issue.number, issue.title, issue.assignees)
+        if cmd_args.verbose:
+            print(issue)
+        else:
+            print(f"{issue.number:<6}\t{issue.milestone}\t{issue.title} {issue.labels}")
 
     return 0
 
@@ -125,6 +128,12 @@ def parse_args() -> argparse.Namespace:
         default=False,
         help=
         "If passed, print what would happen but do not perform issue creation")
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        default=False,
+        help=
+        "Print entire task description")
 
     return parser.parse_args()
 

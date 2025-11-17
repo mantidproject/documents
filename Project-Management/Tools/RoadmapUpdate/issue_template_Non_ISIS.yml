@@ -8,7 +8,7 @@ assignees:
 - &task7 peterfpeterson
 - &task8 peterfpeterson
 
-# Note, you should not need to edit below this
+# Note, you should not normally need to edit below this
 
 issues:
 - title: Manual Testing Live Data ORNL

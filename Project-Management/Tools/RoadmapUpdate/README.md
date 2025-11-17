@@ -42,6 +42,8 @@ You can test that your token works with
 
 - Check the output with the `--dry-run` flag and if it looks okay then rerun the same command but remove `--dry-run`.
 
+- The `--verbose` flag will print the entire task, including the body description; otherwise, only issue number and title are printed.
+
 
 Please note:
 

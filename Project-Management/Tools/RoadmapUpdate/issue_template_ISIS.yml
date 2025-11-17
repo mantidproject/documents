@@ -3,7 +3,7 @@ groups:
   - &group2 MohamedAlmaki, cailafinn, GuiMacielPereira, RichardWaiteSTFC
   - &group3 jclarkeSTFC, warunawickramasingha, SilkeSchomann, adriazalvarez
 
-# Note, you should not need to edit below this
+# Note, you should not normally need to edit below this
 
 issues:
 - title: Manual Testing Sliceviewer
