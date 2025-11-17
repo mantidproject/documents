@@ -16,6 +16,7 @@ Issue Description:\n{body}\n
 def print_group_utilization(file):
     import yaml
     assignee_counts = dict()
+    tottime = 0
     with open(file, 'r') as f:
         issues = yaml.safe_load(f)["issues"]
     for row in issues:
@@ -26,13 +27,20 @@ def print_group_utilization(file):
             title = str(row['title']).strip()
             print(f"Warning: No valid assignees found for issue {title}.")
         # now update counts
+        avgtime = 1
+        if row.get("times"):
+            times = [x for x in row["times"] if x is not None]
+            avgtime = sum(times)/len(times)
+            tottime += avgtime
         for assignee in proposed_assignees:
-            assignee_counts[assignee] = assignee_counts.get(assignee, 0) + 1
+            assignee_counts[assignee] = assignee_counts.get(assignee, 0) + avgtime
 
-    namesize = max(assignee_counts.values())
+    if tottime == 0:
+        tottime = len(issues)
+    namesize = max([len(x) for x in assignee_counts.keys()])
     
     for assignee, count in assignee_counts.items():
-        print(f"{assignee.ljust(2 * namesize)}\t\tassigned to\t{count} of {len(issues)}")
+        print(f"{assignee.ljust(namesize)}\t\tassigned to\t{count:.0f} of {tottime:.0f}")
 
 
 def print_smoketest_utilization(osfile, taskfile):
