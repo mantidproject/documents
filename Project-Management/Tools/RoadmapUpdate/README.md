@@ -21,7 +21,7 @@ mamba activate manual-tests
 You can test that your token works with
 
 ```
-./create_issues.py milestone spreadsheet --check-token
+./create_issues.py milestone issue_template_ISIS.yml --check-token
 ```
 
 - In `issue_template_ISIS.yml` and `issue_template_Non_ISIS.yml`, update assignments for the upcoming release and make sure to add new starters to the assignee sheet. Make sure to raise issues for ISIS and Non-ISIS manual tests.
