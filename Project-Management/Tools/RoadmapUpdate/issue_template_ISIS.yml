@@ -5,7 +5,7 @@ groups:
 
 # Note, you should not normally need to edit below this.
 # EXCEPT for adding new average times from this iteration's testing
-# Please also record average times in ISIS_issue_template.csv
+# Please also record average times in ISIS_issue_times.csv
 
 issues:
 - title: Manual Testing Sliceviewer
