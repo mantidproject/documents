@@ -60,3 +60,4 @@ class GitHubRepo:
         issue = self.repo.create_issue(title, body=body, milestone=milestone, labels=labels)
         if len(assignees) > 0:
             issue.add_to_assignees(*assignees)
+        return issue

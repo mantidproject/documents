@@ -21,21 +21,24 @@ def print_group_utilization(file):
         issues = yaml.safe_load(f)["issues"]
     for row in issues:
         # get the assignees from the string
-        assignee_str = row.get('assignee')
-        proposed_assignees = str(assignee_str).split(", ") if assignee_str else []
-        if not proposed_assignees:
+        assignee = row.get('assignee')
+        if not assignee:
             title = str(row['title']).strip()
             print(f"Warning: No valid assignees found for issue {title}.")
         # now update counts
-        avgtime = 1
+        avgtime = 0
         if row.get("times"):
             times = [x for x in row["times"] if x is not None]
             avgtime = sum(times)/len(times)
             tottime += avgtime
-        for assignee in proposed_assignees:
-            assignee_counts[assignee] = assignee_counts.get(assignee, 0) + avgtime
+        assignee_counts[assignee] = assignee_counts.get(assignee, 0) + avgtime
 
+    # this is the case for Non-ISIS assignments; simply count number of tasks
     if tottime == 0:
+        for row in issues:
+            assignee = row.get('assignee')
+            if assignee:
+                assignee_counts[assignee] = assignee_counts.get(assignee, 0) + 1
         tottime = len(issues)
     namesize = max([len(x) for x in assignee_counts.keys()])
     

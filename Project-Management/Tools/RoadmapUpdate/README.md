@@ -44,7 +44,7 @@ You can test that your token works with
 
 - The `--verbose` flag will print the entire task, including the body description; otherwise, only issue number and title are printed.
 
-- Check the assignee distribution with the `--group-utilization` flag; this will print the number of tasks each tester was assigned.
+- Check the assignee distribution with the `--group-utilization` flag; this will print the number of tasks each test group was assigned.
 
 
 Please note:
