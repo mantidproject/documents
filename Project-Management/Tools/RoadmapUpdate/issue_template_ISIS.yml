@@ -1,0 +1,142 @@
+groups:
+  - &group1 jhaigh0, MialLewis, thomashampson, andy-bridger
+  - &group2 MohamedAlmaki, cailafinn, GuiMacielPereira, RichardWaiteSTFC
+  - &group3 jclarkeSTFC, warunawickramasingha, SilkeSchomann, adriazalvarez
+
+# Note, you should not normally need to edit below this.
+# EXCEPT for adding new average times from this iteration's testing
+# Please also record average times in ISIS_issue_times.csv
+
+issues:
+- title: Manual Testing Sliceviewer
+  body: https://developer.mantidproject.org/Testing/SliceViewer/SliceViewer.html
+  assignee: *group1
+  times: [null, 150, null, null, 90, 105]
+
+- title: Manual Testing Engineering Diffraction
+  body: https://developer.mantidproject.org/Testing/EngineeringDiffraction/EngineeringDiffractionTestGuide.html
+  assignee: *group2
+  times: [150, null, 105, null, 60, 60]
+
+- title: Manual Testing Muon
+  body: |
+    See instructions at: https://developer.mantidproject.org/Testing/MuonAnalysis_test_guides/index.html
+  assignee: *group3
+  times: [111, 120, 150, 120, 120, 90]
+
+- title: Manual Testing Workbench Core
+  body: https://developer.mantidproject.org/Testing/Core/Core.html
+  assignee: *group3
+  times: [null, 120, 85, 45, 60, 70]
+
+- title: Manual Testing ISIS Reflectometry
+  body: http://developer.mantidproject.org/Testing/ReflectometryGUI/ReflectometryGUITests.html
+  assignee: *group2
+  times: [60, 105, 90, 60, 45, 45]
+
+- title: Manual Testing Inelastic interfaces
+  body: |
+    Follow the directions at:
+
+    * https://developer.mantidproject.org/Testing/Inelastic/BayesFittingTests.html
+    * https://developer.mantidproject.org/Testing/Inelastic/CorrectionsTests.html
+    * https://developer.mantidproject.org/Testing/Inelastic/QENSFittingTests.html 
+    * https://developer.mantidproject.org/Testing/Inelastic/DataProcessorTests.html
+  assignee: *group1
+  times: [null, 30, 110, null, 120, 6]
+
+- title: Manual Testing ISIS SANS
+  body: https://developer.mantidproject.org/Testing/SANSGUI/ISISSANSGUITests.html
+  assignee: *group1
+  times: [67, null, 53, 70, 95, 105]
+
+- title: Manual Testing M-slice
+  body: https://developer.mantidproject.org/Testing/Direct/MSliceTestGuide.html
+  assignee: *group2
+  times: [60, 60, 50, null, 67, 90]
+
+- title: Manual Testing Mantid Basics Course
+  body: |
+    * Check the Qt-help docs, built into Workbench, against the online documentation 
+    * Open up the basi c course: http://docs.mantidproject.org/tutorials/mantid_basic_course/index.html#mantid-basic-course
+    * Check that the information and exercises are up to date and work in the Workbench release candidate
+  assignee: *group3
+  times: [60, 40, 60, null, 60, 120]
+
+- title: Manual Testing Project Recovery
+  body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ProjectRecoveryTesting.html
+  assignee: *group3
+  times: [50, 30, 36, 45, 33, 25]
+
+- title: Manual Testing Live Data ISIS
+  body: https://developer.mantidproject.org/Testing/LiveData/LiveDataTests.html
+  assignee: *group2
+  times: [22, 20, 20, 44, 30, 15]
+
+- title: Manual Testing Error Reporter
+  body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ErrorReporterTesting.html
+  assignee: *group2
+  times: [26, 20, 30, 20, null, 25]
+
+- title: Manual Testing Indirect interfaces
+  body: |
+    Follow the directions at: 
+
+    * https://developer.mantidproject.org/Testing/Indirect/DiffractionTests.html
+    * https://developer.mantidproject.org/Testing/Indirect/DataReductionTests.html
+  assignee: *group1
+  times: [11, 0, 45, 15, 45, 45]
+
+- title: Manual Testing Documentation
+  body: |
+    Check Online Docs and the Qt-help docs built into MantidWorkbench (from the help droppdown menu)
+
+    * Algorithm, fit, concept and api pages should be generated
+    * Algorithm dialog snapshots should appear on algorithm pages in offline help
+    * Math formulae should appear on algorithm pages in offline help
+    * workflow diagrams should appear on algorithm pages in offline help
+
+    You may wish to use this script ( [OpenMostDocumentationForTesting.py](https://github.com/mantidproject/mantid/blob/master/tools/scripts/OpenMostDocumentationForTesting.py) ) to open all the online docs pages!
+  assignee: *group2
+  times: [null, 20, 0, null, 15, null]
+
+- title: Manual Testing Sample Transmission calculator
+  body: |
+    Make sure that inputs and outputs work sensibly, stress test with some bad inputs (e.g. letters in a numeric input)
+    See https://developer.mantidproject.org/Testing/General/SampleTransmissionCalculatorTestGuide.html
+  assignee: *group3
+  times: [25, 10, 20, 21, 12, 1]
+
+- title: Manual Testing FilterEvents
+  body: https://developer.mantidproject.org/Testing/Utility/FilterEventsInterfaceTest.html
+  assignee: *group3
+  times: [15, 30, 15, 15, 18, 15]
+
+- title: Manual Testing ALF
+  body: https://developer.mantidproject.org/Testing/Direct/ALFViewTests.html
+  assignee: *group2
+  times: [10, 20, 17, 15, 10, 10]
+
+- title: Manual Testing Fit Script Generator
+  body: https://docs.mantidproject.org/nightly/interfaces/general/Fit%20Script%20Generator.html
+  assignee: *group1
+  times: [10, null, 15, 15, 15, 17]
+
+- title: Manual Testing TOFConverter
+  body: |
+    Make sure that inputs and outputs work sensibly, stress test with some bad inputs (e.g. letters in a numeric input)
+    https://docs.mantidproject.org/interfaces/utility/TOF%20Converter.html
+  assignee: *group1
+  times: [null, 10, 15, 10, 5, 10]
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group1
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group2
+
+- title: Manual Test Mantid Plotting
+  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
+  assignee: *group3

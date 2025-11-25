@@ -1,0 +1,118 @@
+issues:
+- title: Clean/Dirty Install Smoke Tests
+  emoji: ":soap: :hankey:"
+  body: |
+    ### Dirty install
+    * Make sure that you have several versions of Mantid installed
+    * Last release
+    * A nightly
+    * If possible an old release
+    * Install the new release candidate of Mantid
+    - [ ] Check that Mantid boots up correctly
+
+    ### Clean install
+
+    * Remove all existing Mantid versions and associated files
+
+    **On Windows**:
+    * Uninstall the program
+    * Clear shortcuts from desktop
+    * Remove the mantid files in %APPDATA%
+
+    **On macOS**:
+    * Remove the application
+    * Remove the `~/.mantid directory`
+    * Remove (or rename) `~/Library/Preferences/org.python.python.Python.plist` and `~/Library/Preferences/org.python.python.plist` 
+
+    **On Linux**:
+    * Remove the package: `/opt/Mantid`
+    * Remove `~/.config/Mantid`
+    * Remove `~/.mantid/`
+
+    Re-install the new release candidate of Mantid
+
+    - [ ] Check that Mantid boots up correctly
+
+- title: Fitting Smoke Tests
+  emoji: ":muscle: :runner:"
+  body: |
+    * Fitting to data [directions](http://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/fitting_data/01_fitting_models_to_data.html#fitting-models-to-data)
+    - [ ] Simple fit 
+    - [ ] Activating the fitting tools 
+    - [ ] Selecting the fitting range 
+    - [ ] Other Fit Function Settings properties 
+    - [ ] Setting up a fit model 
+    - [ ] Adjusting fit function parameter 
+    - [ ] Saving a model 
+    - [ ] Tying and constraining fit parameters 
+    - [ ] Execute your fit 
+    - [ ] Inspecting a fit result 
+    * Additional options [directions](https://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/fitting_data/03_fit_model_choices.html)
+    - [ ] Non peak model + background 
+    - [ ] User defined function
+
+- title: Interface Smoke Tests
+  emoji: ":facepalm:"
+  body: |
+    ## ISIS only, if possible, so catalogue access can be tested
+
+    - [ ] MantidWorkbench opens without errors or warnings 
+    - [ ] Every option in `Interface` opens a GUI 
+    - [ ] Load some test data 
+    - [ ] Access Catalogue through algorithms (use Facilities account, same as for IDAaaS): [CatalogLogin](https://docs.mantidproject.org/algorithms/CatalogLogin-v1.html) and [CatalogGetDataFiles](https://docs.mantidproject.org/algorithms/CatalogGetDataFiles-v1.html)
+    - [ ] Saving/loading projects works 
+    - [ ] Alter preferences in [File > Settings](https://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/useful/01_save_settings.html#settings) and check they are obeyed
+
+- title: Plotting Smoke Tests
+  emoji: ":chart_with_upwards_trend:"
+  body: |
+    * 1D plotting:[instructions](http://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/loading_and_displaying_data/03_displaying_1D_data.html#displaying-1d-data)
+    - [ ] Simple plot 
+    - [ ] Another way to plot 
+    - [ ] Adding curves to existing plots 
+    - [ ] Also, test out [waterfall](https://docs.mantidproject.org/nightly/plotting/WaterfallPlotsHelp.html#waterfall-plots) and [tiled]( https://docs.mantidproject.org/nightly/plotting/1DPlotsHelp.html#tiled-plots)
+    - [ ] Check Toolbar buttons
+
+    * 2D plotting: [instructions](http://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/loading_and_displaying_data/04_displaying_2D_data.html#displaying-2d-data)
+    - [ ] Plot all spectra 
+    - [ ] Change colour map 
+    - [ ] [Contour plot](https://docs.mantidproject.org/nightly/plotting/ColorfillPlotsHelp.html#contour-plots) (under 3D menu) 
+    - [ ] Check Toolbar buttons
+
+    * [3D plotting](https://docs.mantidproject.org/nightly/plotting/3DPlotsHelp.html):
+    - Load some data eg `LOQ74041` from the ISIS sample data
+    - [ ] 3D surface
+    - [ ] 3D wire frame  
+    - [ ] Check Toolbar buttons
+
+    ## Sliceviewer
+    - [ ] Overly long instructions (don't spend  long!) and data [here](https://developer.mantidproject.org/Testing/SliceViewer/SliceViewer.html). In particular try editing the data in a workspace while it is open in Sliceviewer!
+
+- title: Python Smoke Tests
+  emoji: ":snake:"
+  body: |
+    * Test that the Python scripting window works, [directions here](https://docs.mantidproject.org/nightly/workbench/scriptwindow.html)
+    - [ ] Editor options 
+    - [ ] Execution options 
+    - [ ] Script output  
+    - [ ] Perform some workspace algebra 
+    - [ ] Test numpy functionality 
+    - [ ] Use the scripting window to run some scripts 
+    - [ ] Run through some examples from [the documentation](https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/index.html), 3 or 4 examples from the Solutions is enough 
+
+- title: Workspace/Algorithm Smoke Tests
+  emoji: ":man_astronaut: :woman_astronaut: :space_invader:"
+  body: |
+    * Load some workspaces, try 5 from different instruments
+    * Show detectors on these workspaces
+    * Check Instrument Viewer for these workspaces, follow  documentation for  [Instrument Viewer Widget](https://docs.mantidproject.org/workbench/instrumentviewer.html) and some more detail on the picking tools in the [Basic Course](https://docs.mantidproject.org/tutorials/mantid_basic_course/connecting_data_to_instruments/03_investigating_data.html)
+      - [ ] Render tab 
+      - [ ] Draw tab 
+      - [ ] Pick tab 
+      - [ ] Instrument tree tab 
+    * Test 5 - 10 random algorithms, follow [how to run Algorithms](http://docs.mantidproject.org/nightly/tutorials/mantid_basic_course/algorithms_workspaces_and_histories/02_algorithms.html#algorithms) and [pick your favourite](https://docs.mantidproject.org/algorithms/)
+    - [ ] Help button 
+    - [ ] Validation of inputs 
+    - [ ] Overwriting workspace 
+    - [ ] Run the algorithm 
+    - [ ] Check right-click options of the workspaces, they are listed [in the image in the documentation](https://docs.mantidproject.org/nightly/workbench/workspacetreewidget.html#workbenchworkspacetoolbox).

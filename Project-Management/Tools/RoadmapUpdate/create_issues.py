@@ -4,16 +4,13 @@ to developers and creates issues on GitHub. It requires a GitHub
 access token that can be provided on the command line
 """
 import argparse
-import getpass
-import os
 import sys
+import yaml
 
-from github import Github
-import pandas as pd
+from tools import dryrun, github_helper
 
 # Constants
 DEFAULT_REPOSITORY = "mantidproject/mantid"
-TOKEN_ENV_NAME = "CREATE_ISSUES_TOKEN"
 BODY_TEXT = '''
 You have been assigned manual testing. The hope is to catch as many problems with the code before release, so it would be great if you can take some time to give a serious test to your assigned area. Thank you!!
 
@@ -32,7 +29,7 @@ releases.
 * Close the this issue once you are done.
 * Time how long this manual test takes for you to do and leave a comment about it in this issue.
 '''
-ISSUE_LABELS = ["Manual Tests"]
+ISSUE_LABELS = {"manual": "Manual Tests"}
 
 
 def main() -> int:
@@ -41,16 +38,24 @@ def main() -> int:
     """
     cmd_args = parse_args()
 
-    gh = Github(github_oauth_token())
-    repo = gh.get_repo(cmd_args.repository)
-    possible_assignees = repo.get_assignees()
+    # if checking token, make sure it is valid and then stop
+    if cmd_args.check_token:
+        return github_helper.check_token(cmd_args.repository)
+    
+    if cmd_args.group_utilization:
+        return dryrun.print_group_utilization(cmd_args.assignment_spreadsheet)
+
+    # setup the repo
+    if cmd_args.dry_run:
+        repo = dryrun.DryRunRepo(cmd_args.repository)
+    else:
+        repo = github_helper.GitHubRepo(cmd_args.repository)
+
+    possible_assignees = repo.get_possible_assignees()
 
     # Lookup milestone string to get number
     milestone_title = cmd_args.milestone
-    gh_milestone = None
-    for loop_milestone in repo.get_milestones():
-        if loop_milestone.title == milestone_title:
-            gh_milestone = loop_milestone
+    gh_milestone = repo.get_matching_milestone(milestone_title)
     if gh_milestone is None:
         print(f"Unable to find a milestone with title '{milestone_title}'",
               file=sys.stderr)
@@ -60,44 +65,40 @@ def main() -> int:
     )
 
     # translate the label strings into gh objects
-    gh_labels = []
-    for label in ISSUE_LABELS:
-        gh_label = repo.get_label(label)
-        if gh_label is not None:
-            gh_labels.append(gh_label)
+    gh_labels = list(repo.get_matching_labels(ISSUE_LABELS).values())
 
     print("Labels", gh_labels)
     print("\nLoading issue assignment spreadsheet")
-    df = pd.read_excel(cmd_args.assignment_spreadsheet, "issues")
-
-    print(f"\nCreating {len(df.index)} issues")
-    for _, row in df.iterrows():
-        title = str(row['Title']).strip()
-        additional_body = str(row['Additional Body Text']).strip()
-        gh_labels = [repo.get_label('Manual Tests')]
-        proposed_assignees = str(row['Assignee']).split(", ")
+    with open(cmd_args.assignment_spreadsheet, 'r') as f:
+        issues = yaml.safe_load(f)["issues"]
+    print(f"\nCreating {len(issues)} issues")
+    for row in issues:
+        title = str(row['title']).strip()
+        additional_body = row.get('body')
+        if additional_body is not None:
+            additional_body = str(additional_body).strip()
+        assignee_str = row.get('assignee')
+        proposed_assignees = str(assignee_str).split(", ") if assignee_str else []
         gh_assignees = []
-        if pd.notnull(row['Assignee']):
-            for loop_proposed_assignee in proposed_assignees:
-                for loop_possible_assignee in possible_assignees:
-                    if loop_possible_assignee.login == loop_proposed_assignee:
-                        gh_assignees.append(loop_proposed_assignee)
-                if not gh_assignees:
-                    print("could not find gh assignee for ", loop_proposed_assignee,
-                          ". Continuing without assignment.")
+        for proposed_assignee in proposed_assignees:
+            if proposed_assignee in possible_assignees:
+                gh_assignees.append(proposed_assignee)
+        if not gh_assignees:
+            print(f"Warning: No valid assignees found for issue {title}. Continuing without assignment.")
 
         my_body = BODY_TEXT
-        if pd.notnull(additional_body):
+        if additional_body is not None:
             my_body += "\n\n### Specific Notes:\n\n" + additional_body
         print(title, gh_milestone, gh_labels, gh_assignees)
-        if not cmd_args.dry_run:
-            issue = repo.create_issue(title,
-                                      body=str(my_body).strip(),
-                                      milestone=gh_milestone,
-                                      labels=gh_labels)
-            if gh_assignees:
-                issue.add_to_assignees(*gh_assignees)
-            print(issue.number, issue.title, issue.assignees)
+        issue = repo.create_issue(title,
+                                    body=str(my_body).strip(),
+                                    milestone=gh_milestone,
+                                    labels=gh_labels,
+                                    assignees=gh_assignees)
+        if cmd_args.verbose:
+            print(issue)
+        else:
+            print(f"{issue.number:<6}\t{issue.milestone}\t{issue.title} {issue.labels}")
 
     return 0
 
@@ -118,25 +119,31 @@ def parse_args() -> argparse.Namespace:
         "GitHub repository where issues should be created specified as org/repo"
     )
     parser.add_argument(
+        "--check-token",
+        action="store_true",
+        default=False,
+        help=
+        "If passed, only verify that the token can reach the repository")
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         default=False,
         help=
         "If passed, print what would happen but do not perform issue creation")
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        default=False,
+        help=
+        "Print entire task description")
+    parser.add_argument(
+        "--group-utilization",
+        action="store_true",
+        default=False,
+        help=
+        "Output distribution of assignees across tasks")
 
     return parser.parse_args()
-
-
-def github_oauth_token() -> str:
-    """Retrieve the oauth token for authenticating with GitHub
-    Checks for CREATE_ISSUES_TOKEN env variable and falls back to
-    asking on the command line
-    """
-    token = os.environ.get(TOKEN_ENV_NAME, None)
-    if token is None:
-        token = getpass.getpass(prompt=f"Enter GitHub personal access token:")
-
-    return token
 
 
 if __name__ == "__main__":

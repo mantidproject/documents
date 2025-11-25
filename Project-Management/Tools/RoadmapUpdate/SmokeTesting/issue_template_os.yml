@@ -1,0 +1,59 @@
+release: 6.14.0rc1
+
+assignees:
+- &windows_assignee adriazalvarez
+- &linux_assignee jhaigh0
+- &IDAaaS_assignee jclarkeSTFC
+- &macos_intel_assignee rboston628
+- &macos_arm_assignee MialLewis
+
+
+# Except for changes to release or build procedure, you should not need to edit below this comment
+
+instructions:
+- os: Windows
+  text: |
+    We must test both the .exe installer package and install direct from conda.
+
+    * To install via conda:
+      - Use Intel Conda and make sure conda-forge is added to channels
+    ```
+    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba activate mantid_rc1
+    workbench # to launch
+    ```
+  assignee: *windows_assignee
+
+- os: MacOS
+  text: &macinstruct |
+    We must test both the .dmg installer package and install direct from conda.
+
+    * To install via conda:
+      - Use Intel Conda and make sure conda-forge is added to channels
+    ```
+    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba activate mantid_rc1
+    workbench # to launch
+    ```
+  assignee: *macos_intel_assignee
+
+- os: Linux
+  text: |
+    * To install the tar.xz package for Linux, run `(sudo) tar -xJf mantid-VA.B.C.tar.xz` in a terminal and it will unzip the package in your current working directory. 
+    * To install via conda:
+      - Use Intel Conda and make sure conda-forge is added to channels
+    ```
+    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba activate mantid_rc1
+    workbench # to launch
+    ```
+  assignee: *linux_assignee
+
+- os: IDAaaS
+  text: |
+    An IDAaaS session link will be shared with you. It will either be a no-GPU or a GPU IDAaaS instance. All IDAaaS-installed packages are Conda installs.
+  assignee: *IDAaaS_assignee
+
+- os: MacOS_arm
+  text: *macinstruct
+  assignee: *macos_arm_assignee
