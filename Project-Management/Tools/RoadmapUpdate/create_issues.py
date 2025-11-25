@@ -11,7 +11,6 @@ from tools import dryrun, github_helper
 
 # Constants
 DEFAULT_REPOSITORY = "mantidproject/mantid"
-TOKEN_ENV_NAME = "CREATE_ISSUES_TOKEN"
 BODY_TEXT = '''
 You have been assigned manual testing. The hope is to catch as many problems with the code before release, so it would be great if you can take some time to give a serious test to your assigned area. Thank you!!
 
