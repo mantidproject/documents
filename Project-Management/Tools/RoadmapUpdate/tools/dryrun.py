@@ -31,6 +31,7 @@ def print_group_utilization(file):
             times = [x for x in row["times"] if x is not None]
             avgtime = sum(times)/len(times)
             tottime += avgtime
+        print(f"Issue {title} has average time {avgtime}")
         assignee_counts[assignee] = assignee_counts.get(assignee, 0) + avgtime
 
     # this is the case for Non-ISIS assignments; simply count number of tasks
