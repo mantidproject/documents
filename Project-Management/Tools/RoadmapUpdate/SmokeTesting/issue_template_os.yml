@@ -1,12 +1,10 @@
-release: 6.14.0rc1
+release: 6.15.0rc1
 
 assignees:
-- &windows_assignee adriazalvarez
-- &linux_assignee jhaigh0
-- &IDAaaS_assignee jclarkeSTFC
-- &macos_intel_assignee rboston628
-- &macos_arm_assignee MialLewis
-
+- &windows_assignee mducle, MohamedAlmaki
+- &linux_assignee GuiMacielPereira, samtygier-stfc, thomashampson
+- &IDAaaS_assignee sf1919, MialLewis, SilkeSchomann
+- &macos_arm_assignee cailafinn, RabiyaF, JackEAllen
 
 # Except for changes to release or build procedure, you should not need to edit below this comment
 
@@ -24,8 +22,8 @@ instructions:
     ```
   assignee: *windows_assignee
 
-- os: MacOS
-  text: &macinstruct |
+- os: MacOS_arm
+  text: |
     We must test both the .dmg installer package and install direct from conda.
 
     * To install via conda:
@@ -35,7 +33,7 @@ instructions:
     mamba activate mantid_rc1
     workbench # to launch
     ```
-  assignee: *macos_intel_assignee
+  assignee: *macos_arm_assignee
 
 - os: Linux
   text: |
@@ -53,7 +51,3 @@ instructions:
   text: |
     An IDAaaS session link will be shared with you. It will either be a no-GPU or a GPU IDAaaS instance. All IDAaaS-installed packages are Conda installs.
   assignee: *IDAaaS_assignee
-
-- os: MacOS_arm
-  text: *macinstruct
-  assignee: *macos_arm_assignee
