@@ -25,7 +25,7 @@ You can test that your token works with
 ./create_smoke_issues_OS.py milestone --check-token
 ```
 
-- In `issue_template_os.yml` make sure to assign testers to each main OS issue and update the version number of Mantid at the top of the file.
+- In `issue_template_os.yml` update the version number of Mantid at the top of the file and make sure to assign testers to each main OS issue.
 
 - Run the script with the appropriate arguments:
 

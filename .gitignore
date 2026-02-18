@@ -1,2 +1,5 @@
-
+# Mac OS X Finder
 .DS_Store
+
+# Byte-compiled / optimized files
+__pycache__/
