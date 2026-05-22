@@ -1,4 +1,4 @@
-release: 6.15.0rc1
+release: 6.16.0rc1
 
 assignees:
 - &windows_assignee mducle, MohamedAlmaki

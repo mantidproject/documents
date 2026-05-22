@@ -1,10 +1,10 @@
 groups:
 
-  - &group1 GuiMacielPereira, jclarkeSTFC, adriazalvarez, RabiyaF
-  - &group2 cailafinn, warunawickramasingha, thomashampson, samtygier-stfc
-  - &group3 RichardWaiteSTFC, SilkeSchomann, andy-bridger, MohamedAlmaki
-  - &group4 MialLewis, mducle, jhaigh0
-
+  - &group1 adriazalvarez, warunawickramasingha, cailafinn, shervin86
+  - &group2 RabiyaF, MialLewis, mducle, perenon
+  - &group3 jhaigh0, GuiMacielPereira, jclarkeSTFC, thomashampson
+  - &group4 SilkeSchomann, andy-bridger, MohamedAlmaki
+ 
 
 # Note, you should not normally need to edit below this.
 # EXCEPT for adding new average times from this iteration's testing
