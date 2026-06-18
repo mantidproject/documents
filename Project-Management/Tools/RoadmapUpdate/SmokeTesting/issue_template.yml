@@ -22,7 +22,8 @@ issues:
     **On macOS**:
     * Remove the application
     * Remove the `~/.mantid directory`
-    * Remove (or rename) `~/Library/Preferences/org.python.python.Python.plist` and `~/Library/Preferences/org.python.python.plist` 
+    * Remove (or rename) any of `~/Library/Preferences/org.python.python.Python.plist`, `~/Library/Preferences/org.python.python.plist`, `~/Library/Preferences/com.mantidproject.mantidworkbench.plist`
+    * Remove (if present) `~/.config/mantidproject` and `~/.config/mantidproject.org`
 
     **On Linux**:
     * Remove the package: `/opt/Mantid`
