@@ -16,7 +16,7 @@ instructions:
     * To install via conda:
       - Use Intel Conda and make sure conda-forge is added to channels
     ```
-    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba create -n mantid_rc1 -c mantid-test/label/v{} mantidworkbench --yes
     mamba activate mantid_rc1
     workbench # to launch
     ```
@@ -29,7 +29,7 @@ instructions:
     * To install via conda:
       - Use Intel Conda and make sure conda-forge is added to channels
     ```
-    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba create -n mantid_rc1 -c mantid-test/label/v{} mantidworkbench --yes
     mamba activate mantid_rc1
     workbench # to launch
     ```
@@ -41,7 +41,7 @@ instructions:
     * To install via conda:
       - Use Intel Conda and make sure conda-forge is added to channels
     ```
-    mamba create -n mantid_rc1 -c mantid/label/v{} mantidworkbench --yes
+    mamba create -n mantid_rc1 -c mantid-test/label/v{} mantidworkbench --yes
     mamba activate mantid_rc1
     workbench # to launch
     ```
