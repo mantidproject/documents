@@ -49,5 +49,5 @@ instructions:
 
 - os: IDAaaS
   text: |
-    An IDAaaS session link will be shared with you. It will either be a no-GPU or a GPU IDAaaS instance. All IDAaaS-installed packages are Conda installs.
+    Use either a non-GPU or a GPU IDAaaS instance, depending on what the release QA manager has specified. All IDAaaS-installed packages are Conda installs.
   assignee: *IDAaaS_assignee
