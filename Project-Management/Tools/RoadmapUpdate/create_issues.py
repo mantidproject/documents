@@ -43,7 +43,7 @@ def main() -> int:
         return github_helper.check_token(cmd_args.repository)
     
     if cmd_args.group_utilization:
-        return dryrun.print_group_utilization(cmd_args.assignment_spreadsheet)
+        return dryrun.print_group_utilization(cmd_args.issue_template_file)
 
     # setup the repo
     if cmd_args.dry_run:
@@ -68,8 +68,8 @@ def main() -> int:
     gh_labels = list(repo.get_matching_labels(ISSUE_LABELS).values())
 
     print("Labels", gh_labels)
-    print("\nLoading issue assignment spreadsheet")
-    with open(cmd_args.assignment_spreadsheet, 'r') as f:
+    print("\nLoading issue template file")
+    with open(cmd_args.issue_template_file, 'r') as f:
         issues = yaml.safe_load(f)["issues"]
     print(f"\nCreating {len(issues)} issues")
     for row in issues:
@@ -109,8 +109,8 @@ def parse_args() -> argparse.Namespace:
         description="Create GitHub issues for Manual testing of Mantid")
     parser.add_argument("milestone",
                         help="Title of GitHub milestone for issue assignment")
-    parser.add_argument("assignment_spreadsheet",
-                        help="Excel spreadsheet defining test assignments")
+    parser.add_argument("issue_template_file",
+                        help="YAML file defining test assignments")
     parser.add_argument(
         "--repository",
         type=str,
