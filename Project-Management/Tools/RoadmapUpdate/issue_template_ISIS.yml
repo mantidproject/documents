@@ -1,9 +1,8 @@
 groups:
 
-  - &group1 adriazalvarez, warunawickramasingha, cailafinn, shervin86
-  - &group2 RabiyaF, MialLewis, mducle, perenon
-  - &group3 jhaigh0, GuiMacielPereira, jclarkeSTFC, thomashampson
-  - &group4 SilkeSchomann, andy-bridger, MohamedAlmaki
+  - &group1 cailafinn, jhaigh0, jclarkeSTFC, GuiMacielPereira
+  - &group2 MohamedAlmaki, thomashampson, RabiyaF
+  - &group3 andy-bridger, adriazalvarez, warunawickramasingha, perenon
  
 
 # Note, you should not normally need to edit below this.
@@ -24,17 +23,12 @@ issues:
 - title: Manual Testing Muon
   body: |
     See instructions at: https://developer.mantidproject.org/Testing/MuonAnalysis_test_guides/index.html
-  assignee: *group4
+  assignee: *group1
   times: [111, 120, 150, 120, 120, 90]
-
-- title: Manual Testing Workbench Core
-  body: https://developer.mantidproject.org/Testing/Core/Core.html
-  assignee: *group4
-  times: [null, 120, 85, 45, 60, 70, 120]
 
 - title: Manual Testing ISIS Reflectometry
   body: http://developer.mantidproject.org/Testing/ReflectometryGUI/ReflectometryGUITests.html
-  assignee: *group3
+  assignee: *group2
   times: [60, 105, 90, 60, 45, 45]
 
 - title: Manual Testing Inelastic interfaces
@@ -45,7 +39,7 @@ issues:
     * https://developer.mantidproject.org/Testing/Inelastic/CorrectionsTests.html
     * https://developer.mantidproject.org/Testing/Inelastic/QENSFittingTests.html 
     * https://developer.mantidproject.org/Testing/Inelastic/DataProcessorTests.html
-  assignee: *group1
+  assignee: *group3
   times: [null, 30, 110, null, 120, 70]
 
 - title: Manual Testing ISIS SANS
@@ -61,24 +55,24 @@ issues:
 - title: Manual Testing Mantid Basics Course
   body: |
     * Check the Qt-help docs, built into Workbench, against the online documentation 
-    * Open up the basi c course: http://docs.mantidproject.org/tutorials/mantid_basic_course/index.html#mantid-basic-course
+    * Open up the basic course: http://docs.mantidproject.org/tutorials/mantid_basic_course/index.html#mantid-basic-course
     * Check that the information and exercises are up to date and work in the Workbench release candidate
-  assignee: *group1
+  assignee: *group3
   times: [60, 40, 60, null, 60, 120, 60]
 
 - title: Manual Testing Project Recovery
   body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ProjectRecoveryTesting.html
-  assignee: *group2
+  assignee: *group3
   times: [50, 30, 36, 45, 33, 25, 25]
 
 - title: Manual Testing Live Data ISIS
   body: https://developer.mantidproject.org/Testing/LiveData/LiveDataTests.html
-  assignee: *group3
+  assignee: *group1
   times: [22, 20, 20, 44, 30, 15, 30]
 
 - title: Manual Testing Error Reporter
   body: http://developer.mantidproject.org/Testing/ErrorReporter-ProjectRecovery/ErrorReporterTesting.html
-  assignee: *group1
+  assignee: *group2
   times: [26, 20, 30, 20, null, 25, 37]
 
 - title: Manual Testing Indirect interfaces
@@ -100,19 +94,19 @@ issues:
     * workflow diagrams should appear on algorithm pages in offline help
 
     You may wish to use this script ( [OpenMostDocumentationForTesting.py](https://github.com/mantidproject/mantid/blob/master/tools/scripts/OpenMostDocumentationForTesting.py) ) to open all the online docs pages!
-  assignee: *group4
+  assignee: *group1
   times: [null, 20, 0, null, 15, null, 10]
 
 - title: Manual Testing Sample Transmission calculator
   body: |
     Make sure that inputs and outputs work sensibly, stress test with some bad inputs (e.g. letters in a numeric input)
     See https://developer.mantidproject.org/Testing/General/SampleTransmissionCalculatorTestGuide.html
-  assignee: *group4
+  assignee: *group1
   times: [25, 10, 20, 21, 12, 10]
 
 - title: Manual Testing FilterEvents
   body: https://developer.mantidproject.org/Testing/Utility/FilterEventsInterfaceTest.html
-  assignee: *group3
+  assignee: *group1
   times: [15, 30, 15, 15, 18, 15]
 
 - title: Manual Testing ALF
@@ -122,7 +116,7 @@ issues:
 
 - title: Manual Testing Fit Script Generator
   body: https://docs.mantidproject.org/nightly/interfaces/general/Fit%20Script%20Generator.html
-  assignee: *group4
+  assignee: *group3
   times: [10, null, 15, 15, 15, 17, 5]
 
 - title: Manual Testing TOFConverter
@@ -144,6 +138,17 @@ issues:
   body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
   assignee: *group3
 
-- title: Manual Test Mantid Plotting
-  body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
-  assignee: *group4
+- title: Manual Testing Workbench Core
+  body: https://developer.mantidproject.org/Testing/Core/Core.html
+  assignee: *group1
+  times: [null, 120, 85, 45, 60, 70, 120]
+
+- title: Manual Testing Workbench Core
+  body: https://developer.mantidproject.org/Testing/Core/Core.html
+  assignee: *group2
+  times: [null, 120, 85, 45, 60, 70, 120]
+
+- title: Manual Testing Workbench Core
+  body: https://developer.mantidproject.org/Testing/Core/Core.html
+  assignee: *group3
+  times: [null, 120, 85, 45, 60, 70, 120]
