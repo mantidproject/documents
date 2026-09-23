@@ -20,10 +20,10 @@ def print_group_utilization(file):
     with open(file, 'r') as f:
         issues = yaml.safe_load(f)["issues"]
     for row in issues:
+        title = str(row['title']).strip()
         # get the assignees from the string
         assignee = row.get('assignee')
         if not assignee:
-            title = str(row['title']).strip()
             print(f"Warning: No valid assignees found for issue {title}.")
         # now update counts
         avgtime = 0
