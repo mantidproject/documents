@@ -31,7 +31,7 @@ def print_group_utilization(file):
             times = [x for x in row["times"] if x is not None]
             avgtime = sum(times)/len(times)
             tottime += avgtime
-        print(f"Issue {title} has average time {avgtime}")
+        print(f"Issue {title} has average time {avgtime:.2f}")
         assignee_counts[assignee] = assignee_counts.get(assignee, 0) + avgtime
 
     # this is the case for Non-ISIS assignments; simply count number of tasks
@@ -44,7 +44,7 @@ def print_group_utilization(file):
     namesize = max([len(x) for x in assignee_counts.keys()])
     
     for assignee, count in assignee_counts.items():
-        print(f"{assignee.ljust(namesize)}\t\tassigned to\t{count:.0f} of {tottime:.0f}")
+        print(f"{assignee.ljust(namesize)}\t\tassigned to\t{count:.0f} of {tottime:.0f} ({(count/tottime)*100:.2f}%)")
 
 
 def print_smoketest_utilization(osfile, taskfile):
