@@ -94,7 +94,7 @@ issues:
     * https://developer.mantidproject.org/Testing/Indirect/DataReductionTests.html
   assignee: *group1
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
-  times: [  11,     0,   45,   15,   45,    45,    35,   null,  33]
+  times: [  11,  null,   45,   15,   45,    45,    35,   null,  33]
 
 - title: Manual Testing Documentation
   body: |
@@ -108,7 +108,7 @@ issues:
     You may wish to use this script ( [OpenMostDocumentationForTesting.py](https://github.com/mantidproject/mantid/blob/master/tools/scripts/OpenMostDocumentationForTesting.py) ) to open all the online docs pages!
   assignee: *group1
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
-  times: [null,   20,    0,  null,   15,  null,   10,    null,  15]
+  times: [null,   20,  null, null,   15,  null,   10,    null,  15]
 
 - title: Manual Testing Sample Transmission calculator
   body: |
