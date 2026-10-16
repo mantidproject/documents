@@ -1,10 +1,10 @@
-release: 6.16.0rc1
+release: 7.0.0rc1
 
 assignees:
-- &windows_assignee mducle, MohamedAlmaki
+- &windows_assignee MohamedAlmaki, andy-bridger, warunawickramasingha, jclarkeSTFC
 - &linux_assignee GuiMacielPereira, samtygier-stfc, thomashampson
-- &IDAaaS_assignee sf1919, MialLewis, SilkeSchomann
-- &macos_arm_assignee cailafinn, RabiyaF, JackEAllen
+- &IDAaaS_assignee sf1919, MialLewis, SilkeSchomann, jhaigh0
+- &macos_arm_assignee cailafinn, RabiyaF, adriazalvarez
 
 # Except for changes to release or build procedure, you should not need to edit below this comment
 
