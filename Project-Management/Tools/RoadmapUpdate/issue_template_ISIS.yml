@@ -144,19 +144,19 @@ issues:
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
   times: [null,    10,   15,   10,    5,   10,   null,   null,  13]
 
-- title: Manual Test Mantid Plotting
+- title: Manual Testing Mantid Plotting
   body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
   assignee: *group1
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
   times: [null,  null, null, null, null,  null,  null,   null,  33]
 
-- title: Manual Test Mantid Plotting
+- title: Manual Testing Mantid Plotting
   body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
   assignee: *group2
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
   times: [null,  null, null, null, null,  null,  null,   null,  33]
 
-- title: Manual Test Mantid Plotting
+- title: Manual Testing Mantid Plotting
   body: Make sure the Mantid Plotting is working correctly and each testing team follows below test instructions on separate test issues https://docs.mantidproject.org/nightly/tutorials/python_in_mantid/plotting/index.html
   assignee: *group3
   #      v.6.9 v.6.10 v6.11 v6.12 v6.13 v.6.14 v.6.15, v.6.16, v7.0
