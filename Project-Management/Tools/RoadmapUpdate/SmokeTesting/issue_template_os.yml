@@ -27,7 +27,7 @@ instructions:
     We must test both the .dmg installer package and install direct from conda.
 
     * To install via conda:
-      - Use Intel Conda and make sure conda-forge is added to channels
+      - Use Arm Conda and make sure conda-forge is added to channels
     ```
     mamba create -n mantid_rc1 -c mantid-test/label/v{} mantidworkbench --yes
     mamba activate mantid_rc1
@@ -50,4 +50,9 @@ instructions:
 - os: IDAaaS
   text: |
     Use either a non-GPU or a GPU IDAaaS instance, depending on what the release QA manager has specified. All IDAaaS-installed packages are Conda installs.
+    ```
+    mamba create -n mantid_rc1 -c mantid-test/label/v{} mantidworkbench --yes
+    mamba activate mantid_rc1
+    workbench # to launch
+    ```
   assignee: *IDAaaS_assignee
